@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akinnova - Pilares</title>
+    <title>Akinnova - Pilares corregidos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -20,21 +20,19 @@
             color: #000000;
         }
 
-        /* Línea superior */
         .top-bar {
             background-color: #c2e9ff;
             height: 12px;
             width: 100%;
         }
 
-        /* Contenedor principal */
         .container {
             max-width: 1300px;
             margin: 0 auto;
             padding: 40px 40px;
         }
 
-        /* Hero section (ya existente) */
+        /* Hero (se mantiene igual) */
         .hero {
             display: flex;
             gap: 40px;
@@ -78,12 +76,12 @@
             margin: 0 auto;
         }
 
-        /* ===== TRES PILARES FUNDAMENTALES ===== */
+        /* ===== TRES PILARES ===== */
         .pilares-section {
-            margin: 60px 0;
+            margin: 70px 0 50px;
         }
 
-        /* Título centrado con líneas a los costados */
+        /* Título con líneas negras a los costados */
         .pilares-title-wrapper {
             display: flex;
             align-items: center;
@@ -104,18 +102,10 @@
             font-style: italic;
             color: #000000;
             white-space: nowrap;
-            padding: 0 10px;
+            padding: 0 15px;
         }
 
-        @media (max-width: 768px) {
-            .pilares-title {
-                font-size: 1.8rem;
-                white-space: normal;
-                text-align: center;
-            }
-        }
-
-        /* Grid de pilares */
+        /* Grid: tres columnas iguales */
         .pilares-grid {
             display: flex;
             gap: 30px;
@@ -123,18 +113,20 @@
         }
 
         .pilar-card {
-            flex: 1 1 300px;
+            flex: 1 1 280px;          /* mismo ancho base */
             display: flex;
             flex-direction: column;
-            gap: 15px; /* Espacio entre el cuadrado celeste y el blanco */
         }
 
-        /* Parte superior - fondo celeste (cuadrado independiente) */
-        .pilar-superior {
+        /* ---- RECUADRO CELESTE (superior) ---- */
+        .pilar-celeste {
             background-color: #c2e9ff;
-            border: 2px solid #c2e9ff;
+            border: 2px solid #c2e9ff;        /* borde del mismo celeste */
             border-radius: 20px;
-            padding: 25px;
+            padding: 25px 20px;
+            text-align: left;
+            width: 100%;
+            /* todos los recuadros celestes tendrán la misma apariencia */
         }
 
         .pilar-icon {
@@ -154,6 +146,7 @@
             font-weight: 700;
             color: #000000;
             margin-bottom: 12px;
+            line-height: 1.3;
         }
 
         .pilar-descripcion {
@@ -163,25 +156,33 @@
             line-height: 1.6;
         }
 
-        /* Parte inferior - fondo blanco con bordes celestes (cuadrado independiente) */
-        .pilar-inferior {
+        /* separador invisible (espacio entre ambos recuadros) */
+        .pilar-spacer {
+            height: 16px;              /* espacio visible entre cuadros */
+            width: 100%;
+        }
+
+        /* ---- RECUADRO BLANCO con borde celeste (inferior) ---- */
+        .pilar-blanco {
             background-color: #ffffff;
             border: 2px solid #c2e9ff;
             border-radius: 20px;
-            padding: 25px;
+            padding: 25px 20px;
+            width: 100%;
             position: relative;
+            /* todos los recuadros blancos simétricos */
         }
 
-        /* Línea azul a la izquierda */
-        .pilar-inferior::before {
+        /* Línea azul vertical a la izquierda, alto = recuadro (respetando padding) */
+        .pilar-blanco::before {
             content: '';
             position: absolute;
             left: 0;
-            top: 20px;
-            bottom: 20px;
-            width: 4px;
+            top: 20px;                 /* respeta el padding superior */
+            bottom: 20px;               /* respeta el padding inferior */
+            width: 5px;
             background-color: #004aad;
-            border-radius: 0 2px 2px 0;
+            border-radius: 0 8px 8px 0; /* puntas redondas solo del lado derecho */
         }
 
         .pilar-frase {
@@ -189,31 +190,38 @@
             color: #000000;
             font-weight: 400;
             line-height: 1.6;
-            padding-left: 15px;
+            padding-left: 18px;          /* espacio para que no se monte con la línea */
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .pilares-grid {
+                justify-content: center;
+            }
+            .pilar-card {
+                flex: 0 1 400px;
+            }
         }
 
         @media (max-width: 768px) {
             .hero {
                 flex-direction: column;
-                padding: 20px;
             }
-            
             .container {
                 padding: 20px;
             }
-            
-            .pilares-grid {
-                flex-direction: column;
+            .pilares-title {
+                font-size: 2rem;
+                white-space: normal;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Línea superior -->
     <div class="top-bar"></div>
 
     <div class="container">
-        <!-- Hero section -->
+        <!-- Hero (se mantiene) -->
         <div class="hero">
             <div class="hero-image">
                 <img src="fotos/carro-inicio.png" alt="Auto" onerror="this.src='https://placehold.co/600x400/c2e9ff/004aad?text=carro-inicio.png'">
@@ -226,52 +234,54 @@
 
         <!-- Tres Pilares Fundamentales -->
         <div class="pilares-section">
-            <!-- Título con líneas a los costados -->
             <div class="pilares-title-wrapper">
                 <div class="pilares-line"></div>
                 <h2 class="pilares-title">Tres Pilares Fundamentales</h2>
                 <div class="pilares-line"></div>
             </div>
-            
+
             <div class="pilares-grid">
                 <!-- Propósito Transformador (idea.png) -->
                 <div class="pilar-card">
-                    <div class="pilar-superior">
+                    <div class="pilar-celeste">
                         <div class="pilar-icon">
                             <img src="fotos/idea.png" alt="Idea" onerror="this.src='https://placehold.co/60x60/c2e9ff/004aad?text=idea'">
                         </div>
                         <h3 class="pilar-nombre">Propósito Transformador</h3>
                         <p class="pilar-descripcion">Transformar la industria automotriz hacia un modelo más ágil, digital y centrado en el nuevo cliente en la región del Pacífico.</p>
                     </div>
-                    <div class="pilar-inferior">
+                    <div class="pilar-spacer"></div>
+                    <div class="pilar-blanco">
                         <p class="pilar-frase">Un futuro donde la gran disrupción en el sector automotriz tenga dealers preparados a maximizar resultados de negocios.</p>
                     </div>
                 </div>
 
                 <!-- Visión (vision.png) -->
                 <div class="pilar-card">
-                    <div class="pilar-superior">
+                    <div class="pilar-celeste">
                         <div class="pilar-icon">
                             <img src="fotos/vision.png" alt="Visión" onerror="this.src='https://placehold.co/60x60/c2e9ff/004aad?text=vision'">
                         </div>
                         <h3 class="pilar-nombre">Visión</h3>
                         <p class="pilar-descripcion">Ser el socio estratégico clave en la evolución integral del negocio automotriz, integrando tecnología y procesos disruptivos y ágiles.</p>
                     </div>
-                    <div class="pilar-inferior">
+                    <div class="pilar-spacer"></div>
+                    <div class="pilar-blanco">
                         <p class="pilar-frase">Queremos dejar una huella duradera en empresas más eficientes, autónomas y listas para liderar el cambio.</p>
                     </div>
                 </div>
 
                 <!-- Misión (mision.png) -->
                 <div class="pilar-card">
-                    <div class="pilar-superior">
+                    <div class="pilar-celeste">
                         <div class="pilar-icon">
                             <img src="fotos/mision.png" alt="Misión" onerror="this.src='https://placehold.co/60x60/c2e9ff/004aad?text=mision'">
                         </div>
                         <h3 class="pilar-nombre">Misión</h3>
                         <p class="pilar-descripcion">Acompañar a concesionarios, fábricas y empresas relacionadas en la implementación de soluciones tecnológicas simples y escalables.</p>
                     </div>
-                    <div class="pilar-inferior">
+                    <div class="pilar-spacer"></div>
+                    <div class="pilar-blanco">
                         <p class="pilar-frase">Lo hacemos con foco en la velocidad y medición continua, orientados a resultados claros.</p>
                     </div>
                 </div>
