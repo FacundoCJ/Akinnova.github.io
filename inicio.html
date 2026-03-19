@@ -79,6 +79,11 @@
         }
 
         /* ===== TRES PILARES FUNDAMENTALES ===== */
+        .pilares-section {
+            margin: 60px 0;
+        }
+
+        /* Título centrado con líneas a los costados */
         .pilares-title-wrapper {
             display: flex;
             align-items: center;
@@ -98,38 +103,43 @@
             font-weight: 700;
             font-style: italic;
             color: #000000;
-            text-align: center;
             white-space: nowrap;
-            padding: 0 20px;
+            padding: 0 10px;
         }
 
         @media (max-width: 768px) {
             .pilares-title {
                 font-size: 1.8rem;
                 white-space: normal;
+                text-align: center;
             }
         }
 
+        /* Grid de pilares */
         .pilares-grid {
             display: flex;
             gap: 30px;
             flex-wrap: wrap;
-            margin-bottom: 40px;
         }
 
         .pilar-card {
             flex: 1 1 300px;
-            background-color: #c2e9ff;  /* Fondo celeste */
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Parte superior - fondo celeste */
+        .pilar-superior {
+            background-color: #c2e9ff;
             border: 2px solid #c2e9ff;
-            border-radius: 30px;
-            padding: 30px 25px;
-            transition: 0.2s;
+            border-radius: 20px 20px 0 0;
+            padding: 25px;
         }
 
         .pilar-icon {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 20px;
+            width: 60px;
+            height: 60px;
+            margin-bottom: 15px;
         }
 
         .pilar-icon img {
@@ -142,15 +152,37 @@
             font-size: 1.5rem;
             font-weight: 700;
             color: #000000;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .pilar-descripcion {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: #000000;
             font-weight: 400;
             line-height: 1.6;
-            margin-bottom: 20px;
+        }
+
+        /* Parte inferior - fondo blanco con borde celeste y línea azul */
+        .pilar-inferior {
+            background-color: #ffffff;
+            border: 2px solid #c2e9ff;
+            border-top: none;
+            border-radius: 0 0 20px 20px;
+            padding: 25px;
+            position: relative;
+            flex: 1;
+        }
+
+        /* Línea azul a la izquierda */
+        .pilar-inferior::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 20px;
+            bottom: 20px;
+            width: 4px;
+            background-color: #004aad;
+            border-radius: 0 2px 2px 0;
         }
 
         .pilar-frase {
@@ -158,45 +190,7 @@
             color: #000000;
             font-weight: 400;
             line-height: 1.6;
-            border-top: 1px solid #ffffff;
-            padding-top: 20px;
-        }
-
-        /* ===== RECUADRO INFERIOR ===== */
-        .pilares-footer {
-            background-color: #ffffff;
-            border: 2px solid #c2e9ff;
-            border-radius: 30px;
-            padding: 0;
-            margin-top: 20px;
-            overflow: hidden;
-        }
-
-        .pilares-footer-content {
-            display: flex;
-            align-items: stretch;
-        }
-
-        .pilares-footer-line {
-            width: 8px;
-            background-color: #004aad;  /* Línea azul a la izquierda */
-            min-height: 100%;
-        }
-
-        .pilares-footer-text {
-            flex: 1;
-            padding: 25px 30px;
-            font-size: 1rem;
-            color: #000000;
-            line-height: 1.6;
-        }
-
-        .pilares-footer-text p {
-            margin-bottom: 10px;
-        }
-
-        .pilares-footer-text p:last-child {
-            margin-bottom: 0;
+            padding-left: 15px;
         }
 
         @media (max-width: 768px) {
@@ -209,13 +203,8 @@
                 padding: 20px;
             }
             
-            .pilares-footer-content {
+            .pilares-grid {
                 flex-direction: column;
-            }
-            
-            .pilares-footer-line {
-                width: 100%;
-                height: 8px;
             }
         }
     </style>
@@ -237,52 +226,55 @@
         </div>
 
         <!-- Tres Pilares Fundamentales -->
-        <div class="pilares-title-wrapper">
-            <div class="pilares-line"></div>
-            <h2 class="pilares-title">Tres Pilares Fundamentales</h2>
-            <div class="pilares-line"></div>
-        </div>
-        
-        <div class="pilares-grid">
-            <!-- Propósito Transformador (idea.png) -->
-            <div class="pilar-card">
-                <div class="pilar-icon">
-                    <img src="fotos/idea.png" alt="Idea" onerror="this.src='https://placehold.co/80x80/ffffff/004aad?text=idea'">
-                </div>
-                <h3 class="pilar-nombre">Propósito Transformador</h3>
-                <p class="pilar-descripcion">Transformar la industria automotriz hacia un modelo más ágil, digital y centrado en el nuevo cliente en la región del Pacífico.</p>
-                <p class="pilar-frase">Un futuro donde la gran disrupción en el sector automotriz tenga dealers preparados a maximizar resultados de negocios.</p>
+        <div class="pilares-section">
+            <!-- Título con líneas a los costados -->
+            <div class="pilares-title-wrapper">
+                <div class="pilares-line"></div>
+                <h2 class="pilares-title">Tres Pilares Fundamentales</h2>
+                <div class="pilares-line"></div>
             </div>
-
-            <!-- Visión (vision.png) -->
-            <div class="pilar-card">
-                <div class="pilar-icon">
-                    <img src="fotos/vision.png" alt="Visión" onerror="this.src='https://placehold.co/80x80/ffffff/004aad?text=vision'">
+            
+            <div class="pilares-grid">
+                <!-- Propósito Transformador (idea.png) -->
+                <div class="pilar-card">
+                    <div class="pilar-superior">
+                        <div class="pilar-icon">
+                            <img src="fotos/idea.png" alt="Idea" onerror="this.src='https://placehold.co/60x60/c2e9ff/004aad?text=idea'">
+                        </div>
+                        <h3 class="pilar-nombre">Propósito Transformador</h3>
+                        <p class="pilar-descripcion">Transformar la industria automotriz hacia un modelo más ágil, digital y centrado en el nuevo cliente en la región del Pacífico.</p>
+                    </div>
+                    <div class="pilar-inferior">
+                        <p class="pilar-frase">Un futuro donde la gran disrupción en el sector automotriz tenga dealers preparados a maximizar resultados de negocios.</p>
+                    </div>
                 </div>
-                <h3 class="pilar-nombre">Visión</h3>
-                <p class="pilar-descripcion">Ser el socio estratégico clave en la evolución integral del negocio automotriz, integrando tecnología y procesos disruptivos y ágiles.</p>
-                <p class="pilar-frase">Queremos dejar una huella duradera en empresas más eficientes, autónomas y listas para liderar el cambio.</p>
-            </div>
 
-            <!-- Misión (mision.png) -->
-            <div class="pilar-card">
-                <div class="pilar-icon">
-                    <img src="fotos/mision.png" alt="Misión" onerror="this.src='https://placehold.co/80x80/ffffff/004aad?text=mision'">
+                <!-- Visión (vision.png) -->
+                <div class="pilar-card">
+                    <div class="pilar-superior">
+                        <div class="pilar-icon">
+                            <img src="fotos/vision.png" alt="Visión" onerror="this.src='https://placehold.co/60x60/c2e9ff/004aad?text=vision'">
+                        </div>
+                        <h3 class="pilar-nombre">Visión</h3>
+                        <p class="pilar-descripcion">Ser el socio estratégico clave en la evolución integral del negocio automotriz, integrando tecnología y procesos disruptivos y ágiles.</p>
+                    </div>
+                    <div class="pilar-inferior">
+                        <p class="pilar-frase">Queremos dejar una huella duradera en empresas más eficientes, autónomas y listas para liderar el cambio.</p>
+                    </div>
                 </div>
-                <h3 class="pilar-nombre">Misión</h3>
-                <p class="pilar-descripcion">Acompañar a concesionarios, fábricas y empresas relacionadas en la implementación de soluciones tecnológicas simples y escalables.</p>
-                <p class="pilar-frase">Lo hacemos con foco en la velocidad y medición continua, orientados a resultados claros.</p>
-            </div>
-        </div>
 
-        <!-- Recuadro inferior con línea azul -->
-        <div class="pilares-footer">
-            <div class="pilares-footer-content">
-                <div class="pilares-footer-line"></div>
-                <div class="pilares-footer-text">
-                    <p><strong>Un futuro donde la gran disrupción en el sector automotriz tenga dealers preparados a maximizar resultados de negocios.</strong></p>
-                    <p>Queremos dejar una huella duradera en empresas más eficientes, autónomas y listas para liderar el cambio.</p>
-                    <p>Lo hacemos con foco en la velocidad y medición continua, orientados a resultados claros.</p>
+                <!-- Misión (mision.png) -->
+                <div class="pilar-card">
+                    <div class="pilar-superior">
+                        <div class="pilar-icon">
+                            <img src="fotos/mision.png" alt="Misión" onerror="this.src='https://placehold.co/60x60/c2e9ff/004aad?text=mision'">
+                        </div>
+                        <h3 class="pilar-nombre">Misión</h3>
+                        <p class="pilar-descripcion">Acompañar a concesionarios, fábricas y empresas relacionadas en la implementación de soluciones tecnológicas simples y escalables.</p>
+                    </div>
+                    <div class="pilar-inferior">
+                        <p class="pilar-frase">Lo hacemos con foco en la velocidad y medición continua, orientados a resultados claros.</p>
+                    </div>
                 </div>
             </div>
         </div>
