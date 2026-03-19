@@ -1,3 +1,6 @@
+Aquí tienes el código corregido con las fotos en formato rectangular y alineadas desde la parte superior, con el nombre y texto al lado:
+
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -342,11 +345,10 @@
             background-color: #ffffff;
             border: 2px solid #c2e9ff;
             border-radius: 20px;
-            padding: 0;
+            padding: 30px;
             position: relative;
             width: 100%;
             height: 100%;
-            overflow: hidden;
         }
 
         /* Línea azul a la izquierda */
@@ -359,28 +361,37 @@
             width: 8px;
             background-color: #004aad;
             border-radius: 20px 0 0 20px;
-            z-index: 2;
         }
 
-        /* Contenedor de la foto - rectangular y alineada desde arriba */
+        /* Contenedor flexible para foto + nombre/texto */
+        .equipo-header {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            align-items: flex-start; /* Alinea desde la parte superior */
+        }
+
+        /* Foto rectangular */
         .equipo-foto {
-            width: 100%;
-            height: 280px;
+            width: 120px;
+            height: 140px; /* Rectangular */
             overflow: hidden;
-            border-bottom: 3px solid #c2e9ff;
+            border: 2px solid #c2e9ff;
+            border-radius: 10px; /* Esquinas ligeramente redondeadas pero rectangular */
+            flex-shrink: 0;
         }
 
         .equipo-foto img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: top; /* Alinea la imagen desde la parte superior */
+            object-position: top; /* Enfoca desde la parte superior de la imagen */
             display: block;
         }
 
-        /* Contenedor del texto */
-        .equipo-texto {
-            padding: 25px;
+        /* Contenedor del nombre y texto */
+        .equipo-info {
+            flex: 1;
         }
 
         /* Nombre del integrante */
@@ -388,7 +399,8 @@
             font-size: 1.8rem;
             font-weight: 700;
             color: #000000;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
+            line-height: 1.2;
         }
 
         /* Biografía */
@@ -453,16 +465,18 @@
                 gap: 30px;
             }
             
+            .equipo-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
             .pilar-superior {
                 min-height: auto;
             }
             
             .pilar-inferior {
                 min-height: auto;
-            }
-            
-            .equipo-foto {
-                height: 220px;
             }
         }
     </style>
@@ -607,16 +621,18 @@
                 <!-- Columna: Marco Kohatsu -->
                 <div class="equipo-columna">
                     <div class="equipo-card">
-                        <div class="equipo-foto">
-                            <img src="fotos/marco.png" alt="Marco Kohatsu" onerror="this.src='https://placehold.co/600x280/c2e9ff/004aad?text=Marco+Kohatsu'">
-                        </div>
-                        <div class="equipo-texto">
-                            <h4 class="equipo-nombre">Marco Kohatsu</h4>
-                            <div class="equipo-bio">
-                                <p>Consultor y Ejecutor senior en transformación empresarial, con una trayectoria consolidada liderando procesos de cambio en organizaciones complejas, tanto multinacionales como familiares. Su enfoque combina visión estratégica, ejecución disciplinada y una clara orientación a resultados sostenibles.</p>
-                                <p>A lo largo de su carrera ha dirigido iniciativas de alto impacto que han revertido escenarios críticos, reposicionado marcas en mercados altamente competitivos. Constructor de culturas organizacionales centradas en la innovación, la autonomía y la orientación al cliente.</p>
-                                <p>Su experiencia como CEO le otorga una comprensión profunda de los desafíos reales del negocio, lo que le permite acompañar a empresas que buscan escalar con tecnología, profesionalizar su estructura y acelerar su rentabilidad. En particular, ha desarrollado proyectos que integran inteligencia artificial aplicada a procesos comerciales, automatización de decisiones y reestructuración organizacional. Hoy asesora a compañías que requieren dar un salto en su gestión, con velocidad, claridad y foco en el valor tangible.</p>
+                        <div class="equipo-header">
+                            <div class="equipo-foto">
+                                <img src="fotos/marco.png" alt="Marco Kohatsu" onerror="this.src='https://placehold.co/120x140/c2e9ff/004aad?text=Marco'">
                             </div>
+                            <div class="equipo-info">
+                                <h4 class="equipo-nombre">Marco Kohatsu</h4>
+                            </div>
+                        </div>
+                        <div class="equipo-bio">
+                            <p>Consultor y Ejecutor senior en transformación empresarial, con una trayectoria consolidada liderando procesos de cambio en organizaciones complejas, tanto multinacionales como familiares. Su enfoque combina visión estratégica, ejecución disciplinada y una clara orientación a resultados sostenibles.</p>
+                            <p>A lo largo de su carrera ha dirigido iniciativas de alto impacto que han revertido escenarios críticos, reposicionado marcas en mercados altamente competitivos. Constructor de culturas organizacionales centradas en la innovación, la autonomía y la orientación al cliente.</p>
+                            <p>Su experiencia como CEO le otorga una comprensión profunda de los desafíos reales del negocio, lo que le permite acompañar a empresas que buscan escalar con tecnología, profesionalizar su estructura y acelerar su rentabilidad. En particular, ha desarrollado proyectos que integran inteligencia artificial aplicada a procesos comerciales, automatización de decisiones y reestructuración organizacional. Hoy asesora a compañías que requieren dar un salto en su gestión, con velocidad, claridad y foco en el valor tangible.</p>
                         </div>
                     </div>
                 </div>
@@ -624,16 +640,18 @@
                 <!-- Columna: Julio Aguilar -->
                 <div class="equipo-columna">
                     <div class="equipo-card">
-                        <div class="equipo-foto">
-                            <img src="fotos/julio.png" alt="Julio Aguilar" onerror="this.src='https://placehold.co/600x280/c2e9ff/004aad?text=Julio+Aguilar'">
-                        </div>
-                        <div class="equipo-texto">
-                            <h4 class="equipo-nombre">Julio Aguilar</h4>
-                            <div class="equipo-bio">
-                                <p>Consultor con amplia experiencia en transformar negocios para que sean más productivos, rentables y con una gestión de talento efectiva. Durante sus años en el mundo corporativo, se ha enfocado en el desarrollo de líderes con pensamiento crítico y con alta capacidad para la resolución de situaciones complejas, fomentando el pensamiento disruptivo para convertir los retos del negocio en oportunidades para fortalecer la posición competitiva de la empresa.</p>
-                                <p>Como líder responsable de revertir tendencias negativas en negocios nacionales e internacionales, comprende profundamente los desafíos actuales en liderazgo, estructuración de información y uso de tecnología para facilitar decisiones acertadas. Además, cuenta con experiencia en la reformulación de procesos para una gestión eficiente de recursos y en el desarrollo de equipos de alto rendimiento.</p>
-                                <p>Actualmente, asesora, capacita y acompaña a líderes y equipos gerenciales para impulsar una transformación que mejore la propuesta de valor a los clientes y aumente la rentabilidad del negocio.</p>
+                        <div class="equipo-header">
+                            <div class="equipo-foto">
+                                <img src="fotos/julio.png" alt="Julio Aguilar" onerror="this.src='https://placehold.co/120x140/c2e9ff/004aad?text=Julio'">
                             </div>
+                            <div class="equipo-info">
+                                <h4 class="equipo-nombre">Julio Aguilar</h4>
+                            </div>
+                        </div>
+                        <div class="equipo-bio">
+                            <p>Consultor con amplia experiencia en transformar negocios para que sean más productivos, rentables y con una gestión de talento efectiva. Durante sus años en el mundo corporativo, se ha enfocado en el desarrollo de líderes con pensamiento crítico y con alta capacidad para la resolución de situaciones complejas, fomentando el pensamiento disruptivo para convertir los retos del negocio en oportunidades para fortalecer la posición competitiva de la empresa.</p>
+                            <p>Como líder responsable de revertir tendencias negativas en negocios nacionales e internacionales, comprende profundamente los desafíos actuales en liderazgo, estructuración de información y uso de tecnología para facilitar decisiones acertadas. Además, cuenta con experiencia en la reformulación de procesos para una gestión eficiente de recursos y en el desarrollo de equipos de alto rendimiento.</p>
+                            <p>Actualmente, asesora, capacita y acompaña a líderes y equipos gerenciales para impulsar una transformación que mejore la propuesta de valor a los clientes y aumente la rentabilidad del negocio.</p>
                         </div>
                     </div>
                 </div>
@@ -642,3 +660,4 @@
     </div>
 </body>
 </html>
+```
