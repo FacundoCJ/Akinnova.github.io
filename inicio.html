@@ -1,9 +1,12 @@
+Aquí tienes el código completo con la sección "Nuestras Líneas de Trabajo" agregada, usando el mismo diseño de recuadros blancos con borde celeste y línea azul a la izquierda, en dos columnas:
+
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akinnova - Pilares</title>
+    <title>Akinnova - Líneas de Trabajo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -118,7 +121,7 @@
             flex: 1 1 300px;
             display: flex;
             flex-direction: column;
-            gap: 20px; /* Espacio entre cuadrado celeste y cuadrado blanco */
+            gap: 20px;
         }
 
         /* Cuadrado superior - fondo celeste */
@@ -127,7 +130,6 @@
             border: 2px solid #c2e9ff;
             border-radius: 20px;
             padding: 30px 25px;
-            /* Todos los cuadrados celestes tienen el mismo tamaño */
             min-height: 320px;
             display: flex;
             flex-direction: column;
@@ -159,20 +161,19 @@
             line-height: 1.6;
         }
 
-        /* Cuadrado inferior - fondo blanco con borde celeste - MÁS DELGADO */
+        /* Cuadrado inferior - fondo blanco con borde celeste */
         .pilar-inferior {
             background-color: #ffffff;
             border: 2px solid #c2e9ff;
             border-radius: 20px;
-            padding: 18px 25px; /* Reducido el padding vertical */
+            padding: 18px 25px;
             position: relative;
-            /* Todos los cuadrados blancos tienen el mismo tamaño - MÁS BAJOS */
-            min-height: 120px; /* Reducido de 180px a 120px */
+            min-height: 120px;
             display: flex;
             align-items: center;
         }
 
-        /* Línea azul a la izquierda - ocupa toda la altura, puntas redondas */
+        /* Línea azul a la izquierda */
         .pilar-inferior::before {
             content: '';
             position: absolute;
@@ -188,9 +189,104 @@
             font-size: 0.95rem;
             color: #000000;
             font-weight: 400;
-            line-height: 1.5; /* Reducido ligeramente el interlineado */
+            line-height: 1.5;
             padding-left: 20px;
             width: 100%;
+        }
+
+        /* ===== NUESTRAS LÍNEAS DE TRABAJO ===== */
+        .lineas-section {
+            margin: 80px 0;
+        }
+
+        /* Título principal */
+        .lineas-title-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .lineas-line {
+            flex: 1;
+            height: 2px;
+            background-color: #000000;
+        }
+
+        .lineas-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            font-style: italic;
+            color: #000000;
+            white-space: nowrap;
+            padding: 0 10px;
+        }
+
+        /* Contenedor de dos columnas */
+        .lineas-columnas {
+            display: flex;
+            gap: 40px;
+        }
+
+        /* Cada columna (Consultorías y Alianzas Estratégicas) */
+        .lineas-columna {
+            flex: 1;
+        }
+
+        /* Título de columna */
+        .columna-titulo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        /* Grid de cards dentro de cada columna */
+        .lineas-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Card de línea de trabajo */
+        .linea-card {
+            background-color: #ffffff;
+            border: 2px solid #c2e9ff;
+            border-radius: 20px;
+            padding: 25px;
+            position: relative;
+            width: 100%;
+            text-align: left;
+        }
+
+        /* Línea azul a la izquierda */
+        .linea-card::before {
+            content: '';
+            position: absolute;
+            left: -2px;
+            top: -2px;
+            bottom: -2px;
+            width: 8px;
+            background-color: #004aad;
+            border-radius: 20px 0 0 20px;
+        }
+
+        .linea-titulo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 8px;
+            padding-left: 15px;
+        }
+
+        .linea-descripcion {
+            font-size: 0.95rem;
+            color: #000000;
+            font-weight: 400;
+            line-height: 1.5;
+            padding-left: 15px;
         }
 
         @media (max-width: 768px) {
@@ -209,8 +305,19 @@
                 text-align: center;
             }
             
+            .lineas-title {
+                font-size: 1.8rem;
+                white-space: normal;
+                text-align: center;
+            }
+            
             .pilares-grid {
                 flex-direction: column;
+            }
+            
+            .lineas-columnas {
+                flex-direction: column;
+                gap: 30px;
             }
             
             .pilar-superior {
@@ -241,7 +348,6 @@
 
         <!-- Tres Pilares Fundamentales -->
         <div class="pilares-section">
-            <!-- Título con líneas a los costados -->
             <div class="pilares-title-wrapper">
                 <div class="pilares-line"></div>
                 <h2 class="pilares-title">Tres Pilares Fundamentales</h2>
@@ -249,7 +355,7 @@
             </div>
             
             <div class="pilares-grid">
-                <!-- Propósito Transformador (idea.png) -->
+                <!-- Propósito Transformador -->
                 <div class="pilar-card">
                     <div class="pilar-superior">
                         <div class="pilar-icon">
@@ -263,7 +369,7 @@
                     </div>
                 </div>
 
-                <!-- Visión (vision.png) -->
+                <!-- Visión -->
                 <div class="pilar-card">
                     <div class="pilar-superior">
                         <div class="pilar-icon">
@@ -277,7 +383,7 @@
                     </div>
                 </div>
 
-                <!-- Misión (mision.png) -->
+                <!-- Misión -->
                 <div class="pilar-card">
                     <div class="pilar-superior">
                         <div class="pilar-icon">
@@ -292,6 +398,64 @@
                 </div>
             </div>
         </div>
+
+        <!-- Nuestras Líneas de Trabajo -->
+        <div class="lineas-section">
+            <div class="lineas-title-wrapper">
+                <div class="lineas-line"></div>
+                <h2 class="lineas-title">Nuestras Líneas de Trabajo</h2>
+                <div class="lineas-line"></div>
+            </div>
+
+            <div class="lineas-columnas">
+                <!-- Columna: Consultorías -->
+                <div class="lineas-columna">
+                    <h3 class="columna-titulo">Consultorías</h3>
+                    <div class="lineas-grid">
+                        <div class="linea-card">
+                            <div class="linea-titulo">Profesionalización de Empresas Automotrices</div>
+                            <div class="linea-descripcion">Diagnóstico, estructura organizacional y gobierno corporativo.</div>
+                        </div>
+                        <div class="linea-card">
+                            <div class="linea-titulo">Transformación Digital, Procesos Ágiles e IA</div>
+                            <div class="linea-descripcion">Integración tecnológica, automatización y optimización.</div>
+                        </div>
+                        <div class="linea-card">
+                            <div class="linea-titulo">Gestión Comercial y Experiencia del Cliente</div>
+                            <div class="linea-descripcion">Procesos y metodologías para incrementar ingresos y eficiencia.</div>
+                        </div>
+                        <div class="linea-card">
+                            <div class="linea-titulo">Evaluación y Desarrollo de Liderazgo</div>
+                            <div class="linea-descripcion">Assessment, coaching ejecutivo y desarrollo de equipos.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna: Alianzas Estratégicas -->
+                <div class="lineas-columna">
+                    <h3 class="columna-titulo">Alianzas Estratégicas</h3>
+                    <div class="lineas-grid">
+                        <div class="linea-card">
+                            <div class="linea-titulo">Descubrimiento de Nuevos Revenue Streams</div>
+                            <div class="linea-descripcion">Programas como MOK para reparaciones menores.</div>
+                        </div>
+                        <div class="linea-card">
+                            <div class="linea-titulo">Integraciones con Plataformas Tecnológicas</div>
+                            <div class="linea-descripcion">Soluciones de datos y análisis de mercado.</div>
+                        </div>
+                        <div class="linea-card">
+                            <div class="linea-titulo">Soluciones de Evaluación de Liderazgo y Talento</div>
+                            <div class="linea-descripcion">Herramientas y partners para diagnóstico de equipos.</div>
+                        </div>
+                        <div class="linea-card">
+                            <div class="linea-titulo">Acuerdos Comerciales con Líderes en Sudamérica</div>
+                            <div class="linea-descripcion">Sinergias para potenciar portafolio y cobertura.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
+```
