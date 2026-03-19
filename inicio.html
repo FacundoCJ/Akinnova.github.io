@@ -1,3 +1,6 @@
+Aquí tienes el código corregido con las imágenes en formato rectangular en lugar de circular:
+
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -360,14 +363,16 @@
             border-radius: 20px 0 0 20px;
         }
 
-        /* Contenedor de la foto (arriba izquierda) */
+        /* Contenedor de la foto - RECTANGULAR */
         .equipo-foto {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            aspect-ratio: 4/3;
             overflow: hidden;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             border: 3px solid #c2e9ff;
+            border-radius: 12px; /* Bordes ligeramente redondeados para el rectángulo */
         }
 
         .equipo-foto img {
@@ -453,6 +458,10 @@
             
             .pilar-inferior {
                 min-height: auto;
+            }
+            
+            .equipo-foto {
+                max-width: 100%;
             }
         }
     </style>
@@ -598,7 +607,7 @@
                 <div class="equipo-columna">
                     <div class="equipo-card">
                         <div class="equipo-foto">
-                            <img src="fotos/marco.png" alt="Marco Kohatsu" onerror="this.src='https://placehold.co/120x120/c2e9ff/004aad?text=Marco'">
+                            <img src="fotos/marco.png" alt="Marco Kohatsu" onerror="this.src='https://placehold.co/280x210/c2e9ff/004aad?text=Marco'">
                         </div>
                         <h4 class="equipo-nombre">Marco Kohatsu</h4>
                         <div class="equipo-bio">
@@ -613,7 +622,7 @@
                 <div class="equipo-columna">
                     <div class="equipo-card">
                         <div class="equipo-foto">
-                            <img src="fotos/julio.png" alt="Julio Aguilar" onerror="this.src='https://placehold.co/120x120/c2e9ff/004aad?text=Julio'">
+                            <img src="fotos/julio.png" alt="Julio Aguilar" onerror="this.src='https://placehold.co/280x210/c2e9ff/004aad?text=Julio'">
                         </div>
                         <h4 class="equipo-nombre">Julio Aguilar</h4>
                         <div class="equipo-bio">
@@ -628,3 +637,4 @@
     </div>
 </body>
 </html>
+```
