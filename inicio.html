@@ -126,14 +126,14 @@
             flex: 1 1 300px;
             display: flex;
             flex-direction: column;
-            border: 2px solid #c2e9ff;
-            border-radius: 20px;
-            overflow: hidden; /* Esto elimina el espacio entre las partes */
+            gap: 15px; /* Espacio entre el cuadrado celeste y el blanco */
         }
 
-        /* Parte superior - fondo celeste */
+        /* Parte superior - fondo celeste (cuadrado independiente) */
         .pilar-superior {
             background-color: #c2e9ff;
+            border: 2px solid #c2e9ff;
+            border-radius: 20px;
             padding: 25px;
         }
 
@@ -163,13 +163,13 @@
             line-height: 1.6;
         }
 
-        /* Parte inferior - fondo blanco */
+        /* Parte inferior - fondo blanco con bordes celestes (cuadrado independiente) */
         .pilar-inferior {
             background-color: #ffffff;
+            border: 2px solid #c2e9ff;
+            border-radius: 20px;
             padding: 25px;
             position: relative;
-            border-top: 2px solid #c2e9ff; /* Línea divisoria celeste */
-            flex: 1;
         }
 
         /* Línea azul a la izquierda */
