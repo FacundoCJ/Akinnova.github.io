@@ -159,15 +159,15 @@
             line-height: 1.6;
         }
 
-        /* Cuadrado inferior - fondo blanco con borde celeste */
+        /* Cuadrado inferior - fondo blanco con borde celeste - MÁS DELGADO */
         .pilar-inferior {
             background-color: #ffffff;
             border: 2px solid #c2e9ff;
             border-radius: 20px;
-            padding: 30px 25px;
+            padding: 18px 25px; /* Reducido el padding vertical */
             position: relative;
-            /* Todos los cuadrados blancos tienen el mismo tamaño */
-            min-height: 180px;
+            /* Todos los cuadrados blancos tienen el mismo tamaño - MÁS BAJOS */
+            min-height: 120px; /* Reducido de 180px a 120px */
             display: flex;
             align-items: center;
         }
@@ -176,7 +176,7 @@
         .pilar-inferior::before {
             content: '';
             position: absolute;
-            left: -2px; /* Ajuste para que sobresalga ligeramente del borde */
+            left: -2px;
             top: -2px;
             bottom: -2px;
             width: 8px;
@@ -188,8 +188,8 @@
             font-size: 0.95rem;
             color: #000000;
             font-weight: 400;
-            line-height: 1.6;
-            padding-left: 20px; /* Espacio para la línea azul */
+            line-height: 1.5; /* Reducido ligeramente el interlineado */
+            padding-left: 20px;
             width: 100%;
         }
 
