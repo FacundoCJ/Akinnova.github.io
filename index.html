@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Akinnova | Dealer del Futuro</title>
-    <!-- Fuente Poppins (Google Fonts) -->
+    <!-- Fuente Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- FAVICON: akinnova-logo como logo de pestaña -->
+    <!-- FAVICON -->
     <link rel="icon" type="image/png" href="fotos/akinnova-logo.png">
     <link rel="shortcut icon" type="image/png" href="fotos/akinnova-logo.png">
     <style>
@@ -21,20 +21,18 @@
             background-color: #ffffff;
         }
 
-        /* contenedor hero: imagen a ancho completo */
+        /* HERO SECTION */
         .hero {
             position: relative;
             width: 100%;
         }
 
-        /* imagen que ocupa todo el ancho de la hoja */
         .hero-image {
             width: 100%;
             display: block;
             height: auto;
         }
 
-        /* BARRA: el doble de ancha, la mitad de larga, centrada */
         .navbar-overlay {
             position: absolute;
             top: 70px;
@@ -49,24 +47,18 @@
             justify-content: space-between;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
             z-index: 20;
-            transition: all 0.2s ease;
         }
 
         .logo-img {
             height: 52px;
             width: auto;
-            display: block;
             object-fit: contain;
         }
 
         .siempre-nuevo {
-            font-family: 'Poppins', sans-serif;
             font-weight: 700;
             font-size: 2rem;
-            letter-spacing: -0.2px;
             color: #0c3a6a;
-            margin: 0;
-            line-height: 1.2;
         }
 
         .hero-text {
@@ -81,14 +73,11 @@
         }
 
         .hero-text h1 {
-            font-family: 'Poppins', sans-serif;
             font-weight: 800;
             font-size: 5rem;
             line-height: 1.2;
             color: white;
-            text-shadow: 5px 5px 14px rgba(0, 0, 0, 0.7), 3px 3px 6px rgba(0, 0, 0, 0.5);
-            margin: 0;
-            letter-spacing: -0.02em;
+            text-shadow: 5px 5px 14px rgba(0, 0, 0, 0.7);
             font-style: italic;
         }
 
@@ -100,34 +89,29 @@
         }
 
         .description-text {
-            font-family: 'Poppins', sans-serif;
             font-size: 2.2rem;
             font-weight: 500;
             color: #000000;
             line-height: 1.4;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
         /* ========== SECCIÓN MISIÓN, VISIÓN, PROPÓSITO ========== */
-        .mvp-section {
+        .mvp-wrapper {
             max-width: 1400px;
-            margin: 0 auto 100px auto;
+            margin: 0 auto 80px auto;
             padding: 0 40px;
         }
 
-        /* Contenedor de los 3 carteles (carrusel de selección) */
-        .cards-container {
+        /* Contenedor de los 3 carteles SUPERIORES - PEGADOS (sin gap) */
+        .top-cards {
             display: flex;
             justify-content: center;
-            align-items: center;
-            gap: 30px;
-            margin-bottom: 60px;
-            flex-wrap: wrap;
+            align-items: stretch;
+            margin-bottom: 50px;
         }
 
-        /* Estilo base para los tres carteles */
-        .mvp-card {
+        /* Los tres carteles superiores: uno al lado del otro sin espacio */
+        .top-card {
             cursor: pointer;
             transition: all 0.3s ease;
             text-align: center;
@@ -136,126 +120,161 @@
             justify-content: center;
             font-weight: 700;
             font-family: 'Poppins', sans-serif;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
         /* Cartel del medio (más grande) */
-        .mvp-card.center-card {
+        .top-card.center-top {
             width: 320px;
-            height: 180px;
-            border-radius: 24px;
-            font-size: 2.2rem;
-            background-color: #0c3a6a;
+            height: 170px;
+            font-size: 2rem;
+            background-color: #0c3a6a;  /* azul cuando está activo */
             color: white;
+            border-radius: 28px;
+            margin: 0;
+            z-index: 2;
         }
 
-        /* Carteles laterales (más pequeños) */
-        .mvp-card.side-card {
+        /* Carteles laterales (más pequeños) - cuando NO están activos tienen fondo #d9d9d9 */
+        .top-card.side-top {
             width: 240px;
             height: 140px;
-            border-radius: 20px;
-            font-size: 1.6rem;
-            background-color: #0f4472;
+            font-size: 1.5rem;
+            background-color: #d9d9d9;  /* gris por defecto */
+            color: #1e2a3a;
+            border-radius: 24px;
+            margin: 0;
+        }
+
+        /* Cuando un cartel lateral está ACTIVO (el que muestra descripción) cambia a azul */
+        .top-card.side-top.active-top {
+            background-color: #0c3a6a;
             color: white;
         }
 
-        /* Estado activo: cuando el cartel está seleccionado, se resalta y se pone del color del centro */
-        .mvp-card.active {
-            background-color: #0c3a6a;
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(12, 58, 106, 0.3);
+        /* Cuando el cartel central está activo (por defecto) ya tiene azul, si se activa otro, el central debe ser gris */
+        .top-card.center-top.inactive-center {
+            background-color: #d9d9d9;
+            color: #1e2a3a;
         }
 
-        /* Descripción que aparece abajo */
-        .mvp-description {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 30px;
-            background-color: #f8f9fa;
-            border-radius: 28px;
+        /* ========== RECUADROS INFERIORES (los que muestran título y descripción) ========== */
+        .bottom-panels {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Panel del medio: más grande, color #0c3a6a, muestra título + descripción completa */
+        .main-panel {
+            flex: 0 0 480px;
+            background-color: #0c3a6a;
+            border-radius: 32px;
+            padding: 40px 35px;
+            color: white;
             text-align: center;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
         }
 
-        .mvp-description h3 {
-            font-size: 2rem;
+        .main-panel h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            letter-spacing: -0.5px;
+        }
+
+        .main-panel p {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            font-weight: 500;
+            opacity: 0.95;
+        }
+
+        /* Paneles laterales: más pequeños, color #0f4472, solo muestran el título */
+        .side-panel {
+            flex: 0 0 280px;
+            background-color: #0f4472;
+            border-radius: 28px;
+            padding: 30px 20px;
+            color: white;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .side-panel:hover {
+            transform: translateY(-5px);
+            background-color: #0c3a6a;
+        }
+
+        .side-panel h3 {
+            font-size: 1.8rem;
             font-weight: 700;
-            color: #0c3a6a;
-            margin-bottom: 20px;
+            margin: 0;
             letter-spacing: -0.3px;
         }
 
-        .mvp-description p {
-            font-size: 1.3rem;
-            line-height: 1.6;
-            color: #2c3e4e;
-            font-weight: 500;
-            max-width: 850px;
-            margin: 0 auto;
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .mvp-card.center-card {
-                width: 280px;
-                height: 160px;
-                font-size: 1.9rem;
+        /* Responsive para los nuevos paneles */
+        @media (max-width: 1000px) {
+            .main-panel {
+                flex: 0 0 420px;
+                padding: 35px 30px;
             }
-            .mvp-card.side-card {
-                width: 210px;
-                height: 125px;
-                font-size: 1.4rem;
+            .main-panel h2 {
+                font-size: 2.2rem;
             }
-            .mvp-description p {
-                font-size: 1.2rem;
+            .side-panel {
+                flex: 0 0 240px;
+                padding: 25px 15px;
+            }
+            .side-panel h3 {
+                font-size: 1.5rem;
             }
         }
 
         @media (max-width: 850px) {
-            .cards-container {
+            .bottom-panels {
+                flex-direction: column;
+                align-items: center;
                 gap: 20px;
             }
-            .mvp-card.center-card {
-                width: 250px;
-                height: 140px;
-                font-size: 1.7rem;
+            .main-panel {
+                flex: 0 0 auto;
+                width: 90%;
+                max-width: 500px;
             }
-            .mvp-card.side-card {
-                width: 180px;
-                height: 110px;
-                font-size: 1.2rem;
-            }
-            .mvp-description p {
-                font-size: 1.1rem;
-            }
-            .mvp-description h3 {
-                font-size: 1.7rem;
+            .side-panel {
+                flex: 0 0 auto;
+                width: 80%;
+                max-width: 350px;
             }
         }
 
-        @media (max-width: 700px) {
-            .cards-container {
+        /* Responsive para los carteles superiores pegados */
+        @media (max-width: 750px) {
+            .top-cards {
                 flex-direction: column;
-                gap: 20px;
+                align-items: center;
+                gap: 15px;
             }
-            .mvp-card.center-card, .mvp-card.side-card {
+            .top-card.center-top, .top-card.side-top {
                 width: 280px;
                 height: 120px;
-                font-size: 1.6rem;
+                border-radius: 28px;
             }
-            .mvp-card.side-card {
-                width: 260px;
-                height: 110px;
+            .top-card.center-top {
+                font-size: 1.8rem;
             }
-            .mvp-card.center-card {
-                order: 1;
-            }
-            .mvp-card.side-card:first-child {
-                order: 2;
-            }
-            .mvp-card.side-card:last-child {
-                order: 3;
+            .top-card.side-top {
+                font-size: 1.4rem;
             }
         }
 
@@ -284,9 +303,6 @@
             .siempre-nuevo {
                 font-size: 1.6rem;
             }
-            .hero-text {
-                top: 25%;
-            }
             .hero-text h1 {
                 font-size: 3.5rem;
             }
@@ -300,7 +316,6 @@
                 width: 75%;
                 padding: 16px 28px;
                 top: 50px;
-                border-radius: 50px;
             }
             .logo-img {
                 height: 36px;
@@ -308,18 +323,11 @@
             .siempre-nuevo {
                 font-size: 1.3rem;
             }
-            .hero-text {
-                top: 22%;
-            }
             .hero-text h1 {
                 font-size: 2.6rem;
-                text-shadow: 3px 3px 8px rgba(0,0,0,0.7);
             }
             .description-text {
                 font-size: 1.4rem;
-            }
-            .description-section {
-                margin: 50px auto 60px auto;
             }
         }
 
@@ -328,16 +336,12 @@
                 width: 85%;
                 padding: 12px 20px;
                 top: 35px;
-                border-radius: 40px;
             }
             .logo-img {
                 height: 28px;
             }
             .siempre-nuevo {
                 font-size: 1rem;
-            }
-            .hero-text {
-                top: 18%;
             }
             .hero-text h1 {
                 font-size: 1.8rem;
@@ -353,20 +357,31 @@
                 padding: 28px 52px;
                 top: 90px;
             }
-            .logo-img {
-                height: 64px;
-            }
-            .siempre-nuevo {
-                font-size: 2.3rem;
-            }
             .hero-text h1 {
                 font-size: 6rem;
             }
-            .hero-text {
-                top: 30%;
-            }
             .description-text {
                 font-size: 2.4rem;
+            }
+            .top-card.center-top {
+                width: 380px;
+                height: 190px;
+                font-size: 2.3rem;
+            }
+            .top-card.side-top {
+                width: 280px;
+                height: 160px;
+                font-size: 1.7rem;
+            }
+            .main-panel {
+                flex: 0 0 550px;
+                padding: 50px 45px;
+            }
+            .main-panel h2 {
+                font-size: 2.8rem;
+            }
+            .main-panel p {
+                font-size: 1.4rem;
             }
         }
     </style>
@@ -390,95 +405,119 @@
     </p>
 </div>
 
-<!-- SECCIÓN MISIÓN, VISIÓN Y PROPÓSITO (CARRUSEL INTERACTIVO) -->
-<div class="mvp-section">
-    <div class="cards-container">
-        <!-- Visión (izquierda) - cartel pequeño -->
-        <div class="mvp-card side-card" data-mvp="vision">
+<!-- SECCIÓN MISIÓN, VISIÓN Y PROPÓSITO -->
+<div class="mvp-wrapper">
+    <!-- CARTELES SUPERIORES: PEGADOS (sin espacio entre ellos) -->
+    <div class="top-cards">
+        <!-- Visión (izquierda) - más pequeño -->
+        <div class="top-card side-top" data-value="vision" id="topVision">
             Visión
         </div>
-        <!-- Misión (centro) - cartel grande, por defecto activo -->
-        <div class="mvp-card center-card active" data-mvp="mision">
+        <!-- Misión (centro) - más grande, por defecto activo -->
+        <div class="top-card center-top" data-value="mision" id="topMision">
             Misión
         </div>
-        <!-- Propósito (derecha) - cartel pequeño -->
-        <div class="mvp-card side-card" data-mvp="proposito">
+        <!-- Propósito (derecha) - más pequeño -->
+        <div class="top-card side-top" data-value="proposito" id="topProposito">
             Propósito
         </div>
     </div>
 
-    <!-- Área de descripción dinámica -->
-    <div class="mvp-description" id="mvpDescription">
-        <h3 id="descTitle">Misión</h3>
-        <p id="descText">Acompañar a concesionarios, fábricas y empresas relacionadas en la implementación de soluciones tecnológicas simples y escalables.</p>
+    <!-- RECUADROS INFERIORES: el del medio es grande con descripción, los laterales solo título -->
+    <div class="bottom-panels">
+        <!-- Panel izquierdo (Visión): solo título, color #0f4472 -->
+        <div class="side-panel" id="sideVision">
+            <h3>Visión</h3>
+        </div>
+
+        <!-- Panel central (Misión): muestra título y descripción completa, color #0c3a6a, más grande -->
+        <div class="main-panel" id="mainPanel">
+            <h2 id="mainTitle">Misión</h2>
+            <p id="mainDesc">Acompañar a concesionarios, fábricas y empresas relacionadas en la implementación de soluciones tecnológicas simples y escalables.</p>
+        </div>
+
+        <!-- Panel derecho (Propósito): solo título, color #0f4472 -->
+        <div class="side-panel" id="sideProposito">
+            <h3>Propósito</h3>
+        </div>
     </div>
 </div>
 
 <script>
-    // Definir los contenidos para cada opción
-    const mvpData = {
+    // Contenidos
+    const content = {
         vision: {
-            titulo: "Visión",
-            texto: "Ser el socio estratégico clave en la evolución integral del negocio automotriz, integrando tecnología y procesos disruptivos y ágiles."
+            title: "Visión",
+            description: "Ser el socio estratégico clave en la evolución integral del negocio automotriz, integrando tecnología y procesos disruptivos y ágiles."
         },
         mision: {
-            titulo: "Misión",
-            texto: "Acompañar a concesionarios, fábricas y empresas relacionadas en la implementación de soluciones tecnológicas simples y escalables."
+            title: "Misión",
+            description: "Acompañar a concesionarios, fábricas y empresas relacionadas en la implementación de soluciones tecnológicas simples y escalables."
         },
         proposito: {
-            titulo: "Propósito",
-            texto: "Transformar la industria automotriz hacia un modelo más ágil, digital y centrado en el nuevo cliente en la región del Pacífico."
+            title: "Propósito",
+            description: "Transformar la industria automotriz hacia un modelo más ágil, digital y centrado en el nuevo cliente en la región del Pacífico."
         }
     };
 
-    // Obtener elementos
-    const cards = document.querySelectorAll('.mvp-card');
-    const descTitleEl = document.getElementById('descTitle');
-    const descTextEl = document.getElementById('descText');
+    // Elementos superiores
+    const topVision = document.getElementById('topVision');
+    const topMision = document.getElementById('topMision');
+    const topProposito = document.getElementById('topProposito');
+    
+    // Elementos inferiores
+    const mainTitle = document.getElementById('mainTitle');
+    const mainDesc = document.getElementById('mainDesc');
+    const sideVisionPanel = document.getElementById('sideVision');
+    const sidePropositoPanel = document.getElementById('sideProposito');
 
-    // Función para actualizar la descripción y el estado activo de los carteles
-    function setActiveMVP(activeId) {
-        // Actualizar clases activas en los carteles
-        cards.forEach(card => {
-            const cardValue = card.getAttribute('data-mvp');
-            if (cardValue === activeId) {
-                card.classList.add('active');
-                // Asegurar que el cartel del medio siempre se vea como "grande" pero visualmente el activo resalta
-                // El centro ya tiene clase center-card, pero si el activo es visión o propósito, los laterales se ponen activos
-                // y el centro pierde activo. Mantenemos estilo: cuando un lateral está activo se pone del color #0c3a6a
-            } else {
-                card.classList.remove('active');
-            }
-        });
-
-        // Actualizar el contenido de la descripción
-        const data = mvpData[activeId];
-        if (data) {
-            descTitleEl.textContent = data.titulo;
-            descTextEl.textContent = data.texto;
+    // Función para actualizar todo: carteles superiores + paneles inferiores
+    function setActive(activeKey) {
+        // 1. ACTUALIZAR CARTELES SUPERIORES (pegados, con colores)
+        // Primero, remover clases especiales de todos
+        topVision.classList.remove('active-top');
+        topMision.classList.remove('inactive-center');
+        topProposito.classList.remove('active-top');
+        
+        // Resetear colores base: los laterales siempre empiezan con #d9d9d9 por defecto, el central con azul
+        // Pero si el activo es visión o propósito, el central debe ponerse gris y el lateral activo azul.
+        if (activeKey === 'vision') {
+            topVision.classList.add('active-top');      // visión se pone azul
+            topMision.classList.add('inactive-center'); // misión se vuelve gris
+            topProposito.classList.remove('active-top');
+            // visión ya tiene side-top, pero con active-top cambia a azul
+        } 
+        else if (activeKey === 'proposito') {
+            topProposito.classList.add('active-top');   // propósito azul
+            topMision.classList.add('inactive-center'); // misión gris
+            topVision.classList.remove('active-top');
         }
+        else if (activeKey === 'mision') {
+            // misión activa: central debe ser azul (sin inactive-center), laterales grises
+            topMision.classList.remove('inactive-center');
+            topVision.classList.remove('active-top');
+            topProposito.classList.remove('active-top');
+        }
+
+        // 2. ACTUALIZAR PANEL INFERIOR CENTRAL (contenido dinámico)
+        mainTitle.textContent = content[activeKey].title;
+        mainDesc.textContent = content[activeKey].description;
+
+        // 3. Asegurar que el panel central siempre muestre la info correcta
+        // Los paneles laterales solo muestran título estático, pero también son clickeables
     }
 
-    // Agregar evento click a cada card
-    cards.forEach(card => {
-        card.addEventListener('click', () => {
-            const mvpType = card.getAttribute('data-mvp');
-            if (mvpType) {
-                setActiveMVP(mvpType);
-            }
-        });
-    });
+    // Eventos para los carteles SUPERIORES (click)
+    topVision.addEventListener('click', () => setActive('vision'));
+    topMision.addEventListener('click', () => setActive('mision'));
+    topProposito.addEventListener('click', () => setActive('proposito'));
 
-    // Inicializar: Misión activa por defecto (coincide con clase active inicial)
-    // Asegurar que la descripción coincida con la activa inicial
-    const initialActive = document.querySelector('.mvp-card.active');
-    if (initialActive) {
-        const initialType = initialActive.getAttribute('data-mvp');
-        if (initialType && mvpData[initialType]) {
-            descTitleEl.textContent = mvpData[initialType].titulo;
-            descTextEl.textContent = mvpData[initialType].texto;
-        }
-    }
+    // Eventos para los paneles LATERALES INFERIORES (también cambian el contenido)
+    sideVisionPanel.addEventListener('click', () => setActive('vision'));
+    sidePropositoPanel.addEventListener('click', () => setActive('proposito'));
+
+    // Inicializar estado: Misión activa por defecto
+    setActive('mision');
 </script>
 
 </body>
