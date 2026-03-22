@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Akinnova | Dealer del Futuro</title>
     <!-- Fuente Poppins (Google Fonts) -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,66 +15,63 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #ffffff;   /* fondo blanco general, la sección principal será igual */
+            background-color: #ffffff;
         }
 
-        /* contenedor principal: asegura que la imagen ocupe todo el ancho y posición relativa para la barra superpuesta */
+        /* contenedor hero: imagen a ancho completo */
         .hero {
             position: relative;
             width: 100%;
-            /* la imagen de fondo ocupará todo el ancho con altura definida, pero usaremos img para mantener la relación y cubrir */
         }
 
-        /* imagen que ocupa todo el ancho de la hoja (exactamente como en el PDF: imagen real a ancho completo) */
+        /* imagen que ocupa todo el ancho de la hoja */
         .hero-image {
             width: 100%;
             display: block;
             height: auto;
-            /* la imagen mantiene su proporción, ocupando 100% del ancho. Si se desea un alto fijo podría usarse, pero PDF sugiere ancho completo */
         }
 
-        /* barra blanca flotante sobre la imagen: esquinas redondeadas, no ocupa todo el ancho, posicionada encima */
+        /* barra blanca con esquinas redondeadas - MÁS LARGA (mayor ancho), MENOS ANCHA (menos padding vertical), y más abajo (top mayor) */
         .navbar-overlay {
             position: absolute;
-            top: 30px;          /* separación desde arriba, como en boceto */
-            left: 5%;
-            right: 5%;
-            width: 90%;         /* para que no llegue a bordes, esquinas redondeadas */
+            top: 70px;              /* más abajo que antes (antes 30px) */
+            left: 3%;
+            right: 3%;
+            width: 94%;             /* más ancha, ocupa casi todo el ancho pero con esquinas redondeadas */
             background-color: #ffffff;
-            border-radius: 60px;   /* esquinas muy redondeadas, estilo barra moderna */
-            padding: 16px 32px;
+            border-radius: 60px;
+            padding: 12px 40px;     /* menos ancho: reducimos padding vertical de 16px a 12px, horizontal aumentado para dar sensación de barra estilizada */
             display: flex;
             align-items: center;
             justify-content: space-between;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            backdrop-filter: blur(0px); /* sólido blanco, sin transparencia */
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
             z-index: 20;
             transition: all 0.2s ease;
         }
 
         /* logo dentro de la barra */
         .logo-img {
-            height: 48px;
+            height: 52px;           /* ligeramente más grande para acompañar letras grandes */
             width: auto;
             display: block;
             object-fit: contain;
         }
 
-        /* texto "Siempre Nuevo" con color azul exacto #0c3a6a */
+        /* texto "Siempre Nuevo" con color azul exacto #0c3a6a y LETRAS MÁS GRANDES */
         .siempre-nuevo {
             font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 1.6rem;
-            letter-spacing: -0.3px;
+            font-weight: 700;
+            font-size: 2rem;        /* letras más grandes (antes 1.6rem) */
+            letter-spacing: -0.2px;
             color: #0c3a6a;
             margin: 0;
             line-height: 1.2;
         }
 
-        /* contenedor del texto principal (sobre la imagen, arriba del carro) */
+        /* contenedor del texto principal sobre la imagen */
         .hero-text {
             position: absolute;
-            top: 40%;            /* centrado verticalmente según boceto, pero flexible con media queries */
+            top: 48%;               /* ajustado para mejor visual con barra más abajo */
             left: 0;
             right: 0;
             text-align: center;
@@ -83,53 +80,73 @@
             padding: 0 20px;
         }
 
+        /* Título principal: Impulsando el Dealer del Futuro - LETRAS MÁS GRANDES */
         .hero-text h1 {
             font-family: 'Poppins', sans-serif;
             font-weight: 800;
-            font-size: 3.8rem;
+            font-size: 5rem;        /* letras mucho más grandes (antes 3.8rem) */
             line-height: 1.2;
             color: white;
-            text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.6), 2px 2px 4px rgba(0, 0, 0, 0.4);
+            text-shadow: 5px 5px 14px rgba(0, 0, 0, 0.7), 3px 3px 6px rgba(0, 0, 0, 0.5);
             margin: 0;
             letter-spacing: -0.02em;
         }
 
-        /* línea debajo de la imagen: texto descriptivo centrado, color negro */
+        /* línea debajo de la imagen: texto descriptivo centrado, color negro, también letra más grande */
         .description-section {
-            max-width: 1100px;
-            margin: 60px auto 80px auto;
+            max-width: 1200px;
+            margin: 70px auto 90px auto;
             padding: 0 24px;
             text-align: center;
         }
 
         .description-text {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.8rem;      /* texto descriptivo más grande para coherencia */
             font-weight: 500;
-            color: #000000;        /* negro puro */
+            color: #000000;
             line-height: 1.4;
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
-        /* para asegurar que en móviles el texto del h1 no se desborde */
+        /* responsive: ajustamos tamaños para pantallas medianas y pequeñas manteniendo proporción */
+        @media (max-width: 1024px) {
+            .navbar-overlay {
+                top: 50px;
+                padding: 10px 32px;
+            }
+            .logo-img {
+                height: 44px;
+            }
+            .siempre-nuevo {
+                font-size: 1.6rem;
+            }
+            .hero-text h1 {
+                font-size: 3.8rem;
+            }
+            .description-text {
+                font-size: 1.5rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .navbar-overlay {
-                padding: 12px 24px;
-                top: 20px;
-                width: 90%;
-                left: 5%;
-                right: 5%;
+                top: 40px;
+                padding: 8px 24px;
+                width: 92%;
+                left: 4%;
+                right: 4%;
             }
             .logo-img {
                 height: 36px;
             }
             .siempre-nuevo {
-                font-size: 1.2rem;
-                font-weight: 600;
+                font-size: 1.3rem;
+                font-weight: 700;
             }
             .hero-text h1 {
-                font-size: 2rem;
+                font-size: 2.4rem;
                 text-shadow: 3px 3px 8px rgba(0,0,0,0.7);
             }
             .hero-text {
@@ -139,35 +156,47 @@
                 font-size: 1.2rem;
             }
             .description-section {
-                margin: 40px auto 50px auto;
+                margin: 50px auto 60px auto;
             }
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 550px) {
             .navbar-overlay {
-                padding: 10px 20px;
+                top: 30px;
+                padding: 6px 20px;
+                border-radius: 40px;
             }
             .logo-img {
-                height: 30px;
+                height: 28px;
             }
             .siempre-nuevo {
                 font-size: 1rem;
             }
             .hero-text h1 {
-                font-size: 1.6rem;
+                font-size: 1.8rem;
             }
             .description-text {
                 font-size: 1rem;
             }
         }
 
-        /* para pantallas muy grandes, ajustar tamaño texto */
-        @media (min-width: 1400px) {
+        /* Para pantallas muy grandes (desktop wide), escalamos aún más */
+        @media (min-width: 1600px) {
             .hero-text h1 {
-                font-size: 5rem;
+                font-size: 6rem;
+            }
+            .siempre-nuevo {
+                font-size: 2.3rem;
+            }
+            .logo-img {
+                height: 64px;
+            }
+            .navbar-overlay {
+                padding: 14px 56px;
+                top: 90px;
             }
             .description-text {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
         }
 
@@ -176,7 +205,6 @@
             position: relative;
         }
 
-        /* pequeño detalle de foco para evitar desbordes */
         img {
             max-width: 100%;
         }
@@ -185,30 +213,27 @@
 <body>
 
 <section class="hero">
-    <!-- imagen del carro a ancho completo: carro-inicio.png -->
+    <!-- imagen del carro a ancho completo: carro-inicio.png desde carpeta fotos -->
     <img class="hero-image" src="fotos/carro-inicio.png" alt="Vehículo principal | Akinnova">
 
-    <!-- barra blanca con esquinas redondeadas: logo a la izquierda, Siempre Nuevo en azul a la derecha -->
+    <!-- barra blanca: MÁS LARGA (ocupa 94% del ancho), MENOS ANCHA (padding vertical reducido), más abajo (top:70px) -->
     <div class="navbar-overlay">
         <img class="logo-img" src="fotos/akinnova-logo.png" alt="Akinnova Logo">
         <span class="siempre-nuevo">Siempre Nuevo</span>
     </div>
 
-    <!-- Texto "Impulsando el Dealer del Futuro" centrado, blanco con sombra -->
+    <!-- Texto principal con letras más grandes -->
     <div class="hero-text">
         <h1>Impulsando el<br>Dealer del Futuro</h1>
     </div>
 </section>
 
-<!-- sección debajo de la imagen: frase descriptiva centrada en negro -->
+<!-- Frase debajo de la imagen, centrada y color negro, también con tipografía más grande -->
 <div class="description-section">
     <p class="description-text">
         Conectamos visión, innovación y talento para transformar el concesionario en un ecosistema ágil, rentable y centrado en el cliente.
     </p>
 </div>
-
-<!-- Se añade un pequeño espacio para que respire el contenido, como solicita primera etapa -->
-<!-- No se incluye más contenido por ahora, solo lo pedido: barra, imagen full width, textos -->
 
 </body>
 </html>
