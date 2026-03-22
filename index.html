@@ -146,49 +146,50 @@
             border-radius: 0 60px 60px 0;
         }
 
-        /* ========== RECUADROS INFERIORES - FORMAN UNA LÍNEA CON BORDES REDONDOS ========== */
-        /* Contenedor que envuelve los 3 recuadros como una sola pieza */
+        /* ========== RECUADROS INFERIORES - LÍNEA CON BORDES MUY REDONDOS ========== */
+        /* Contenedor que envuelve los 3 recuadros como una sola pieza con borde redondo de 60px */
         .cards-wrapper {
             display: flex;
-            border-radius: 50px;
+            border-radius: 60px;        /* BORDES MUCHO MÁS REDONDOS */
             overflow: hidden;
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
             width: 100%;
         }
 
-        /* Tarjeta lateral - más pequeños, menos anchos, más bajos que el central */
+        /* Tarjeta lateral - MUCHO MÁS ANGOSTOS que el central */
         .side-card {
             background-color: #0f4472;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 60px 25px;
+            padding: 70px 20px;
             transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
             cursor: pointer;
-            flex: 0.35;
-            min-width: 180px;
+            flex: 0.25;                 /* MUCHO MÁS ANGOSTO (antes 0.35) */
+            min-width: 140px;
         }
 
         .side-card h3 {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.9rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: white;
             margin: 0;
             letter-spacing: -0.2px;
+            writing-mode: horizontal-tb;
         }
 
-        /* Tarjeta central - MÁS GRANDE, resalta más */
+        /* Tarjeta central - MÁS GRANDE, más ancho, resalta más */
         .center-card {
             background-color: #0c3a6a;
             display: flex;
             flex-direction: column;
             justify-content: center;
             text-align: center;
-            padding: 85px 55px;
+            padding: 85px 60px;
             transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            flex: 2.5;
+            flex: 2.8;                  /* MUCHO MÁS ANCHO que laterales */
         }
 
         .center-card h2 {
@@ -233,10 +234,30 @@
         }
 
         /* RESPONSIVE: en móviles se apilan y cada uno tiene bordes redondos individuales */
-        @media (max-width: 1000px) {
+        @media (max-width: 1100px) {
+            .side-card {
+                flex: 0.3;
+                padding: 55px 18px;
+            }
+            .side-card h3 {
+                font-size: 1.5rem;
+            }
+            .center-card {
+                flex: 2.5;
+                padding: 65px 45px;
+            }
+            .center-card h2 {
+                font-size: 2.6rem;
+            }
+            .center-card p {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 900px) {
             .cards-wrapper {
                 flex-direction: column;
-                border-radius: 40px;
+                border-radius: 50px;
                 overflow: visible;
                 gap: 20px;
                 background: transparent;
@@ -245,15 +266,15 @@
             .side-card {
                 width: 100%;
                 flex: none;
-                padding: 45px 30px;
-                border-radius: 40px !important;
+                padding: 40px 30px;
+                border-radius: 50px !important;
                 box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
             }
             .center-card {
                 width: 100%;
                 flex: none;
-                padding: 55px 35px;
-                border-radius: 40px !important;
+                padding: 50px 35px;
+                border-radius: 50px !important;
                 box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
                 order: -1;
             }
@@ -280,7 +301,7 @@
                 min-width: 120px;
             }
             .center-card {
-                padding: 45px 25px;
+                padding: 40px 25px;
             }
             .center-card h2 {
                 font-size: 2rem;
@@ -290,7 +311,7 @@
                 font-size: 1.2rem;
             }
             .side-card {
-                padding: 35px 25px;
+                padding: 32px 25px;
             }
             .side-card h3 {
                 font-size: 1.5rem;
@@ -317,17 +338,17 @@
             }
         }
 
-        /* Pantallas grandes: ajustes proporcionales */
+        /* Pantallas grandes: laterales más angostos, central más ancho */
         @media (min-width: 1400px) {
             .side-card {
-                flex: 0.3;
-                padding: 75px 30px;
+                flex: 0.22;             /* aún más angosto */
+                padding: 80px 22px;
             }
             .side-card h3 {
-                font-size: 2rem;
+                font-size: 1.9rem;
             }
             .center-card {
-                flex: 2.6;
+                flex: 3;
                 padding: 95px 70px;
             }
             .center-card h2 {
@@ -344,14 +365,14 @@
 
         @media (min-width: 1800px) {
             .side-card {
-                flex: 0.28;
-                padding: 85px 35px;
+                flex: 0.2;
+                padding: 90px 25px;
             }
             .side-card h3 {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
             .center-card {
-                flex: 2.8;
+                flex: 3.2;
                 padding: 110px 80px;
             }
             .center-card h2 {
@@ -400,7 +421,7 @@
         </div>
     </div>
 
-    <!-- Contenedor que envuelve los 3 recuadros como una sola línea con bordes redondeados -->
+    <!-- Contenedor que envuelve los 3 recuadros como una sola línea con bordes muy redondos -->
     <div id="cardsWrapper" class="cards-wrapper"></div>
 </section>
 
@@ -519,10 +540,11 @@
 </script>
 
 <style>
-    /* Ajustes adicionales para que los 3 recuadros formen una línea continua con bordes redondeados */
+    /* Ajustes adicionales para bordes MUY REDONDOS y laterales más angostos */
     .cards-wrapper {
         transition: opacity 0.2s ease;
         width: 100%;
+        border-radius: 60px !important;     /* BORDES MUY REDONDOS */
     }
     
     .side-card {
@@ -538,21 +560,10 @@
         background-color: #c0c0c0;
     }
     
-    /* Aseguramos que los laterales sean visualmente más bajos que el central */
-    @media (min-width: 1001px) {
-        .side-card {
-            align-self: stretch;
-        }
-        /* El central tiene más padding, por lo tanto es más alto naturalmente */
-        .center-card {
-            min-height: auto;
-        }
-    }
-    
-    /* Para desktop, los bordes redondeados ya están en el wrapper */
-    @media (min-width: 1001px) {
+    /* Para desktop, aseguramos que los laterales sean VISIBLEMENTE MÁS ANGOSTOS */
+    @media (min-width: 901px) {
         .cards-wrapper {
-            border-radius: 50px;
+            border-radius: 60px;
             overflow: hidden;
         }
         .side-card:first-child {
@@ -564,6 +575,36 @@
         .center-card {
             border-radius: 0;
         }
+        /* Hacemos que los laterales tengan un ancho máximo reducido */
+        .side-card {
+            max-width: 220px;
+        }
+    }
+    
+    @media (min-width: 1400px) {
+        .side-card {
+            max-width: 240px;
+        }
+    }
+    
+    @media (min-width: 1800px) {
+        .side-card {
+            max-width: 260px;
+        }
+    }
+    
+    /* Ajuste para que en desktop los laterales no se estiren más de lo debido */
+    .cards-wrapper {
+        display: flex;
+    }
+    
+    .side-card {
+        flex-shrink: 1;
+    }
+    
+    .center-card {
+        flex-shrink: 0;
+        flex-grow: 1;
     }
 </style>
 </body>
