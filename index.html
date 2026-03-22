@@ -27,7 +27,6 @@
             width: 100%;
         }
 
-        /* imagen que ocupa todo el ancho de la hoja */
         .hero-image {
             width: 100%;
             display: block;
@@ -49,7 +48,6 @@
             justify-content: space-between;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
             z-index: 20;
-            transition: all 0.2s ease;
         }
 
         .logo-img {
@@ -63,10 +61,7 @@
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
             font-size: 2rem;
-            letter-spacing: -0.2px;
             color: #0c3a6a;
-            margin: 0;
-            line-height: 1.2;
         }
 
         .hero-text {
@@ -87,8 +82,6 @@
             line-height: 1.2;
             color: white;
             text-shadow: 5px 5px 14px rgba(0, 0, 0, 0.7), 3px 3px 6px rgba(0, 0, 0, 0.5);
-            margin: 0;
-            letter-spacing: -0.02em;
             font-style: italic;
         }
 
@@ -105,8 +98,6 @@
             font-weight: 500;
             color: #000000;
             line-height: 1.4;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
         /* ========== SECCIÓN MISIÓN VISIÓN PROPÓSITO ========== */
@@ -116,7 +107,7 @@
             padding: 0 40px;
         }
 
-        /* Contenedor de los 3 botones superiores PEGADOS (sin gap) */
+        /* TABS SUPERIORES PEGADOS */
         .tabs-container {
             display: flex;
             justify-content: center;
@@ -149,91 +140,93 @@
             color: white;
         }
 
-        /* primer botón - borde redondeado izquierdo */
         .tabs-wrapper .tab-btn:first-child {
             border-radius: 60px 0 0 60px;
         }
 
-        /* último botón - borde redondeado derecho */
         .tabs-wrapper .tab-btn:last-child {
             border-radius: 0 60px 60px 0;
         }
 
-        /* Contenedor de los 3 recuadros grandes abajo */
+        /* ========== RECUADROS INFERIORES PEGADOS ========== */
+        /* Contenedor principal: los tres recuadros PEGADOS sin gap */
         .cards-row {
             display: flex;
             justify-content: center;
             align-items: stretch;
-            gap: 24px;
+            width: 100%;
             margin-top: 20px;
         }
 
-        /* Tarjeta lateral (pequeña) */
+        /* Tarjeta lateral (MUCHO MÁS PEQUEÑA que la central) */
         .side-card {
-            flex: 1;
-            max-width: 280px;
             background-color: #0f4472;
-            border-radius: 28px;
+            border-radius: 40px;        /* bordes más redondos */
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 40px 20px;
+            padding: 20px 15px;
             transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
             cursor: pointer;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            flex: 0.4;                  /* mucho más pequeño que el central */
+            min-width: 160px;
+            max-width: 220px;
         }
 
-        .side-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
-        }
-
+        /* Para que el side-card tenga altura reducida respecto al central */
         .side-card h3 {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: white;
             margin: 0;
-            letter-spacing: -0.3px;
+            letter-spacing: -0.2px;
         }
 
-        /* Tarjeta central (grande) */
+        /* Tarjeta central (MUCHO MÁS GRANDE) */
         .center-card {
-            flex: 2;
             background-color: #0c3a6a;
-            border-radius: 32px;
-            padding: 48px 40px;
+            border-radius: 40px;        /* bordes más redondos */
+            padding: 70px 50px;
             text-align: center;
             transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
             box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
-            min-height: 380px;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            flex: 2.2;                  /* mucho más grande que los laterales */
+            margin: 0;                  /* sin margen, pegado */
         }
 
         .center-card h2 {
             font-family: 'Poppins', sans-serif;
-            font-size: 2.4rem;
+            font-size: 2.8rem;
             font-weight: 800;
             color: white;
-            margin-bottom: 28px;
+            margin-bottom: 35px;
             letter-spacing: -0.5px;
         }
 
         .center-card p {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             font-weight: 500;
             color: white;
             line-height: 1.5;
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto;
-            opacity: 0.95;
         }
 
-        /* Animación de fade y slide */
+        /* Efecto hover en laterales */
+        .side-card:hover {
+            transform: translateY(-5px);
+            background-color: #1a5a8a;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Animación */
         @keyframes fadeSlideUp {
             from {
                 opacity: 0;
@@ -249,39 +242,8 @@
             animation: fadeSlideUp 0.4s ease-out;
         }
 
-        /* Responsive */
-        @media (max-width: 1100px) {
-            .tabs-wrapper .tab-btn {
-                padding: 14px 32px;
-                font-size: 1.3rem;
-                min-width: 140px;
-            }
-            .cards-row {
-                gap: 20px;
-            }
-            .side-card {
-                max-width: 240px;
-                padding: 30px 16px;
-            }
-            .side-card h3 {
-                font-size: 1.5rem;
-            }
-            .center-card {
-                padding: 40px 30px;
-                min-height: 340px;
-            }
-            .center-card h2 {
-                font-size: 2rem;
-            }
-            .center-card p {
-                font-size: 1.2rem;
-            }
-        }
-
-        @media (max-width: 850px) {
-            .mvp-section {
-                padding: 0 20px;
-            }
+        /* RESPONSIVE: en móviles se apilan, pero manteniendo proporción */
+        @media (max-width: 1000px) {
             .cards-row {
                 flex-direction: column;
                 align-items: center;
@@ -289,50 +251,145 @@
             }
             .side-card {
                 max-width: 90%;
-                width: 100%;
-                padding: 24px 20px;
+                width: 90%;
+                flex: none;
+                padding: 25px 20px;
             }
             .center-card {
-                width: 100%;
+                width: 90%;
+                flex: none;
+                padding: 50px 30px;
                 order: -1;
-                margin-bottom: 10px;
-            }
-            .tabs-wrapper .tab-btn {
-                padding: 12px 20px;
-                font-size: 1.1rem;
-                min-width: 110px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .tabs-wrapper .tab-btn {
-                padding: 10px 16px;
-                font-size: 0.9rem;
-                min-width: 90px;
-            }
-            .center-card h2 {
-                font-size: 1.6rem;
-            }
-            .center-card p {
-                font-size: 1rem;
             }
             .side-card h3 {
+                font-size: 1.8rem;
+            }
+            .center-card h2 {
+                font-size: 2.2rem;
+            }
+            .center-card p {
                 font-size: 1.3rem;
             }
         }
 
-        @media (min-width: 1600px) {
-            .center-card p {
-                font-size: 1.6rem;
+        @media (max-width: 768px) {
+            .tabs-wrapper .tab-btn {
+                padding: 12px 24px;
+                font-size: 1.2rem;
+                min-width: 120px;
+            }
+            .center-card {
+                padding: 40px 25px;
             }
             .center-card h2 {
-                font-size: 2.8rem;
+                font-size: 1.8rem;
+                margin-bottom: 20px;
+            }
+            .center-card p {
+                font-size: 1.1rem;
             }
             .side-card h3 {
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .tabs-wrapper .tab-btn {
+                padding: 10px 16px;
+                font-size: 1rem;
+                min-width: 90px;
+            }
+            .center-card h2 {
+                font-size: 1.5rem;
+            }
+            .center-card p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Pantallas grandes: laterales más pequeños, central enorme */
+        @media (min-width: 1400px) {
+            .side-card {
+                flex: 0.35;
+                max-width: 260px;
+            }
+            .center-card {
+                flex: 2.5;
+                padding: 85px 60px;
+            }
+            .center-card h2 {
+                font-size: 3.2rem;
+            }
+            .center-card p {
+                font-size: 1.8rem;
+            }
+            .side-card h3 {
+                font-size: 1.7rem;
+            }
+        }
+
+        @media (min-width: 1800px) {
+            .side-card {
+                flex: 0.3;
+                max-width: 280px;
+            }
+            .center-card {
+                flex: 2.8;
+                padding: 100px 80px;
+            }
+            .center-card h2 {
+                font-size: 3.5rem;
+            }
+            .center-card p {
                 font-size: 2rem;
             }
-            .side-card {
-                max-width: 320px;
+        }
+
+        /* Asegurar que los recuadros estén PEGADOS (sin gap) */
+        .cards-row {
+            gap: 0;
+        }
+
+        /* Para que los bordes redondeados se vean bien al estar pegados, pero al estar juntos los laterales tienen borde completo */
+        .side-card:first-child {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .center-card {
+            border-radius: 0;
+        }
+
+        .side-card:last-child {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        /* En pantallas donde se apilan (mobile) resetear bordes */
+        @media (max-width: 1000px) {
+            .side-card:first-child,
+            .side-card:last-child,
+            .center-card {
+                border-radius: 40px;
+            }
+            .cards-row {
+                gap: 20px;
+            }
+        }
+
+        /* Para pantallas grandes que no sean mobile, mantener pegado con bordes laterales redondeados solo en extremos */
+        @media (min-width: 1001px) {
+            .cards-row {
+                gap: 0;
+            }
+            .side-card:first-child {
+                border-radius: 40px 0 0 40px;
+            }
+            .center-card {
+                border-radius: 0;
+            }
+            .side-card:last-child {
+                border-radius: 0 40px 40px 0;
             }
         }
 
@@ -366,7 +423,6 @@
 
 <!-- SECCIÓN MISIÓN, VISIÓN Y PROPÓSITO -->
 <section class="mvp-section">
-    <!-- TABS SUPERIORES PEGADOS -->
     <div class="tabs-container">
         <div class="tabs-wrapper">
             <button class="tab-btn" data-tab="mision">Misión</button>
@@ -375,14 +431,10 @@
         </div>
     </div>
 
-    <!-- RECUADROS GRANDES ABAJO: estructura dinámica que se actualizará con JS -->
-    <div class="cards-row" id="cardsRow">
-        <!-- Los elementos se generan/actualizan con JavaScript para mantener orden dinámico -->
-    </div>
+    <div class="cards-row" id="cardsRow"></div>
 </section>
 
 <script>
-    // Definición de contenidos
     const contentMap = {
         mision: {
             title: "Misión",
@@ -398,30 +450,24 @@
         }
     };
 
-    // Orden de items: izquierda, centro, derecha
-    // El item activo siempre va al centro
-    let activeTab = "vision"; // por defecto Visión activa
+    let activeTab = "vision";
 
-    // Función para obtener los dos items laterales (los que NO son el activo)
     function getSideItems(activeKey) {
         const allKeys = ["mision", "vision", "proposito"];
         return allKeys.filter(key => key !== activeKey);
     }
 
-    // Renderiza la fila de tarjetas con animación suave
     function renderCards() {
         const container = document.getElementById("cardsRow");
         if (!container) return;
 
         const sideKeys = getSideItems(activeTab);
-        const [leftKey, rightKey] = sideKeys; // izquierda y derecha
+        const [leftKey, rightKey] = sideKeys;
 
-        // Obtener datos
         const leftData = contentMap[leftKey];
         const centerData = contentMap[activeTab];
         const rightData = contentMap[rightKey];
 
-        // Creamos nuevo HTML con estructura clara
         const leftCard = `
             <div class="side-card" data-tab="${leftKey}">
                 <h3>${leftData.title}</h3>
@@ -441,20 +487,17 @@
             </div>
         `;
 
-        // Aplicar con animación: reemplazar contenido con fade mediante clase temporal
-        // Mejor: actualizar innerHTML pero agregar clase de animación a los hijos
         container.style.opacity = "0";
         setTimeout(() => {
             container.innerHTML = leftCard + centerCard + rightCard;
             container.style.opacity = "1";
-            // Reasignar eventos de clic a las nuevas tarjetas laterales y central
             attachCardEvents();
+            // Reaplicar bordes redondeados especiales para pegado
+            applyPillBorders();
         }, 150);
     }
 
-    // Adjuntar eventos a las tarjetas (laterales y central)
     function attachCardEvents() {
-        // Tarjetas laterales (side-card) permiten cambiar el activo
         const sideCards = document.querySelectorAll(".side-card");
         sideCards.forEach(card => {
             card.addEventListener("click", (e) => {
@@ -465,21 +508,37 @@
                 }
             });
         });
+    }
 
-        // La tarjeta central también podría ser clickeable? por diseño no es necesario,
-        // pero por consistencia si se hace clic en central no pasa nada porque ya está activo.
-        const centerCardEl = document.querySelector(".center-card");
-        if (centerCardEl) {
-            centerCardEl.addEventListener("click", () => {});
+    function applyPillBorders() {
+        // Solo en pantallas mayores a 1000px aplicamos bordes de pastilla pegada
+        if (window.innerWidth >= 1001) {
+            const leftCard = document.querySelector(".side-card:first-child");
+            const centerCard = document.querySelector(".center-card");
+            const rightCard = document.querySelector(".side-card:last-child");
+            
+            if (leftCard) {
+                leftCard.style.borderRadius = "40px 0 0 40px";
+            }
+            if (centerCard) {
+                centerCard.style.borderRadius = "0";
+            }
+            if (rightCard) {
+                rightCard.style.borderRadius = "0 40px 40px 0";
+            }
+        } else {
+            // En móvil todos redondeados individualmente
+            const allCards = document.querySelectorAll(".side-card, .center-card");
+            allCards.forEach(card => {
+                card.style.borderRadius = "40px";
+            });
         }
     }
 
-    // Función para cambiar el tab activo y actualizar botones superiores + cards
     function setActiveTab(tabKey) {
         if (activeTab === tabKey) return;
         activeTab = tabKey;
 
-        // Actualizar clases en los botones superiores
         const btns = document.querySelectorAll(".tab-btn");
         btns.forEach(btn => {
             const btnTab = btn.getAttribute("data-tab");
@@ -490,115 +549,106 @@
             }
         });
 
-        // Animar el cambio de cards
         renderCards();
     }
 
-    // Inicializar eventos de los botones superiores
     function initTabs() {
         const btns = document.querySelectorAll(".tab-btn");
         btns.forEach(btn => {
-            btn.addEventListener("click", (e) => {
+            btn.addEventListener("click", () => {
                 const tabValue = btn.getAttribute("data-tab");
-                if (tabValue) {
-                    setActiveTab(tabValue);
-                }
+                if (tabValue) setActiveTab(tabValue);
             });
         });
     }
 
-    // Inicializar todo
     function init() {
         initTabs();
-        // Seteamos activeTab inicial según el botón activo en HTML (visión)
         const activeBtn = document.querySelector(".tab-btn.active");
         if (activeBtn) {
             const initialTab = activeBtn.getAttribute("data-tab");
             if (initialTab) activeTab = initialTab;
         }
         renderCards();
+        window.addEventListener("resize", () => {
+            applyPillBorders();
+        });
     }
 
-    // Ejecutar cuando el DOM esté listo
     document.addEventListener("DOMContentLoaded", init);
 </script>
 
 <style>
-    /* Ajustes adicionales para garantizar que los recuadros estén PEGADOS arriba y abajo tenga transiciones suaves */
+    /* Ajustes adicionales para garantizar que los recuadros sean mucho más grandes y pegados */
     .cards-row {
         transition: opacity 0.2s ease;
-    }
-    .side-card, .center-card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .tabs-wrapper {
-        display: inline-flex;
-    }
-    .tabs-container {
         display: flex;
-        justify-content: center;
         width: 100%;
     }
-    /* Aseguramos que el ancho de los recuadros laterales sea consistente y el central ocupe más */
-    @media (min-width: 851px) {
-        .cards-row {
-            display: flex;
-            justify-content: center;
-            align-items: stretch;
-        }
-        .side-card {
-            flex: 1;
-        }
-        .center-card {
-            flex: 2.2;
-        }
-    }
-    /* Para que los recuadros no se vean demasiado anchos en pantallas enormes */
-    @media (min-width: 1600px) {
-        .mvp-section {
-            max-width: 1500px;
-        }
-        .center-card {
-            flex: 2;
-        }
-        .side-card {
-            flex: 0.8;
-        }
-    }
-    /* Ajuste extra para que el texto en side-card se vea centrado vertical */
+    
     .side-card {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
+        transition: transform 0.3s ease, background-color 0.2s;
         cursor: pointer;
+        min-height: 180px;
     }
-    /* Efecto hover en tarjetas laterales */
-    .side-card:hover {
-        background-color: #1a5a8a;
-        transform: translateY(-6px);
-    }
-    /* Transición para el botón activo superior */
-    .tab-btn {
-        transition: all 0.25s ease;
-    }
-    .tab-btn:hover:not(.active) {
-        background-color: #c0c0c0;
-    }
+    
     .center-card {
-        cursor: default;
+        transition: all 0.3s ease;
+        min-height: 450px;
     }
-    /* Aseguramos que los recuadros grandes tengan espacio interno adecuado y texto legible */
+    
+    /* Hacemos que los recuadros laterales sean mucho más pequeños en altura también */
+    @media (min-width: 1001px) {
+        .side-card {
+            min-height: auto;
+            align-self: center;
+            padding: 35px 20px;
+        }
+        .center-card {
+            min-height: 500px;
+        }
+    }
+    
+    @media (min-width: 1400px) {
+        .center-card {
+            min-height: 550px;
+        }
+        .side-card {
+            padding: 45px 20px;
+        }
+    }
+    
+    /* Aseguramos que en desktop los laterales sean visiblemente más pequeños que el central */
+    .side-card h3 {
+        word-break: break-word;
+    }
+    
     .center-card p {
         font-weight: 500;
         letter-spacing: -0.2px;
     }
-    /* Sombreado elegante */
-    .center-card, .side-card {
-        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    
+    .tab-btn:hover:not(.active) {
+        background-color: #c0c0c0;
+    }
+    
+    /* Para que la animación no falle en redimensiones */
+    @media (max-width: 1000px) {
+        .cards-row {
+            flex-direction: column;
+            align-items: center;
+        }
+        .side-card, .center-card {
+            width: 100%;
+            max-width: 95%;
+            margin: 0 auto;
+        }
+        .side-card:first-child,
+        .side-card:last-child,
+        .center-card {
+            border-radius: 40px !important;
+        }
     }
 </style>
-
-<!-- Ajustes finales para que los botones superiores sean exactamente pegados y tengan bordes perfectos -->
 </body>
 </html>
