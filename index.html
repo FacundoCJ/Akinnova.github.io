@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="facebook-domain-verification" content="5wkw3tegcs915umdcwiy2ea839bvz5" />
     <title>Akinnova | Dealer del Futuro</title>
     <!-- Fuente Poppins (Google Fonts) -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -21,7 +22,6 @@
             background-color: #ffffff;
         }
 
-        /* contenedor hero: imagen a ancho completo */
         .hero {
             position: relative;
             width: 100%;
@@ -33,7 +33,6 @@
             height: auto;
         }
 
-        /* BARRA */
         .navbar-overlay {
             position: absolute;
             top: 70px;
@@ -148,47 +147,47 @@
             border-radius: 0 60px 60px 0;
         }
 
-        /* ========== RECUADROS INFERIORES PEGADOS ========== */
-        /* Contenedor principal: los tres recuadros PEGADOS sin gap */
+        /* ========== RECUADROS INFERIORES ========== */
+        /* Contenedor: los tres recuadros con gap pequeño para que se vean separados pero todos con bordes redondos */
         .cards-row {
             display: flex;
             justify-content: center;
             align-items: stretch;
             width: 100%;
             margin-top: 20px;
+            gap: 20px;
         }
 
-        /* Tarjeta lateral (MUCHO MÁS PEQUEÑA que la central) */
+        /* Tarjeta lateral - UN POCO MÁS ALTOS Y ANCHOS */
         .side-card {
             background-color: #0f4472;
-            border-radius: 40px;        /* bordes más redondos */
+            border-radius: 40px;        /* bordes redondos */
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 20px 15px;
+            padding: 45px 30px;         /* aumentado: antes 20px 15px, ahora más alto y ancho */
             transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
             cursor: pointer;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            flex: 0.4;                  /* mucho más pequeño que el central */
-            min-width: 160px;
-            max-width: 220px;
+            flex: 0.5;                  /* un poco más ancho que antes (era 0.4) */
+            min-width: 200px;
+            max-width: 260px;
         }
 
-        /* Para que el side-card tenga altura reducida respecto al central */
         .side-card h3 {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.6rem;          /* ligeramente más grande */
             font-weight: 700;
             color: white;
             margin: 0;
             letter-spacing: -0.2px;
         }
 
-        /* Tarjeta central (MUCHO MÁS GRANDE) */
+        /* Tarjeta central - GRANDE con bordes redondos */
         .center-card {
             background-color: #0c3a6a;
-            border-radius: 40px;        /* bordes más redondos */
+            border-radius: 40px;        /* bordes redondos también */
             padding: 70px 50px;
             text-align: center;
             transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
@@ -196,8 +195,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            flex: 2.2;                  /* mucho más grande que los laterales */
-            margin: 0;                  /* sin margen, pegado */
+            flex: 2.2;
         }
 
         .center-card h2 {
@@ -242,7 +240,7 @@
             animation: fadeSlideUp 0.4s ease-out;
         }
 
-        /* RESPONSIVE: en móviles se apilan, pero manteniendo proporción */
+        /* RESPONSIVE: en móviles se apilan */
         @media (max-width: 1000px) {
             .cards-row {
                 flex-direction: column;
@@ -253,7 +251,7 @@
                 max-width: 90%;
                 width: 90%;
                 flex: none;
-                padding: 25px 20px;
+                padding: 35px 25px;
             }
             .center-card {
                 width: 90%;
@@ -288,8 +286,11 @@
             .center-card p {
                 font-size: 1.1rem;
             }
+            .side-card {
+                padding: 30px 20px;
+            }
             .side-card h3 {
-                font-size: 1.4rem;
+                font-size: 1.5rem;
             }
         }
 
@@ -305,16 +306,26 @@
             .center-card p {
                 font-size: 1rem;
             }
+            .side-card {
+                padding: 25px 18px;
+            }
+            .side-card h3 {
+                font-size: 1.3rem;
+            }
         }
 
-        /* Pantallas grandes: laterales más pequeños, central enorme */
+        /* Pantallas grandes: ajustes proporcionales */
         @media (min-width: 1400px) {
             .side-card {
-                flex: 0.35;
-                max-width: 260px;
+                flex: 0.45;
+                max-width: 280px;
+                padding: 55px 35px;
+            }
+            .side-card h3 {
+                font-size: 1.8rem;
             }
             .center-card {
-                flex: 2.5;
+                flex: 2.3;
                 padding: 85px 60px;
             }
             .center-card h2 {
@@ -323,18 +334,19 @@
             .center-card p {
                 font-size: 1.8rem;
             }
-            .side-card h3 {
-                font-size: 1.7rem;
-            }
         }
 
         @media (min-width: 1800px) {
             .side-card {
-                flex: 0.3;
-                max-width: 280px;
+                flex: 0.4;
+                max-width: 300px;
+                padding: 65px 40px;
+            }
+            .side-card h3 {
+                font-size: 2rem;
             }
             .center-card {
-                flex: 2.8;
+                flex: 2.5;
                 padding: 100px 80px;
             }
             .center-card h2 {
@@ -342,54 +354,6 @@
             }
             .center-card p {
                 font-size: 2rem;
-            }
-        }
-
-        /* Asegurar que los recuadros estén PEGADOS (sin gap) */
-        .cards-row {
-            gap: 0;
-        }
-
-        /* Para que los bordes redondeados se vean bien al estar pegados, pero al estar juntos los laterales tienen borde completo */
-        .side-card:first-child {
-            border-top-right-radius: 0;
-            border-bottom-right-radius: 0;
-        }
-
-        .center-card {
-            border-radius: 0;
-        }
-
-        .side-card:last-child {
-            border-top-left-radius: 0;
-            border-bottom-left-radius: 0;
-        }
-
-        /* En pantallas donde se apilan (mobile) resetear bordes */
-        @media (max-width: 1000px) {
-            .side-card:first-child,
-            .side-card:last-child,
-            .center-card {
-                border-radius: 40px;
-            }
-            .cards-row {
-                gap: 20px;
-            }
-        }
-
-        /* Para pantallas grandes que no sean mobile, mantener pegado con bordes laterales redondeados solo en extremos */
-        @media (min-width: 1001px) {
-            .cards-row {
-                gap: 0;
-            }
-            .side-card:first-child {
-                border-radius: 40px 0 0 40px;
-            }
-            .center-card {
-                border-radius: 0;
-            }
-            .side-card:last-child {
-                border-radius: 0 40px 40px 0;
             }
         }
 
@@ -492,8 +456,6 @@
             container.innerHTML = leftCard + centerCard + rightCard;
             container.style.opacity = "1";
             attachCardEvents();
-            // Reaplicar bordes redondeados especiales para pegado
-            applyPillBorders();
         }, 150);
     }
 
@@ -508,31 +470,6 @@
                 }
             });
         });
-    }
-
-    function applyPillBorders() {
-        // Solo en pantallas mayores a 1000px aplicamos bordes de pastilla pegada
-        if (window.innerWidth >= 1001) {
-            const leftCard = document.querySelector(".side-card:first-child");
-            const centerCard = document.querySelector(".center-card");
-            const rightCard = document.querySelector(".side-card:last-child");
-            
-            if (leftCard) {
-                leftCard.style.borderRadius = "40px 0 0 40px";
-            }
-            if (centerCard) {
-                centerCard.style.borderRadius = "0";
-            }
-            if (rightCard) {
-                rightCard.style.borderRadius = "0 40px 40px 0";
-            }
-        } else {
-            // En móvil todos redondeados individualmente
-            const allCards = document.querySelectorAll(".side-card, .center-card");
-            allCards.forEach(card => {
-                card.style.borderRadius = "40px";
-            });
-        }
     }
 
     function setActiveTab(tabKey) {
@@ -570,84 +507,33 @@
             if (initialTab) activeTab = initialTab;
         }
         renderCards();
-        window.addEventListener("resize", () => {
-            applyPillBorders();
-        });
     }
 
     document.addEventListener("DOMContentLoaded", init);
 </script>
 
 <style>
-    /* Ajustes adicionales para garantizar que los recuadros sean mucho más grandes y pegados */
+    /* Ajustes adicionales */
     .cards-row {
         transition: opacity 0.2s ease;
-        display: flex;
-        width: 100%;
     }
     
     .side-card {
         transition: transform 0.3s ease, background-color 0.2s;
         cursor: pointer;
-        min-height: 180px;
     }
     
     .center-card {
         transition: all 0.3s ease;
-        min-height: 450px;
-    }
-    
-    /* Hacemos que los recuadros laterales sean mucho más pequeños en altura también */
-    @media (min-width: 1001px) {
-        .side-card {
-            min-height: auto;
-            align-self: center;
-            padding: 35px 20px;
-        }
-        .center-card {
-            min-height: 500px;
-        }
-    }
-    
-    @media (min-width: 1400px) {
-        .center-card {
-            min-height: 550px;
-        }
-        .side-card {
-            padding: 45px 20px;
-        }
-    }
-    
-    /* Aseguramos que en desktop los laterales sean visiblemente más pequeños que el central */
-    .side-card h3 {
-        word-break: break-word;
-    }
-    
-    .center-card p {
-        font-weight: 500;
-        letter-spacing: -0.2px;
     }
     
     .tab-btn:hover:not(.active) {
         background-color: #c0c0c0;
     }
     
-    /* Para que la animación no falle en redimensiones */
-    @media (max-width: 1000px) {
-        .cards-row {
-            flex-direction: column;
-            align-items: center;
-        }
-        .side-card, .center-card {
-            width: 100%;
-            max-width: 95%;
-            margin: 0 auto;
-        }
-        .side-card:first-child,
-        .side-card:last-child,
-        .center-card {
-            border-radius: 40px !important;
-        }
+    /* Para que todos los recuadros tengan bordes redondeados consistentes */
+    .side-card, .center-card {
+        border-radius: 40px;
     }
 </style>
 </body>
