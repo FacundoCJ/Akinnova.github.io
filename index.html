@@ -1,12 +1,14 @@
+Aquí está el código completo con la sección de Misión, Visión y Propósito implementada como un carrusel interactivo. Los recuadros superiores están pegados con bordes redondeados, y al hacer clic en cualquier título, el contenido central se actualiza con animación suave.
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Akinnova | Dealer del Futuro</title>
-    <!-- Fuente Poppins -->
+    <!-- Fuente Poppins (Google Fonts) -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- FAVICON -->
+    <!-- FAVICON: akinnova-logo como logo de pestaña -->
     <link rel="icon" type="image/png" href="fotos/akinnova-logo.png">
     <link rel="shortcut icon" type="image/png" href="fotos/akinnova-logo.png">
     <style>
@@ -21,18 +23,20 @@
             background-color: #ffffff;
         }
 
-        /* HERO SECTION */
+        /* contenedor hero: imagen a ancho completo */
         .hero {
             position: relative;
             width: 100%;
         }
 
+        /* imagen que ocupa todo el ancho de la hoja */
         .hero-image {
             width: 100%;
             display: block;
             height: auto;
         }
 
+        /* BARRA */
         .navbar-overlay {
             position: absolute;
             top: 70px;
@@ -47,18 +51,24 @@
             justify-content: space-between;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
             z-index: 20;
+            transition: all 0.2s ease;
         }
 
         .logo-img {
             height: 52px;
             width: auto;
+            display: block;
             object-fit: contain;
         }
 
         .siempre-nuevo {
+            font-family: 'Poppins', sans-serif;
             font-weight: 700;
             font-size: 2rem;
+            letter-spacing: -0.2px;
             color: #0c3a6a;
+            margin: 0;
+            line-height: 1.2;
         }
 
         .hero-text {
@@ -73,11 +83,14 @@
         }
 
         .hero-text h1 {
+            font-family: 'Poppins', sans-serif;
             font-weight: 800;
             font-size: 5rem;
             line-height: 1.2;
             color: white;
-            text-shadow: 5px 5px 14px rgba(0, 0, 0, 0.7);
+            text-shadow: 5px 5px 14px rgba(0, 0, 0, 0.7), 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin: 0;
+            letter-spacing: -0.02em;
             font-style: italic;
         }
 
@@ -89,363 +102,248 @@
         }
 
         .description-text {
+            font-family: 'Poppins', sans-serif;
             font-size: 2.2rem;
             font-weight: 500;
             color: #000000;
             line-height: 1.4;
-        }
-
-        /* ========== SECCIÓN MISIÓN, VISIÓN, PROPÓSITO ========== */
-        .mvp-wrapper {
-            max-width: 1400px;
-            margin: 0 auto 120px auto;
-            padding: 0 40px;
-        }
-
-        /* CARTELES SUPERIORES - PEGADOS, SIN SEPARACIÓN */
-        .top-cards {
-            display: flex;
-            justify-content: center;
-            align-items: stretch;
-            margin-bottom: 80px;
-            gap: 0;  /* Sin separación entre carteles */
-        }
-
-        /* Cada cartel: tamaño definido, todos con bordes redondeados pero se ajustan para estar pegados */
-        .top-card {
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-family: 'Poppins', sans-serif;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-            width: 320px;
-            height: 140px;
-            font-size: 2rem;
-            background-color: #d9d9d9;
-            color: #1e2a3a;
-            margin: 0;
-        }
-
-        /* Bordes redondeados específicos para que estando pegados se vea como un grupo */
-        .top-card:first-child {
-            border-radius: 60px 0 0 60px;
-        }
-
-        .top-card:last-child {
-            border-radius: 0 60px 60px 0;
-        }
-
-        /* Cartel del medio (índice 1) - sin bordes laterales para que quede pegado */
-        .top-card.center-position {
-            border-radius: 0;
-        }
-
-        /* Cartel activo (el que está en el medio y muestra la descripción) - SIEMPRE AZUL */
-        .top-card.active-card {
-            background-color: #0c3a6a;
-            color: white;
-            box-shadow: 0 8px 25px rgba(12, 58, 106, 0.3);
-            transform: scale(1.02);
-            z-index: 2;
-            position: relative;
-        }
-
-        /* RECUADROS INFERIORES - PEGADOS, CENTRAL GRANDE, LATERALES MÁS BAJOS */
-        .bottom-panels {
-            display: flex;
-            justify-content: center;
-            align-items: stretch;
-            margin-top: 40px;
-        }
-
-        /* Panel central: GRANDE, color #0c3a6a, muestra título y descripción */
-        .info-panel.center-panel {
-            background-color: #0c3a6a;
-            color: white;
-            width: 650px;
-            min-height: 420px;
-            padding: 50px 45px;
-            border-radius: 0;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .center-panel h2 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 30px;
-            letter-spacing: -0.5px;
-        }
-
-        .center-panel p {
-            font-size: 1.4rem;
-            line-height: 1.6;
-            font-weight: 500;
-            max-width: 500px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        /* Paneles laterales: MÁS BAJOS de altura, color #0f4472, solo título, centrado perfectamente */
-        .info-panel.side-panel {
-            background-color: #0f4472;
-            color: white;
-            width: 220px;
-            min-height: 280px;  /* Altura reducida en comparación con el central (420px vs 280px) */
-            padding: 20px;
-            border-radius: 0;
+        /* ========== SECCIÓN MISIÓN VISIÓN PROPÓSITO ========== */
+        .mvp-section {
+            max-width: 1400px;
+            margin: 0 auto 100px auto;
+            padding: 0 40px;
+        }
+
+        /* Contenedor de los 3 botones superiores PEGADOS (sin gap) */
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+
+        .tabs-wrapper {
+            display: flex;
+            border-radius: 60px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .tab-btn {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            padding: 18px 48px;
+            border: none;
             cursor: pointer;
             transition: all 0.3s ease;
+            background-color: #d9d9d9;
+            color: #0c3a6a;
+            text-align: center;
+            min-width: 180px;
+        }
+
+        .tab-btn.active {
+            background-color: #0c3a6a;
+            color: white;
+        }
+
+        /* primer botón - borde redondeado izquierdo */
+        .tabs-wrapper .tab-btn:first-child {
+            border-radius: 60px 0 0 60px;
+        }
+
+        /* último botón - borde redondeado derecho */
+        .tabs-wrapper .tab-btn:last-child {
+            border-radius: 0 60px 60px 0;
+        }
+
+        /* Contenedor de los 3 recuadros grandes abajo */
+        .cards-row {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        /* Tarjeta lateral (pequeña) */
+        .side-card {
+            flex: 1;
+            max-width: 280px;
+            background-color: #0f4472;
+            border-radius: 28px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
+            padding: 40px 20px;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
         }
 
-        .side-panel h3 {
+        .side-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+        }
+
+        .side-card h3 {
+            font-family: 'Poppins', sans-serif;
             font-size: 1.8rem;
             font-weight: 700;
+            color: white;
             margin: 0;
-            line-height: 1.3;
+            letter-spacing: -0.3px;
         }
 
-        /* Bordes redondeados en los extremos de los 3 paneles inferiores */
-        .bottom-panels .info-panel:first-child {
-            border-radius: 50px 0 0 50px;
-        }
-
-        .bottom-panels .info-panel:last-child {
-            border-radius: 0 50px 50px 0;
-        }
-
-        /* Efecto hover en paneles laterales */
-        .side-panel:hover {
+        /* Tarjeta central (grande) */
+        .center-card {
+            flex: 2;
             background-color: #0c3a6a;
-            transform: translateY(-5px);
-            cursor: pointer;
+            border-radius: 32px;
+            padding: 48px 40px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+            min-height: 380px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .center-card h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 28px;
+            letter-spacing: -0.5px;
+        }
+
+        .center-card p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: white;
+            line-height: 1.5;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        /* Animación de fade y slide */
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .center-card, .side-card {
+            animation: fadeSlideUp 0.4s ease-out;
         }
 
         /* Responsive */
-        @media (max-width: 1300px) {
-            .top-card {
-                width: 280px;
-                height: 125px;
-                font-size: 1.7rem;
+        @media (max-width: 1100px) {
+            .tabs-wrapper .tab-btn {
+                padding: 14px 32px;
+                font-size: 1.3rem;
+                min-width: 140px;
             }
-            .info-panel.center-panel {
-                width: 550px;
-                min-height: 380px;
-                padding: 45px 40px;
+            .cards-row {
+                gap: 20px;
             }
-            .center-panel h2 {
-                font-size: 2.5rem;
+            .side-card {
+                max-width: 240px;
+                padding: 30px 16px;
             }
-            .center-panel p {
+            .side-card h3 {
+                font-size: 1.5rem;
+            }
+            .center-card {
+                padding: 40px 30px;
+                min-height: 340px;
+            }
+            .center-card h2 {
+                font-size: 2rem;
+            }
+            .center-card p {
                 font-size: 1.2rem;
             }
-            .info-panel.side-panel {
-                width: 200px;
-                min-height: 250px;
-            }
-            .side-panel h3 {
-                font-size: 1.5rem;
-            }
         }
 
-        @media (max-width: 1100px) {
-            .top-card {
-                width: 250px;
-                height: 115px;
-                font-size: 1.5rem;
-            }
-            .info-panel.center-panel {
-                width: 480px;
-                min-height: 350px;
-                padding: 40px 35px;
-            }
-            .center-panel h2 {
-                font-size: 2.2rem;
-            }
-            .center-panel p {
-                font-size: 1.1rem;
-            }
-            .info-panel.side-panel {
-                width: 180px;
-                min-height: 220px;
-            }
-            .side-panel h3 {
-                font-size: 1.3rem;
-            }
-        }
-
-        @media (max-width: 950px) {
-            .mvp-wrapper {
+        @media (max-width: 850px) {
+            .mvp-section {
                 padding: 0 20px;
             }
-            .top-cards {
-                flex-wrap: wrap;
-                gap: 15px;
-                margin-bottom: 50px;
-            }
-            .top-card:first-child,
-            .top-card:last-child,
-            .top-card.center-position {
-                border-radius: 60px !important;
-            }
-            .top-card {
-                width: 280px;
-                height: 120px;
-                border-radius: 60px !important;
-            }
-            .bottom-panels {
+            .cards-row {
                 flex-direction: column;
                 align-items: center;
                 gap: 20px;
             }
-            .info-panel.center-panel,
-            .info-panel.side-panel {
-                border-radius: 50px !important;
-                width: 90%;
-                max-width: 550px;
+            .side-card {
+                max-width: 90%;
+                width: 100%;
+                padding: 24px 20px;
             }
-            .info-panel.center-panel {
-                min-height: 320px;
+            .center-card {
+                width: 100%;
+                order: -1;
+                margin-bottom: 10px;
             }
-            .info-panel.side-panel {
-                min-height: 120px;
-                width: 80%;
-                max-width: 400px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .info-panel.center-panel {
-                padding: 35px 30px;
-            }
-            .center-panel h2 {
-                font-size: 2rem;
-            }
-            .center-panel p {
-                font-size: 1rem;
+            .tabs-wrapper .tab-btn {
+                padding: 12px 20px;
+                font-size: 1.1rem;
+                min-width: 110px;
             }
         }
 
-        @media (max-width: 1200px) {
-            .navbar-overlay {
-                width: 55%;
-                padding: 22px 36px;
+        @media (max-width: 600px) {
+            .tabs-wrapper .tab-btn {
+                padding: 10px 16px;
+                font-size: 0.9rem;
+                min-width: 90px;
             }
-            .hero-text h1 {
-                font-size: 4.2rem;
-            }
-            .description-text {
-                font-size: 1.9rem;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .navbar-overlay {
-                width: 65%;
-                padding: 20px 32px;
-                top: 60px;
-            }
-            .logo-img {
-                height: 44px;
-            }
-            .siempre-nuevo {
+            .center-card h2 {
                 font-size: 1.6rem;
             }
-            .hero-text h1 {
-                font-size: 3.5rem;
-            }
-            .description-text {
-                font-size: 1.7rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .navbar-overlay {
-                width: 75%;
-                padding: 16px 28px;
-                top: 50px;
-            }
-            .logo-img {
-                height: 36px;
-            }
-            .siempre-nuevo {
-                font-size: 1.3rem;
-            }
-            .hero-text h1 {
-                font-size: 2.6rem;
-            }
-            .description-text {
-                font-size: 1.4rem;
-            }
-        }
-
-        @media (max-width: 550px) {
-            .navbar-overlay {
-                width: 85%;
-                padding: 12px 20px;
-                top: 35px;
-            }
-            .logo-img {
-                height: 28px;
-            }
-            .siempre-nuevo {
+            .center-card p {
                 font-size: 1rem;
             }
-            .hero-text h1 {
-                font-size: 1.8rem;
-            }
-            .description-text {
-                font-size: 1.1rem;
+            .side-card h3 {
+                font-size: 1.3rem;
             }
         }
 
         @media (min-width: 1600px) {
-            .navbar-overlay {
-                width: 45%;
-                padding: 28px 52px;
-                top: 90px;
+            .center-card p {
+                font-size: 1.6rem;
             }
-            .hero-text h1 {
-                font-size: 6rem;
+            .center-card h2 {
+                font-size: 2.8rem;
             }
-            .description-text {
-                font-size: 2.4rem;
-            }
-            .top-card {
-                width: 380px;
-                height: 160px;
-                font-size: 2.2rem;
-            }
-            .info-panel.center-panel {
-                width: 750px;
-                min-height: 480px;
-                padding: 60px 55px;
-            }
-            .center-panel h2 {
-                font-size: 3.5rem;
-            }
-            .center-panel p {
-                font-size: 1.5rem;
-                max-width: 580px;
-            }
-            .info-panel.side-panel {
-                width: 260px;
-                min-height: 320px;
-            }
-            .side-panel h3 {
+            .side-card h3 {
                 font-size: 2rem;
             }
+            .side-card {
+                max-width: 320px;
+            }
+        }
+
+        .hero {
+            position: relative;
+        }
+
+        img {
+            max-width: 100%;
         }
     </style>
 </head>
@@ -468,158 +366,242 @@
     </p>
 </div>
 
-<!-- SECCIÓN MISIÓN, VISIÓN, PROPÓSITO -->
-<div class="mvp-wrapper">
-    <!-- CARTELES SUPERIORES: PEGADOS, SIN SEPARACIÓN -->
-    <div class="top-cards" id="topCardsContainer">
-        <!-- Los carteles se generan dinámicamente con JS -->
+<!-- SECCIÓN MISIÓN, VISIÓN Y PROPÓSITO -->
+<section class="mvp-section">
+    <!-- TABS SUPERIORES PEGADOS -->
+    <div class="tabs-container">
+        <div class="tabs-wrapper">
+            <button class="tab-btn" data-tab="mision">Misión</button>
+            <button class="tab-btn active" data-tab="vision">Visión</button>
+            <button class="tab-btn" data-tab="proposito">Propósito</button>
+        </div>
     </div>
 
-    <!-- RECUADROS INFERIORES: PEGADOS, central GRANDE, laterales MÁS BAJOS con texto centrado -->
-    <div class="bottom-panels" id="bottomPanelsContainer">
-        <!-- Generado dinámicamente -->
+    <!-- RECUADROS GRANDES ABAJO: estructura dinámica que se actualizará con JS -->
+    <div class="cards-row" id="cardsRow">
+        <!-- Los elementos se generan/actualizan con JavaScript para mantener orden dinámico -->
     </div>
-</div>
+</section>
 
 <script>
-    // Datos de cada item
-    const itemsData = {
-        vision: {
-            nombre: "Visión",
-            descripcion: "Ser el socio estratégico clave en la evolución integral del negocio automotriz, integrando tecnología y procesos disruptivos y ágiles."
-        },
+    // Definición de contenidos
+    const contentMap = {
         mision: {
-            nombre: "Misión",
-            descripcion: "Acompañar a concesionarios, fábricas y empresas relacionadas en la implementación de soluciones tecnológicas simples y escalables."
+            title: "Misión",
+            description: "Acompañar a concesionarios, fábricas y empresas relacionadas en la implementación de soluciones tecnológicas simples y escalables."
+        },
+        vision: {
+            title: "Visión",
+            description: "Ser el socio estratégico clave en la evolución integral del negocio automotriz, integrando tecnología y procesos disruptivos y ágiles."
         },
         proposito: {
-            nombre: "Propósito",
-            descripcion: "Transformar la industria automotriz hacia un modelo más ágil, digital y centrado en el nuevo cliente en la región del Pacífico."
+            title: "Propósito",
+            description: "Transformar la industria automotriz hacia un modelo más ágil, digital y centrado en el nuevo cliente en la región del Pacífico."
         }
     };
 
-    // Orden inicial: [izquierda, centro, derecha] -> [visión, misión, propósito]
-    let currentOrder = ['vision', 'mision', 'proposito'];
+    // Orden de items: izquierda, centro, derecha
+    // El item activo siempre va al centro
+    let activeTab = "vision"; // por defecto Visión activa
 
-    // Función para renderizar los carteles superiores según el orden actual (PEGADOS)
-    function renderTopCards() {
-        const container = document.getElementById('topCardsContainer');
+    // Función para obtener los dos items laterales (los que NO son el activo)
+    function getSideItems(activeKey) {
+        const allKeys = ["mision", "vision", "proposito"];
+        return allKeys.filter(key => key !== activeKey);
+    }
+
+    // Renderiza la fila de tarjetas con animación suave
+    function renderCards() {
+        const container = document.getElementById("cardsRow");
         if (!container) return;
-        
-        container.innerHTML = '';
-        
-        currentOrder.forEach((key, index) => {
-            const card = document.createElement('div');
-            card.className = 'top-card';
-            // El que está en el centro (índice 1) es el activo (azul)
-            if (index === 1) {
-                card.classList.add('active-card');
-            }
-            // Añadir clase para posición central (para bordes)
-            if (index === 1) {
-                card.classList.add('center-position');
-            }
-            // Aplicar bordes redondeados según posición para que queden pegados
-            if (index === 0) {
-                card.style.borderRadius = '60px 0 0 60px';
-            } else if (index === 2) {
-                card.style.borderRadius = '0 60px 60px 0';
+
+        const sideKeys = getSideItems(activeTab);
+        const [leftKey, rightKey] = sideKeys; // izquierda y derecha
+
+        // Obtener datos
+        const leftData = contentMap[leftKey];
+        const centerData = contentMap[activeTab];
+        const rightData = contentMap[rightKey];
+
+        // Creamos nuevo HTML con estructura clara
+        const leftCard = `
+            <div class="side-card" data-tab="${leftKey}">
+                <h3>${leftData.title}</h3>
+            </div>
+        `;
+
+        const centerCard = `
+            <div class="center-card" data-tab="${activeTab}">
+                <h2>${centerData.title}</h2>
+                <p>${centerData.description}</p>
+            </div>
+        `;
+
+        const rightCard = `
+            <div class="side-card" data-tab="${rightKey}">
+                <h3>${rightData.title}</h3>
+            </div>
+        `;
+
+        // Aplicar con animación: reemplazar contenido con fade mediante clase temporal
+        // Mejor: actualizar innerHTML pero agregar clase de animación a los hijos
+        container.style.opacity = "0";
+        setTimeout(() => {
+            container.innerHTML = leftCard + centerCard + rightCard;
+            container.style.opacity = "1";
+            // Reasignar eventos de clic a las nuevas tarjetas laterales y central
+            attachCardEvents();
+        }, 150);
+    }
+
+    // Adjuntar eventos a las tarjetas (laterales y central)
+    function attachCardEvents() {
+        // Tarjetas laterales (side-card) permiten cambiar el activo
+        const sideCards = document.querySelectorAll(".side-card");
+        sideCards.forEach(card => {
+            card.addEventListener("click", (e) => {
+                e.stopPropagation();
+                const tabKey = card.getAttribute("data-tab");
+                if (tabKey && tabKey !== activeTab) {
+                    setActiveTab(tabKey);
+                }
+            });
+        });
+
+        // La tarjeta central también podría ser clickeable? por diseño no es necesario,
+        // pero por consistencia si se hace clic en central no pasa nada porque ya está activo.
+        const centerCardEl = document.querySelector(".center-card");
+        if (centerCardEl) {
+            centerCardEl.addEventListener("click", () => {});
+        }
+    }
+
+    // Función para cambiar el tab activo y actualizar botones superiores + cards
+    function setActiveTab(tabKey) {
+        if (activeTab === tabKey) return;
+        activeTab = tabKey;
+
+        // Actualizar clases en los botones superiores
+        const btns = document.querySelectorAll(".tab-btn");
+        btns.forEach(btn => {
+            const btnTab = btn.getAttribute("data-tab");
+            if (btnTab === activeTab) {
+                btn.classList.add("active");
             } else {
-                card.style.borderRadius = '0';
+                btn.classList.remove("active");
             }
-            card.textContent = itemsData[key].nombre;
-            card.setAttribute('data-key', key);
-            card.setAttribute('data-index', index);
-            card.addEventListener('click', () => handleCardClick(index, key));
-            container.appendChild(card);
+        });
+
+        // Animar el cambio de cards
+        renderCards();
+    }
+
+    // Inicializar eventos de los botones superiores
+    function initTabs() {
+        const btns = document.querySelectorAll(".tab-btn");
+        btns.forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                const tabValue = btn.getAttribute("data-tab");
+                if (tabValue) {
+                    setActiveTab(tabValue);
+                }
+            });
         });
     }
 
-    // Función para renderizar los paneles inferiores (pegados, central GRANDE, laterales MÁS BAJOS con texto centrado)
-    function renderBottomPanels() {
-        const container = document.getElementById('bottomPanelsContainer');
-        if (!container) return;
-        
-        container.innerHTML = '';
-        
-        // Panel izquierdo (índice 0 del orden) - MÁS BAJO de altura
-        const leftKey = currentOrder[0];
-        const leftPanel = document.createElement('div');
-        leftPanel.className = 'info-panel side-panel';
-        leftPanel.innerHTML = `<h3>${itemsData[leftKey].nombre}</h3>`;
-        leftPanel.setAttribute('data-key', leftKey);
-        leftPanel.addEventListener('click', () => moveToCenter(0));
-        
-        // Panel central (índice 1) - GRANDE con descripción
-        const centerKey = currentOrder[1];
-        const centerPanel = document.createElement('div');
-        centerPanel.className = 'info-panel center-panel';
-        centerPanel.innerHTML = `
-            <h2>${itemsData[centerKey].nombre}</h2>
-            <p>${itemsData[centerKey].descripcion}</p>
-        `;
-        
-        // Panel derecho (índice 2) - MÁS BAJO de altura
-        const rightKey = currentOrder[2];
-        const rightPanel = document.createElement('div');
-        rightPanel.className = 'info-panel side-panel';
-        rightPanel.innerHTML = `<h3>${itemsData[rightKey].nombre}</h3>`;
-        rightPanel.setAttribute('data-key', rightKey);
-        rightPanel.addEventListener('click', () => moveToCenter(2));
-        
-        // Aplicar bordes redondeados al grupo completo
-        leftPanel.style.borderRadius = '50px 0 0 50px';
-        rightPanel.style.borderRadius = '0 50px 50px 0';
-        centerPanel.style.borderRadius = '0';
-        
-        container.appendChild(leftPanel);
-        container.appendChild(centerPanel);
-        container.appendChild(rightPanel);
-    }
-    
-    // Función para mover un elemento al centro (cuando se hace clic en un lateral)
-    function moveToCenter(clickedIndex) {
-        if (clickedIndex === 1) return; // ya está en el centro
-        
-        const clickedKey = currentOrder[clickedIndex];
-        const centerKey = currentOrder[1];
-        
-        // Crear nuevo orden: el elemento clickeado va al centro, el que estaba en el centro se desplaza al lugar del clickeado
-        const newOrder = [...currentOrder];
-        
-        if (clickedIndex === 0) {
-            // Click izquierdo: izquierda <-> centro
-            newOrder[0] = centerKey;
-            newOrder[1] = clickedKey;
-        } else if (clickedIndex === 2) {
-            // Click derecho: derecha <-> centro
-            newOrder[2] = centerKey;
-            newOrder[1] = clickedKey;
-        }
-        
-        currentOrder = newOrder;
-        
-        // Re-renderizar todo
-        renderTopCards();
-        renderBottomPanels();
-    }
-    
-    // Manejar clic directo en carteles superiores
-    function handleCardClick(clickedIndex, clickedKey) {
-        if (clickedIndex === 1) return; // ya está activo
-        
-        // Llamar a la misma lógica de movimiento
-        moveToCenter(clickedIndex);
-    }
-    
-    // Inicializar
+    // Inicializar todo
     function init() {
-        renderTopCards();
-        renderBottomPanels();
+        initTabs();
+        // Seteamos activeTab inicial según el botón activo en HTML (visión)
+        const activeBtn = document.querySelector(".tab-btn.active");
+        if (activeBtn) {
+            const initialTab = activeBtn.getAttribute("data-tab");
+            if (initialTab) activeTab = initialTab;
+        }
+        renderCards();
     }
-    
-    init();
+
+    // Ejecutar cuando el DOM esté listo
+    document.addEventListener("DOMContentLoaded", init);
 </script>
 
+<style>
+    /* Ajustes adicionales para garantizar que los recuadros estén PEGADOS arriba y abajo tenga transiciones suaves */
+    .cards-row {
+        transition: opacity 0.2s ease;
+    }
+    .side-card, .center-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .tabs-wrapper {
+        display: inline-flex;
+    }
+    .tabs-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    /* Aseguramos que el ancho de los recuadros laterales sea consistente y el central ocupe más */
+    @media (min-width: 851px) {
+        .cards-row {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+        }
+        .side-card {
+            flex: 1;
+        }
+        .center-card {
+            flex: 2.2;
+        }
+    }
+    /* Para que los recuadros no se vean demasiado anchos en pantallas enormes */
+    @media (min-width: 1600px) {
+        .mvp-section {
+            max-width: 1500px;
+        }
+        .center-card {
+            flex: 2;
+        }
+        .side-card {
+            flex: 0.8;
+        }
+    }
+    /* Ajuste extra para que el texto en side-card se vea centrado vertical */
+    .side-card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        cursor: pointer;
+    }
+    /* Efecto hover en tarjetas laterales */
+    .side-card:hover {
+        background-color: #1a5a8a;
+        transform: translateY(-6px);
+    }
+    /* Transición para el botón activo superior */
+    .tab-btn {
+        transition: all 0.25s ease;
+    }
+    .tab-btn:hover:not(.active) {
+        background-color: #c0c0c0;
+    }
+    .center-card {
+        cursor: default;
+    }
+    /* Aseguramos que los recuadros grandes tengan espacio interno adecuado y texto legible */
+    .center-card p {
+        font-weight: 500;
+        letter-spacing: -0.2px;
+    }
+    /* Sombreado elegante */
+    .center-card, .side-card {
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<!-- Ajustes finales para que los botones superiores sean exactamente pegados y tengan bordes perfectos -->
 </body>
 </html>
+```
