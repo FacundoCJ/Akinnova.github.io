@@ -31,16 +31,20 @@
             height: auto;
         }
 
-        /* barra blanca con esquinas redondeadas - MÁS LARGA (mayor ancho), MENOS ANCHA (menos padding vertical), y más abajo (top mayor) */
+        /* barra blanca con esquinas redondeadas 
+           - EL DOBLE DE LARGA: antes width 94%, ahora width 98% (prácticamente bordes laterales mínimos)
+           - LA MITAD DE ANCHA: reducimos padding vertical de 12px a 6px (mitad de alto visual)
+           - Más abajo se mantiene top:70px pero se puede ajustar
+        */
         .navbar-overlay {
             position: absolute;
-            top: 70px;              /* más abajo que antes (antes 30px) */
-            left: 3%;
-            right: 3%;
-            width: 94%;             /* más ancha, ocupa casi todo el ancho pero con esquinas redondeadas */
+            top: 70px;              /* mantiene separación superior */
+            left: 1%;              /* más cerca del borde para hacerla más larga */
+            right: 1%;
+            width: 98%;            /* el doble de larga en términos horizontales: casi el ancho total */
             background-color: #ffffff;
             border-radius: 60px;
-            padding: 12px 40px;     /* menos ancho: reducimos padding vertical de 16px a 12px, horizontal aumentado para dar sensación de barra estilizada */
+            padding: 6px 40px;     /* LA MITAD DE ANCHA: antes 12px vertical, ahora 6px vertical */
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -51,27 +55,27 @@
 
         /* logo dentro de la barra */
         .logo-img {
-            height: 52px;           /* ligeramente más grande para acompañar letras grandes */
+            height: 52px;
             width: auto;
             display: block;
             object-fit: contain;
         }
 
-        /* texto "Siempre Nuevo" con color azul exacto #0c3a6a y LETRAS MÁS GRANDES */
+        /* texto "Siempre Nuevo" con color azul exacto #0c3a6a y letras grandes */
         .siempre-nuevo {
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
-            font-size: 2rem;        /* letras más grandes (antes 1.6rem) */
+            font-size: 2rem;
             letter-spacing: -0.2px;
             color: #0c3a6a;
             margin: 0;
             line-height: 1.2;
         }
 
-        /* contenedor del texto principal sobre la imagen */
+        /* contenedor del texto principal sobre la imagen - MÁS ARRIBA */
         .hero-text {
             position: absolute;
-            top: 48%;               /* ajustado para mejor visual con barra más abajo */
+            top: 28%;               /* antes 48%, ahora más arriba (28%) para que suba el título */
             left: 0;
             right: 0;
             text-align: center;
@@ -80,21 +84,22 @@
             padding: 0 20px;
         }
 
-        /* Título principal: Impulsando el Dealer del Futuro - LETRAS MÁS GRANDES */
+        /* Título principal: Impulsando el Dealer del Futuro - CON ITÁLICA (cursiva) y letras grandes */
         .hero-text h1 {
             font-family: 'Poppins', sans-serif;
             font-weight: 800;
-            font-size: 5rem;        /* letras mucho más grandes (antes 3.8rem) */
+            font-size: 5rem;
             line-height: 1.2;
             color: white;
             text-shadow: 5px 5px 14px rgba(0, 0, 0, 0.7), 3px 3px 6px rgba(0, 0, 0, 0.5);
             margin: 0;
             letter-spacing: -0.02em;
+            font-style: italic;      /* ITÁLICA agregada */
         }
 
-        /* línea debajo de la imagen: texto descriptivo centrado, color negro, también letra más grande */
+        /* línea debajo de la imagen: texto descriptivo centrado, color negro, MÁS GRANDE */
         .description-section {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 70px auto 90px auto;
             padding: 0 24px;
             text-align: center;
@@ -102,19 +107,34 @@
 
         .description-text {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.8rem;      /* texto descriptivo más grande para coherencia */
+            font-size: 2.2rem;      /* MÁS GRANDE: antes 1.8rem, ahora 2.2rem */
             font-weight: 500;
             color: #000000;
-            line-height: 1.4;
-            max-width: 1100px;
+            line-height: 1.45;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        /* responsive: ajustamos tamaños para pantallas medianas y pequeñas manteniendo proporción */
+        /* responsive: ajustamos tamaños para pantallas medianas y pequeñas manteniendo proporciones */
+        @media (max-width: 1200px) {
+            .description-text {
+                font-size: 1.8rem;
+            }
+            .hero-text h1 {
+                font-size: 4.2rem;
+            }
+            .siempre-nuevo {
+                font-size: 1.8rem;
+            }
+        }
+
         @media (max-width: 1024px) {
             .navbar-overlay {
                 top: 50px;
-                padding: 10px 32px;
+                padding: 5px 32px;   /* mantener mitad de ancha en responsive */
+                width: 96%;
+                left: 2%;
+                right: 2%;
             }
             .logo-img {
                 height: 44px;
@@ -123,20 +143,25 @@
                 font-size: 1.6rem;
             }
             .hero-text h1 {
-                font-size: 3.8rem;
+                font-size: 3.5rem;
+                font-style: italic;
+            }
+            .hero-text {
+                top: 26%;
             }
             .description-text {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
             }
         }
 
         @media (max-width: 768px) {
             .navbar-overlay {
                 top: 40px;
-                padding: 8px 24px;
-                width: 92%;
-                left: 4%;
-                right: 4%;
+                padding: 4px 24px;
+                width: 96%;
+                left: 2%;
+                right: 2%;
+                border-radius: 50px;
             }
             .logo-img {
                 height: 36px;
@@ -146,14 +171,14 @@
                 font-weight: 700;
             }
             .hero-text h1 {
-                font-size: 2.4rem;
-                text-shadow: 3px 3px 8px rgba(0,0,0,0.7);
+                font-size: 2.5rem;
+                font-style: italic;
             }
             .hero-text {
-                top: 45%;
+                top: 22%;
             }
             .description-text {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
             }
             .description-section {
                 margin: 50px auto 60px auto;
@@ -163,7 +188,7 @@
         @media (max-width: 550px) {
             .navbar-overlay {
                 top: 30px;
-                padding: 6px 20px;
+                padding: 3px 18px;
                 border-radius: 40px;
             }
             .logo-img {
@@ -174,9 +199,13 @@
             }
             .hero-text h1 {
                 font-size: 1.8rem;
+                font-style: italic;
+            }
+            .hero-text {
+                top: 20%;
             }
             .description-text {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
         }
 
@@ -184,6 +213,7 @@
         @media (min-width: 1600px) {
             .hero-text h1 {
                 font-size: 6rem;
+                font-style: italic;
             }
             .siempre-nuevo {
                 font-size: 2.3rem;
@@ -192,15 +222,32 @@
                 height: 64px;
             }
             .navbar-overlay {
-                padding: 14px 56px;
-                top: 90px;
+                padding: 7px 56px;    /* mantiene mitad de ancha: antes 6px, ahora 7px sutíl */
+                top: 85px;
+                width: 98%;
+                left: 1%;
+                right: 1%;
             }
             .description-text {
-                font-size: 2rem;
+                font-size: 2.4rem;
+            }
+            .hero-text {
+                top: 28%;
             }
         }
 
-        /* opcional: asegurar que el contenedor hero tenga pos relativa */
+        @media (min-width: 2000px) {
+            .hero-text h1 {
+                font-size: 7rem;
+            }
+            .description-text {
+                font-size: 2.6rem;
+            }
+            .hero-text {
+                top: 30%;
+            }
+        }
+
         .hero {
             position: relative;
         }
@@ -216,19 +263,19 @@
     <!-- imagen del carro a ancho completo: carro-inicio.png desde carpeta fotos -->
     <img class="hero-image" src="fotos/carro-inicio.png" alt="Vehículo principal | Akinnova">
 
-    <!-- barra blanca: MÁS LARGA (ocupa 94% del ancho), MENOS ANCHA (padding vertical reducido), más abajo (top:70px) -->
+    <!-- barra blanca: EL DOBLE DE LARGA (width 98%, casi toda la pantalla) y LA MITAD DE ANCHA (padding vertical 6px) -->
     <div class="navbar-overlay">
         <img class="logo-img" src="fotos/akinnova-logo.png" alt="Akinnova Logo">
         <span class="siempre-nuevo">Siempre Nuevo</span>
     </div>
 
-    <!-- Texto principal con letras más grandes -->
+    <!-- Texto principal con itálica (cursiva) y más arriba (top:28% en lugar de 48%) -->
     <div class="hero-text">
         <h1>Impulsando el<br>Dealer del Futuro</h1>
     </div>
 </section>
 
-<!-- Frase debajo de la imagen, centrada y color negro, también con tipografía más grande -->
+<!-- Frase debajo de la imagen: letras MÁS GRANDES (2.2rem de base, responsive crece) -->
 <div class="description-section">
     <p class="description-text">
         Conectamos visión, innovación y talento para transformar el concesionario en un ecosistema ágil, rentable y centrado en el cliente.
