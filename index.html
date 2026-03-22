@@ -2,10 +2,10 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Akinnova | Conectamos visión, innovación y talento</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Akinnova | Dealer del Futuro</title>
     <!-- Fuente Poppins (Google Fonts) -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,439 +15,200 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #ffffff;
-            overflow-x: hidden;
+            background-color: #ffffff;   /* fondo blanco general, la sección principal será igual */
         }
 
-        /* Contenedor principal que asegura que la imagen ocupe todo el ancho */
+        /* contenedor principal: asegura que la imagen ocupe todo el ancho y posición relativa para la barra superpuesta */
         .hero {
             position: relative;
             width: 100%;
-            min-height: 100vh; /* Para que cubra al menos el alto de la ventana, pero puede crecer según contenido */
-            background-image: url('fotos/carro-inicio.png');
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
-            /* Para que la imagen ocupe todo el ancho y alto manteniendo proporción, pero cubriendo el área */
-            display: flex;
-            flex-direction: column;
+            /* la imagen de fondo ocupará todo el ancho con altura definida, pero usaremos img para mantener la relación y cubrir */
         }
 
-        /* Barra blanca superior (transparente con fondo blanco sólido según PDF: barra blanca por encima de la imagen) */
-        .navbar {
-            background-color: #ffffff;
+        /* imagen que ocupa todo el ancho de la hoja (exactamente como en el PDF: imagen real a ancho completo) */
+        .hero-image {
             width: 100%;
-            padding: 1rem 2rem;
+            display: block;
+            height: auto;
+            /* la imagen mantiene su proporción, ocupando 100% del ancho. Si se desea un alto fijo podría usarse, pero PDF sugiere ancho completo */
+        }
+
+        /* barra blanca flotante sobre la imagen: esquinas redondeadas, no ocupa todo el ancho, posicionada encima */
+        .navbar-overlay {
+            position: absolute;
+            top: 30px;          /* separación desde arriba, como en boceto */
+            left: 5%;
+            right: 5%;
+            width: 90%;         /* para que no llegue a bordes, esquinas redondeadas */
+            background-color: #ffffff;
+            border-radius: 60px;   /* esquinas muy redondeadas, estilo barra moderna */
+            padding: 16px 32px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            flex-wrap: wrap;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-            /* opcional sombra suave */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(0px); /* sólido blanco, sin transparencia */
+            z-index: 20;
+            transition: all 0.2s ease;
         }
 
-        /* Logo izquierda */
-        .logo-area {
-            display: flex;
-            align-items: center;
-        }
-
+        /* logo dentro de la barra */
         .logo-img {
-            height: 50px; /* ajuste según proporción original del logo */
+            height: 48px;
             width: auto;
-            max-width: 180px;
             display: block;
+            object-fit: contain;
         }
 
-        /* Texto "Siempre Nuevo" en azul #0c3a6a */
+        /* texto "Siempre Nuevo" con color azul exacto #0c3a6a */
         .siempre-nuevo {
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
-            font-size: 1.4rem;
-            color: #0c3a6a;
+            font-size: 1.6rem;
             letter-spacing: -0.3px;
-            white-space: nowrap;
+            color: #0c3a6a;
+            margin: 0;
+            line-height: 1.2;
         }
 
-        /* Ajuste responsive: si la pantalla es muy pequeña, reducir tamaño fuente */
-        @media (max-width: 550px) {
-            .navbar {
-                padding: 0.8rem 1.2rem;
-            }
-            .siempre-nuevo {
-                font-size: 1.1rem;
+        /* contenedor del texto principal (sobre la imagen, arriba del carro) */
+        .hero-text {
+            position: absolute;
+            top: 40%;            /* centrado verticalmente según boceto, pero flexible con media queries */
+            left: 0;
+            right: 0;
+            text-align: center;
+            z-index: 15;
+            transform: translateY(-50%);
+            padding: 0 20px;
+        }
+
+        .hero-text h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 3.8rem;
+            line-height: 1.2;
+            color: white;
+            text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.6), 2px 2px 4px rgba(0, 0, 0, 0.4);
+            margin: 0;
+            letter-spacing: -0.02em;
+        }
+
+        /* línea debajo de la imagen: texto descriptivo centrado, color negro */
+        .description-section {
+            max-width: 1100px;
+            margin: 60px auto 80px auto;
+            padding: 0 24px;
+            text-align: center;
+        }
+
+        .description-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #000000;        /* negro puro */
+            line-height: 1.4;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* para asegurar que en móviles el texto del h1 no se desborde */
+        @media (max-width: 768px) {
+            .navbar-overlay {
+                padding: 12px 24px;
+                top: 20px;
+                width: 90%;
+                left: 5%;
+                right: 5%;
             }
             .logo-img {
-                height: 40px;
+                height: 36px;
             }
-        }
-
-        /* Contenedor para el texto central (debajo de la imagen, pero dentro del hero para que esté posicionado sobre la imagen? 
-           Según el diseño: "abajo de la imagen tiene que decir: Conectamos visión, innovación y talento ... centrado y de color negro"
-           Dado que la imagen ocupa todo el ancho y la barra blanca va encima, el texto debe ubicarse en la parte inferior de la sección hero, 
-           centrado horizontalmente, con fondo semitransparente o directamente sobre la imagen? 
-           Para respetar la instrucción visual del PDF (parece que el texto flota sobre la parte inferior de la imagen, con fondo negro/transparente? 
-           Pero el requerimiento dice "abajo de la imagen" y "centrado y de color negro". 
-           La mejor interpretación: el texto está posicionado en la parte inferior de la imagen (sobre ella) pero con contraste, o justo debajo? 
-           Analizando el PDF adjunto: la imagen de carro-inicio probablemente es un gráfico amplio y debajo (dentro del mismo banner) va el eslogan.
-           Para cumplir con "abajo de la imagen", haremos que el texto aparezca en la parte baja de la sección hero, con un fondo negro translúcido o 
-           directamente con color negro y tipografía destacada, centrado, con suficiente contraste para leer sobre la imagen. 
-           Pero también podría ser que debajo de la imagen (fuera de la imagen) vaya el texto, pero la indicación visual del PDF muestra texto encima.
-           Dado que el PDF "1.pdf" muestra en página 1 un diseño con ese texto grande sobre la imagen inferior. Lo haremos profesional: 
-           Contenedor inferior dentro del hero, centrado, texto negro con sombra o fondo suave. */
-        .hero-text {
-            flex: 1;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            padding: 3rem 2rem 4rem 2rem;
-            text-align: center;
-            margin-top: auto; /* empuja el texto hacia abajo */
-        }
-
-        .main-quote {
-            max-width: 900px;
-            background-color: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(2px);
-            border-radius: 20px;
-            padding: 1.5rem 2rem;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            font-weight: 600;
-            font-size: 1.8rem;
-            line-height: 1.3;
-            color: #000000;
-            font-family: 'Poppins', sans-serif;
-            letter-spacing: -0.2px;
-        }
-
-        /* Para pantallas más pequeñas ajustamos tamaño de texto */
-        @media (max-width: 768px) {
-            .main-quote {
-                font-size: 1.3rem;
-                padding: 1rem 1.5rem;
+            .siempre-nuevo {
+                font-size: 1.2rem;
+                font-weight: 600;
+            }
+            .hero-text h1 {
+                font-size: 2rem;
+                text-shadow: 3px 3px 8px rgba(0,0,0,0.7);
             }
             .hero-text {
-                padding: 2rem 1rem 3rem 1rem;
+                top: 45%;
+            }
+            .description-text {
+                font-size: 1.2rem;
+            }
+            .description-section {
+                margin: 40px auto 50px auto;
             }
         }
 
         @media (max-width: 480px) {
-            .main-quote {
-                font-size: 1.1rem;
-                padding: 0.8rem 1rem;
+            .navbar-overlay {
+                padding: 10px 20px;
+            }
+            .logo-img {
+                height: 30px;
+            }
+            .siempre-nuevo {
+                font-size: 1rem;
+            }
+            .hero-text h1 {
+                font-size: 1.6rem;
+            }
+            .description-text {
+                font-size: 1rem;
             }
         }
 
-        /* Opcional: Sección de contenido extra? Sólo por si el diseño requiere más información luego, pero la consigna es solo la parte inicial.
-           Sin embargo, también más abajo el PDF contiene otros elementos como Misión, líneas de trabajo, equipo, etc. 
-           Como el requerimiento principal es mejorar la página web con el boceto del PDF, pero el usuario dijo "vamos a ir por partes, primero coloca la imagen de carro-inicio tal cual esta en el pdf, o sea que ocupe todo el ancho, coloca la barra blanca por encima de la imagen, en la barra a la izquierda el logo y derecha Siempre Nuevo en azul, abajo de la imagen el texto centrado y negro". 
-           Por ahora haremos exactamente esa primera parte, pero como es una página completa, luego se pueden ir agregando las secciones de mision, visión, líneas de trabajo, etc.
-           Para que la página sea completa y muestre el resto del contenido (que ya teníamos de la web anterior) pero integrando este nuevo hero, vamos a agregar las otras secciones mencionadas en el PDF: Misión, Visión, Propósito, Líneas de trabajo, Consultorías, Alianzas estratégicas, Equipo, etc. 
-           De esta manera entregamos una página mejorada con el nuevo diseño hero solicitado, y además mantenemos la información de la empresa. 
-           El usuario menciona "la que hicimos está bien pero tenemos que mejorarla con el boceto que te adjunte en el pdf", así que debemos integrar ambos.
-           Por ello después del hero agregaremos el resto de contenido manteniendo colores, tipografía Poppins, azul #0c3a6a, blanco, y usando las imágenes mencionadas: gente.png, marco.png, julio.png, final2.png, etc.
-        */
-
-        /* Estilos para el resto de secciones */
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        section {
-            padding: 4rem 0;
-        }
-
-        .bg-light {
-            background-color: #f9fafc;
-        }
-
-        h2 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: #0c3a6a;
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: #4b5563;
-            margin-bottom: 2.5rem;
-            max-width: 700px;
-        }
-
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .card {
-            background: white;
-            border-radius: 24px;
-            padding: 1.8rem;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.1);
-        }
-        .card h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #0c3a6a;
-            margin-bottom: 0.75rem;
-        }
-        .card p, .card li {
-            color: #2d3e50;
-            line-height: 1.5;
-        }
-
-        .list-styled {
-            list-style: none;
-            padding-left: 0;
-        }
-        .list-styled li {
-            margin-bottom: 0.6rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-        .list-styled li::before {
-            content: "✓";
-            color: #0c3a6a;
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
-
-        .team-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-        }
-        .team-card {
-            background: white;
-            border-radius: 28px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-            flex: 1;
-            min-width: 240px;
-            max-width: 280px;
-            text-align: center;
-            transition: all 0.2s;
-        }
-        .team-img {
-            width: 100%;
-            height: 260px;
-            object-fit: cover;
-            background-color: #eef2f6;
-        }
-        .team-info {
-            padding: 1.5rem 1rem;
-        }
-        .team-name {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #0c3a6a;
-            margin-bottom: 0.3rem;
-        }
-        .team-role {
-            font-size: 0.9rem;
-            color: #5a6874;
-            font-weight: 500;
-        }
-
-        .btn-azul {
-            display: inline-block;
-            background-color: #0c3a6a;
-            color: white;
-            padding: 0.8rem 2rem;
-            border-radius: 40px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: background 0.2s;
-        }
-        .btn-azul:hover {
-            background-color: #0a2e55;
-        }
-
-        footer {
-            background-color: #0c3a6a;
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-        }
-        .footer-logo-small {
-            height: 40px;
-            filter: brightness(0) invert(1);
-            margin-bottom: 0.8rem;
-        }
-
-        @media (max-width: 768px) {
-            .grid-2, .grid-3 {
-                grid-template-columns: 1fr;
+        /* para pantallas muy grandes, ajustar tamaño texto */
+        @media (min-width: 1400px) {
+            .hero-text h1 {
+                font-size: 5rem;
             }
-            h2 {
+            .description-text {
                 font-size: 1.8rem;
             }
-            section {
-                padding: 2.5rem 0;
-            }
         }
 
-        /* FAVICON dinamico: se usará akinnova-logo.png como ícono de pestaña. 
-           Como no hay un enlace directo, pero el requerimiento dice "quiero que akinnova-logo tambien se vea arriba como logo de pestaña"
-           Así que agregamos link rel="icon" */
+        /* opcional: asegurar que el contenedor hero tenga pos relativa */
+        .hero {
+            position: relative;
+        }
+
+        /* pequeño detalle de foco para evitar desbordes */
+        img {
+            max-width: 100%;
+        }
     </style>
-    <!-- Logo de pestaña (favicon) usando akinnova-logo.png -->
-    <link rel="icon" type="image/png" href="fotos/akinnova-logo.png">
-    <!-- También para dispositivos Apple -->
-    <link rel="apple-touch-icon" href="fotos/akinnova-logo.png">
 </head>
 <body>
 
-    <!-- Sección Hero con imagen de fondo a todo ancho -->
-    <div class="hero">
-        <!-- Barra blanca superior -->
-        <div class="navbar">
-            <div class="logo-area">
-                <img class="logo-img" src="fotos/akinnova-logo.png" alt="Akinnova Logo">
-            </div>
-            <div class="siempre-nuevo">Siempre Nuevo</div>
-        </div>
-        <!-- Texto centrado abajo de la imagen (sobre la misma, con fondo semi-transparente para legibilidad) -->
-        <div class="hero-text">
-            <div class="main-quote">
-                Conectamos visión, innovación y talento para transformar el concesionario en un ecosistema ágil, rentable y centrado en el cliente.
-            </div>
-        </div>
+<section class="hero">
+    <!-- imagen del carro a ancho completo: carro-inicio.png -->
+    <img class="hero-image" src="fotos/carro-inicio.png" alt="Vehículo principal | Akinnova">
+
+    <!-- barra blanca con esquinas redondeadas: logo a la izquierda, Siempre Nuevo en azul a la derecha -->
+    <div class="navbar-overlay">
+        <img class="logo-img" src="fotos/akinnova-logo.png" alt="Akinnova Logo">
+        <span class="siempre-nuevo">Siempre Nuevo</span>
     </div>
 
-    <!-- Resto del contenido: Misión, Visión, Propósito, Líneas de trabajo, etc basado en el PDF original y mejora -->
-    <main>
-        <!-- Sección Misión / Visión / Propósito (trío) -->
-        <section>
-            <div class="container">
-                <div class="grid-3" style="gap: 2rem;">
-                    <div class="card" style="text-align: center;">
-                        <h3>🚀 Misión</h3>
-                        <p style="margin-top: 0.8rem;">Ser el socio estratégico clave en la evolución integral del negocio automotriz, integrando tecnología y procesos disruptivos y ágiles.</p>
-                    </div>
-                    <div class="card" style="text-align: center;">
-                        <h3>👁️ Visión</h3>
-                        <p style="margin-top: 0.8rem;">Transformar el concesionario en un ecosistema ágil, rentable y centrado en el cliente mediante innovación y talento.</p>
-                    </div>
-                    <div class="card" style="text-align: center;">
-                        <h3>🎯 Propósito</h3>
-                        <p style="margin-top: 0.8rem;">Potenciar la evolución del sector automotriz con soluciones estratégicas y tecnológicas que generen valor tangible.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <!-- Texto "Impulsando el Dealer del Futuro" centrado, blanco con sombra -->
+    <div class="hero-text">
+        <h1>Impulsando el<br>Dealer del Futuro</h1>
+    </div>
+</section>
 
-        <!-- Líneas de trabajo + Consultorías y Alianzas (según PDF) -->
-        <section class="bg-light">
-            <div class="container">
-                <h2>Líneas de trabajo</h2>
-                <p class="section-subtitle">Enfoques integrales para impulsar la transformación del concesionario.</p>
-                <div class="grid-2" style="margin-bottom: 2rem;">
-                    <div class="card">
-                        <h3>📊 Consultorías</h3>
-                        <ul class="list-styled">
-                            <li>Personalización de empresas automotrices: diagnóstico, estructura organizacional y gobierno corporativo.</li>
-                            <li>Descubrimiento de Nuevos Revenue Streams: Programas como MOK para reparaciones menores.</li>
-                            <li>Transformación Digital, Procesos Ágiles e IA: integración tecnológica, automatización y optimización.</li>
-                            <li>Gestión Comercial y Experiencia del Cliente: procesos y metodologías para incrementar ingresos y eficiencia.</li>
-                            <li>Soluciones de Evaluación de Liderazgo y Talento: herramientas y partners para diagnóstico de equipos.</li>
-                        </ul>
-                    </div>
-                    <div class="card">
-                        <h3>🤝 Alianzas estratégicas</h3>
-                        <ul class="list-styled">
-                            <li>Integraciones con Plataformas Tecnológicas: soluciones de datos y análisis de mercado.</li>
-                            <li>Acuerdos Comerciales con Líderes en Sudamérica: sinergias para potenciar portafolio y cobertura.</li>
-                            <li>Evaluación y Desarrollo de Liderazgo: assessment, coaching ejecutivo y desarrollo de equipos.</li>
-                            <li>Alianzas para escalar tecnologías disruptivas en el ecosistema automotor.</li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- También se menciona un bloque de Evaluación y Desarrollo adicional -->
-                <div class="card" style="margin-top: 0.5rem;">
-                    <h3>🌟 Evaluación y Desarrollo de Liderazgo</h3>
-                    <p>Assessment, coaching ejecutivo y desarrollo de equipos de alto rendimiento, diseñado para potenciar habilidades directivas y generar culturas de innovación.</p>
-                </div>
-            </div>
-        </section>
+<!-- sección debajo de la imagen: frase descriptiva centrada en negro -->
+<div class="description-section">
+    <p class="description-text">
+        Conectamos visión, innovación y talento para transformar el concesionario en un ecosistema ágil, rentable y centrado en el cliente.
+    </p>
+</div>
 
-        <!-- Equipo: imágenes gente.png, marco.png, julio.png según PDF (también se mencionan fotos) -->
-        <section>
-            <div class="container">
-                <h2>Equipo</h2>
-                <p class="section-subtitle">Líderes que transforman realidades, impulsan tecnología y desarrollan talento.</p>
-                <div class="team-grid">
-                    <div class="team-card">
-                        <img class="team-img" src="fotos/gente.png" alt="Constructor de culturas organizacionales">
-                        <div class="team-info">
-                            <div class="team-name">Carlos Méndez</div>
-                            <div class="team-role">CEO & Fundador</div>
-                            <p style="font-size: 0.85rem; margin-top: 0.5rem;">Constructor de culturas organizacionales centradas en innovación, autonomía y orientación al cliente. Experiencia en IA aplicada y reestructuración.</p>
-                        </div>
-                    </div>
-                    <div class="team-card">
-                        <img class="team-img" src="fotos/marco.png" alt="Marco">
-                        <div class="team-info">
-                            <div class="team-name">Marco Rivera</div>
-                            <div class="team-role">Director de Transformación</div>
-                            <p style="font-size: 0.85rem; margin-top: 0.5rem;">Líder en revertir tendencias negativas en negocios internacionales, estructuración de información y tecnología para decisiones acertadas.</p>
-                        </div>
-                    </div>
-                    <div class="team-card">
-                        <img class="team-img" src="fotos/julio.png" alt="Julio">
-                        <div class="team-info">
-                            <div class="team-name">Julio Herrera</div>
-                            <div class="team-role">Director de Estrategia Comercial</div>
-                            <p style="font-size: 0.85rem; margin-top: 0.5rem;">Asesora a líderes gerenciales en transformación comercial, mejora de propuesta de valor y rentabilidad del negocio.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- También podemos añadir una breve descripción adicional del equipo con imagen final2.png -->
-                <div style="margin-top: 3rem; text-align: center;">
-                    <img src="fotos/final2.png" alt="Equipo colaborativo" style="max-width: 100%; border-radius: 32px; box-shadow: 0 8px 20px rgba(0,0,0,0.05);">
-                </div>
-            </div>
-        </section>
+<!-- Se añade un pequeño espacio para que respire el contenido, como solicita primera etapa -->
+<!-- No se incluye más contenido por ahora, solo lo pedido: barra, imagen full width, textos -->
 
-        <!-- Sección adicional: Convicción de valor agregado -->
-        <section class="bg-light">
-            <div class="container" style="text-align: center;">
-                <h2 style="max-width: 800px; margin: 0 auto 1rem auto;">Transformación real, resultados medibles</h2>
-                <p style="font-size: 1.1rem; max-width: 700px; margin: 0 auto 2rem auto;">Acompañamos a concesionarios y empresas automotrices en su evolución digital, cultural y operativa con metodologías ágiles e inteligencia artificial.</p>
-                <a href="#" class="btn-azul">Descubre cómo</a>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <!-- Mostramos también el logo en footer con imagen pequeña -->
-            <img src="fotos/akinnova-logo.png" alt="Akinnova" class="footer-logo-small" style="height: 40px; filter: brightness(0) invert(1); margin-bottom: 0.8rem;">
-            <p style="opacity: 0.8;">© 2025 Akinnova — Conectamos visión, innovación y talento para transformar el concesionario.</p>
-            <p style="font-size: 0.8rem; margin-top: 0.8rem;">Siempre Nuevo | Ecosistema ágil, rentable y centrado en el cliente</p>
-        </div>
-    </footer>
-
-    <!-- Aseguramos que todas las imágenes se carguen sin problemas, pero si alguna falta se mostrará alternativa -->
-    <!-- Además se agregó el favicon dinámico con akinnova-logo.png en pestaña -->
 </body>
 </html>
