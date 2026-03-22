@@ -97,20 +97,20 @@
 
         /* ========== SECCIÓN MISIÓN, VISIÓN, PROPÓSITO ========== */
         .mvp-wrapper {
-            max-width: 1400px;
-            margin: 0 auto 80px auto;
+            max-width: 1200px;
+            margin: 0 auto 100px auto;
             padding: 0 40px;
         }
 
-        /* Contenedor de los 3 carteles SUPERIORES - PEGADOS (sin gap) */
+        /* CARTELES SUPERIORES - PEGADOS, MISMA ALTURA, MÁS DELGADOS */
         .top-cards {
             display: flex;
             justify-content: center;
             align-items: stretch;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
 
-        /* Los tres carteles superiores: uno al lado del otro sin espacio */
+        /* Cada cartel: misma altura, más delgados (altura reducida) */
         .top-card {
             cursor: pointer;
             transition: all 0.3s ease;
@@ -120,161 +120,168 @@
             justify-content: center;
             font-weight: 700;
             font-family: 'Poppins', sans-serif;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-
-        /* Cartel del medio (más grande) */
-        .top-card.center-top {
-            width: 320px;
-            height: 170px;
-            font-size: 2rem;
-            background-color: #0c3a6a;  /* azul cuando está activo */
-            color: white;
-            border-radius: 28px;
-            margin: 0;
-            z-index: 2;
-        }
-
-        /* Carteles laterales (más pequeños) - cuando NO están activos tienen fondo #d9d9d9 */
-        .top-card.side-top {
-            width: 240px;
-            height: 140px;
-            font-size: 1.5rem;
-            background-color: #d9d9d9;  /* gris por defecto */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 280px;
+            height: 110px;           /* más delgados */
+            font-size: 1.8rem;
+            background-color: #d9d9d9;
             color: #1e2a3a;
-            border-radius: 24px;
             margin: 0;
         }
 
-        /* Cuando un cartel lateral está ACTIVO (el que muestra descripción) cambia a azul */
-        .top-card.side-top.active-top {
+        /* Borde redondeado: izquierdo, central, derecho con bordes específicos para que parezcan un solo grupo */
+        .top-card:first-child {
+            border-radius: 50px 0 0 50px;
+        }
+
+        .top-card:last-child {
+            border-radius: 0 50px 50px 0;
+        }
+
+        /* Cartel del medio (posición 1 en índice) no tiene bordes redondeados laterales */
+        .top-card.center-card {
+            border-radius: 0;
+        }
+
+        /* Cartel activo (el que está en el medio y muestra la descripción) - SIEMPRE AZUL */
+        .top-card.active-card {
             background-color: #0c3a6a;
             color: white;
         }
 
-        /* Cuando el cartel central está activo (por defecto) ya tiene azul, si se activa otro, el central debe ser gris */
-        .top-card.center-top.inactive-center {
-            background-color: #d9d9d9;
-            color: #1e2a3a;
-        }
-
-        /* ========== RECUADROS INFERIORES (los que muestran título y descripción) ========== */
+        /* RECUADROS INFERIORES - PEGADOS LOS 3 */
         .bottom-panels {
             display: flex;
             justify-content: center;
             align-items: stretch;
-            gap: 30px;
-            margin-top: 20px;
-            flex-wrap: wrap;
+            margin-top: 30px;
         }
 
-        /* Panel del medio: más grande, color #0c3a6a, muestra título + descripción completa */
-        .main-panel {
-            flex: 0 0 480px;
-            background-color: #0c3a6a;
-            border-radius: 32px;
-            padding: 40px 35px;
-            color: white;
-            text-align: center;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+        /* Cada panel inferior, pegados sin espacio */
+        .info-panel {
             transition: all 0.3s ease;
-        }
-
-        .main-panel h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 25px;
-            letter-spacing: -0.5px;
-        }
-
-        .main-panel p {
-            font-size: 1.25rem;
-            line-height: 1.6;
-            font-weight: 500;
-            opacity: 0.95;
-        }
-
-        /* Paneles laterales: más pequeños, color #0f4472, solo muestran el título */
-        .side-panel {
-            flex: 0 0 280px;
-            background-color: #0f4472;
-            border-radius: 28px;
-            padding: 30px 20px;
-            color: white;
             text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
         }
 
-        .side-panel:hover {
-            transform: translateY(-5px);
+        /* Panel central: más alto, color #0c3a6a, muestra título y descripción */
+        .info-panel.center-panel {
             background-color: #0c3a6a;
+            color: white;
+            width: 400px;
+            min-height: 280px;
+            padding: 35px 30px;
+            border-radius: 0;
+        }
+
+        .center-panel h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .center-panel p {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            font-weight: 500;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+
+        /* Paneles laterales: menos altura, color #0f4472, solo título */
+        .info-panel.side-panel {
+            background-color: #0f4472;
+            color: white;
+            width: 280px;
+            min-height: 200px;      /* menos altura que el central */
+            padding: 25px 20px;
+            border-radius: 0;
+            cursor: pointer;
         }
 
         .side-panel h3 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
             margin: 0;
-            letter-spacing: -0.3px;
         }
 
-        /* Responsive para los nuevos paneles */
+        /* Bordes redondeados solo en los extremos de los 3 paneles inferiores */
+        .bottom-panels .info-panel:first-child {
+            border-radius: 40px 0 0 40px;
+        }
+
+        .bottom-panels .info-panel:last-child {
+            border-radius: 0 40px 40px 0;
+        }
+
+        /* Efecto hover en paneles laterales */
+        .side-panel:hover {
+            background-color: #0c3a6a;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
         @media (max-width: 1000px) {
-            .main-panel {
-                flex: 0 0 420px;
-                padding: 35px 30px;
+            .top-card {
+                width: 240px;
+                height: 95px;
+                font-size: 1.5rem;
             }
-            .main-panel h2 {
-                font-size: 2.2rem;
+            .info-panel.center-panel {
+                width: 340px;
+                min-height: 260px;
+                padding: 30px 25px;
             }
-            .side-panel {
-                flex: 0 0 240px;
-                padding: 25px 15px;
+            .center-panel h2 {
+                font-size: 1.9rem;
+            }
+            .center-panel p {
+                font-size: 1rem;
+            }
+            .info-panel.side-panel {
+                width: 240px;
+                min-height: 180px;
             }
             .side-panel h3 {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
             }
         }
 
         @media (max-width: 850px) {
-            .bottom-panels {
-                flex-direction: column;
-                align-items: center;
-                gap: 20px;
+            .mvp-wrapper {
+                padding: 0 20px;
             }
-            .main-panel {
-                flex: 0 0 auto;
-                width: 90%;
-                max-width: 500px;
-            }
-            .side-panel {
-                flex: 0 0 auto;
-                width: 80%;
-                max-width: 350px;
-            }
-        }
-
-        /* Responsive para los carteles superiores pegados */
-        @media (max-width: 750px) {
             .top-cards {
+                flex-wrap: wrap;
+                border-radius: 50px;
+                gap: 12px;
+            }
+            .top-card:first-child,
+            .top-card:last-child,
+            .top-card.center-card {
+                border-radius: 50px;
+            }
+            .top-card {
+                width: 260px;
+                height: 95px;
+            }
+            .bottom-panels {
                 flex-direction: column;
                 align-items: center;
                 gap: 15px;
             }
-            .top-card.center-top, .top-card.side-top {
-                width: 280px;
-                height: 120px;
-                border-radius: 28px;
+            .info-panel.center-panel,
+            .info-panel.side-panel {
+                border-radius: 40px !important;
+                width: 90%;
+                max-width: 400px;
             }
-            .top-card.center-top {
-                font-size: 1.8rem;
-            }
-            .top-card.side-top {
-                font-size: 1.4rem;
+            .info-panel.side-panel {
+                min-height: 100px;
             }
         }
 
@@ -363,25 +370,28 @@
             .description-text {
                 font-size: 2.4rem;
             }
-            .top-card.center-top {
-                width: 380px;
-                height: 190px;
-                font-size: 2.3rem;
+            .top-card {
+                width: 320px;
+                height: 125px;
+                font-size: 2rem;
             }
-            .top-card.side-top {
-                width: 280px;
-                height: 160px;
-                font-size: 1.7rem;
+            .info-panel.center-panel {
+                width: 460px;
+                min-height: 310px;
+                padding: 40px 35px;
             }
-            .main-panel {
-                flex: 0 0 550px;
-                padding: 50px 45px;
+            .center-panel h2 {
+                font-size: 2.5rem;
             }
-            .main-panel h2 {
-                font-size: 2.8rem;
+            .center-panel p {
+                font-size: 1.2rem;
             }
-            .main-panel p {
-                font-size: 1.4rem;
+            .info-panel.side-panel {
+                width: 320px;
+                min-height: 220px;
+            }
+            .side-panel h3 {
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -405,119 +415,153 @@
     </p>
 </div>
 
-<!-- SECCIÓN MISIÓN, VISIÓN Y PROPÓSITO -->
+<!-- SECCIÓN MISIÓN, VISIÓN, PROPÓSITO -->
 <div class="mvp-wrapper">
-    <!-- CARTELES SUPERIORES: PEGADOS (sin espacio entre ellos) -->
-    <div class="top-cards">
-        <!-- Visión (izquierda) - más pequeño -->
-        <div class="top-card side-top" data-value="vision" id="topVision">
-            Visión
-        </div>
-        <!-- Misión (centro) - más grande, por defecto activo -->
-        <div class="top-card center-top" data-value="mision" id="topMision">
-            Misión
-        </div>
-        <!-- Propósito (derecha) - más pequeño -->
-        <div class="top-card side-top" data-value="proposito" id="topProposito">
-            Propósito
-        </div>
+    <!-- CARTELES SUPERIORES: 3 posiciones que rotan dinámicamente -->
+    <div class="top-cards" id="topCardsContainer">
+        <!-- Los carteles se generan dinámicamente con JS para mantener el orden correcto -->
     </div>
 
-    <!-- RECUADROS INFERIORES: el del medio es grande con descripción, los laterales solo título -->
-    <div class="bottom-panels">
-        <!-- Panel izquierdo (Visión): solo título, color #0f4472 -->
-        <div class="side-panel" id="sideVision">
-            <h3>Visión</h3>
-        </div>
-
-        <!-- Panel central (Misión): muestra título y descripción completa, color #0c3a6a, más grande -->
-        <div class="main-panel" id="mainPanel">
-            <h2 id="mainTitle">Misión</h2>
-            <p id="mainDesc">Acompañar a concesionarios, fábricas y empresas relacionadas en la implementación de soluciones tecnológicas simples y escalables.</p>
-        </div>
-
-        <!-- Panel derecho (Propósito): solo título, color #0f4472 -->
-        <div class="side-panel" id="sideProposito">
-            <h3>Propósito</h3>
-        </div>
+    <!-- RECUADROS INFERIORES: PEGADOS, el central más alto con descripción, laterales menos altos con solo título -->
+    <div class="bottom-panels" id="bottomPanelsContainer">
+        <!-- Generado dinámicamente -->
     </div>
 </div>
 
 <script>
-    // Contenidos
-    const content = {
+    // Datos de cada item
+    const itemsData = {
         vision: {
-            title: "Visión",
-            description: "Ser el socio estratégico clave en la evolución integral del negocio automotriz, integrando tecnología y procesos disruptivos y ágiles."
+            nombre: "Visión",
+            descripcion: "Ser el socio estratégico clave en la evolución integral del negocio automotriz, integrando tecnología y procesos disruptivos y ágiles."
         },
         mision: {
-            title: "Misión",
-            description: "Acompañar a concesionarios, fábricas y empresas relacionadas en la implementación de soluciones tecnológicas simples y escalables."
+            nombre: "Misión",
+            descripcion: "Acompañar a concesionarios, fábricas y empresas relacionadas en la implementación de soluciones tecnológicas simples y escalables."
         },
         proposito: {
-            title: "Propósito",
-            description: "Transformar la industria automotriz hacia un modelo más ágil, digital y centrado en el nuevo cliente en la región del Pacífico."
+            nombre: "Propósito",
+            descripcion: "Transformar la industria automotriz hacia un modelo más ágil, digital y centrado en el nuevo cliente en la región del Pacífico."
         }
     };
 
-    // Elementos superiores
-    const topVision = document.getElementById('topVision');
-    const topMision = document.getElementById('topMision');
-    const topProposito = document.getElementById('topProposito');
-    
-    // Elementos inferiores
-    const mainTitle = document.getElementById('mainTitle');
-    const mainDesc = document.getElementById('mainDesc');
-    const sideVisionPanel = document.getElementById('sideVision');
-    const sidePropositoPanel = document.getElementById('sideProposito');
+    // Orden inicial: [izquierda, centro, derecha] -> [visión, misión, propósito]
+    let currentOrder = ['vision', 'mision', 'proposito'];
 
-    // Función para actualizar todo: carteles superiores + paneles inferiores
-    function setActive(activeKey) {
-        // 1. ACTUALIZAR CARTELES SUPERIORES (pegados, con colores)
-        // Primero, remover clases especiales de todos
-        topVision.classList.remove('active-top');
-        topMision.classList.remove('inactive-center');
-        topProposito.classList.remove('active-top');
+    // Función para renderizar los carteles superiores según el orden actual
+    function renderTopCards() {
+        const container = document.getElementById('topCardsContainer');
+        if (!container) return;
         
-        // Resetear colores base: los laterales siempre empiezan con #d9d9d9 por defecto, el central con azul
-        // Pero si el activo es visión o propósito, el central debe ponerse gris y el lateral activo azul.
-        if (activeKey === 'vision') {
-            topVision.classList.add('active-top');      // visión se pone azul
-            topMision.classList.add('inactive-center'); // misión se vuelve gris
-            topProposito.classList.remove('active-top');
-            // visión ya tiene side-top, pero con active-top cambia a azul
-        } 
-        else if (activeKey === 'proposito') {
-            topProposito.classList.add('active-top');   // propósito azul
-            topMision.classList.add('inactive-center'); // misión gris
-            topVision.classList.remove('active-top');
-        }
-        else if (activeKey === 'mision') {
-            // misión activa: central debe ser azul (sin inactive-center), laterales grises
-            topMision.classList.remove('inactive-center');
-            topVision.classList.remove('active-top');
-            topProposito.classList.remove('active-top');
-        }
-
-        // 2. ACTUALIZAR PANEL INFERIOR CENTRAL (contenido dinámico)
-        mainTitle.textContent = content[activeKey].title;
-        mainDesc.textContent = content[activeKey].description;
-
-        // 3. Asegurar que el panel central siempre muestre la info correcta
-        // Los paneles laterales solo muestran título estático, pero también son clickeables
+        container.innerHTML = '';
+        
+        currentOrder.forEach((key, index) => {
+            const card = document.createElement('div');
+            card.className = 'top-card';
+            // El que está en el centro (índice 1) es el activo (azul)
+            if (index === 1) {
+                card.classList.add('active-card');
+            }
+            // Aplicar bordes redondeados según posición
+            if (index === 0) {
+                card.style.borderRadius = '50px 0 0 50px';
+            } else if (index === 2) {
+                card.style.borderRadius = '0 50px 50px 0';
+            } else {
+                card.style.borderRadius = '0';
+            }
+            card.textContent = itemsData[key].nombre;
+            card.setAttribute('data-key', key);
+            card.setAttribute('data-index', index);
+            card.addEventListener('click', () => handleCardClick(index, key));
+            container.appendChild(card);
+        });
     }
 
-    // Eventos para los carteles SUPERIORES (click)
-    topVision.addEventListener('click', () => setActive('vision'));
-    topMision.addEventListener('click', () => setActive('mision'));
-    topProposito.addEventListener('click', () => setActive('proposito'));
-
-    // Eventos para los paneles LATERALES INFERIORES (también cambian el contenido)
-    sideVisionPanel.addEventListener('click', () => setActive('vision'));
-    sidePropositoPanel.addEventListener('click', () => setActive('proposito'));
-
-    // Inicializar estado: Misión activa por defecto
-    setActive('mision');
+    // Función para renderizar los paneles inferiores (pegados, central más alto con descripción, laterales solo título)
+    function renderBottomPanels() {
+        const container = document.getElementById('bottomPanelsContainer');
+        if (!container) return;
+        
+        container.innerHTML = '';
+        
+        // Panel izquierdo (índice 0 del orden)
+        const leftKey = currentOrder[0];
+        const leftPanel = document.createElement('div');
+        leftPanel.className = 'info-panel side-panel';
+        leftPanel.innerHTML = `<h3>${itemsData[leftKey].nombre}</h3>`;
+        leftPanel.setAttribute('data-key', leftKey);
+        leftPanel.addEventListener('click', () => moveToCenter(0));
+        
+        // Panel central (índice 1) - más alto con descripción
+        const centerKey = currentOrder[1];
+        const centerPanel = document.createElement('div');
+        centerPanel.className = 'info-panel center-panel';
+        centerPanel.innerHTML = `
+            <h2>${itemsData[centerKey].nombre}</h2>
+            <p>${itemsData[centerKey].descripcion}</p>
+        `;
+        
+        // Panel derecho (índice 2)
+        const rightKey = currentOrder[2];
+        const rightPanel = document.createElement('div');
+        rightPanel.className = 'info-panel side-panel';
+        rightPanel.innerHTML = `<h3>${itemsData[rightKey].nombre}</h3>`;
+        rightPanel.setAttribute('data-key', rightKey);
+        rightPanel.addEventListener('click', () => moveToCenter(2));
+        
+        // Aplicar bordes redondeados al grupo completo
+        leftPanel.style.borderRadius = '40px 0 0 40px';
+        rightPanel.style.borderRadius = '0 40px 40px 0';
+        centerPanel.style.borderRadius = '0';
+        
+        container.appendChild(leftPanel);
+        container.appendChild(centerPanel);
+        container.appendChild(rightPanel);
+    }
+    
+    // Función para mover un elemento al centro (cuando se hace clic en un lateral)
+    function moveToCenter(clickedIndex) {
+        if (clickedIndex === 1) return; // ya está en el centro
+        
+        const clickedKey = currentOrder[clickedIndex];
+        const centerKey = currentOrder[1];
+        
+        // Crear nuevo orden: el elemento clickeado va al centro, el que estaba en el centro se desplaza al lugar del clickeado
+        const newOrder = [...currentOrder];
+        
+        if (clickedIndex === 0) {
+            // Click izquierdo: izquierda <-> centro
+            newOrder[0] = centerKey;
+            newOrder[1] = clickedKey;
+        } else if (clickedIndex === 2) {
+            // Click derecho: derecha <-> centro
+            newOrder[2] = centerKey;
+            newOrder[1] = clickedKey;
+        }
+        
+        currentOrder = newOrder;
+        
+        // Re-renderizar todo
+        renderTopCards();
+        renderBottomPanels();
+    }
+    
+    // Manejar clic directo en carteles superiores
+    function handleCardClick(clickedIndex, clickedKey) {
+        if (clickedIndex === 1) return; // ya está activo
+        
+        // Llamar a la misma lógica de movimiento
+        moveToCenter(clickedIndex);
+    }
+    
+    // Inicializar
+    function init() {
+        renderTopCards();
+        renderBottomPanels();
+    }
+    
+    init();
 </script>
 
 </body>
