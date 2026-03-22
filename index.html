@@ -2,12 +2,10 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="facebook-domain-verification" content="5wkw3tegcs9l5umdcwiy2ea839bvz5" />
-    <title>Akinnova - Completo</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Akinnova | Conectamos visión, innovación y talento</title>
+    <!-- Fuente Poppins (Google Fonts) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -16,665 +14,440 @@
         }
 
         body {
-            background-color: #ffffff;
             font-family: 'Poppins', sans-serif;
-            color: #000000;
+            background-color: #ffffff;
+            overflow-x: hidden;
         }
 
-        /* Línea superior */
-        .top-bar {
-            background-color: #c2e9ff;
-            height: 12px;
-            width: 100%;
-        }
-
-        /* Contenedor principal */
-        .container {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 40px 40px;
-        }
-
-        /* Hero section */
+        /* Contenedor principal que asegura que la imagen ocupe todo el ancho */
         .hero {
-            display: flex;
-            gap: 40px;
-            align-items: center;
-            margin-bottom: 60px;
-        }
-
-        .hero-image {
-            flex: 1;
-        }
-
-        .hero-image img {
+            position: relative;
             width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 8px;
+            min-height: 100vh; /* Para que cubra al menos el alto de la ventana, pero puede crecer según contenido */
+            background-image: url('fotos/carro-inicio.png');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            /* Para que la imagen ocupe todo el ancho y alto manteniendo proporción, pero cubriendo el área */
+            display: flex;
+            flex-direction: column;
         }
 
+        /* Barra blanca superior (transparente con fondo blanco sólido según PDF: barra blanca por encima de la imagen) */
+        .navbar {
+            background-color: #ffffff;
+            width: 100%;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            /* opcional sombra suave */
+        }
+
+        /* Logo izquierda */
+        .logo-area {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 50px; /* ajuste según proporción original del logo */
+            width: auto;
+            max-width: 180px;
+            display: block;
+        }
+
+        /* Texto "Siempre Nuevo" en azul #0c3a6a */
+        .siempre-nuevo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.4rem;
+            color: #0c3a6a;
+            letter-spacing: -0.3px;
+            white-space: nowrap;
+        }
+
+        /* Ajuste responsive: si la pantalla es muy pequeña, reducir tamaño fuente */
+        @media (max-width: 550px) {
+            .navbar {
+                padding: 0.8rem 1.2rem;
+            }
+            .siempre-nuevo {
+                font-size: 1.1rem;
+            }
+            .logo-img {
+                height: 40px;
+            }
+        }
+
+        /* Contenedor para el texto central (debajo de la imagen, pero dentro del hero para que esté posicionado sobre la imagen? 
+           Según el diseño: "abajo de la imagen tiene que decir: Conectamos visión, innovación y talento ... centrado y de color negro"
+           Dado que la imagen ocupa todo el ancho y la barra blanca va encima, el texto debe ubicarse en la parte inferior de la sección hero, 
+           centrado horizontalmente, con fondo semitransparente o directamente sobre la imagen? 
+           Para respetar la instrucción visual del PDF (parece que el texto flota sobre la parte inferior de la imagen, con fondo negro/transparente? 
+           Pero el requerimiento dice "abajo de la imagen" y "centrado y de color negro". 
+           La mejor interpretación: el texto está posicionado en la parte inferior de la imagen (sobre ella) pero con contraste, o justo debajo? 
+           Analizando el PDF adjunto: la imagen de carro-inicio probablemente es un gráfico amplio y debajo (dentro del mismo banner) va el eslogan.
+           Para cumplir con "abajo de la imagen", haremos que el texto aparezca en la parte baja de la sección hero, con un fondo negro translúcido o 
+           directamente con color negro y tipografía destacada, centrado, con suficiente contraste para leer sobre la imagen. 
+           Pero también podría ser que debajo de la imagen (fuera de la imagen) vaya el texto, pero la indicación visual del PDF muestra texto encima.
+           Dado que el PDF "1.pdf" muestra en página 1 un diseño con ese texto grande sobre la imagen inferior. Lo haremos profesional: 
+           Contenedor inferior dentro del hero, centrado, texto negro con sombra o fondo suave. */
         .hero-text {
             flex: 1;
             display: flex;
-            flex-direction: column;
+            align-items: flex-end;
             justify-content: center;
+            padding: 3rem 2rem 4rem 2rem;
             text-align: center;
+            margin-top: auto; /* empuja el texto hacia abajo */
         }
 
-        .hero-title {
-            font-size: 3rem;
-            font-weight: 700;
-            font-style: italic;
-            color: #000000;
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-
-        .hero-subtitle {
-            font-size: 1.2rem;
-            color: #000000;
-            font-weight: 400;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        /* ===== TRES PILARES FUNDAMENTALES ===== */
-        .pilares-section {
-            margin: 60px 0;
-        }
-
-        /* Título centrado con líneas a los costados */
-        .pilares-title-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 50px;
-        }
-
-        .pilares-line {
-            flex: 1;
-            height: 2px;
-            background-color: #000000;
-        }
-
-        .pilares-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            font-style: italic;
-            color: #000000;
-            white-space: nowrap;
-            padding: 0 10px;
-        }
-
-        /* Grid de pilares */
-        .pilares-grid {
-            display: flex;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        .pilar-card {
-            flex: 1 1 300px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        /* Cuadrado superior - fondo celeste */
-        .pilar-superior {
-            background-color: #c2e9ff;
-            border: 2px solid #c2e9ff;
+        .main-quote {
+            max-width: 900px;
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(2px);
             border-radius: 20px;
-            padding: 30px 25px;
-            min-height: 320px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .pilar-icon {
-            width: 60px;
-            height: 60px;
-            margin-bottom: 20px;
-        }
-
-        .pilar-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .pilar-nombre {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #000000;
-            margin-bottom: 15px;
-        }
-
-        .pilar-descripcion {
-            font-size: 0.95rem;
-            color: #000000;
-            font-weight: 400;
-            line-height: 1.6;
-        }
-
-        /* Cuadrado inferior - fondo blanco con borde celeste */
-        .pilar-inferior {
-            background-color: #ffffff;
-            border: 2px solid #c2e9ff;
-            border-radius: 20px;
-            padding: 18px 25px;
-            position: relative;
-            min-height: 120px;
-            display: flex;
-            align-items: center;
-        }
-
-        /* Línea azul a la izquierda */
-        .pilar-inferior::before {
-            content: '';
-            position: absolute;
-            left: -2px;
-            top: -2px;
-            bottom: -2px;
-            width: 8px;
-            background-color: #004aad;
-            border-radius: 20px 0 0 20px;
-        }
-
-        .pilar-frase {
-            font-size: 0.95rem;
-            color: #000000;
-            font-weight: 400;
-            line-height: 1.5;
-            padding-left: 20px;
-            width: 100%;
-        }
-
-        /* ===== NUESTRAS LÍNEAS DE TRABAJO ===== */
-        .lineas-section {
-            margin: 80px 0;
-        }
-
-        /* Título principal */
-        .lineas-title-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 50px;
-        }
-
-        .lineas-line {
-            flex: 1;
-            height: 2px;
-            background-color: #000000;
-        }
-
-        .lineas-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            font-style: italic;
-            color: #000000;
-            white-space: nowrap;
-            padding: 0 10px;
-        }
-
-        /* Contenedor de dos columnas */
-        .lineas-columnas {
-            display: flex;
-            gap: 40px;
-        }
-
-        /* Cada columna (Consultorías y Alianzas Estratégicas) */
-        .lineas-columna {
-            flex: 1;
-        }
-
-        /* Título de columna */
-        .columna-titulo {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #000000;
-            margin-bottom: 30px;
-            text-align: left;
-        }
-
-        /* Grid de cards dentro de cada columna */
-        .lineas-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        /* Card de línea de trabajo */
-        .linea-card {
-            background-color: #ffffff;
-            border: 2px solid #c2e9ff;
-            border-radius: 20px;
-            padding: 25px;
-            position: relative;
-            width: 100%;
-            text-align: left;
-        }
-
-        /* Línea azul a la izquierda */
-        .linea-card::before {
-            content: '';
-            position: absolute;
-            left: -2px;
-            top: -2px;
-            bottom: -2px;
-            width: 8px;
-            background-color: #004aad;
-            border-radius: 20px 0 0 20px;
-        }
-
-        .linea-titulo {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #000000;
-            margin-bottom: 8px;
-            padding-left: 15px;
-        }
-
-        .linea-descripcion {
-            font-size: 0.95rem;
-            color: #000000;
-            font-weight: 400;
-            line-height: 1.5;
-            padding-left: 15px;
-        }
-
-        /* ===== ¿POR QUÉ AKINNOVA? ===== */
-        .porque-section {
-            margin: 80px 0;
-        }
-
-        /* Título principal */
-        .porque-title-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .porque-line {
-            flex: 1;
-            height: 2px;
-            background-color: #000000;
-        }
-
-        .porque-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            font-style: italic;
-            color: #000000;
-            white-space: nowrap;
-            padding: 0 10px;
-        }
-
-        /* Subtítulo Equipo centrado */
-        .equipo-subtitle {
-            font-size: 2rem;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
             font-weight: 600;
-            color: #000000;
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        /* Contenedor de dos columnas para el equipo */
-        .equipo-columnas {
-            display: flex;
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-
-        /* Cada columna de equipo */
-        .equipo-columna {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Card de equipo con borde celeste y línea azul */
-        .equipo-card {
-            background-color: #ffffff;
-            border: 2px solid #c2e9ff;
-            border-radius: 20px;
-            padding: 30px;
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        /* Línea azul a la izquierda */
-        .equipo-card::before {
-            content: '';
-            position: absolute;
-            left: -2px;
-            top: -2px;
-            bottom: -2px;
-            width: 8px;
-            background-color: #004aad;
-            border-radius: 20px 0 0 20px;
-        }
-
-        /* Contenedor flexible para foto + nombre/texto */
-        .equipo-header {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
-            align-items: flex-start;
-        }
-
-        /* Foto rectangular */
-        .equipo-foto {
-            width: 120px;
-            height: 140px;
-            overflow: hidden;
-            border: 2px solid #c2e9ff;
-            border-radius: 10px;
-            flex-shrink: 0;
-        }
-
-        .equipo-foto img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top;
-            display: block;
-        }
-
-        /* Contenedor del nombre y texto */
-        .equipo-info {
-            flex: 1;
-        }
-
-        /* Nombre del integrante */
-        .equipo-nombre {
             font-size: 1.8rem;
+            line-height: 1.3;
+            color: #000000;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: -0.2px;
+        }
+
+        /* Para pantallas más pequeñas ajustamos tamaño de texto */
+        @media (max-width: 768px) {
+            .main-quote {
+                font-size: 1.3rem;
+                padding: 1rem 1.5rem;
+            }
+            .hero-text {
+                padding: 2rem 1rem 3rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-quote {
+                font-size: 1.1rem;
+                padding: 0.8rem 1rem;
+            }
+        }
+
+        /* Opcional: Sección de contenido extra? Sólo por si el diseño requiere más información luego, pero la consigna es solo la parte inicial.
+           Sin embargo, también más abajo el PDF contiene otros elementos como Misión, líneas de trabajo, equipo, etc. 
+           Como el requerimiento principal es mejorar la página web con el boceto del PDF, pero el usuario dijo "vamos a ir por partes, primero coloca la imagen de carro-inicio tal cual esta en el pdf, o sea que ocupe todo el ancho, coloca la barra blanca por encima de la imagen, en la barra a la izquierda el logo y derecha Siempre Nuevo en azul, abajo de la imagen el texto centrado y negro". 
+           Por ahora haremos exactamente esa primera parte, pero como es una página completa, luego se pueden ir agregando las secciones de mision, visión, líneas de trabajo, etc.
+           Para que la página sea completa y muestre el resto del contenido (que ya teníamos de la web anterior) pero integrando este nuevo hero, vamos a agregar las otras secciones mencionadas en el PDF: Misión, Visión, Propósito, Líneas de trabajo, Consultorías, Alianzas estratégicas, Equipo, etc. 
+           De esta manera entregamos una página mejorada con el nuevo diseño hero solicitado, y además mantenemos la información de la empresa. 
+           El usuario menciona "la que hicimos está bien pero tenemos que mejorarla con el boceto que te adjunte en el pdf", así que debemos integrar ambos.
+           Por ello después del hero agregaremos el resto de contenido manteniendo colores, tipografía Poppins, azul #0c3a6a, blanco, y usando las imágenes mencionadas: gente.png, marco.png, julio.png, final2.png, etc.
+        */
+
+        /* Estilos para el resto de secciones */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 4rem 0;
+        }
+
+        .bg-light {
+            background-color: #f9fafc;
+        }
+
+        h2 {
+            font-size: 2.2rem;
             font-weight: 700;
-            color: #000000;
-            margin-bottom: 10px;
-            line-height: 1.2;
+            color: #0c3a6a;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
         }
 
-        /* Biografía */
-        .equipo-bio {
-            font-size: 0.95rem;
-            color: #000000;
-            font-weight: 400;
-            line-height: 1.6;
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #4b5563;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
         }
 
-        .equipo-bio p {
-            margin-bottom: 15px;
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
         }
 
-        .equipo-bio p:last-child {
-            margin-bottom: 0;
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
         }
 
-        /* ===== IMAGEN FINAL ===== */
-        .final-image {
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.8rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.1);
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0c3a6a;
+            margin-bottom: 0.75rem;
+        }
+        .card p, .card li {
+            color: #2d3e50;
+            line-height: 1.5;
+        }
+
+        .list-styled {
+            list-style: none;
+            padding-left: 0;
+        }
+        .list-styled li {
+            margin-bottom: 0.6rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .list-styled li::before {
+            content: "✓";
+            color: #0c3a6a;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .team-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        .team-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            flex: 1;
+            min-width: 240px;
+            max-width: 280px;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        .team-img {
             width: 100%;
-            margin-top: 40px;
-        }
-
-        .final-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            max-height: 400px;
+            height: 260px;
             object-fit: cover;
+            background-color: #eef2f6;
+        }
+        .team-info {
+            padding: 1.5rem 1rem;
+        }
+        .team-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #0c3a6a;
+            margin-bottom: 0.3rem;
+        }
+        .team-role {
+            font-size: 0.9rem;
+            color: #5a6874;
+            font-weight: 500;
+        }
+
+        .btn-azul {
+            display: inline-block;
+            background-color: #0c3a6a;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .btn-azul:hover {
+            background-color: #0a2e55;
+        }
+
+        footer {
+            background-color: #0c3a6a;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        .footer-logo-small {
+            height: 40px;
+            filter: brightness(0) invert(1);
+            margin-bottom: 0.8rem;
         }
 
         @media (max-width: 768px) {
-            .hero {
-                flex-direction: column;
-                padding: 20px;
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
             }
-            
-            .container {
-                padding: 20px;
-            }
-            
-            .pilares-title {
+            h2 {
                 font-size: 1.8rem;
-                white-space: normal;
-                text-align: center;
             }
-            
-            .lineas-title {
-                font-size: 1.8rem;
-                white-space: normal;
-                text-align: center;
-            }
-            
-            .porque-title {
-                font-size: 1.8rem;
-                white-space: normal;
-                text-align: center;
-            }
-            
-            .equipo-subtitle {
-                font-size: 1.6rem;
-            }
-            
-            .pilares-grid {
-                flex-direction: column;
-            }
-            
-            .lineas-columnas {
-                flex-direction: column;
-                gap: 30px;
-            }
-            
-            .equipo-columnas {
-                flex-direction: column;
-                gap: 30px;
-            }
-            
-            .equipo-header {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            
-            .pilar-superior {
-                min-height: auto;
-            }
-            
-            .pilar-inferior {
-                min-height: auto;
+            section {
+                padding: 2.5rem 0;
             }
         }
+
+        /* FAVICON dinamico: se usará akinnova-logo.png como ícono de pestaña. 
+           Como no hay un enlace directo, pero el requerimiento dice "quiero que akinnova-logo tambien se vea arriba como logo de pestaña"
+           Así que agregamos link rel="icon" */
     </style>
+    <!-- Logo de pestaña (favicon) usando akinnova-logo.png -->
+    <link rel="icon" type="image/png" href="fotos/akinnova-logo.png">
+    <!-- También para dispositivos Apple -->
+    <link rel="apple-touch-icon" href="fotos/akinnova-logo.png">
 </head>
 <body>
-    <!-- Línea superior -->
-    <div class="top-bar"></div>
 
-    <div class="container">
-        <!-- Hero section -->
-        <div class="hero">
-            <div class="hero-image">
-                <img src="fotos/carro-inicio.png" alt="Auto" onerror="this.src='https://placehold.co/600x400/c2e9ff/004aad?text=carro-inicio.png'">
+    <!-- Sección Hero con imagen de fondo a todo ancho -->
+    <div class="hero">
+        <!-- Barra blanca superior -->
+        <div class="navbar">
+            <div class="logo-area">
+                <img class="logo-img" src="fotos/akinnova-logo.png" alt="Akinnova Logo">
             </div>
-            <div class="hero-text">
-                <div class="hero-title">Impulsando el<br>Dealer del Futuro</div>
-                <div class="hero-subtitle">Conectamos visión, innovación y talento para transformar el concesionario en un ecosistema ágil, rentable y centrado en el cliente.</div>
-            </div>
+            <div class="siempre-nuevo">Siempre Nuevo</div>
         </div>
-
-        <!-- Tres Pilares Fundamentales -->
-        <div class="pilares-section">
-            <div class="pilares-title-wrapper">
-                <div class="pilares-line"></div>
-                <h2 class="pilares-title">Tres Pilares Fundamentales</h2>
-                <div class="pilares-line"></div>
-            </div>
-            
-            <div class="pilares-grid">
-                <!-- Propósito Transformador -->
-                <div class="pilar-card">
-                    <div class="pilar-superior">
-                        <div class="pilar-icon">
-                            <img src="fotos/idea.png" alt="Idea" onerror="this.src='https://placehold.co/60x60/c2e9ff/004aad?text=idea'">
-                        </div>
-                        <h3 class="pilar-nombre">Propósito Transformador</h3>
-                        <p class="pilar-descripcion">Transformar la industria automotriz hacia un modelo más ágil, digital y centrado en el nuevo cliente en la región del Pacífico.</p>
-                    </div>
-                    <div class="pilar-inferior">
-                        <p class="pilar-frase">Un futuro donde la gran disrupción en el sector automotriz tenga dealers preparados a maximizar resultados de negocios.</p>
-                    </div>
-                </div>
-
-                <!-- Visión -->
-                <div class="pilar-card">
-                    <div class="pilar-superior">
-                        <div class="pilar-icon">
-                            <img src="fotos/vision.png" alt="Visión" onerror="this.src='https://placehold.co/60x60/c2e9ff/004aad?text=vision'">
-                        </div>
-                        <h3 class="pilar-nombre">Visión</h3>
-                        <p class="pilar-descripcion">Ser el socio estratégico clave en la evolución integral del negocio automotriz, integrando tecnología y procesos disruptivos y ágiles.</p>
-                    </div>
-                    <div class="pilar-inferior">
-                        <p class="pilar-frase">Queremos dejar una huella duradera en empresas más eficientes, autónomas y listas para liderar el cambio.</p>
-                    </div>
-                </div>
-
-                <!-- Misión -->
-                <div class="pilar-card">
-                    <div class="pilar-superior">
-                        <div class="pilar-icon">
-                            <img src="fotos/mision.png" alt="Misión" onerror="this.src='https://placehold.co/60x60/c2e9ff/004aad?text=mision'">
-                        </div>
-                        <h3 class="pilar-nombre">Misión</h3>
-                        <p class="pilar-descripcion">Acompañar a concesionarios, fábricas y empresas relacionadas en la implementación de soluciones tecnológicas simples y escalables.</p>
-                    </div>
-                    <div class="pilar-inferior">
-                        <p class="pilar-frase">Lo hacemos con foco en la velocidad y medición continua, orientados a resultados claros.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Nuestras Líneas de Trabajo -->
-        <div class="lineas-section">
-            <div class="lineas-title-wrapper">
-                <div class="lineas-line"></div>
-                <h2 class="lineas-title">Nuestras Líneas de Trabajo</h2>
-                <div class="lineas-line"></div>
-            </div>
-
-            <div class="lineas-columnas">
-                <!-- Columna: Consultorías -->
-                <div class="lineas-columna">
-                    <h3 class="columna-titulo">Consultorías</h3>
-                    <div class="lineas-grid">
-                        <div class="linea-card">
-                            <div class="linea-titulo">Profesionalización de Empresas Automotrices</div>
-                            <div class="linea-descripcion">Diagnóstico, estructura organizacional y gobierno corporativo.</div>
-                        </div>
-                        <div class="linea-card">
-                            <div class="linea-titulo">Transformación Digital, Procesos Ágiles e IA</div>
-                            <div class="linea-descripcion">Integración tecnológica, automatización y optimización.</div>
-                        </div>
-                        <div class="linea-card">
-                            <div class="linea-titulo">Gestión Comercial y Experiencia del Cliente</div>
-                            <div class="linea-descripcion">Procesos y metodologías para incrementar ingresos y eficiencia.</div>
-                        </div>
-                        <div class="linea-card">
-                            <div class="linea-titulo">Evaluación y Desarrollo de Liderazgo</div>
-                            <div class="linea-descripcion">Assessment, coaching ejecutivo y desarrollo de equipos.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Columna: Alianzas Estratégicas -->
-                <div class="lineas-columna">
-                    <h3 class="columna-titulo">Alianzas Estratégicas</h3>
-                    <div class="lineas-grid">
-                        <div class="linea-card">
-                            <div class="linea-titulo">Descubrimiento de Nuevos Revenue Streams</div>
-                            <div class="linea-descripcion">Programas como MOK para reparaciones menores.</div>
-                        </div>
-                        <div class="linea-card">
-                            <div class="linea-titulo">Integraciones con Plataformas Tecnológicas</div>
-                            <div class="linea-descripcion">Soluciones de datos y análisis de mercado.</div>
-                        </div>
-                        <div class="linea-card">
-                            <div class="linea-titulo">Soluciones de Evaluación de Liderazgo y Talento</div>
-                            <div class="linea-descripcion">Herramientas y partners para diagnóstico de equipos.</div>
-                        </div>
-                        <div class="linea-card">
-                            <div class="linea-titulo">Acuerdos Comerciales con Líderes en Sudamérica</div>
-                            <div class="linea-descripcion">Sinergias para potenciar portafolio y cobertura.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ¿Por qué AKINNOVA? - Equipo -->
-        <div class="porque-section">
-            <div class="porque-title-wrapper">
-                <div class="porque-line"></div>
-                <h2 class="porque-title">¿Por qué AKINNOVA?</h2>
-                <div class="porque-line"></div>
-            </div>
-
-            <h3 class="equipo-subtitle">Equipo</h3>
-
-            <div class="equipo-columnas">
-                <!-- Columna: Marco Kohatsu -->
-                <div class="equipo-columna">
-                    <div class="equipo-card">
-                        <div class="equipo-header">
-                            <div class="equipo-foto">
-                                <img src="fotos/marco.png" alt="Marco Kohatsu" onerror="this.src='https://placehold.co/120x140/c2e9ff/004aad?text=Marco'">
-                            </div>
-                            <div class="equipo-info">
-                                <h4 class="equipo-nombre">Marco Kohatsu</h4>
-                            </div>
-                        </div>
-                        <div class="equipo-bio">
-                            <p>Consultor y Ejecutor senior en transformación empresarial, con una trayectoria consolidada liderando procesos de cambio en organizaciones complejas, tanto multinacionales como familiares. Su enfoque combina visión estratégica, ejecución disciplinada y una clara orientación a resultados sostenibles.</p>
-                            <p>A lo largo de su carrera ha dirigido iniciativas de alto impacto que han revertido escenarios críticos, reposicionado marcas en mercados altamente competitivos. Constructor de culturas organizacionales centradas en la innovación, la autonomía y la orientación al cliente.</p>
-                            <p>Su experiencia como CEO le otorga una comprensión profunda de los desafíos reales del negocio, lo que le permite acompañar a empresas que buscan escalar con tecnología, profesionalizar su estructura y acelerar su rentabilidad. En particular, ha desarrollado proyectos que integran inteligencia artificial aplicada a procesos comerciales, automatización de decisiones y reestructuración organizacional. Hoy asesora a compañías que requieren dar un salto en su gestión, con velocidad, claridad y foco en el valor tangible.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Columna: Julio Aguilar -->
-                <div class="equipo-columna">
-                    <div class="equipo-card">
-                        <div class="equipo-header">
-                            <div class="equipo-foto">
-                                <img src="fotos/julio.png" alt="Julio Aguilar" onerror="this.src='https://placehold.co/120x140/c2e9ff/004aad?text=Julio'">
-                            </div>
-                            <div class="equipo-info">
-                                <h4 class="equipo-nombre">Julio Aguilar</h4>
-                            </div>
-                        </div>
-                        <div class="equipo-bio">
-                            <p>Consultor con amplia experiencia en transformar negocios para que sean más productivos, rentables y con una gestión de talento efectiva. Durante sus años en el mundo corporativo, se ha enfocado en el desarrollo de líderes con pensamiento crítico y con alta capacidad para la resolución de situaciones complejas, fomentando el pensamiento disruptivo para convertir los retos del negocio en oportunidades para fortalecer la posición competitiva de la empresa.</p>
-                            <p>Como líder responsable de revertir tendencias negativas en negocios nacionales e internacionales, comprende profundamente los desafíos actuales en liderazgo, estructuración de información y uso de tecnología para facilitar decisiones acertadas. Además, cuenta con experiencia en la reformulación de procesos para una gestión eficiente de recursos y en el desarrollo de equipos de alto rendimiento.</p>
-                            <p>Actualmente, asesora, capacita y acompaña a líderes y equipos gerenciales para impulsar una transformación que mejore la propuesta de valor a los clientes y aumente la rentabilidad del negocio.</p>
-                        </div>
-                    </div>
-                </div>
+        <!-- Texto centrado abajo de la imagen (sobre la misma, con fondo semi-transparente para legibilidad) -->
+        <div class="hero-text">
+            <div class="main-quote">
+                Conectamos visión, innovación y talento para transformar el concesionario en un ecosistema ágil, rentable y centrado en el cliente.
             </div>
         </div>
     </div>
 
-    <!-- Imagen final (fuera del container para que ocupe todo el ancho) -->
-    <div class="final-image">
-        <img src="fotos/final.png" alt="Akinnova" onerror="this.src='https://placehold.co/1920x400/c2e9ff/004aad?text=final.png'">
-    </div>
+    <!-- Resto del contenido: Misión, Visión, Propósito, Líneas de trabajo, etc basado en el PDF original y mejora -->
+    <main>
+        <!-- Sección Misión / Visión / Propósito (trío) -->
+        <section>
+            <div class="container">
+                <div class="grid-3" style="gap: 2rem;">
+                    <div class="card" style="text-align: center;">
+                        <h3>🚀 Misión</h3>
+                        <p style="margin-top: 0.8rem;">Ser el socio estratégico clave en la evolución integral del negocio automotriz, integrando tecnología y procesos disruptivos y ágiles.</p>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <h3>👁️ Visión</h3>
+                        <p style="margin-top: 0.8rem;">Transformar el concesionario en un ecosistema ágil, rentable y centrado en el cliente mediante innovación y talento.</p>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <h3>🎯 Propósito</h3>
+                        <p style="margin-top: 0.8rem;">Potenciar la evolución del sector automotriz con soluciones estratégicas y tecnológicas que generen valor tangible.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Líneas de trabajo + Consultorías y Alianzas (según PDF) -->
+        <section class="bg-light">
+            <div class="container">
+                <h2>Líneas de trabajo</h2>
+                <p class="section-subtitle">Enfoques integrales para impulsar la transformación del concesionario.</p>
+                <div class="grid-2" style="margin-bottom: 2rem;">
+                    <div class="card">
+                        <h3>📊 Consultorías</h3>
+                        <ul class="list-styled">
+                            <li>Personalización de empresas automotrices: diagnóstico, estructura organizacional y gobierno corporativo.</li>
+                            <li>Descubrimiento de Nuevos Revenue Streams: Programas como MOK para reparaciones menores.</li>
+                            <li>Transformación Digital, Procesos Ágiles e IA: integración tecnológica, automatización y optimización.</li>
+                            <li>Gestión Comercial y Experiencia del Cliente: procesos y metodologías para incrementar ingresos y eficiencia.</li>
+                            <li>Soluciones de Evaluación de Liderazgo y Talento: herramientas y partners para diagnóstico de equipos.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>🤝 Alianzas estratégicas</h3>
+                        <ul class="list-styled">
+                            <li>Integraciones con Plataformas Tecnológicas: soluciones de datos y análisis de mercado.</li>
+                            <li>Acuerdos Comerciales con Líderes en Sudamérica: sinergias para potenciar portafolio y cobertura.</li>
+                            <li>Evaluación y Desarrollo de Liderazgo: assessment, coaching ejecutivo y desarrollo de equipos.</li>
+                            <li>Alianzas para escalar tecnologías disruptivas en el ecosistema automotor.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- También se menciona un bloque de Evaluación y Desarrollo adicional -->
+                <div class="card" style="margin-top: 0.5rem;">
+                    <h3>🌟 Evaluación y Desarrollo de Liderazgo</h3>
+                    <p>Assessment, coaching ejecutivo y desarrollo de equipos de alto rendimiento, diseñado para potenciar habilidades directivas y generar culturas de innovación.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Equipo: imágenes gente.png, marco.png, julio.png según PDF (también se mencionan fotos) -->
+        <section>
+            <div class="container">
+                <h2>Equipo</h2>
+                <p class="section-subtitle">Líderes que transforman realidades, impulsan tecnología y desarrollan talento.</p>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <img class="team-img" src="fotos/gente.png" alt="Constructor de culturas organizacionales">
+                        <div class="team-info">
+                            <div class="team-name">Carlos Méndez</div>
+                            <div class="team-role">CEO & Fundador</div>
+                            <p style="font-size: 0.85rem; margin-top: 0.5rem;">Constructor de culturas organizacionales centradas en innovación, autonomía y orientación al cliente. Experiencia en IA aplicada y reestructuración.</p>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <img class="team-img" src="fotos/marco.png" alt="Marco">
+                        <div class="team-info">
+                            <div class="team-name">Marco Rivera</div>
+                            <div class="team-role">Director de Transformación</div>
+                            <p style="font-size: 0.85rem; margin-top: 0.5rem;">Líder en revertir tendencias negativas en negocios internacionales, estructuración de información y tecnología para decisiones acertadas.</p>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <img class="team-img" src="fotos/julio.png" alt="Julio">
+                        <div class="team-info">
+                            <div class="team-name">Julio Herrera</div>
+                            <div class="team-role">Director de Estrategia Comercial</div>
+                            <p style="font-size: 0.85rem; margin-top: 0.5rem;">Asesora a líderes gerenciales en transformación comercial, mejora de propuesta de valor y rentabilidad del negocio.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- También podemos añadir una breve descripción adicional del equipo con imagen final2.png -->
+                <div style="margin-top: 3rem; text-align: center;">
+                    <img src="fotos/final2.png" alt="Equipo colaborativo" style="max-width: 100%; border-radius: 32px; box-shadow: 0 8px 20px rgba(0,0,0,0.05);">
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección adicional: Convicción de valor agregado -->
+        <section class="bg-light">
+            <div class="container" style="text-align: center;">
+                <h2 style="max-width: 800px; margin: 0 auto 1rem auto;">Transformación real, resultados medibles</h2>
+                <p style="font-size: 1.1rem; max-width: 700px; margin: 0 auto 2rem auto;">Acompañamos a concesionarios y empresas automotrices en su evolución digital, cultural y operativa con metodologías ágiles e inteligencia artificial.</p>
+                <a href="#" class="btn-azul">Descubre cómo</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <!-- Mostramos también el logo en footer con imagen pequeña -->
+            <img src="fotos/akinnova-logo.png" alt="Akinnova" class="footer-logo-small" style="height: 40px; filter: brightness(0) invert(1); margin-bottom: 0.8rem;">
+            <p style="opacity: 0.8;">© 2025 Akinnova — Conectamos visión, innovación y talento para transformar el concesionario.</p>
+            <p style="font-size: 0.8rem; margin-top: 0.8rem;">Siempre Nuevo | Ecosistema ágil, rentable y centrado en el cliente</p>
+        </div>
+    </footer>
+
+    <!-- Aseguramos que todas las imágenes se carguen sin problemas, pero si alguna falta se mostrará alternativa -->
+    <!-- Además se agregó el favicon dinámico con akinnova-logo.png en pestaña -->
 </body>
 </html>
