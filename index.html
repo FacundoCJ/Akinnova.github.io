@@ -1,3 +1,12 @@
+¡Claro que sí! Ahora entiendo perfectamente. La estructura es:
+
+- **Abajo**: una **línea horizontal** (como una barra) con los dos títulos laterales (Misión y Propósito, por ejemplo), pegados, con bordes muy redondos.
+- **Encima de esa línea**: el **recuadro central** (Visión) más grande, con bordes muy redondos, flotando sobre la línea.
+
+Así el central resalta mucho más porque está más grande y por encima.
+
+Aquí está la implementación:
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -100,8 +109,8 @@
 
         /* ========== SECCIÓN MISIÓN VISIÓN PROPÓSITO ========== */
         .mvp-section {
-            max-width: 1600px;
-            margin: 0 auto 100px auto;
+            max-width: 1400px;
+            margin: 0 auto 120px auto;
             padding: 0 40px;
         }
 
@@ -109,7 +118,7 @@
         .tabs-container {
             display: flex;
             justify-content: center;
-            margin-bottom: 60px;
+            margin-bottom: 70px;
         }
 
         .tabs-wrapper {
@@ -146,50 +155,31 @@
             border-radius: 0 60px 60px 0;
         }
 
-        /* ========== RECUADROS INFERIORES - LÍNEA CON BORDES MUY REDONDOS ========== */
-        /* Contenedor que envuelve los 3 recuadros como una sola pieza con borde redondo de 60px */
-        .cards-wrapper {
+        /* ========== NUEVA ESTRUCTURA: CENTRAL GRANDE ENCIMA, LATERALES EN LÍNEA ABAJO ========== */
+        .mvp-cards-container {
+            position: relative;
             display: flex;
-            border-radius: 60px;        /* BORDES MUCHO MÁS REDONDOS */
-            overflow: hidden;
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+            flex-direction: column;
+            align-items: center;
             width: 100%;
         }
 
-        /* Tarjeta lateral - MUCHO MÁS ANGOSTOS que el central */
-        .side-card {
-            background-color: #0f4472;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 70px 20px;
-            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            cursor: pointer;
-            flex: 0.25;                 /* MUCHO MÁS ANGOSTO (antes 0.35) */
-            min-width: 140px;
+        /* Tarjeta central GRANDE - flota encima de la línea de laterales */
+        .center-card-wrapper {
+            width: 80%;
+            max-width: 1000px;
+            margin-bottom: -50px;      /* se superpone ligeramente sobre la línea de abajo */
+            z-index: 10;
+            position: relative;
         }
 
-        .side-card h3 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: white;
-            margin: 0;
-            letter-spacing: -0.2px;
-            writing-mode: horizontal-tb;
-        }
-
-        /* Tarjeta central - MÁS GRANDE, más ancho, resalta más */
         .center-card {
             background-color: #0c3a6a;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            border-radius: 60px;        /* bordes MUY redondos */
+            padding: 70px 60px;
             text-align: center;
-            padding: 85px 60px;
-            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            flex: 2.8;                  /* MUCHO MÁS ANCHO que laterales */
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease;
         }
 
         .center-card h2 {
@@ -207,21 +197,60 @@
             font-weight: 500;
             color: white;
             line-height: 1.5;
-            max-width: 850px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
-        /* Efecto hover en laterales */
+        /* Línea de los dos títulos laterales (abajo) - PEGADOS con bordes MUY redondos */
+        .side-cards-line {
+            display: flex;
+            width: 100%;
+            gap: 0;
+            background: transparent;
+            border-radius: 60px;
+            overflow: hidden;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+        }
+
+        .side-card {
+            background-color: #0f4472;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 45px 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+
+        .side-card:first-child {
+            border-radius: 60px 0 0 60px;
+        }
+
+        .side-card:last-child {
+            border-radius: 0 60px 60px 0;
+        }
+
+        .side-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            margin: 0;
+            letter-spacing: -0.2px;
+        }
+
         .side-card:hover {
             background-color: #1a5a8a;
-            transform: scale(1.02);
+            transform: translateY(-5px);
         }
 
         /* Animación */
         @keyframes fadeSlideUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -229,63 +258,30 @@
             }
         }
 
-        .cards-wrapper {
-            animation: fadeSlideUp 0.4s ease-out;
+        .center-card-wrapper, .side-cards-line {
+            animation: fadeSlideUp 0.5s ease-out;
         }
 
-        /* RESPONSIVE: en móviles se apilan y cada uno tiene bordes redondos individuales */
-        @media (max-width: 1100px) {
-            .side-card {
-                flex: 0.3;
-                padding: 55px 18px;
-            }
-            .side-card h3 {
-                font-size: 1.5rem;
+        /* RESPONSIVE */
+        @media (max-width: 1000px) {
+            .center-card-wrapper {
+                width: 95%;
+                margin-bottom: -30px;
             }
             .center-card {
-                flex: 2.5;
-                padding: 65px 45px;
+                padding: 50px 40px;
             }
             .center-card h2 {
-                font-size: 2.6rem;
-            }
-            .center-card p {
-                font-size: 1.5rem;
-            }
-        }
-
-        @media (max-width: 900px) {
-            .cards-wrapper {
-                flex-direction: column;
-                border-radius: 50px;
-                overflow: visible;
-                gap: 20px;
-                background: transparent;
-                box-shadow: none;
-            }
-            .side-card {
-                width: 100%;
-                flex: none;
-                padding: 40px 30px;
-                border-radius: 50px !important;
-                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            }
-            .center-card {
-                width: 100%;
-                flex: none;
-                padding: 50px 35px;
-                border-radius: 50px !important;
-                box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
-                order: -1;
-            }
-            .side-card h3 {
-                font-size: 1.8rem;
-            }
-            .center-card h2 {
-                font-size: 2.4rem;
+                font-size: 2.5rem;
             }
             .center-card p {
                 font-size: 1.4rem;
+            }
+            .side-card {
+                padding: 35px 25px;
+            }
+            .side-card h3 {
+                font-size: 1.5rem;
             }
             .tab-btn {
                 font-size: 1.4rem;
@@ -295,91 +291,78 @@
         }
 
         @media (max-width: 768px) {
+            .center-card-wrapper {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            .center-card {
+                padding: 40px 25px;
+                border-radius: 50px;
+            }
+            .center-card h2 {
+                font-size: 2rem;
+                margin-bottom: 20px;
+            }
+            .center-card p {
+                font-size: 1.2rem;
+            }
+            .side-cards-line {
+                flex-direction: column;
+                border-radius: 50px;
+                gap: 15px;
+                background: transparent;
+                box-shadow: none;
+            }
+            .side-card {
+                border-radius: 50px !important;
+                padding: 30px 20px;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            }
+            .side-card h3 {
+                font-size: 1.5rem;
+            }
             .tabs-wrapper .tab-btn {
                 padding: 12px 24px;
                 font-size: 1.2rem;
                 min-width: 120px;
             }
-            .center-card {
-                padding: 40px 25px;
-            }
-            .center-card h2 {
-                font-size: 2rem;
-                margin-bottom: 25px;
-            }
-            .center-card p {
-                font-size: 1.2rem;
-            }
-            .side-card {
-                padding: 32px 25px;
-            }
-            .side-card h3 {
-                font-size: 1.5rem;
-            }
         }
 
         @media (max-width: 550px) {
-            .tabs-wrapper .tab-btn {
-                padding: 10px 16px;
-                font-size: 1rem;
-                min-width: 90px;
-            }
             .center-card h2 {
                 font-size: 1.6rem;
             }
             .center-card p {
                 font-size: 1rem;
             }
-            .side-card {
-                padding: 28px 20px;
-            }
             .side-card h3 {
                 font-size: 1.3rem;
             }
-        }
-
-        /* Pantallas grandes: laterales más angostos, central más ancho */
-        @media (min-width: 1400px) {
             .side-card {
-                flex: 0.22;             /* aún más angosto */
-                padding: 80px 22px;
-            }
-            .side-card h3 {
-                font-size: 1.9rem;
-            }
-            .center-card {
-                flex: 3;
-                padding: 95px 70px;
-            }
-            .center-card h2 {
-                font-size: 3.5rem;
-            }
-            .center-card p {
-                font-size: 2rem;
+                padding: 25px 18px;
             }
             .tab-btn {
-                font-size: 2rem;
-                padding: 22px 64px;
+                font-size: 1rem;
+                padding: 10px 16px;
+                min-width: 90px;
             }
         }
 
-        @media (min-width: 1800px) {
+        @media (min-width: 1400px) {
+            .center-card {
+                padding: 85px 80px;
+            }
+            .center-card h2 {
+                font-size: 3.8rem;
+            }
+            .center-card p {
+                font-size: 2rem;
+            }
             .side-card {
-                flex: 0.2;
-                padding: 90px 25px;
+                padding: 55px 40px;
             }
             .side-card h3 {
                 font-size: 2rem;
-            }
-            .center-card {
-                flex: 3.2;
-                padding: 110px 80px;
-            }
-            .center-card h2 {
-                font-size: 4rem;
-            }
-            .center-card p {
-                font-size: 2.2rem;
             }
         }
 
@@ -411,7 +394,7 @@
     </p>
 </div>
 
-<!-- SECCIÓN MISIÓN, VISIÓN Y PROPÓSITO -->
+<!-- SECCIÓN MISIÓN, VISIÓN Y PROPÓSITO - NUEVA ESTRUCTURA -->
 <section class="mvp-section">
     <div class="tabs-container">
         <div class="tabs-wrapper">
@@ -421,8 +404,25 @@
         </div>
     </div>
 
-    <!-- Contenedor que envuelve los 3 recuadros como una sola línea con bordes muy redondos -->
-    <div id="cardsWrapper" class="cards-wrapper"></div>
+    <div class="mvp-cards-container" id="mvpContainer">
+        <!-- Central GRANDE encima -->
+        <div class="center-card-wrapper" id="centerWrapper">
+            <div class="center-card" id="centerCard">
+                <h2 id="centerTitle">Visión</h2>
+                <p id="centerDesc">Ser el socio estratégico clave en la evolución integral del negocio automotriz, integrando tecnología y procesos disruptivos y ágiles.</p>
+            </div>
+        </div>
+        
+        <!-- Línea de laterales abajo (pegados, bordes redondos) -->
+        <div class="side-cards-line" id="sideLine">
+            <div class="side-card" data-tab="mision">
+                <h3>Misión</h3>
+            </div>
+            <div class="side-card" data-tab="proposito">
+                <h3>Propósito</h3>
+            </div>
+        </div>
+    </div>
 </section>
 
 <script>
@@ -443,66 +443,8 @@
 
     let activeTab = "vision";
 
-    function getSideItems(activeKey) {
-        const allKeys = ["mision", "vision", "proposito"];
-        return allKeys.filter(key => key !== activeKey);
-    }
-
-    function renderCards() {
-        const container = document.getElementById("cardsWrapper");
-        if (!container) return;
-
-        const sideKeys = getSideItems(activeTab);
-        const [leftKey, rightKey] = sideKeys;
-
-        const leftData = contentMap[leftKey];
-        const centerData = contentMap[activeTab];
-        const rightData = contentMap[rightKey];
-
-        const leftCard = `
-            <div class="side-card" data-tab="${leftKey}">
-                <h3>${leftData.title}</h3>
-            </div>
-        `;
-
-        const centerCard = `
-            <div class="center-card" data-tab="${activeTab}">
-                <h2>${centerData.title}</h2>
-                <p>${centerData.description}</p>
-            </div>
-        `;
-
-        const rightCard = `
-            <div class="side-card" data-tab="${rightKey}">
-                <h3>${rightData.title}</h3>
-            </div>
-        `;
-
-        container.style.opacity = "0";
-        setTimeout(() => {
-            container.innerHTML = leftCard + centerCard + rightCard;
-            container.style.opacity = "1";
-            attachCardEvents();
-        }, 150);
-    }
-
-    function attachCardEvents() {
-        const sideCards = document.querySelectorAll(".side-card");
-        sideCards.forEach(card => {
-            card.addEventListener("click", (e) => {
-                e.stopPropagation();
-                const tabKey = card.getAttribute("data-tab");
-                if (tabKey && tabKey !== activeTab) {
-                    setActiveTab(tabKey);
-                }
-            });
-        });
-    }
-
-    function setActiveTab(tabKey) {
-        if (activeTab === tabKey) return;
-        activeTab = tabKey;
-
+    function updateUI() {
+        // Actualizar botones superiores
         const btns = document.querySelectorAll(".tab-btn");
         btns.forEach(btn => {
             const btnTab = btn.getAttribute("data-tab");
@@ -513,43 +455,101 @@
             }
         });
 
-        renderCards();
+        // Actualizar tarjeta central (grande, encima)
+        const centerTitle = document.getElementById("centerTitle");
+        const centerDesc = document.getElementById("centerDesc");
+        const centerData = contentMap[activeTab];
+        if (centerTitle && centerDesc) {
+            centerTitle.textContent = centerData.title;
+            centerDesc.textContent = centerData.description;
+        }
+
+        // Actualizar la línea de laterales: siempre muestran los dos títulos que NO son el activo
+        const allKeys = ["mision", "vision", "proposito"];
+        const sideKeys = allKeys.filter(key => key !== activeTab);
+        
+        const sideLine = document.getElementById("sideLine");
+        if (sideLine) {
+            const leftKey = sideKeys[0];
+            const rightKey = sideKeys[1];
+            const leftData = contentMap[leftKey];
+            const rightData = contentMap[rightKey];
+            
+            sideLine.innerHTML = `
+                <div class="side-card" data-tab="${leftKey}">
+                    <h3>${leftData.title}</h3>
+                </div>
+                <div class="side-card" data-tab="${rightKey}">
+                    <h3>${rightData.title}</h3>
+                </div>
+            `;
+            
+            // Reasignar eventos a los nuevos laterales
+            const newSideCards = document.querySelectorAll(".side-card");
+            newSideCards.forEach(card => {
+                card.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    const tabKey = card.getAttribute("data-tab");
+                    if (tabKey && tabKey !== activeTab) {
+                        activeTab = tabKey;
+                        updateUI();
+                    }
+                });
+            });
+        }
+        
+        // Animación suave para la tarjeta central
+        const centerWrapper = document.getElementById("centerWrapper");
+        if (centerWrapper) {
+            centerWrapper.style.animation = "none";
+            setTimeout(() => {
+                centerWrapper.style.animation = "fadeSlideUp 0.4s ease-out";
+            }, 10);
+        }
+        
+        const sideLineEl = document.getElementById("sideLine");
+        if (sideLineEl) {
+            sideLineEl.style.animation = "none";
+            setTimeout(() => {
+                sideLineEl.style.animation = "fadeSlideUp 0.4s ease-out";
+            }, 10);
+        }
     }
 
-    function initTabs() {
+    function init() {
+        // Configurar botones superiores
         const btns = document.querySelectorAll(".tab-btn");
         btns.forEach(btn => {
             btn.addEventListener("click", () => {
                 const tabValue = btn.getAttribute("data-tab");
-                if (tabValue) setActiveTab(tabValue);
+                if (tabValue && tabValue !== activeTab) {
+                    activeTab = tabValue;
+                    updateUI();
+                }
             });
         });
-    }
-
-    function init() {
-        initTabs();
-        const activeBtn = document.querySelector(".tab-btn.active");
-        if (activeBtn) {
-            const initialTab = activeBtn.getAttribute("data-tab");
-            if (initialTab) activeTab = initialTab;
-        }
-        renderCards();
+        
+        // Configurar laterales iniciales
+        const initialSideCards = document.querySelectorAll(".side-card");
+        initialSideCards.forEach(card => {
+            card.addEventListener("click", (e) => {
+                e.stopPropagation();
+                const tabKey = card.getAttribute("data-tab");
+                if (tabKey && tabKey !== activeTab) {
+                    activeTab = tabKey;
+                    updateUI();
+                }
+            });
+        });
     }
 
     document.addEventListener("DOMContentLoaded", init);
 </script>
 
 <style>
-    /* Ajustes adicionales para bordes MUY REDONDOS y laterales más angostos */
-    .cards-wrapper {
-        transition: opacity 0.2s ease;
-        width: 100%;
-        border-radius: 60px !important;     /* BORDES MUY REDONDOS */
-    }
-    
+    /* Ajustes adicionales */
     .side-card {
-        transition: background-color 0.3s ease, transform 0.2s ease;
-        cursor: pointer;
+        transition: transform 0.2s ease, background-color 0.2s ease;
     }
     
     .center-card {
@@ -560,52 +560,13 @@
         background-color: #c0c0c0;
     }
     
-    /* Para desktop, aseguramos que los laterales sean VISIBLEMENTE MÁS ANGOSTOS */
-    @media (min-width: 901px) {
-        .cards-wrapper {
-            border-radius: 60px;
-            overflow: hidden;
+    /* Para asegurar que en móviles no haya problemas de superposición */
+    @media (max-width: 768px) {
+        .center-card-wrapper {
+            margin-bottom: 20px;
         }
-        .side-card:first-child {
-            border-radius: 0;
-        }
-        .side-card:last-child {
-            border-radius: 0;
-        }
-        .center-card {
-            border-radius: 0;
-        }
-        /* Hacemos que los laterales tengan un ancho máximo reducido */
-        .side-card {
-            max-width: 220px;
-        }
-    }
-    
-    @media (min-width: 1400px) {
-        .side-card {
-            max-width: 240px;
-        }
-    }
-    
-    @media (min-width: 1800px) {
-        .side-card {
-            max-width: 260px;
-        }
-    }
-    
-    /* Ajuste para que en desktop los laterales no se estiren más de lo debido */
-    .cards-wrapper {
-        display: flex;
-    }
-    
-    .side-card {
-        flex-shrink: 1;
-    }
-    
-    .center-card {
-        flex-shrink: 0;
-        flex-grow: 1;
     }
 </style>
 </body>
 </html>
+```
