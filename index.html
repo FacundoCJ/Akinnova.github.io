@@ -97,20 +97,21 @@
 
         /* ========== SECCIÓN MISIÓN, VISIÓN, PROPÓSITO ========== */
         .mvp-wrapper {
-            max-width: 1200px;
-            margin: 0 auto 100px auto;
+            max-width: 1400px;
+            margin: 0 auto 120px auto;
             padding: 0 40px;
         }
 
-        /* CARTELES SUPERIORES - PEGADOS, MISMA ALTURA, MÁS DELGADOS */
+        /* CARTELES SUPERIORES - MÁS GRANDES, TODOS CON BORDES REDONDEADOS */
         .top-cards {
             display: flex;
             justify-content: center;
             align-items: stretch;
-            margin-bottom: 60px;
+            margin-bottom: 80px;
+            gap: 0;
         }
 
-        /* Cada cartel: misma altura, más delgados (altura reducida) */
+        /* Cada cartel: más grande, altura aumentada, todos con bordes redondeados */
         .top-card {
             cursor: pointer;
             transition: all 0.3s ease;
@@ -120,168 +121,193 @@
             justify-content: center;
             font-weight: 700;
             font-family: 'Poppins', sans-serif;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            width: 280px;
-            height: 110px;           /* más delgados */
-            font-size: 1.8rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+            width: 320px;
+            height: 140px;
+            font-size: 2rem;
             background-color: #d9d9d9;
             color: #1e2a3a;
             margin: 0;
-        }
-
-        /* Borde redondeado: izquierdo, central, derecho con bordes específicos para que parezcan un solo grupo */
-        .top-card:first-child {
-            border-radius: 50px 0 0 50px;
-        }
-
-        .top-card:last-child {
-            border-radius: 0 50px 50px 0;
-        }
-
-        /* Cartel del medio (posición 1 en índice) no tiene bordes redondeados laterales */
-        .top-card.center-card {
-            border-radius: 0;
+            border-radius: 60px !important;  /* Todos los carteles con bordes redondeados */
         }
 
         /* Cartel activo (el que está en el medio y muestra la descripción) - SIEMPRE AZUL */
         .top-card.active-card {
             background-color: #0c3a6a;
             color: white;
+            box-shadow: 0 8px 25px rgba(12, 58, 106, 0.3);
+            transform: scale(1.02);
         }
 
-        /* RECUADROS INFERIORES - PEGADOS LOS 3 */
+        /* RECUADROS INFERIORES - PEGADOS, CENTRAL MUCHO MÁS GRANDE, LATERALES MUCHO MÁS PEQUEÑOS */
         .bottom-panels {
             display: flex;
             justify-content: center;
             align-items: stretch;
-            margin-top: 30px;
+            margin-top: 40px;
         }
 
-        /* Cada panel inferior, pegados sin espacio */
-        .info-panel {
-            transition: all 0.3s ease;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Panel central: más alto, color #0c3a6a, muestra título y descripción */
+        /* Panel central: MUCHO MÁS GRANDE, color #0c3a6a, muestra título y descripción */
         .info-panel.center-panel {
             background-color: #0c3a6a;
             color: white;
-            width: 400px;
-            min-height: 280px;
-            padding: 35px 30px;
+            width: 650px;
+            min-height: 420px;
+            padding: 50px 45px;
             border-radius: 0;
+            transition: all 0.3s ease;
         }
 
         .center-panel h2 {
-            font-size: 2.2rem;
+            font-size: 3rem;
             font-weight: 800;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             letter-spacing: -0.5px;
         }
 
         .center-panel p {
-            font-size: 1.1rem;
-            line-height: 1.5;
+            font-size: 1.4rem;
+            line-height: 1.6;
             font-weight: 500;
-            max-width: 320px;
+            max-width: 500px;
             margin: 0 auto;
         }
 
-        /* Paneles laterales: menos altura, color #0f4472, solo título */
+        /* Paneles laterales: MUCHO MÁS PEQUEÑOS que el central, color #0f4472, solo título */
         .info-panel.side-panel {
             background-color: #0f4472;
             color: white;
-            width: 280px;
-            min-height: 200px;      /* menos altura que el central */
-            padding: 25px 20px;
+            width: 220px;
+            min-height: 220px;
+            padding: 30px 20px;
             border-radius: 0;
             cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .side-panel h3 {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 700;
             margin: 0;
+            line-height: 1.3;
         }
 
-        /* Bordes redondeados solo en los extremos de los 3 paneles inferiores */
+        /* Bordes redondeados en los extremos de los 3 paneles inferiores */
         .bottom-panels .info-panel:first-child {
-            border-radius: 40px 0 0 40px;
+            border-radius: 50px 0 0 50px;
         }
 
         .bottom-panels .info-panel:last-child {
-            border-radius: 0 40px 40px 0;
+            border-radius: 0 50px 50px 0;
         }
 
         /* Efecto hover en paneles laterales */
         .side-panel:hover {
             background-color: #0c3a6a;
-            transform: translateY(-3px);
+            transform: translateY(-5px);
+            cursor: pointer;
         }
 
         /* Responsive */
-        @media (max-width: 1000px) {
+        @media (max-width: 1300px) {
             .top-card {
-                width: 240px;
-                height: 95px;
-                font-size: 1.5rem;
+                width: 280px;
+                height: 125px;
+                font-size: 1.7rem;
             }
             .info-panel.center-panel {
-                width: 340px;
-                min-height: 260px;
-                padding: 30px 25px;
+                width: 550px;
+                min-height: 380px;
+                padding: 45px 40px;
             }
             .center-panel h2 {
-                font-size: 1.9rem;
+                font-size: 2.5rem;
             }
             .center-panel p {
-                font-size: 1rem;
+                font-size: 1.2rem;
             }
             .info-panel.side-panel {
-                width: 240px;
-                min-height: 180px;
+                width: 200px;
+                min-height: 200px;
             }
             .side-panel h3 {
-                font-size: 1.4rem;
+                font-size: 1.5rem;
             }
         }
 
-        @media (max-width: 850px) {
+        @media (max-width: 1100px) {
+            .top-card {
+                width: 250px;
+                height: 115px;
+                font-size: 1.5rem;
+            }
+            .info-panel.center-panel {
+                width: 480px;
+                min-height: 350px;
+                padding: 40px 35px;
+            }
+            .center-panel h2 {
+                font-size: 2.2rem;
+            }
+            .center-panel p {
+                font-size: 1.1rem;
+            }
+            .info-panel.side-panel {
+                width: 180px;
+                min-height: 180px;
+            }
+            .side-panel h3 {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 950px) {
             .mvp-wrapper {
                 padding: 0 20px;
             }
             .top-cards {
                 flex-wrap: wrap;
-                border-radius: 50px;
-                gap: 12px;
-            }
-            .top-card:first-child,
-            .top-card:last-child,
-            .top-card.center-card {
-                border-radius: 50px;
+                gap: 20px;
+                margin-bottom: 50px;
             }
             .top-card {
-                width: 260px;
-                height: 95px;
+                border-radius: 60px !important;
+                width: 280px;
+                height: 120px;
             }
             .bottom-panels {
                 flex-direction: column;
                 align-items: center;
-                gap: 15px;
+                gap: 20px;
             }
             .info-panel.center-panel,
             .info-panel.side-panel {
-                border-radius: 40px !important;
+                border-radius: 50px !important;
                 width: 90%;
-                max-width: 400px;
+                max-width: 550px;
+            }
+            .info-panel.center-panel {
+                min-height: 320px;
             }
             .info-panel.side-panel {
-                min-height: 100px;
+                min-height: 120px;
+                width: 80%;
+                max-width: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .info-panel.center-panel {
+                padding: 35px 30px;
+            }
+            .center-panel h2 {
+                font-size: 2rem;
+            }
+            .center-panel p {
+                font-size: 1rem;
             }
         }
 
@@ -371,27 +397,28 @@
                 font-size: 2.4rem;
             }
             .top-card {
-                width: 320px;
-                height: 125px;
-                font-size: 2rem;
+                width: 380px;
+                height: 160px;
+                font-size: 2.2rem;
             }
             .info-panel.center-panel {
-                width: 460px;
-                min-height: 310px;
-                padding: 40px 35px;
+                width: 750px;
+                min-height: 480px;
+                padding: 60px 55px;
             }
             .center-panel h2 {
-                font-size: 2.5rem;
+                font-size: 3.5rem;
             }
             .center-panel p {
-                font-size: 1.2rem;
+                font-size: 1.5rem;
+                max-width: 580px;
             }
             .info-panel.side-panel {
-                width: 320px;
-                min-height: 220px;
+                width: 260px;
+                min-height: 260px;
             }
             .side-panel h3 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
         }
     </style>
@@ -417,12 +444,12 @@
 
 <!-- SECCIÓN MISIÓN, VISIÓN, PROPÓSITO -->
 <div class="mvp-wrapper">
-    <!-- CARTELES SUPERIORES: 3 posiciones que rotan dinámicamente -->
+    <!-- CARTELES SUPERIORES: 3 posiciones que rotan dinámicamente, todos con bordes redondeados -->
     <div class="top-cards" id="topCardsContainer">
-        <!-- Los carteles se generan dinámicamente con JS para mantener el orden correcto -->
+        <!-- Los carteles se generan dinámicamente con JS -->
     </div>
 
-    <!-- RECUADROS INFERIORES: PEGADOS, el central más alto con descripción, laterales menos altos con solo título -->
+    <!-- RECUADROS INFERIORES: PEGADOS, central MUCHO MÁS GRANDE con descripción, laterales MUCHO MÁS PEQUEÑOS solo título -->
     <div class="bottom-panels" id="bottomPanelsContainer">
         <!-- Generado dinámicamente -->
     </div>
@@ -448,7 +475,7 @@
     // Orden inicial: [izquierda, centro, derecha] -> [visión, misión, propósito]
     let currentOrder = ['vision', 'mision', 'proposito'];
 
-    // Función para renderizar los carteles superiores según el orden actual
+    // Función para renderizar los carteles superiores según el orden actual (TODOS CON BORDES REDONDEADOS)
     function renderTopCards() {
         const container = document.getElementById('topCardsContainer');
         if (!container) return;
@@ -462,14 +489,7 @@
             if (index === 1) {
                 card.classList.add('active-card');
             }
-            // Aplicar bordes redondeados según posición
-            if (index === 0) {
-                card.style.borderRadius = '50px 0 0 50px';
-            } else if (index === 2) {
-                card.style.borderRadius = '0 50px 50px 0';
-            } else {
-                card.style.borderRadius = '0';
-            }
+            // Todos los carteles tienen bordes redondeados (por CSS ya tienen border-radius)
             card.textContent = itemsData[key].nombre;
             card.setAttribute('data-key', key);
             card.setAttribute('data-index', index);
@@ -478,14 +498,14 @@
         });
     }
 
-    // Función para renderizar los paneles inferiores (pegados, central más alto con descripción, laterales solo título)
+    // Función para renderizar los paneles inferiores (pegados, central MUCHO MÁS GRANDE, laterales MUCHO MÁS PEQUEÑOS)
     function renderBottomPanels() {
         const container = document.getElementById('bottomPanelsContainer');
         if (!container) return;
         
         container.innerHTML = '';
         
-        // Panel izquierdo (índice 0 del orden)
+        // Panel izquierdo (índice 0 del orden) - MUCHO MÁS PEQUEÑO
         const leftKey = currentOrder[0];
         const leftPanel = document.createElement('div');
         leftPanel.className = 'info-panel side-panel';
@@ -493,7 +513,7 @@
         leftPanel.setAttribute('data-key', leftKey);
         leftPanel.addEventListener('click', () => moveToCenter(0));
         
-        // Panel central (índice 1) - más alto con descripción
+        // Panel central (índice 1) - MUCHO MÁS GRANDE con descripción
         const centerKey = currentOrder[1];
         const centerPanel = document.createElement('div');
         centerPanel.className = 'info-panel center-panel';
@@ -502,7 +522,7 @@
             <p>${itemsData[centerKey].descripcion}</p>
         `;
         
-        // Panel derecho (índice 2)
+        // Panel derecho (índice 2) - MUCHO MÁS PEQUEÑO
         const rightKey = currentOrder[2];
         const rightPanel = document.createElement('div');
         rightPanel.className = 'info-panel side-panel';
@@ -511,8 +531,8 @@
         rightPanel.addEventListener('click', () => moveToCenter(2));
         
         // Aplicar bordes redondeados al grupo completo
-        leftPanel.style.borderRadius = '40px 0 0 40px';
-        rightPanel.style.borderRadius = '0 40px 40px 0';
+        leftPanel.style.borderRadius = '50px 0 0 50px';
+        rightPanel.style.borderRadius = '0 50px 50px 0';
         centerPanel.style.borderRadius = '0';
         
         container.appendChild(leftPanel);
