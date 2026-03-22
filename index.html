@@ -2,13 +2,11 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Akinnova | Dealer del Futuro</title>
-    <!-- Fuente Poppins (Google Fonts) -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- FAVICON: akinnova-logo como logo de pestaña -->
-    <link rel="icon" type="image/png" href="fotos/akinnova-logo.png">
-    <link rel="shortcut icon" type="image/png" href="fotos/akinnova-logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akinnova - Impulsando el Dealer del Futuro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -17,637 +15,635 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
             background-color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            color: #000000;
         }
 
-        .hero {
-            position: relative;
+        /* Línea superior */
+        .top-bar {
+            background-color: #c2e9ff;
+            height: 12px;
             width: 100%;
+        }
+
+        /* Contenedor principal */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 40px 40px;
+        }
+
+        /* Hero section */
+        .hero {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 60px;
         }
 
         .hero-image {
+            flex: 1;
+        }
+
+        .hero-image img {
             width: 100%;
-            display: block;
             height: auto;
-        }
-
-        .navbar-overlay {
-            position: absolute;
-            top: 70px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 47%;
-            background-color: #ffffff;
-            border-radius: 60px;
-            padding: 24px 40px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-            z-index: 20;
-        }
-
-        .logo-img {
-            height: 52px;
-            width: auto;
             display: block;
-            object-fit: contain;
-        }
-
-        .siempre-nuevo {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 2rem;
-            color: #0c3a6a;
+            border-radius: 8px;
         }
 
         .hero-text {
-            position: absolute;
-            top: 28%;
-            left: 0;
-            right: 0;
-            text-align: center;
-            z-index: 15;
-            transform: translateY(-50%);
-            padding: 0 20px;
-        }
-
-        .hero-text h1 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 800;
-            font-size: 5rem;
-            line-height: 1.2;
-            color: white;
-            text-shadow: 5px 5px 14px rgba(0, 0, 0, 0.7), 3px 3px 6px rgba(0, 0, 0, 0.5);
-            font-style: italic;
-        }
-
-        .description-section {
-            max-width: 1300px;
-            margin: 70px auto 90px auto;
-            padding: 0 24px;
-            text-align: center;
-        }
-
-        .description-text {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 500;
-            color: #000000;
-            line-height: 1.4;
-        }
-
-        /* ========== SECCIÓN MISIÓN VISIÓN PROPÓSITO ========== */
-        .mvp-section {
-            max-width: 1600px;
-            margin: 0 auto 120px auto;
-            padding: 0 40px;
-        }
-
-        /* TABS SUPERIORES */
-        .tabs-container {
+            flex: 1;
             display: flex;
+            flex-direction: column;
             justify-content: center;
-            margin-bottom: 100px;
+            text-align: center;
         }
 
-        .tabs-wrapper {
-            display: flex;
-            border-radius: 60px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        }
-
-        .tab-btn {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.8rem;
+        .hero-title {
+            font-size: 3rem;
             font-weight: 700;
-            padding: 20px 56px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background-color: #d9d9d9;
-            color: #0c3a6a;
-            text-align: center;
-            min-width: 200px;
+            font-style: italic;
+            color: #000000;
+            line-height: 1.2;
+            margin-bottom: 20px;
         }
 
-        .tab-btn.active {
-            background-color: #0c3a6a;
-            color: white;
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #000000;
+            font-weight: 400;
+            max-width: 500px;
+            margin: 0 auto;
         }
 
-        .tabs-wrapper .tab-btn:first-child {
-            border-radius: 60px 0 0 60px;
+        /* ===== TRES PILARES FUNDAMENTALES ===== */
+        .pilares-section {
+            margin: 60px 0;
         }
 
-        .tabs-wrapper .tab-btn:last-child {
-            border-radius: 0 60px 60px 0;
+        .pilares-title-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 50px;
         }
 
-        /* ========== ESTRUCTURA: CENTRAL GRANDE ENCIMA, LINEA DE LATERALES DETRÁS ========== */
-        .mvp-cards-container {
+        .pilares-line {
+            flex: 1;
+            height: 2px;
+            background-color: #000000;
+        }
+
+        .pilares-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            font-style: italic;
+            color: #000000;
+            white-space: nowrap;
+            padding: 0 10px;
+        }
+
+        .pilares-grid {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .pilar-card {
+            flex: 1 1 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .pilar-superior {
+            background-color: #c2e9ff;
+            border: 2px solid #c2e9ff;
+            border-radius: 20px;
+            padding: 30px 25px;
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pilar-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+        }
+
+        .pilar-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .pilar-nombre {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 15px;
+        }
+
+        .pilar-descripcion {
+            font-size: 0.95rem;
+            color: #000000;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .pilar-inferior {
+            background-color: #ffffff;
+            border: 2px solid #c2e9ff;
+            border-radius: 20px;
+            padding: 18px 25px;
             position: relative;
+            min-height: 120px;
             display: flex;
-            justify-content: center;
             align-items: center;
-            min-height: 620px;
-            width: 100%;
         }
 
-        /* Línea de fondo: los dos títulos laterales PEGADOS A LOS EXTREMOS */
-        .side-cards-line {
+        .pilar-inferior::before {
+            content: '';
             position: absolute;
-            left: 0;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            justify-content: space-between;
-            gap: 0;
-            background: transparent;
-            border-radius: 100px;
-            overflow: hidden;
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
-            z-index: 1;
+            left: -2px;
+            top: -2px;
+            bottom: -2px;
+            width: 8px;
+            background-color: #004aad;
+            border-radius: 20px 0 0 20px;
+        }
+
+        .pilar-frase {
+            font-size: 0.95rem;
+            color: #000000;
+            font-weight: 400;
+            line-height: 1.5;
+            padding-left: 20px;
             width: 100%;
         }
 
-        .side-card {
-            background-color: #0f4472;
+        /* ===== NUESTRAS LÍNEAS DE TRABAJO ===== */
+        .lineas-section {
+            margin: 80px 0;
+        }
+
+        .lineas-title-wrapper {
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            padding: 70px 50px;        /* MÁS ALTO: mayor padding vertical */
-            cursor: pointer;
-            transition: all 0.3s ease;
-            flex: 0 0 auto;
+            gap: 20px;
+            margin-bottom: 50px;
         }
 
-        /* Primer título pegado a la izquierda */
-        .side-card:first-child {
-            border-radius: 100px 0 0 100px;
-            justify-content: flex-start;
-            padding-left: 70px;
+        .lineas-line {
+            flex: 1;
+            height: 2px;
+            background-color: #000000;
         }
 
-        /* Segundo título pegado a la derecha */
-        .side-card:last-child {
-            border-radius: 0 100px 100px 0;
-            justify-content: flex-end;
-            padding-right: 70px;
+        .lineas-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            font-style: italic;
+            color: #000000;
+            white-space: nowrap;
+            padding: 0 10px;
         }
 
-        .side-card h3 {
-            font-family: 'Poppins', sans-serif;
+        .lineas-columnas {
+            display: flex;
+            gap: 40px;
+        }
+
+        .lineas-columna {
+            flex: 1;
+        }
+
+        .columna-titulo {
             font-size: 2rem;
             font-weight: 700;
-            color: white;
-            margin: 0;
-            letter-spacing: -0.2px;
-            white-space: nowrap;
+            color: #000000;
+            margin-bottom: 30px;
+            text-align: left;
         }
 
-        .side-card:hover {
-            background-color: #1a5a8a;
-            transform: scale(1.02);
+        .lineas-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        /* Tarjeta central GRANDE - flota ENCIMA de la línea con bordes MÁS REDONDOS */
-        .center-card-wrapper {
+        .linea-card {
+            background-color: #ffffff;
+            border: 2px solid #c2e9ff;
+            border-radius: 20px;
+            padding: 25px;
             position: relative;
-            z-index: 10;
-            width: 68%;
-            max-width: 1050px;
-            margin: 0 auto;
+            width: 100%;
+            text-align: left;
         }
 
-        .center-card {
-            background-color: #0c3a6a;
-            border-radius: 80px;        /* BORDES MÁS REDONDOS */
-            padding: 85px 75px;
-            text-align: center;
-            box-shadow: 0 35px 55px rgba(0, 0, 0, 0.25);
-            transition: all 0.4s ease;
+        .linea-card::before {
+            content: '';
+            position: absolute;
+            left: -2px;
+            top: -2px;
+            bottom: -2px;
+            width: 8px;
+            background-color: #004aad;
+            border-radius: 20px 0 0 20px;
         }
 
-        .center-card h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 3.6rem;
-            font-weight: 800;
-            color: white;
-            margin-bottom: 40px;
-            letter-spacing: -0.5px;
+        .linea-titulo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 8px;
+            padding-left: 15px;
         }
 
-        .center-card p {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.9rem;
-            font-weight: 500;
-            color: white;
+        .linea-descripcion {
+            font-size: 0.95rem;
+            color: #000000;
+            font-weight: 400;
             line-height: 1.5;
-            max-width: 850px;
-            margin: 0 auto;
+            padding-left: 15px;
         }
 
-        /* Animación */
-        @keyframes fadeSlideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* ===== ¿POR QUÉ AKINNOVA? ===== */
+        .porque-section {
+            margin: 80px 0;
         }
 
-        .center-card-wrapper, .side-cards-line {
-            animation: fadeSlideUp 0.5s ease-out;
+        .porque-title-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
         }
 
-        /* RESPONSIVE */
-        @media (max-width: 1300px) {
-            .center-card-wrapper {
-                width: 72%;
-            }
-            .center-card {
-                padding: 70px 60px;
-            }
-            .center-card h2 {
-                font-size: 3rem;
-            }
-            .center-card p {
-                font-size: 1.7rem;
-            }
-            .side-card {
-                padding: 60px 40px;
-            }
-            .side-card:first-child {
-                padding-left: 55px;
-            }
-            .side-card:last-child {
-                padding-right: 55px;
-            }
-            .side-card h3 {
-                font-size: 1.8rem;
-            }
+        .porque-line {
+            flex: 1;
+            height: 2px;
+            background-color: #000000;
         }
 
-        @media (max-width: 1100px) {
-            .center-card-wrapper {
-                width: 75%;
-            }
-            .center-card {
-                padding: 60px 50px;
-            }
-            .center-card h2 {
-                font-size: 2.6rem;
-            }
-            .center-card p {
-                font-size: 1.5rem;
-            }
-            .side-card {
-                padding: 50px 35px;
-            }
-            .side-card:first-child {
-                padding-left: 45px;
-            }
-            .side-card:last-child {
-                padding-right: 45px;
-            }
-            .side-card h3 {
-                font-size: 1.6rem;
-            }
-            .tab-btn {
-                font-size: 1.4rem;
-                padding: 14px 32px;
-                min-width: 150px;
-            }
+        .porque-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            font-style: italic;
+            color: #000000;
+            white-space: nowrap;
+            padding: 0 10px;
         }
 
-        @media (max-width: 900px) {
-            .mvp-cards-container {
+        .equipo-subtitle {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #000000;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .equipo-columnas {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .equipo-columna {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .equipo-card {
+            background-color: #ffffff;
+            border: 2px solid #c2e9ff;
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .equipo-card::before {
+            content: '';
+            position: absolute;
+            left: -2px;
+            top: -2px;
+            bottom: -2px;
+            width: 8px;
+            background-color: #004aad;
+            border-radius: 20px 0 0 20px;
+        }
+
+        .equipo-header {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+
+        .equipo-foto {
+            width: 120px;
+            height: 140px;
+            overflow: hidden;
+            border: 2px solid #c2e9ff;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        .equipo-foto img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            display: block;
+        }
+
+        .equipo-info {
+            flex: 1;
+        }
+
+        .equipo-nombre {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .equipo-bio {
+            font-size: 0.95rem;
+            color: #000000;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .equipo-bio p {
+            margin-bottom: 15px;
+        }
+
+        .equipo-bio p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ===== IMAGEN FINAL ===== */
+        .final-image {
+            width: 100%;
+            margin-top: 40px;
+        }
+
+        .final-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            max-height: 400px;
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
                 flex-direction: column;
-                min-height: auto;
+                padding: 20px;
             }
-            .side-cards-line {
-                position: relative;
-                top: auto;
-                transform: none;
-                flex-direction: column;
-                border-radius: 60px;
-                gap: 20px;
-                background: transparent;
-                box-shadow: none;
-                margin-top: 40px;
+            
+            .container {
+                padding: 20px;
             }
-            .side-card {
-                border-radius: 60px !important;
-                padding: 40px 30px !important;
-                justify-content: center !important;
-                text-align: center;
-                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            }
-            .side-card h3 {
+            
+            .pilares-title {
                 font-size: 1.8rem;
                 white-space: normal;
+                text-align: center;
             }
-            .center-card-wrapper {
-                width: 100%;
-                margin-bottom: 20px;
+            
+            .lineas-title {
+                font-size: 1.8rem;
+                white-space: normal;
+                text-align: center;
             }
-            .center-card {
-                padding: 50px 40px;
-                border-radius: 60px;
+            
+            .porque-title {
+                font-size: 1.8rem;
+                white-space: normal;
+                text-align: center;
             }
-            .center-card h2 {
-                font-size: 2.4rem;
-            }
-            .center-card p {
-                font-size: 1.4rem;
-            }
-            .tabs-wrapper .tab-btn {
-                padding: 12px 24px;
-                font-size: 1.2rem;
-                min-width: 120px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .center-card {
-                padding: 40px 30px;
-            }
-            .center-card h2 {
-                font-size: 2rem;
-                margin-bottom: 25px;
-            }
-            .center-card p {
-                font-size: 1.2rem;
-            }
-            .side-card {
-                padding: 32px 25px !important;
-            }
-            .side-card h3 {
-                font-size: 1.5rem;
-            }
-            .tab-btn {
-                font-size: 1rem;
-                padding: 10px 16px;
-                min-width: 90px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .center-card h2 {
+            
+            .equipo-subtitle {
                 font-size: 1.6rem;
             }
-            .center-card p {
-                font-size: 1rem;
+            
+            .pilares-grid {
+                flex-direction: column;
             }
-            .side-card h3 {
-                font-size: 1.3rem;
+            
+            .lineas-columnas {
+                flex-direction: column;
+                gap: 30px;
             }
-        }
-
-        @media (min-width: 1600px) {
-            .center-card {
-                padding: 100px 90px;
-                border-radius: 90px;
+            
+            .equipo-columnas {
+                flex-direction: column;
+                gap: 30px;
             }
-            .center-card h2 {
-                font-size: 4rem;
+            
+            .equipo-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
             }
-            .center-card p {
-                font-size: 2.1rem;
+            
+            .pilar-superior {
+                min-height: auto;
             }
-            .side-card {
-                padding: 85px 65px;
+            
+            .pilar-inferior {
+                min-height: auto;
             }
-            .side-card:first-child {
-                padding-left: 90px;
-            }
-            .side-card:last-child {
-                padding-right: 90px;
-            }
-            .side-card h3 {
-                font-size: 2.2rem;
-            }
-            .side-cards-line {
-                border-radius: 110px;
-            }
-            .side-card:first-child {
-                border-radius: 110px 0 0 110px;
-            }
-            .side-card:last-child {
-                border-radius: 0 110px 110px 0;
-            }
-        }
-
-        .hero {
-            position: relative;
-        }
-
-        img {
-            max-width: 100%;
         }
     </style>
 </head>
 <body>
+    <!-- Línea superior -->
+    <div class="top-bar"></div>
 
-<section class="hero">
-    <img class="hero-image" src="fotos/carro-inicio.png" alt="Vehículo principal | Akinnova">
-    <div class="navbar-overlay">
-        <img class="logo-img" src="fotos/akinnova-logo.png" alt="Akinnova Logo">
-        <span class="siempre-nuevo">Siempre Nuevo</span>
-    </div>
-    <div class="hero-text">
-        <h1>Impulsando el<br>Dealer del Futuro</h1>
-    </div>
-</section>
-
-<div class="description-section">
-    <p class="description-text">
-        Conectamos visión, innovación y talento para transformar el concesionario en un ecosistema ágil, rentable y centrado en el cliente.
-    </p>
-</div>
-
-<!-- SECCIÓN MISIÓN, VISIÓN Y PROPÓSITO -->
-<section class="mvp-section">
-    <div class="tabs-container">
-        <div class="tabs-wrapper">
-            <button class="tab-btn" data-tab="mision">Misión</button>
-            <button class="tab-btn active" data-tab="vision">Visión</button>
-            <button class="tab-btn" data-tab="proposito">Propósito</button>
-        </div>
-    </div>
-
-    <div class="mvp-cards-container" id="mvpContainer">
-        <!-- Línea de fondo: laterales pegados a los extremos -->
-        <div class="side-cards-line" id="sideLine">
-            <div class="side-card" data-tab="mision">
-                <h3>Misión</h3>
+    <div class="container">
+        <!-- Hero section -->
+        <div class="hero">
+            <div class="hero-image">
+                <img src="fotos/carro-inicio.png" alt="Auto" onerror="this.src='https://placehold.co/600x400/c2e9ff/004aad?text=carro-inicio.png'">
             </div>
-            <div class="side-card" data-tab="proposito">
-                <h3>Propósito</h3>
+            <div class="hero-text">
+                <div class="hero-title">Impulsando el<br>Dealer del Futuro</div>
+                <div class="hero-subtitle">Conectamos visión, innovación y talento para transformar el concesionario en un ecosistema ágil, rentable y centrado en el cliente.</div>
             </div>
         </div>
-        
-        <!-- Tarjeta central GRANDE encima -->
-        <div class="center-card-wrapper" id="centerWrapper">
-            <div class="center-card" id="centerCard">
-                <h2 id="centerTitle">Visión</h2>
-                <p id="centerDesc">Ser el socio estratégico clave en la evolución integral del negocio automotriz, integrando tecnología y procesos disruptivos y ágiles.</p>
+
+        <!-- Tres Pilares Fundamentales -->
+        <div class="pilares-section">
+            <div class="pilares-title-wrapper">
+                <div class="pilares-line"></div>
+                <h2 class="pilares-title">Tres Pilares Fundamentales</h2>
+                <div class="pilares-line"></div>
             </div>
-        </div>
-    </div>
-</section>
-
-<script>
-    const contentMap = {
-        mision: {
-            title: "Misión",
-            description: "Acompañar a concesionarios, fábricas y empresas relacionadas en la implementación de soluciones tecnológicas simples y escalables."
-        },
-        vision: {
-            title: "Visión",
-            description: "Ser el socio estratégico clave en la evolución integral del negocio automotriz, integrando tecnología y procesos disruptivos y ágiles."
-        },
-        proposito: {
-            title: "Propósito",
-            description: "Transformar la industria automotriz hacia un modelo más ágil, digital y centrado en el nuevo cliente en la región del Pacífico."
-        }
-    };
-
-    let activeTab = "vision";
-
-    function updateUI() {
-        // Actualizar botones superiores
-        const btns = document.querySelectorAll(".tab-btn");
-        btns.forEach(btn => {
-            const btnTab = btn.getAttribute("data-tab");
-            if (btnTab === activeTab) {
-                btn.classList.add("active");
-            } else {
-                btn.classList.remove("active");
-            }
-        });
-
-        // Actualizar tarjeta central
-        const centerTitle = document.getElementById("centerTitle");
-        const centerDesc = document.getElementById("centerDesc");
-        const centerData = contentMap[activeTab];
-        if (centerTitle && centerDesc) {
-            centerTitle.textContent = centerData.title;
-            centerDesc.textContent = centerData.description;
-        }
-
-        // Actualizar línea de laterales: siempre muestran los dos títulos que NO son el activo
-        const allKeys = ["mision", "vision", "proposito"];
-        const sideKeys = allKeys.filter(key => key !== activeTab);
-        
-        const sideLine = document.getElementById("sideLine");
-        if (sideLine) {
-            const leftKey = sideKeys[0];
-            const rightKey = sideKeys[1];
-            const leftData = contentMap[leftKey];
-            const rightData = contentMap[rightKey];
             
-            sideLine.innerHTML = `
-                <div class="side-card" data-tab="${leftKey}">
-                    <h3>${leftData.title}</h3>
+            <div class="pilares-grid">
+                <div class="pilar-card">
+                    <div class="pilar-superior">
+                        <div class="pilar-icon">
+                            <img src="fotos/idea.png" alt="Idea" onerror="this.src='https://placehold.co/60x60/c2e9ff/004aad?text=idea'">
+                        </div>
+                        <h3 class="pilar-nombre">Propósito Transformador</h3>
+                        <p class="pilar-descripcion">Transformar la industria automotriz hacia un modelo más ágil, digital y centrado en el nuevo cliente en la región del Pacífico.</p>
+                    </div>
+                    <div class="pilar-inferior">
+                        <p class="pilar-frase">Un futuro donde la gran disrupción en el sector automotriz tenga dealers preparados a maximizar resultados de negocios.</p>
+                    </div>
                 </div>
-                <div class="side-card" data-tab="${rightKey}">
-                    <h3>${rightData.title}</h3>
+
+                <div class="pilar-card">
+                    <div class="pilar-superior">
+                        <div class="pilar-icon">
+                            <img src="fotos/vision.png" alt="Visión" onerror="this.src='https://placehold.co/60x60/c2e9ff/004aad?text=vision'">
+                        </div>
+                        <h3 class="pilar-nombre">Visión</h3>
+                        <p class="pilar-descripcion">Ser el socio estratégico clave en la evolución integral del negocio automotriz, integrando tecnología y procesos disruptivos y ágiles.</p>
+                    </div>
+                    <div class="pilar-inferior">
+                        <p class="pilar-frase">Queremos dejar una huella duradera en empresas más eficientes, autónomas y listas para liderar el cambio.</p>
+                    </div>
                 </div>
-            `;
-            
-            // Reasignar eventos
-            const newSideCards = document.querySelectorAll(".side-card");
-            newSideCards.forEach(card => {
-                card.addEventListener("click", (e) => {
-                    e.stopPropagation();
-                    const tabKey = card.getAttribute("data-tab");
-                    if (tabKey && tabKey !== activeTab) {
-                        activeTab = tabKey;
-                        updateUI();
-                    }
-                });
-            });
-        }
-        
-        // Animación
-        const centerWrapper = document.getElementById("centerWrapper");
-        if (centerWrapper) {
-            centerWrapper.style.animation = "none";
-            setTimeout(() => {
-                centerWrapper.style.animation = "fadeSlideUp 0.4s ease-out";
-            }, 10);
-        }
-        
-        const sideLineEl = document.getElementById("sideLine");
-        if (sideLineEl) {
-            sideLineEl.style.animation = "none";
-            setTimeout(() => {
-                sideLineEl.style.animation = "fadeSlideUp 0.4s ease-out";
-            }, 10);
-        }
-    }
 
-    function init() {
-        // Botones superiores
-        const btns = document.querySelectorAll(".tab-btn");
-        btns.forEach(btn => {
-            btn.addEventListener("click", () => {
-                const tabValue = btn.getAttribute("data-tab");
-                if (tabValue && tabValue !== activeTab) {
-                    activeTab = tabValue;
-                    updateUI();
-                }
-            });
-        });
-        
-        // Laterales iniciales
-        const initialSideCards = document.querySelectorAll(".side-card");
-        initialSideCards.forEach(card => {
-            card.addEventListener("click", (e) => {
-                e.stopPropagation();
-                const tabKey = card.getAttribute("data-tab");
-                if (tabKey && tabKey !== activeTab) {
-                    activeTab = tabKey;
-                    updateUI();
-                }
-            });
-        });
-    }
+                <div class="pilar-card">
+                    <div class="pilar-superior">
+                        <div class="pilar-icon">
+                            <img src="fotos/mision.png" alt="Misión" onerror="this.src='https://placehold.co/60x60/c2e9ff/004aad?text=mision'">
+                        </div>
+                        <h3 class="pilar-nombre">Misión</h3>
+                        <p class="pilar-descripcion">Acompañar a concesionarios, fábricas y empresas relacionadas en la implementación de soluciones tecnológicas simples y escalables.</p>
+                    </div>
+                    <div class="pilar-inferior">
+                        <p class="pilar-frase">Lo hacemos con foco en la velocidad y medición continua, orientados a resultados claros.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    document.addEventListener("DOMContentLoaded", init);
-</script>
+        <!-- Nuestras Líneas de Trabajo -->
+        <div class="lineas-section">
+            <div class="lineas-title-wrapper">
+                <div class="lineas-line"></div>
+                <h2 class="lineas-title">Nuestras Líneas de Trabajo</h2>
+                <div class="lineas-line"></div>
+            </div>
 
-<style>
-    .side-card {
-        transition: transform 0.2s ease, background-color 0.2s ease;
-    }
-    
-    .center-card {
-        transition: all 0.3s ease;
-    }
-    
-    .tab-btn:hover:not(.active) {
-        background-color: #c0c0c0;
-    }
-    
-    @media (min-width: 901px) {
-        .center-card-wrapper {
-            transform: translateY(0);
-        }
-        .side-cards-line {
-            top: 50%;
-            transform: translateY(-50%);
-        }
-    }
-</style>
+            <div class="lineas-columnas">
+                <div class="lineas-columna">
+                    <h3 class="columna-titulo">Consultorías</h3>
+                    <div class="lineas-grid">
+                        <div class="linea-card">
+                            <div class="linea-titulo">Profesionalización de Empresas Automotrices</div>
+                            <div class="linea-descripcion">Diagnóstico, estructura organizacional y gobierno corporativo.</div>
+                        </div>
+                        <div class="linea-card">
+                            <div class="linea-titulo">Transformación Digital, Procesos Ágiles e IA</div>
+                            <div class="linea-descripcion">Integración tecnológica, automatización y optimización.</div>
+                        </div>
+                        <div class="linea-card">
+                            <div class="linea-titulo">Gestión Comercial y Experiencia del Cliente</div>
+                            <div class="linea-descripcion">Procesos y metodologías para incrementar ingresos y eficiencia.</div>
+                        </div>
+                        <div class="linea-card">
+                            <div class="linea-titulo">Evaluación y Desarrollo de Liderazgo</div>
+                            <div class="linea-descripcion">Assessment, coaching ejecutivo y desarrollo de equipos.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lineas-columna">
+                    <h3 class="columna-titulo">Alianzas Estratégicas</h3>
+                    <div class="lineas-grid">
+                        <div class="linea-card">
+                            <div class="linea-titulo">Descubrimiento de Nuevos Revenue Streams</div>
+                            <div class="linea-descripcion">Programas como MOK para reparaciones menores.</div>
+                        </div>
+                        <div class="linea-card">
+                            <div class="linea-titulo">Integraciones con Plataformas Tecnológicas</div>
+                            <div class="linea-descripcion">Soluciones de datos y análisis de mercado.</div>
+                        </div>
+                        <div class="linea-card">
+                            <div class="linea-titulo">Soluciones de Evaluación de Liderazgo y Talento</div>
+                            <div class="linea-descripcion">Herramientas y partners para diagnóstico de equipos.</div>
+                        </div>
+                        <div class="linea-card">
+                            <div class="linea-titulo">Acuerdos Comerciales con Líderes en Sudamérica</div>
+                            <div class="linea-descripcion">Sinergias para potenciar portafolio y cobertura.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ¿Por qué AKINNOVA? - Equipo -->
+        <div class="porque-section">
+            <div class="porque-title-wrapper">
+                <div class="porque-line"></div>
+                <h2 class="porque-title">¿Por qué AKINNOVA?</h2>
+                <div class="porque-line"></div>
+            </div>
+
+            <h3 class="equipo-subtitle">Equipo</h3>
+
+            <div class="equipo-columnas">
+                <div class="equipo-columna">
+                    <div class="equipo-card">
+                        <div class="equipo-header">
+                            <div class="equipo-foto">
+                                <img src="fotos/marco.png" alt="Marco Kohatsu" onerror="this.src='https://placehold.co/120x140/c2e9ff/004aad?text=Marco'">
+                            </div>
+                            <div class="equipo-info">
+                                <h4 class="equipo-nombre">Marco Kohatsu</h4>
+                            </div>
+                        </div>
+                        <div class="equipo-bio">
+                            <p>Consultor y Ejecutor senior en transformación empresarial, con una trayectoria consolidada liderando procesos de cambio en organizaciones complejas, tanto multinacionales como familiares. Su enfoque combina visión estratégica, ejecución disciplinada y una clara orientación a resultados sostenibles.</p>
+                            <p>A lo largo de su carrera ha dirigido iniciativas de alto impacto que han revertido escenarios críticos, reposicionado marcas en mercados altamente competitivos. Constructor de culturas organizacionales centradas en la innovación, la autonomía y la orientación al cliente.</p>
+                            <p>Su experiencia como CEO le otorga una comprensión profunda de los desafíos reales del negocio, lo que le permite acompañar a empresas que buscan escalar con tecnología, profesionalizar su estructura y acelerar su rentabilidad. En particular, ha desarrollado proyectos que integran inteligencia artificial aplicada a procesos comerciales, automatización de decisiones y reestructuración organizacional. Hoy asesora a compañías que requieren dar un salto en su gestión, con velocidad, claridad y foco en el valor tangible.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="equipo-columna">
+                    <div class="equipo-card">
+                        <div class="equipo-header">
+                            <div class="equipo-foto">
+                                <img src="fotos/julio.png" alt="Julio Aguilar" onerror="this.src='https://placehold.co/120x140/c2e9ff/004aad?text=Julio'">
+                            </div>
+                            <div class="equipo-info">
+                                <h4 class="equipo-nombre">Julio Aguilar</h4>
+                            </div>
+                        </div>
+                        <div class="equipo-bio">
+                            <p>Consultor con amplia experiencia en transformar negocios para que sean más productivos, rentables y con una gestión de talento efectiva. Durante sus años en el mundo corporativo, se ha enfocado en el desarrollo de líderes con pensamiento crítico y con alta capacidad para la resolución de situaciones complejas, fomentando el pensamiento disruptivo para convertir los retos del negocio en oportunidades para fortalecer la posición competitiva de la empresa.</p>
+                            <p>Como líder responsable de revertir tendencias negativas en negocios nacionales e internacionales, comprende profundamente los desafíos actuales en liderazgo, estructuración de información y uso de tecnología para facilitar decisiones acertadas. Además, cuenta con experiencia en la reformulación de procesos para una gestión eficiente de recursos y en el desarrollo de equipos de alto rendimiento.</p>
+                            <p>Actualmente, asesora, capacita y acompaña a líderes y equipos gerenciales para impulsar una transformación que mejore la propuesta de valor a los clientes y aumente la rentabilidad del negocio.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Imagen final -->
+    <div class="final2-image">
+        <img src="fotos/final.png" alt="Akinnova" onerror="this.src='https://placehold.co/1920x400/c2e9ff/004aad?text=final.png'">
+    </div>
 </body>
 </html>
