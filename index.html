@@ -102,16 +102,16 @@
             padding: 0 40px;
         }
 
-        /* CARTELES SUPERIORES - MÁS GRANDES, TODOS CON BORDES REDONDEADOS */
+        /* CARTELES SUPERIORES - PEGADOS, SIN SEPARACIÓN */
         .top-cards {
             display: flex;
             justify-content: center;
             align-items: stretch;
             margin-bottom: 80px;
-            gap: 0;
+            gap: 0;  /* Sin separación entre carteles */
         }
 
-        /* Cada cartel: más grande, altura aumentada, todos con bordes redondeados */
+        /* Cada cartel: tamaño definido, todos con bordes redondeados pero se ajustan para estar pegados */
         .top-card {
             cursor: pointer;
             transition: all 0.3s ease;
@@ -128,7 +128,20 @@
             background-color: #d9d9d9;
             color: #1e2a3a;
             margin: 0;
-            border-radius: 60px !important;  /* Todos los carteles con bordes redondeados */
+        }
+
+        /* Bordes redondeados específicos para que estando pegados se vea como un grupo */
+        .top-card:first-child {
+            border-radius: 60px 0 0 60px;
+        }
+
+        .top-card:last-child {
+            border-radius: 0 60px 60px 0;
+        }
+
+        /* Cartel del medio (índice 1) - sin bordes laterales para que quede pegado */
+        .top-card.center-position {
+            border-radius: 0;
         }
 
         /* Cartel activo (el que está en el medio y muestra la descripción) - SIEMPRE AZUL */
@@ -137,9 +150,11 @@
             color: white;
             box-shadow: 0 8px 25px rgba(12, 58, 106, 0.3);
             transform: scale(1.02);
+            z-index: 2;
+            position: relative;
         }
 
-        /* RECUADROS INFERIORES - PEGADOS, CENTRAL MUCHO MÁS GRANDE, LATERALES MUCHO MÁS PEQUEÑOS */
+        /* RECUADROS INFERIORES - PEGADOS, CENTRAL GRANDE, LATERALES MÁS BAJOS */
         .bottom-panels {
             display: flex;
             justify-content: center;
@@ -147,7 +162,7 @@
             margin-top: 40px;
         }
 
-        /* Panel central: MUCHO MÁS GRANDE, color #0c3a6a, muestra título y descripción */
+        /* Panel central: GRANDE, color #0c3a6a, muestra título y descripción */
         .info-panel.center-panel {
             background-color: #0c3a6a;
             color: white;
@@ -156,6 +171,11 @@
             padding: 50px 45px;
             border-radius: 0;
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         }
 
         .center-panel h2 {
@@ -173,19 +193,20 @@
             margin: 0 auto;
         }
 
-        /* Paneles laterales: MUCHO MÁS PEQUEÑOS que el central, color #0f4472, solo título */
+        /* Paneles laterales: MÁS BAJOS de altura, color #0f4472, solo título, centrado perfectamente */
         .info-panel.side-panel {
             background-color: #0f4472;
             color: white;
             width: 220px;
-            min-height: 220px;
-            padding: 30px 20px;
+            min-height: 280px;  /* Altura reducida en comparación con el central (420px vs 280px) */
+            padding: 20px;
             border-radius: 0;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
+            text-align: center;
         }
 
         .side-panel h3 {
@@ -231,7 +252,7 @@
             }
             .info-panel.side-panel {
                 width: 200px;
-                min-height: 200px;
+                min-height: 250px;
             }
             .side-panel h3 {
                 font-size: 1.5rem;
@@ -257,7 +278,7 @@
             }
             .info-panel.side-panel {
                 width: 180px;
-                min-height: 180px;
+                min-height: 220px;
             }
             .side-panel h3 {
                 font-size: 1.3rem;
@@ -270,13 +291,18 @@
             }
             .top-cards {
                 flex-wrap: wrap;
-                gap: 20px;
+                gap: 15px;
                 margin-bottom: 50px;
             }
-            .top-card {
+            .top-card:first-child,
+            .top-card:last-child,
+            .top-card.center-position {
                 border-radius: 60px !important;
+            }
+            .top-card {
                 width: 280px;
                 height: 120px;
+                border-radius: 60px !important;
             }
             .bottom-panels {
                 flex-direction: column;
@@ -415,7 +441,7 @@
             }
             .info-panel.side-panel {
                 width: 260px;
-                min-height: 260px;
+                min-height: 320px;
             }
             .side-panel h3 {
                 font-size: 2rem;
@@ -444,12 +470,12 @@
 
 <!-- SECCIÓN MISIÓN, VISIÓN, PROPÓSITO -->
 <div class="mvp-wrapper">
-    <!-- CARTELES SUPERIORES: 3 posiciones que rotan dinámicamente, todos con bordes redondeados -->
+    <!-- CARTELES SUPERIORES: PEGADOS, SIN SEPARACIÓN -->
     <div class="top-cards" id="topCardsContainer">
         <!-- Los carteles se generan dinámicamente con JS -->
     </div>
 
-    <!-- RECUADROS INFERIORES: PEGADOS, central MUCHO MÁS GRANDE con descripción, laterales MUCHO MÁS PEQUEÑOS solo título -->
+    <!-- RECUADROS INFERIORES: PEGADOS, central GRANDE, laterales MÁS BAJOS con texto centrado -->
     <div class="bottom-panels" id="bottomPanelsContainer">
         <!-- Generado dinámicamente -->
     </div>
@@ -475,7 +501,7 @@
     // Orden inicial: [izquierda, centro, derecha] -> [visión, misión, propósito]
     let currentOrder = ['vision', 'mision', 'proposito'];
 
-    // Función para renderizar los carteles superiores según el orden actual (TODOS CON BORDES REDONDEADOS)
+    // Función para renderizar los carteles superiores según el orden actual (PEGADOS)
     function renderTopCards() {
         const container = document.getElementById('topCardsContainer');
         if (!container) return;
@@ -489,7 +515,18 @@
             if (index === 1) {
                 card.classList.add('active-card');
             }
-            // Todos los carteles tienen bordes redondeados (por CSS ya tienen border-radius)
+            // Añadir clase para posición central (para bordes)
+            if (index === 1) {
+                card.classList.add('center-position');
+            }
+            // Aplicar bordes redondeados según posición para que queden pegados
+            if (index === 0) {
+                card.style.borderRadius = '60px 0 0 60px';
+            } else if (index === 2) {
+                card.style.borderRadius = '0 60px 60px 0';
+            } else {
+                card.style.borderRadius = '0';
+            }
             card.textContent = itemsData[key].nombre;
             card.setAttribute('data-key', key);
             card.setAttribute('data-index', index);
@@ -498,14 +535,14 @@
         });
     }
 
-    // Función para renderizar los paneles inferiores (pegados, central MUCHO MÁS GRANDE, laterales MUCHO MÁS PEQUEÑOS)
+    // Función para renderizar los paneles inferiores (pegados, central GRANDE, laterales MÁS BAJOS con texto centrado)
     function renderBottomPanels() {
         const container = document.getElementById('bottomPanelsContainer');
         if (!container) return;
         
         container.innerHTML = '';
         
-        // Panel izquierdo (índice 0 del orden) - MUCHO MÁS PEQUEÑO
+        // Panel izquierdo (índice 0 del orden) - MÁS BAJO de altura
         const leftKey = currentOrder[0];
         const leftPanel = document.createElement('div');
         leftPanel.className = 'info-panel side-panel';
@@ -513,7 +550,7 @@
         leftPanel.setAttribute('data-key', leftKey);
         leftPanel.addEventListener('click', () => moveToCenter(0));
         
-        // Panel central (índice 1) - MUCHO MÁS GRANDE con descripción
+        // Panel central (índice 1) - GRANDE con descripción
         const centerKey = currentOrder[1];
         const centerPanel = document.createElement('div');
         centerPanel.className = 'info-panel center-panel';
@@ -522,7 +559,7 @@
             <p>${itemsData[centerKey].descripcion}</p>
         `;
         
-        // Panel derecho (índice 2) - MUCHO MÁS PEQUEÑO
+        // Panel derecho (índice 2) - MÁS BAJO de altura
         const rightKey = currentOrder[2];
         const rightPanel = document.createElement('div');
         rightPanel.className = 'info-panel side-panel';
