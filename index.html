@@ -109,7 +109,7 @@
         .tabs-container {
             display: flex;
             justify-content: center;
-            margin-bottom: 80px;
+            margin-bottom: 100px;
         }
 
         .tabs-wrapper {
@@ -146,17 +146,17 @@
             border-radius: 0 60px 60px 0;
         }
 
-        /* ========== NUEVA ESTRUCTURA: CENTRAL GRANDE ENCIMA, LINEA DE LATERALES DETRÁS ========== */
+        /* ========== ESTRUCTURA: CENTRAL GRANDE ENCIMA, LINEA DE LATERALES DETRÁS ========== */
         .mvp-cards-container {
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 550px;
+            min-height: 620px;
             width: 100%;
         }
 
-        /* Línea de fondo: los dos títulos laterales PEGADOS con bordes MUY REDONDOS */
+        /* Línea de fondo: los dos títulos laterales PEGADOS A LOS EXTREMOS */
         .side-cards-line {
             position: absolute;
             left: 0;
@@ -164,9 +164,10 @@
             top: 50%;
             transform: translateY(-50%);
             display: flex;
+            justify-content: space-between;
             gap: 0;
             background: transparent;
-            border-radius: 80px;
+            border-radius: 100px;
             overflow: hidden;
             box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
             z-index: 1;
@@ -179,18 +180,24 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 55px 30px;
+            padding: 70px 50px;        /* MÁS ALTO: mayor padding vertical */
             cursor: pointer;
             transition: all 0.3s ease;
-            flex: 1;
+            flex: 0 0 auto;
         }
 
+        /* Primer título pegado a la izquierda */
         .side-card:first-child {
-            border-radius: 80px 0 0 80px;
+            border-radius: 100px 0 0 100px;
+            justify-content: flex-start;
+            padding-left: 70px;
         }
 
+        /* Segundo título pegado a la derecha */
         .side-card:last-child {
-            border-radius: 0 80px 80px 0;
+            border-radius: 0 100px 100px 0;
+            justify-content: flex-end;
+            padding-right: 70px;
         }
 
         .side-card h3 {
@@ -200,6 +207,7 @@
             color: white;
             margin: 0;
             letter-spacing: -0.2px;
+            white-space: nowrap;
         }
 
         .side-card:hover {
@@ -207,27 +215,27 @@
             transform: scale(1.02);
         }
 
-        /* Tarjeta central GRANDE - flota ENCIMA de la línea (z-index más alto) */
+        /* Tarjeta central GRANDE - flota ENCIMA de la línea con bordes MÁS REDONDOS */
         .center-card-wrapper {
             position: relative;
             z-index: 10;
-            width: 70%;
-            max-width: 1000px;
+            width: 68%;
+            max-width: 1050px;
             margin: 0 auto;
         }
 
         .center-card {
             background-color: #0c3a6a;
-            border-radius: 70px;        /* bordes MUY redondos */
-            padding: 80px 70px;
+            border-radius: 80px;        /* BORDES MÁS REDONDOS */
+            padding: 85px 75px;
             text-align: center;
-            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 35px 55px rgba(0, 0, 0, 0.25);
             transition: all 0.4s ease;
         }
 
         .center-card h2 {
             font-family: 'Poppins', sans-serif;
-            font-size: 3.5rem;
+            font-size: 3.6rem;
             font-weight: 800;
             color: white;
             margin-bottom: 40px;
@@ -240,7 +248,7 @@
             font-weight: 500;
             color: white;
             line-height: 1.5;
-            max-width: 800px;
+            max-width: 850px;
             margin: 0 auto;
         }
 
@@ -261,49 +269,57 @@
         }
 
         /* RESPONSIVE */
-        @media (max-width: 1200px) {
+        @media (max-width: 1300px) {
             .center-card-wrapper {
-                width: 75%;
+                width: 72%;
             }
             .center-card {
-                padding: 65px 55px;
+                padding: 70px 60px;
             }
             .center-card h2 {
                 font-size: 3rem;
             }
             .center-card p {
-                font-size: 1.6rem;
+                font-size: 1.7rem;
             }
             .side-card {
-                padding: 45px 25px;
+                padding: 60px 40px;
+            }
+            .side-card:first-child {
+                padding-left: 55px;
+            }
+            .side-card:last-child {
+                padding-right: 55px;
             }
             .side-card h3 {
-                font-size: 1.7rem;
+                font-size: 1.8rem;
             }
         }
 
-        @media (max-width: 1000px) {
-            .mvp-cards-container {
-                min-height: 500px;
-            }
+        @media (max-width: 1100px) {
             .center-card-wrapper {
-                width: 80%;
+                width: 75%;
             }
             .center-card {
-                padding: 55px 45px;
+                padding: 60px 50px;
             }
             .center-card h2 {
-                font-size: 2.5rem;
-                margin-bottom: 30px;
+                font-size: 2.6rem;
             }
             .center-card p {
-                font-size: 1.4rem;
+                font-size: 1.5rem;
             }
             .side-card {
-                padding: 40px 22px;
+                padding: 50px 35px;
+            }
+            .side-card:first-child {
+                padding-left: 45px;
+            }
+            .side-card:last-child {
+                padding-right: 45px;
             }
             .side-card h3 {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
             }
             .tab-btn {
                 font-size: 1.4rem;
@@ -312,7 +328,7 @@
             }
         }
 
-        @media (max-width: 800px) {
+        @media (max-width: 900px) {
             .mvp-cards-container {
                 flex-direction: column;
                 min-height: auto;
@@ -323,32 +339,35 @@
                 transform: none;
                 flex-direction: column;
                 border-radius: 60px;
-                gap: 15px;
+                gap: 20px;
                 background: transparent;
                 box-shadow: none;
-                margin-top: 30px;
+                margin-top: 40px;
             }
             .side-card {
                 border-radius: 60px !important;
-                padding: 35px 25px;
+                padding: 40px 30px !important;
+                justify-content: center !important;
+                text-align: center;
                 box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
             }
             .side-card h3 {
-                font-size: 1.6rem;
+                font-size: 1.8rem;
+                white-space: normal;
             }
             .center-card-wrapper {
                 width: 100%;
                 margin-bottom: 20px;
             }
             .center-card {
-                padding: 45px 35px;
+                padding: 50px 40px;
                 border-radius: 60px;
             }
             .center-card h2 {
-                font-size: 2.2rem;
+                font-size: 2.4rem;
             }
             .center-card p {
-                font-size: 1.3rem;
+                font-size: 1.4rem;
             }
             .tabs-wrapper .tab-btn {
                 padding: 12px 24px;
@@ -357,22 +376,22 @@
             }
         }
 
-        @media (max-width: 550px) {
+        @media (max-width: 600px) {
             .center-card {
-                padding: 35px 25px;
+                padding: 40px 30px;
             }
             .center-card h2 {
-                font-size: 1.8rem;
-                margin-bottom: 20px;
+                font-size: 2rem;
+                margin-bottom: 25px;
             }
             .center-card p {
-                font-size: 1rem;
+                font-size: 1.2rem;
             }
             .side-card {
-                padding: 28px 20px;
+                padding: 32px 25px !important;
             }
             .side-card h3 {
-                font-size: 1.4rem;
+                font-size: 1.5rem;
             }
             .tab-btn {
                 font-size: 1rem;
@@ -381,30 +400,49 @@
             }
         }
 
+        @media (max-width: 480px) {
+            .center-card h2 {
+                font-size: 1.6rem;
+            }
+            .center-card p {
+                font-size: 1rem;
+            }
+            .side-card h3 {
+                font-size: 1.3rem;
+            }
+        }
+
         @media (min-width: 1600px) {
             .center-card {
                 padding: 100px 90px;
+                border-radius: 90px;
             }
             .center-card h2 {
                 font-size: 4rem;
             }
             .center-card p {
-                font-size: 2.2rem;
+                font-size: 2.1rem;
             }
             .side-card {
-                padding: 70px 45px;
+                padding: 85px 65px;
+            }
+            .side-card:first-child {
+                padding-left: 90px;
+            }
+            .side-card:last-child {
+                padding-right: 90px;
             }
             .side-card h3 {
                 font-size: 2.2rem;
             }
             .side-cards-line {
-                border-radius: 90px;
+                border-radius: 110px;
             }
             .side-card:first-child {
-                border-radius: 90px 0 0 90px;
+                border-radius: 110px 0 0 110px;
             }
             .side-card:last-child {
-                border-radius: 0 90px 90px 0;
+                border-radius: 0 110px 110px 0;
             }
         }
 
@@ -447,7 +485,7 @@
     </div>
 
     <div class="mvp-cards-container" id="mvpContainer">
-        <!-- Línea de fondo: laterales (detrás) -->
+        <!-- Línea de fondo: laterales pegados a los extremos -->
         <div class="side-cards-line" id="sideLine">
             <div class="side-card" data-tab="mision">
                 <h3>Misión</h3>
@@ -457,7 +495,7 @@
             </div>
         </div>
         
-        <!-- Tarjeta central GRANDE (encima, por eso va después en el HTML pero con z-index) -->
+        <!-- Tarjeta central GRANDE encima -->
         <div class="center-card-wrapper" id="centerWrapper">
             <div class="center-card" id="centerCard">
                 <h2 id="centerTitle">Visión</h2>
@@ -497,7 +535,7 @@
             }
         });
 
-        // Actualizar tarjeta central (grande, encima)
+        // Actualizar tarjeta central
         const centerTitle = document.getElementById("centerTitle");
         const centerDesc = document.getElementById("centerDesc");
         const centerData = contentMap[activeTab];
@@ -506,7 +544,7 @@
             centerDesc.textContent = centerData.description;
         }
 
-        // Actualizar la línea de laterales (fondo): siempre muestran los dos títulos que NO son el activo
+        // Actualizar línea de laterales: siempre muestran los dos títulos que NO son el activo
         const allKeys = ["mision", "vision", "proposito"];
         const sideKeys = allKeys.filter(key => key !== activeTab);
         
@@ -526,7 +564,7 @@
                 </div>
             `;
             
-            // Reasignar eventos a los nuevos laterales
+            // Reasignar eventos
             const newSideCards = document.querySelectorAll(".side-card");
             newSideCards.forEach(card => {
                 card.addEventListener("click", (e) => {
@@ -540,7 +578,7 @@
             });
         }
         
-        // Animación suave para la tarjeta central
+        // Animación
         const centerWrapper = document.getElementById("centerWrapper");
         if (centerWrapper) {
             centerWrapper.style.animation = "none";
@@ -559,7 +597,7 @@
     }
 
     function init() {
-        // Configurar botones superiores
+        // Botones superiores
         const btns = document.querySelectorAll(".tab-btn");
         btns.forEach(btn => {
             btn.addEventListener("click", () => {
@@ -571,7 +609,7 @@
             });
         });
         
-        // Configurar laterales iniciales
+        // Laterales iniciales
         const initialSideCards = document.querySelectorAll(".side-card");
         initialSideCards.forEach(card => {
             card.addEventListener("click", (e) => {
@@ -589,7 +627,6 @@
 </script>
 
 <style>
-    /* Ajustes adicionales */
     .side-card {
         transition: transform 0.2s ease, background-color 0.2s ease;
     }
@@ -602,8 +639,7 @@
         background-color: #c0c0c0;
     }
     
-    /* Aseguramos que en desktop el central esté centrado verticalmente sobre la línea */
-    @media (min-width: 801px) {
+    @media (min-width: 901px) {
         .center-card-wrapper {
             transform: translateY(0);
         }
