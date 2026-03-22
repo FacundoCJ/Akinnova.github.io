@@ -34,22 +34,16 @@
             height: auto;
         }
 
-        /* 
-            BARRA:
-            - el doble de ancha = más padding vertical (antes 12px, ahora 24px)
-            - la mitad de larga = ancho reducido a la mitad del ancho anterior
-              antes width: 94% → ahora width: 47% (la mitad de larga)
-              y centrada horizontalmente con left: 50% transform translateX
-        */
+        /* BARRA: el doble de ancha, la mitad de larga, centrada */
         .navbar-overlay {
             position: absolute;
-            top: 70px;                  /* mantiene posición más abajo */
+            top: 70px;
             left: 50%;
-            transform: translateX(-50%); /* centrado horizontal */
-            width: 47%;                 /* la mitad de larga (antes 94% ≈ la mitad) */
+            transform: translateX(-50%);
+            width: 47%;
             background-color: #ffffff;
             border-radius: 60px;
-            padding: 24px 40px;         /* el doble de ancha: padding vertical 24px (antes 12px) */
+            padding: 24px 40px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -58,7 +52,6 @@
             transition: all 0.2s ease;
         }
 
-        /* logo dentro de la barra */
         .logo-img {
             height: 52px;
             width: auto;
@@ -66,7 +59,6 @@
             object-fit: contain;
         }
 
-        /* texto "Siempre Nuevo" con color azul #0c3a6a y letras grandes */
         .siempre-nuevo {
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
@@ -77,10 +69,9 @@
             line-height: 1.2;
         }
 
-        /* contenedor del texto principal sobre la imagen - MÁS ARRIBA */
         .hero-text {
             position: absolute;
-            top: 28%;                   /* subimos más (antes 48%) para que quede más arriba */
+            top: 28%;
             left: 0;
             right: 0;
             text-align: center;
@@ -89,7 +80,6 @@
             padding: 0 20px;
         }
 
-        /* Título principal: Impulsando el Dealer del Futuro - con CURSIVA (itálica) y más arriba */
         .hero-text h1 {
             font-family: 'Poppins', sans-serif;
             font-weight: 800;
@@ -99,10 +89,9 @@
             text-shadow: 5px 5px 14px rgba(0, 0, 0, 0.7), 3px 3px 6px rgba(0, 0, 0, 0.5);
             margin: 0;
             letter-spacing: -0.02em;
-            font-style: italic;          /* ITÁLICA / CURSIVA */
+            font-style: italic;
         }
 
-        /* línea debajo de la imagen: texto descriptivo centrado, color negro, MÁS GRANDE */
         .description-section {
             max-width: 1300px;
             margin: 70px auto 90px auto;
@@ -112,7 +101,7 @@
 
         .description-text {
             font-family: 'Poppins', sans-serif;
-            font-size: 2.2rem;          /* más grande (antes 1.8rem) */
+            font-size: 2.2rem;
             font-weight: 500;
             color: #000000;
             line-height: 1.4;
@@ -120,10 +109,159 @@
             margin: 0 auto;
         }
 
-        /* responsive: ajustes para pantallas medianas y pequeñas manteniendo proporciones */
+        /* ========== SECCIÓN MISIÓN, VISIÓN, PROPÓSITO ========== */
+        .mvp-section {
+            max-width: 1400px;
+            margin: 0 auto 100px auto;
+            padding: 0 40px;
+        }
+
+        /* Contenedor de los 3 carteles (carrusel de selección) */
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+
+        /* Estilo base para los tres carteles */
+        .mvp-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Cartel del medio (más grande) */
+        .mvp-card.center-card {
+            width: 320px;
+            height: 180px;
+            border-radius: 24px;
+            font-size: 2.2rem;
+            background-color: #0c3a6a;
+            color: white;
+        }
+
+        /* Carteles laterales (más pequeños) */
+        .mvp-card.side-card {
+            width: 240px;
+            height: 140px;
+            border-radius: 20px;
+            font-size: 1.6rem;
+            background-color: #0f4472;
+            color: white;
+        }
+
+        /* Estado activo: cuando el cartel está seleccionado, se resalta y se pone del color del centro */
+        .mvp-card.active {
+            background-color: #0c3a6a;
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(12, 58, 106, 0.3);
+        }
+
+        /* Descripción que aparece abajo */
+        .mvp-description {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 30px;
+            background-color: #f8f9fa;
+            border-radius: 28px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .mvp-description h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0c3a6a;
+            margin-bottom: 20px;
+            letter-spacing: -0.3px;
+        }
+
+        .mvp-description p {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            color: #2c3e4e;
+            font-weight: 500;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .mvp-card.center-card {
+                width: 280px;
+                height: 160px;
+                font-size: 1.9rem;
+            }
+            .mvp-card.side-card {
+                width: 210px;
+                height: 125px;
+                font-size: 1.4rem;
+            }
+            .mvp-description p {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 850px) {
+            .cards-container {
+                gap: 20px;
+            }
+            .mvp-card.center-card {
+                width: 250px;
+                height: 140px;
+                font-size: 1.7rem;
+            }
+            .mvp-card.side-card {
+                width: 180px;
+                height: 110px;
+                font-size: 1.2rem;
+            }
+            .mvp-description p {
+                font-size: 1.1rem;
+            }
+            .mvp-description h3 {
+                font-size: 1.7rem;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .cards-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .mvp-card.center-card, .mvp-card.side-card {
+                width: 280px;
+                height: 120px;
+                font-size: 1.6rem;
+            }
+            .mvp-card.side-card {
+                width: 260px;
+                height: 110px;
+            }
+            .mvp-card.center-card {
+                order: 1;
+            }
+            .mvp-card.side-card:first-child {
+                order: 2;
+            }
+            .mvp-card.side-card:last-child {
+                order: 3;
+            }
+        }
+
         @media (max-width: 1200px) {
             .navbar-overlay {
-                width: 55%;              /* en pantallas medianas un poco más ancha pero manteniendo concepto mitad larga */
+                width: 55%;
                 padding: 22px 36px;
             }
             .hero-text h1 {
@@ -147,7 +285,7 @@
                 font-size: 1.6rem;
             }
             .hero-text {
-                top: 25%;               /* ajuste para mantener arriba en pantallas medianas */
+                top: 25%;
             }
             .hero-text h1 {
                 font-size: 3.5rem;
@@ -209,10 +347,9 @@
             }
         }
 
-        /* Para pantallas muy grandes (desktop wide) */
         @media (min-width: 1600px) {
             .navbar-overlay {
-                width: 45%;             /* mantiene mitad de larga en pantallas enormes */
+                width: 45%;
                 padding: 28px 52px;
                 top: 90px;
             }
@@ -226,46 +363,123 @@
                 font-size: 6rem;
             }
             .hero-text {
-                top: 30%;               /* ligeramente más arriba también en ultra wide */
+                top: 30%;
             }
             .description-text {
                 font-size: 2.4rem;
             }
-        }
-
-        .hero {
-            position: relative;
-        }
-
-        img {
-            max-width: 100%;
         }
     </style>
 </head>
 <body>
 
 <section class="hero">
-    <!-- imagen del carro a ancho completo desde carpeta fotos -->
     <img class="hero-image" src="fotos/carro-inicio.png" alt="Vehículo principal | Akinnova">
-
-    <!-- BARRA: el doble de ancha (padding vertical 24px), la mitad de larga (width:47% centrada) -->
     <div class="navbar-overlay">
         <img class="logo-img" src="fotos/akinnova-logo.png" alt="Akinnova Logo">
         <span class="siempre-nuevo">Siempre Nuevo</span>
     </div>
-
-    <!-- Texto principal MÁS ARRIBA y con ITÁLICA (cursiva) -->
     <div class="hero-text">
         <h1>Impulsando el<br>Dealer del Futuro</h1>
     </div>
 </section>
 
-<!-- Frase debajo de la imagen, MÁS GRANDE, centrada, color negro -->
 <div class="description-section">
     <p class="description-text">
         Conectamos visión, innovación y talento para transformar el concesionario en un ecosistema ágil, rentable y centrado en el cliente.
     </p>
 </div>
+
+<!-- SECCIÓN MISIÓN, VISIÓN Y PROPÓSITO (CARRUSEL INTERACTIVO) -->
+<div class="mvp-section">
+    <div class="cards-container">
+        <!-- Visión (izquierda) - cartel pequeño -->
+        <div class="mvp-card side-card" data-mvp="vision">
+            Visión
+        </div>
+        <!-- Misión (centro) - cartel grande, por defecto activo -->
+        <div class="mvp-card center-card active" data-mvp="mision">
+            Misión
+        </div>
+        <!-- Propósito (derecha) - cartel pequeño -->
+        <div class="mvp-card side-card" data-mvp="proposito">
+            Propósito
+        </div>
+    </div>
+
+    <!-- Área de descripción dinámica -->
+    <div class="mvp-description" id="mvpDescription">
+        <h3 id="descTitle">Misión</h3>
+        <p id="descText">Acompañar a concesionarios, fábricas y empresas relacionadas en la implementación de soluciones tecnológicas simples y escalables.</p>
+    </div>
+</div>
+
+<script>
+    // Definir los contenidos para cada opción
+    const mvpData = {
+        vision: {
+            titulo: "Visión",
+            texto: "Ser el socio estratégico clave en la evolución integral del negocio automotriz, integrando tecnología y procesos disruptivos y ágiles."
+        },
+        mision: {
+            titulo: "Misión",
+            texto: "Acompañar a concesionarios, fábricas y empresas relacionadas en la implementación de soluciones tecnológicas simples y escalables."
+        },
+        proposito: {
+            titulo: "Propósito",
+            texto: "Transformar la industria automotriz hacia un modelo más ágil, digital y centrado en el nuevo cliente en la región del Pacífico."
+        }
+    };
+
+    // Obtener elementos
+    const cards = document.querySelectorAll('.mvp-card');
+    const descTitleEl = document.getElementById('descTitle');
+    const descTextEl = document.getElementById('descText');
+
+    // Función para actualizar la descripción y el estado activo de los carteles
+    function setActiveMVP(activeId) {
+        // Actualizar clases activas en los carteles
+        cards.forEach(card => {
+            const cardValue = card.getAttribute('data-mvp');
+            if (cardValue === activeId) {
+                card.classList.add('active');
+                // Asegurar que el cartel del medio siempre se vea como "grande" pero visualmente el activo resalta
+                // El centro ya tiene clase center-card, pero si el activo es visión o propósito, los laterales se ponen activos
+                // y el centro pierde activo. Mantenemos estilo: cuando un lateral está activo se pone del color #0c3a6a
+            } else {
+                card.classList.remove('active');
+            }
+        });
+
+        // Actualizar el contenido de la descripción
+        const data = mvpData[activeId];
+        if (data) {
+            descTitleEl.textContent = data.titulo;
+            descTextEl.textContent = data.texto;
+        }
+    }
+
+    // Agregar evento click a cada card
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+            const mvpType = card.getAttribute('data-mvp');
+            if (mvpType) {
+                setActiveMVP(mvpType);
+            }
+        });
+    });
+
+    // Inicializar: Misión activa por defecto (coincide con clase active inicial)
+    // Asegurar que la descripción coincida con la activa inicial
+    const initialActive = document.querySelector('.mvp-card.active');
+    if (initialActive) {
+        const initialType = initialActive.getAttribute('data-mvp');
+        if (initialType && mvpData[initialType]) {
+            descTitleEl.textContent = mvpData[initialType].titulo;
+            descTextEl.textContent = mvpData[initialType].texto;
+        }
+    }
+</script>
 
 </body>
 </html>
