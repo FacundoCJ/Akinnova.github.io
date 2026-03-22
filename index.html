@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <meta name="facebook-domain-verification" content="5wkw3tegcs915umdcwiy2ea839bvz5" />
     <title>Akinnova | Dealer del Futuro</title>
     <!-- Fuente Poppins (Google Fonts) -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -101,7 +100,7 @@
 
         /* ========== SECCIÓN MISIÓN VISIÓN PROPÓSITO ========== */
         .mvp-section {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto 100px auto;
             padding: 0 40px;
         }
@@ -110,7 +109,7 @@
         .tabs-container {
             display: flex;
             justify-content: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
 
         .tabs-wrapper {
@@ -122,16 +121,16 @@
 
         .tab-btn {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            padding: 18px 48px;
+            padding: 20px 56px;
             border: none;
             cursor: pointer;
             transition: all 0.3s ease;
             background-color: #d9d9d9;
             color: #0c3a6a;
             text-align: center;
-            min-width: 180px;
+            min-width: 200px;
         }
 
         .tab-btn.active {
@@ -147,74 +146,83 @@
             border-radius: 0 60px 60px 0;
         }
 
-        /* ========== RECUADROS INFERIORES ========== */
-        /* Contenedor: los tres recuadros con gap pequeño para que se vean separados pero todos con bordes redondos */
+        /* ========== RECUADROS INFERIORES PEGADOS ========== */
         .cards-row {
             display: flex;
             justify-content: center;
             align-items: stretch;
             width: 100%;
             margin-top: 20px;
-            gap: 20px;
+            gap: 0;                     /* PEGADOS sin espacio */
         }
 
-        /* Tarjeta lateral - UN POCO MÁS ALTOS Y ANCHOS */
+        /* Tarjeta lateral - MÁS LARGOS (más altura), MENOS ANCHOS, más bajos que el central */
         .side-card {
             background-color: #0f4472;
-            border-radius: 40px;        /* bordes redondos */
+            border-radius: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 45px 30px;         /* aumentado: antes 20px 15px, ahora más alto y ancho */
+            padding: 70px 25px;         /* más largo: padding vertical grande */
             transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
             cursor: pointer;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            flex: 0.5;                  /* un poco más ancho que antes (era 0.4) */
-            min-width: 200px;
-            max-width: 260px;
+            flex: 0.35;                 /* menos anchos */
+            min-width: 180px;
+            max-width: 240px;
+            /* altura más baja que el central: no tienen contenido extra, se estiran según contenido pero central tiene más padding */
         }
 
         .side-card h3 {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.6rem;          /* ligeramente más grande */
+            font-size: 1.9rem;
             font-weight: 700;
             color: white;
             margin: 0;
             letter-spacing: -0.2px;
         }
 
-        /* Tarjeta central - GRANDE con bordes redondos */
+        /* Tarjeta central - MUCHO MÁS GRANDE, con más altura */
         .center-card {
             background-color: #0c3a6a;
-            border-radius: 40px;        /* bordes redondos también */
-            padding: 70px 50px;
+            border-radius: 0;
+            padding: 90px 60px;         /* mucho más grande, más alto */
             text-align: center;
             transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
             box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
             justify-content: center;
-            flex: 2.2;
+            flex: 2.5;                  /* mucho más ancho que laterales */
         }
 
         .center-card h2 {
             font-family: 'Poppins', sans-serif;
-            font-size: 2.8rem;
+            font-size: 3.2rem;          /* letras más grandes */
             font-weight: 800;
             color: white;
-            margin-bottom: 35px;
+            margin-bottom: 40px;
             letter-spacing: -0.5px;
         }
 
         .center-card p {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.6rem;
+            font-size: 1.8rem;          /* letras más grandes */
             font-weight: 500;
             color: white;
             line-height: 1.5;
-            max-width: 800px;
+            max-width: 850px;
             margin: 0 auto;
+        }
+
+        /* Bordes redondeados SOLO en los extremos izquierdo y derecho para que queden pegados */
+        .cards-row .side-card:first-child {
+            border-radius: 40px 0 0 40px;
+        }
+
+        .cards-row .side-card:last-child {
+            border-radius: 0 40px 40px 0;
         }
 
         /* Efecto hover en laterales */
@@ -240,7 +248,7 @@
             animation: fadeSlideUp 0.4s ease-out;
         }
 
-        /* RESPONSIVE: en móviles se apilan */
+        /* RESPONSIVE: en móviles se apilan y se vuelven redondeados individualmente */
         @media (max-width: 1000px) {
             .cards-row {
                 flex-direction: column;
@@ -251,22 +259,29 @@
                 max-width: 90%;
                 width: 90%;
                 flex: none;
-                padding: 35px 25px;
+                padding: 45px 30px;
+                border-radius: 40px !important;
             }
             .center-card {
                 width: 90%;
                 flex: none;
-                padding: 50px 30px;
+                padding: 55px 35px;
+                border-radius: 40px !important;
                 order: -1;
             }
             .side-card h3 {
                 font-size: 1.8rem;
             }
             .center-card h2 {
-                font-size: 2.2rem;
+                font-size: 2.4rem;
             }
             .center-card p {
-                font-size: 1.3rem;
+                font-size: 1.4rem;
+            }
+            .tab-btn {
+                font-size: 1.4rem;
+                padding: 14px 32px;
+                min-width: 150px;
             }
         }
 
@@ -277,17 +292,17 @@
                 min-width: 120px;
             }
             .center-card {
-                padding: 40px 25px;
+                padding: 45px 25px;
             }
             .center-card h2 {
-                font-size: 1.8rem;
-                margin-bottom: 20px;
+                font-size: 2rem;
+                margin-bottom: 25px;
             }
             .center-card p {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
             }
             .side-card {
-                padding: 30px 20px;
+                padding: 35px 25px;
             }
             .side-card h3 {
                 font-size: 1.5rem;
@@ -301,59 +316,63 @@
                 min-width: 90px;
             }
             .center-card h2 {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
             }
             .center-card p {
                 font-size: 1rem;
             }
             .side-card {
-                padding: 25px 18px;
+                padding: 28px 20px;
             }
             .side-card h3 {
                 font-size: 1.3rem;
             }
         }
 
-        /* Pantallas grandes: ajustes proporcionales */
+        /* Pantallas grandes: laterales más largos (altura) y menos anchos, central más grande */
         @media (min-width: 1400px) {
             .side-card {
-                flex: 0.45;
-                max-width: 280px;
-                padding: 55px 35px;
-            }
-            .side-card h3 {
-                font-size: 1.8rem;
-            }
-            .center-card {
-                flex: 2.3;
-                padding: 85px 60px;
-            }
-            .center-card h2 {
-                font-size: 3.2rem;
-            }
-            .center-card p {
-                font-size: 1.8rem;
-            }
-        }
-
-        @media (min-width: 1800px) {
-            .side-card {
-                flex: 0.4;
-                max-width: 300px;
-                padding: 65px 40px;
+                flex: 0.3;
+                max-width: 260px;
+                padding: 85px 28px;      /* más largos (más altura) */
             }
             .side-card h3 {
                 font-size: 2rem;
             }
             .center-card {
-                flex: 2.5;
-                padding: 100px 80px;
+                flex: 2.6;
+                padding: 100px 70px;
             }
             .center-card h2 {
                 font-size: 3.5rem;
             }
             .center-card p {
                 font-size: 2rem;
+            }
+            .tab-btn {
+                font-size: 2rem;
+                padding: 22px 64px;
+            }
+        }
+
+        @media (min-width: 1800px) {
+            .side-card {
+                flex: 0.28;
+                max-width: 280px;
+                padding: 95px 32px;
+            }
+            .side-card h3 {
+                font-size: 2.2rem;
+            }
+            .center-card {
+                flex: 2.8;
+                padding: 120px 80px;
+            }
+            .center-card h2 {
+                font-size: 4rem;
+            }
+            .center-card p {
+                font-size: 2.2rem;
             }
         }
 
@@ -531,9 +550,20 @@
         background-color: #c0c0c0;
     }
     
-    /* Para que todos los recuadros tengan bordes redondeados consistentes */
-    .side-card, .center-card {
-        border-radius: 40px;
+    /* Aseguramos que los laterales sean visualmente más bajos que el central */
+    /* El central tiene más padding vertical, por lo tanto es más alto */
+    .side-card {
+        align-self: center;
+    }
+    
+    /* Para desktop, los laterales quedan centrados verticalmente y son más bajos */
+    @media (min-width: 1001px) {
+        .side-card {
+            align-self: center;
+        }
+        .center-card {
+            min-height: auto;
+        }
     }
 </style>
 </body>
