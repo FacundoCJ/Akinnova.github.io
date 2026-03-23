@@ -268,9 +268,9 @@
 
         /* ========== NUEVA SECCIÓN: LÍNEAS DE TRABAJO ========== */
         .work-lines-section {
-            max-width: 1400px;
+            max-width: 100%;
             margin: 0 auto 100px auto;
-            padding: 0 40px;
+            padding: 0;
         }
 
         .section-title {
@@ -283,69 +283,96 @@
             letter-spacing: -0.5px;
         }
 
+        /* IMAGEN OCUPA TODO EL ANCHO DE LA PÁGINA */
         .gente-image {
             width: 100%;
             display: block;
             margin-bottom: 80px;
-            border-radius: 40px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
-        .blue-line {
+        /* Contenedor para la barra azul detrás de los títulos */
+        .titles-container {
+            position: relative;
             width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #0c3a6a, #1a5a8a, #0c3a6a);
-            margin: 60px 0 50px 0;
-            border-radius: 4px;
+            margin-bottom: 60px;
         }
 
-        /* Dos columnas */
-        .two-columns {
+        /* Barra azul que cubre todo el ancho y el alto de las letras */
+        .blue-bar-bg {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            height: 80%;
+            background: linear-gradient(90deg, #0c3a6a, #1a5a8a, #0c3a6a);
+            border-radius: 60px;
+            z-index: 0;
+        }
+
+        /* Contenedor de los títulos para que estén encima de la barra */
+        .two-columns-titles {
             display: flex;
             gap: 50px;
-            margin-top: 40px;
-            margin-bottom: 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .title-col {
+            flex: 1;
+            text-align: center;
+        }
+
+        .title-col h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: white;
+            margin: 20px 0;
+            letter-spacing: -0.5px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Contenedor de las columnas con recuadros blancos */
+        .two-columns-cards {
+            display: flex;
+            gap: 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
         }
 
         .column {
             flex: 1;
         }
 
-        .column-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: #0c3a6a;
-            text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 3px solid #0c3a6a;
-            display: inline-block;
-            width: 100%;
-        }
-
-        /* Tarjetas de contenido */
+        /* Tarjetas de contenido - fondo BLANCO, letras AZULES */
         .work-card {
-            background-color: #0c3a6a;
+            background-color: #ffffff;
             border-radius: 28px;
             padding: 30px 28px;
             margin-bottom: 30px;
             transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
             cursor: pointer;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e0e0e0;
         }
 
         .work-card:hover {
             transform: scale(1.05);
             box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
-            background-color: #0f4a7a;
+            border-color: #0c3a6a;
         }
 
         .work-card p {
             font-family: 'Poppins', sans-serif;
             font-size: 1.1rem;
             font-weight: 500;
-            color: white;
+            color: #0c3a6a;
             line-height: 1.5;
             margin: 0;
         }
@@ -355,17 +382,27 @@
             font-size: 1.15rem;
             display: block;
             margin-bottom: 12px;
-            color: #ffffff;
+            color: #0c3a6a;
         }
 
         /* Responsive para líneas de trabajo */
         @media (max-width: 1000px) {
-            .two-columns {
+            .two-columns-cards {
                 flex-direction: column;
                 gap: 30px;
+                padding: 0 20px;
             }
-            .column-title {
+            .two-columns-titles {
+                flex-direction: column;
+                gap: 20px;
+                padding: 0 20px;
+            }
+            .title-col h3 {
                 font-size: 2rem;
+                margin: 15px 0;
+            }
+            .blue-bar-bg {
+                height: 70%;
             }
             .work-card:hover {
                 transform: scale(1.02);
@@ -376,14 +413,11 @@
         }
 
         @media (max-width: 768px) {
-            .work-lines-section {
-                padding: 0 20px;
-            }
             .section-title {
                 font-size: 2rem;
                 margin-bottom: 40px;
             }
-            .column-title {
+            .title-col h3 {
                 font-size: 1.6rem;
             }
             .work-card p {
@@ -391,6 +425,10 @@
             }
             .work-card {
                 padding: 22px 20px;
+            }
+            .blue-bar-bg {
+                height: 65%;
+                border-radius: 40px;
             }
         }
 
@@ -646,20 +684,32 @@
 <section class="work-lines-section">
     <h2 class="section-title">Líneas de trabajo</h2>
     
-    <!-- Imagen gente.png -->
+    <!-- Imagen gente.png - OCUPA TODO EL ANCHO -->
     <img class="gente-image" src="fotos/gente.png" alt="Equipo Akinnova">
     
-    <!-- Línea recta azul -->
-    <div class="blue-line"></div>
+    <!-- Contenedor con barra azul detrás de los títulos -->
+    <div class="titles-container">
+        <div class="blue-bar-bg"></div>
+        <div class="two-columns-titles">
+            <div class="title-col">
+                <h3>Consultorías</h3>
+            </div>
+            <div class="title-col">
+                <h3>Alianzas estratégicas</h3>
+            </div>
+        </div>
+    </div>
     
-    <!-- Dos columnas: Consultorías y Alianzas estratégicas -->
-    <div class="two-columns">
-        <!-- Columna izquierda: Consultorías -->
+    <!-- Dos columnas con recuadros BLANCOS y letras AZULES -->
+    <div class="two-columns-cards">
+        <!-- Columna izquierda: Consultorías - CONTENIDO ACTUALIZADO -->
         <div class="column">
-            <h3 class="column-title">Consultorías</h3>
-            
             <div class="work-card">
                 <p><strong>Personalización de empresas automotrices:</strong><br>Diagnóstico, estructura organizacional y gobierno corporativo.</p>
+            </div>
+            
+            <div class="work-card">
+                <p><strong>Transformación Digital, Procesos Ágiles e IA:</strong><br>Integración tecnológica, automatización y optimización.</p>
             </div>
             
             <div class="work-card">
@@ -673,8 +723,6 @@
         
         <!-- Columna derecha: Alianzas estratégicas -->
         <div class="column">
-            <h3 class="column-title">Alianzas estratégicas</h3>
-            
             <div class="work-card">
                 <p><strong>Descubrimiento de Nuevos Revenue Streams:</strong><br>Programas como MOK para reparaciones menores.</p>
             </div>
@@ -713,7 +761,6 @@
     let activeTab = "vision";
 
     function updateUI() {
-        // Actualizar botones superiores
         const btns = document.querySelectorAll(".tab-btn");
         btns.forEach(btn => {
             const btnTab = btn.getAttribute("data-tab");
@@ -724,7 +771,6 @@
             }
         });
 
-        // Actualizar tarjeta central
         const centerTitle = document.getElementById("centerTitle");
         const centerDesc = document.getElementById("centerDesc");
         const centerData = contentMap[activeTab];
@@ -733,7 +779,6 @@
             centerDesc.textContent = centerData.description;
         }
 
-        // Actualizar línea de laterales
         const allKeys = ["mision", "vision", "proposito"];
         const sideKeys = allKeys.filter(key => key !== activeTab);
         
@@ -753,7 +798,6 @@
                 </div>
             `;
             
-            // Reasignar eventos
             const newSideCards = document.querySelectorAll(".side-card");
             newSideCards.forEach(card => {
                 card.addEventListener("click", (e) => {
@@ -767,7 +811,6 @@
             });
         }
         
-        // Animación
         const centerWrapper = document.getElementById("centerWrapper");
         if (centerWrapper) {
             centerWrapper.style.animation = "none";
@@ -786,7 +829,6 @@
     }
 
     function init() {
-        // Botones superiores
         const btns = document.querySelectorAll(".tab-btn");
         btns.forEach(btn => {
             btn.addEventListener("click", () => {
@@ -798,7 +840,6 @@
             });
         });
         
-        // Laterales iniciales
         const initialSideCards = document.querySelectorAll(".side-card");
         initialSideCards.forEach(card => {
             card.addEventListener("click", (e) => {
