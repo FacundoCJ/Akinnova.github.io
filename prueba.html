@@ -156,7 +156,7 @@
             width: 100%;
         }
 
-        /* Línea de fondo - ALTO MUCHO MÁS GRANDE */
+        /* Línea de fondo - AHORA TODA AZUL (un solo color) */
         .side-cards-line {
             position: absolute;
             left: 0;
@@ -166,7 +166,7 @@
             display: flex;
             justify-content: space-between;
             gap: 0;
-            background: transparent;
+            background-color: #0f4472;    /* AZUL para toda la línea */
             border-radius: 140px;
             overflow: hidden;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
@@ -175,28 +175,24 @@
         }
 
         .side-card {
-            background-color: #0f4472;
+            background-color: transparent;  /* transparente para que se vea el azul de fondo */
             display: flex;
             align-items: center;
             text-align: center;
             padding: 130px 0;
             cursor: pointer;
             transition: all 0.3s ease;
-            flex: 0 0 auto;
+            flex: 1;
         }
 
-        /* Primer título PEGADO COMPLETAMENTE AL BORDE - SIN PADDING HORIZONTAL */
+        /* Primer título PEGADO COMPLETAMENTE AL BORDE */
         .side-card:first-child {
-            border-radius: 140px 0 0 140px;
             justify-content: flex-start;
-            padding-left: 0;              /* CERO padding - totalmente pegado al borde */
         }
 
-        /* Segundo título PEGADO COMPLETAMENTE AL BORDE - SIN PADDING HORIZONTAL */
+        /* Segundo título PEGADO COMPLETAMENTE AL BORDE */
         .side-card:last-child {
-            border-radius: 0 140px 140px 0;
             justify-content: flex-end;
-            padding-right: 0;             /* CERO padding - totalmente pegado al borde */
         }
 
         .side-card h3 {
@@ -207,20 +203,22 @@
             margin: 0;
             letter-spacing: -0.2px;
             white-space: nowrap;
-            padding: 0 20px;              /* pequeño padding interno para que el texto no toque el borde exacto, pero visualmente pegado */
         }
 
-        /* Ajuste para que el texto quede exactamente en el borde pero con un pequeño margen interno */
+        /* Texto izquierdo pegado al borde izquierdo - sin padding */
         .side-card:first-child h3 {
-            padding-left: 25px;            /* mínimo para que no toque el borde redondeado */
+            padding-left: 15px;           /* mínimo para que no toque exactamente el borde redondeado */
+            margin-left: 0;
         }
 
+        /* Texto derecho pegado al borde derecho - sin padding */
         .side-card:last-child h3 {
-            padding-right: 25px;           /* mínimo para que no toque el borde redondeado */
+            padding-right: 15px;          /* mínimo para que no toque exactamente el borde redondeado */
+            margin-right: 0;
         }
 
         .side-card:hover {
-            background-color: #1a5a8a;
+            background-color: rgba(255, 255, 255, 0.1);
             transform: scale(1.02);
         }
 
@@ -299,10 +297,10 @@
                 font-size: 2.1rem;
             }
             .side-card:first-child h3 {
-                padding-left: 20px;
+                padding-left: 12px;
             }
             .side-card:last-child h3 {
-                padding-right: 20px;
+                padding-right: 12px;
             }
         }
 
@@ -327,10 +325,10 @@
                 font-size: 1.9rem;
             }
             .side-card:first-child h3 {
-                padding-left: 18px;
+                padding-left: 10px;
             }
             .side-card:last-child h3 {
-                padding-right: 18px;
+                padding-right: 10px;
             }
             .tab-btn {
                 font-size: 1.4rem;
@@ -360,10 +358,10 @@
                 font-size: 1.7rem;
             }
             .side-card:first-child h3 {
-                padding-left: 15px;
+                padding-left: 8px;
             }
             .side-card:last-child h3 {
-                padding-right: 15px;
+                padding-right: 8px;
             }
         }
 
@@ -378,31 +376,37 @@
                 transform: none;
                 flex-direction: column;
                 border-radius: 80px;
-                gap: 30px;
-                background: transparent;
-                box-shadow: none;
+                gap: 0;
+                background-color: #0f4472;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
                 margin-top: 60px;
             }
             .side-card {
-                border-radius: 80px !important;
-                padding: 60px 0 !important;
+                border-radius: 0 !important;
+                padding: 50px 0 !important;
                 justify-content: center !important;
                 text-align: center;
-                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+                border-bottom: 1px solid rgba(255,255,255,0.2);
             }
-            .side-card:first-child,
+            .side-card:first-child {
+                border-radius: 80px 80px 0 0 !important;
+            }
             .side-card:last-child {
-                padding-left: 0 !important;
-                padding-right: 0 !important;
+                border-radius: 0 0 80px 80px !important;
+                border-bottom: none;
             }
             .side-card:first-child h3,
             .side-card:last-child h3 {
                 padding: 0 30px !important;
+                text-align: center;
             }
             .side-card h3 {
                 font-size: 2rem;
                 white-space: normal;
                 text-align: center;
+            }
+            .side-card:hover {
+                background-color: rgba(255, 255, 255, 0.15);
             }
             .center-card-wrapper {
                 width: 100%;
@@ -439,7 +443,7 @@
                 font-size: 1.4rem;
             }
             .side-card {
-                padding: 50px 0 !important;
+                padding: 45px 0 !important;
             }
             .side-card h3 {
                 font-size: 1.7rem;
@@ -463,7 +467,7 @@
                 font-size: 1.2rem;
             }
             .side-card {
-                padding: 40px 0 !important;
+                padding: 38px 0 !important;
             }
             .side-card h3 {
                 font-size: 1.5rem;
@@ -488,19 +492,13 @@
                 font-size: 2.6rem;
             }
             .side-card:first-child h3 {
-                padding-left: 35px;
+                padding-left: 20px;
             }
             .side-card:last-child h3 {
-                padding-right: 35px;
+                padding-right: 20px;
             }
             .side-cards-line {
                 border-radius: 160px;
-            }
-            .side-card:first-child {
-                border-radius: 160px 0 0 160px;
-            }
-            .side-card:last-child {
-                border-radius: 0 160px 160px 0;
             }
         }
 
@@ -543,7 +541,7 @@
     </div>
 
     <div class="mvp-cards-container" id="mvpContainer">
-        <!-- Línea de fondo: laterales PEGADOS COMPLETAMENTE A LOS EXTREMOS -->
+        <!-- Línea de fondo: TODA AZUL, palabras PEGADAS A LOS EXTREMOS -->
         <div class="side-cards-line" id="sideLine">
             <div class="side-card" data-tab="mision">
                 <h3>Misión</h3>
