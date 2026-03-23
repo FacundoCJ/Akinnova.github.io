@@ -557,95 +557,68 @@
         @media (max-width: 768px) {
             /* Barra blanca más pequeña */
             .navbar-overlay {
-                top: 20px;
-                width: 85%;
-                padding: 10px 20px;
-                border-radius: 40px;
+                top: 15px;
+                width: 88%;
+                padding: 8px 16px;
+                border-radius: 35px;
             }
             .logo-img {
-                height: 32px;
+                height: 28px;
             }
             .siempre-nuevo {
-                font-size: 1rem;
+                font-size: 0.85rem;
             }
             
-            /* Título más pequeño y un poco más abajo */
+            /* Título más pequeño */
             .hero-text {
-                top: 32%;
+                top: 34%;
             }
             .hero-text h1 {
-                font-size: 1.8rem;
-                text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
+                font-size: 1.5rem;
+                text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
             }
             
             /* Texto descriptivo */
             .description-text {
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
             .description-section {
-                margin: 40px auto 50px auto;
+                margin: 30px auto 40px auto;
             }
             
-            /* Sección Misión/Visión/Propósito - mismo formato pero más pequeño */
+            /* Sección Misión/Visión/Propósito - SOLO RECUADRO CENTRAL (sin línea superior) */
             .mvp-section {
                 padding: 0 20px;
-                margin-bottom: 60px;
+                margin-bottom: 50px;
             }
             .tabs-container {
-                margin-bottom: 30px;
-            }
-            .tab-btn {
-                font-size: 0.85rem;
-                padding: 10px 16px;
-                min-width: 85px;
+                display: none;
             }
             .mvp-cards-container {
                 min-height: auto;
             }
             .side-cards-line {
-                position: relative;
-                top: auto;
-                transform: none;
-                flex-direction: row;
-                border-radius: 50px;
-                margin-top: 0;
-                margin-bottom: 25px;
-                justify-content: space-between;
-                background-color: #0f4472;
-                width: 100%;
-            }
-            .side-card {
-                padding: 15px 0 !important;
-                justify-content: center !important;
-            }
-            .side-card:first-child {
-                justify-content: center !important;
-            }
-            .side-card:last-child {
-                justify-content: center !important;
-            }
-            .side-card h3 {
-                font-size: 1rem;
-                white-space: nowrap;
-                padding: 0 !important;
+                display: none;
             }
             .center-card-wrapper {
                 width: 100%;
-                margin-bottom: 0;
+                margin: 0 auto;
             }
             .center-card {
-                padding: 30px 25px;
+                padding: 35px 25px;
                 border-radius: 40px;
+                cursor: pointer;
             }
             .center-card h2 {
-                font-size: 1.5rem;
-                margin-bottom: 15px;
+                font-size: 1.6rem;
+                margin-bottom: 18px;
             }
             .center-card p {
-                font-size: 0.85rem;
+                font-size: 0.9rem;
+                line-height: 1.5;
             }
             
-            /* Sección Líneas de trabajo - 2 columnas en móvil */
+            /* Sección Líneas de trabajo - 2 columnas */
             .section-title {
                 font-size: 1.6rem;
                 margin-bottom: 30px;
@@ -662,7 +635,7 @@
                 padding: 0 15px;
             }
             .title-col h3 {
-                font-size: 1.1rem;
+                font-size: 1rem;
                 margin: 12px 0;
             }
             .blue-bar-bg {
@@ -674,16 +647,16 @@
                 padding: 0 15px;
             }
             .work-card {
-                padding: 15px 12px;
+                padding: 14px 10px;
                 margin-bottom: 0;
-                border-radius: 20px;
+                border-radius: 18px;
             }
             .work-card p {
-                font-size: 0.7rem;
+                font-size: 0.65rem;
             }
             .work-card strong {
-                font-size: 0.75rem;
-                margin-bottom: 8px;
+                font-size: 0.7rem;
+                margin-bottom: 6px;
             }
             .column {
                 display: flex;
@@ -731,7 +704,7 @@
                 text-align: left;
             }
             
-            /* Footer - contactos DENTRO de la imagen, pegados a la derecha */
+            /* Footer - contactos DENTRO de la imagen, SIN FONDO, letras más pequeñas */
             .footer-section {
                 position: relative;
             }
@@ -740,7 +713,7 @@
             }
             .contact-block {
                 position: absolute;
-                right: 15px;
+                right: 12px;
                 top: 50%;
                 transform: translateY(-50%);
                 text-align: right;
@@ -750,76 +723,69 @@
             }
             .contact-item {
                 text-align: right;
-                padding: 6px 8px;
-                margin-bottom: 8px;
+                padding: 4px 0;
+                margin-bottom: 6px;
                 display: block;
-                background-color: rgba(255, 255, 255, 0.85);
-                border-radius: 20px;
-                backdrop-filter: blur(2px);
+                background-color: transparent;
+                backdrop-filter: none;
+                border-radius: 0;
             }
             .contact-item:hover {
                 transform: none;
-                background-color: rgba(255, 255, 255, 0.95);
+                background-color: transparent;
             }
             .contact-label {
-                font-size: 0.7rem;
+                font-size: 0.6rem;
                 display: inline-block;
                 margin-bottom: 0;
+                font-weight: 600;
+                color: #000000;
             }
             .contact-value {
-                font-size: 0.7rem;
+                font-size: 0.6rem;
                 display: inline-block;
-                margin-left: 5px;
+                margin-left: 4px;
+                font-weight: 500;
+                color: #000000;
             }
         }
         
         /* Móviles muy pequeños */
         @media (max-width: 480px) {
             .navbar-overlay {
-                width: 90%;
-                padding: 8px 15px;
+                width: 92%;
+                padding: 6px 12px;
+                border-radius: 30px;
             }
             .logo-img {
-                height: 28px;
+                height: 24px;
             }
             .siempre-nuevo {
-                font-size: 0.85rem;
+                font-size: 0.75rem;
             }
             .hero-text h1 {
-                font-size: 1.4rem;
-            }
-            .tab-btn {
-                font-size: 0.7rem;
-                padding: 8px 12px;
-                min-width: 70px;
-            }
-            .side-card h3 {
-                font-size: 0.85rem;
+                font-size: 1.2rem;
             }
             .center-card h2 {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
             }
             .center-card p {
                 font-size: 0.75rem;
             }
             .title-col h3 {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
             }
             .work-card p {
-                font-size: 0.6rem;
+                font-size: 0.55rem;
             }
             .work-card strong {
-                font-size: 0.65rem;
+                font-size: 0.6rem;
             }
             .contact-label {
-                font-size: 0.6rem;
+                font-size: 0.55rem;
             }
             .contact-value {
-                font-size: 0.6rem;
-            }
-            .contact-item {
-                padding: 4px 6px;
-                margin-bottom: 6px;
+                font-size: 0.55rem;
             }
         }
 
@@ -1024,8 +990,16 @@
     };
 
     let activeTab = "vision";
+    let carouselInterval = null;
+    let isMobile = false;
+
+    // Detectar si es móvil
+    function checkMobile() {
+        return window.innerWidth <= 768;
+    }
 
     function updateUI() {
+        // Actualizar botones superiores (solo visible en escritorio)
         const btns = document.querySelectorAll(".tab-btn");
         btns.forEach(btn => {
             const btnTab = btn.getAttribute("data-tab");
@@ -1036,6 +1010,7 @@
             }
         });
 
+        // Actualizar tarjeta central (visible en todos los dispositivos)
         const centerTitle = document.getElementById("centerTitle");
         const centerDesc = document.getElementById("centerDesc");
         const centerData = contentMap[activeTab];
@@ -1044,38 +1019,42 @@
             centerDesc.textContent = centerData.description;
         }
 
-        const allKeys = ["mision", "vision", "proposito"];
-        const sideKeys = allKeys.filter(key => key !== activeTab);
-        
-        const sideLine = document.getElementById("sideLine");
-        if (sideLine) {
-            const leftKey = sideKeys[0];
-            const rightKey = sideKeys[1];
-            const leftData = contentMap[leftKey];
-            const rightData = contentMap[rightKey];
+        // Solo actualizar la línea de laterales en escritorio (visible en escritorio)
+        if (!isMobile) {
+            const allKeys = ["mision", "vision", "proposito"];
+            const sideKeys = allKeys.filter(key => key !== activeTab);
             
-            sideLine.innerHTML = `
-                <div class="side-card" data-tab="${leftKey}">
-                    <h3>${leftData.title}</h3>
-                </div>
-                <div class="side-card" data-tab="${rightKey}">
-                    <h3>${rightData.title}</h3>
-                </div>
-            `;
-            
-            const newSideCards = document.querySelectorAll(".side-card");
-            newSideCards.forEach(card => {
-                card.addEventListener("click", (e) => {
-                    e.stopPropagation();
-                    const tabKey = card.getAttribute("data-tab");
-                    if (tabKey && tabKey !== activeTab) {
-                        activeTab = tabKey;
-                        updateUI();
-                    }
+            const sideLine = document.getElementById("sideLine");
+            if (sideLine) {
+                const leftKey = sideKeys[0];
+                const rightKey = sideKeys[1];
+                const leftData = contentMap[leftKey];
+                const rightData = contentMap[rightKey];
+                
+                sideLine.innerHTML = `
+                    <div class="side-card" data-tab="${leftKey}">
+                        <h3>${leftData.title}</h3>
+                    </div>
+                    <div class="side-card" data-tab="${rightKey}">
+                        <h3>${rightData.title}</h3>
+                    </div>
+                `;
+                
+                const newSideCards = document.querySelectorAll(".side-card");
+                newSideCards.forEach(card => {
+                    card.addEventListener("click", (e) => {
+                        e.stopPropagation();
+                        const tabKey = card.getAttribute("data-tab");
+                        if (tabKey && tabKey !== activeTab) {
+                            activeTab = tabKey;
+                            updateUI();
+                        }
+                    });
                 });
-            });
+            }
         }
         
+        // Animación
         const centerWrapper = document.getElementById("centerWrapper");
         if (centerWrapper) {
             centerWrapper.style.animation = "none";
@@ -1084,12 +1063,37 @@
             }, 10);
         }
         
-        const sideLineEl = document.getElementById("sideLine");
-        if (sideLineEl) {
-            sideLineEl.style.animation = "none";
-            setTimeout(() => {
-                sideLineEl.style.animation = "fadeSlideUp 0.4s ease-out";
-            }, 10);
+        if (!isMobile) {
+            const sideLineEl = document.getElementById("sideLine");
+            if (sideLineEl) {
+                sideLineEl.style.animation = "none";
+                setTimeout(() => {
+                    sideLineEl.style.animation = "fadeSlideUp 0.4s ease-out";
+                }, 10);
+            }
+        }
+    }
+
+    // Función para cambiar automáticamente cada 10 segundos (solo en móvil)
+    function startCarousel() {
+        if (carouselInterval) clearInterval(carouselInterval);
+        
+        const items = ["mision", "vision", "proposito"];
+        let currentIndex = items.indexOf(activeTab);
+        
+        carouselInterval = setInterval(() => {
+            if (checkMobile()) {
+                currentIndex = (currentIndex + 1) % items.length;
+                activeTab = items[currentIndex];
+                updateUI();
+            }
+        }, 10000);
+    }
+
+    function stopCarousel() {
+        if (carouselInterval) {
+            clearInterval(carouselInterval);
+            carouselInterval = null;
         }
     }
 
@@ -1128,6 +1132,9 @@
     }
 
     function init() {
+        isMobile = checkMobile();
+        
+        // Botones superiores (escritorio)
         const btns = document.querySelectorAll(".tab-btn");
         btns.forEach(btn => {
             btn.addEventListener("click", () => {
@@ -1135,23 +1142,65 @@
                 if (tabValue && tabValue !== activeTab) {
                     activeTab = tabValue;
                     updateUI();
+                    // Reiniciar carrusel en móvil
+                    if (isMobile) {
+                        startCarousel();
+                    }
                 }
             });
         });
         
-        const initialSideCards = document.querySelectorAll(".side-card");
-        initialSideCards.forEach(card => {
-            card.addEventListener("click", (e) => {
-                e.stopPropagation();
-                const tabKey = card.getAttribute("data-tab");
-                if (tabKey && tabKey !== activeTab) {
-                    activeTab = tabKey;
+        // Laterales iniciales (escritorio)
+        if (!isMobile) {
+            const initialSideCards = document.querySelectorAll(".side-card");
+            initialSideCards.forEach(card => {
+                card.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    const tabKey = card.getAttribute("data-tab");
+                    if (tabKey && tabKey !== activeTab) {
+                        activeTab = tabKey;
+                        updateUI();
+                    }
+                });
+            });
+        }
+        
+        // En móvil, hacer que el recuadro central también sea clickeable para cambiar manualmente
+        const centerCard = document.querySelector(".center-card");
+        if (centerCard) {
+            centerCard.addEventListener("click", () => {
+                if (checkMobile()) {
+                    const items = ["mision", "vision", "proposito"];
+                    const currentIndex = items.indexOf(activeTab);
+                    const nextIndex = (currentIndex + 1) % items.length;
+                    activeTab = items[nextIndex];
                     updateUI();
+                    // Reiniciar el carrusel para que no se solape
+                    startCarousel();
                 }
             });
-        });
+        }
         
         initFooterInteractions();
+        
+        // Iniciar carrusel solo en móvil
+        if (isMobile) {
+            startCarousel();
+        }
+        
+        // Detectar cambios de tamaño de pantalla
+        window.addEventListener('resize', () => {
+            const newIsMobile = checkMobile();
+            if (newIsMobile !== isMobile) {
+                isMobile = newIsMobile;
+                if (isMobile) {
+                    startCarousel();
+                } else {
+                    stopCarousel();
+                }
+                updateUI();
+            }
+        });
     }
 
     document.addEventListener("DOMContentLoaded", init);
