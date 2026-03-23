@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Akinnova | Dealer del Futuro</title>
+    <!-- Fuente Poppins (Google Fonts) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FAVICON: akinnova-logo como logo de pestaña -->
+    <link rel="icon" type="image/png" href="fotos/akinnova-logo.png">
+    <link rel="shortcut icon" type="image/png" href="fotos/akinnova-logo.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+        }
+
+        .hero {
+            position: relative;
+            width: 100%;
+        }
+
+        .hero-image {
+            width: 100%;
+            display: block;
+            height: auto;
+        }
+
+        .navbar-overlay {
+            position: absolute;
+            top: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 47%;
+            background-color: #ffffff;
+            border-radius: 60px;
+            padding: 24px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            z-index: 20;
+        }
+
+        .logo-img {
+            height: 52px;
+            width: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .siempre-nuevo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            color: #0c3a6a;
+        }
+
+        .hero-text {
+            position: absolute;
+            top: 28%;
+            left: 0;
+            right: 0;
+            text-align: center;
+            z-index: 15;
+            transform: translateY(-50%);
+            padding: 0 20px;
+        }
+
+        .hero-text h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 5rem;
+            line-height: 1.2;
+            color: white;
+            text-shadow: 5px 5px 14px rgba(0, 0, 0, 0.7), 3px 3px 6px rgba(0, 0, 0, 0.5);
+            font-style: italic;
+        }
+
+        .description-section {
+            max-width: 1300px;
+            margin: 70px auto 90px auto;
+            padding: 0 24px;
+            text-align: center;
+        }
+
+        .description-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 500;
+            color: #000000;
+            line-height: 1.4;
+        }
+
+        /* ========== SECCIÓN MISIÓN VISIÓN PROPÓSITO ========== */
+        .mvp-section {
+            max-width: 1800px;
+            margin: 0 auto 120px auto;
+            padding: 0 40px;
+        }
+
+        /* TABS SUPERIORES */
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 100px;
+        }
+
+        .tabs-wrapper {
+            display: flex;
+            border-radius: 60px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .tab-btn {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            padding: 20px 56px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: #d9d9d9;
+            color: #0c3a6a;
+            text-align: center;
+            min-width: 200px;
+        }
+
+        .tab-btn.active {
+            background-color: #0c3a6a;
+            color: white;
+        }
+
+        .tabs-wrapper .tab-btn:first-child {
+            border-radius: 60px 0 0 60px;
+        }
+
+        .tabs-wrapper .tab-btn:last-child {
+            border-radius: 0 60px 60px 0;
+        }
+
+        /* ========== ESTRUCTURA: CENTRAL GRANDE ENCIMA, LINEA DE LATERALES DETRÁS ========== */
+        .mvp-cards-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 720px;
+            width: 100%;
+        }
+
+        /* Línea de fondo: MÁS ANCHA Y MÁS LARGA */
+        .side-cards-line {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            gap: 0;
+            background: transparent;
+            border-radius: 120px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            z-index: 1;
+            width: 100%;
+        }
+
+        .side-card {
+            background-color: #0f4472;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 85px 70px;        /* MÁS LARGO: mucho más padding vertical */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 0 0 auto;
+        }
+
+        /* Primer título pegado a la izquierda */
+        .side-card:first-child {
+            border-radius: 120px 0 0 120px;
+            justify-content: flex-start;
+            padding-left: 100px;
+        }
+
+        /* Segundo título pegado a la derecha - AHORA MÁS ANCHO PARA VER "PROPÓSITO" */
+        .side-card:last-child {
+            border-radius: 0 120px 120px 0;
+            justify-content: flex-end;
+            padding-right: 100px;
+        }
+
+        .side-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: white;
+            margin: 0;
+            letter-spacing: -0.2px;
+            white-space: nowrap;
+        }
+
+        .side-card:hover {
+            background-color: #1a5a8a;
+            transform: scale(1.02);
+        }
+
+        /* Tarjeta central GRANDE - MÁS ANCHA también */
+        .center-card-wrapper {
+            position: relative;
+            z-index: 10;
+            width: 74%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .center-card {
+            background-color: #0c3a6a;
+            border-radius: 90px;        /* bordes muy redondos */
+            padding: 95px 85px;
+            text-align: center;
+            box-shadow: 0 40px 60px rgba(0, 0, 0, 0.25);
+            transition: all 0.4s ease;
+        }
+
+        .center-card h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.8rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 45px;
+            letter-spacing: -0.5px;
+        }
+
+        .center-card p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 500;
+            color: white;
+            line-height: 1.5;
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        /* Animación */
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .center-card-wrapper, .side-cards-line {
+            animation: fadeSlideUp 0.5s ease-out;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1400px) {
+            .center-card-wrapper {
+                width: 76%;
+            }
+            .center-card {
+                padding: 80px 70px;
+            }
+            .center-card h2 {
+                font-size: 3.2rem;
+            }
+            .center-card p {
+                font-size: 1.7rem;
+            }
+            .side-card {
+                padding: 70px 55px;
+            }
+            .side-card:first-child {
+                padding-left: 80px;
+            }
+            .side-card:last-child {
+                padding-right: 80px;
+            }
+            .side-card h3 {
+                font-size: 1.9rem;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .center-card-wrapper {
+                width: 78%;
+            }
+            .center-card {
+                padding: 70px 60px;
+            }
+            .center-card h2 {
+                font-size: 2.8rem;
+            }
+            .center-card p {
+                font-size: 1.6rem;
+            }
+            .side-card {
+                padding: 60px 45px;
+            }
+            .side-card:first-child {
+                padding-left: 65px;
+            }
+            .side-card:last-child {
+                padding-right: 65px;
+            }
+            .side-card h3 {
+                font-size: 1.7rem;
+            }
+            .tab-btn {
+                font-size: 1.4rem;
+                padding: 14px 32px;
+                min-width: 150px;
+            }
+        }
+
+        @media (max-width: 1000px) {
+            .mvp-cards-container {
+                flex-direction: column;
+                min-height: auto;
+            }
+            .side-cards-line {
+                position: relative;
+                top: auto;
+                transform: none;
+                flex-direction: column;
+                border-radius: 70px;
+                gap: 25px;
+                background: transparent;
+                box-shadow: none;
+                margin-top: 50px;
+            }
+            .side-card {
+                border-radius: 70px !important;
+                padding: 45px 35px !important;
+                justify-content: center !important;
+                text-align: center;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            }
+            .side-card h3 {
+                font-size: 1.9rem;
+                white-space: normal;
+            }
+            .center-card-wrapper {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            .center-card {
+                padding: 55px 45px;
+                border-radius: 70px;
+            }
+            .center-card h2 {
+                font-size: 2.5rem;
+                margin-bottom: 30px;
+            }
+            .center-card p {
+                font-size: 1.5rem;
+            }
+            .tabs-wrapper .tab-btn {
+                padding: 12px 24px;
+                font-size: 1.2rem;
+                min-width: 120px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .center-card {
+                padding: 45px 35px;
+            }
+            .center-card h2 {
+                font-size: 2.2rem;
+            }
+            .center-card p {
+                font-size: 1.3rem;
+            }
+            .side-card {
+                padding: 38px 30px !important;
+            }
+            .side-card h3 {
+                font-size: 1.6rem;
+            }
+            .tab-btn {
+                font-size: 1rem;
+                padding: 10px 16px;
+                min-width: 90px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .center-card {
+                padding: 35px 25px;
+            }
+            .center-card h2 {
+                font-size: 1.8rem;
+                margin-bottom: 20px;
+            }
+            .center-card p {
+                font-size: 1.1rem;
+            }
+            .side-card {
+                padding: 30px 25px !important;
+            }
+            .side-card h3 {
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (min-width: 1700px) {
+            .center-card {
+                padding: 110px 100px;
+                border-radius: 100px;
+            }
+            .center-card h2 {
+                font-size: 4.2rem;
+            }
+            .center-card p {
+                font-size: 2.2rem;
+            }
+            .side-card {
+                padding: 95px 85px;
+            }
+            .side-card:first-child {
+                padding-left: 120px;
+            }
+            .side-card:last-child {
+                padding-right: 120px;
+            }
+            .side-card h3 {
+                font-size: 2.4rem;
+            }
+            .side-cards-line {
+                border-radius: 130px;
+            }
+            .side-card:first-child {
+                border-radius: 130px 0 0 130px;
+            }
+            .side-card:last-child {
+                border-radius: 0 130px 130px 0;
+            }
+        }
+
+        .hero {
+            position: relative;
+        }
+
+        img {
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<section class="hero">
+    <img class="hero-image" src="fotos/carro-inicio.png" alt="Vehículo principal | Akinnova">
+    <div class="navbar-overlay">
+        <img class="logo-img" src="fotos/akinnova-logo.png" alt="Akinnova Logo">
+        <span class="siempre-nuevo">Siempre Nuevo</span>
+    </div>
+    <div class="hero-text">
+        <h1>Impulsando el<br>Dealer del Futuro</h1>
+    </div>
+</section>
+
+<div class="description-section">
+    <p class="description-text">
+        Conectamos visión, innovación y talento para transformar el concesionario en un ecosistema ágil, rentable y centrado en el cliente.
+    </p>
+</div>
+
+<!-- SECCIÓN MISIÓN, VISIÓN Y PROPÓSITO -->
+<section class="mvp-section">
+    <div class="tabs-container">
+        <div class="tabs-wrapper">
+            <button class="tab-btn" data-tab="mision">Misión</button>
+            <button class="tab-btn active" data-tab="vision">Visión</button>
+            <button class="tab-btn" data-tab="proposito">Propósito</button>
+        </div>
+    </div>
+
+    <div class="mvp-cards-container" id="mvpContainer">
+        <!-- Línea de fondo: laterales pegados a los extremos, MÁS ANCHA Y LARGA -->
+        <div class="side-cards-line" id="sideLine">
+            <div class="side-card" data-tab="mision">
+                <h3>Misión</h3>
+            </div>
+            <div class="side-card" data-tab="proposito">
+                <h3>Propósito</h3>
+            </div>
+        </div>
+        
+        <!-- Tarjeta central GRANDE MÁS ANCHA encima -->
+        <div class="center-card-wrapper" id="centerWrapper">
+            <div class="center-card" id="centerCard">
+                <h2 id="centerTitle">Visión</h2>
+                <p id="centerDesc">Ser el socio estratégico clave en la evolución integral del negocio automotriz, integrando tecnología y procesos disruptivos y ágiles.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const contentMap = {
+        mision: {
+            title: "Misión",
+            description: "Acompañar a concesionarios, fábricas y empresas relacionadas en la implementación de soluciones tecnológicas simples y escalables."
+        },
+        vision: {
+            title: "Visión",
+            description: "Ser el socio estratégico clave en la evolución integral del negocio automotriz, integrando tecnología y procesos disruptivos y ágiles."
+        },
+        proposito: {
+            title: "Propósito",
+            description: "Transformar la industria automotriz hacia un modelo más ágil, digital y centrado en el nuevo cliente en la región del Pacífico."
+        }
+    };
+
+    let activeTab = "vision";
+
+    function updateUI() {
+        // Actualizar botones superiores
+        const btns = document.querySelectorAll(".tab-btn");
+        btns.forEach(btn => {
+            const btnTab = btn.getAttribute("data-tab");
+            if (btnTab === activeTab) {
+                btn.classList.add("active");
+            } else {
+                btn.classList.remove("active");
+            }
+        });
+
+        // Actualizar tarjeta central
+        const centerTitle = document.getElementById("centerTitle");
+        const centerDesc = document.getElementById("centerDesc");
+        const centerData = contentMap[activeTab];
+        if (centerTitle && centerDesc) {
+            centerTitle.textContent = centerData.title;
+            centerDesc.textContent = centerData.description;
+        }
+
+        // Actualizar línea de laterales
+        const allKeys = ["mision", "vision", "proposito"];
+        const sideKeys = allKeys.filter(key => key !== activeTab);
+        
+        const sideLine = document.getElementById("sideLine");
+        if (sideLine) {
+            const leftKey = sideKeys[0];
+            const rightKey = sideKeys[1];
+            const leftData = contentMap[leftKey];
+            const rightData = contentMap[rightKey];
+            
+            sideLine.innerHTML = `
+                <div class="side-card" data-tab="${leftKey}">
+                    <h3>${leftData.title}</h3>
+                </div>
+                <div class="side-card" data-tab="${rightKey}">
+                    <h3>${rightData.title}</h3>
+                </div>
+            `;
+            
+            // Reasignar eventos
+            const newSideCards = document.querySelectorAll(".side-card");
+            newSideCards.forEach(card => {
+                card.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    const tabKey = card.getAttribute("data-tab");
+                    if (tabKey && tabKey !== activeTab) {
+                        activeTab = tabKey;
+                        updateUI();
+                    }
+                });
+            });
+        }
+        
+        // Animación
+        const centerWrapper = document.getElementById("centerWrapper");
+        if (centerWrapper) {
+            centerWrapper.style.animation = "none";
+            setTimeout(() => {
+                centerWrapper.style.animation = "fadeSlideUp 0.4s ease-out";
+            }, 10);
+        }
+        
+        const sideLineEl = document.getElementById("sideLine");
+        if (sideLineEl) {
+            sideLineEl.style.animation = "none";
+            setTimeout(() => {
+                sideLineEl.style.animation = "fadeSlideUp 0.4s ease-out";
+            }, 10);
+        }
+    }
+
+    function init() {
+        // Botones superiores
+        const btns = document.querySelectorAll(".tab-btn");
+        btns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const tabValue = btn.getAttribute("data-tab");
+                if (tabValue && tabValue !== activeTab) {
+                    activeTab = tabValue;
+                    updateUI();
+                }
+            });
+        });
+        
+        // Laterales iniciales
+        const initialSideCards = document.querySelectorAll(".side-card");
+        initialSideCards.forEach(card => {
+            card.addEventListener("click", (e) => {
+                e.stopPropagation();
+                const tabKey = card.getAttribute("data-tab");
+                if (tabKey && tabKey !== activeTab) {
+                    activeTab = tabKey;
+                    updateUI();
+                }
+            });
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", init);
+</script>
+
+<style>
+    .side-card {
+        transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+    
+    .center-card {
+        transition: all 0.3s ease;
+    }
+    
+    .tab-btn:hover:not(.active) {
+        background-color: #c0c0c0;
+    }
+    
+    @media (min-width: 1001px) {
+        .center-card-wrapper {
+            transform: translateY(0);
+        }
+        .side-cards-line {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+</style>
+</body>
+</html>
