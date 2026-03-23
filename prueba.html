@@ -152,11 +152,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 750px;
+            min-height: 850px;
             width: 100%;
         }
 
-        /* Línea de fondo - ALTO UN POCO MÁS GRANDE */
+        /* Línea de fondo - ALTO MUCHO MÁS GRANDE */
         .side-cards-line {
             position: absolute;
             left: 0;
@@ -167,7 +167,7 @@
             justify-content: space-between;
             gap: 0;
             background: transparent;
-            border-radius: 120px;
+            border-radius: 140px;
             overflow: hidden;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
             z-index: 1;
@@ -180,29 +180,29 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 110px 70px;        /* ALTO UN POCO MÁS GRANDE (de 85 a 95) */
+            padding: 130px 70px;        /* ALTO MUCHO MÁS GRANDE (de 95 a 130) */
             cursor: pointer;
             transition: all 0.3s ease;
             flex: 0 0 auto;
         }
 
-        /* Primer título PEGADO MÁS A LOS EXTREMOS */
+        /* Primer título PEGADO MUCHO MÁS A LOS EXTREMOS */
         .side-card:first-child {
-            border-radius: 120px 0 0 120px;
+            border-radius: 140px 0 0 140px;
             justify-content: flex-start;
-            padding-left: 150px;        /* MÁS PEGADO AL EXTREMO */
+            padding-left: 180px;        /* MUCHO MÁS PEGADO AL EXTREMO */
         }
 
-        /* Segundo título PEGADO MÁS A LOS EXTREMOS */
+        /* Segundo título PEGADO MUCHO MÁS A LOS EXTREMOS */
         .side-card:last-child {
-            border-radius: 0 120px 120px 0;
+            border-radius: 0 140px 140px 0;
             justify-content: flex-end;
-            padding-right: 150px;       /* MÁS PEGADO AL EXTREMO */
+            padding-right: 180px;       /* MUCHO MÁS PEGADO AL EXTREMO */
         }
 
         .side-card h3 {
             font-family: 'Poppins', sans-serif;
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             font-weight: 700;
             color: white;
             margin: 0;
@@ -215,40 +215,40 @@
             transform: scale(1.02);
         }
 
-        /* Tarjeta central - BORDES MÁS REDONDOS */
+        /* Tarjeta central - BORDES MUY REDONDOS */
         .center-card-wrapper {
             position: relative;
             z-index: 10;
             width: 74%;
-            max-width: 1200px;
+            max-width: 1250px;
             margin: 0 auto;
         }
 
         .center-card {
             background-color: #0c3a6a;
-            border-radius: 100px;        /* BORDES MÁS REDONDOS (de 90 a 100) */
-            padding: 95px 85px;
+            border-radius: 110px;        /* bordes muy redondos */
+            padding: 105px 95px;
             text-align: center;
-            box-shadow: 0 40px 60px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 45px 70px rgba(0, 0, 0, 0.3);
             transition: all 0.4s ease;
         }
 
         .center-card h2 {
             font-family: 'Poppins', sans-serif;
-            font-size: 3.8rem;
+            font-size: 4rem;
             font-weight: 800;
             color: white;
-            margin-bottom: 45px;
+            margin-bottom: 50px;
             letter-spacing: -0.5px;
         }
 
         .center-card p {
             font-family: 'Poppins', sans-serif;
-            font-size: 2rem;
+            font-size: 2.1rem;
             font-weight: 500;
             color: white;
             line-height: 1.5;
-            max-width: 950px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
@@ -269,64 +269,92 @@
         }
 
         /* RESPONSIVE */
-        @media (max-width: 1400px) {
+        @media (max-width: 1500px) {
             .center-card-wrapper {
-                width: 76%;
+                width: 78%;
+            }
+            .center-card {
+                padding: 90px 80px;
+                border-radius: 95px;
+            }
+            .center-card h2 {
+                font-size: 3.5rem;
+            }
+            .center-card p {
+                font-size: 1.9rem;
+            }
+            .side-card {
+                padding: 110px 60px;
+            }
+            .side-card:first-child {
+                padding-left: 140px;
+            }
+            .side-card:last-child {
+                padding-right: 140px;
+            }
+            .side-card h3 {
+                font-size: 2.1rem;
+            }
+        }
+
+        @media (max-width: 1300px) {
+            .center-card-wrapper {
+                width: 80%;
             }
             .center-card {
                 padding: 80px 70px;
                 border-radius: 85px;
             }
             .center-card h2 {
-                font-size: 3.2rem;
+                font-size: 3rem;
             }
             .center-card p {
                 font-size: 1.7rem;
             }
             .side-card {
-                padding: 80px 55px;
+                padding: 95px 50px;
             }
             .side-card:first-child {
-                padding-left: 100px;
+                padding-left: 110px;
             }
             .side-card:last-child {
-                padding-right: 100px;
+                padding-right: 110px;
             }
             .side-card h3 {
                 font-size: 1.9rem;
             }
+            .tab-btn {
+                font-size: 1.4rem;
+                padding: 14px 32px;
+                min-width: 150px;
+            }
         }
 
-        @media (max-width: 1200px) {
+        @media (max-width: 1100px) {
             .center-card-wrapper {
-                width: 78%;
+                width: 82%;
             }
             .center-card {
                 padding: 70px 60px;
                 border-radius: 75px;
             }
             .center-card h2 {
-                font-size: 2.8rem;
+                font-size: 2.6rem;
             }
             .center-card p {
                 font-size: 1.6rem;
             }
             .side-card {
-                padding: 70px 45px;
+                padding: 80px 45px;
             }
             .side-card:first-child {
-                padding-left: 80px;
+                padding-left: 90px;
             }
             .side-card:last-child {
-                padding-right: 80px;
+                padding-right: 90px;
             }
             .side-card h3 {
                 font-size: 1.7rem;
-            }
-            .tab-btn {
-                font-size: 1.4rem;
-                padding: 14px 32px;
-                min-width: 150px;
             }
         }
 
@@ -340,42 +368,42 @@
                 top: auto;
                 transform: none;
                 flex-direction: column;
-                border-radius: 70px;
-                gap: 25px;
+                border-radius: 80px;
+                gap: 30px;
                 background: transparent;
                 box-shadow: none;
-                margin-top: 50px;
+                margin-top: 60px;
             }
             .side-card {
-                border-radius: 70px !important;
-                padding: 50px 35px !important;
+                border-radius: 80px !important;
+                padding: 60px 40px !important;
                 justify-content: center !important;
                 text-align: center;
                 box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             }
             .side-card:first-child,
             .side-card:last-child {
-                padding-left: 35px !important;
-                padding-right: 35px !important;
+                padding-left: 40px !important;
+                padding-right: 40px !important;
             }
             .side-card h3 {
-                font-size: 1.9rem;
+                font-size: 2rem;
                 white-space: normal;
             }
             .center-card-wrapper {
                 width: 100%;
-                margin-bottom: 20px;
-            }
-            .center-card {
-                padding: 55px 45px;
-                border-radius: 60px;
-            }
-            .center-card h2 {
-                font-size: 2.5rem;
                 margin-bottom: 30px;
             }
+            .center-card {
+                padding: 60px 50px;
+                border-radius: 70px;
+            }
+            .center-card h2 {
+                font-size: 2.6rem;
+                margin-bottom: 35px;
+            }
             .center-card p {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
             }
             .tabs-wrapper .tab-btn {
                 padding: 12px 24px;
@@ -386,20 +414,21 @@
 
         @media (max-width: 768px) {
             .center-card {
-                padding: 45px 35px;
-                border-radius: 50px;
+                padding: 50px 40px;
+                border-radius: 60px;
             }
             .center-card h2 {
                 font-size: 2.2rem;
+                margin-bottom: 25px;
             }
             .center-card p {
-                font-size: 1.3rem;
+                font-size: 1.4rem;
             }
             .side-card {
-                padding: 42px 30px !important;
+                padding: 50px 35px !important;
             }
             .side-card h3 {
-                font-size: 1.6rem;
+                font-size: 1.7rem;
             }
             .tab-btn {
                 font-size: 1rem;
@@ -410,54 +439,54 @@
 
         @media (max-width: 550px) {
             .center-card {
-                padding: 35px 25px;
+                padding: 40px 30px;
             }
             .center-card h2 {
                 font-size: 1.8rem;
                 margin-bottom: 20px;
             }
             .center-card p {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
             }
             .side-card {
-                padding: 35px 25px !important;
+                padding: 40px 30px !important;
             }
             .side-card h3 {
-                font-size: 1.4rem;
+                font-size: 1.5rem;
             }
         }
 
-        @media (min-width: 1700px) {
+        @media (min-width: 1800px) {
             .center-card {
-                padding: 110px 100px;
-                border-radius: 110px;
+                padding: 120px 110px;
+                border-radius: 120px;
             }
             .center-card h2 {
-                font-size: 4.2rem;
+                font-size: 4.5rem;
             }
             .center-card p {
-                font-size: 2.2rem;
+                font-size: 2.3rem;
             }
             .side-card {
-                padding: 105px 85px;
+                padding: 150px 90px;
             }
             .side-card:first-child {
-                padding-left: 150px;
+                padding-left: 220px;
             }
             .side-card:last-child {
-                padding-right: 150px;
+                padding-right: 220px;
             }
             .side-card h3 {
-                font-size: 2.4rem;
+                font-size: 2.6rem;
             }
             .side-cards-line {
-                border-radius: 140px;
+                border-radius: 160px;
             }
             .side-card:first-child {
-                border-radius: 140px 0 0 140px;
+                border-radius: 160px 0 0 160px;
             }
             .side-card:last-child {
-                border-radius: 0 140px 140px 0;
+                border-radius: 0 160px 160px 0;
             }
         }
 
@@ -500,7 +529,7 @@
     </div>
 
     <div class="mvp-cards-container" id="mvpContainer">
-        <!-- Línea de fondo: laterales pegados a los extremos, ALTO MÁS GRANDE, LETRAS MÁS PEGADAS -->
+        <!-- Línea de fondo: laterales pegados a los extremos, ALTO MUCHO MÁS GRANDE, LETRAS MUCHO MÁS PEGADAS A LOS BORDES -->
         <div class="side-cards-line" id="sideLine">
             <div class="side-card" data-tab="mision">
                 <h3>Misión</h3>
@@ -510,7 +539,7 @@
             </div>
         </div>
         
-        <!-- Tarjeta central GRANDE con BORDES MÁS REDONDOS encima -->
+        <!-- Tarjeta central GRANDE con BORDES MUY REDONDOS encima -->
         <div class="center-card-wrapper" id="centerWrapper">
             <div class="center-card" id="centerCard">
                 <h2 id="centerTitle">Visión</h2>
