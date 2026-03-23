@@ -491,19 +491,17 @@
             right: 60px;
             top: 50%;
             transform: translateY(-50%);
-            text-align: left;
+            text-align: right;
             z-index: 10;
         }
 
         .contact-item {
-            display: flex;
-            align-items: baseline;
-            gap: 12px;
             margin-bottom: 16px;
             cursor: pointer;
             transition: all 0.2s ease;
             padding: 8px 12px;
             border-radius: 12px;
+            text-align: right;
         }
 
         .contact-item:last-child {
@@ -520,7 +518,7 @@
             font-size: 1rem;
             font-weight: 700;
             color: #000000;
-            min-width: 130px;
+            display: inline-block;
         }
 
         .contact-value {
@@ -528,6 +526,8 @@
             font-size: 1rem;
             font-weight: 500;
             color: #000000;
+            display: inline-block;
+            margin-left: 8px;
             word-break: break-word;
         }
 
@@ -563,7 +563,7 @@
                 top: auto;
                 transform: none;
                 padding: 30px 20px;
-                text-align: left;
+                text-align: right;
                 background-color: #f5f5f5;
                 margin-top: 0;
             }
@@ -574,7 +574,7 @@
                 width: 100%;
             }
             .contact-item {
-                justify-content: flex-start;
+                justify-content: flex-end;
                 padding: 8px 0;
             }
             .contact-item:hover {
@@ -582,7 +582,6 @@
                 background-color: transparent;
             }
             .contact-label {
-                min-width: 120px;
                 font-size: 0.9rem;
             }
             .contact-value {
@@ -595,15 +594,16 @@
                 padding: 25px 20px;
             }
             .contact-item {
-                flex-direction: column;
-                gap: 4px;
-                margin-bottom: 20px;
+                margin-bottom: 15px;
             }
             .contact-label {
-                min-width: auto;
+                font-size: 0.85rem;
             }
             .contact-value {
                 font-size: 0.85rem;
+                display: block;
+                margin-left: 0;
+                margin-top: 4px;
             }
         }
 
