@@ -178,26 +178,25 @@
             background-color: #0f4472;
             display: flex;
             align-items: center;
-            justify-content: center;
             text-align: center;
-            padding: 130px 70px;        /* ALTO MUCHO MÁS GRANDE (de 95 a 130) */
+            padding: 130px 0;           /* solo padding vertical, horizontal 0 para pegar al borde */
             cursor: pointer;
             transition: all 0.3s ease;
             flex: 0 0 auto;
         }
 
-        /* Primer título PEGADO MUCHO MÁS A LOS EXTREMOS */
+        /* Primer título PEGADO COMPLETAMENTE AL EXTREMO IZQUIERDO */
         .side-card:first-child {
             border-radius: 140px 0 0 140px;
             justify-content: flex-start;
-            padding-left: 180px;        /* MUCHO MÁS PEGADO AL EXTREMO */
+            padding-left: 30px;          /* mínimo padding para que no toque el borde exacto, pero casi pegado */
         }
 
-        /* Segundo título PEGADO MUCHO MÁS A LOS EXTREMOS */
+        /* Segundo título PEGADO COMPLETAMENTE AL EXTREMO DERECHO */
         .side-card:last-child {
             border-radius: 0 140px 140px 0;
             justify-content: flex-end;
-            padding-right: 180px;       /* MUCHO MÁS PEGADO AL EXTREMO */
+            padding-right: 30px;         /* mínimo padding para que no toque el borde exacto */
         }
 
         .side-card h3 {
@@ -226,7 +225,7 @@
 
         .center-card {
             background-color: #0c3a6a;
-            border-radius: 110px;        /* bordes muy redondos */
+            border-radius: 110px;
             padding: 105px 95px;
             text-align: center;
             box-shadow: 0 45px 70px rgba(0, 0, 0, 0.3);
@@ -284,13 +283,13 @@
                 font-size: 1.9rem;
             }
             .side-card {
-                padding: 110px 60px;
+                padding: 110px 0;
             }
             .side-card:first-child {
-                padding-left: 140px;
+                padding-left: 25px;
             }
             .side-card:last-child {
-                padding-right: 140px;
+                padding-right: 25px;
             }
             .side-card h3 {
                 font-size: 2.1rem;
@@ -312,13 +311,13 @@
                 font-size: 1.7rem;
             }
             .side-card {
-                padding: 95px 50px;
+                padding: 95px 0;
             }
             .side-card:first-child {
-                padding-left: 110px;
+                padding-left: 20px;
             }
             .side-card:last-child {
-                padding-right: 110px;
+                padding-right: 20px;
             }
             .side-card h3 {
                 font-size: 1.9rem;
@@ -345,13 +344,13 @@
                 font-size: 1.6rem;
             }
             .side-card {
-                padding: 80px 45px;
+                padding: 80px 0;
             }
             .side-card:first-child {
-                padding-left: 90px;
+                padding-left: 18px;
             }
             .side-card:last-child {
-                padding-right: 90px;
+                padding-right: 18px;
             }
             .side-card h3 {
                 font-size: 1.7rem;
@@ -468,13 +467,13 @@
                 font-size: 2.3rem;
             }
             .side-card {
-                padding: 150px 90px;
+                padding: 150px 0;
             }
             .side-card:first-child {
-                padding-left: 220px;
+                padding-left: 40px;
             }
             .side-card:last-child {
-                padding-right: 220px;
+                padding-right: 40px;
             }
             .side-card h3 {
                 font-size: 2.6rem;
@@ -529,7 +528,7 @@
     </div>
 
     <div class="mvp-cards-container" id="mvpContainer">
-        <!-- Línea de fondo: laterales pegados a los extremos, ALTO MUCHO MÁS GRANDE, LETRAS MUCHO MÁS PEGADAS A LOS BORDES -->
+        <!-- Línea de fondo: laterales PEGADOS A LOS EXTREMOS (casi tocando el borde) -->
         <div class="side-cards-line" id="sideLine">
             <div class="side-card" data-tab="mision">
                 <h3>Misión</h3>
