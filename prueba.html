@@ -266,7 +266,7 @@
             animation: fadeSlideUp 0.5s ease-out;
         }
 
-        /* ========== NUEVA SECCIÓN: LÍNEAS DE TRABAJO ========== */
+        /* ========== SECCIÓN LÍNEAS DE TRABAJO ========== */
         .work-lines-section {
             max-width: 100%;
             margin: 0 auto 100px auto;
@@ -283,7 +283,6 @@
             letter-spacing: -0.5px;
         }
 
-        /* IMAGEN OCUPA TODO EL ANCHO DE LA PÁGINA */
         .gente-image {
             width: 100%;
             display: block;
@@ -291,14 +290,12 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
-        /* Contenedor para la barra azul detrás de los títulos */
         .titles-container {
             position: relative;
             width: 100%;
             margin-bottom: 60px;
         }
 
-        /* Barra azul RECTA - SIN BORDES REDONDOS */
         .blue-bar-bg {
             position: absolute;
             top: 50%;
@@ -311,7 +308,6 @@
             z-index: 0;
         }
 
-        /* Contenedor de los títulos para que estén encima de la barra */
         .two-columns-titles {
             display: flex;
             gap: 50px;
@@ -337,7 +333,6 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
-        /* Contenedor de las columnas con recuadros blancos */
         .two-columns-cards {
             display: flex;
             gap: 50px;
@@ -350,7 +345,6 @@
             flex: 1;
         }
 
-        /* Tarjetas de contenido - fondo BLANCO, letras AZULES */
         .work-card {
             background-color: #ffffff;
             border-radius: 28px;
@@ -385,7 +379,165 @@
             color: #0c3a6a;
         }
 
-        /* Responsive para líneas de trabajo */
+        /* ========== NUEVA SECCIÓN: EQUIPO ========== */
+        .team-section {
+            background-color: #0c3a6a;
+            padding: 80px 40px 100px 40px;
+            margin-top: 60px;
+        }
+
+        .team-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            text-align: center;
+            margin-bottom: 50px;
+            letter-spacing: -0.5px;
+        }
+
+        /* Línea diagonal */
+        .diagonal-line {
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(95deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 20%, rgba(255,255,255,0.8) 80%, rgba(255,255,255,0) 100%);
+            margin-bottom: 70px;
+            transform: skewY(-1deg);
+        }
+
+        .team-cards {
+            display: flex;
+            gap: 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .team-card {
+            flex: 1;
+            background-color: #ffffff;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .card-content {
+            padding: 0;
+        }
+
+        /* Foto y nombre juntos */
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            padding: 35px 35px 20px 35px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .profile-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #0c3a6a;
+            background-color: #f0f0f0;
+        }
+
+        .profile-name h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: #0c3a6a;
+            margin-bottom: 5px;
+        }
+
+        .profile-name p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #666;
+        }
+
+        .profile-description {
+            padding: 30px 35px 40px 35px;
+        }
+
+        .profile-description p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .profile-description p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Responsive equipo */
+        @media (max-width: 1100px) {
+            .team-cards {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .team-section {
+                padding: 60px 30px 80px 30px;
+            }
+            .team-title {
+                font-size: 2.8rem;
+            }
+            .profile-header {
+                padding: 25px 25px 15px 25px;
+            }
+            .profile-photo {
+                width: 100px;
+                height: 100px;
+            }
+            .profile-name h3 {
+                font-size: 1.6rem;
+            }
+            .profile-description {
+                padding: 25px 25px 30px 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .team-section {
+                padding: 50px 20px 60px 20px;
+            }
+            .team-title {
+                font-size: 2.2rem;
+                margin-bottom: 35px;
+            }
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            .profile-photo {
+                width: 110px;
+                height: 110px;
+            }
+            .profile-name h3 {
+                font-size: 1.5rem;
+            }
+            .profile-description p {
+                font-size: 0.9rem;
+            }
+            .diagonal-line {
+                margin-bottom: 50px;
+            }
+        }
+
+        /* Responsive general */
         @media (max-width: 1000px) {
             .two-columns-cards {
                 flex-direction: column;
@@ -679,14 +831,12 @@
     </div>
 </section>
 
-<!-- NUEVA SECCIÓN: LÍNEAS DE TRABAJO -->
+<!-- SECCIÓN LÍNEAS DE TRABAJO -->
 <section class="work-lines-section">
     <h2 class="section-title">Líneas de trabajo</h2>
     
-    <!-- Imagen gente.png - OCUPA TODO EL ANCHO -->
     <img class="gente-image" src="fotos/gente.png" alt="Equipo Akinnova">
     
-    <!-- Contenedor con barra azul RECTA detrás de los títulos -->
     <div class="titles-container">
         <div class="blue-bar-bg"></div>
         <div class="two-columns-titles">
@@ -699,43 +849,78 @@
         </div>
     </div>
     
-    <!-- Dos columnas con recuadros BLANCOS y letras AZULES -->
     <div class="two-columns-cards">
-        <!-- Columna izquierda: Consultorías -->
         <div class="column">
             <div class="work-card">
                 <p><strong>Personalización de empresas automotrices:</strong><br>Diagnóstico, estructura organizacional y gobierno corporativo.</p>
             </div>
-            
             <div class="work-card">
                 <p><strong>Transformación Digital, Procesos Ágiles e IA:</strong><br>Integración tecnológica, automatización y optimización.</p>
             </div>
-            
             <div class="work-card">
                 <p><strong>Gestión Comercial y Experiencia del Cliente:</strong><br>Procesos y metodologías para incrementar ingresos y eficiencia.</p>
             </div>
-            
             <div class="work-card">
                 <p><strong>Evaluación y Desarrollo de Liderazgo:</strong><br>Assessment, coaching ejecutivo y desarrollo de equipos.</p>
             </div>
         </div>
         
-        <!-- Columna derecha: Alianzas estratégicas -->
         <div class="column">
             <div class="work-card">
                 <p><strong>Descubrimiento de Nuevos Revenue Streams:</strong><br>Programas como MOK para reparaciones menores.</p>
             </div>
-            
             <div class="work-card">
                 <p><strong>Integraciones con Plataformas Tecnológicas:</strong><br>Soluciones de datos y análisis de mercado.</p>
             </div>
-            
             <div class="work-card">
                 <p><strong>Soluciones de Evaluación de Liderazgo y Talento:</strong><br>Herramientas y partners para diagnóstico de equipos.</p>
             </div>
-            
             <div class="work-card">
                 <p><strong>Acuerdos Comerciales con Líderes en Sudamérica:</strong><br>Sinergias para potenciar portafolio y cobertura.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECCIÓN EQUIPO -->
+<section class="team-section">
+    <h2 class="team-title">Equipo</h2>
+    <div class="diagonal-line"></div>
+    
+    <div class="team-cards">
+        <!-- Tarjeta Marco Kohatsu -->
+        <div class="team-card">
+            <div class="card-content">
+                <div class="profile-header">
+                    <img class="profile-photo" src="fotos/marco.png" alt="Marco Kohatsu">
+                    <div class="profile-name">
+                        <h3>Marco Kohatsu</h3>
+                        <p>Consultor y Ejecutor Senior</p>
+                    </div>
+                </div>
+                <div class="profile-description">
+                    <p>Consultor y Ejecutor senior en transformación empresarial, con una trayectoria consolidada liderando procesos de cambio en organizaciones complejas, tanto multinacionales como familiares. Su enfoque combina visión estratégica, ejecución disciplinada y una clara orientación a resultados sostenibles.</p>
+                    <p>A lo largo de su carrera ha dirigido iniciativas de alto impacto que han revertido escenarios críticos, reposicionado marcas en mercados altamente competitivos.</p>
+                    <p>Constructor de culturas organizacionales centradas en la innovación, la autonomía y la orientación al cliente. Su experiencia como CEO le otorga una comprensión profunda de los desafíos reales del negocio, lo que le permite acompañar a empresas que buscan escalar con tecnología, profesionalizar su estructura y acelerar su rentabilidad. En particular, ha desarrollado proyectos que integran inteligencia artificial aplicada a procesos comerciales, automatización de decisiones y reestructuración organizacional. Hoy asesora a compañías que requieren dar un salto en su gestión, con velocidad, claridad y foco en el valor tangible.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tarjeta Julio Aguilar -->
+        <div class="team-card">
+            <div class="card-content">
+                <div class="profile-header">
+                    <img class="profile-photo" src="fotos/julio.png" alt="Julio Aguilar">
+                    <div class="profile-name">
+                        <h3>Julio Aguilar</h3>
+                        <p>Consultor Senior</p>
+                    </div>
+                </div>
+                <div class="profile-description">
+                    <p>Consultor con amplia experiencia en transformar negocios para que sean más productivos, rentables y con una gestión de talento efectiva. Durante sus años en el mundo corporativo, se ha enfocado en el desarrollo de líderes con pensamiento crítico y con alta capacidad para la resolución de situaciones complejas, fomentando el pensamiento disruptivo para convertir los retos del negocio en oportunidades para fortalecer la posición competitiva de la empresa.</p>
+                    <p>Como líder responsable de revertir tendencias negativas en negocios nacionales e internacionales, comprende profundamente los desafíos actuales en liderazgo, estructuración de información y uso de tecnología para facilitar decisiones acertadas. Además, cuenta con experiencia en la reformulación de procesos para una gestión eficiente de recursos y en el desarrollo de equipos de alto rendimiento.</p>
+                    <p>Actualmente, asesora, capacita y acompaña a líderes y equipos gerenciales para impulsar una transformación que mejore la propuesta de valor a los clientes y aumente la rentabilidad del negocio.</p>
+                </div>
             </div>
         </div>
     </div>
