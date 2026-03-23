@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Akinnova | Dealer del Futuro</title>
-    <!-- Fuente Poppins (Google Fonts) -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- FAVICON: akinnova-logo como logo de pestaña -->
     <link rel="icon" type="image/png" href="fotos/akinnova-logo.png">
     <link rel="shortcut icon" type="image/png" href="fotos/akinnova-logo.png">
     <style>
@@ -555,53 +553,51 @@
             opacity: 1;
         }
 
-        /* ========== SOLO ESTILOS PARA MÓVIL (PANTALLAS PEQUEÑAS) ========== */
-        /* Escritorio se mantiene igual, solo ajustamos para móvil */
-        
+        /* ========== SOLO ESTILOS PARA MÓVIL ========== */
         @media (max-width: 768px) {
-            /* Barra de navegación más pequeña */
+            /* Barra blanca más pequeña */
             .navbar-overlay {
                 top: 20px;
                 width: 85%;
-                padding: 12px 20px;
+                padding: 10px 20px;
                 border-radius: 40px;
             }
             .logo-img {
-                height: 35px;
+                height: 32px;
             }
             .siempre-nuevo {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
             
-            /* Título principal más pequeño */
+            /* Título más pequeño y un poco más abajo */
+            .hero-text {
+                top: 32%;
+            }
             .hero-text h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
                 text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
             }
-            .hero-text {
-                top: 25%;
-            }
             
-            /* Texto descriptivo más pequeño */
+            /* Texto descriptivo */
             .description-text {
-                font-size: 1.2rem;
+                font-size: 1rem;
             }
             .description-section {
                 margin: 40px auto 50px auto;
             }
             
-            /* Sección Misión/Visión/Propósito - móvil */
+            /* Sección Misión/Visión/Propósito - mismo formato pero más pequeño */
             .mvp-section {
                 padding: 0 20px;
                 margin-bottom: 60px;
             }
             .tabs-container {
-                margin-bottom: 40px;
+                margin-bottom: 30px;
             }
             .tab-btn {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
                 padding: 10px 16px;
-                min-width: 90px;
+                min-width: 85px;
             }
             .mvp-cards-container {
                 min-height: auto;
@@ -610,80 +606,98 @@
                 position: relative;
                 top: auto;
                 transform: none;
-                flex-direction: column;
-                border-radius: 40px;
-                margin-top: 30px;
+                flex-direction: row;
+                border-radius: 50px;
+                margin-top: 0;
+                margin-bottom: 25px;
+                justify-content: space-between;
+                background-color: #0f4472;
+                width: 100%;
             }
             .side-card {
-                padding: 25px 0 !important;
+                padding: 15px 0 !important;
+                justify-content: center !important;
+            }
+            .side-card:first-child {
+                justify-content: center !important;
+            }
+            .side-card:last-child {
                 justify-content: center !important;
             }
             .side-card h3 {
-                font-size: 1.3rem;
-                white-space: normal;
+                font-size: 1rem;
+                white-space: nowrap;
+                padding: 0 !important;
             }
             .center-card-wrapper {
                 width: 100%;
-                margin-bottom: 20px;
+                margin-bottom: 0;
             }
             .center-card {
-                padding: 35px 25px;
+                padding: 30px 25px;
                 border-radius: 40px;
             }
             .center-card h2 {
-                font-size: 1.8rem;
-                margin-bottom: 20px;
+                font-size: 1.5rem;
+                margin-bottom: 15px;
             }
             .center-card p {
-                font-size: 1rem;
+                font-size: 0.85rem;
             }
             
-            /* Sección Líneas de trabajo - móvil */
+            /* Sección Líneas de trabajo - 2 columnas en móvil */
             .section-title {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
                 margin-bottom: 30px;
             }
             .gente-image {
                 margin-bottom: 40px;
             }
             .titles-container {
-                margin-bottom: 30px;
+                margin-bottom: 25px;
             }
             .two-columns-titles {
-                flex-direction: column;
-                gap: 10px;
-                padding: 0 20px;
+                flex-direction: row;
+                gap: 15px;
+                padding: 0 15px;
             }
             .title-col h3 {
-                font-size: 1.4rem;
-                margin: 10px 0;
+                font-size: 1.1rem;
+                margin: 12px 0;
             }
             .blue-bar-bg {
                 height: 70%;
             }
             .two-columns-cards {
-                flex-direction: column;
-                gap: 20px;
-                padding: 0 20px;
+                flex-direction: row;
+                gap: 12px;
+                padding: 0 15px;
             }
             .work-card {
-                padding: 18px 16px;
-                margin-bottom: 20px;
+                padding: 15px 12px;
+                margin-bottom: 0;
+                border-radius: 20px;
             }
             .work-card p {
-                font-size: 0.85rem;
+                font-size: 0.7rem;
             }
             .work-card strong {
-                font-size: 0.9rem;
+                font-size: 0.75rem;
+                margin-bottom: 8px;
+            }
+            .column {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
             }
             
-            /* Sección Equipo - móvil */
+            /* Sección Equipo */
             .team-section {
                 padding: 40px 20px 50px 20px;
                 margin-top: 30px;
             }
             .team-title {
-                font-size: 2rem;
+                font-size: 1.8rem;
                 margin-bottom: 30px;
             }
             .diagonal-line {
@@ -699,25 +713,25 @@
                 flex-direction: column;
                 text-align: center;
                 gap: 12px;
-                padding: 25px 20px 15px 20px;
+                padding: 20px 20px 15px 20px;
             }
             .profile-photo {
-                width: 100px;
-                height: 100px;
+                width: 90px;
+                height: 90px;
                 border-radius: 16px;
             }
             .profile-name h3 {
-                font-size: 1.3rem;
+                font-size: 1.2rem;
             }
             .profile-description {
-                padding: 20px 20px 25px 20px;
+                padding: 18px 20px 22px 20px;
             }
             .profile-description p {
-                font-size: 0.85rem;
+                font-size: 0.8rem;
                 text-align: left;
             }
             
-            /* Footer - móvil (estructura completamente diferente) */
+            /* Footer - contactos DENTRO de la imagen, pegados a la derecha */
             .footer-section {
                 position: relative;
             }
@@ -725,93 +739,87 @@
                 width: 100%;
             }
             .contact-block {
-                position: relative;
-                right: auto;
-                top: auto;
-                transform: none;
-                padding: 20px 15px;
-                text-align: left;
-                background-color: #f5f5f5;
-                margin-top: 0;
+                position: absolute;
+                right: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+                text-align: right;
+                background-color: transparent;
+                padding: 0;
+                margin: 0;
             }
             .contact-item {
-                text-align: left;
-                padding: 10px 0;
-                margin-bottom: 12px;
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
+                text-align: right;
+                padding: 6px 8px;
+                margin-bottom: 8px;
+                display: block;
+                background-color: rgba(255, 255, 255, 0.85);
+                border-radius: 20px;
+                backdrop-filter: blur(2px);
             }
             .contact-item:hover {
                 transform: none;
-                background-color: transparent;
+                background-color: rgba(255, 255, 255, 0.95);
             }
             .contact-label {
-                font-size: 0.85rem;
-                display: block;
-                margin-bottom: 4px;
+                font-size: 0.7rem;
+                display: inline-block;
+                margin-bottom: 0;
             }
             .contact-value {
-                font-size: 0.85rem;
-                display: block;
-                margin-left: 0;
-                word-break: break-word;
+                font-size: 0.7rem;
+                display: inline-block;
+                margin-left: 5px;
             }
         }
         
-        /* Para móviles muy pequeños */
+        /* Móviles muy pequeños */
         @media (max-width: 480px) {
             .navbar-overlay {
                 width: 90%;
-                padding: 10px 16px;
+                padding: 8px 15px;
             }
             .logo-img {
                 height: 28px;
             }
             .siempre-nuevo {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
             }
             .hero-text h1 {
-                font-size: 1.6rem;
-            }
-            .description-text {
-                font-size: 1rem;
+                font-size: 1.4rem;
             }
             .tab-btn {
-                font-size: 0.75rem;
+                font-size: 0.7rem;
                 padding: 8px 12px;
                 min-width: 70px;
             }
-            .center-card {
-                padding: 25px 20px;
-            }
-            .center-card h2 {
-                font-size: 1.5rem;
-            }
-            .center-card p {
+            .side-card h3 {
                 font-size: 0.85rem;
             }
-            .side-card h3 {
-                font-size: 1.1rem;
-            }
-            .section-title {
-                font-size: 1.5rem;
-            }
-            .title-col h3 {
+            .center-card h2 {
                 font-size: 1.2rem;
             }
-            .work-card p {
+            .center-card p {
                 font-size: 0.75rem;
             }
-            .team-title {
-                font-size: 1.6rem;
+            .title-col h3 {
+                font-size: 0.9rem;
             }
-            .profile-photo {
-                width: 80px;
-                height: 80px;
+            .work-card p {
+                font-size: 0.6rem;
             }
-            .profile-name h3 {
-                font-size: 1.1rem;
+            .work-card strong {
+                font-size: 0.65rem;
+            }
+            .contact-label {
+                font-size: 0.6rem;
+            }
+            .contact-value {
+                font-size: 0.6rem;
+            }
+            .contact-item {
+                padding: 4px 6px;
+                margin-bottom: 6px;
             }
         }
 
