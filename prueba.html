@@ -105,7 +105,6 @@
             padding: 0 40px;
         }
 
-        /* TABS SUPERIORES */
         .tabs-container {
             display: flex;
             justify-content: center;
@@ -146,7 +145,6 @@
             border-radius: 0 60px 60px 0;
         }
 
-        /* ========== ESTRUCTURA: CENTRAL GRANDE ENCIMA, LINEA DE LATERALES DETRÁS ========== */
         .mvp-cards-container {
             position: relative;
             display: flex;
@@ -156,7 +154,6 @@
             width: 100%;
         }
 
-        /* Línea de fondo - AHORA TODA AZUL (un solo color) */
         .side-cards-line {
             position: absolute;
             left: 0;
@@ -166,7 +163,7 @@
             display: flex;
             justify-content: space-between;
             gap: 0;
-            background-color: #0f4472;    /* AZUL para toda la línea */
+            background-color: #0f4472;
             border-radius: 140px;
             overflow: hidden;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
@@ -175,7 +172,7 @@
         }
 
         .side-card {
-            background-color: transparent;  /* transparente para que se vea el azul de fondo */
+            background-color: transparent;
             display: flex;
             align-items: center;
             text-align: center;
@@ -185,12 +182,10 @@
             flex: 1;
         }
 
-        /* Primer título PEGADO COMPLETAMENTE AL BORDE */
         .side-card:first-child {
             justify-content: flex-start;
         }
 
-        /* Segundo título PEGADO COMPLETAMENTE AL BORDE */
         .side-card:last-child {
             justify-content: flex-end;
         }
@@ -205,15 +200,13 @@
             white-space: nowrap;
         }
 
-        /* Texto izquierdo pegado al borde izquierdo - sin padding */
         .side-card:first-child h3 {
-            padding-left: 15px;           /* mínimo para que no toque exactamente el borde redondeado */
+            padding-left: 15px;
             margin-left: 0;
         }
 
-        /* Texto derecho pegado al borde derecho - sin padding */
         .side-card:last-child h3 {
-            padding-right: 15px;          /* mínimo para que no toque exactamente el borde redondeado */
+            padding-right: 15px;
             margin-right: 0;
         }
 
@@ -222,7 +215,6 @@
             transform: scale(1.02);
         }
 
-        /* Tarjeta central - BORDES MUY REDONDOS */
         .center-card-wrapper {
             position: relative;
             z-index: 10;
@@ -259,7 +251,6 @@
             margin: 0 auto;
         }
 
-        /* Animación */
         @keyframes fadeSlideUp {
             from {
                 opacity: 0;
@@ -275,7 +266,135 @@
             animation: fadeSlideUp 0.5s ease-out;
         }
 
-        /* RESPONSIVE */
+        /* ========== NUEVA SECCIÓN: LÍNEAS DE TRABAJO ========== */
+        .work-lines-section {
+            max-width: 1400px;
+            margin: 0 auto 100px auto;
+            padding: 0 40px;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: #0c3a6a;
+            text-align: center;
+            margin-bottom: 60px;
+            letter-spacing: -0.5px;
+        }
+
+        .gente-image {
+            width: 100%;
+            display: block;
+            margin-bottom: 80px;
+            border-radius: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .blue-line {
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #0c3a6a, #1a5a8a, #0c3a6a);
+            margin: 60px 0 50px 0;
+            border-radius: 4px;
+        }
+
+        /* Dos columnas */
+        .two-columns {
+            display: flex;
+            gap: 50px;
+            margin-top: 40px;
+            margin-bottom: 60px;
+        }
+
+        .column {
+            flex: 1;
+        }
+
+        .column-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #0c3a6a;
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #0c3a6a;
+            display: inline-block;
+            width: 100%;
+        }
+
+        /* Tarjetas de contenido */
+        .work-card {
+            background-color: #0c3a6a;
+            border-radius: 28px;
+            padding: 30px 28px;
+            margin-bottom: 30px;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .work-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
+            background-color: #0f4a7a;
+        }
+
+        .work-card p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: white;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .work-card strong {
+            font-weight: 700;
+            font-size: 1.15rem;
+            display: block;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        /* Responsive para líneas de trabajo */
+        @media (max-width: 1000px) {
+            .two-columns {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .column-title {
+                font-size: 2rem;
+            }
+            .work-card:hover {
+                transform: scale(1.02);
+            }
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .work-lines-section {
+                padding: 0 20px;
+            }
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 40px;
+            }
+            .column-title {
+                font-size: 1.6rem;
+            }
+            .work-card p {
+                font-size: 0.95rem;
+            }
+            .work-card {
+                padding: 22px 20px;
+            }
+        }
+
+        /* Responsive mvp-section */
         @media (max-width: 1500px) {
             .center-card-wrapper {
                 width: 78%;
@@ -295,12 +414,6 @@
             }
             .side-card h3 {
                 font-size: 2.1rem;
-            }
-            .side-card:first-child h3 {
-                padding-left: 12px;
-            }
-            .side-card:last-child h3 {
-                padding-right: 12px;
             }
         }
 
@@ -323,12 +436,6 @@
             }
             .side-card h3 {
                 font-size: 1.9rem;
-            }
-            .side-card:first-child h3 {
-                padding-left: 10px;
-            }
-            .side-card:last-child h3 {
-                padding-right: 10px;
             }
             .tab-btn {
                 font-size: 1.4rem;
@@ -357,12 +464,6 @@
             .side-card h3 {
                 font-size: 1.7rem;
             }
-            .side-card:first-child h3 {
-                padding-left: 8px;
-            }
-            .side-card:last-child h3 {
-                padding-right: 8px;
-            }
         }
 
         @media (max-width: 1000px) {
@@ -378,7 +479,6 @@
                 border-radius: 80px;
                 gap: 0;
                 background-color: #0f4472;
-                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
                 margin-top: 60px;
             }
             .side-card {
@@ -399,14 +499,11 @@
             .side-card:last-child h3 {
                 padding: 0 30px !important;
                 text-align: center;
+                white-space: normal;
             }
             .side-card h3 {
                 font-size: 2rem;
                 white-space: normal;
-                text-align: center;
-            }
-            .side-card:hover {
-                background-color: rgba(255, 255, 255, 0.15);
             }
             .center-card-wrapper {
                 width: 100%;
@@ -423,9 +520,9 @@
             .center-card p {
                 font-size: 1.6rem;
             }
-            .tabs-wrapper .tab-btn {
-                padding: 12px 24px;
+            .tab-btn {
                 font-size: 1.2rem;
+                padding: 12px 24px;
                 min-width: 120px;
             }
         }
@@ -455,25 +552,6 @@
             }
         }
 
-        @media (max-width: 550px) {
-            .center-card {
-                padding: 40px 30px;
-            }
-            .center-card h2 {
-                font-size: 1.8rem;
-                margin-bottom: 20px;
-            }
-            .center-card p {
-                font-size: 1.2rem;
-            }
-            .side-card {
-                padding: 38px 0 !important;
-            }
-            .side-card h3 {
-                font-size: 1.5rem;
-            }
-        }
-
         @media (min-width: 1800px) {
             .center-card {
                 padding: 120px 110px;
@@ -491,23 +569,28 @@
             .side-card h3 {
                 font-size: 2.6rem;
             }
-            .side-card:first-child h3 {
-                padding-left: 20px;
-            }
-            .side-card:last-child h3 {
-                padding-right: 20px;
+        }
+
+        .side-card {
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+        
+        .center-card {
+            transition: all 0.3s ease;
+        }
+        
+        .tab-btn:hover:not(.active) {
+            background-color: #c0c0c0;
+        }
+        
+        @media (min-width: 1001px) {
+            .center-card-wrapper {
+                transform: translateY(0);
             }
             .side-cards-line {
-                border-radius: 160px;
+                top: 50%;
+                transform: translateY(-50%);
             }
-        }
-
-        .hero {
-            position: relative;
-        }
-
-        img {
-            max-width: 100%;
         }
     </style>
 </head>
@@ -541,7 +624,6 @@
     </div>
 
     <div class="mvp-cards-container" id="mvpContainer">
-        <!-- Línea de fondo: TODA AZUL, palabras PEGADAS A LOS EXTREMOS -->
         <div class="side-cards-line" id="sideLine">
             <div class="side-card" data-tab="mision">
                 <h3>Misión</h3>
@@ -551,11 +633,62 @@
             </div>
         </div>
         
-        <!-- Tarjeta central GRANDE con BORDES MUY REDONDOS encima -->
         <div class="center-card-wrapper" id="centerWrapper">
             <div class="center-card" id="centerCard">
                 <h2 id="centerTitle">Visión</h2>
                 <p id="centerDesc">Ser el socio estratégico clave en la evolución integral del negocio automotriz, integrando tecnología y procesos disruptivos y ágiles.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- NUEVA SECCIÓN: LÍNEAS DE TRABAJO -->
+<section class="work-lines-section">
+    <h2 class="section-title">Líneas de trabajo</h2>
+    
+    <!-- Imagen gente.png -->
+    <img class="gente-image" src="fotos/gente.png" alt="Equipo Akinnova">
+    
+    <!-- Línea recta azul -->
+    <div class="blue-line"></div>
+    
+    <!-- Dos columnas: Consultorías y Alianzas estratégicas -->
+    <div class="two-columns">
+        <!-- Columna izquierda: Consultorías -->
+        <div class="column">
+            <h3 class="column-title">Consultorías</h3>
+            
+            <div class="work-card">
+                <p><strong>Personalización de empresas automotrices:</strong><br>Diagnóstico, estructura organizacional y gobierno corporativo.</p>
+            </div>
+            
+            <div class="work-card">
+                <p><strong>Gestión Comercial y Experiencia del Cliente:</strong><br>Procesos y metodologías para incrementar ingresos y eficiencia.</p>
+            </div>
+            
+            <div class="work-card">
+                <p><strong>Evaluación y Desarrollo de Liderazgo:</strong><br>Assessment, coaching ejecutivo y desarrollo de equipos.</p>
+            </div>
+        </div>
+        
+        <!-- Columna derecha: Alianzas estratégicas -->
+        <div class="column">
+            <h3 class="column-title">Alianzas estratégicas</h3>
+            
+            <div class="work-card">
+                <p><strong>Descubrimiento de Nuevos Revenue Streams:</strong><br>Programas como MOK para reparaciones menores.</p>
+            </div>
+            
+            <div class="work-card">
+                <p><strong>Integraciones con Plataformas Tecnológicas:</strong><br>Soluciones de datos y análisis de mercado.</p>
+            </div>
+            
+            <div class="work-card">
+                <p><strong>Soluciones de Evaluación de Liderazgo y Talento:</strong><br>Herramientas y partners para diagnóstico de equipos.</p>
+            </div>
+            
+            <div class="work-card">
+                <p><strong>Acuerdos Comerciales con Líderes en Sudamérica:</strong><br>Sinergias para potenciar portafolio y cobertura.</p>
             </div>
         </div>
     </div>
@@ -682,28 +815,5 @@
     document.addEventListener("DOMContentLoaded", init);
 </script>
 
-<style>
-    .side-card {
-        transition: transform 0.2s ease, background-color 0.2s ease;
-    }
-    
-    .center-card {
-        transition: all 0.3s ease;
-    }
-    
-    .tab-btn:hover:not(.active) {
-        background-color: #c0c0c0;
-    }
-    
-    @media (min-width: 1001px) {
-        .center-card-wrapper {
-            transform: translateY(0);
-        }
-        .side-cards-line {
-            top: 50%;
-            transform: translateY(-50%);
-        }
-    }
-</style>
 </body>
 </html>
