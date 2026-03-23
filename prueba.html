@@ -146,7 +146,7 @@
             border-radius: 0 60px 60px 0;
         }
 
-        /* ========== ESTRUCTURA: CENTRAL GRANDE ENCIMA, LINEA DE LATERALES MÁS ABAJO ========== */
+        /* ========== ESTRUCTURA: CENTRAL GRANDE ENCIMA, LINEA DE LATERALES DETRÁS ========== */
         .mvp-cards-container {
             position: relative;
             display: flex;
@@ -156,14 +156,13 @@
             width: 100%;
         }
 
-        /* Línea de fondo - MÁS ABAJO (no a la altura del medio) */
+        /* Línea de fondo - ALTO UN POCO MÁS GRANDE */
         .side-cards-line {
             position: absolute;
             left: 0;
             right: 0;
-            bottom: 0;              /* PEGADA ABAJO */
-            top: auto;
-            transform: none;
+            top: 50%;
+            transform: translateY(-50%);
             display: flex;
             justify-content: space-between;
             gap: 0;
@@ -181,24 +180,24 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 85px 70px;        /* altura considerable */
+            padding: 95px 70px;        /* ALTO UN POCO MÁS GRANDE (de 85 a 95) */
             cursor: pointer;
             transition: all 0.3s ease;
             flex: 0 0 auto;
         }
 
-        /* Primer título PEGADO LO MÁS POSIBLE AL EXTREMO IZQUIERDO */
+        /* Primer título PEGADO MÁS A LOS EXTREMOS */
         .side-card:first-child {
             border-radius: 120px 0 0 120px;
             justify-content: flex-start;
-            padding-left: 180px;        /* MUY PEGADO AL EXTREMO */
+            padding-left: 130px;        /* MÁS PEGADO AL EXTREMO */
         }
 
-        /* Segundo título PEGADO LO MÁS POSIBLE AL EXTREMO DERECHO */
+        /* Segundo título PEGADO MÁS A LOS EXTREMOS */
         .side-card:last-child {
             border-radius: 0 120px 120px 0;
             justify-content: flex-end;
-            padding-right: 180px;       /* MUY PEGADO AL EXTREMO */
+            padding-right: 130px;       /* MÁS PEGADO AL EXTREMO */
         }
 
         .side-card h3 {
@@ -216,19 +215,18 @@
             transform: scale(1.02);
         }
 
-        /* Tarjeta central - MÁS GRANDE, centrada */
+        /* Tarjeta central - BORDES MÁS REDONDOS */
         .center-card-wrapper {
             position: relative;
             z-index: 10;
             width: 74%;
             max-width: 1200px;
             margin: 0 auto;
-            transform: translateY(-30px); /* levantar un poco para que no toque la línea */
         }
 
         .center-card {
             background-color: #0c3a6a;
-            border-radius: 100px;
+            border-radius: 100px;        /* BORDES MÁS REDONDOS (de 90 a 100) */
             padding: 95px 85px;
             text-align: center;
             box-shadow: 0 40px 60px rgba(0, 0, 0, 0.25);
@@ -274,7 +272,6 @@
         @media (max-width: 1400px) {
             .center-card-wrapper {
                 width: 76%;
-                transform: translateY(-25px);
             }
             .center-card {
                 padding: 80px 70px;
@@ -287,13 +284,13 @@
                 font-size: 1.7rem;
             }
             .side-card {
-                padding: 75px 55px;
+                padding: 80px 55px;
             }
             .side-card:first-child {
-                padding-left: 140px;
+                padding-left: 100px;
             }
             .side-card:last-child {
-                padding-right: 140px;
+                padding-right: 100px;
             }
             .side-card h3 {
                 font-size: 1.9rem;
@@ -303,7 +300,6 @@
         @media (max-width: 1200px) {
             .center-card-wrapper {
                 width: 78%;
-                transform: translateY(-20px);
             }
             .center-card {
                 padding: 70px 60px;
@@ -316,13 +312,13 @@
                 font-size: 1.6rem;
             }
             .side-card {
-                padding: 65px 45px;
+                padding: 70px 45px;
             }
             .side-card:first-child {
-                padding-left: 110px;
+                padding-left: 80px;
             }
             .side-card:last-child {
-                padding-right: 110px;
+                padding-right: 80px;
             }
             .side-card h3 {
                 font-size: 1.7rem;
@@ -341,13 +337,14 @@
             }
             .side-cards-line {
                 position: relative;
-                bottom: auto;
+                top: auto;
+                transform: none;
                 flex-direction: column;
                 border-radius: 70px;
                 gap: 25px;
                 background: transparent;
                 box-shadow: none;
-                margin-top: 40px;
+                margin-top: 50px;
             }
             .side-card {
                 border-radius: 70px !important;
@@ -367,7 +364,6 @@
             }
             .center-card-wrapper {
                 width: 100%;
-                transform: translateY(0);
                 margin-bottom: 20px;
             }
             .center-card {
@@ -443,13 +439,13 @@
                 font-size: 2.2rem;
             }
             .side-card {
-                padding: 95px 85px;
+                padding: 105px 85px;
             }
             .side-card:first-child {
-                padding-left: 220px;
+                padding-left: 150px;
             }
             .side-card:last-child {
-                padding-right: 220px;
+                padding-right: 150px;
             }
             .side-card h3 {
                 font-size: 2.4rem;
@@ -504,7 +500,7 @@
     </div>
 
     <div class="mvp-cards-container" id="mvpContainer">
-        <!-- Línea de fondo: más abajo, letras pegadas a los extremos -->
+        <!-- Línea de fondo: laterales pegados a los extremos, ALTO MÁS GRANDE, LETRAS MÁS PEGADAS -->
         <div class="side-cards-line" id="sideLine">
             <div class="side-card" data-tab="mision">
                 <h3>Misión</h3>
@@ -514,7 +510,7 @@
             </div>
         </div>
         
-        <!-- Tarjeta central GRANDE encima -->
+        <!-- Tarjeta central GRANDE con BORDES MÁS REDONDOS encima -->
         <div class="center-card-wrapper" id="centerWrapper">
             <div class="center-card" id="centerCard">
                 <h2 id="centerTitle">Visión</h2>
@@ -656,6 +652,16 @@
     
     .tab-btn:hover:not(.active) {
         background-color: #c0c0c0;
+    }
+    
+    @media (min-width: 1001px) {
+        .center-card-wrapper {
+            transform: translateY(0);
+        }
+        .side-cards-line {
+            top: 50%;
+            transform: translateY(-50%);
+        }
     }
 </style>
 </body>
