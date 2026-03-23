@@ -586,13 +586,28 @@
                 margin: 30px auto 40px auto;
             }
             
-            /* Sección Misión/Visión/Propósito - SOLO RECUADRO CENTRAL (sin línea superior) */
+            /* Sección Misión/Visión/Propósito - CON LOS 3 CARTELES SUPERIORES */
             .mvp-section {
                 padding: 0 20px;
                 margin-bottom: 50px;
             }
             .tabs-container {
-                display: none;
+                display: flex;
+                justify-content: center;
+                margin-bottom: 25px;
+            }
+            .tabs-wrapper {
+                display: flex;
+                border-radius: 40px;
+                overflow: hidden;
+                width: 100%;
+                justify-content: center;
+            }
+            .tab-btn {
+                font-size: 0.85rem;
+                padding: 10px 12px;
+                min-width: 85px;
+                flex: 1;
             }
             .mvp-cards-container {
                 min-height: auto;
@@ -605,16 +620,16 @@
                 margin: 0 auto;
             }
             .center-card {
-                padding: 35px 25px;
-                border-radius: 40px;
+                padding: 30px 20px;
+                border-radius: 35px;
                 cursor: pointer;
             }
             .center-card h2 {
-                font-size: 1.6rem;
-                margin-bottom: 18px;
+                font-size: 1.4rem;
+                margin-bottom: 15px;
             }
             .center-card p {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
                 line-height: 1.5;
             }
             
@@ -704,7 +719,7 @@
                 text-align: left;
             }
             
-            /* Footer - contactos DENTRO de la imagen, SIN FONDO, letras más pequeñas */
+            /* Footer - contactos DENTRO de la imagen, SIN FONDO, letras más pequeñas y MÁS JUNTAS */
             .footer-section {
                 position: relative;
             }
@@ -713,7 +728,7 @@
             }
             .contact-block {
                 position: absolute;
-                right: 12px;
+                right: 10px;
                 top: 50%;
                 transform: translateY(-50%);
                 text-align: right;
@@ -723,28 +738,31 @@
             }
             .contact-item {
                 text-align: right;
-                padding: 4px 0;
-                margin-bottom: 6px;
+                padding: 2px 0;
+                margin-bottom: 4px;
                 display: block;
                 background-color: transparent;
                 backdrop-filter: none;
                 border-radius: 0;
+            }
+            .contact-item:last-child {
+                margin-bottom: 0;
             }
             .contact-item:hover {
                 transform: none;
                 background-color: transparent;
             }
             .contact-label {
-                font-size: 0.6rem;
+                font-size: 0.55rem;
                 display: inline-block;
                 margin-bottom: 0;
                 font-weight: 600;
                 color: #000000;
             }
             .contact-value {
-                font-size: 0.6rem;
+                font-size: 0.55rem;
                 display: inline-block;
-                margin-left: 4px;
+                margin-left: 3px;
                 font-weight: 500;
                 color: #000000;
             }
@@ -766,8 +784,13 @@
             .hero-text h1 {
                 font-size: 1.2rem;
             }
+            .tab-btn {
+                font-size: 0.7rem;
+                padding: 8px 8px;
+                min-width: 70px;
+            }
             .center-card h2 {
-                font-size: 1.3rem;
+                font-size: 1.2rem;
             }
             .center-card p {
                 font-size: 0.75rem;
@@ -782,10 +805,15 @@
                 font-size: 0.6rem;
             }
             .contact-label {
-                font-size: 0.55rem;
+                font-size: 0.5rem;
             }
             .contact-value {
-                font-size: 0.55rem;
+                font-size: 0.5rem;
+                margin-left: 2px;
+            }
+            .contact-item {
+                padding: 1px 0;
+                margin-bottom: 3px;
             }
         }
 
@@ -993,13 +1021,12 @@
     let carouselInterval = null;
     let isMobile = false;
 
-    // Detectar si es móvil
     function checkMobile() {
         return window.innerWidth <= 768;
     }
 
     function updateUI() {
-        // Actualizar botones superiores (solo visible en escritorio)
+        // Actualizar botones superiores
         const btns = document.querySelectorAll(".tab-btn");
         btns.forEach(btn => {
             const btnTab = btn.getAttribute("data-tab");
@@ -1010,7 +1037,7 @@
             }
         });
 
-        // Actualizar tarjeta central (visible en todos los dispositivos)
+        // Actualizar tarjeta central
         const centerTitle = document.getElementById("centerTitle");
         const centerDesc = document.getElementById("centerDesc");
         const centerData = contentMap[activeTab];
@@ -1019,7 +1046,7 @@
             centerDesc.textContent = centerData.description;
         }
 
-        // Solo actualizar la línea de laterales en escritorio (visible en escritorio)
+        // Solo actualizar la línea de laterales en escritorio
         if (!isMobile) {
             const allKeys = ["mision", "vision", "proposito"];
             const sideKeys = allKeys.filter(key => key !== activeTab);
@@ -1074,7 +1101,6 @@
         }
     }
 
-    // Función para cambiar automáticamente cada 10 segundos (solo en móvil)
     function startCarousel() {
         if (carouselInterval) clearInterval(carouselInterval);
         
@@ -1134,7 +1160,7 @@
     function init() {
         isMobile = checkMobile();
         
-        // Botones superiores (escritorio)
+        // Botones superiores
         const btns = document.querySelectorAll(".tab-btn");
         btns.forEach(btn => {
             btn.addEventListener("click", () => {
@@ -1142,7 +1168,6 @@
                 if (tabValue && tabValue !== activeTab) {
                     activeTab = tabValue;
                     updateUI();
-                    // Reiniciar carrusel en móvil
                     if (isMobile) {
                         startCarousel();
                     }
@@ -1165,7 +1190,7 @@
             });
         }
         
-        // En móvil, hacer que el recuadro central también sea clickeable para cambiar manualmente
+        // En móvil, hacer que el recuadro central también sea clickeable
         const centerCard = document.querySelector(".center-card");
         if (centerCard) {
             centerCard.addEventListener("click", () => {
@@ -1175,7 +1200,6 @@
                     const nextIndex = (currentIndex + 1) % items.length;
                     activeTab = items[nextIndex];
                     updateUI();
-                    // Reiniciar el carrusel para que no se solape
                     startCarousel();
                 }
             });
@@ -1183,12 +1207,10 @@
         
         initFooterInteractions();
         
-        // Iniciar carrusel solo en móvil
         if (isMobile) {
             startCarousel();
         }
         
-        // Detectar cambios de tamaño de pantalla
         window.addEventListener('resize', () => {
             const newIsMobile = checkMobile();
             if (newIsMobile !== isMobile) {
