@@ -555,236 +555,55 @@
             opacity: 1;
         }
 
-        /* Responsive footer */
-        @media (max-width: 900px) {
-            .contact-block {
-                position: relative;
-                right: auto;
-                top: auto;
-                transform: none;
-                padding: 30px 20px;
-                text-align: right;
-                background-color: #f5f5f5;
-                margin-top: 0;
-            }
-            .footer-section {
-                position: relative;
-            }
-            .final-image {
-                width: 100%;
-            }
-            .contact-item {
-                justify-content: flex-end;
-                padding: 8px 0;
-            }
-            .contact-item:hover {
-                transform: translateX(0);
-                background-color: transparent;
-            }
-            .contact-label {
-                font-size: 0.9rem;
-            }
-            .contact-value {
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .contact-block {
-                padding: 25px 20px;
-            }
-            .contact-item {
-                margin-bottom: 15px;
-            }
-            .contact-label {
-                font-size: 0.85rem;
-            }
-            .contact-value {
-                font-size: 0.85rem;
-                display: block;
-                margin-left: 0;
-                margin-top: 4px;
-            }
-        }
-
-        /* Responsive equipo */
-        @media (max-width: 1100px) {
-            .team-cards {
-                flex-direction: column;
-                gap: 40px;
-            }
-            .team-section {
-                padding: 60px 30px 80px 30px;
-            }
-            .team-title {
-                font-size: 2.8rem;
-            }
-            .profile-header {
-                padding: 25px 25px 15px 25px;
-            }
-            .profile-photo {
-                width: 110px;
-                height: 110px;
-                border-radius: 18px;
-            }
-            .profile-name h3 {
-                font-size: 1.6rem;
-            }
-            .profile-description {
-                padding: 25px 25px 30px 25px;
-            }
-        }
-
+        /* ========== SOLO ESTILOS PARA MÓVIL (PANTALLAS PEQUEÑAS) ========== */
+        /* Escritorio se mantiene igual, solo ajustamos para móvil */
+        
         @media (max-width: 768px) {
-            .team-section {
-                padding: 50px 20px 60px 20px;
+            /* Barra de navegación más pequeña */
+            .navbar-overlay {
+                top: 20px;
+                width: 85%;
+                padding: 12px 20px;
+                border-radius: 40px;
             }
-            .team-title {
-                font-size: 2.2rem;
-                margin-bottom: 35px;
+            .logo-img {
+                height: 35px;
             }
-            .profile-header {
-                flex-direction: column;
-                text-align: center;
-                gap: 15px;
+            .siempre-nuevo {
+                font-size: 1.1rem;
             }
-            .profile-photo {
-                width: 130px;
-                height: 130px;
-                border-radius: 20px;
-            }
-            .profile-name h3 {
-                font-size: 1.5rem;
-            }
-            .profile-description p {
-                font-size: 0.9rem;
-            }
-            .diagonal-line {
-                margin-bottom: 50px;
-            }
-        }
-
-        /* Responsive general */
-        @media (max-width: 1000px) {
-            .two-columns-cards {
-                flex-direction: column;
-                gap: 30px;
-                padding: 0 20px;
-            }
-            .two-columns-titles {
-                flex-direction: column;
-                gap: 20px;
-                padding: 0 20px;
-            }
-            .title-col h3 {
+            
+            /* Título principal más pequeño */
+            .hero-text h1 {
                 font-size: 2rem;
-                margin: 15px 0;
+                text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
             }
-            .blue-bar-bg {
-                height: 70%;
+            .hero-text {
+                top: 25%;
             }
-            .work-card:hover {
-                transform: scale(1.02);
+            
+            /* Texto descriptivo más pequeño */
+            .description-text {
+                font-size: 1.2rem;
             }
-            .section-title {
-                font-size: 2.5rem;
+            .description-section {
+                margin: 40px auto 50px auto;
             }
-        }
-
-        @media (max-width: 768px) {
-            .section-title {
-                font-size: 2rem;
+            
+            /* Sección Misión/Visión/Propósito - móvil */
+            .mvp-section {
+                padding: 0 20px;
+                margin-bottom: 60px;
+            }
+            .tabs-container {
                 margin-bottom: 40px;
             }
-            .title-col h3 {
-                font-size: 1.6rem;
-            }
-            .work-card p {
-                font-size: 0.95rem;
-            }
-            .work-card {
-                padding: 22px 20px;
-            }
-            .blue-bar-bg {
-                height: 65%;
-            }
-        }
-
-        /* Responsive mvp-section */
-        @media (max-width: 1500px) {
-            .center-card-wrapper {
-                width: 78%;
-            }
-            .center-card {
-                padding: 90px 80px;
-                border-radius: 95px;
-            }
-            .center-card h2 {
-                font-size: 3.5rem;
-            }
-            .center-card p {
-                font-size: 1.9rem;
-            }
-            .side-card {
-                padding: 110px 0;
-            }
-            .side-card h3 {
-                font-size: 2.1rem;
-            }
-        }
-
-        @media (max-width: 1300px) {
-            .center-card-wrapper {
-                width: 80%;
-            }
-            .center-card {
-                padding: 80px 70px;
-                border-radius: 85px;
-            }
-            .center-card h2 {
-                font-size: 3rem;
-            }
-            .center-card p {
-                font-size: 1.7rem;
-            }
-            .side-card {
-                padding: 95px 0;
-            }
-            .side-card h3 {
-                font-size: 1.9rem;
-            }
             .tab-btn {
-                font-size: 1.4rem;
-                padding: 14px 32px;
-                min-width: 150px;
+                font-size: 0.9rem;
+                padding: 10px 16px;
+                min-width: 90px;
             }
-        }
-
-        @media (max-width: 1100px) {
-            .center-card-wrapper {
-                width: 82%;
-            }
-            .center-card {
-                padding: 70px 60px;
-                border-radius: 75px;
-            }
-            .center-card h2 {
-                font-size: 2.6rem;
-            }
-            .center-card p {
-                font-size: 1.6rem;
-            }
-            .side-card {
-                padding: 80px 0;
-            }
-            .side-card h3 {
-                font-size: 1.7rem;
-            }
-        }
-
-        @media (max-width: 1000px) {
             .mvp-cards-container {
-                flex-direction: column;
                 min-height: auto;
             }
             .side-cards-line {
@@ -792,98 +611,207 @@
                 top: auto;
                 transform: none;
                 flex-direction: column;
-                border-radius: 80px;
-                gap: 0;
-                background-color: #0f4472;
-                margin-top: 60px;
+                border-radius: 40px;
+                margin-top: 30px;
             }
             .side-card {
-                border-radius: 0 !important;
-                padding: 50px 0 !important;
+                padding: 25px 0 !important;
                 justify-content: center !important;
-                text-align: center;
-                border-bottom: 1px solid rgba(255,255,255,0.2);
-            }
-            .side-card:first-child {
-                border-radius: 80px 80px 0 0 !important;
-            }
-            .side-card:last-child {
-                border-radius: 0 0 80px 80px !important;
-                border-bottom: none;
-            }
-            .side-card:first-child h3,
-            .side-card:last-child h3 {
-                padding: 0 30px !important;
-                text-align: center;
-                white-space: normal;
             }
             .side-card h3 {
-                font-size: 2rem;
+                font-size: 1.3rem;
                 white-space: normal;
             }
             .center-card-wrapper {
                 width: 100%;
+                margin-bottom: 20px;
+            }
+            .center-card {
+                padding: 35px 25px;
+                border-radius: 40px;
+            }
+            .center-card h2 {
+                font-size: 1.8rem;
+                margin-bottom: 20px;
+            }
+            .center-card p {
+                font-size: 1rem;
+            }
+            
+            /* Sección Líneas de trabajo - móvil */
+            .section-title {
+                font-size: 1.8rem;
                 margin-bottom: 30px;
             }
-            .center-card {
-                padding: 60px 50px;
-                border-radius: 70px;
+            .gente-image {
+                margin-bottom: 40px;
             }
-            .center-card h2 {
-                font-size: 2.6rem;
+            .titles-container {
+                margin-bottom: 30px;
+            }
+            .two-columns-titles {
+                flex-direction: column;
+                gap: 10px;
+                padding: 0 20px;
+            }
+            .title-col h3 {
+                font-size: 1.4rem;
+                margin: 10px 0;
+            }
+            .blue-bar-bg {
+                height: 70%;
+            }
+            .two-columns-cards {
+                flex-direction: column;
+                gap: 20px;
+                padding: 0 20px;
+            }
+            .work-card {
+                padding: 18px 16px;
+                margin-bottom: 20px;
+            }
+            .work-card p {
+                font-size: 0.85rem;
+            }
+            .work-card strong {
+                font-size: 0.9rem;
+            }
+            
+            /* Sección Equipo - móvil */
+            .team-section {
+                padding: 40px 20px 50px 20px;
+                margin-top: 30px;
+            }
+            .team-title {
+                font-size: 2rem;
+                margin-bottom: 30px;
+            }
+            .diagonal-line {
                 margin-bottom: 35px;
             }
-            .center-card p {
+            .team-cards {
+                gap: 25px;
+            }
+            .team-card {
+                border-radius: 25px;
+            }
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 12px;
+                padding: 25px 20px 15px 20px;
+            }
+            .profile-photo {
+                width: 100px;
+                height: 100px;
+                border-radius: 16px;
+            }
+            .profile-name h3 {
+                font-size: 1.3rem;
+            }
+            .profile-description {
+                padding: 20px 20px 25px 20px;
+            }
+            .profile-description p {
+                font-size: 0.85rem;
+                text-align: left;
+            }
+            
+            /* Footer - móvil (estructura completamente diferente) */
+            .footer-section {
+                position: relative;
+            }
+            .final-image {
+                width: 100%;
+            }
+            .contact-block {
+                position: relative;
+                right: auto;
+                top: auto;
+                transform: none;
+                padding: 20px 15px;
+                text-align: left;
+                background-color: #f5f5f5;
+                margin-top: 0;
+            }
+            .contact-item {
+                text-align: left;
+                padding: 10px 0;
+                margin-bottom: 12px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .contact-item:hover {
+                transform: none;
+                background-color: transparent;
+            }
+            .contact-label {
+                font-size: 0.85rem;
+                display: block;
+                margin-bottom: 4px;
+            }
+            .contact-value {
+                font-size: 0.85rem;
+                display: block;
+                margin-left: 0;
+                word-break: break-word;
+            }
+        }
+        
+        /* Para móviles muy pequeños */
+        @media (max-width: 480px) {
+            .navbar-overlay {
+                width: 90%;
+                padding: 10px 16px;
+            }
+            .logo-img {
+                height: 28px;
+            }
+            .siempre-nuevo {
+                font-size: 0.9rem;
+            }
+            .hero-text h1 {
                 font-size: 1.6rem;
             }
-            .tab-btn {
-                font-size: 1.2rem;
-                padding: 12px 24px;
-                min-width: 120px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .center-card {
-                padding: 50px 40px;
-                border-radius: 60px;
-            }
-            .center-card h2 {
-                font-size: 2.2rem;
-                margin-bottom: 25px;
-            }
-            .center-card p {
-                font-size: 1.4rem;
-            }
-            .side-card {
-                padding: 45px 0 !important;
-            }
-            .side-card h3 {
-                font-size: 1.7rem;
-            }
-            .tab-btn {
+            .description-text {
                 font-size: 1rem;
-                padding: 10px 16px;
-                min-width: 90px;
             }
-        }
-
-        @media (min-width: 1800px) {
+            .tab-btn {
+                font-size: 0.75rem;
+                padding: 8px 12px;
+                min-width: 70px;
+            }
             .center-card {
-                padding: 120px 110px;
-                border-radius: 120px;
+                padding: 25px 20px;
             }
             .center-card h2 {
-                font-size: 4.5rem;
+                font-size: 1.5rem;
             }
             .center-card p {
-                font-size: 2.3rem;
-            }
-            .side-card {
-                padding: 150px 0;
+                font-size: 0.85rem;
             }
             .side-card h3 {
-                font-size: 2.6rem;
+                font-size: 1.1rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            .title-col h3 {
+                font-size: 1.2rem;
+            }
+            .work-card p {
+                font-size: 0.75rem;
+            }
+            .team-title {
+                font-size: 1.6rem;
+            }
+            .profile-photo {
+                width: 80px;
+                height: 80px;
+            }
+            .profile-name h3 {
+                font-size: 1.1rem;
             }
         }
 
@@ -1157,9 +1085,7 @@
         }
     }
 
-    // Funcionalidades del footer
     function initFooterInteractions() {
-        // Copiar correo
         const emailItem = document.getElementById('copyEmail');
         const tooltip = document.getElementById('copyTooltip');
         
@@ -1175,7 +1101,6 @@
             });
         }
         
-        // WhatsApp
         const whatsappBtn = document.getElementById('whatsappBtn');
         if (whatsappBtn) {
             whatsappBtn.addEventListener('click', () => {
@@ -1185,7 +1110,6 @@
             });
         }
         
-        // Google Maps
         const mapsBtn = document.getElementById('mapsBtn');
         if (mapsBtn) {
             mapsBtn.addEventListener('click', () => {
