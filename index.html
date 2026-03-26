@@ -265,6 +265,44 @@
             animation: fadeSlideUp 0.5s ease-out;
         }
 
+        /* ========== AJUSTE PARA ESCRITORIO/LAPTOP - Recuadro central más pequeño ========== */
+        @media (min-width: 769px) and (max-width: 1600px) {
+            .center-card-wrapper {
+                width: 65%;
+                max-width: 1000px;
+            }
+            .center-card {
+                padding: 70px 60px;
+                border-radius: 80px;
+            }
+            .center-card h2 {
+                font-size: 3rem;
+                margin-bottom: 30px;
+            }
+            .center-card p {
+                font-size: 1.5rem;
+            }
+            .side-card {
+                padding: 100px 0;
+            }
+            .side-card h3 {
+                font-size: 1.8rem;
+            }
+            .side-card:first-child h3 {
+                padding-left: 20px;
+            }
+            .side-card:last-child h3 {
+                padding-right: 20px;
+            }
+        }
+
+        /* Para pantallas muy grandes, mantener proporción */
+        @media (min-width: 1601px) {
+            .center-card-wrapper {
+                width: 68%;
+            }
+        }
+
         /* ========== SECCIÓN LÍNEAS DE TRABAJO ========== */
         .work-lines-section {
             max-width: 100%;
@@ -612,60 +650,25 @@
             }
             .mvp-cards-container {
                 min-height: auto;
-                position: relative;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
             }
             .side-cards-line {
-                display: flex;
-                position: relative;
-                top: auto;
-                left: auto;
-                right: auto;
-                transform: none;
-                flex-direction: row;
-                justify-content: space-between;
-                width: 100%;
-                background-color: #0f4472;
-                border-radius: 50px;
-                margin-bottom: 20px;
-                padding: 0;
-            }
-            .side-card {
-                padding: 12px 0 !important;
-                flex: 1;
-                display: flex;
-                justify-content: center !important;
-                background-color: transparent;
-            }
-            .side-card:first-child {
-                justify-content: center !important;
-            }
-            .side-card:last-child {
-                justify-content: center !important;
-            }
-            .side-card h3 {
-                font-size: 1rem;
-                white-space: nowrap;
-                padding: 0 !important;
-                color: white;
+                display: none;
             }
             .center-card-wrapper {
-                width: 85%;
+                width: 100%;
                 margin: 0 auto;
             }
             .center-card {
-                padding: 25px 18px;
+                padding: 30px 20px;
                 border-radius: 35px;
                 cursor: pointer;
             }
             .center-card h2 {
-                font-size: 1.3rem;
-                margin-bottom: 12px;
+                font-size: 1.4rem;
+                margin-bottom: 15px;
             }
             .center-card p {
-                font-size: 0.8rem;
+                font-size: 0.85rem;
                 line-height: 1.5;
             }
             
@@ -825,17 +828,11 @@
                 padding: 8px 8px;
                 min-width: 70px;
             }
-            .side-card h3 {
-                font-size: 0.85rem;
-            }
-            .center-card-wrapper {
-                width: 88%;
-            }
             .center-card h2 {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
             }
             .center-card p {
-                font-size: 0.7rem;
+                font-size: 0.75rem;
             }
             .title-col h3 {
                 font-size: 0.85rem;
@@ -1068,7 +1065,6 @@
     }
 
     function updateUI() {
-        // Actualizar botones superiores
         const btns = document.querySelectorAll(".tab-btn");
         btns.forEach(btn => {
             const btnTab = btn.getAttribute("data-tab");
@@ -1079,7 +1075,6 @@
             }
         });
 
-        // Actualizar tarjeta central
         const centerTitle = document.getElementById("centerTitle");
         const centerDesc = document.getElementById("centerDesc");
         const centerData = contentMap[activeTab];
@@ -1088,43 +1083,40 @@
             centerDesc.textContent = centerData.description;
         }
 
-        // Actualizar la línea de laterales (ahora visible en móvil también)
-        const allKeys = ["mision", "vision", "proposito"];
-        const sideKeys = allKeys.filter(key => key !== activeTab);
-        
-        const sideLine = document.getElementById("sideLine");
-        if (sideLine) {
-            const leftKey = sideKeys[0];
-            const rightKey = sideKeys[1];
-            const leftData = contentMap[leftKey];
-            const rightData = contentMap[rightKey];
+        if (!isMobile) {
+            const allKeys = ["mision", "vision", "proposito"];
+            const sideKeys = allKeys.filter(key => key !== activeTab);
             
-            sideLine.innerHTML = `
-                <div class="side-card" data-tab="${leftKey}">
-                    <h3>${leftData.title}</h3>
-                </div>
-                <div class="side-card" data-tab="${rightKey}">
-                    <h3>${rightData.title}</h3>
-                </div>
-            `;
-            
-            const newSideCards = document.querySelectorAll(".side-card");
-            newSideCards.forEach(card => {
-                card.addEventListener("click", (e) => {
-                    e.stopPropagation();
-                    const tabKey = card.getAttribute("data-tab");
-                    if (tabKey && tabKey !== activeTab) {
-                        activeTab = tabKey;
-                        updateUI();
-                        if (checkMobile()) {
-                            startCarousel();
+            const sideLine = document.getElementById("sideLine");
+            if (sideLine) {
+                const leftKey = sideKeys[0];
+                const rightKey = sideKeys[1];
+                const leftData = contentMap[leftKey];
+                const rightData = contentMap[rightKey];
+                
+                sideLine.innerHTML = `
+                    <div class="side-card" data-tab="${leftKey}">
+                        <h3>${leftData.title}</h3>
+                    </div>
+                    <div class="side-card" data-tab="${rightKey}">
+                        <h3>${rightData.title}</h3>
+                    </div>
+                `;
+                
+                const newSideCards = document.querySelectorAll(".side-card");
+                newSideCards.forEach(card => {
+                    card.addEventListener("click", (e) => {
+                        e.stopPropagation();
+                        const tabKey = card.getAttribute("data-tab");
+                        if (tabKey && tabKey !== activeTab) {
+                            activeTab = tabKey;
+                            updateUI();
                         }
-                    }
+                    });
                 });
-            });
+            }
         }
         
-        // Animación
         const centerWrapper = document.getElementById("centerWrapper");
         if (centerWrapper) {
             centerWrapper.style.animation = "none";
@@ -1133,12 +1125,14 @@
             }, 10);
         }
         
-        const sideLineEl = document.getElementById("sideLine");
-        if (sideLineEl) {
-            sideLineEl.style.animation = "none";
-            setTimeout(() => {
-                sideLineEl.style.animation = "fadeSlideUp 0.4s ease-out";
-            }, 10);
+        if (!isMobile) {
+            const sideLineEl = document.getElementById("sideLine");
+            if (sideLineEl) {
+                sideLineEl.style.animation = "none";
+                setTimeout(() => {
+                    sideLineEl.style.animation = "fadeSlideUp 0.4s ease-out";
+                }, 10);
+            }
         }
     }
 
@@ -1201,7 +1195,6 @@
     function init() {
         isMobile = checkMobile();
         
-        // Botones superiores
         const btns = document.querySelectorAll(".tab-btn");
         btns.forEach(btn => {
             btn.addEventListener("click", () => {
@@ -1216,23 +1209,20 @@
             });
         });
         
-        // Inicializar laterales
-        const initialSideCards = document.querySelectorAll(".side-card");
-        initialSideCards.forEach(card => {
-            card.addEventListener("click", (e) => {
-                e.stopPropagation();
-                const tabKey = card.getAttribute("data-tab");
-                if (tabKey && tabKey !== activeTab) {
-                    activeTab = tabKey;
-                    updateUI();
-                    if (isMobile) {
-                        startCarousel();
+        if (!isMobile) {
+            const initialSideCards = document.querySelectorAll(".side-card");
+            initialSideCards.forEach(card => {
+                card.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    const tabKey = card.getAttribute("data-tab");
+                    if (tabKey && tabKey !== activeTab) {
+                        activeTab = tabKey;
+                        updateUI();
                     }
-                }
+                });
             });
-        });
+        }
         
-        // En móvil, hacer que el recuadro central también sea clickeable
         const centerCard = document.querySelector(".center-card");
         if (centerCard) {
             centerCard.addEventListener("click", () => {
