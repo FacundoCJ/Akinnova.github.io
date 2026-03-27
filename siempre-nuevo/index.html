@@ -1,1 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Siempre Nuevo | Akinnova</title>
+    <!-- Fuente DM Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #f5f9ff; /* fondo sutil, no interfiere con la barra */
+            min-height: 100vh;
+        }
+
+        /* ----- BARRA SUPERIOR (blanca con transparencia 80%) ----- */
+        .top-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8); /* 80% opacidad = 0.8 alpha */
+            backdrop-filter: blur(2px);    /* pequeña difuminación para realce, opcional */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        /* contenedor izquierda: menu + logo (al borde izquierdo ambos) */
+        .navbar-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-shrink: 0;
+        }
+
+        /* icono MENU (imagen) */
+        .menu-icon {
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+        .menu-icon img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+        .menu-icon:hover {
+            transform: scale(1.05);
+        }
+
+        /* logo-sn (imagen) junto al menu */
+        .logo-sn {
+            height: 44px;
+            width: auto;
+            display: flex;
+            align-items: center;
+        }
+        .logo-sn img {
+            height: 100%;
+            width: auto;
+            max-height: 48px;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* contenedor derecha: imagen carro */
+        .navbar-right {
+            flex-shrink: 0;
+        }
+        .car-icon {
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .car-icon img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* Espaciado para que el contenido no quede oculto bajo la barra fija */
+        .main-content {
+            padding-top: 90px;   /* suficiente para que no tape el inicio */
+            padding-left: 24px;
+            padding-right: 24px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Sección de bienvenida / placeholder - solo para visualizar que la estructura funciona */
+        .hero-placeholder {
+            background: linear-gradient(135deg, #e7f3ff 0%, #ffffff 80%);
+            border-radius: 32px;
+            padding: 3rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+            border: 1px solid rgba(12, 58, 106, 0.1);
+        }
+
+        .hero-placeholder h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #0c3a6a;
+            margin-bottom: 1rem;
+        }
+
+        .hero-placeholder p {
+            font-size: 1.1rem;
+            color: #1e2f3e;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .badge-info {
+            background-color: #ff914d20;
+            color: #ff914d;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 40px;
+            display: inline-block;
+            font-size: 0.85rem;
+            margin-top: 10px;
+        }
+
+        /* responsive: asegurar que en móvil no se superpongan los elementos */
+        @media (max-width: 580px) {
+            .top-navbar {
+                padding: 10px 16px;
+            }
+            .navbar-left {
+                gap: 12px;
+            }
+            .menu-icon {
+                width: 28px;
+                height: 28px;
+            }
+            .logo-sn {
+                height: 36px;
+            }
+            .car-icon {
+                width: 32px;
+                height: 32px;
+            }
+            .main-content {
+                padding-top: 80px;
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+            .hero-placeholder h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* pequeño ajuste para desktop grande */
+        @media (min-width: 1600px) {
+            .main-content {
+                max-width: 1500px;
+            }
+        }
+
+        /* Simulación de estado para el botón menú (solo demo visual) */
+        .menu-icon:active {
+            transform: scale(0.96);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA SUPERIOR: blanco 80% transparencia, con imágenes -->
+    <header class="top-navbar">
+        <!-- Lado izquierdo: imagen menu + logo-sn (exactamente al borde izquierdo) -->
+        <div class="navbar-left">
+            <!-- Imagen menu (ícono de menú) -->
+            <div class="menu-icon" id="menuButton" aria-label="Abrir menú">
+                <img src="fotos/menu.png" alt="Menú" onerror="this.onerror=null; this.src='https://placehold.co/32x32/e7f3ff/0c3a6a?text=☰'; console.warn('Imagen menu.png no encontrada, usa placeholder')">
+            </div>
+            <!-- Logo Siempre Nuevo (logo-sn) -->
+            <div class="logo-sn">
+                <img src="fotos/logo-sn.png" alt="Siempre Nuevo" onerror="this.onerror=null; this.src='https://placehold.co/120x48/0c3a6a/ffffff?text=SN+Logo'; console.warn('Imagen logo-sn.png no encontrada')">
+            </div>
+        </div>
+        <!-- Lado derecho: imagen carro -->
+        <div class="navbar-right">
+            <div class="car-icon">
+                <img src="fotos/carro.png" alt="Carro" onerror="this.onerror=null; this.src='https://placehold.co/38x38/e7f3ff/ff914d?text=🚗'; console.warn('Imagen carro.png no encontrada')">
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido principal de la página principal (solo placeholder para mostrar estructura) -->
+    <main class="main-content">
+        <div class="hero-placeholder">
+            <h1>Siempre Nuevo</h1>
+            <p>Protege cada detalle de tu auto con nuestra cobertura especializada. <br>
+            Raspón de pintura, reparación de aros y neumáticos, arreglo o reposición de parabrisas.</p>
+            <div class="badge-info">✨ Experiencia completa muy pronto</div>
+        </div>
+
+        <!-- Aquí más adelante agregaremos el resto de secciones: video, beneficios, etc. -->
+        <div style="height: 20px;"></div>
+        <!-- Pequeña nota visual para indicar que la barra superior está lista -->
+        <div style="background: #e7f3ff; border-radius: 24px; padding: 1.5rem; margin-top: 1rem; text-align: center; border-left: 6px solid #ff914d;">
+            <p style="color:#0c3a6a; font-weight:500;">✅ Barra superior completada: fondo blanco 80% transparente | Imagen "carro" a la derecha | Logo SN y menú a la izquierda.</p>
+            <p style="font-size: 0.85rem; margin-top: 8px;">📁 Las imágenes deben estar en carpeta <strong>/fotos/</strong> con nombres: menu.png , logo-sn.png , carro.png</p>
+        </div>
+    </main>
+
+    <!-- Script simple para simular interacción del menú (opcional, solo para feedback visual) -->
+    <script>
+        (function() {
+            const menuBtn = document.getElementById('menuButton');
+            if (menuBtn) {
+                menuBtn.addEventListener('click', function(e) {
+                    // Solo para indicar que se ha hecho click en el menú, no es necesario redirigir aún.
+                    // Podemos mostrar un pequeño mensaje temporal o simplemente dejar la funcionalidad para el futuro.
+                    // Como se pide solo la barra, no se requiere subpágina completa, pero es buena práctica.
+                    console.log('Menú clickeado - navegación futura');
+                    // Opcional: alerta suave, no intrusiva (opcional)
+                    // Se puede quitar si se desea silencioso, pero ayuda a ver que el menú está operativo.
+                    // Comentamos para mantener limpio, pero dejamos opción sutil.
+                    // Mejor un pequeño efecto visual sin interrumpir.
+                    menuBtn.style.transform = 'scale(0.95)';
+                    setTimeout(() => { menuBtn.style.transform = ''; }, 150);
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
