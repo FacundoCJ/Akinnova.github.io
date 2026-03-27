@@ -33,13 +33,13 @@
             background-color: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(2px);
             border-radius: 60px;
-            padding: 0.7rem 2rem;  /* Reducido de 1.2rem a 0.7rem */
+            padding: 0.7rem 2rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
             margin-top: 1.5rem;
-            margin-bottom: 0;
+            margin-bottom: 2rem;
         }
 
         .menu-icon {
@@ -52,7 +52,7 @@
             transform: scale(1.02);
         }
         .menu-icon img {
-            width: 60px;  /* Reducido de 72px a 60px */
+            width: 60px;
             height: auto;
             display: block;
         }
@@ -67,12 +67,153 @@
             transform: scale(1.02);
         }
         .logo-icon img {
-            height: 96px;  /* Se mantiene igual */
+            height: 96px;
             width: auto;
             display: block;
         }
 
-        @media (max-width: 650px) {
+        /* SECCIÓN CONTENIDO: formulario + video */
+        .content-section {
+            background-color: #0c3a6a;
+            border-radius: 40px;
+            padding: 3rem;
+            margin-top: 1rem;
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        /* FORMULARIO - LADO IZQUIERDO */
+        .form-container {
+            flex: 1;
+            min-width: 280px;
+            background-color: #e7f3ff;
+            border-radius: 32px;
+            padding: 2rem;
+        }
+
+        .form-container h2 {
+            color: #0c3a6a;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #0c3a6a;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 20px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            background-color: white;
+            transition: all 0.2s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff914d;
+            box-shadow: 0 0 0 3px rgba(255, 145, 77, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .btn-continuar {
+            background-color: #ff914d;
+            color: #0c3a6a;
+            border: none;
+            padding: 0.9rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'DM Sans', sans-serif;
+            border-radius: 40px;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .btn-continuar:hover {
+            transform: scale(1.02);
+            background-color: #ff7a2e;
+        }
+
+        /* LADO DERECHO - VIDEO Y REDES */
+        .video-container {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .video-wrapper {
+            background-color: #e7f3ff;
+            border-radius: 32px;
+            overflow: hidden;
+            aspect-ratio: 16 / 9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .social-section {
+            text-align: center;
+            background-color: #e7f3ff;
+            border-radius: 32px;
+            padding: 1.5rem;
+        }
+
+        .social-section p {
+            color: #0c3a6a;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.1);
+        }
+
+        .social-icons img {
+            width: 48px;
+            height: 48px;
+        }
+
+        @media (max-width: 768px) {
             .main-container {
                 padding: 1rem 1rem 0 1rem;
             }
@@ -86,20 +227,80 @@
             .logo-icon img {
                 height: 72px;
             }
+            .content-section {
+                padding: 1.5rem;
+                gap: 1.5rem;
+            }
+            .form-container {
+                padding: 1.5rem;
+            }
+            .form-container h2 {
+                font-size: 1.4rem;
+            }
+            .social-icons img {
+                width: 40px;
+                height: 40px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="main-container">
-        <!-- Barra superior: transparente 80%, bordes redondos, separada del inicio -->
+        <!-- Barra superior -->
         <div class="navbar">
-            <!-- Menu izquierda: imagen menu.png -->
             <div class="menu-icon" id="menuButton" role="button" aria-label="Menú principal">
                 <img src="fotos/menu.png" alt="Menú">
             </div>
-            <!-- Logo derecha: imagen logo-sn.png -->
             <div class="logo-icon" id="logoButton" role="button" aria-label="Logo Siempre Nuevo">
                 <img src="fotos/logo-sn.png" alt="Siempre Nuevo">
+            </div>
+        </div>
+
+        <!-- Sección de contenido: formulario + video -->
+        <div class="content-section">
+            <!-- FORMULARIO IZQUIERDA -->
+            <div class="form-container">
+                <h2>Te contamos cómo proteger tu auto</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label>Nombre y Apellidos</label>
+                        <input type="text" name="nombre" required placeholder="Ej: Juan Pérez">
+                    </div>
+                    <div class="form-group">
+                        <label>Correo</label>
+                        <input type="email" name="email" required placeholder="ejemplo@correo.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Número de teléfono / WhatsApp</label>
+                        <input type="tel" name="telefono" required placeholder="+51 999 999 999">
+                    </div>
+                    <div class="form-group">
+                        <label>Comentario (Opcional)</label>
+                        <textarea name="comentario" placeholder="Escribe aquí tu mensaje..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-continuar">Continuar</button>
+                </form>
+            </div>
+
+            <!-- VIDEO Y REDES DERECHA -->
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <video id="mainVideo" controls>
+                        <source src="fotos/video1" type="video/mp4">
+                        Tu navegador no soporta el elemento de video.
+                    </video>
+                </div>
+                <div class="social-section">
+                    <p>Síguenos en nuestras redes</p>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/siemprenuevo.pe/" target="_blank" rel="noopener noreferrer">
+                            <img src="fotos/instagram.png" alt="Instagram">
+                        </a>
+                        <a href="https://www.tiktok.com/@siemprenuevo.pe" target="_blank" rel="noopener noreferrer">
+                            <img src="fotos/tiktok.png" alt="TikTok">
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -118,6 +319,48 @@
             if (logoBtn) {
                 logoBtn.addEventListener('click', function() {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            // Manejo del formulario
+            const form = document.getElementById('contactForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const nombre = form.querySelector('input[name="nombre"]').value;
+                    const email = form.querySelector('input[name="email"]').value;
+                    const telefono = form.querySelector('input[name="telefono"]').value;
+                    const comentario = form.querySelector('textarea[name="comentario"]').value;
+                    
+                    console.log('Formulario enviado:', { nombre, email, telefono, comentario });
+                    alert(`✅ Gracias ${nombre}, nos pondremos en contacto contigo pronto.`);
+                    form.reset();
+                });
+            }
+
+            // Verificar que el video exista, si no mostrar placeholder
+            const video = document.getElementById('mainVideo');
+            if (video) {
+                video.addEventListener('error', function() {
+                    this.style.backgroundColor = '#0c3a6a';
+                    this.style.display = 'flex';
+                    this.style.alignItems = 'center';
+                    this.style.justifyContent = 'center';
+                    // Crear un mensaje de texto si el video no carga
+                    const parent = this.parentElement;
+                    const fallback = document.createElement('div');
+                    fallback.textContent = '🎬 Video 1';
+                    fallback.style.color = '#0c3a6a';
+                    fallback.style.fontSize = '1.5rem';
+                    fallback.style.fontWeight = 'bold';
+                    fallback.style.display = 'flex';
+                    fallback.style.alignItems = 'center';
+                    fallback.style.justifyContent = 'center';
+                    fallback.style.width = '100%';
+                    fallback.style.height = '100%';
+                    fallback.style.backgroundColor = '#e7f3ff';
+                    this.style.display = 'none';
+                    parent.appendChild(fallback);
                 });
             }
         })();
