@@ -28,12 +28,12 @@
             margin: 0 auto;
         }
 
-        /* BARRA SUPERIOR - TAMAÑO AUMENTADO */
+        /* BARRA SUPERIOR - ALTO REDUCIDO */
         .navbar {
             background-color: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(2px);
             border-radius: 60px;
-            padding: 1.2rem 2rem;
+            padding: 0.7rem 2rem;  /* Reducido de 1.2rem a 0.7rem */
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -52,7 +52,7 @@
             transform: scale(1.02);
         }
         .menu-icon img {
-            width: 72px;  /* EL DOBLE: antes 36px, ahora 72px */
+            width: 60px;  /* Reducido de 72px a 60px */
             height: auto;
             display: block;
         }
@@ -67,7 +67,7 @@
             transform: scale(1.02);
         }
         .logo-icon img {
-            height: 96px;  /* EL DOBLE: antes 48px, ahora 96px */
+            height: 96px;  /* Se mantiene igual */
             width: auto;
             display: block;
         }
@@ -77,11 +77,11 @@
                 padding: 1rem 1rem 0 1rem;
             }
             .navbar {
-                padding: 0.8rem 1.5rem;
+                padding: 0.5rem 1.5rem;
                 margin-top: 1rem;
             }
             .menu-icon img {
-                width: 54px;  /* Ajuste proporcional para móvil */
+                width: 45px;
             }
             .logo-icon img {
                 height: 72px;
@@ -93,11 +93,11 @@
     <div class="main-container">
         <!-- Barra superior: transparente 80%, bordes redondos, separada del inicio -->
         <div class="navbar">
-            <!-- Menu izquierda: imagen menu.png (doble tamaño) -->
+            <!-- Menu izquierda: imagen menu.png -->
             <div class="menu-icon" id="menuButton" role="button" aria-label="Menú principal">
                 <img src="fotos/menu.png" alt="Menú">
             </div>
-            <!-- Logo derecha: imagen logo-sn.png (doble tamaño) -->
+            <!-- Logo derecha: imagen logo-sn.png -->
             <div class="logo-icon" id="logoButton" role="button" aria-label="Logo Siempre Nuevo">
                 <img src="fotos/logo-sn.png" alt="Siempre Nuevo">
             </div>
