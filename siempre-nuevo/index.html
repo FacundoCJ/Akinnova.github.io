@@ -350,13 +350,12 @@
                 });
             }
 
-            // Función para enviar el formulario usando FormSubmit.co
+            // Función para enviar el formulario
             if (form) {
                 form.addEventListener('submit', async function(e) {
                     e.preventDefault();
                     
                     // Deshabilitar botón y mostrar loading
-                    const originalText = submitBtn.innerHTML;
                     submitBtn.innerHTML = '<span class="spinner"></span> Enviando...';
                     submitBtn.disabled = true;
                     submitBtn.classList.remove('success', 'error');
@@ -367,22 +366,29 @@
                     const telefono = form.querySelector('input[name="telefono"]').value;
                     const comentario = form.querySelector('textarea[name="comentario"]').value;
                     
-                    // Crear el contenido del mensaje
+                    // Crear el contenido del mensaje con formato bonito
                     const mensaje = `
-                        📋 NUEVO CONTACTO - SIEMPRE NUEVO
-                        
-                        👤 Nombre: ${nombre}
-                        📧 Correo: ${email}
-                        📱 Teléfono/WhatsApp: ${telefono}
-                        💬 Comentario: ${comentario || 'Sin comentario'}
-                        
-                        ---
-                        Mensaje enviado desde el formulario de contacto
-                        Fecha: ${new Date().toLocaleString('es-PE')}
+🚗 NUEVO PEDIDO / CONSULTA - SIEMPRE NUEVO 🚗
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📋 DATOS DEL CLIENTE:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+👤 NOMBRE: ${nombre}
+📧 CORREO: ${email}
+📱 TELÉFONO/WHATSAPP: ${telefono}
+💬 COMENTARIO: ${comentario || 'Sin comentario'}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📅 FECHA: ${new Date().toLocaleString('es-PE')}
+🌐 PÁGINA: Siempre Nuevo - Akinnova
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚠️ Por favor contactar al cliente a la brevedad.
                     `;
                     
                     try {
-                        // Usar FormSubmit.co con fetch
+                        // Usar FormSubmit.co con el email activado
+                        // IMPORTANTE: Reemplaza TU_CODIGO_AQUI con el código que te dio FormSubmit después de activar
                         const response = await fetch('https://formsubmit.co/ajax/facundocordova505@gmail.com', {
                             method: 'POST',
                             headers: {
@@ -394,8 +400,10 @@
                                 email: email,
                                 phone: telefono,
                                 message: mensaje,
-                                _subject: `Nuevo contacto desde Siempre Nuevo - ${nombre}`,
-                                _captcha: 'false'
+                                _subject: `🚗 NUEVO PEDIDO - ${nombre} ha solicitado información`,
+                                _captcha: 'false',
+                                _template: 'table',
+                                _replyto: email
                             })
                         });
                         
