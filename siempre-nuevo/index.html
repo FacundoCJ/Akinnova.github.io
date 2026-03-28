@@ -132,7 +132,6 @@
             min-height: 80px;
         }
 
-        /* Checkbox de términos y condiciones */
         .terms-group {
             margin-bottom: 1.5rem;
             display: flex;
@@ -343,7 +342,6 @@
                         <textarea name="comentario" placeholder="Escribe aquí tu mensaje..."></textarea>
                     </div>
                     
-                    <!-- Términos y Condiciones -->
                     <div class="terms-group">
                         <input type="checkbox" id="termsCheckbox" required>
                         <label for="termsCheckbox">
@@ -377,7 +375,6 @@
         </div>
     </div>
 
-    <!-- Modal para Términos y Condiciones -->
     <div id="termsModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center;">
         <div style="background-color: white; border-radius: 32px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; padding: 2rem; position: relative;">
             <button id="closeModal" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 24px; cursor: pointer; color: #0c3a6a;">✕</button>
@@ -407,7 +404,6 @@
         </div>
     </div>
 
-    <!-- EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     
     <script>
@@ -430,7 +426,6 @@
             const closeModal = document.getElementById('closeModal');
             const acceptModalTerms = document.getElementById('acceptModalTerms');
             
-            // Abrir modal de términos
             if (termsLink) {
                 termsLink.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -438,14 +433,12 @@
                 });
             }
             
-            // Cerrar modal
             if (closeModal) {
                 closeModal.addEventListener('click', function() {
                     termsModal.style.display = 'none';
                 });
             }
             
-            // Aceptar términos desde el modal
             if (acceptModalTerms) {
                 acceptModalTerms.addEventListener('click', function() {
                     termsCheckbox.checked = true;
@@ -453,7 +446,6 @@
                 });
             }
             
-            // Cerrar modal si se clickea fuera
             window.addEventListener('click', function(e) {
                 if (e.target === termsModal) {
                     termsModal.style.display = 'none';
@@ -472,23 +464,19 @@
                 });
             }
 
-            // Envío del formulario con EmailJS
             if (form) {
                 form.addEventListener('submit', async function(e) {
                     e.preventDefault();
                     
-                    // Validar términos y condiciones
                     if (!termsCheckbox.checked) {
                         alert('⚠️ Por favor, acepta los términos y condiciones para continuar.');
                         return;
                     }
                     
-                    // Deshabilitar botón y mostrar loading
                     submitBtn.innerHTML = '<span class="spinner"></span> Enviando...';
                     submitBtn.disabled = true;
                     submitBtn.classList.remove('success', 'error');
                     
-                    // Obtener datos del formulario
                     const nombre = form.querySelector('input[name="nombre"]').value;
                     const email = form.querySelector('input[name="email"]').value;
                     const telefono = form.querySelector('input[name="telefono"]').value;
@@ -496,20 +484,19 @@
                     const fecha = new Date().toLocaleString('es-PE', { timeZone: 'America/Lima' });
                     
                     try {
-                        // Enviar correo con EmailJS
                         const templateParams = {
                             nombre: nombre,
                             email: email,
                             telefono: telefono,
                             comentario: comentario || 'Sin comentario',
                             fecha: fecha,
-                            acepto_terminos: 'Sí'
+                            acepto_terminos: 'Sí',
+                            para: 'contacto@akinnova.com'  // Agregamos el destinatario
                         };
                         
                         const response = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
                         
                         if (response.status === 200) {
-                            // Éxito
                             submitBtn.innerHTML = '✓ ¡Enviado con éxito!';
                             submitBtn.classList.add('success');
                             form.reset();
@@ -537,7 +524,6 @@
                 });
             }
 
-            // Verificar video
             const video = document.getElementById('mainVideo');
             if (video) {
                 video.addEventListener('error', function() {
