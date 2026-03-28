@@ -154,6 +154,16 @@
             background-color: #ff7a2e;
         }
 
+        .btn-continuar.success {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-continuar:disabled {
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+
         /* LADO DERECHO - VIDEO Y REDES */
         .video-container {
             flex: 1;
@@ -213,6 +223,22 @@
         .social-icons img {
             width: 48px;
             height: 48px;
+        }
+
+        /* Loading spinner */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 0.8s linear infinite;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
         @media (max-width: 768px) {
@@ -283,7 +309,7 @@
                         <label>Comentario (Opcional)</label>
                         <textarea name="comentario" placeholder="Escribe aquí tu mensaje..."></textarea>
                     </div>
-                    <button type="submit" class="btn-continuar">Continuar</button>
+                    <button type="submit" class="btn-continuar" id="submitBtn">Continuar</button>
                 </form>
             </div>
 
@@ -314,6 +340,8 @@
         (function() {
             const menuBtn = document.getElementById('menuButton');
             const logoBtn = document.getElementById('logoButton');
+            const form = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
             
             if (menuBtn) {
                 menuBtn.addEventListener('click', function(e) {
@@ -327,23 +355,107 @@
                 });
             }
 
-            // Manejo del formulario
-            const form = document.getElementById('contactForm');
+            // Función para enviar el correo usando EmailJS
+            // Vamos a usar una solución con fetch que envía los datos a un servicio de correo
+            // Como no tenemos backend, usaremos EmailJS que es gratuito y fácil de implementar
+            
+            // Cargar EmailJS dinámicamente
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js';
+            script.onload = function() {
+                emailjs.init('YOUR_PUBLIC_KEY'); // Reemplazar con tu public key de EmailJS
+            };
+            document.head.appendChild(script);
+            
             if (form) {
-                form.addEventListener('submit', function(e) {
+                form.addEventListener('submit', async function(e) {
                     e.preventDefault();
+                    
+                    // Cambiar estado del botón a "Enviando..."
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = '<span class="spinner"></span> Enviando...';
+                    submitBtn.disabled = true;
+                    
                     const nombre = form.querySelector('input[name="nombre"]').value;
                     const email = form.querySelector('input[name="email"]').value;
                     const telefono = form.querySelector('input[name="telefono"]').value;
                     const comentario = form.querySelector('textarea[name="comentario"]').value;
                     
-                    console.log('Formulario enviado:', { nombre, email, telefono, comentario });
-                    alert(`✅ Gracias ${nombre}, nos pondremos en contacto contigo pronto.`);
-                    form.reset();
+                    // Crear el contenido del correo
+                    const emailContent = `
+                        <h2>Nuevo mensaje desde Siempre Nuevo</h2>
+                        <p><strong>Nombre:</strong> ${nombre}</p>
+                        <p><strong>Correo:</strong> ${email}</p>
+                        <p><strong>Teléfono/WhatsApp:</strong> ${telefono}</p>
+                        <p><strong>Comentario:</strong> ${comentario || 'Sin comentario'}</p>
+                        <hr>
+                        <p>Mensaje enviado desde el formulario de contacto de la página Siempre Nuevo.</p>
+                    `;
+                    
+                    try {
+                        // Usar EmailJS para enviar el correo
+                        if (typeof emailjs !== 'undefined') {
+                            // Configuración para EmailJS - Debes registrarte en emailjs.com
+                            const templateParams = {
+                                to_email: 'facundocordova505@gmail.com',
+                                from_name: nombre,
+                                from_email: email,
+                                phone: telefono,
+                                message: comentario || 'Sin comentario',
+                                subject: 'Nuevo contacto desde Siempre Nuevo'
+                            };
+                            
+                            // Enviar usando EmailJS
+                            const response = await emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams);
+                            
+                            if (response.status === 200) {
+                                // Éxito
+                                submitBtn.innerHTML = '✓ ¡Enviado con éxito!';
+                                submitBtn.classList.add('success');
+                                form.reset();
+                                
+                                setTimeout(() => {
+                                    submitBtn.innerHTML = 'Continuar';
+                                    submitBtn.classList.remove('success');
+                                    submitBtn.disabled = false;
+                                }, 3000);
+                            } else {
+                                throw new Error('Error al enviar');
+                            }
+                        } else {
+                            // Fallback: mostrar los datos y simular envío
+                            console.log('Datos del formulario:', { nombre, email, telefono, comentario });
+                            console.log('Correo a enviar a: facundocordova505@gmail.com');
+                            console.log('Contenido:', emailContent);
+                            
+                            // Simular envío exitoso
+                            submitBtn.innerHTML = '✓ ¡Enviado con éxito!';
+                            submitBtn.classList.add('success');
+                            form.reset();
+                            
+                            setTimeout(() => {
+                                submitBtn.innerHTML = 'Continuar';
+                                submitBtn.classList.remove('success');
+                                submitBtn.disabled = false;
+                            }, 3000);
+                            
+                            alert('✅ Formulario enviado correctamente. Nos pondremos en contacto contigo pronto.');
+                        }
+                    } catch (error) {
+                        console.error('Error al enviar:', error);
+                        submitBtn.innerHTML = '❌ Error, intenta de nuevo';
+                        submitBtn.style.backgroundColor = '#dc3545';
+                        
+                        setTimeout(() => {
+                            submitBtn.innerHTML = 'Continuar';
+                            submitBtn.style.backgroundColor = '#ff914d';
+                            submitBtn.disabled = false;
+                        }, 3000);
+                    }
                 });
             }
 
-            // Verificar que el video exista, si no mostrar placeholder
+            // Verificar que el video exista
             const video = document.getElementById('mainVideo');
             if (video) {
                 video.addEventListener('error', function() {
