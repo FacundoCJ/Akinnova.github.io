@@ -132,6 +132,40 @@
             min-height: 80px;
         }
 
+        /* Checkbox de términos y condiciones */
+        .terms-group {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .terms-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            cursor: pointer;
+            accent-color: #ff914d;
+        }
+
+        .terms-group label {
+            color: #0c3a6a;
+            font-weight: 500;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            cursor: pointer;
+        }
+
+        .terms-group a {
+            color: #ff914d;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .terms-group a:hover {
+            text-decoration: underline;
+        }
+
         .btn-continuar {
             background-color: #ff914d;
             color: #0c3a6a;
@@ -163,7 +197,7 @@
 
         .btn-continuar:disabled {
             cursor: not-allowed;
-            opacity: 0.8;
+            opacity: 0.7;
         }
 
         .video-container {
@@ -271,6 +305,9 @@
             .video-wrapper video {
                 max-height: 400px;
             }
+            .terms-group label {
+                font-size: 0.75rem;
+            }
         }
     </style>
 </head>
@@ -305,6 +342,15 @@
                         <label>Comentario (Opcional)</label>
                         <textarea name="comentario" placeholder="Escribe aquí tu mensaje..."></textarea>
                     </div>
+                    
+                    <!-- Términos y Condiciones -->
+                    <div class="terms-group">
+                        <input type="checkbox" id="termsCheckbox" required>
+                        <label for="termsCheckbox">
+                            Acepto los <a href="#" id="termsLink">términos y condiciones</a> y la política de privacidad
+                        </label>
+                    </div>
+                    
                     <button type="submit" class="btn-continuar" id="submitBtn">Continuar</button>
                 </form>
             </div>
@@ -331,12 +377,42 @@
         </div>
     </div>
 
+    <!-- Modal para Términos y Condiciones -->
+    <div id="termsModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center;">
+        <div style="background-color: white; border-radius: 32px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; padding: 2rem; position: relative;">
+            <button id="closeModal" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 24px; cursor: pointer; color: #0c3a6a;">✕</button>
+            <h2 style="color: #0c3a6a; margin-bottom: 1rem;">Términos y Condiciones</h2>
+            <div style="color: #333; line-height: 1.6;">
+                <p><strong>Última actualización:</strong> 27 de marzo de 2026</p>
+                
+                <h3 style="color: #ff914d; margin-top: 1rem;">1. Aceptación de los Términos</h3>
+                <p>Al acceder y utilizar el sitio web de Siempre Nuevo, usted acepta cumplir con estos términos y condiciones. Si no está de acuerdo con alguna parte de estos términos, no debe utilizar nuestro sitio.</p>
+                
+                <h3 style="color: #ff914d; margin-top: 1rem;">2. Descripción del Servicio</h3>
+                <p>Siempre Nuevo es un servicio de protección automotriz ofrecido por Akinnova, que incluye cobertura para raspón de pintura, reparación de aros y neumáticos, y arreglo o reposición de parabrisas.</p>
+                
+                <h3 style="color: #ff914d; margin-top: 1rem;">3. Uso de la Información</h3>
+                <p>Al proporcionar su información personal a través de nuestro formulario de contacto, usted autoriza a Siempre Nuevo a utilizar sus datos para contactarlo y brindarle información sobre nuestros servicios.</p>
+                
+                <h3 style="color: #ff914d; margin-top: 1rem;">4. Protección de Datos</h3>
+                <p>Nos comprometemos a proteger su información personal y a no compartirla con terceros sin su consentimiento explícito, excepto cuando sea requerido por ley.</p>
+                
+                <h3 style="color: #ff914d; margin-top: 1rem;">5. Modificaciones</h3>
+                <p>Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios serán efectivos inmediatamente después de su publicación en el sitio web.</p>
+                
+                <h3 style="color: #ff914d; margin-top: 1rem;">6. Contacto</h3>
+                <p>Si tiene alguna pregunta sobre estos términos, puede contactarnos a través de nuestro formulario de contacto o al correo: contacto@akinnova.com</p>
+            </div>
+            <button id="acceptModalTerms" style="background-color: #ff914d; color: #0c3a6a; border: none; padding: 0.8rem 2rem; border-radius: 40px; font-weight: 600; margin-top: 1.5rem; cursor: pointer; width: 100%;">Aceptar y Continuar</button>
+        </div>
+    </div>
+
     <!-- EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     
     <script>
         (function() {
-            // Configuración de EmailJS con tus claves
+            // Configuración de EmailJS
             const EMAILJS_PUBLIC_KEY = 'GExj5Fp2jmCjSsKEE';
             const EMAILJS_SERVICE_ID = 'service_ygxlbye';
             const EMAILJS_TEMPLATE_ID = 'template_c7ltsb8';
@@ -348,6 +424,41 @@
             const logoBtn = document.getElementById('logoButton');
             const form = document.getElementById('contactForm');
             const submitBtn = document.getElementById('submitBtn');
+            const termsCheckbox = document.getElementById('termsCheckbox');
+            const termsLink = document.getElementById('termsLink');
+            const termsModal = document.getElementById('termsModal');
+            const closeModal = document.getElementById('closeModal');
+            const acceptModalTerms = document.getElementById('acceptModalTerms');
+            
+            // Abrir modal de términos
+            if (termsLink) {
+                termsLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    termsModal.style.display = 'flex';
+                });
+            }
+            
+            // Cerrar modal
+            if (closeModal) {
+                closeModal.addEventListener('click', function() {
+                    termsModal.style.display = 'none';
+                });
+            }
+            
+            // Aceptar términos desde el modal
+            if (acceptModalTerms) {
+                acceptModalTerms.addEventListener('click', function() {
+                    termsCheckbox.checked = true;
+                    termsModal.style.display = 'none';
+                });
+            }
+            
+            // Cerrar modal si se clickea fuera
+            window.addEventListener('click', function(e) {
+                if (e.target === termsModal) {
+                    termsModal.style.display = 'none';
+                }
+            });
             
             if (menuBtn) {
                 menuBtn.addEventListener('click', function() {
@@ -365,6 +476,12 @@
             if (form) {
                 form.addEventListener('submit', async function(e) {
                     e.preventDefault();
+                    
+                    // Validar términos y condiciones
+                    if (!termsCheckbox.checked) {
+                        alert('⚠️ Por favor, acepta los términos y condiciones para continuar.');
+                        return;
+                    }
                     
                     // Deshabilitar botón y mostrar loading
                     submitBtn.innerHTML = '<span class="spinner"></span> Enviando...';
@@ -385,7 +502,8 @@
                             email: email,
                             telefono: telefono,
                             comentario: comentario || 'Sin comentario',
-                            fecha: fecha
+                            fecha: fecha,
+                            acepto_terminos: 'Sí'
                         };
                         
                         const response = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
@@ -395,6 +513,7 @@
                             submitBtn.innerHTML = '✓ ¡Enviado con éxito!';
                             submitBtn.classList.add('success');
                             form.reset();
+                            termsCheckbox.checked = false;
                             
                             setTimeout(() => {
                                 submitBtn.innerHTML = 'Continuar';
