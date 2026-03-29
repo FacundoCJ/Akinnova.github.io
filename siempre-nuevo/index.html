@@ -14,20 +14,16 @@
 
         body {
             font-family: 'DM Sans', sans-serif;
-            min-height: 100vh;
-            background-image: url('fotos/carro.png');
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
+            background-color: #ffffff;
         }
 
         .main-container {
-            padding: 2rem 2rem 0 2rem;
             max-width: 1400px;
             margin: 0 auto;
+            padding: 0 2rem;
         }
 
+        /* BARRA SUPERIOR */
         .navbar {
             background-color: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(2px);
@@ -71,12 +67,26 @@
             display: block;
         }
 
-        /* SECCIÓN AZUL - FORMULARIO + VIDEO */
-        .content-section {
+        /* IMAGEN PRINCIPAL carro.png */
+        .hero-image {
+            width: 100%;
+            border-radius: 40px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* SECCIÓN AZUL - formulario + video + redes */
+        .blue-section {
             background-color: #0c3a6a;
             border-radius: 40px;
             padding: 3rem;
-            margin-top: 1rem;
             margin-bottom: 2rem;
             display: flex;
             gap: 3rem;
@@ -265,10 +275,9 @@
             background-color: white;
             border-radius: 40px;
             padding: 3rem 2rem;
-            margin-top: 0;
             margin-bottom: 2rem;
             text-align: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
 
         .cobertura-section h2 {
@@ -350,7 +359,7 @@
 
         @media (max-width: 768px) {
             .main-container {
-                padding: 1rem 1rem 0 1rem;
+                padding: 0 1rem;
             }
             .navbar {
                 padding: 0.5rem 1.5rem;
@@ -362,7 +371,7 @@
             .logo-icon img {
                 height: 72px;
             }
-            .content-section {
+            .blue-section {
                 padding: 1.5rem;
                 gap: 1.5rem;
             }
@@ -399,7 +408,7 @@
 </head>
 <body>
     <div class="main-container">
-        <!-- BARRA SUPERIOR -->
+        <!-- Barra superior -->
         <div class="navbar">
             <div class="menu-icon" id="menuButton">
                 <img src="fotos/menu.png" alt="Menú">
@@ -409,8 +418,13 @@
             </div>
         </div>
 
-        <!-- SECCIÓN AZUL: FORMULARIO + VIDEO + REDES SOCIALES -->
-        <div class="content-section">
+        <!-- IMAGEN PRINCIPAL carro.png (separada, no es fondo) -->
+        <div class="hero-image">
+            <img src="fotos/carro.png" alt="Carro Siempre Nuevo">
+        </div>
+
+        <!-- SECCIÓN AZUL: formulario + video + redes sociales -->
+        <div class="blue-section">
             <div class="form-container">
                 <h2>Te contamos cómo proteger tu auto</h2>
                 <form id="contactForm">
@@ -463,7 +477,7 @@
             </div>
         </div>
 
-        <!-- SECCIÓN BLANCA: COBERTURA DEL PROGRAMA (DEBAJO DE TODO) -->
+        <!-- SECCIÓN BLANCA: Cobertura del programa -->
         <div class="cobertura-section">
             <h2>Cobertura del programa</h2>
             <div class="cobertura-grid">
@@ -483,7 +497,7 @@
         </div>
     </div>
 
-    <!-- MODAL TÉRMINOS Y CONDICIONES -->
+    <!-- Modal para Términos y Condiciones -->
     <div id="termsModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center;">
         <div style="background-color: white; border-radius: 32px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; padding: 2rem; position: relative;">
             <button id="closeModal" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 24px; cursor: pointer; color: #0c3a6a;">✕</button>
