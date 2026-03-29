@@ -71,11 +71,13 @@
             display: block;
         }
 
+        /* SECCIÓN AZUL - FORMULARIO + VIDEO */
         .content-section {
             background-color: #0c3a6a;
             border-radius: 40px;
             padding: 3rem;
             margin-top: 1rem;
+            margin-bottom: 2rem;
             display: flex;
             gap: 3rem;
             flex-wrap: wrap;
@@ -258,14 +260,15 @@
             height: 48px;
         }
 
-        /* SECCIÓN COBERTURA DEL PROGRAMA - FONDO BLANCO DEBAJO DE LA IMAGEN */
+        /* SECCIÓN BLANCA - COBERTURA DEL PROGRAMA */
         .cobertura-section {
             background-color: white;
             border-radius: 40px;
             padding: 3rem 2rem;
-            margin-top: 2rem;
+            margin-top: 0;
             margin-bottom: 2rem;
             text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
         .cobertura-section h2 {
@@ -381,7 +384,6 @@
             }
             .cobertura-section {
                 padding: 2rem 1rem;
-                margin-top: 1.5rem;
             }
             .cobertura-section h2 {
                 font-size: 1.6rem;
@@ -397,6 +399,7 @@
 </head>
 <body>
     <div class="main-container">
+        <!-- BARRA SUPERIOR -->
         <div class="navbar">
             <div class="menu-icon" id="menuButton">
                 <img src="fotos/menu.png" alt="Menú">
@@ -406,6 +409,7 @@
             </div>
         </div>
 
+        <!-- SECCIÓN AZUL: FORMULARIO + VIDEO + REDES SOCIALES -->
         <div class="content-section">
             <div class="form-container">
                 <h2>Te contamos cómo proteger tu auto</h2>
@@ -458,27 +462,28 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- SECCIÓN COBERTURA DEL PROGRAMA - DEBAJO DE LA IMAGEN DE FONDO -->
-    <div class="cobertura-section">
-        <h2>Cobertura del programa</h2>
-        <div class="cobertura-grid">
-            <div class="cobertura-card">
-                <img src="fotos/raspon.jpeg" alt="Raspón de pintura" onerror="this.src='https://via.placeholder.com/300x200/ff914d/ffffff?text=Raspón+de+pintura'">
-                <h3>Raspón de pintura</h3>
-            </div>
-            <div class="cobertura-card">
-                <img src="fotos/aros.jpeg" alt="Reparación de aros y neumáticos" onerror="this.src='https://via.placeholder.com/300x200/ff914d/ffffff?text=Aros+y+neumáticos'">
-                <h3>Reparación de aros y neumáticos</h3>
-            </div>
-            <div class="cobertura-card">
-                <img src="fotos/parabrisas.jpeg" alt="Arreglo o reposición de parabrisas" onerror="this.src='https://via.placeholder.com/300x200/ff914d/ffffff?text=Parabrisas'">
-                <h3>Arreglo o reposición de parabrisas</h3>
+        <!-- SECCIÓN BLANCA: COBERTURA DEL PROGRAMA (DEBAJO DE TODO) -->
+        <div class="cobertura-section">
+            <h2>Cobertura del programa</h2>
+            <div class="cobertura-grid">
+                <div class="cobertura-card">
+                    <img src="fotos/raspon.jpeg" alt="Raspón de pintura" onerror="this.src='https://via.placeholder.com/300x200/ff914d/ffffff?text=Raspón'">
+                    <h3>Raspón de pintura</h3>
+                </div>
+                <div class="cobertura-card">
+                    <img src="fotos/aros.jpeg" alt="Reparación de aros y neumáticos" onerror="this.src='https://via.placeholder.com/300x200/ff914d/ffffff?text=Aros+y+Neumáticos'">
+                    <h3>Reparación de aros y neumáticos</h3>
+                </div>
+                <div class="cobertura-card">
+                    <img src="fotos/parabrisas.jpeg" alt="Arreglo o reposición de parabrisas" onerror="this.src='https://via.placeholder.com/300x200/ff914d/ffffff?text=Parabrisas'">
+                    <h3>Arreglo o reposición de parabrisas</h3>
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- MODAL TÉRMINOS Y CONDICIONES -->
     <div id="termsModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center;">
         <div style="background-color: white; border-radius: 32px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; padding: 2rem; position: relative;">
             <button id="closeModal" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 24px; cursor: pointer; color: #0c3a6a;">✕</button>
