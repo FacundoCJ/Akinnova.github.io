@@ -17,7 +17,7 @@
             background-color: #ffffff;
         }
 
-        /* SECCIÓN HERO CON IMAGEN DE FONDO QUE CUBRE TODO EL ANCHO */
+        /* SECCIÓN HERO CON IMAGEN DE FONDO */
         .hero-section {
             position: relative;
             width: 100%;
@@ -336,27 +336,25 @@
             margin-top: 1rem;
         }
 
-        /* VIDEO GRANDE - SIN FONDO */
+        /* VIDEO GRANDE - ANCHO COMPLETO SIN MÁRGENES */
         .full-video-section {
             width: 100%;
             background-color: white;
-            padding: 2rem 0;
         }
 
         .full-video-container {
             width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
+            margin: 0;
+            padding: 0;
         }
 
         .full-video-container video {
             width: 100%;
-            border-radius: 32px;
             display: block;
+            background-color: black;
         }
 
-        /* HISTORIAS REALES - CARRUSEL */
+        /* HISTORIAS REALES - CARRUSEL CON MÚLTIPLES VIDEOS VISIBLES */
         .historias-section {
             background-color: white;
             width: 100%;
@@ -390,43 +388,68 @@
             border-radius: 2px;
         }
 
-        /* CARRUSEL */
-        .carousel-container {
+        /* CARRUSEL MULTIPLE */
+        .carousel-wrapper {
             position: relative;
-            max-width: 500px;
-            margin: 0 auto;
             overflow: hidden;
-            border-radius: 32px;
-            background-color: transparent;
+            padding: 0 40px;
+        }
+
+        .carousel-container {
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .carousel-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .carousel-container::-webkit-scrollbar-track {
+            background: #e7f3ff;
+            border-radius: 10px;
+        }
+
+        .carousel-container::-webkit-scrollbar-thumb {
+            background: #ff914d;
+            border-radius: 10px;
         }
 
         .carousel-track {
             display: flex;
-            transition: transform 0.5s ease-in-out;
+            gap: 1.5rem;
+            padding: 1rem 0;
         }
 
         .carousel-slide {
-            min-width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            flex: 0 0 calc(33.333% - 1rem);
+            min-width: 280px;
+            border-radius: 24px;
+            overflow: hidden;
             background-color: transparent;
+            transition: transform 0.3s ease;
+        }
+
+        .carousel-slide:hover {
+            transform: translateY(-5px);
         }
 
         .carousel-slide video {
             width: 100%;
             height: auto;
-            max-height: 600px;
-            object-fit: contain;
+            aspect-ratio: 9 / 16;
+            object-fit: cover;
             border-radius: 24px;
-            background-color: transparent;
+            background-color: #f0f0f0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
 
         .carousel-button {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: rgba(255, 145, 77, 0.9);
+            background-color: #ff914d;
             color: white;
             border: none;
             width: 48px;
@@ -437,59 +460,43 @@
             font-weight: bold;
             transition: all 0.3s ease;
             z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .carousel-button:hover {
-            background-color: #ff914d;
+            background-color: #ff7a2e;
             transform: translateY(-50%) scale(1.05);
         }
 
         .carousel-button.prev {
-            left: 10px;
+            left: 0;
         }
 
         .carousel-button.next {
-            right: 10px;
+            right: 0;
         }
 
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 20px;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: #cbd5e1;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .dot.active {
-            background-color: #ff914d;
-            width: 24px;
-            border-radius: 6px;
-        }
-
-        .spinner {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 2px solid rgba(255,255,255,0.3);
-            border-radius: 50%;
-            border-top-color: #fff;
-            animation: spin 0.8s linear infinite;
-            margin-right: 8px;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+        @media (max-width: 1024px) {
+            .carousel-slide {
+                flex: 0 0 calc(50% - 0.75rem);
+            }
         }
 
         @media (max-width: 768px) {
+            .carousel-slide {
+                flex: 0 0 calc(100% - 0rem);
+            }
+            .carousel-wrapper {
+                padding: 0 20px;
+            }
+            .carousel-button {
+                width: 36px;
+                height: 36px;
+                font-size: 18px;
+            }
             .hero-container {
                 padding: 0 1rem;
             }
@@ -522,14 +529,37 @@
             .cobertura-card img {
                 height: 180px;
             }
-            .carousel-button {
-                width: 36px;
-                height: 36px;
-                font-size: 18px;
-            }
-            .full-video-container {
-                padding: 0 1rem;
-            }
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 0.8s linear infinite;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Placeholder para videos que no existen */
+        .video-placeholder {
+            width: 100%;
+            aspect-ratio: 9 / 16;
+            background: linear-gradient(135deg, #0c3a6a, #ff914d);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
@@ -625,7 +655,7 @@
         </div>
     </div>
 
-    <!-- VIDEO GRANDE (video2.mp4) - SIN FONDO AZUL -->
+    <!-- VIDEO GRANDE - ANCHO COMPLETO SIN MÁRGENES -->
     <div class="full-video-section">
         <div class="full-video-container">
             <video controls>
@@ -635,34 +665,48 @@
         </div>
     </div>
 
-    <!-- HISTORIAS REALES CON CARRUSEL -->
+    <!-- HISTORIAS REALES CON CARRUSEL DE MÚLTIPLES VIDEOS -->
     <div class="historias-section">
         <div class="historias-section-inner">
             <h2>Historias reales</h2>
-            <div class="carousel-container">
+            <div class="carousel-wrapper">
                 <button class="carousel-button prev" id="prevBtn">❮</button>
-                <div class="carousel-track" id="carouselTrack">
-                    <div class="carousel-slide">
-                        <video controls>
-                            <source src="fotos/video3.mp4" type="video/mp4">
-                            Tu navegador no soporta el elemento de video.
-                        </video>
-                    </div>
-                    <div class="carousel-slide">
-                        <video controls>
-                            <source src="fotos/video4.mp4" type="video/mp4">
-                            Tu navegador no soporta el elemento de video.
-                        </video>
-                    </div>
-                    <div class="carousel-slide">
-                        <video controls>
-                            <source src="fotos/video5.mp4" type="video/mp4">
-                            Tu navegador no soporta el elemento de video.
-                        </video>
+                <div class="carousel-container" id="carouselContainer">
+                    <div class="carousel-track" id="carouselTrack">
+                        <!-- Video 1 - Real -->
+                        <div class="carousel-slide">
+                            <video controls>
+                                <source src="fotos/video3.mp4" type="video/mp4">
+                                Tu navegador no soporta el elemento de video.
+                            </video>
+                        </div>
+                        <!-- Video 2 - Placeholder para estética -->
+                        <div class="carousel-slide">
+                            <div class="video-placeholder">
+                                🎬<br>Historia 2
+                            </div>
+                        </div>
+                        <!-- Video 3 - Placeholder para estética -->
+                        <div class="carousel-slide">
+                            <div class="video-placeholder">
+                                🎬<br>Historia 3
+                            </div>
+                        </div>
+                        <!-- Video 4 - Placeholder para estética -->
+                        <div class="carousel-slide">
+                            <div class="video-placeholder">
+                                🎬<br>Historia 4
+                            </div>
+                        </div>
+                        <!-- Video 5 - Placeholder para estética -->
+                        <div class="carousel-slide">
+                            <div class="video-placeholder">
+                                🎬<br>Historia 5
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <button class="carousel-button next" id="nextBtn">❯</button>
-                <div class="carousel-dots" id="carouselDots"></div>
             </div>
         </div>
     </div>
@@ -803,51 +847,24 @@
                 });
             }
 
-            // CARRUSEL
-            const track = document.getElementById('carouselTrack');
-            const slides = document.querySelectorAll('.carousel-slide');
+            // CARRUSEL CON DESPLAZAMIENTO HORIZONTAL
+            const carouselContainer = document.getElementById('carouselContainer');
             const prevBtn = document.getElementById('prevBtn');
             const nextBtn = document.getElementById('nextBtn');
-            const dotsContainer = document.getElementById('carouselDots');
             
-            let currentIndex = 0;
-            const totalSlides = slides.length;
-            
-            function updateCarousel() {
-                track.style.transform = `translateX(-${currentIndex * 100}%)`;
-                document.querySelectorAll('.dot').forEach((dot, index) => {
-                    if (index === currentIndex) {
-                        dot.classList.add('active');
-                    } else {
-                        dot.classList.remove('active');
-                    }
-                });
-            }
-            
-            function createDots() {
-                for (let i = 0; i < totalSlides; i++) {
-                    const dot = document.createElement('div');
-                    dot.classList.add('dot');
-                    if (i === currentIndex) dot.classList.add('active');
-                    dot.addEventListener('click', () => {
-                        currentIndex = i;
-                        updateCarousel();
-                    });
-                    dotsContainer.appendChild(dot);
-                }
-            }
-            
-            if (prevBtn && nextBtn && totalSlides > 0) {
-                createDots();
-                
+            if (prevBtn && nextBtn && carouselContainer) {
                 prevBtn.addEventListener('click', () => {
-                    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-                    updateCarousel();
+                    carouselContainer.scrollBy({
+                        left: -350,
+                        behavior: 'smooth'
+                    });
                 });
                 
                 nextBtn.addEventListener('click', () => {
-                    currentIndex = (currentIndex + 1) % totalSlides;
-                    updateCarousel();
+                    carouselContainer.scrollBy({
+                        left: 350,
+                        behavior: 'smooth'
+                    });
                 });
             }
             
