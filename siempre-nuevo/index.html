@@ -30,7 +30,6 @@
             flex-direction: column;
         }
 
-        /* Contenedor para la barra dentro de la sección hero */
         .hero-container {
             max-width: 1400px;
             width: 100%;
@@ -82,7 +81,7 @@
             display: block;
         }
 
-        /* SECCIÓN AZUL - ANCHO COMPLETO */
+        /* SECCIÓN AZUL */
         .blue-section {
             background-color: #0c3a6a;
             width: 100%;
@@ -177,10 +176,6 @@
             font-weight: 600;
         }
 
-        .terms-group a:hover {
-            text-decoration: underline;
-        }
-
         .btn-continuar {
             background-color: #ff914d;
             color: #0c3a6a;
@@ -188,7 +183,6 @@
             padding: 0.9rem 2rem;
             font-size: 1rem;
             font-weight: 600;
-            font-family: 'DM Sans', sans-serif;
             border-radius: 40px;
             cursor: pointer;
             width: 100%;
@@ -274,7 +268,7 @@
             height: 48px;
         }
 
-        /* SECCIÓN BLANCA - COBERTURA DEL PROGRAMA (ANCHO COMPLETO) */
+        /* SECCIÓN BLANCA - COBERTURA */
         .cobertura-section {
             background-color: white;
             width: 100%;
@@ -334,11 +328,6 @@
             object-fit: cover;
             border-radius: 24px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease;
-        }
-
-        .cobertura-card:hover img {
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
         }
 
         .cobertura-card h3 {
@@ -346,35 +335,27 @@
             font-size: 1.2rem;
             font-weight: 600;
             margin-top: 1rem;
-            margin-bottom: 0.5rem;
         }
 
-        /* SECCIÓN VIDEO 2 - ANCHO COMPLETO */
-        .video2-section {
+        /* VIDEO GRANDE - ANCHO COMPLETO */
+        .full-video-section {
             width: 100%;
             background-color: #0c3a6a;
-            padding: 3rem 2rem;
+            padding: 2rem;
         }
 
-        .video2-container {
+        .full-video-container {
             max-width: 1400px;
             margin: 0 auto;
         }
 
-        .video2-wrapper {
+        .full-video-container video {
             width: 100%;
             border-radius: 32px;
-            overflow: hidden;
-            background-color: #000;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
 
-        .video2-wrapper video {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* SECCIÓN HISTORIAS REALES */
+        /* HISTORIAS REALES - CARRUSEL */
         .historias-section {
             background-color: white;
             width: 100%;
@@ -382,7 +363,7 @@
             text-align: center;
         }
 
-        .historias-inner {
+        .historias-section-inner {
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -411,7 +392,8 @@
         /* CARRUSEL */
         .carousel-container {
             position: relative;
-            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
             overflow: hidden;
             border-radius: 32px;
         }
@@ -423,25 +405,28 @@
 
         .carousel-slide {
             min-width: 100%;
-            flex-shrink: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .carousel-slide video {
             width: 100%;
-            height: auto;
-            border-radius: 32px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            max-height: 600px;
+            object-fit: contain;
+            border-radius: 24px;
+            background-color: #f5f5f5;
         }
 
-        .carousel-btn {
+        .carousel-button {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
             background-color: rgba(255, 145, 77, 0.9);
-            color: #0c3a6a;
+            color: white;
             border: none;
-            width: 50px;
-            height: 50px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             cursor: pointer;
             font-size: 24px;
@@ -450,24 +435,24 @@
             z-index: 10;
         }
 
-        .carousel-btn:hover {
+        .carousel-button:hover {
             background-color: #ff914d;
             transform: translateY(-50%) scale(1.05);
         }
 
-        .carousel-btn.prev {
-            left: 20px;
+        .carousel-button.prev {
+            left: 10px;
         }
 
-        .carousel-btn.next {
-            right: 20px;
+        .carousel-button.next {
+            right: 10px;
         }
 
         .carousel-dots {
             display: flex;
             justify-content: center;
             gap: 12px;
-            margin-top: 1.5rem;
+            margin-top: 20px;
         }
 
         .dot {
@@ -481,7 +466,7 @@
 
         .dot.active {
             background-color: #ff914d;
-            width: 30px;
+            width: 24px;
             border-radius: 6px;
         }
 
@@ -530,46 +515,24 @@
                 width: 40px;
                 height: 40px;
             }
-            .video-wrapper video {
-                max-height: 400px;
-            }
-            .terms-group label {
-                font-size: 0.75rem;
-            }
-            .cobertura-section {
-                padding: 2rem 1rem;
-            }
-            .cobertura-section h2 {
-                font-size: 1.6rem;
-            }
             .cobertura-card img {
                 height: 180px;
             }
-            .cobertura-card h3 {
-                font-size: 1rem;
-            }
-            .video2-section {
-                padding: 2rem 1rem;
-            }
-            .historias-section {
-                padding: 2rem 1rem;
-            }
-            .historias-section h2 {
-                font-size: 1.6rem;
-            }
-            .carousel-btn {
-                width: 40px;
-                height: 40px;
+            .carousel-button {
+                width: 36px;
+                height: 36px;
                 font-size: 18px;
+            }
+            .carousel-slide video {
+                max-height: 450px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- SECCIÓN HERO: imagen carro.png que cubre todo el ancho -->
+    <!-- SECCIÓN HERO -->
     <div class="hero-section">
         <div class="hero-container">
-            <!-- Barra superior sobre la imagen -->
             <div class="navbar">
                 <div class="menu-icon" id="menuButton">
                     <img src="fotos/menu.png" alt="Menú">
@@ -581,7 +544,7 @@
         </div>
     </div>
 
-    <!-- SECCIÓN AZUL: formulario + video + redes (ancho completo) -->
+    <!-- SECCIÓN AZUL -->
     <div class="blue-section">
         <div class="blue-section-inner">
             <div class="form-container">
@@ -637,7 +600,7 @@
         </div>
     </div>
 
-    <!-- SECCIÓN BLANCA: Cobertura del programa (ancho completo) -->
+    <!-- COBERTURA DEL PROGRAMA -->
     <div class="cobertura-section">
         <div class="cobertura-section-inner">
             <h2>Cobertura del programa</h2>
@@ -658,81 +621,74 @@
         </div>
     </div>
 
-    <!-- SECCIÓN VIDEO 2 (ancho completo) -->
-    <div class="video2-section">
-        <div class="video2-container">
-            <div class="video2-wrapper">
-                <video id="video2" controls>
-                    <source src="fotos/video2" type="video/mp4">
-                    Tu navegador no soporta el elemento de video.
-                </video>
-            </div>
+    <!-- VIDEO GRANDE (video2.mp4) -->
+    <div class="full-video-section">
+        <div class="full-video-container">
+            <video controls>
+                <source src="fotos/video2.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
         </div>
     </div>
 
-    <!-- SECCIÓN HISTORIAS REALES con carrusel -->
+    <!-- HISTORIAS REALES CON CARRUSEL -->
     <div class="historias-section">
-        <div class="historias-inner">
+        <div class="historias-section-inner">
             <h2>Historias reales</h2>
             <div class="carousel-container">
-                <button class="carousel-btn prev" id="prevBtn">‹</button>
+                <button class="carousel-button prev" id="prevBtn">❮</button>
                 <div class="carousel-track" id="carouselTrack">
                     <div class="carousel-slide">
                         <video controls>
-                            <source src="fotos/video3" type="video/mp4">
+                            <source src="fotos/video3.mp4" type="video/mp4">
                             Tu navegador no soporta el elemento de video.
                         </video>
                     </div>
-                    <!-- Aquí se pueden agregar más videos para el carrusel -->
+                    <div class="carousel-slide">
+                        <video controls>
+                            <source src="fotos/video4.mp4" type="video/mp4">
+                            Tu navegador no soporta el elemento de video.
+                        </video>
+                    </div>
+                    <div class="carousel-slide">
+                        <video controls>
+                            <source src="fotos/video5.mp4" type="video/mp4">
+                            Tu navegador no soporta el elemento de video.
+                        </video>
+                    </div>
                 </div>
-                <button class="carousel-btn next" id="nextBtn">›</button>
-            </div>
-            <div class="carousel-dots" id="carouselDots">
-                <div class="dot active"></div>
+                <button class="carousel-button next" id="nextBtn">❯</button>
+                <div class="carousel-dots" id="carouselDots"></div>
             </div>
         </div>
     </div>
 
-    <!-- Modal para Términos y Condiciones -->
+    <!-- Modal para Términos -->
     <div id="termsModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center;">
         <div style="background-color: white; border-radius: 32px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; padding: 2rem; position: relative;">
             <button id="closeModal" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 24px; cursor: pointer; color: #0c3a6a;">✕</button>
             <h2 style="color: #0c3a6a; margin-bottom: 1rem;">Términos y Condiciones</h2>
             <div style="color: #333; line-height: 1.6;">
                 <p><strong>Última actualización:</strong> 27 de marzo de 2026</p>
-                
                 <h3 style="color: #ff914d; margin-top: 1rem;">1. Aceptación de los Términos</h3>
-                <p>Al acceder y utilizar el sitio web de Siempre Nuevo, usted acepta cumplir con estos términos y condiciones. Si no está de acuerdo con alguna parte de estos términos, no debe utilizar nuestro sitio.</p>
-                
+                <p>Al acceder y utilizar el sitio web de Siempre Nuevo, usted acepta cumplir con estos términos y condiciones.</p>
                 <h3 style="color: #ff914d; margin-top: 1rem;">2. Descripción del Servicio</h3>
-                <p>Siempre Nuevo es un servicio de protección automotriz ofrecido por Akinnova, que incluye cobertura para raspón de pintura, reparación de aros y neumáticos, y arreglo o reposición de parabrisas.</p>
-                
-                <h3 style="color: #ff914d; margin-top: 1rem;">3. Uso de la Información</h3>
-                <p>Al proporcionar su información personal a través de nuestro formulario de contacto, usted autoriza a Siempre Nuevo a utilizar sus datos para contactarlo y brindarle información sobre nuestros servicios.</p>
-                
-                <h3 style="color: #ff914d; margin-top: 1rem;">4. Protección de Datos</h3>
-                <p>Nos comprometemos a proteger su información personal y a no compartirla con terceros sin su consentimiento explícito, excepto cuando sea requerido por ley.</p>
-                
-                <h3 style="color: #ff914d; margin-top: 1rem;">5. Modificaciones</h3>
-                <p>Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios serán efectivos inmediatamente después de su publicación en el sitio web.</p>
-                
-                <h3 style="color: #ff914d; margin-top: 1rem;">6. Contacto</h3>
-                <p>Si tiene alguna pregunta sobre estos términos, puede contactarnos a través de nuestro formulario de contacto o al correo: contacto@akinnova.com</p>
+                <p>Siempre Nuevo es un servicio de protección automotriz ofrecido por Akinnova.</p>
+                <h3 style="color: #ff914d; margin-top: 1rem;">3. Contacto</h3>
+                <p>contacto@akinnova.com</p>
             </div>
             <button id="acceptModalTerms" style="background-color: #ff914d; color: #0c3a6a; border: none; padding: 0.8rem 2rem; border-radius: 40px; font-weight: 600; margin-top: 1.5rem; cursor: pointer; width: 100%;">Aceptar y Continuar</button>
         </div>
     </div>
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    
     <script>
         (function() {
-            // Configuración de EmailJS
+            // EmailJS Config
             const EMAILJS_PUBLIC_KEY = 'GExj5Fp2jmCjSsKEE';
             const EMAILJS_SERVICE_ID = 'service_ygxlbye';
             const EMAILJS_TEMPLATE_ID = 'template_c7ltsb8';
             
-            // Inicializar EmailJS
             emailjs.init(EMAILJS_PUBLIC_KEY);
             
             const menuBtn = document.getElementById('menuButton');
@@ -830,7 +786,7 @@
                             throw new Error('Error al enviar');
                         }
                     } catch (error) {
-                        console.error('Error detallado:', error);
+                        console.error('Error:', error);
                         submitBtn.innerHTML = '❌ Error, intenta de nuevo';
                         submitBtn.classList.add('error');
                         
@@ -843,22 +799,19 @@
                 });
             }
 
-            // Carrusel
+            // CARRUSEL
             const track = document.getElementById('carouselTrack');
+            const slides = document.querySelectorAll('.carousel-slide');
             const prevBtn = document.getElementById('prevBtn');
             const nextBtn = document.getElementById('nextBtn');
             const dotsContainer = document.getElementById('carouselDots');
+            
             let currentIndex = 0;
-            let slides = [];
-
+            const totalSlides = slides.length;
+            
             function updateCarousel() {
-                if (slides.length === 0) return;
-                const slideWidth = slides[0].clientWidth;
-                track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-                
-                // Actualizar dots
-                const dots = document.querySelectorAll('.dot');
-                dots.forEach((dot, index) => {
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                document.querySelectorAll('.dot').forEach((dot, index) => {
                     if (index === currentIndex) {
                         dot.classList.add('active');
                     } else {
@@ -866,87 +819,41 @@
                     }
                 });
             }
-
-            function initCarousel() {
-                slides = Array.from(document.querySelectorAll('.carousel-slide'));
-                if (slides.length === 0) return;
-                
-                // Limpiar y crear dots
-                dotsContainer.innerHTML = '';
-                slides.forEach((_, index) => {
+            
+            function createDots() {
+                for (let i = 0; i < totalSlides; i++) {
                     const dot = document.createElement('div');
                     dot.classList.add('dot');
-                    if (index === 0) dot.classList.add('active');
+                    if (i === currentIndex) dot.classList.add('active');
                     dot.addEventListener('click', () => {
-                        currentIndex = index;
+                        currentIndex = i;
                         updateCarousel();
                     });
                     dotsContainer.appendChild(dot);
-                });
-                
-                if (prevBtn && nextBtn) {
-                    prevBtn.addEventListener('click', () => {
-                        currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
-                        updateCarousel();
-                    });
-                    
-                    nextBtn.addEventListener('click', () => {
-                        currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
-                        updateCarousel();
-                    });
                 }
+            }
+            
+            if (prevBtn && nextBtn && totalSlides > 0) {
+                createDots();
                 
-                window.addEventListener('resize', () => {
+                prevBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
                     updateCarousel();
                 });
                 
-                updateCarousel();
+                nextBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex + 1) % totalSlides;
+                    updateCarousel();
+                });
             }
-
-            // Esperar a que carguen los videos para inicializar carrusel
-            setTimeout(initCarousel, 100);
-
-            const video = document.getElementById('mainVideo');
-            if (video) {
+            
+            // Error handler para videos
+            const videos = document.querySelectorAll('video');
+            videos.forEach(video => {
                 video.addEventListener('error', function() {
-                    const parent = this.parentElement;
-                    const fallback = document.createElement('div');
-                    fallback.textContent = '🎬 Video 1';
-                    fallback.style.color = '#0c3a6a';
-                    fallback.style.fontSize = '1.5rem';
-                    fallback.style.fontWeight = 'bold';
-                    fallback.style.display = 'flex';
-                    fallback.style.alignItems = 'center';
-                    fallback.style.justifyContent = 'center';
-                    fallback.style.width = '100%';
-                    fallback.style.height = '300px';
-                    fallback.style.backgroundColor = 'transparent';
-                    fallback.style.borderRadius = '32px';
-                    this.style.display = 'none';
-                    parent.appendChild(fallback);
+                    console.log('Video no encontrado:', this.querySelector('source')?.src);
                 });
-            }
-
-            const video2 = document.getElementById('video2');
-            if (video2) {
-                video2.addEventListener('error', function() {
-                    const parent = this.parentElement;
-                    const fallback = document.createElement('div');
-                    fallback.textContent = '🎬 Video 2';
-                    fallback.style.color = '#fff';
-                    fallback.style.fontSize = '1.5rem';
-                    fallback.style.fontWeight = 'bold';
-                    fallback.style.display = 'flex';
-                    fallback.style.alignItems = 'center';
-                    fallback.style.justifyContent = 'center';
-                    fallback.style.width = '100%';
-                    fallback.style.height = '400px';
-                    fallback.style.backgroundColor = '#0c3a6a';
-                    fallback.style.borderRadius = '32px';
-                    this.style.display = 'none';
-                    parent.appendChild(fallback);
-                });
-            }
+            });
         })();
     </script>
 </body>
