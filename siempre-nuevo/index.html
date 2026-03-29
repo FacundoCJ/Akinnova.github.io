@@ -116,32 +116,18 @@
             padding: 0 2rem;
         }
 
-        /* BARRA SUPERIOR - FIJADA */
+        /* BARRA SUPERIOR - MANTENEMOS EL DISEÑO ORIGINAL (NO FIJA) */
         .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
             background-color: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(2px);
-            border-radius: 0;
+            border-radius: 60px;
             padding: 0.7rem 2rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        /* Contenedor para el contenido de la barra */
-        .navbar-content {
-            max-width: 1400px;
-            width: 100%;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            margin-top: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .menu-icon {
@@ -172,11 +158,6 @@
             height: 96px;
             width: auto;
             display: block;
-        }
-
-        /* Ajuste para el hero-section porque la barra está fija */
-        .hero-section {
-            padding-top: 120px;
         }
 
         /* SECCIÓN AZUL */
@@ -689,19 +670,14 @@
                 padding: 0 1rem;
             }
             .navbar {
-                padding: 0.5rem 1rem;
-            }
-            .navbar-content {
-                padding: 0;
+                padding: 0.5rem 1.5rem;
+                margin-top: 1rem;
             }
             .menu-icon img {
                 width: 45px;
             }
             .logo-icon img {
                 height: 72px;
-            }
-            .hero-section {
-                padding-top: 90px;
             }
             .blue-section {
                 padding: 1.5rem 1rem;
@@ -809,22 +785,17 @@
         </div>
     </div>
 
-    <!-- BARRA SUPERIOR FIJA -->
-    <div class="navbar">
-        <div class="navbar-content">
-            <div class="menu-icon" id="menuButton">
-                <img src="fotos/menu.png" alt="Menú">
-            </div>
-            <div class="logo-icon" id="logoButton">
-                <img src="fotos/logo-sn.png" alt="Siempre Nuevo">
-            </div>
-        </div>
-    </div>
-
-    <!-- SECCIÓN HERO -->
+    <!-- BARRA SUPERIOR - DISEÑO ORIGINAL (NO FIJA) -->
     <div class="hero-section">
         <div class="hero-container">
-            <!-- Contenido vacío porque la imagen está en el fondo -->
+            <div class="navbar">
+                <div class="menu-icon" id="menuButton">
+                    <img src="fotos/menu.png" alt="Menú">
+                </div>
+                <div class="logo-icon" id="logoButton">
+                    <img src="fotos/logo-sn.png" alt="Siempre Nuevo">
+                </div>
+            </div>
         </div>
     </div>
 
@@ -854,7 +825,7 @@
                     <div class="terms-group">
                         <input type="checkbox" id="termsCheckbox" required>
                         <label for="termsCheckbox">
-                            Acepto los <a href="#" id="termsLink">términos y condiciones</a> y la política de privacidad
+                            Acepto los <a href="terminos-y-condiciones.html" id="termsLink">términos y condiciones</a> y la política de privacidad
                         </label>
                     </div>
                     
@@ -967,8 +938,8 @@
                     <div class="footer-links">
                         <a href="https://wa.me/51997281159?text=Hola,%20me%20interesa%20obtener%20más%20información%20sobre%20Siempre%20Nuevo" class="footer-link" target="_blank">+51 997281159</a>
                         <a href="mailto:contacto@akinnova.com?subject=Información%20sobre%20Siempre%20Nuevo&body=Hola,%20me%20gustaría%20recibir%20más%20información%20sobre%20Siempre%20Nuevo." class="footer-link">contacto@akinnova.com</a>
-                        <a href="#" id="footerLibroReclamaciones" class="footer-link">Libro de reclamaciones</a>
-                        <a href="#" id="footerTerminosCondiciones" class="footer-link">Términos y condiciones</a>
+                        <a href="libro-de-reclamaciones.html" id="footerLibroReclamaciones" class="footer-link">Libro de reclamaciones</a>
+                        <a href="terminos-y-condiciones.html" id="footerTerminosCondiciones" class="footer-link">Términos y condiciones</a>
                     </div>
                     <div class="footer-social">
                         <a href="https://www.instagram.com/siemprenuevo.pe/" target="_blank">
@@ -1031,78 +1002,6 @@
             const form = document.getElementById('contactForm');
             const submitBtn = document.getElementById('submitBtn');
             const termsCheckbox = document.getElementById('termsCheckbox');
-            const termsLink = document.getElementById('termsLink');
-            const termsModal = document.getElementById('termsModal');
-            const closeModal = document.getElementById('closeModal');
-            const acceptModalTerms = document.getElementById('acceptModalTerms');
-            
-            // Modales para footer
-            const footerTerminosLink = document.getElementById('footerTerminosCondiciones');
-            const footerLibroLink = document.getElementById('footerLibroReclamaciones');
-            const reclamacionesModal = document.getElementById('reclamacionesModal');
-            const closeReclamacionesModal = document.getElementById('closeReclamacionesModal');
-            const closeReclamacionesBtn = document.getElementById('closeReclamacionesBtn');
-            
-            // Abrir modal de términos desde el footer
-            if (footerTerminosLink) {
-                footerTerminosLink.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    termsModal.style.display = 'flex';
-                });
-            }
-            
-            // Abrir modal de libro de reclamaciones
-            if (footerLibroLink) {
-                footerLibroLink.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    reclamacionesModal.style.display = 'flex';
-                });
-            }
-            
-            // Cerrar modal de reclamaciones
-            if (closeReclamacionesModal) {
-                closeReclamacionesModal.addEventListener('click', function() {
-                    reclamacionesModal.style.display = 'none';
-                });
-            }
-            
-            if (closeReclamacionesBtn) {
-                closeReclamacionesBtn.addEventListener('click', function() {
-                    reclamacionesModal.style.display = 'none';
-                });
-            }
-            
-            window.addEventListener('click', function(e) {
-                if (e.target === reclamacionesModal) {
-                    reclamacionesModal.style.display = 'none';
-                }
-            });
-            
-            if (termsLink) {
-                termsLink.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    termsModal.style.display = 'flex';
-                });
-            }
-            
-            if (closeModal) {
-                closeModal.addEventListener('click', function() {
-                    termsModal.style.display = 'none';
-                });
-            }
-            
-            if (acceptModalTerms) {
-                acceptModalTerms.addEventListener('click', function() {
-                    termsCheckbox.checked = true;
-                    termsModal.style.display = 'none';
-                });
-            }
-            
-            window.addEventListener('click', function(e) {
-                if (e.target === termsModal) {
-                    termsModal.style.display = 'none';
-                }
-            });
             
             if (logoBtn) {
                 logoBtn.addEventListener('click', function() {
