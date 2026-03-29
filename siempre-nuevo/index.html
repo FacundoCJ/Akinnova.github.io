@@ -17,8 +17,23 @@
             background-color: #ffffff;
         }
 
-        .main-container {
+        /* SECCIÓN HERO CON IMAGEN DE FONDO QUE CUBRE TODO EL ANCHO */
+        .hero-section {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            background-image: url('fotos/carro.png');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Contenedor para la barra dentro de la sección hero */
+        .hero-container {
             max-width: 1400px;
+            width: 100%;
             margin: 0 auto;
             padding: 0 2rem;
         }
@@ -67,27 +82,16 @@
             display: block;
         }
 
-        /* IMAGEN PRINCIPAL carro.png */
-        .hero-image {
-            width: 100%;
-            border-radius: 40px;
-            overflow: hidden;
-            margin-bottom: 2rem;
-        }
-
-        .hero-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: cover;
-        }
-
-        /* SECCIÓN AZUL - formulario + video + redes */
+        /* SECCIÓN AZUL - ANCHO COMPLETO */
         .blue-section {
             background-color: #0c3a6a;
-            border-radius: 40px;
-            padding: 3rem;
-            margin-bottom: 2rem;
+            width: 100%;
+            padding: 3rem 2rem;
+        }
+
+        .blue-section-inner {
+            max-width: 1400px;
+            margin: 0 auto;
             display: flex;
             gap: 3rem;
             flex-wrap: wrap;
@@ -270,14 +274,17 @@
             height: 48px;
         }
 
-        /* SECCIÓN BLANCA - COBERTURA DEL PROGRAMA */
+        /* SECCIÓN BLANCA - COBERTURA DEL PROGRAMA (ANCHO COMPLETO) */
         .cobertura-section {
             background-color: white;
-            border-radius: 40px;
+            width: 100%;
             padding: 3rem 2rem;
-            margin-bottom: 2rem;
             text-align: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .cobertura-section-inner {
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .cobertura-section h2 {
@@ -358,7 +365,7 @@
         }
 
         @media (max-width: 768px) {
-            .main-container {
+            .hero-container {
                 padding: 0 1rem;
             }
             .navbar {
@@ -372,7 +379,9 @@
                 height: 72px;
             }
             .blue-section {
-                padding: 1.5rem;
+                padding: 1.5rem 1rem;
+            }
+            .blue-section-inner {
                 gap: 1.5rem;
             }
             .form-container {
@@ -407,24 +416,25 @@
     </style>
 </head>
 <body>
-    <div class="main-container">
-        <!-- Barra superior -->
-        <div class="navbar">
-            <div class="menu-icon" id="menuButton">
-                <img src="fotos/menu.png" alt="Menú">
-            </div>
-            <div class="logo-icon" id="logoButton">
-                <img src="fotos/logo-sn.png" alt="Siempre Nuevo">
+    <!-- SECCIÓN HERO: imagen carro.png que cubre todo el ancho -->
+    <div class="hero-section">
+        <div class="hero-container">
+            <!-- Barra superior sobre la imagen -->
+            <div class="navbar">
+                <div class="menu-icon" id="menuButton">
+                    <img src="fotos/menu.png" alt="Menú">
+                </div>
+                <div class="logo-icon" id="logoButton">
+                    <img src="fotos/logo-sn.png" alt="Siempre Nuevo">
+                </div>
             </div>
         </div>
+        <!-- La imagen de fondo está en el CSS de hero-section, no necesita más contenido -->
+    </div>
 
-        <!-- IMAGEN PRINCIPAL carro.png (separada, no es fondo) -->
-        <div class="hero-image">
-            <img src="fotos/carro.png" alt="Carro Siempre Nuevo">
-        </div>
-
-        <!-- SECCIÓN AZUL: formulario + video + redes sociales -->
-        <div class="blue-section">
+    <!-- SECCIÓN AZUL: formulario + video + redes (ancho completo) -->
+    <div class="blue-section">
+        <div class="blue-section-inner">
             <div class="form-container">
                 <h2>Te contamos cómo proteger tu auto</h2>
                 <form id="contactForm">
@@ -476,9 +486,11 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- SECCIÓN BLANCA: Cobertura del programa -->
-        <div class="cobertura-section">
+    <!-- SECCIÓN BLANCA: Cobertura del programa (ancho completo) -->
+    <div class="cobertura-section">
+        <div class="cobertura-section-inner">
             <h2>Cobertura del programa</h2>
             <div class="cobertura-grid">
                 <div class="cobertura-card">
