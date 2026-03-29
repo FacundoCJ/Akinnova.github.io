@@ -95,18 +95,18 @@
             display: block;
         }
 
-        /* BARRA SUPERIOR FIJA CON EL MISMO DISEÑO */
+        /* BARRA SUPERIOR FIJA - MÁS PEQUEÑA */
         .navbar {
             position: fixed;
-            top: 1.5rem;
+            top: 1rem;
             left: 0;
             right: 0;
             z-index: 100;
             background-color: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(2px);
-            border-radius: 60px;
-            padding: 0.7rem 2rem;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            border-radius: 50px;
+            padding: 0.4rem 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
         }
 
@@ -129,7 +129,7 @@
             transform: scale(1.02);
         }
         .menu-icon img {
-            width: 60px;
+            width: 45px;
             height: auto;
             display: block;
         }
@@ -144,7 +144,7 @@
             transform: scale(1.02);
         }
         .logo-icon img {
-            height: 96px;
+            height: 70px;
             width: auto;
             display: block;
         }
@@ -160,7 +160,7 @@
             background-repeat: no-repeat;
             display: flex;
             flex-direction: column;
-            padding-top: 120px;
+            padding-top: 100px;
         }
 
         /* Optimización para móviles - imagen completa */
@@ -169,25 +169,40 @@
                 background-size: contain;
                 background-position: top center;
                 min-height: auto;
-                padding-top: 100px;
+                padding-top: 85px;
                 padding-bottom: 0;
-            }
-            
-            /* Ajuste para que la imagen ocupe el ancho completo y se vea completa */
-            .hero-section::after {
-                content: '';
-                display: block;
-                padding-bottom: 56.25%; /* Proporción 16:9 para que no quede espacio vacío */
             }
         }
 
         /* Para pantallas muy pequeñas */
         @media (max-width: 480px) {
+            .navbar {
+                top: 0.6rem;
+                padding: 0.3rem 1rem;
+                border-radius: 40px;
+            }
+            .menu-icon img {
+                width: 38px;
+            }
+            .logo-icon img {
+                height: 55px;
+            }
             .hero-section {
-                background-size: contain;
-                background-position: top center;
-                min-height: auto;
-                padding-top: 90px;
+                padding-top: 70px;
+            }
+        }
+
+        /* Contenedor para el relleno azul entre imagen y formulario en móvil */
+        .blue-spacer {
+            display: none;
+            background-color: #0c3a6a;
+            width: 100%;
+            height: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .blue-spacer {
+                display: block;
             }
         }
 
@@ -704,22 +719,6 @@
                 height: 36px;
                 font-size: 18px;
             }
-            .navbar {
-                top: 1rem;
-                padding: 0.5rem 1rem;
-            }
-            .navbar-content {
-                padding: 0;
-            }
-            .menu-icon img {
-                width: 45px;
-            }
-            .logo-icon img {
-                height: 72px;
-            }
-            .hero-section {
-                padding-top: 100px;
-            }
             .hero-container {
                 padding: 0 1rem;
             }
@@ -778,20 +777,16 @@
             }
         }
 
-        /* Optimización para pantallas muy pequeñas */
-        @media (max-width: 480px) {
+        /* Ajustes adicionales para laptop */
+        @media (min-width: 1024px) {
             .navbar {
-                top: 0.8rem;
-                padding: 0.4rem 0.8rem;
+                padding: 0.5rem 2rem;
             }
             .menu-icon img {
-                width: 40px;
+                width: 50px;
             }
             .logo-icon img {
-                height: 60px;
-            }
-            .hero-section {
-                padding-top: 80px;
+                height: 80px;
             }
         }
 
@@ -846,7 +841,7 @@
         </div>
     </div>
 
-    <!-- BARRA SUPERIOR FIJA CON EL MISMO DISEÑO -->
+    <!-- BARRA SUPERIOR FIJA - MÁS PEQUEÑA -->
     <div class="navbar">
         <div class="navbar-content">
             <div class="menu-icon" id="menuButton">
@@ -864,6 +859,9 @@
             <!-- La imagen de fondo está en el CSS de hero-section -->
         </div>
     </div>
+
+    <!-- Relleno azul para móvil entre imagen y formulario -->
+    <div class="blue-spacer"></div>
 
     <!-- SECCIÓN AZUL -->
     <div class="blue-section">
