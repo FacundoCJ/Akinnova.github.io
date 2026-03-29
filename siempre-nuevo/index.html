@@ -18,6 +18,84 @@
             background-color: #ffffff;
         }
 
+        /* MENU DESPLEGABLE - SIDEBAR */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -320px;
+            width: 300px;
+            height: 100%;
+            background-color: white;
+            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: left 0.3s ease;
+            overflow-y: auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .sidebar.open {
+            left: 0;
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 2rem;
+        }
+
+        .close-menu {
+            background: none;
+            border: none;
+            font-size: 32px;
+            cursor: pointer;
+            color: #0c3a6a;
+            transition: transform 0.2s ease;
+        }
+
+        .close-menu:hover {
+            transform: scale(1.1);
+            color: #ff914d;
+        }
+
+        .sidebar-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .sidebar-menu a {
+            color: #0c3a6a;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid #e7f3ff;
+        }
+
+        .sidebar-menu a:hover {
+            color: #ff914d;
+            transform: translateX(5px);
+            border-bottom-color: #ff914d;
+        }
+
+        /* Overlay para cerrar el menú al hacer clic fuera */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+            transition: display 0.3s ease;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
         /* SECCIÓN HERO CON IMAGEN DE FONDO */
         .hero-section {
             position: relative;
@@ -38,18 +116,32 @@
             padding: 0 2rem;
         }
 
-        /* BARRA SUPERIOR */
+        /* BARRA SUPERIOR - FIJADA */
         .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
             background-color: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(2px);
-            border-radius: 60px;
+            border-radius: 0;
             padding: 0.7rem 2rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-            margin-top: 1.5rem;
-            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        /* Contenedor para el contenido de la barra */
+        .navbar-content {
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         .menu-icon {
@@ -80,6 +172,11 @@
             height: 96px;
             width: auto;
             display: block;
+        }
+
+        /* Ajuste para el hero-section porque la barra está fija */
+        .hero-section {
+            padding-top: 120px;
         }
 
         /* SECCIÓN AZUL */
@@ -337,7 +434,7 @@
             margin-top: 1rem;
         }
 
-        /* VIDEO GRANDE - ANCHO COMPLETO SIN MÁRGENES */
+        /* VIDEO GRANDE */
         .full-video-section {
             width: 100%;
             background-color: white;
@@ -355,7 +452,7 @@
             background-color: black;
         }
 
-        /* HISTORIAS REALES - CARRUSEL CON MÚLTIPLES VIDEOS VISIBLES */
+        /* HISTORIAS REALES - CARRUSEL */
         .historias-section {
             background-color: white;
             width: 100%;
@@ -389,7 +486,7 @@
             border-radius: 2px;
         }
 
-        /* CARRUSEL MULTIPLE */
+        /* CARRUSEL */
         .carousel-wrapper {
             position: relative;
             overflow: hidden;
@@ -480,7 +577,7 @@
             right: 0;
         }
 
-        /* FOOTER - BARRA FINAL AZUL */
+        /* FOOTER */
         .footer {
             background-color: #0c3a6a;
             width: 100%;
@@ -592,14 +689,19 @@
                 padding: 0 1rem;
             }
             .navbar {
-                padding: 0.5rem 1.5rem;
-                margin-top: 1rem;
+                padding: 0.5rem 1rem;
+            }
+            .navbar-content {
+                padding: 0;
             }
             .menu-icon img {
                 width: 45px;
             }
             .logo-icon img {
                 height: 72px;
+            }
+            .hero-section {
+                padding-top: 90px;
             }
             .blue-section {
                 padding: 1.5rem 1rem;
@@ -651,6 +753,9 @@
                 width: 40px;
                 height: 40px;
             }
+            .sidebar {
+                width: 280px;
+            }
         }
 
         .spinner {
@@ -668,7 +773,6 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Placeholder para videos que no existen */
         .video-placeholder {
             width: 100%;
             aspect-ratio: 9 / 16;
@@ -686,17 +790,41 @@
     </style>
 </head>
 <body>
+    <!-- Overlay para cerrar menú -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Menú desplegable lateral -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button class="close-menu" id="closeMenuBtn">✕</button>
+        </div>
+        <div class="sidebar-menu">
+            <a href="beneficios.html">Beneficios</a>
+            <a href="planes.html">Planes</a>
+            <a href="quienes-somos.html">Quienes Somos</a>
+            <a href="por-que-siempre-nuevo.html">¿Por qué Siempre Nuevo?</a>
+            <a href="terminos-y-condiciones.html">Términos y Condiciones</a>
+            <a href="libro-de-reclamaciones.html">Libro de Reclamaciones</a>
+            <a href="nuestros-aliados.html">Nuestros Aliados</a>
+        </div>
+    </div>
+
+    <!-- BARRA SUPERIOR FIJA -->
+    <div class="navbar">
+        <div class="navbar-content">
+            <div class="menu-icon" id="menuButton">
+                <img src="fotos/menu.png" alt="Menú">
+            </div>
+            <div class="logo-icon" id="logoButton">
+                <img src="fotos/logo-sn.png" alt="Siempre Nuevo">
+            </div>
+        </div>
+    </div>
+
     <!-- SECCIÓN HERO -->
     <div class="hero-section">
         <div class="hero-container">
-            <div class="navbar">
-                <div class="menu-icon" id="menuButton">
-                    <img src="fotos/menu.png" alt="Menú">
-                </div>
-                <div class="logo-icon" id="logoButton">
-                    <img src="fotos/logo-sn.png" alt="Siempre Nuevo">
-                </div>
-            </div>
+            <!-- Contenido vacío porque la imagen está en el fondo -->
         </div>
     </div>
 
@@ -777,7 +905,7 @@
         </div>
     </div>
 
-    <!-- VIDEO GRANDE - ANCHO COMPLETO SIN MÁRGENES -->
+    <!-- VIDEO GRANDE -->
     <div class="full-video-section">
         <div class="full-video-container">
             <video controls>
@@ -787,7 +915,7 @@
         </div>
     </div>
 
-    <!-- HISTORIAS REALES CON CARRUSEL DE MÚLTIPLES VIDEOS -->
+    <!-- HISTORIAS REALES -->
     <div class="historias-section">
         <div class="historias-section-inner">
             <h2>Historias reales</h2>
@@ -795,32 +923,27 @@
                 <button class="carousel-button prev" id="prevBtn">❮</button>
                 <div class="carousel-container" id="carouselContainer">
                     <div class="carousel-track" id="carouselTrack">
-                        <!-- Video 1 - Real -->
                         <div class="carousel-slide">
                             <video controls>
                                 <source src="fotos/video3.mp4" type="video/mp4">
                                 Tu navegador no soporta el elemento de video.
                             </video>
                         </div>
-                        <!-- Video 2 - Placeholder para estética -->
                         <div class="carousel-slide">
                             <div class="video-placeholder">
                                 🎬<br>Historia 2
                             </div>
                         </div>
-                        <!-- Video 3 - Placeholder para estética -->
                         <div class="carousel-slide">
                             <div class="video-placeholder">
                                 🎬<br>Historia 3
                             </div>
                         </div>
-                        <!-- Video 4 - Placeholder para estética -->
                         <div class="carousel-slide">
                             <div class="video-placeholder">
                                 🎬<br>Historia 4
                             </div>
                         </div>
-                        <!-- Video 5 - Placeholder para estética -->
                         <div class="carousel-slide">
                             <div class="video-placeholder">
                                 🎬<br>Historia 5
@@ -833,7 +956,7 @@
         </div>
     </div>
 
-    <!-- FOOTER - BARRA FINAL AZUL -->
+    <!-- FOOTER -->
     <div class="footer">
         <div class="footer-inner">
             <div class="footer-left">
@@ -860,73 +983,6 @@
         </div>
     </div>
 
-    <!-- Modal para Términos -->
-    <div id="termsModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center;">
-        <div style="background-color: white; border-radius: 32px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; padding: 2rem; position: relative;">
-            <button id="closeModal" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 24px; cursor: pointer; color: #0c3a6a;">✕</button>
-            <h2 style="color: #0c3a6a; margin-bottom: 1rem;">Términos y Condiciones</h2>
-            <div style="color: #333; line-height: 1.6;">
-                <p><strong>Última actualización:</strong> 28 de marzo de 2026</p>
-                
-                <h3 style="color: #ff914d; margin-top: 1rem;">1. Aceptación de los Términos</h3>
-                <p>Al acceder y utilizar el sitio web de Siempre Nuevo, usted acepta cumplir con estos términos y condiciones. Si no está de acuerdo con alguna parte de estos términos, no debe utilizar nuestro sitio.</p>
-                
-                <h3 style="color: #ff914d; margin-top: 1rem;">2. Descripción del Servicio</h3>
-                <p>Siempre Nuevo es un servicio de protección automotriz ofrecido por Akinnova, que incluye cobertura para raspón de pintura, reparación de aros y neumáticos, y arreglo o reposición de parabrisas.</p>
-                
-                <h3 style="color: #ff914d; margin-top: 1rem;">3. Uso de la Información</h3>
-                <p>Al proporcionar su información personal a través de nuestro formulario de contacto, usted autoriza a Siempre Nuevo a utilizar sus datos para contactarlo y brindarle información sobre nuestros servicios.</p>
-                
-                <h3 style="color: #ff914d; margin-top: 1rem;">4. Protección de Datos</h3>
-                <p>Nos comprometemos a proteger su información personal y a no compartirla con terceros sin su consentimiento explícito, excepto cuando sea requerido por ley.</p>
-                
-                <h3 style="color: #ff914d; margin-top: 1rem;">5. Modificaciones</h3>
-                <p>Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios serán efectivos inmediatamente después de su publicación en el sitio web.</p>
-                
-                <h3 style="color: #ff914d; margin-top: 1rem;">6. Contacto</h3>
-                <p>Si tiene alguna pregunta sobre estos términos, puede contactarnos a través de nuestro formulario de contacto o al correo: contacto@akinnova.com</p>
-            </div>
-            <button id="acceptModalTerms" style="background-color: #ff914d; color: #0c3a6a; border: none; padding: 0.8rem 2rem; border-radius: 40px; font-weight: 600; margin-top: 1.5rem; cursor: pointer; width: 100%;">Aceptar y Continuar</button>
-        </div>
-    </div>
-
-    <!-- Modal para Libro de Reclamaciones -->
-    <div id="reclamacionesModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center;">
-        <div style="background-color: white; border-radius: 32px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; padding: 2rem; position: relative;">
-            <button id="closeReclamacionesModal" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 24px; cursor: pointer; color: #0c3a6a;">✕</button>
-            <h2 style="color: #0c3a6a; margin-bottom: 1rem;">Libro de Reclamaciones</h2>
-            <div style="color: #333; line-height: 1.6;">
-                <p><strong>📋 Libro de Reclamaciones - Siempre Nuevo</strong></p>
-                <p style="margin-top: 1rem;">En cumplimiento de la normativa vigente, ponemos a disposición de nuestros clientes y usuarios el Libro de Reclamaciones virtual.</p>
-                
-                <h3 style="color: #ff914d; margin-top: 1.5rem;">¿Cómo presentar un reclamo?</h3>
-                <p>Para presentar un reclamo, puedes contactarnos a través de los siguientes medios:</p>
-                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
-                    <li>📧 Correo electrónico: <strong>contacto@akinnova.com</strong></li>
-                    <li>📱 WhatsApp: <strong>+51 997281159</strong></li>
-                </ul>
-                
-                <h3 style="color: #ff914d; margin-top: 1.5rem;">Información necesaria</h3>
-                <p>Para procesar tu reclamo, necesitaremos:</p>
-                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
-                    <li>Nombres y apellidos completos</li>
-                    <li>DNI o documento de identidad</li>
-                    <li>Número de teléfono y correo electrónico</li>
-                    <li>Descripción detallada del reclamo</li>
-                    <li>Documentos que respalden tu reclamo (si aplica)</li>
-                </ul>
-                
-                <h3 style="color: #ff914d; margin-top: 1.5rem;">Plazos de respuesta</h3>
-                <p>Nos comprometemos a responder tu reclamo en un plazo máximo de <strong>15 días hábiles</strong> desde su recepción.</p>
-                
-                <h3 style="color: #ff914d; margin-top: 1.5rem;">Atención al cliente</h3>
-                <p>Horario de atención: Lunes a Viernes de 9:00 am a 6:00 pm</p>
-                <p>📞 Teléfono: +51 997281159</p>
-            </div>
-            <button id="closeReclamacionesBtn" style="background-color: #ff914d; color: #0c3a6a; border: none; padding: 0.8rem 2rem; border-radius: 40px; font-weight: 600; margin-top: 1.5rem; cursor: pointer; width: 100%;">Cerrar</button>
-        </div>
-    </div>
-
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>
         (function() {
@@ -937,7 +993,39 @@
             
             emailjs.init(EMAILJS_PUBLIC_KEY);
             
+            // Elementos del menú
             const menuBtn = document.getElementById('menuButton');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const closeMenuBtn = document.getElementById('closeMenuBtn');
+            
+            // Función para abrir menú
+            function openMenu() {
+                sidebar.classList.add('open');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            // Función para cerrar menú
+            function closeMenu() {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            // Eventos del menú
+            if (menuBtn) {
+                menuBtn.addEventListener('click', openMenu);
+            }
+            
+            if (closeMenuBtn) {
+                closeMenuBtn.addEventListener('click', closeMenu);
+            }
+            
+            if (overlay) {
+                overlay.addEventListener('click', closeMenu);
+            }
+            
             const logoBtn = document.getElementById('logoButton');
             const footerLogo = document.getElementById('footerLogo');
             const form = document.getElementById('contactForm');
@@ -984,7 +1072,6 @@
                 });
             }
             
-            // Cerrar modal de reclamaciones click fuera
             window.addEventListener('click', function(e) {
                 if (e.target === reclamacionesModal) {
                     reclamacionesModal.style.display = 'none';
@@ -1016,12 +1103,6 @@
                     termsModal.style.display = 'none';
                 }
             });
-            
-            if (menuBtn) {
-                menuBtn.addEventListener('click', function() {
-                    alert("🚗 Menú Siempre Nuevo\n\n• Beneficios\n• Planes\n• Quienes Somos\n• ¿Por qué Siempre Nuevo?\n• Términos y Condiciones\n• Libro de Reclamaciones\n• Nuestros Aliados");
-                });
-            }
             
             if (logoBtn) {
                 logoBtn.addEventListener('click', function() {
@@ -1095,7 +1176,7 @@
                 });
             }
 
-            // CARRUSEL CON DESPLAZAMIENTO HORIZONTAL
+            // CARRUSEL
             const carouselContainer = document.getElementById('carouselContainer');
             const prevBtn = document.getElementById('prevBtn');
             const nextBtn = document.getElementById('nextBtn');
