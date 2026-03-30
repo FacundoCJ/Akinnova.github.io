@@ -54,6 +54,15 @@
             object-fit: contain;
         }
 
+        .siempre-nuevo-link {
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .siempre-nuevo-link:hover {
+            opacity: 0.8;
+        }
+
         .siempre-nuevo {
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
@@ -885,7 +894,9 @@
     <img class="hero-image" src="fotos/carro-inicio.png" alt="Vehículo principal | Akinnova">
     <div class="navbar-overlay">
         <img class="logo-img" src="fotos/akinnova-logo.png" alt="Akinnova Logo">
-        <span class="siempre-nuevo">Siempre Nuevo</span>
+        <a href="https://akinnova.com/siempre-nuevo/" target="_blank" rel="noopener noreferrer" class="siempre-nuevo-link">
+            <span class="siempre-nuevo">Siempre Nuevo</span>
+        </a>
     </div>
     <div class="hero-text">
         <h1>Impulsando el<br>Dealer del Futuro</h1>
