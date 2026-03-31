@@ -449,6 +449,89 @@
             height: 48px;
         }
 
+        /* SECCIÓN CÓMO FUNCIONA */
+        .como-funciona-section {
+            background-color: white;
+            width: 100%;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .como-funciona-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .como-funciona-section h2 {
+            color: #0c3a6a;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .como-funciona-section h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: #ff914d;
+            border-radius: 2px;
+        }
+
+        .pasos-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .paso-card {
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+            text-align: center;
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .paso-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .paso-numero {
+            width: 60px;
+            height: 60px;
+            background-color: #ff914d;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem auto;
+            box-shadow: 0 4px 12px rgba(255, 145, 77, 0.3);
+        }
+
+        .paso-card h3 {
+            color: #0c3a6a;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .paso-card p {
+            color: #4a5568;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
         /* SECCIÓN BLANCA - COBERTURA */
         .cobertura-section {
             background-color: white;
@@ -807,6 +890,9 @@
                 width: 40px;
                 height: 40px;
             }
+            .paso-card {
+                min-width: 100%;
+            }
             .cobertura-card img {
                 height: 180px;
             }
@@ -860,6 +946,17 @@
             }
             .hero-section {
                 padding-top: 75px;
+            }
+            .paso-numero {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            .paso-card h3 {
+                font-size: 1.1rem;
+            }
+            .paso-card p {
+                font-size: 0.85rem;
             }
         }
 
@@ -989,6 +1086,30 @@
                             <img src="fotos/tiktok.png" alt="TikTok">
                         </a>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN ASÍ DE SIMPLE FUNCIONA SIEMPRE NUEVO -->
+    <div class="como-funciona-section">
+        <div class="como-funciona-inner">
+            <h2>Así de simple funciona Siempre Nuevo</h2>
+            <div class="pasos-grid">
+                <div class="paso-card">
+                    <div class="paso-numero">1</div>
+                    <h3>Te afilias en minutos</h3>
+                    <p>Proceso sencillo y sin papeleo desde cualquier dispositivo.</p>
+                </div>
+                <div class="paso-card">
+                    <div class="paso-numero">2</div>
+                    <h3>Usas el servicio cuando lo necesites</h3>
+                    <p>Accede al servicio en el momento que lo requieras.</p>
+                </div>
+                <div class="paso-card">
+                    <div class="paso-numero">3</div>
+                    <h3>Reparamos tu auto sin que uses tu seguro</h3>
+                    <p>Sin afectar tu historial ni incurrir en deducibles.</p>
                 </div>
             </div>
         </div>
