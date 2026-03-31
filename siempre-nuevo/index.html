@@ -744,33 +744,30 @@
             right: 0;
         }
 
-        /* FOOTER */
+        /* FOOTER - NUEVO DISEÑO */
         .footer {
             background-color: #0c3a6a;
             width: 100%;
-            padding: 2rem 2rem;
+            padding: 3rem 2rem;
         }
 
         .footer-inner {
             max-width: 1400px;
             margin: 0 auto;
             display: flex;
-            align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 2rem;
+            gap: 3rem;
         }
 
         .footer-left {
-            display: flex;
-            align-items: center;
-            gap: 3rem;
-            flex-wrap: wrap;
+            flex: 1;
+            min-width: 250px;
         }
 
         .footer-logo {
             cursor: pointer;
-            flex-shrink: 0;
+            margin-bottom: 1rem;
         }
 
         .footer-logo img {
@@ -779,50 +776,94 @@
             display: block;
         }
 
-        .footer-center {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            flex-wrap: wrap;
+        .footer-contact {
+            flex: 1;
+            min-width: 200px;
         }
 
-        .footer-links {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
+        .footer-contact h3, .footer-social-title h3 {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            position: relative;
+            display: inline-block;
         }
 
-        .footer-link {
+        .footer-contact h3:after, .footer-social-title h3:after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #ff914d;
+            border-radius: 2px;
+        }
+
+        .contact-item {
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-item a {
             color: white;
             text-decoration: none;
             font-size: 1rem;
             font-weight: 500;
-            transition: all 0.2s ease;
-            white-space: nowrap;
+            transition: color 0.2s ease;
         }
 
-        .footer-link:hover {
+        .contact-item a:hover {
             color: #ff914d;
-            transform: translateX(3px);
         }
 
         .footer-social {
-            display: flex;
-            gap: 1.5rem;
+            flex: 1;
+            min-width: 200px;
         }
 
-        .footer-social a {
+        .footer-social-title h3 {
+            display: inline-block;
+        }
+
+        .social-icons-footer {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons-footer a {
             display: inline-block;
             transition: transform 0.2s ease;
         }
 
-        .footer-social a:hover {
+        .social-icons-footer a:hover {
             transform: scale(1.1);
         }
 
-        .footer-social img {
+        .social-icons-footer img {
             width: 48px;
             height: 48px;
+        }
+
+        .footer-links-bottom {
+            width: 100%;
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-links-bottom a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin: 0 1rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links-bottom a:hover {
+            color: #ff914d;
         }
 
         /* MEDIA QUERIES */
@@ -834,14 +875,8 @@
             .carousel-slide {
                 flex: 0 0 calc(50% - 0.75rem);
             }
-            .footer-left {
-                gap: 2rem;
-            }
             .footer-logo img {
                 height: 200px;
-            }
-            .footer-center {
-                gap: 1.5rem;
             }
         }
 
@@ -899,33 +934,24 @@
             .footer-inner {
                 flex-direction: column;
                 text-align: center;
-                align-items: center;
             }
-            .footer-left {
-                flex-direction: column;
-                align-items: center;
-                gap: 1.5rem;
+            .footer-left, .footer-contact, .footer-social {
+                text-align: center;
             }
-            .footer-center {
-                flex-direction: column;
-                align-items: center;
-                gap: 1.5rem;
+            .footer-contact h3:after, .footer-social-title h3:after {
+                left: 50%;
+                transform: translateX(-50%);
             }
-            .footer-links {
-                align-items: center;
+            .social-icons-footer {
+                justify-content: center;
             }
-            .footer-link {
-                white-space: normal;
+            .footer-links-bottom a {
+                display: inline-block;
+                margin: 0.5rem;
             }
             .footer-logo img {
                 height: 180px;
-            }
-            .footer-social {
-                justify-content: center;
-            }
-            .footer-social img {
-                width: 40px;
-                height: 40px;
+                margin: 0 auto;
             }
             .sidebar {
                 width: 280px;
@@ -957,6 +983,13 @@
             }
             .paso-card p {
                 font-size: 0.85rem;
+            }
+            .footer-logo img {
+                height: 140px;
+            }
+            .social-icons-footer img {
+                width: 40px;
+                height: 40px;
             }
         }
 
@@ -1187,30 +1220,41 @@
         </div>
     </div>
 
-    <!-- FOOTER -->
+    <!-- FOOTER - NUEVO DISEÑO -->
     <div class="footer">
         <div class="footer-inner">
             <div class="footer-left">
                 <div class="footer-logo" id="footerLogo">
                     <img src="fotos/logo-sn.png" alt="Siempre Nuevo">
                 </div>
-                <div class="footer-center">
-                    <div class="footer-links">
-                        <a href="https://wa.me/51997281159?text=Hola,%20me%20interesa%20obtener%20más%20información%20sobre%20Siempre%20Nuevo" class="footer-link" target="_blank">+51 997281159</a>
-                        <a href="mailto:contacto@akinnova.com?subject=Información%20sobre%20Siempre%20Nuevo&body=Hola,%20me%20gustaría%20recibir%20más%20información%20sobre%20Siempre%20Nuevo." class="footer-link">contacto@akinnova.com</a>
-                        <a href="libro-de-reclamaciones.html" id="footerLibroReclamaciones" class="footer-link">Libro de reclamaciones</a>
-                        <a href="terminos-y-condiciones.html" id="footerTerminosCondiciones" class="footer-link">Términos y condiciones</a>
-                    </div>
-                    <div class="footer-social">
-                        <a href="https://www.instagram.com/siemprenuevo.pe/" target="_blank">
-                            <img src="fotos/instagram.png" alt="Instagram">
-                        </a>
-                        <a href="https://www.tiktok.com/@siemprenuevo.pe" target="_blank">
-                            <img src="fotos/tiktok.png" alt="TikTok">
-                        </a>
-                    </div>
+            </div>
+            <div class="footer-contact">
+                <h3>Contáctanos</h3>
+                <div class="contact-item">
+                    <a href="https://wa.me/51997281159?text=Hola,%20me%20interesa%20obtener%20más%20información%20sobre%20Siempre%20Nuevo" target="_blank">+51 997281159</a>
+                </div>
+                <div class="contact-item">
+                    <a href="mailto:contacto@akinnova.com?subject=Información%20sobre%20Siempre%20Nuevo&body=Hola,%20me%20gustaría%20recibir%20más%20información%20sobre%20Siempre%20Nuevo.">contacto@akinnova.com</a>
                 </div>
             </div>
+            <div class="footer-social">
+                <div class="footer-social-title">
+                    <h3>Síguenos</h3>
+                </div>
+                <div class="social-icons-footer">
+                    <a href="https://www.instagram.com/siemprenuevo.pe/" target="_blank">
+                        <img src="fotos/instagram.png" alt="Instagram">
+                    </a>
+                    <a href="https://www.tiktok.com/@siemprenuevo.pe" target="_blank">
+                        <img src="fotos/tiktok.png" alt="TikTok">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-links-bottom">
+            <a href="libro-de-reclamaciones.html">Libro de reclamaciones</a>
+            <a href="politica-de-privacidad.html">Política de privacidad</a>
+            <a href="terminos-y-condiciones.html">Términos y condiciones</a>
         </div>
     </div>
 
