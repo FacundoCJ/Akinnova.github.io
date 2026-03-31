@@ -779,11 +779,15 @@
         .footer-contact {
             flex: 1;
             min-width: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 50px;
         }
 
         .footer-contact h3, .footer-social-title h3 {
             color: white;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             font-weight: 600;
             margin-bottom: 1.2rem;
             position: relative;
@@ -808,7 +812,7 @@
         .contact-item a {
             color: white;
             text-decoration: none;
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 500;
             transition: color 0.2s ease;
         }
@@ -820,6 +824,10 @@
         .footer-social {
             flex: 1;
             min-width: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 50px;
         }
 
         .footer-social-title h3 {
@@ -842,8 +850,8 @@
         }
 
         .social-icons-footer img {
-            width: 48px;
-            height: 48px;
+            width: 52px;
+            height: 52px;
         }
 
         .footer-links-bottom {
@@ -857,7 +865,7 @@
         .footer-links-bottom a {
             color: white;
             text-decoration: none;
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             margin: 0 1rem;
             transition: color 0.2s ease;
         }
@@ -877,6 +885,15 @@
             }
             .footer-logo img {
                 height: 200px;
+            }
+            .footer-contact, .footer-social {
+                padding-top: 30px;
+            }
+            .contact-item a {
+                font-size: 1rem;
+            }
+            .footer-contact h3, .footer-social-title h3 {
+                font-size: 1.3rem;
             }
         }
 
@@ -937,6 +954,7 @@
             }
             .footer-left, .footer-contact, .footer-social {
                 text-align: center;
+                padding-top: 0;
             }
             .footer-contact h3:after, .footer-social-title h3:after {
                 left: 50%;
@@ -948,6 +966,7 @@
             .footer-links-bottom a {
                 display: inline-block;
                 margin: 0.5rem;
+                font-size: 0.85rem;
             }
             .footer-logo img {
                 height: 180px;
@@ -955,6 +974,12 @@
             }
             .sidebar {
                 width: 280px;
+            }
+            .footer-contact h3, .footer-social-title h3 {
+                font-size: 1.3rem;
+            }
+            .contact-item a {
+                font-size: 1rem;
             }
         }
 
@@ -988,8 +1013,14 @@
                 height: 140px;
             }
             .social-icons-footer img {
-                width: 40px;
-                height: 40px;
+                width: 45px;
+                height: 45px;
+            }
+            .footer-contact h3, .footer-social-title h3 {
+                font-size: 1.2rem;
+            }
+            .contact-item a {
+                font-size: 0.95rem;
             }
         }
 
