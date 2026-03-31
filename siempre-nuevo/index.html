@@ -149,7 +149,7 @@
             display: block;
         }
 
-        /* SECCIÓN HERO CON IMAGEN DE FONDO OPTIMIZADA */
+        /* SECCIÓN HERO CON IMAGEN DE FONDO Y TEXTO SUPERPUESTO */
         .hero-section {
             position: relative;
             width: 100%;
@@ -161,10 +161,42 @@
             display: flex;
             flex-direction: column;
             padding-top: 120px;
-            margin-bottom: -1px; /* Elimina posible espacio blanco */
+            margin-bottom: -1px;
         }
 
-        /* Optimización para móviles - imagen completa */
+        /* Contenedor del texto superpuesto */
+        .hero-text {
+            position: relative;
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .hero-title {
+            color: white;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+        }
+
+        .hero-subtitle {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 500;
+            line-height: 1.4;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+        }
+
+        /* Optimización para móviles */
         @media (max-width: 768px) {
             .hero-section {
                 background-size: contain;
@@ -174,18 +206,50 @@
                 padding-bottom: 0;
             }
             
-            /* Ajuste para que la imagen ocupe el ancho completo y se vea completa */
             .hero-section::after {
                 content: '';
                 display: block;
-                padding-bottom: 56.25%; /* Proporción 16:9 para que no quede espacio vacío */
+                padding-bottom: 56.25%;
+            }
+            
+            .hero-text {
+                position: absolute;
+                top: 50%;
+                left: 0;
+                right: 0;
+                transform: translateY(-50%);
+                padding: 0 1.5rem;
+            }
+            
+            .hero-title {
+                font-size: 1.8rem;
+                max-width: 90%;
+            }
+            
+            .hero-subtitle {
+                font-size: 0.9rem;
+                max-width: 90%;
             }
         }
 
-        /* Para pantallas muy pequeñas */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+        }
+
         @media (max-width: 480px) {
             .hero-section {
                 padding-top: 80px;
+            }
+            .hero-title {
+                font-size: 1.5rem;
+            }
+            .hero-subtitle {
+                font-size: 0.8rem;
             }
         }
 
@@ -201,7 +265,7 @@
             background-color: #0c3a6a;
             width: 100%;
             padding: 3rem 2rem;
-            margin-top: -1px; /* Elimina posible espacio blanco */
+            margin-top: -1px;
         }
 
         .blue-section-inner {
@@ -676,7 +740,7 @@
             height: 48px;
         }
 
-        /* MEDIA QUERIES PARA BARRA Y ESPACIOS */
+        /* MEDIA QUERIES */
         @media (max-width: 1024px) {
             .navbar {
                 width: 95%;
@@ -860,8 +924,12 @@
         </div>
     </div>
 
-    <!-- SECCIÓN HERO -->
+    <!-- SECCIÓN HERO CON TEXTO SUPERPUESTO -->
     <div class="hero-section">
+        <div class="hero-text">
+            <h1 class="hero-title">Protege tu auto de los daños del día a día</h1>
+            <p class="hero-subtitle">Evita usar tu seguro por raspones, golpes leves o daños comunes. Soluciones rápidas, sin complicaciones.</p>
+        </div>
         <div class="hero-container">
             <!-- La imagen de fondo está en el CSS de hero-section -->
         </div>
