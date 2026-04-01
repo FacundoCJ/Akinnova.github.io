@@ -164,7 +164,7 @@
             margin-bottom: -1px;
         }
 
-        /* Contenedor del texto superpuesto - centrado verticalmente */
+        /* Contenedor del texto superpuesto - MÁS PEGADO A LA IZQUIERDA */
         .hero-text {
             position: absolute;
             top: 55%;
@@ -186,7 +186,7 @@
             line-height: 1.2;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-            max-width: 600px;
+            max-width: 500px;
         }
 
         .hero-subtitle {
@@ -195,10 +195,10 @@
             font-weight: 500;
             line-height: 1.4;
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
-            max-width: 500px;
+            max-width: 450px;
         }
 
-        /* Optimización para móviles - texto más pequeño */
+        /* Optimización para móviles - texto más pequeño y compacto */
         @media (max-width: 768px) {
             .hero-section {
                 background-size: contain;
@@ -216,18 +216,19 @@
             
             .hero-text {
                 top: 50%;
-                padding: 0 1.5rem;
+                padding: 0 1rem;
             }
             
             .hero-title {
                 font-size: 0.9rem;
-                max-width: 90%;
+                max-width: 45%;
                 margin-bottom: 0.5rem;
+                line-height: 1.3;
             }
             
             .hero-subtitle {
                 font-size: 0.6rem;
-                max-width: 90%;
+                max-width: 45%;
                 line-height: 1.3;
             }
         }
@@ -236,26 +237,23 @@
         @media (min-width: 769px) and (max-width: 1024px) {
             .hero-title {
                 font-size: 2rem;
+                max-width: 45%;
             }
             .hero-subtitle {
                 font-size: 0.9rem;
+                max-width: 40%;
             }
         }
 
-        /* Laptop y desktop - texto más pegado a la izquierda */
-        @media (min-width: 1025px) {
-            .hero-text {
-                padding: 0 2rem;
-            }
-            
+        /* Laptop pequeño */
+        @media (min-width: 1025px) and (max-width: 1280px) {
             .hero-title {
-                margin-left: 0;
-                padding-left: 0;
+                font-size: 2.5rem;
+                max-width: 40%;
             }
-            
             .hero-subtitle {
-                margin-left: 0;
-                padding-left: 0;
+                font-size: 1rem;
+                max-width: 35%;
             }
         }
 
@@ -264,10 +262,12 @@
                 padding-top: 80px;
             }
             .hero-title {
-                font-size: 0.8rem;
+                font-size: 0.75rem;
+                max-width: 45%;
             }
             .hero-subtitle {
-                font-size: 0.55rem;
+                font-size: 0.5rem;
+                max-width: 45%;
             }
         }
 
