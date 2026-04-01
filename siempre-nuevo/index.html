@@ -95,25 +95,22 @@
             display: block;
         }
 
-        /* BARRA SUPERIOR FIJA - ANCHO REDUCIDO */
+        /* BARRA SUPERIOR FIJA - ANCHO REDUCIDO Y BLANCA SÓLIDA */
         .navbar {
             position: fixed;
-            top: 1.5rem;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 1200px;
+            top: 0;
+            left: 0;
+            right: 0;
             z-index: 100;
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(2px);
-            border-radius: 60px;
-            padding: 0.7rem 2rem;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
+            background-color: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            padding: 0.5rem 2rem;
         }
 
         .navbar-content {
+            max-width: 1400px;
             width: 100%;
+            margin: 0 auto;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -129,7 +126,7 @@
             transform: scale(1.02);
         }
         .menu-icon img {
-            width: 60px;
+            width: 50px;
             height: auto;
             display: block;
         }
@@ -144,12 +141,17 @@
             transform: scale(1.02);
         }
         .logo-icon img {
-            height: 96px;
+            height: 80px;
             width: auto;
             display: block;
         }
 
-        /* SECCIÓN HERO CON IMAGEN DE FONDO Y TEXTO SUPERPUESTO */
+        /* Ajuste para compensar la barra fija */
+        .hero-section {
+            padding-top: 100px;
+        }
+
+        /* SECCIÓN HERO CON IMAGEN DE FONDO Y TEXTO SUPERPUESTO - MÁS CONTRASTE */
         .hero-section {
             position: relative;
             width: 100%;
@@ -160,11 +162,10 @@
             background-repeat: no-repeat;
             display: flex;
             flex-direction: column;
-            padding-top: 120px;
             margin-bottom: -1px;
         }
 
-        /* Contenedor del texto superpuesto - MÁS PEGADO A LA IZQUIERDA */
+        /* Contenedor del texto superpuesto - MÁS PEGADO A LA IZQUIERDA CON MÁS CONTRASTE */
         .hero-text {
             position: absolute;
             top: 55%;
@@ -185,7 +186,7 @@
             font-style: italic;
             line-height: 1.2;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.5);
             max-width: 30%;
         }
 
@@ -194,11 +195,11 @@
             font-size: 1rem;
             font-weight: 500;
             line-height: 1.4;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
             max-width: 30%;
         }
 
-        /* Optimización para móviles - solo título, más grande y centrado */
+        /* Optimización para móviles */
         @media (max-width: 768px) {
             .hero-section {
                 background-size: contain;
@@ -228,6 +229,7 @@
                 max-width: 35%;
                 margin-bottom: 0;
                 line-height: 1.3;
+                text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
             }
             
             .hero-subtitle {
@@ -918,8 +920,13 @@
         /* MEDIA QUERIES */
         @media (max-width: 1024px) {
             .navbar {
-                width: 95%;
-                padding: 0.6rem 1.5rem;
+                padding: 0.4rem 1.5rem;
+            }
+            .menu-icon img {
+                width: 45px;
+            }
+            .logo-icon img {
+                height: 70px;
             }
             .carousel-slide {
                 flex: 0 0 calc(50% - 0.75rem);
@@ -948,18 +955,16 @@
 
         @media (max-width: 768px) {
             .navbar {
-                width: 92%;
-                top: 1rem;
-                padding: 0.5rem 1.2rem;
+                padding: 0.4rem 1rem;
             }
             .menu-icon img {
-                width: 45px;
+                width: 40px;
             }
             .logo-icon img {
-                height: 72px;
+                height: 60px;
             }
             .hero-section {
-                padding-top: 90px;
+                padding-top: 80px;
             }
             .carousel-slide {
                 flex: 0 0 calc(100% - 0rem);
@@ -1042,18 +1047,16 @@
 
         @media (max-width: 480px) {
             .navbar {
-                width: 90%;
-                top: 0.8rem;
-                padding: 0.4rem 1rem;
+                padding: 0.3rem 0.8rem;
             }
             .menu-icon img {
-                width: 38px;
+                width: 35px;
             }
             .logo-icon img {
-                height: 55px;
+                height: 50px;
             }
             .hero-section {
-                padding-top: 75px;
+                padding-top: 70px;
             }
             .hero-title {
                 font-size: 0.85rem;
@@ -1139,7 +1142,7 @@
         </div>
     </div>
 
-    <!-- BARRA SUPERIOR FIJA - ANCHO REDUCIDO -->
+    <!-- BARRA SUPERIOR FIJA - BLANCA SÓLIDA -->
     <div class="navbar">
         <div class="navbar-content">
             <div class="menu-icon" id="menuButton">
@@ -1166,15 +1169,11 @@
     <div class="blue-section">
         <div class="blue-section-inner">
             <div class="form-container">
-                <h2>Te contamos cómo proteger tu auto</h2>
+                <h2>Empieza a proteger tu auto hoy</h2>
                 <form id="contactForm">
                     <div class="form-group">
                         <label>Nombre y Apellidos</label>
                         <input type="text" name="nombre" required placeholder="Ej: Juan Pérez">
-                    </div>
-                    <div class="form-group">
-                        <label>Correo</label>
-                        <input type="email" name="email" required placeholder="ejemplo@correo.com">
                     </div>
                     <div class="form-group">
                         <label>Número de teléfono / WhatsApp</label>
@@ -1192,7 +1191,7 @@
                         </label>
                     </div>
                     
-                    <button type="submit" class="btn-continuar" id="submitBtn">👉 Quiero proteger mi auto</button>
+                    <button type="submit" class="btn-continuar" id="submitBtn">👉 Quiero protegerlo</button>
                 </form>
             </div>
 
@@ -1433,7 +1432,6 @@
                     submitBtn.classList.remove('success', 'error');
                     
                     const nombre = form.querySelector('input[name="nombre"]').value;
-                    const email = form.querySelector('input[name="email"]').value;
                     const telefono = form.querySelector('input[name="telefono"]').value;
                     const comentario = form.querySelector('textarea[name="comentario"]').value;
                     const fecha = new Date().toLocaleString('es-PE', { timeZone: 'America/Lima' });
@@ -1441,7 +1439,6 @@
                     try {
                         const templateParams = {
                             nombre: nombre,
-                            email: email,
                             telefono: telefono,
                             comentario: comentario || 'Sin comentario',
                             fecha: fecha,
@@ -1458,7 +1455,7 @@
                             privacyCheckbox.checked = false;
                             
                             setTimeout(() => {
-                                submitBtn.innerHTML = '👉 Quiero proteger mi auto';
+                                submitBtn.innerHTML = '👉 Quiero protegerlo';
                                 submitBtn.classList.remove('success');
                                 submitBtn.disabled = false;
                             }, 3000);
@@ -1471,7 +1468,7 @@
                         submitBtn.classList.add('error');
                         
                         setTimeout(() => {
-                            submitBtn.innerHTML = '👉 Quiero proteger mi auto';
+                            submitBtn.innerHTML = '👉 Quiero protegerlo';
                             submitBtn.classList.remove('error');
                             submitBtn.disabled = false;
                         }, 3000);
