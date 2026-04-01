@@ -276,7 +276,7 @@
                 padding-top: 80px;
             }
             .hero-title {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
                 max-width: 35%;
             }
         }
@@ -481,7 +481,7 @@
             height: 48px;
         }
 
-        /* SECCIÓN CÓMO FUNCIONA */
+        /* SECCIÓN CÓMO FUNCIONA - CON ICONOS */
         .como-funciona-section {
             background-color: white;
             width: 100%;
@@ -536,19 +536,22 @@
             transform: translateY(-5px);
         }
 
-        .paso-numero {
-            width: 60px;
-            height: 60px;
+        .paso-icono {
+            width: 80px;
+            height: 80px;
             background-color: #ff914d;
-            color: white;
-            font-size: 1.8rem;
-            font-weight: 700;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1rem auto;
             box-shadow: 0 4px 12px rgba(255, 145, 77, 0.3);
+        }
+
+        .paso-icono img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
         }
 
         .paso-card h3 {
@@ -933,6 +936,14 @@
             .footer-contact h3, .footer-social-title h3 {
                 font-size: 1.3rem;
             }
+            .paso-icono {
+                width: 70px;
+                height: 70px;
+            }
+            .paso-icono img {
+                width: 38px;
+                height: 38px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1019,6 +1030,14 @@
             .contact-item a {
                 font-size: 1rem;
             }
+            .paso-icono {
+                width: 60px;
+                height: 60px;
+            }
+            .paso-icono img {
+                width: 32px;
+                height: 32px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1039,10 +1058,13 @@
             .hero-title {
                 font-size: 0.85rem;
             }
-            .paso-numero {
-                width: 50px;
-                height: 50px;
-                font-size: 1.5rem;
+            .paso-icono {
+                width: 55px;
+                height: 55px;
+            }
+            .paso-icono img {
+                width: 28px;
+                height: 28px;
             }
             .paso-card h3 {
                 font-size: 1.1rem;
@@ -1196,23 +1218,29 @@
         </div>
     </div>
 
-    <!-- SECCIÓN ASÍ DE SIMPLE FUNCIONA SIEMPRE NUEVO -->
+    <!-- SECCIÓN ASÍ DE SIMPLE FUNCIONA SIEMPRE NUEVO - CON ICONOS -->
     <div class="como-funciona-section">
         <div class="como-funciona-inner">
             <h2>Así de simple funciona Siempre Nuevo</h2>
             <div class="pasos-grid">
                 <div class="paso-card">
-                    <div class="paso-numero">1</div>
+                    <div class="paso-icono">
+                        <img src="fotos/reloj.png" alt="Reloj">
+                    </div>
                     <h3>Te afilias en minutos</h3>
                     <p>Proceso sencillo y sin papeleo desde cualquier dispositivo.</p>
                 </div>
                 <div class="paso-card">
-                    <div class="paso-numero">2</div>
+                    <div class="paso-icono">
+                        <img src="fotos/llaves.png" alt="Llaves">
+                    </div>
                     <h3>Usas el servicio cuando lo necesites</h3>
                     <p>Accede al servicio en el momento que lo requieras.</p>
                 </div>
                 <div class="paso-card">
-                    <div class="paso-numero">3</div>
+                    <div class="paso-icono">
+                        <img src="fotos/check.png" alt="Check">
+                    </div>
                     <h3>Reparamos tu auto sin que uses tu seguro</h3>
                     <p>Sin afectar tu historial ni incurrir en deducibles.</p>
                 </div>
