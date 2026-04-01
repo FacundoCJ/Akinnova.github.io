@@ -415,7 +415,6 @@
             object-fit: contain;
             border-radius: 32px;
             background-color: transparent;
-            /* Fix para iOS */
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
         }
@@ -604,7 +603,7 @@
             margin-top: 1rem;
         }
 
-        /* VIDEO GRANDE - FIX PARA iOS */
+        /* VIDEO GRANDE - CON MINIATURA */
         .full-video-section {
             width: 100%;
             background-color: white;
@@ -614,13 +613,13 @@
             width: 100%;
             margin: 0;
             padding: 0;
+            position: relative;
         }
 
         .full-video-container video {
             width: 100%;
             display: block;
             background-color: black;
-            /* Fix para iOS */
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
         }
@@ -700,6 +699,7 @@
             overflow: hidden;
             background-color: transparent;
             transition: transform 0.3s ease;
+            position: relative;
         }
 
         .carousel-slide:hover {
@@ -714,7 +714,6 @@
             border-radius: 24px;
             background-color: #f0f0f0;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            /* Fix para iOS */
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
         }
@@ -1144,7 +1143,7 @@
 
             <div class="video-container">
                 <div class="video-wrapper">
-                    <video id="mainVideo" controls playsinline preload="auto">
+                    <video id="mainVideo" controls playsinline preload="auto" poster="fotos/miniatura1.png">
                         <source src="fotos/video1.mp4" type="video/mp4">
                         Tu navegador no soporta el elemento de video.
                     </video>
@@ -1209,10 +1208,10 @@
         </div>
     </div>
 
-    <!-- VIDEO GRANDE -->
+    <!-- VIDEO GRANDE - CON MINIATURA -->
     <div class="full-video-section">
         <div class="full-video-container">
-            <video controls playsinline preload="auto">
+            <video controls playsinline preload="auto" poster="fotos/miniatura2.png">
                 <source src="fotos/video2.mp4" type="video/mp4">
                 Tu navegador no soporta el elemento de video.
             </video>
@@ -1228,7 +1227,7 @@
                 <div class="carousel-container" id="carouselContainer">
                     <div class="carousel-track" id="carouselTrack">
                         <div class="carousel-slide">
-                            <video controls playsinline preload="auto">
+                            <video controls playsinline preload="auto" poster="fotos/miniatura3.png">
                                 <source src="fotos/video3.mp4" type="video/mp4">
                                 Tu navegador no soporta el elemento de video.
                             </video>
