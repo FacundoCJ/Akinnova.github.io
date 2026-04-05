@@ -611,6 +611,134 @@
             font-weight: 500;
         }
 
+        /* NUEVA SECCIÓN AZUL: SI TIENES SEGURO */
+        .seguro-section {
+            background-color: #0c3a6a;
+            width: 100%;
+            padding: 3rem 2rem;
+        }
+
+        .seguro-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .seguro-section h2 {
+            color: white;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .seguro-section h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: #ff914d;
+            border-radius: 2px;
+        }
+
+        .seguro-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .seguro-card {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 32px;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .seguro-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .seguro-card h3 {
+            color: #0c3a6a;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            border-left: 4px solid #ff914d;
+            padding-left: 1rem;
+        }
+
+        .seguro-card p {
+            color: #4a5568;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .seguro-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .seguro-list li {
+            color: #1f4a7a;
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .seguro-list li::before {
+            content: '✔';
+            color: #ff914d;
+            font-weight: bold;
+        }
+
+        .seguro-highlight {
+            background-color: #e7f3ff;
+            border-radius: 24px;
+            padding: 1rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .seguro-highlight p {
+            margin-bottom: 0;
+            font-weight: 600;
+            color: #0c3a6a;
+        }
+
+        .seguro-note {
+            font-size: 0.7rem;
+            color: #666;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .seguro-badge {
+            display: inline-block;
+            background-color: #ff914d;
+            color: #0c3a6a;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .seguro-imagen {
+            width: 100%;
+            border-radius: 24px;
+            margin: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
         /* SECCIÓN BLANCA - COBERTURA */
         .cobertura-section {
             background-color: white;
@@ -984,6 +1112,9 @@
                 width: 38px;
                 height: 38px;
             }
+            .seguro-card {
+                min-width: 280px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1018,6 +1149,12 @@
                 height: 40px;
             }
             .paso-card {
+                min-width: 100%;
+            }
+            .seguro-section {
+                padding: 2rem 1rem;
+            }
+            .seguro-card {
                 min-width: 100%;
             }
             .cobertura-card img {
@@ -1080,6 +1217,9 @@
             }
             .paso-card p {
                 font-size: 0.85rem;
+            }
+            .seguro-card h3 {
+                font-size: 1.2rem;
             }
             .footer-logo img {
                 height: 140px;
@@ -1249,6 +1389,59 @@
                     <h3>3. Reparaciones sin costo*</h3>
                     <p>En concesionarios autorizados, con respaldo y garantía.</p>
                     <small>*Hasta 200$ por evento de acuerdo a los términos y condiciones</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NUEVA SECCIÓN AZUL: SI TIENES SEGURO -->
+    <div class="seguro-section">
+        <div class="seguro-inner">
+            <h2 style="text-align: center;">Si tienes seguro:</h2>
+            <div class="seguro-grid">
+                <!-- Columna 1: Promoción -->
+                <div class="seguro-card">
+                    <span class="seguro-badge">🎁 Promoción especial</span>
+                    <h3>Olvídalate del deducible</h3>
+                    <div class="seguro-highlight">
+                        <p>📢 Suscríbete por 2 años y recibe el 3° gratis</p>
+                    </div>
+                    <img src="fotos/accidente.png" alt="Accidente con seguro" class="seguro-imagen">
+                    <p style="margin-top: 0.75rem; font-size: 0.8rem; color: #666;">Videos Validar con Rosa que sean la última versión</p>
+                </div>
+
+                <!-- Columna 2: Cómo funciona -->
+                <div class="seguro-card">
+                    <h3>Cómo funciona</h3>
+                    <div class="seguro-list">
+                        <li><strong>1. Verifica tu cobertura</strong><br>Confirma fácilmente que tu caso esté dentro de las condiciones del programa.</li>
+                        <li><strong>2. Agenda tu atención</strong><br>Contáctanos 24/7 y coordinamos tu visita en el concesionario.</li>
+                        <li><strong>3. Relájate, nosotros lo gestionamos</strong><br>Aprobamos el servicio y pagamos directamente al concesionario, hasta $200 por atención.*</li>
+                    </div>
+                    <div class="seguro-note">*Aplican términos y condiciones del programa.</div>
+                </div>
+
+                <!-- Columna 3: Beneficios y coberturas -->
+                <div class="seguro-card">
+                    <h3>Beneficios y coberturas</h3>
+                    <div class="seguro-list">
+                        <li>Reparación de rayones y pintura hasta $200 por evento<br><span style="font-size: 0.75rem; color: #888;">En concesionarios autorizados</span></li>
+                        <li>Reparación de aros y llantas hasta $200 por evento<br><span style="font-size: 0.75rem; color: #888;">Con respaldo de concesionarios</span></li>
+                        <li>Bono para parabrisas de hasta $150<br><span style="font-size: 0.75rem; color: #888;">Aplicable en concesionarios autorizados</span></li>
+                    </div>
+                    <div class="seguro-highlight">
+                        <p>💰 ¡Hasta $750 en beneficios al año!</p>
+                        <p style="font-size: 0.8rem;">Sin afectar tu seguro y sin gastos inesperados.*</p>
+                    </div>
+                    <div class="seguro-list" style="margin-top: 0.5rem;">
+                        <li><strong>Beneficios adicionales</strong></li>
+                        <li>• Sin deducibles</li>
+                        <li>• Atención rápida en concesionarios autorizados</li>
+                        <li>• Proceso simple y rápido</li>
+                    </div>
+                    <div class="seguro-note">
+                        <a href="politica-de-privacidad.html" style="color: #ff914d; text-decoration: none;">Política de privacidad</a> - Ver en Anexos
+                    </div>
                 </div>
             </div>
         </div>
