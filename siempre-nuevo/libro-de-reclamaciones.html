@@ -1,1 +1,1024 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Libro de Reclamaciones - Siempre Nuevo</title>
+    <link rel="icon" type="image/png" href="fotos/logo-sn.png">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #ffffff;
+        }
+
+        /* MENU DESPLEGABLE - SIDEBAR */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -320px;
+            width: 300px;
+            height: 100%;
+            background-color: white;
+            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+            z-index: 1001;
+            transition: left 0.3s ease;
+            overflow-y: auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .sidebar.open {
+            left: 0;
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 2rem;
+        }
+
+        .close-menu {
+            background: none;
+            border: none;
+            font-size: 32px;
+            cursor: pointer;
+            color: #0c3a6a;
+            transition: transform 0.2s ease;
+        }
+
+        .close-menu:hover {
+            transform: scale(1.1);
+            color: #ff914d;
+        }
+
+        .sidebar-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .sidebar-menu a {
+            color: #0c3a6a;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid #e7f3ff;
+        }
+
+        .sidebar-menu a:hover {
+            color: #ff914d;
+            transform: translateX(5px);
+            border-bottom-color: #ff914d;
+        }
+
+        /* Overlay para cerrar el menú al hacer clic fuera */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* BARRA SUPERIOR FIJA */
+        .navbar {
+            position: fixed;
+            top: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            z-index: 100;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(2px);
+            border-radius: 60px;
+            padding: 0.2rem 2rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-content {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .menu-icon {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .menu-icon:hover {
+            transform: scale(1.02);
+        }
+        .menu-icon img {
+            width: 60px;
+            height: auto;
+            display: block;
+        }
+
+        .logo-icon {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .logo-icon:hover {
+            transform: scale(1.02);
+        }
+        .logo-icon img {
+            height: 120px;
+            width: auto;
+            display: block;
+        }
+
+        /* SECCIÓN PRINCIPAL */
+        .reclamaciones-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 160px 2rem 4rem 2rem;
+        }
+
+        .reclamaciones-title {
+            text-align: center;
+            color: #0c3a6a;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .reclamaciones-title:after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #ff914d;
+            border-radius: 2px;
+        }
+
+        .reclamaciones-subtitle {
+            text-align: center;
+            color: #4a5568;
+            font-size: 1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Formulario */
+        .form-container {
+            background-color: #e7f3ff;
+            border-radius: 32px;
+            padding: 2rem;
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #cbd5e1;
+        }
+
+        .form-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .section-title {
+            color: #0c3a6a;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-icon {
+            font-size: 1.3rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #0c3a6a;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .form-group label .required {
+            color: #ff914d;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 20px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            background-color: white;
+            transition: all 0.2s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff914d;
+            box-shadow: 0 0 0 3px rgba(255, 145, 77, 0.2);
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .radio-option input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #ff914d;
+        }
+
+        .radio-option label {
+            margin-bottom: 0;
+            font-weight: 400;
+        }
+
+        .radio-description {
+            font-size: 0.75rem;
+            color: #4a5568;
+            margin-left: 1.5rem;
+        }
+
+        .row-2cols {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .row-2cols .form-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        /* Checkbox */
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin: 1rem 0;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            accent-color: #ff914d;
+        }
+
+        .checkbox-group label {
+            color: #0c3a6a;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        /* Texto legal */
+        .legal-text {
+            background-color: rgba(255, 145, 77, 0.1);
+            padding: 1rem;
+            border-radius: 16px;
+            margin: 1rem 0;
+            font-size: 0.85rem;
+            color: #0c3a6a;
+            text-align: center;
+        }
+
+        /* Botón */
+        .btn-enviar {
+            background-color: #ff914d;
+            color: #0c3a6a;
+            border: none;
+            padding: 0.9rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 40px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.2s ease;
+            margin-top: 1rem;
+        }
+
+        .btn-enviar:hover:not(:disabled) {
+            transform: scale(1.02);
+            background-color: #ff7a2e;
+        }
+
+        .btn-enviar:disabled {
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        /* Modal de confirmación */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: 32px;
+            max-width: 500px;
+            width: 90%;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .modal-content h3 {
+            color: #0c3a6a;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-content p {
+            color: #4a5568;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .modal-close {
+            background-color: #ff914d;
+            color: #0c3a6a;
+            border: none;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 40px;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        /* FOOTER */
+        .footer {
+            background-color: #0c3a6a;
+            width: 100%;
+            padding: 3rem 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+
+        .footer-left {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-logo {
+            cursor: pointer;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo img {
+            height: 280px;
+            width: auto;
+            display: block;
+        }
+
+        .footer-contact {
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 50px;
+        }
+
+        .footer-contact h3, .footer-social-title h3 {
+            color: white;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-contact h3:after, .footer-social-title h3:after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #ff914d;
+            border-radius: 2px;
+        }
+
+        .contact-item {
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .contact-item a:hover {
+            color: #ff914d;
+        }
+
+        .footer-social {
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 50px;
+        }
+
+        .footer-social-title h3 {
+            display: inline-block;
+        }
+
+        .social-icons-footer {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons-footer a {
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+
+        .social-icons-footer a:hover {
+            transform: scale(1.1);
+        }
+
+        .social-icons-footer img {
+            width: 52px;
+            height: 52px;
+        }
+
+        .footer-links-bottom {
+            width: 100%;
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-links-bottom a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            margin: 0 1rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links-bottom a:hover {
+            color: #ff914d;
+        }
+
+        /* MEDIA QUERIES */
+        @media (max-width: 1024px) {
+            .navbar {
+                width: 95%;
+                padding: 0.15rem 1.5rem;
+            }
+            .logo-icon img {
+                height: 100px;
+            }
+            .reclamaciones-section {
+                padding: 150px 1.5rem 3rem 1.5rem;
+            }
+            .footer-logo img {
+                height: 200px;
+            }
+            .footer-contact, .footer-social {
+                padding-top: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                width: 92%;
+                top: 1rem;
+                padding: 0.1rem 1.2rem;
+            }
+            .menu-icon img {
+                width: 45px;
+            }
+            .logo-icon img {
+                height: 90px;
+            }
+            .reclamaciones-section {
+                padding: 130px 1rem 2rem 1rem;
+            }
+            .reclamaciones-title {
+                font-size: 1.5rem;
+            }
+            .form-container {
+                padding: 1.5rem;
+            }
+            .row-2cols {
+                flex-direction: column;
+                gap: 0;
+            }
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-left, .footer-contact, .footer-social {
+                text-align: center;
+                padding-top: 0;
+            }
+            .footer-contact h3:after, .footer-social-title h3:after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .social-icons-footer {
+                justify-content: center;
+            }
+            .footer-logo img {
+                height: 180px;
+                margin: 0 auto;
+            }
+            .sidebar {
+                width: 280px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                width: 90%;
+                top: 0.8rem;
+                padding: 0.05rem 1rem;
+            }
+            .menu-icon img {
+                width: 38px;
+            }
+            .logo-icon img {
+                height: 70px;
+            }
+            .reclamaciones-section {
+                padding-top: 110px;
+            }
+            .reclamaciones-title {
+                font-size: 1.3rem;
+            }
+            .section-title {
+                font-size: 1rem;
+            }
+            .footer-logo img {
+                height: 140px;
+            }
+            .social-icons-footer img {
+                width: 45px;
+                height: 45px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Overlay para cerrar menú -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Menú desplegable lateral -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button class="close-menu" id="closeMenuBtn">✕</button>
+        </div>
+        <div class="sidebar-menu">
+            <a href="beneficios.html">Beneficios</a>
+            <a href="planes.html">Planes</a>
+            <a href="quienes-somos.html">Quienes Somos</a>
+            <a href="por-que-siempre-nuevo.html">¿Por qué Siempre Nuevo?</a>
+            <a href="terminos-y-condiciones.html">Términos y Condiciones</a>
+            <a href="libro-de-reclamaciones.html">Libro de Reclamaciones</a>
+            <a href="politica-de-privacidad.html">Política de Privacidad</a>
+            <a href="nuestros-aliados.html">Nuestros Aliados</a>
+        </div>
+    </div>
+
+    <!-- BARRA SUPERIOR FIJA -->
+    <div class="navbar">
+        <div class="navbar-content">
+            <div class="menu-icon" id="menuButton">
+                <img src="fotos/menu.png" alt="Menú">
+            </div>
+            <div class="logo-icon" id="logoButton">
+                <img src="fotos/logo-sn.png" alt="Siempre Nuevo">
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN PRINCIPAL -->
+    <div class="reclamaciones-section">
+        <h1 class="reclamaciones-title">Libro de Reclamaciones</h1>
+        <p class="reclamaciones-subtitle">Si tienes algún inconveniente o disconformidad con nuestro servicio, puedes registrarlo aquí.<br>Tu solicitud será atendida dentro de los plazos establecidos por ley.</p>
+
+        <div class="form-container">
+            <form id="reclamacionForm">
+                <!-- DATOS DEL CONSUMIDOR -->
+                <div class="form-section">
+                    <div class="section-title">
+                        <span class="section-icon">📋</span>
+                        <span>DATOS DEL CONSUMIDOR</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Nombres y apellidos <span class="required">*</span></label>
+                        <input type="text" name="nombre" required placeholder="Ingresa tus nombres completos">
+                    </div>
+                    <div class="row-2cols">
+                        <div class="form-group">
+                            <label>Tipo de documento <span class="required">*</span></label>
+                            <select name="tipo_documento" required>
+                                <option value="">Selecciona</option>
+                                <option value="DNI">DNI</option>
+                                <option value="Carné de extranjería">Carné de extranjería</option>
+                                <option value="Pasaporte">Pasaporte</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Número de documento <span class="required">*</span></label>
+                            <input type="text" name="num_documento" required placeholder="Ingresa tu número de documento">
+                        </div>
+                    </div>
+                    <div class="row-2cols">
+                        <div class="form-group">
+                            <label>Teléfono <span class="required">*</span></label>
+                            <input type="tel" name="telefono" required placeholder="Ej: 987 654 321">
+                        </div>
+                        <div class="form-group">
+                            <label>Correo electrónico <span class="required">*</span></label>
+                            <input type="email" name="email" required placeholder="ejemplo@correo.com">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Dirección (opcional)</label>
+                        <input type="text" name="direccion" placeholder="Ingresa tu dirección">
+                    </div>
+                </div>
+
+                <!-- IDENTIFICACIÓN DEL SERVICIO -->
+                <div class="form-section">
+                    <div class="section-title">
+                        <span class="section-icon">🔧</span>
+                        <span>IDENTIFICACIÓN DEL SERVICIO</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" name="tipo_servicio" value="Producto" id="producto">
+                                <label for="producto">Producto</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" name="tipo_servicio" value="Servicio" id="servicio" checked>
+                                <label for="servicio">Servicio</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Descripción del servicio <span class="required">*</span></label>
+                        <input type="text" name="descripcion_servicio" required placeholder="Ej: Programa Siempre Nuevo – afiliación / cobertura / atención">
+                    </div>
+                </div>
+
+                <!-- DETALLE DE LA SOLICITUD -->
+                <div class="form-section">
+                    <div class="section-title">
+                        <span class="section-icon">⚠️</span>
+                        <span>DETALLE DE LA SOLICITUD</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo de solicitud <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" name="tipo_solicitud" value="Reclamo" id="reclamo" checked>
+                                <label for="reclamo">Reclamo</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" name="tipo_solicitud" value="Queja" id="queja">
+                                <label for="queja">Queja</label>
+                            </div>
+                        </div>
+                        <div class="radio-description" id="reclamoDesc">Disconformidad relacionada al servicio recibido</div>
+                        <div class="radio-description" id="quejaDesc" style="display: none;">Malestar o insatisfacción con la atención brindada</div>
+                    </div>
+                    <div class="form-group">
+                        <label>Monto reclamado (opcional)</label>
+                        <input type="text" name="monto" placeholder="S/ 0.00">
+                    </div>
+                    <div class="form-group">
+                        <label>Detalle de lo ocurrido <span class="required">*</span></label>
+                        <textarea name="detalle" rows="4" required minlength="20" placeholder="Describe lo ocurrido con el mayor detalle posible para poder ayudarte mejor."></textarea>
+                        <small id="detalleContador" style="font-size: 0.7rem; color: #666;">Mínimo 20 caracteres</small>
+                    </div>
+                    <div class="form-group">
+                        <label>¿Qué solución esperas? <span class="required">*</span></label>
+                        <textarea name="solucion" rows="3" required placeholder="Indícanos qué acción o solución esperas de nuestra parte."></textarea>
+                    </div>
+                </div>
+
+                <!-- DECLARACIÓN Y CONSENTIMIENTO -->
+                <div class="form-section">
+                    <div class="section-title">
+                        <span class="section-icon">🔒</span>
+                        <span>DECLARACIÓN Y CONSENTIMIENTO</span>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="consentimiento" required>
+                        <label for="consentimiento">Declaro que los datos consignados son verdaderos y autorizo el tratamiento de mis datos personales conforme a la normativa vigente.</label>
+                    </div>
+                </div>
+
+                <!-- TEXTO LEGAL -->
+                <div class="legal-text">
+                    El proveedor deberá dar respuesta al reclamo en un plazo no mayor a 15 días hábiles, el cual es improrrogable.
+                </div>
+
+                <button type="submit" class="btn-enviar" id="submitBtn" disabled>Enviar reclamo</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de confirmación -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content">
+            <h3>✅ Gracias por registrar tu solicitud</h3>
+            <p>Hemos recibido tu reclamo correctamente.</p>
+            <p>Te responderemos dentro de un plazo máximo de 15 días hábiles.</p>
+            <button class="modal-close" onclick="closeModal()">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <div class="footer-inner">
+            <div class="footer-left">
+                <div class="footer-logo" id="footerLogo">
+                    <img src="fotos/logo-sn.png" alt="Siempre Nuevo">
+                </div>
+            </div>
+            <div class="footer-contact">
+                <h3>Contáctanos</h3>
+                <div class="contact-item">
+                    <a href="https://wa.me/51997281159?text=Hola,%20me%20interesa%20obtener%20más%20información%20sobre%20Siempre%20Nuevo" target="_blank">+51 997281159</a>
+                </div>
+                <div class="contact-item">
+                    <a href="mailto:contacto@akinnova.com?subject=Información%20sobre%20Siempre%20Nuevo&body=Hola,%20me%20gustaría%20recibir%20más%20información%20sobre%20Siempre%20Nuevo.">contacto@akinnova.com</a>
+                </div>
+            </div>
+            <div class="footer-social">
+                <div class="footer-social-title">
+                    <h3>Síguenos</h3>
+                </div>
+                <div class="social-icons-footer">
+                    <a href="https://www.instagram.com/siemprenuevo.pe/" target="_blank">
+                        <img src="fotos/instagram.png" alt="Instagram">
+                    </a>
+                    <a href="https://www.tiktok.com/@siemprenuevo.pe" target="_blank">
+                        <img src="fotos/tiktok.png" alt="TikTok">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-links-bottom">
+            <a href="libro-de-reclamaciones.html">Libro de reclamaciones</a>
+            <a href="politica-de-privacidad.html">Política de privacidad</a>
+            <a href="terminos-y-condiciones.html">Términos y condiciones</a>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // Elementos del menú
+            const menuBtn = document.getElementById('menuButton');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const closeMenuBtn = document.getElementById('closeMenuBtn');
+            const logoBtn = document.getElementById('logoButton');
+            const footerLogo = document.getElementById('footerLogo');
+            
+            function openMenu() {
+                sidebar.classList.add('open');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            function closeMenu() {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            if (menuBtn) menuBtn.addEventListener('click', openMenu);
+            if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
+            if (overlay) overlay.addEventListener('click', closeMenu);
+            if (logoBtn) logoBtn.addEventListener('click', () => window.location.href = 'index.html');
+            if (footerLogo) footerLogo.addEventListener('click', () => window.location.href = 'index.html');
+
+            // Mostrar/ocultar descripción según tipo de solicitud
+            const reclamoRadio = document.getElementById('reclamo');
+            const quejaRadio = document.getElementById('queja');
+            const reclamoDesc = document.getElementById('reclamoDesc');
+            const quejaDesc = document.getElementById('quejaDesc');
+
+            function updateSolicitudDesc() {
+                if (reclamoRadio.checked) {
+                    reclamoDesc.style.display = 'block';
+                    quejaDesc.style.display = 'none';
+                } else {
+                    reclamoDesc.style.display = 'none';
+                    quejaDesc.style.display = 'block';
+                }
+            }
+
+            if (reclamoRadio && quejaRadio) {
+                reclamoRadio.addEventListener('change', updateSolicitudDesc);
+                quejaRadio.addEventListener('change', updateSolicitudDesc);
+                updateSolicitudDesc();
+            }
+
+            // Contador de caracteres para detalle
+            const detalleTextarea = document.querySelector('textarea[name="detalle"]');
+            const detalleContador = document.getElementById('detalleContador');
+
+            if (detalleTextarea) {
+                detalleTextarea.addEventListener('input', function() {
+                    const length = this.value.length;
+                    detalleContador.textContent = `${length}/20 caracteres mínimo`;
+                    if (length >= 20) {
+                        detalleContador.style.color = '#28a745';
+                    } else {
+                        detalleContador.style.color = '#dc3545';
+                    }
+                });
+            }
+
+            // Validación del formulario para habilitar botón
+            const form = document.getElementById('reclamacionForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const requiredFields = form.querySelectorAll('[required]');
+            const consentCheckbox = document.getElementById('consentimiento');
+
+            function validateForm() {
+                let allValid = true;
+                
+                // Verificar campos requeridos
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        allValid = false;
+                    }
+                });
+                
+                // Verificar email válido
+                const emailField = document.querySelector('input[name="email"]');
+                if (emailField && emailField.value.trim()) {
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(emailField.value.trim())) {
+                        allValid = false;
+                    }
+                }
+                
+                // Verificar teléfono (al menos 9 dígitos)
+                const telefonoField = document.querySelector('input[name="telefono"]');
+                if (telefonoField && telefonoField.value.trim()) {
+                    const phoneRegex = /^[0-9\s\-+]{9,}$/;
+                    if (!phoneRegex.test(telefonoField.value.trim())) {
+                        allValid = false;
+                    }
+                }
+                
+                // Verificar detalle mínimo 20 caracteres
+                if (detalleTextarea && detalleTextarea.value.trim().length < 20) {
+                    allValid = false;
+                }
+                
+                // Verificar consentimiento
+                if (!consentCheckbox || !consentCheckbox.checked) {
+                    allValid = false;
+                }
+                
+                submitBtn.disabled = !allValid;
+            }
+
+            // Agregar eventos a todos los campos requeridos
+            requiredFields.forEach(field => {
+                field.addEventListener('input', validateForm);
+                field.addEventListener('change', validateForm);
+            });
+            
+            if (consentCheckbox) {
+                consentCheckbox.addEventListener('change', validateForm);
+            }
+            
+            if (detalleTextarea) {
+                detalleTextarea.addEventListener('input', validateForm);
+            }
+            
+            // Validación inicial
+            validateForm();
+
+            // Manejo del envío
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                if (!submitBtn.disabled) {
+                    // Mostrar modal de confirmación
+                    document.getElementById('confirmModal').style.display = 'flex';
+                    
+                    // Opcional: aquí se podría enviar el formulario a un backend
+                    console.log('Formulario enviado:', {
+                        nombre: form.querySelector('input[name="nombre"]').value,
+                        tipo_documento: form.querySelector('select[name="tipo_documento"]').value,
+                        num_documento: form.querySelector('input[name="num_documento"]').value,
+                        telefono: form.querySelector('input[name="telefono"]').value,
+                        email: form.querySelector('input[name="email"]').value,
+                        direccion: form.querySelector('input[name="direccion"]').value,
+                        tipo_servicio: form.querySelector('input[name="tipo_servicio"]:checked')?.value,
+                        descripcion_servicio: form.querySelector('input[name="descripcion_servicio"]').value,
+                        tipo_solicitud: form.querySelector('input[name="tipo_solicitud"]:checked')?.value,
+                        monto: form.querySelector('input[name="monto"]').value,
+                        detalle: form.querySelector('textarea[name="detalle"]').value,
+                        solucion: form.querySelector('textarea[name="solucion"]').value
+                    });
+                    
+                    // Resetear formulario después de un tiempo
+                    setTimeout(() => {
+                        form.reset();
+                        validateForm();
+                    }, 100);
+                }
+            });
+        })();
+
+        function closeModal() {
+            document.getElementById('confirmModal').style.display = 'none';
+        }
+
+        // Cerrar modal al hacer clic fuera
+        window.onclick = function(event) {
+            const modal = document.getElementById('confirmModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
