@@ -95,13 +95,13 @@
             display: block;
         }
 
-        /* BARRA SUPERIOR FIJA - DISEÑO ORIGINAL (TRANSPARENTE CON BORDES REDONDEADOS) */
+        /* BARRA SUPERIOR FIJA - ANCHO REDUCIDO AL 75% */
         .navbar {
             position: fixed;
             top: 1.5rem;
             left: 50%;
             transform: translateX(-50%);
-            width: 90%;
+            width: 75%;
             max-width: 1200px;
             z-index: 100;
             background-color: rgba(255, 255, 255, 0.8);
@@ -207,7 +207,7 @@
             .navbar {
                 top: 1rem;
                 padding: 0.1rem 1.2rem;
-                width: 92%;
+                width: 85%;
             }
             .menu-icon img {
                 width: 45px;
@@ -255,6 +255,7 @@
         @media (min-width: 769px) and (max-width: 1024px) {
             .navbar {
                 padding: 0.15rem 1.5rem;
+                width: 80%;
             }
             .logo-icon img {
                 height: 100px;
@@ -1068,23 +1069,37 @@
         }
 
         .footer-links-bottom {
-            width: 100%;
-            text-align: center;
+            width: auto;
+            text-align: left;
             margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 0;
+            border-top: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
         }
 
         .footer-links-bottom a {
             color: white;
             text-decoration: none;
-            font-size: 0.95rem;
-            margin: 0 1rem;
+            font-size: 0.9rem;
             transition: color 0.2s ease;
+            margin: 0;
         }
 
         .footer-links-bottom a:hover {
             color: #ff914d;
+        }
+
+        /* Ajuste para alinear los enlaces a la derecha */
+        .footer-social {
+            position: relative;
+        }
+
+        .footer-links-bottom {
+            position: absolute;
+            right: 0;
+            bottom: 0;
         }
 
         /* MEDIA QUERIES */
@@ -1114,6 +1129,12 @@
             }
             .seguro-card {
                 min-width: 280px;
+            }
+            .footer-links-bottom {
+                position: static;
+                margin-top: 1.5rem;
+                text-align: center;
+                align-items: center;
             }
         }
 
@@ -1175,11 +1196,6 @@
             .social-icons-footer {
                 justify-content: center;
             }
-            .footer-links-bottom a {
-                display: inline-block;
-                margin: 0.5rem;
-                font-size: 0.85rem;
-            }
             .footer-logo img {
                 height: 180px;
                 margin: 0 auto;
@@ -1200,6 +1216,16 @@
             .paso-icono img {
                 width: 32px;
                 height: 32px;
+            }
+            .footer-links-bottom {
+                position: static;
+                margin-top: 1.5rem;
+                text-align: center;
+                align-items: center;
+            }
+            .footer-links-bottom a {
+                display: inline-block;
+                margin: 0.3rem 0;
             }
         }
 
@@ -1233,6 +1259,10 @@
             }
             .contact-item a {
                 font-size: 0.95rem;
+            }
+            .footer-links-bottom {
+                position: static;
+                margin-top: 1rem;
             }
         }
 
@@ -1288,7 +1318,7 @@
         </div>
     </div>
 
-    <!-- BARRA SUPERIOR FIJA - DISEÑO ORIGINAL CON ALTO REDUCIDO -->
+    <!-- BARRA SUPERIOR FIJA - ANCHO REDUCIDO AL 75% -->
     <div class="navbar">
         <div class="navbar-content">
             <div class="menu-icon" id="menuButton">
@@ -1548,12 +1578,12 @@
                         <img src="fotos/tiktok.png" alt="TikTok">
                     </a>
                 </div>
+                <div class="footer-links-bottom">
+                    <a href="libro-de-reclamaciones.html">Libro de reclamaciones</a>
+                    <a href="politica-de-privacidad.html">Política de privacidad</a>
+                    <a href="terminos-y-condiciones.html">Términos y condiciones</a>
+                </div>
             </div>
-        </div>
-        <div class="footer-links-bottom">
-            <a href="libro-de-reclamaciones.html">Libro de reclamaciones</a>
-            <a href="politica-de-privacidad.html">Política de privacidad</a>
-            <a href="terminos-y-condiciones.html">Términos y condiciones</a>
         </div>
     </div>
 
