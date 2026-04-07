@@ -95,16 +95,16 @@
             display: block;
         }
 
-        /* BARRA SUPERIOR FIJA - CASI ANCHO COMPLETO, MÁS DELGADA */
+        /* BARRA SUPERIOR FIJA - LOGO MÁS GRANDE */
         .navbar {
             position: fixed;
             top: 1rem;
             left: 50%;
             transform: translateX(-50%);
-            width: 96%;
+            width: auto;
             max-width: 1600px;
             z-index: 100;
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(2px);
             border-radius: 50px;
             padding: 0.3rem 1.5rem;
@@ -117,6 +117,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 2rem;
         }
 
         .menu-icon {
@@ -144,7 +145,7 @@
             transform: scale(1.02);
         }
         .logo-icon img {
-            height: 100px;
+            height: 120px;
             width: auto;
             display: block;
         }
@@ -154,7 +155,7 @@
             padding-top: 100px;
         }
 
-        /* SECCIÓN HERO CON IMAGEN DE FONDO Y TEXTO SUPERPUESTO - MÁS CONTRASTE */
+        /* SECCIÓN HERO CON IMAGEN DE FONDO Y TEXTO SUPERPUESTO */
         .hero-section {
             position: relative;
             width: 100%;
@@ -168,7 +169,6 @@
             margin-bottom: -1px;
         }
 
-        /* Contenedor del texto superpuesto - MÁS PEGADO A LA IZQUIERDA CON MÁS CONTRASTE */
         .hero-text {
             position: absolute;
             top: 60%;
@@ -204,19 +204,16 @@
             text-align: left;
         }
 
-        /* Optimización para móviles */
         @media (max-width: 768px) {
             .navbar {
                 top: 0.8rem;
                 padding: 0.2rem 1rem;
-                width: 94%;
-                border-radius: 40px;
             }
             .menu-icon img {
                 width: 32px;
             }
             .logo-icon img {
-                height: 75px;
+                height: 80px;
             }
             .hero-section {
                 background-size: contain;
@@ -255,14 +252,12 @@
             }
         }
 
-        /* Tablet */
         @media (min-width: 769px) and (max-width: 1024px) {
             .navbar {
                 padding: 0.25rem 1.2rem;
-                width: 95%;
             }
             .logo-icon img {
-                height: 85px;
+                height: 100px;
             }
             .hero-section {
                 padding-top: 90px;
@@ -277,7 +272,6 @@
             }
         }
 
-        /* Laptop */
         @media (min-width: 1025px) and (max-width: 1366px) {
             .hero-title {
                 font-size: 2rem;
@@ -289,7 +283,6 @@
             }
         }
 
-        /* Pantallas grandes */
         @media (min-width: 1367px) {
             .hero-title {
                 font-size: 2.5rem;
@@ -305,8 +298,6 @@
             .navbar {
                 top: 0.6rem;
                 padding: 0.15rem 0.8rem;
-                width: 92%;
-                border-radius: 30px;
             }
             .menu-icon img {
                 width: 28px;
@@ -349,7 +340,8 @@
         .form-container {
             flex: 1;
             min-width: 280px;
-            background-color: #e7f3ff;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(2px);
             border-radius: 32px;
             padding: 2rem;
         }
@@ -523,7 +515,7 @@
             height: 48px;
         }
 
-        /* SECCIÓN CÓMO FUNCIONA - CON ICONOS Y NUEVOS TEXTOS */
+        /* SECCIÓN CÓMO FUNCIONA */
         .como-funciona-section {
             background-color: white;
             width: 100%;
@@ -617,7 +609,7 @@
             font-weight: 500;
         }
 
-        /* NUEVA SECCIÓN AZUL: SI TIENES SEGURO */
+        /* SECCIÓN AZUL: SI TIENES SEGURO */
         .seguro-section {
             background-color: #0c3a6a;
             width: 100%;
@@ -682,14 +674,6 @@
             text-align: center;
         }
 
-        .seguro-card p {
-            color: #4a5568;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            margin-bottom: 1rem;
-            text-align: justify;
-        }
-
         .seguro-list {
             list-style: none;
             margin-top: 1rem;
@@ -716,21 +700,6 @@
             font-size: 0.9rem;
         }
 
-        .seguro-highlight {
-            background-color: #e7f3ff;
-            border-radius: 24px;
-            padding: 1rem;
-            margin: 1rem 0;
-            text-align: center;
-        }
-
-        .seguro-highlight p {
-            margin-bottom: 0;
-            font-weight: 600;
-            color: #0c3a6a;
-            text-align: center;
-        }
-
         .seguro-highlight-orange {
             background-color: #ff914d;
             border-radius: 24px;
@@ -751,18 +720,6 @@
             color: #666;
             margin-top: 1rem;
             text-align: center;
-        }
-
-        .seguro-badge {
-            display: inline-block;
-            background-color: #ff914d;
-            color: #0c3a6a;
-            padding: 0.3rem 1rem;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            align-self: center;
         }
 
         .seguro-imagen {
@@ -841,7 +798,7 @@
             margin-top: 1rem;
         }
 
-        /* VIDEO GRANDE - CON MINIATURA */
+        /* VIDEO GRANDE */
         .full-video-section {
             width: 100%;
             background-color: white;
@@ -851,15 +808,12 @@
             width: 100%;
             margin: 0;
             padding: 0;
-            position: relative;
         }
 
         .full-video-container video {
             width: 100%;
             display: block;
             background-color: black;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
         }
 
         /* HISTORIAS REALES - CARRUSEL */
@@ -896,7 +850,6 @@
             border-radius: 2px;
         }
 
-        /* CARRUSEL */
         .carousel-wrapper {
             position: relative;
             overflow: hidden;
@@ -1023,7 +976,7 @@
             }
         }
 
-        /* FOOTER - NUEVO DISEÑO */
+        /* FOOTER */
         .footer {
             background-color: #0c3a6a;
             width: 100%;
@@ -1178,7 +1131,6 @@
             color: #ff914d;
         }
 
-        /* MEDIA QUERIES */
         @media (max-width: 1024px) {
             .carousel-slide {
                 flex: 0 0 calc(50% - 0.75rem);
@@ -1374,7 +1326,7 @@
         </div>
     </div>
 
-    <!-- BARRA SUPERIOR FIJA - CASI ANCHO COMPLETO, MÁS DELGADA -->
+    <!-- BARRA SUPERIOR FIJA -->
     <div class="navbar">
         <div class="navbar-content">
             <div class="menu-icon" id="menuButton">
@@ -1386,15 +1338,13 @@
         </div>
     </div>
 
-    <!-- SECCIÓN HERO CON TEXTO SUPERPUESTO -->
+    <!-- SECCIÓN HERO -->
     <div class="hero-section">
         <div class="hero-text">
             <h1 class="hero-title">Protege tu auto de los daños del día a día</h1>
             <p class="hero-subtitle">Evita usar tu seguro por raspones, golpes leves o daños comunes. Soluciones rápidas, sin complicaciones.</p>
         </div>
-        <div class="hero-container">
-            <!-- La imagen de fondo está en el CSS de hero-section -->
-        </div>
+        <div class="hero-container"></div>
     </div>
 
     <!-- SECCIÓN AZUL -->
@@ -1413,7 +1363,7 @@
                     </div>
                     <div class="form-group">
                         <label>Mensaje</label>
-                        <textarea name="comentario" placeholder="Me interesa saber más del programa Siempre Nuevo">Me interesa saber más del programa Siempre Nuevo</textarea>
+                        <textarea name="comentario" placeholder="Me interesa saber mas del programa Siempre Nuevo"></textarea>
                     </div>
                     
                     <div class="privacy-group">
@@ -1449,7 +1399,7 @@
         </div>
     </div>
 
-    <!-- SECCIÓN ASÍ DE SIMPLE FUNCIONA SIEMPRE NUEVO - CON ICONOS Y NUEVOS TEXTOS -->
+    <!-- SECCIÓN ASÍ DE SIMPLE FUNCIONA SIEMPRE NUEVO -->
     <div class="como-funciona-section">
         <div class="como-funciona-inner">
             <h2>Así de simple funciona Siempre Nuevo</h2>
@@ -1472,7 +1422,7 @@
                     <div class="paso-icono">
                         <img src="fotos/check.png" alt="Check">
                     </div>
-                    <h3>3. Reduce tu deducible*</h3>
+                    <h3>3. Reduce tu deducible</h3>
                     <p>En concesionarios autorizados, con respaldo y garantía.</p>
                     <small>*En el momento del Siniestro y hasta 200$ por evento de acuerdo a los términos y condiciones</small>
                 </div>
@@ -1480,21 +1430,18 @@
         </div>
     </div>
 
-    <!-- NUEVA SECCIÓN AZUL: SI TIENES SEGURO -->
+    <!-- SECCIÓN AZUL: SI TIENES SEGURO -->
     <div class="seguro-section">
         <div class="seguro-inner">
             <h2>Si tienes seguro</h2>
             <div class="seguro-grid">
-                <!-- Columna 1: Olvídate del deducible -->
+                <!-- Columna 1 -->
                 <div class="seguro-card">
                     <h3>Reduce tu deducible</h3>
-                    <div class="seguro-highlight">
-                        <p>📢 Sin costo adicional en tu seguro</p>
-                    </div>
                     <img src="fotos/accidente.png" alt="Accidente con seguro" class="seguro-imagen">
                 </div>
 
-                <!-- Columna 2: Cómo funciona - TEXTO CENTRADO EN EL RECUADRO -->
+                <!-- Columna 2: Cómo funciona -->
                 <div class="seguro-card" style="justify-content: center;">
                     <h3>Cómo funciona</h3>
                     <div class="seguro-list" style="display: flex; flex-direction: column; justify-content: center; height: 100%;">
@@ -1552,7 +1499,7 @@
         </div>
     </div>
 
-    <!-- VIDEO GRANDE - CON MINIATURA -->
+    <!-- VIDEO GRANDE -->
     <div class="full-video-section">
         <div class="full-video-container">
             <video controls playsinline preload="auto" poster="fotos/miniatura3.png">
@@ -1577,24 +1524,16 @@
                             </video>
                         </div>
                         <div class="carousel-slide">
-                            <div class="video-placeholder">
-                                🎬<br>Historia 2
-                            </div>
+                            <div class="video-placeholder">🎬<br>Historia 2</div>
                         </div>
                         <div class="carousel-slide">
-                            <div class="video-placeholder">
-                                🎬<br>Historia 3
-                            </div>
+                            <div class="video-placeholder">🎬<br>Historia 3</div>
                         </div>
                         <div class="carousel-slide">
-                            <div class="video-placeholder">
-                                🎬<br>Historia 4
-                            </div>
+                            <div class="video-placeholder">🎬<br>Historia 4</div>
                         </div>
                         <div class="carousel-slide">
-                            <div class="video-placeholder">
-                                🎬<br>Historia 5
-                            </div>
+                            <div class="video-placeholder">🎬<br>Historia 5</div>
                         </div>
                     </div>
                 </div>
@@ -1610,7 +1549,7 @@
         </a>
     </div>
 
-    <!-- FOOTER - NUEVO DISEÑO -->
+    <!-- FOOTER -->
     <div class="footer">
         <div class="footer-inner">
             <div class="footer-left">
@@ -1658,45 +1597,32 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>
         (function() {
-            // EmailJS Config
             const EMAILJS_PUBLIC_KEY = 'GExj5Fp2jmCjSsKEE';
             const EMAILJS_SERVICE_ID = 'service_ygxlbye';
             const EMAILJS_TEMPLATE_ID = 'template_c7ltsb8';
             
             emailjs.init(EMAILJS_PUBLIC_KEY);
             
-            // Elementos del menú
             const menuBtn = document.getElementById('menuButton');
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('overlay');
             const closeMenuBtn = document.getElementById('closeMenuBtn');
             
-            // Función para abrir menú
             function openMenu() {
                 sidebar.classList.add('open');
                 overlay.classList.add('active');
                 document.body.style.overflow = 'hidden';
             }
             
-            // Función para cerrar menú
             function closeMenu() {
                 sidebar.classList.remove('open');
                 overlay.classList.remove('active');
                 document.body.style.overflow = '';
             }
             
-            // Eventos del menú
-            if (menuBtn) {
-                menuBtn.addEventListener('click', openMenu);
-            }
-            
-            if (closeMenuBtn) {
-                closeMenuBtn.addEventListener('click', closeMenu);
-            }
-            
-            if (overlay) {
-                overlay.addEventListener('click', closeMenu);
-            }
+            if (menuBtn) menuBtn.addEventListener('click', openMenu);
+            if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
+            if (overlay) overlay.addEventListener('click', closeMenu);
             
             const logoBtn = document.getElementById('logoButton');
             const footerLogo = document.getElementById('footerLogo');
@@ -1738,7 +1664,7 @@
                         const templateParams = {
                             nombre: nombre,
                             telefono: telefono,
-                            comentario: comentario || 'Sin comentario',
+                            comentario: comentario || 'Me interesa saber mas del programa Siempre Nuevo',
                             fecha: fecha,
                             acepto_terminos: 'Sí',
                             para: 'contacto@akinnova.com'
@@ -1751,12 +1677,6 @@
                             submitBtn.classList.add('success');
                             form.reset();
                             privacyCheckbox.checked = false;
-                            
-                            // Resetear el textarea a su valor por defecto después de reset
-                            const textarea = form.querySelector('textarea[name="comentario"]');
-                            if (textarea) {
-                                textarea.value = 'Me interesa saber más del programa Siempre Nuevo';
-                            }
                             
                             setTimeout(() => {
                                 submitBtn.innerHTML = '👉 Quiero protegerlo';
@@ -1780,28 +1700,20 @@
                 });
             }
 
-            // CARRUSEL
             const carouselContainer = document.getElementById('carouselContainer');
             const prevBtn = document.getElementById('prevBtn');
             const nextBtn = document.getElementById('nextBtn');
             
             if (prevBtn && nextBtn && carouselContainer) {
                 prevBtn.addEventListener('click', () => {
-                    carouselContainer.scrollBy({
-                        left: -350,
-                        behavior: 'smooth'
-                    });
+                    carouselContainer.scrollBy({ left: -350, behavior: 'smooth' });
                 });
                 
                 nextBtn.addEventListener('click', () => {
-                    carouselContainer.scrollBy({
-                        left: 350,
-                        behavior: 'smooth'
-                    });
+                    carouselContainer.scrollBy({ left: 350, behavior: 'smooth' });
                 });
             }
             
-            // Error handler para videos
             const videos = document.querySelectorAll('video');
             videos.forEach(video => {
                 video.addEventListener('error', function() {
