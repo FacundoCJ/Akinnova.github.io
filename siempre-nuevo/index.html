@@ -678,6 +678,9 @@
             margin-bottom: 1rem;
             border-left: 4px solid #ff914d;
             padding-left: 1rem;
+            text-align: center;
+            border-left: none;
+            padding-left: 0;
         }
 
         .seguro-card p {
@@ -685,6 +688,7 @@
             font-size: 0.95rem;
             line-height: 1.5;
             margin-bottom: 1rem;
+            text-align: justify;
         }
 
         .seguro-list {
@@ -699,12 +703,14 @@
             display: flex;
             align-items: flex-start;
             gap: 0.5rem;
+            text-align: justify;
         }
 
         .seguro-list li::before {
             content: '✔';
             color: #ff914d;
             font-weight: bold;
+            flex-shrink: 0;
         }
 
         .seguro-highlight {
@@ -719,6 +725,7 @@
             margin-bottom: 0;
             font-weight: 600;
             color: #0c3a6a;
+            text-align: center;
         }
 
         .seguro-highlight-orange {
@@ -733,6 +740,7 @@
             margin-bottom: 0;
             font-weight: 700;
             color: #0c3a6a;
+            text-align: center;
         }
 
         .seguro-note {
@@ -976,6 +984,39 @@
 
         .carousel-button.next {
             right: 0;
+        }
+
+        /* BOTÓN FLOTANTE DE WHATSAPP */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .whatsapp-float img:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .whatsapp-float img {
+                width: 50px;
+                height: 50px;
+            }
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+            }
         }
 
         /* FOOTER - NUEVO DISEÑO */
@@ -1438,7 +1479,7 @@
     <!-- NUEVA SECCIÓN AZUL: SI TIENES SEGURO -->
     <div class="seguro-section">
         <div class="seguro-inner">
-            <h2>Si tienes seguro:</h2>
+            <h2>Si tienes seguro</h2>
             <div class="seguro-grid">
                 <!-- Columna 1: Promoción -->
                 <div class="seguro-card">
@@ -1559,6 +1600,13 @@
         </div>
     </div>
 
+    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/51997281159?text=Hola,%20me%20interesa%20obtener%20más%20información%20sobre%20Siempre%20Nuevo" target="_blank">
+            <img src="fotos/wsp.png" alt="WhatsApp">
+        </a>
+    </div>
+
     <!-- FOOTER - NUEVO DISEÑO -->
     <div class="footer">
         <div class="footer-inner">
@@ -1590,7 +1638,7 @@
                 </div>
             </div>
             <div class="footer-links-column">
-                <h3>Enlaces</h3>
+                <h3>Información</h3>
                 <div class="footer-link-item">
                     <a href="libro-de-reclamaciones.html">Libro de reclamaciones</a>
                 </div>
