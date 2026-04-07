@@ -3,35 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <meta name="facebook-domain-verification" content="5wkw3tegcs915umdcwiy2ea839bvz5" />
-    
-    <!-- Título de la página - SOLO "Akinnova" -->
-    <title>Akinnova</title>
-    
-    <!-- Meta descripción para buscadores -->
-    <meta name="description" content="Akinnova - Conectamos visión, innovación y talento para transformar el concesionario en un ecosistema ágil, rentable y centrado en el cliente.">
-    <meta name="keywords" content="Akinnova, consultoría automotriz, transformación digital, concesionarios, innovación">
-    <meta name="author" content="Akinnova">
-    
-    <!-- Favicon en múltiples formatos para mejor compatibilidad -->
-    <link rel="icon" type="image/png" href="fotos/akinnova-logo.png">
-    <link rel="shortcut icon" type="image/png" href="fotos/akinnova-logo.png">
-    <link rel="apple-touch-icon" href="fotos/akinnova-logo.png">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Akinnova">
-    <meta property="og:description" content="Transformamos concesionarios en ecosistemas ágiles, rentables y centrados en el cliente.">
-    <meta property="og:image" content="fotos/akinnova-logo.png">
-    
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Akinnova">
-    <meta name="twitter:description" content="Transformamos concesionarios en ecosistemas ágiles, rentables y centrados en el cliente.">
-    <meta name="twitter:image" content="fotos/akinnova-logo.png">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
+    <title>Siempre Nuevo</title>
+    <link rel="icon" type="image/png" href="fotos/logo-sn.png">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -40,1246 +14,1796 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'DM Sans', sans-serif;
             background-color: #ffffff;
         }
 
-        .hero {
-            position: relative;
-            width: 100%;
+        /* MENU DESPLEGABLE - SIDEBAR */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -320px;
+            width: 300px;
+            height: 100%;
+            background-color: white;
+            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+            z-index: 1001;
+            transition: left 0.3s ease;
+            overflow-y: auto;
+            padding: 2rem 1.5rem;
         }
 
-        .hero-image {
+        .sidebar.open {
+            left: 0;
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 2rem;
+        }
+
+        .close-menu {
+            background: none;
+            border: none;
+            font-size: 32px;
+            cursor: pointer;
+            color: #0c3a6a;
+            transition: transform 0.2s ease;
+        }
+
+        .close-menu:hover {
+            transform: scale(1.1);
+            color: #ff914d;
+        }
+
+        .sidebar-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .sidebar-menu a {
+            color: #0c3a6a;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid #e7f3ff;
+        }
+
+        .sidebar-menu a:hover {
+            color: #ff914d;
+            transform: translateX(5px);
+            border-bottom-color: #ff914d;
+        }
+
+        /* Overlay para cerrar el menú al hacer clic fuera */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            display: none;
+        }
+
+        .overlay.active {
             display: block;
-            height: auto;
         }
 
-        .navbar-overlay {
-            position: absolute;
-            top: 70px;
+        /* BARRA SUPERIOR FIJA - CASI ANCHO COMPLETO, MÁS DELGADA */
+        .navbar {
+            position: fixed;
+            top: 1rem;
             left: 50%;
             transform: translateX(-50%);
-            width: 47%;
-            background-color: #ffffff;
-            border-radius: 60px;
-            padding: 24px 40px;
+            width: 96%;
+            max-width: 1600px;
+            z-index: 100;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(2px);
+            border-radius: 50px;
+            padding: 0.3rem 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-content {
+            width: 100%;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-            z-index: 20;
         }
 
-        .logo-img {
-            height: 52px;
-            width: auto;
-            display: block;
-            object-fit: contain;
-        }
-
-        .siempre-nuevo-link {
-            text-decoration: none;
-            transition: opacity 0.2s ease;
-        }
-
-        .siempre-nuevo-link:hover {
-            opacity: 0.8;
-        }
-
-        .siempre-nuevo {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 2rem;
-            color: #0c3a6a;
-        }
-
-        .hero-text {
-            position: absolute;
-            top: 28%;
-            left: 0;
-            right: 0;
-            text-align: center;
-            z-index: 15;
-            transform: translateY(-50%);
-            padding: 0 20px;
-        }
-
-        .hero-text h1 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 800;
-            font-size: 5rem;
-            line-height: 1.2;
-            color: white;
-            text-shadow: 5px 5px 14px rgba(0, 0, 0, 0.7), 3px 3px 6px rgba(0, 0, 0, 0.5);
-            font-style: italic;
-        }
-
-        .description-section {
-            max-width: 1300px;
-            margin: 70px auto 90px auto;
-            padding: 0 24px;
-            text-align: center;
-        }
-
-        .description-text {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 500;
-            color: #000000;
-            line-height: 1.4;
-        }
-
-        /* ========== SECCIÓN MISIÓN VISIÓN PROPÓSITO ========== */
-        .mvp-section {
-            max-width: 1800px;
-            margin: 0 auto 120px auto;
-            padding: 0 40px;
-        }
-
-        .tabs-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 100px;
-        }
-
-        .tabs-wrapper {
-            display: flex;
-            border-radius: 60px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        }
-
-        .tab-btn {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            padding: 20px 56px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background-color: #d9d9d9;
-            color: #0c3a6a;
-            text-align: center;
-            min-width: 200px;
-        }
-
-        .tab-btn.active {
-            background-color: #0c3a6a;
-            color: white;
-        }
-
-        .tabs-wrapper .tab-btn:first-child {
-            border-radius: 60px 0 0 60px;
-        }
-
-        .tabs-wrapper .tab-btn:last-child {
-            border-radius: 0 60px 60px 0;
-        }
-
-        .mvp-cards-container {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 850px;
-            width: 100%;
-        }
-
-        .side-cards-line {
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            justify-content: space-between;
-            gap: 0;
-            background-color: #0f4472;
-            border-radius: 140px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-            z-index: 1;
-            width: 100%;
-        }
-
-        .side-card {
-            background-color: transparent;
+        .menu-icon {
             display: flex;
             align-items: center;
-            text-align: center;
-            padding: 130px 0;
             cursor: pointer;
-            transition: all 0.3s ease;
-            flex: 1;
+            transition: transform 0.2s ease;
         }
-
-        .side-card:first-child {
-            justify-content: flex-start;
-        }
-
-        .side-card:last-child {
-            justify-content: flex-end;
-        }
-
-        .side-card h3 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: white;
-            margin: 0;
-            letter-spacing: -0.2px;
-            white-space: nowrap;
-        }
-
-        .side-card:first-child h3 {
-            padding-left: 15px;
-            margin-left: 0;
-        }
-
-        .side-card:last-child h3 {
-            padding-right: 15px;
-            margin-right: 0;
-        }
-
-        .side-card:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+        .menu-icon:hover {
             transform: scale(1.02);
         }
-
-        .center-card-wrapper {
-            position: relative;
-            z-index: 10;
-            width: 74%;
-            max-width: 1250px;
-            margin: 0 auto;
-        }
-
-        .center-card {
-            background-color: #0c3a6a;
-            border-radius: 110px;
-            padding: 105px 95px;
-            text-align: center;
-            box-shadow: 0 45px 70px rgba(0, 0, 0, 0.3);
-            transition: all 0.4s ease;
-        }
-
-        .center-card h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 4rem;
-            font-weight: 800;
-            color: white;
-            margin-bottom: 50px;
-            letter-spacing: -0.5px;
-        }
-
-        .center-card p {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.1rem;
-            font-weight: 500;
-            color: white;
-            line-height: 1.5;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        @keyframes fadeSlideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .center-card-wrapper, .side-cards-line {
-            animation: fadeSlideUp 0.5s ease-out;
-        }
-
-        /* ========== AJUSTE PARA ESCRITORIO/LAPTOP - Recuadro central más pequeño ========== */
-        @media (min-width: 769px) and (max-width: 1600px) {
-            .center-card-wrapper {
-                width: 65%;
-                max-width: 1000px;
-            }
-            .center-card {
-                padding: 70px 60px;
-                border-radius: 80px;
-            }
-            .center-card h2 {
-                font-size: 3rem;
-                margin-bottom: 30px;
-            }
-            .center-card p {
-                font-size: 1.5rem;
-            }
-            .side-card {
-                padding: 100px 0;
-            }
-            .side-card h3 {
-                font-size: 1.8rem;
-            }
-            .side-card:first-child h3 {
-                padding-left: 20px;
-            }
-            .side-card:last-child h3 {
-                padding-right: 20px;
-            }
-        }
-
-        /* Para pantallas muy grandes, mantener proporción */
-        @media (min-width: 1601px) {
-            .center-card-wrapper {
-                width: 68%;
-            }
-        }
-
-        /* ========== SECCIÓN LÍNEAS DE TRABAJO ========== */
-        .work-lines-section {
-            max-width: 100%;
-            margin: 0 auto 100px auto;
-            padding: 0;
-        }
-
-        .section-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 3rem;
-            font-weight: 800;
-            color: #0c3a6a;
-            text-align: center;
-            margin-bottom: 60px;
-            letter-spacing: -0.5px;
-        }
-
-        .gente-image {
-            width: 100%;
+        .menu-icon img {
+            width: 40px;
+            height: auto;
             display: block;
-            margin-bottom: 80px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
-        .titles-container {
+        .logo-icon {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .logo-icon:hover {
+            transform: scale(1.02);
+        }
+        .logo-icon img {
+            height: 70px;
+            width: auto;
+            display: block;
+        }
+
+        /* Ajuste para compensar la barra fija */
+        .hero-section {
+            padding-top: 100px;
+        }
+
+        /* SECCIÓN HERO CON IMAGEN DE FONDO Y TEXTO SUPERPUESTO - MÁS CONTRASTE */
+        .hero-section {
             position: relative;
             width: 100%;
-            margin-bottom: 60px;
+            min-height: 100vh;
+            background-image: url('fotos/carro.png');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: -1px;
         }
 
-        .blue-bar-bg {
+        /* Contenedor del texto superpuesto - MÁS PEGADO A LA IZQUIERDA CON MÁS CONTRASTE */
+        .hero-text {
             position: absolute;
-            top: 50%;
+            top: 60%;
             left: 0;
             right: 0;
             transform: translateY(-50%);
-            height: 80%;
-            background: linear-gradient(90deg, #0c3a6a, #1a5a8a, #0c3a6a);
-            border-radius: 0;
-            z-index: 0;
-        }
-
-        .two-columns-titles {
-            display: flex;
-            gap: 50px;
             max-width: 1400px;
+            width: 100%;
             margin: 0 auto;
-            padding: 0 40px;
-            position: relative;
+            padding: 0 2rem;
             z-index: 2;
         }
 
-        .title-col {
-            flex: 1;
-            text-align: center;
-        }
-
-        .title-col h3 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 800;
+        .hero-title {
             color: white;
-            margin: 20px 0;
-            letter-spacing: -0.5px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .two-columns-cards {
-            display: flex;
-            gap: 50px;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 40px;
-        }
-
-        .column {
-            flex: 1;
-        }
-
-        .work-card {
-            background-color: #ffffff;
-            border-radius: 28px;
-            padding: 30px 28px;
-            margin-bottom: 30px;
-            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            cursor: pointer;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            border: 1px solid #e0e0e0;
-        }
-
-        .work-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
-            border-color: #0c3a6a;
-        }
-
-        .work-card p {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: #0c3a6a;
-            line-height: 1.5;
-            margin: 0;
-        }
-
-        .work-card strong {
+            font-size: 2.2rem;
             font-weight: 700;
-            font-size: 1.15rem;
-            display: block;
-            margin-bottom: 12px;
-            color: #0c3a6a;
-        }
-
-        /* ========== SECCIÓN EQUIPO ========== */
-        .team-section {
-            background-color: #0c3a6a;
-            padding: 80px 40px 100px 40px;
-            margin-top: 60px;
-        }
-
-        .team-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: white;
-            text-align: center;
-            margin-bottom: 50px;
-            letter-spacing: -0.5px;
-        }
-
-        .diagonal-line {
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(95deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 20%, rgba(255,255,255,0.8) 80%, rgba(255,255,255,0) 100%);
-            margin-bottom: 70px;
-            transform: skewY(-1deg);
-        }
-
-        .team-cards {
-            display: flex;
-            gap: 50px;
-            max-width: 1400px;
-            margin: 0 auto;
-            flex-wrap: wrap;
-        }
-
-        .team-card {
-            flex: 1;
-            background-color: #ffffff;
-            border-radius: 40px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .team-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.25);
-        }
-
-        .card-content {
-            padding: 0;
-        }
-
-        .profile-header {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-            padding: 35px 35px 20px 35px;
-            border-bottom: 2px solid #e0e0e0;
-        }
-
-        .profile-photo {
-            width: 130px;
-            height: 130px;
-            border-radius: 20px;
-            object-fit: cover;
-            object-position: top;
-            border: 3px solid #0c3a6a;
-            background-color: #f0f0f0;
-            flex-shrink: 0;
-        }
-
-        .profile-name h3 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2rem;
-            font-weight: 800;
-            color: #0c3a6a;
-            margin-bottom: 5px;
-        }
-
-        .profile-description {
-            padding: 30px 35px 40px 35px;
-        }
-
-        .profile-description p {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            font-weight: 500;
-            color: #333;
-            line-height: 1.6;
-            margin-bottom: 15px;
+            font-style: italic;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.5);
+            max-width: 35%;
             text-align: justify;
         }
 
-        .profile-description p:last-child {
-            margin-bottom: 0;
+        .hero-subtitle {
+            color: white;
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 1.4;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            max-width: 35%;
+            text-align: left;
         }
 
-        /* ========== FOOTER - IMAGEN FINAL Y CONTACTO ========== */
-        .footer-section {
+        /* Optimización para móviles */
+        @media (max-width: 768px) {
+            .navbar {
+                top: 0.8rem;
+                padding: 0.2rem 1rem;
+                width: 94%;
+                border-radius: 40px;
+            }
+            .menu-icon img {
+                width: 32px;
+            }
+            .logo-icon img {
+                height: 55px;
+            }
+            .hero-section {
+                background-size: contain;
+                background-position: top center;
+                min-height: auto;
+                padding-top: 80px;
+                padding-bottom: 0;
+            }
+            
+            .hero-section::after {
+                content: '';
+                display: block;
+                padding-bottom: 56.25%;
+            }
+            
+            .hero-text {
+                top: 50%;
+                left: 0;
+                right: 0;
+                transform: translateY(-50%);
+                padding: 0 1rem;
+                text-align: left;
+            }
+            
+            .hero-title {
+                font-size: 1rem;
+                max-width: 35%;
+                margin-bottom: 0;
+                line-height: 1.3;
+                text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+                text-align: justify;
+            }
+            
+            .hero-subtitle {
+                display: none;
+            }
+        }
+
+        /* Tablet */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .navbar {
+                padding: 0.25rem 1.2rem;
+                width: 95%;
+            }
+            .logo-icon img {
+                height: 65px;
+            }
+            .hero-section {
+                padding-top: 90px;
+            }
+            .hero-title {
+                font-size: 1.8rem;
+                max-width: 35%;
+            }
+            .hero-subtitle {
+                font-size: 0.9rem;
+                max-width: 35%;
+            }
+        }
+
+        /* Laptop */
+        @media (min-width: 1025px) and (max-width: 1366px) {
+            .hero-title {
+                font-size: 2rem;
+                max-width: 35%;
+            }
+            .hero-subtitle {
+                font-size: 1rem;
+                max-width: 35%;
+            }
+        }
+
+        /* Pantallas grandes */
+        @media (min-width: 1367px) {
+            .hero-title {
+                font-size: 2.5rem;
+                max-width: 35%;
+            }
+            .hero-subtitle {
+                font-size: 1.2rem;
+                max-width: 35%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                top: 0.6rem;
+                padding: 0.15rem 0.8rem;
+                width: 92%;
+                border-radius: 30px;
+            }
+            .menu-icon img {
+                width: 28px;
+            }
+            .logo-icon img {
+                height: 45px;
+            }
+            .hero-section {
+                padding-top: 65px;
+            }
+            .hero-title {
+                font-size: 0.85rem;
+                max-width: 35%;
+            }
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* SECCIÓN AZUL */
+        .blue-section {
+            background-color: #0c3a6a;
+            width: 100%;
+            padding: 3rem 2rem;
+            margin-top: -1px;
+        }
+
+        .blue-section-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .form-container {
+            flex: 1;
+            min-width: 280px;
+            background-color: #e7f3ff;
+            border-radius: 32px;
+            padding: 2rem;
+        }
+
+        .form-container h2 {
+            color: #0c3a6a;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #0c3a6a;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 20px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            background-color: white;
+            transition: all 0.2s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff914d;
+            box-shadow: 0 0 0 3px rgba(255, 145, 77, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .privacy-group {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .privacy-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            cursor: pointer;
+            accent-color: #ff914d;
+        }
+
+        .privacy-group label {
+            color: #0c3a6a;
+            font-weight: 500;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            cursor: pointer;
+        }
+
+        .privacy-group a {
+            color: #ff914d;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .privacy-group a:hover {
+            text-decoration: underline;
+        }
+
+        .btn-continuar {
+            background-color: #ff914d;
+            color: #0c3a6a;
+            border: none;
+            padding: 0.9rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 40px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.2s ease;
+        }
+
+        .btn-continuar:hover:not(:disabled) {
+            transform: scale(1.02);
+            background-color: #ff7a2e;
+        }
+
+        .btn-continuar.success {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-continuar.error {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-continuar:disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .video-container {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .video-wrapper {
+            background-color: transparent;
+            border-radius: 32px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: contain;
+            border-radius: 32px;
+            background-color: transparent;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .social-section {
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        .social-section p {
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.1);
+        }
+
+        .social-icons img {
+            width: 48px;
+            height: 48px;
+        }
+
+        /* SECCIÓN CÓMO FUNCIONA - CON ICONOS Y NUEVOS TEXTOS */
+        .como-funciona-section {
+            background-color: white;
+            width: 100%;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .como-funciona-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .como-funciona-section h2 {
+            color: #0c3a6a;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
             position: relative;
+            display: inline-block;
+        }
+
+        .como-funciona-section h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: #ff914d;
+            border-radius: 2px;
+        }
+
+        .pasos-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .paso-card {
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+            text-align: center;
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .paso-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .paso-icono {
+            width: 80px;
+            height: 80px;
+            background-color: #ff914d;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem auto;
+            box-shadow: 0 4px 12px rgba(255, 145, 77, 0.3);
+        }
+
+        .paso-icono img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+        }
+
+        .paso-card h3 {
+            color: #0c3a6a;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .paso-card p {
+            color: #4a5568;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .paso-card small {
+            display: block;
+            color: #ff914d;
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+
+        /* NUEVA SECCIÓN AZUL: SI TIENES SEGURO */
+        .seguro-section {
+            background-color: #0c3a6a;
+            width: 100%;
+            padding: 3rem 2rem;
+        }
+
+        .seguro-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .seguro-section h2 {
+            color: white;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+            text-align: center;
             width: 100%;
         }
 
-        .final-image {
+        .seguro-section h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: #ff914d;
+            border-radius: 2px;
+        }
+
+        .seguro-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .seguro-card {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 32px;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .seguro-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .seguro-card h3 {
+            color: #0c3a6a;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .seguro-card p {
+            color: #4a5568;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .seguro-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .seguro-list li {
+            color: #1f4a7a;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .seguro-list li strong {
+            color: #0c3a6a;
+            font-size: 1rem;
+        }
+
+        .seguro-list li span {
+            color: #1f4a7a;
+            font-size: 0.9rem;
+        }
+
+        .seguro-highlight {
+            background-color: #e7f3ff;
+            border-radius: 24px;
+            padding: 1rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .seguro-highlight p {
+            margin-bottom: 0;
+            font-weight: 600;
+            color: #0c3a6a;
+            text-align: center;
+        }
+
+        .seguro-highlight-orange {
+            background-color: #ff914d;
+            border-radius: 24px;
+            padding: 1rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .seguro-highlight-orange p {
+            margin-bottom: 0;
+            font-weight: 700;
+            color: #0c3a6a;
+            text-align: center;
+        }
+
+        .seguro-note {
+            font-size: 0.7rem;
+            color: #666;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .seguro-badge {
+            display: inline-block;
+            background-color: #ff914d;
+            color: #0c3a6a;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            align-self: center;
+        }
+
+        .seguro-imagen {
             width: 100%;
+            border-radius: 24px;
+            margin: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* SECCIÓN BLANCA - COBERTURA */
+        .cobertura-section {
+            background-color: white;
+            width: 100%;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .cobertura-section-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .cobertura-section h2 {
+            color: #0c3a6a;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .cobertura-section h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: #ff914d;
+            border-radius: 2px;
+        }
+
+        .cobertura-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .cobertura-card {
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .cobertura-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .cobertura-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 24px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .cobertura-card h3 {
+            color: #0c3a6a;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        /* VIDEO GRANDE - CON MINIATURA */
+        .full-video-section {
+            width: 100%;
+            background-color: white;
+        }
+
+        .full-video-container {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+
+        .full-video-container video {
+            width: 100%;
+            display: block;
+            background-color: black;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        /* HISTORIAS REALES - CARRUSEL */
+        .historias-section {
+            background-color: white;
+            width: 100%;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .historias-section-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .historias-section h2 {
+            color: #0c3a6a;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .historias-section h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: #ff914d;
+            border-radius: 2px;
+        }
+
+        /* CARRUSEL */
+        .carousel-wrapper {
+            position: relative;
+            overflow: hidden;
+            padding: 0 40px;
+        }
+
+        .carousel-container {
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .carousel-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .carousel-container::-webkit-scrollbar-track {
+            background: #e7f3ff;
+            border-radius: 10px;
+        }
+
+        .carousel-container::-webkit-scrollbar-thumb {
+            background: #ff914d;
+            border-radius: 10px;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1rem 0;
+        }
+
+        .carousel-slide {
+            flex: 0 0 calc(33.333% - 1rem);
+            min-width: 280px;
+            border-radius: 24px;
+            overflow: hidden;
+            background-color: transparent;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .carousel-slide:hover {
+            transform: translateY(-5px);
+        }
+
+        .carousel-slide video {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 9 / 16;
+            object-fit: cover;
+            border-radius: 24px;
+            background-color: #f0f0f0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #ff914d;
+            color: white;
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-button:hover {
+            background-color: #ff7a2e;
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .carousel-button.prev {
+            left: 0;
+        }
+
+        .carousel-button.next {
+            right: 0;
+        }
+
+        /* BOTÓN FLOTANTE DE WHATSAPP */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .whatsapp-float img:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .whatsapp-float img {
+                width: 50px;
+                height: 50px;
+            }
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        /* FOOTER - NUEVO DISEÑO */
+        .footer {
+            background-color: #0c3a6a;
+            width: 100%;
+            padding: 3rem 2rem;
+        }
+
+        .footer-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+
+        .footer-left {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-logo {
+            cursor: pointer;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo img {
+            height: 280px;
+            width: auto;
             display: block;
         }
 
-        .contact-block {
+        .footer-contact {
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 50px;
+        }
+
+        .footer-contact h3, .footer-social-title h3 {
+            color: white;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-contact h3:after, .footer-social-title h3:after {
+            content: '';
             position: absolute;
-            right: 60px;
-            top: 50%;
-            transform: translateY(-50%);
-            text-align: right;
-            z-index: 10;
+            bottom: -6px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #ff914d;
+            border-radius: 2px;
         }
 
         .contact-item {
-            margin-bottom: 16px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            padding: 8px 12px;
-            border-radius: 12px;
-            text-align: right;
+            margin-bottom: 0.8rem;
         }
 
-        .contact-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .contact-item:hover {
-            background-color: rgba(0, 0, 0, 0.05);
-            transform: translateX(-5px);
-        }
-
-        .contact-label {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
-            color: #000000;
-            display: inline-block;
-        }
-
-        .contact-value {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            font-weight: 500;
-            color: #000000;
-            display: inline-block;
-            margin-left: 8px;
-            word-break: break-word;
-        }
-
-        /* Tooltip para copiado */
-        .copy-tooltip {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #0c3a6a;
+        .contact-item a {
             color: white;
-            padding: 12px 28px;
-            border-radius: 50px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9rem;
+            text-decoration: none;
+            font-size: 1.1rem;
             font-weight: 500;
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: color 0.2s ease;
         }
 
-        .copy-tooltip.show {
-            opacity: 1;
+        .contact-item a:hover {
+            color: #ff914d;
         }
 
-        /* ========== SOLO ESTILOS PARA MÓVIL ========== */
-        @media (max-width: 768px) {
-            .navbar-overlay {
-                top: 15px;
-                width: 88%;
-                padding: 8px 16px;
-                border-radius: 35px;
+        .footer-social {
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 50px;
+        }
+
+        .footer-social-title h3 {
+            display: inline-block;
+        }
+
+        .social-icons-footer {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons-footer a {
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+
+        .social-icons-footer a:hover {
+            transform: scale(1.1);
+        }
+
+        .social-icons-footer img {
+            width: 52px;
+            height: 52px;
+        }
+
+        .footer-links-column {
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 50px;
+        }
+
+        .footer-links-column h3 {
+            color: white;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-links-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #ff914d;
+            border-radius: 2px;
+        }
+
+        .footer-link-item {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-link-item a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .footer-link-item a:hover {
+            color: #ff914d;
+        }
+
+        /* MEDIA QUERIES */
+        @media (max-width: 1024px) {
+            .carousel-slide {
+                flex: 0 0 calc(50% - 0.75rem);
             }
-            .logo-img {
-                height: 28px;
+            .footer-logo img {
+                height: 200px;
             }
-            .siempre-nuevo {
-                font-size: 0.85rem;
+            .footer-contact, .footer-social, .footer-links-column {
+                padding-top: 30px;
             }
-            .hero-text {
-                top: 34%;
-            }
-            .hero-text h1 {
-                font-size: 1.5rem;
-                text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
-            }
-            .description-text {
-                font-size: 0.9rem;
-            }
-            .description-section {
-                margin: 30px auto 40px auto;
-            }
-            .mvp-section {
-                padding: 0 20px;
-                margin-bottom: 50px;
-            }
-            .tabs-container {
-                display: flex;
-                justify-content: center;
-                margin-bottom: 25px;
-            }
-            .tabs-wrapper {
-                display: flex;
-                border-radius: 40px;
-                overflow: hidden;
-                width: 100%;
-                justify-content: center;
-            }
-            .tab-btn {
-                font-size: 0.85rem;
-                padding: 10px 12px;
-                min-width: 85px;
-                flex: 1;
-            }
-            .mvp-cards-container {
-                min-height: auto;
-            }
-            .side-cards-line {
-                display: none;
-            }
-            .center-card-wrapper {
-                width: 100%;
-                margin: 0 auto;
-            }
-            .center-card {
-                padding: 30px 20px;
-                border-radius: 35px;
-                cursor: pointer;
-            }
-            .center-card h2 {
-                font-size: 1.4rem;
-                margin-bottom: 15px;
-            }
-            .center-card p {
-                font-size: 0.85rem;
-                line-height: 1.5;
-            }
-            .section-title {
-                font-size: 1.6rem;
-                margin-bottom: 30px;
-            }
-            .gente-image {
-                margin-bottom: 40px;
-            }
-            .titles-container {
-                margin-bottom: 25px;
-            }
-            .two-columns-titles {
-                flex-direction: row;
-                gap: 15px;
-                padding: 0 15px;
-            }
-            .title-col h3 {
+            .contact-item a, .footer-link-item a {
                 font-size: 1rem;
-                margin: 12px 0;
             }
-            .blue-bar-bg {
-                height: 70%;
+            .footer-contact h3, .footer-social-title h3, .footer-links-column h3 {
+                font-size: 1.3rem;
             }
-            .two-columns-cards {
-                flex-direction: row;
-                gap: 12px;
-                padding: 0 15px;
+            .paso-icono {
+                width: 70px;
+                height: 70px;
             }
-            .work-card {
-                padding: 14px 10px;
-                margin-bottom: 0;
-                border-radius: 18px;
+            .paso-icono img {
+                width: 38px;
+                height: 38px;
             }
-            .work-card p {
-                font-size: 0.65rem;
+            .seguro-card {
+                min-width: 280px;
             }
-            .work-card strong {
-                font-size: 0.7rem;
-                margin-bottom: 6px;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-slide {
+                flex: 0 0 calc(100% - 0rem);
             }
-            .column {
-                display: flex;
-                flex-direction: column;
-                gap: 12px;
+            .carousel-wrapper {
+                padding: 0 20px;
             }
-            .team-section {
-                padding: 40px 20px 50px 20px;
-                margin-top: 30px;
+            .carousel-button {
+                width: 36px;
+                height: 36px;
+                font-size: 18px;
             }
-            .team-title {
-                font-size: 1.8rem;
-                margin-bottom: 30px;
+            .hero-container {
+                padding: 0 1rem;
             }
-            .diagonal-line {
-                margin-bottom: 35px;
+            .blue-section {
+                padding: 1.5rem 1rem;
             }
-            .team-cards {
-                gap: 25px;
+            .blue-section-inner {
+                gap: 1.5rem;
             }
-            .team-card {
-                border-radius: 25px;
+            .form-container {
+                padding: 1.5rem;
             }
-            .profile-header {
+            .form-container h2 {
+                font-size: 1.4rem;
+            }
+            .social-icons img {
+                width: 40px;
+                height: 40px;
+            }
+            .paso-card {
+                min-width: 100%;
+            }
+            .seguro-section {
+                padding: 2rem 1rem;
+            }
+            .seguro-card {
+                min-width: 100%;
+            }
+            .cobertura-card img {
+                height: 180px;
+            }
+            .footer-inner {
                 flex-direction: column;
                 text-align: center;
-                gap: 12px;
-                padding: 20px 20px 15px 20px;
             }
-            .profile-photo {
-                width: 90px;
-                height: 90px;
-                border-radius: 16px;
+            .footer-left, .footer-contact, .footer-social, .footer-links-column {
+                text-align: center;
+                padding-top: 0;
             }
-            .profile-name h3 {
-                font-size: 1.2rem;
+            .footer-contact h3:after, .footer-social-title h3:after, .footer-links-column h3:after {
+                left: 50%;
+                transform: translateX(-50%);
             }
-            .profile-description {
-                padding: 18px 20px 22px 20px;
+            .social-icons-footer {
+                justify-content: center;
             }
-            .profile-description p {
-                font-size: 0.8rem;
-                text-align: left;
+            .footer-logo img {
+                height: 180px;
+                margin: 0 auto;
             }
-            .footer-section {
-                position: relative;
+            .sidebar {
+                width: 280px;
             }
-            .final-image {
-                width: 100%;
+            .footer-contact h3, .footer-social-title h3, .footer-links-column h3 {
+                font-size: 1.3rem;
             }
-            .contact-block {
-                position: absolute;
-                right: 10px;
-                top: 50%;
-                transform: translateY(-50%);
-                text-align: right;
-                background-color: transparent;
-                padding: 0;
-                margin: 0;
+            .contact-item a, .footer-link-item a {
+                font-size: 1rem;
             }
-            .contact-item {
-                text-align: right;
-                padding: 2px 0;
-                margin-bottom: 4px;
-                display: block;
-                background-color: transparent;
-                backdrop-filter: none;
-                border-radius: 0;
+            .paso-icono {
+                width: 60px;
+                height: 60px;
             }
-            .contact-item:last-child {
-                margin-bottom: 0;
-            }
-            .contact-item:hover {
-                transform: none;
-                background-color: transparent;
-            }
-            .contact-label {
-                font-size: 0.55rem;
-                display: inline-block;
-                margin-bottom: 0;
-                font-weight: 600;
-                color: #000000;
-            }
-            .contact-value {
-                font-size: 0.55rem;
-                display: inline-block;
-                margin-left: 3px;
-                font-weight: 500;
-                color: #000000;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .navbar-overlay {
-                width: 92%;
-                padding: 6px 12px;
-                border-radius: 30px;
-            }
-            .logo-img {
-                height: 24px;
-            }
-            .siempre-nuevo {
-                font-size: 0.75rem;
-            }
-            .hero-text h1 {
-                font-size: 1.2rem;
-            }
-            .tab-btn {
-                font-size: 0.7rem;
-                padding: 8px 8px;
-                min-width: 70px;
-            }
-            .center-card h2 {
-                font-size: 1.2rem;
-            }
-            .center-card p {
-                font-size: 0.75rem;
-            }
-            .title-col h3 {
-                font-size: 0.85rem;
-            }
-            .work-card p {
-                font-size: 0.55rem;
-            }
-            .work-card strong {
-                font-size: 0.6rem;
-            }
-            .contact-label {
-                font-size: 0.5rem;
-            }
-            .contact-value {
-                font-size: 0.5rem;
-                margin-left: 2px;
-            }
-            .contact-item {
-                padding: 1px 0;
-                margin-bottom: 3px;
+            .paso-icono img {
+                width: 32px;
+                height: 32px;
             }
         }
 
-        .side-card {
-            transition: transform 0.2s ease, background-color 0.2s ease;
-        }
-        
-        .center-card {
-            transition: all 0.3s ease;
-        }
-        
-        .tab-btn:hover:not(.active) {
-            background-color: #c0c0c0;
-        }
-        
-        @media (min-width: 1001px) {
-            .center-card-wrapper {
-                transform: translateY(0);
+        @media (max-width: 480px) {
+            .paso-icono {
+                width: 55px;
+                height: 55px;
             }
-            .side-cards-line {
-                top: 50%;
-                transform: translateY(-50%);
+            .paso-icono img {
+                width: 28px;
+                height: 28px;
             }
+            .paso-card h3 {
+                font-size: 1.1rem;
+            }
+            .paso-card p {
+                font-size: 0.85rem;
+            }
+            .seguro-card h3 {
+                font-size: 1.2rem;
+            }
+            .footer-logo img {
+                height: 140px;
+            }
+            .social-icons-footer img {
+                width: 45px;
+                height: 45px;
+            }
+            .footer-contact h3, .footer-social-title h3, .footer-links-column h3 {
+                font-size: 1.2rem;
+            }
+            .contact-item a, .footer-link-item a {
+                font-size: 0.95rem;
+            }
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 0.8s linear infinite;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .video-placeholder {
+            width: 100%;
+            aspect-ratio: 9 / 16;
+            background: linear-gradient(135deg, #0c3a6a, #ff914d);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
 <body>
+    <!-- Overlay para cerrar menú -->
+    <div class="overlay" id="overlay"></div>
 
-<section class="hero">
-    <img class="hero-image" src="fotos/carro-inicio.png" alt="Vehículo principal | Akinnova">
-    <div class="navbar-overlay">
-        <img class="logo-img" src="fotos/akinnova-logo.png" alt="Akinnova Logo">
-        <a href="https://akinnova.com/siempre-nuevo/" target="_blank" rel="noopener noreferrer" class="siempre-nuevo-link">
-            <span class="siempre-nuevo">Siempre Nuevo</span>
+    <!-- Menú desplegable lateral -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button class="close-menu" id="closeMenuBtn">✕</button>
+        </div>
+        <div class="sidebar-menu">
+            <a href="beneficios">Beneficios</a>
+            <a href="planes">Planes</a>
+            <a href="quienes-somos">Quienes Somos</a>
+            <a href="por-que-siempre-nuevo">¿Por qué Siempre Nuevo?</a>
+            <a href="terminos-y-condiciones">Términos y Condiciones</a>
+            <a href="libro-de-reclamaciones">Libro de Reclamaciones</a>
+            <a href="politica-de-privacidad">Política de Privacidad</a>
+            <a href="nuestros-aliados">Nuestros Aliados</a>
+        </div>
+    </div>
+
+    <!-- BARRA SUPERIOR FIJA - CASI ANCHO COMPLETO, MÁS DELGADA -->
+    <div class="navbar">
+        <div class="navbar-content">
+            <div class="menu-icon" id="menuButton">
+                <img src="fotos/menu.png" alt="Menú">
+            </div>
+            <div class="logo-icon" id="logoButton">
+                <img src="fotos/logo-sn.png" alt="Siempre Nuevo">
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN HERO CON TEXTO SUPERPUESTO -->
+    <div class="hero-section">
+        <div class="hero-text">
+            <h1 class="hero-title">Protege tu auto de los daños del día a día</h1>
+            <p class="hero-subtitle">Evita usar tu seguro por raspones, golpes leves o daños comunes. Soluciones rápidas, sin complicaciones.</p>
+        </div>
+        <div class="hero-container">
+            <!-- La imagen de fondo está en el CSS de hero-section -->
+        </div>
+    </div>
+
+    <!-- SECCIÓN AZUL -->
+    <div class="blue-section">
+        <div class="blue-section-inner">
+            <div class="form-container">
+                <h2>Empieza a proteger tu auto hoy</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label>Nombre y Apellidos</label>
+                        <input type="text" name="nombre" required placeholder="Ej: Juan Pérez">
+                    </div>
+                    <div class="form-group">
+                        <label>Número de teléfono / WhatsApp</label>
+                        <input type="tel" name="telefono" required placeholder="+51 999 999 999">
+                    </div>
+                    <div class="form-group">
+                        <label>Comentario (Opcional)</label>
+                        <textarea name="comentario" placeholder="Escribe aquí tu mensaje..."></textarea>
+                    </div>
+                    
+                    <div class="privacy-group">
+                        <input type="checkbox" id="privacyCheckbox" required>
+                        <label for="privacyCheckbox">
+                            Autorizo el uso de mis datos para ser contactado sobre el programa Siempre Nuevo. (<a href="politica-de-privacidad" id="privacyLink">Ver política de privacidad</a>)
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn-continuar" id="submitBtn">👉 Quiero protegerlo</button>
+                </form>
+            </div>
+
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <video id="mainVideo" controls playsinline preload="auto" poster="fotos/miniatura1.png">
+                        <source src="fotos/video1.mp4" type="video/mp4">
+                        Tu navegador no soporta el elemento de video.
+                    </video>
+                </div>
+                <div class="social-section">
+                    <p>Síguenos en nuestras redes</p>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/siemprenuevo.pe/" target="_blank">
+                            <img src="fotos/instagram.png" alt="Instagram">
+                        </a>
+                        <a href="https://www.tiktok.com/@siemprenuevo.pe" target="_blank">
+                            <img src="fotos/tiktok.png" alt="TikTok">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN ASÍ DE SIMPLE FUNCIONA SIEMPRE NUEVO - CON ICONOS Y NUEVOS TEXTOS -->
+    <div class="como-funciona-section">
+        <div class="como-funciona-inner">
+            <h2>Así de simple funciona Siempre Nuevo</h2>
+            <div class="pasos-grid">
+                <div class="paso-card">
+                    <div class="paso-icono">
+                        <img src="fotos/reloj.png" alt="Reloj">
+                    </div>
+                    <h3>1. Te afilias en minutos</h3>
+                    <p>Proceso rápido y sin papeleos.</p>
+                </div>
+                <div class="paso-card">
+                    <div class="paso-icono">
+                        <img src="fotos/llaves.png" alt="Llaves">
+                    </div>
+                    <h3>2. Lo usas cuando lo necesites</h3>
+                    <p>Atención 24/7, sin trámites complicados ni gestiones en comisaría.</p>
+                </div>
+                <div class="paso-card">
+                    <div class="paso-icono">
+                        <img src="fotos/check.png" alt="Check">
+                    </div>
+                    <h3>3. Reparaciones sin costo*</h3>
+                    <p>En concesionarios autorizados, con respaldo y garantía.</p>
+                    <small>*Hasta 200$ por evento de acuerdo a los términos y condiciones</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NUEVA SECCIÓN AZUL: SI TIENES SEGURO -->
+    <div class="seguro-section">
+        <div class="seguro-inner">
+            <h2>Si tienes seguro</h2>
+            <div class="seguro-grid">
+                <!-- Columna 1: Promoción -->
+                <div class="seguro-card">
+                    <span class="seguro-badge">🎁 Promoción especial</span>
+                    <h3>Olvídate del deducible</h3>
+                    <div class="seguro-highlight">
+                        <p>📢 Suscríbete por 2 años y recibe el 3° gratis</p>
+                    </div>
+                    <img src="fotos/accidente.png" alt="Accidente con seguro" class="seguro-imagen">
+                </div>
+
+                <!-- Columna 2: Cómo funciona - TEXTO CENTRADO EN EL RECUADRO -->
+                <div class="seguro-card" style="justify-content: center;">
+                    <h3>Cómo funciona</h3>
+                    <div class="seguro-list" style="display: flex; flex-direction: column; justify-content: center; height: 100%;">
+                        <li style="text-align: center;"><strong>1. Verifica tu cobertura</strong><span style="display: block;">Confirma fácilmente que tu caso esté dentro de las condiciones del programa.</span></li>
+                        <li style="text-align: center;"><strong>2. Agenda tu atención</strong><span style="display: block;">Contáctanos 24/7 y coordinamos tu visita en el concesionario.</span></li>
+                        <li style="text-align: center;"><strong>3. Relájate, nosotros lo gestionamos</strong><span style="display: block;">Aprobamos el servicio y pagamos directamente al concesionario, hasta $200 por atención.*</span></li>
+                    </div>
+                    <div class="seguro-note">*Aplican <a href="terminos-y-condiciones" style="color: #ff914d; text-decoration: none; font-weight: 600;">términos y condiciones</a> del programa.</div>
+                </div>
+
+                <!-- Columna 3: Beneficios y coberturas -->
+                <div class="seguro-card">
+                    <h3>Beneficios y coberturas</h3>
+                    <div class="seguro-list">
+                        <li><strong>Reparación de rayones y pintura hasta $200 por evento</strong><span>En concesionarios autorizados</span></li>
+                        <li><strong>Reparación de aros y llantas hasta $200 por evento</strong><span>Con respaldo de concesionarios</span></li>
+                        <li><strong>Bono para parabrisas de hasta $150</strong><span>Aplicable en concesionarios autorizados</span></li>
+                    </div>
+                    <div class="seguro-highlight-orange">
+                        <p>💰 ¡Hasta $750 en beneficios al año!</p>
+                        <p style="font-size: 0.8rem;">Sin afectar tu seguro y sin gastos inesperados.*</p>
+                    </div>
+                    <div class="seguro-list" style="margin-top: 0.5rem;">
+                        <li><strong>Beneficios adicionales</strong></li>
+                        <li><span>• Sin deducibles</span></li>
+                        <li><span>• Atención rápida en concesionarios autorizados</span></li>
+                        <li><span>• Proceso simple y rápido</span></li>
+                    </div>
+                    <div class="seguro-note">
+                        <a href="politica-de-privacidad" style="color: #ff914d; text-decoration: none;">Política de privacidad</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COBERTURA DEL PROGRAMA -->
+    <div class="cobertura-section">
+        <div class="cobertura-section-inner">
+            <h2>Cobertura del programa</h2>
+            <div class="cobertura-grid">
+                <div class="cobertura-card">
+                    <img src="fotos/raspon.jpeg" alt="Raspón de pintura" onerror="this.src='https://via.placeholder.com/300x200/ff914d/ffffff?text=Raspón'">
+                    <h3>Raspón de pintura</h3>
+                </div>
+                <div class="cobertura-card">
+                    <img src="fotos/aros.jpeg" alt="Reparación de aros y neumáticos" onerror="this.src='https://via.placeholder.com/300x200/ff914d/ffffff?text=Aros+y+Neumáticos'">
+                    <h3>Reparación de aros y neumáticos</h3>
+                </div>
+                <div class="cobertura-card">
+                    <img src="fotos/parabrisas.jpeg" alt="Arreglo o reposición de parabrisas" onerror="this.src='https://via.placeholder.com/300x200/ff914d/ffffff?text=Parabrisas'">
+                    <h3>Arreglo o reposición de parabrisas</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIDEO GRANDE - CON MINIATURA -->
+    <div class="full-video-section">
+        <div class="full-video-container">
+            <video controls playsinline preload="auto" poster="fotos/miniatura3.png">
+                <source src="fotos/video2.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </div>
+    </div>
+
+    <!-- HISTORIAS REALES -->
+    <div class="historias-section">
+        <div class="historias-section-inner">
+            <h2>Historias reales</h2>
+            <div class="carousel-wrapper">
+                <button class="carousel-button prev" id="prevBtn">❮</button>
+                <div class="carousel-container" id="carouselContainer">
+                    <div class="carousel-track" id="carouselTrack">
+                        <div class="carousel-slide">
+                            <video controls playsinline preload="auto" poster="fotos/miniatura2.png">
+                                <source src="fotos/video3.mp4" type="video/mp4">
+                                Tu navegador no soporta el elemento de video.
+                            </video>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="video-placeholder">
+                                🎬<br>Historia 2
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="video-placeholder">
+                                🎬<br>Historia 3
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="video-placeholder">
+                                🎬<br>Historia 4
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="video-placeholder">
+                                🎬<br>Historia 5
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-button next" id="nextBtn">❯</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/51997281159?text=Hola,%20me%20interesa%20obtener%20más%20información%20sobre%20Siempre%20Nuevo" target="_blank">
+            <img src="fotos/wsp.png" alt="WhatsApp">
         </a>
     </div>
-    <div class="hero-text">
-        <h1>Impulsando el<br>Dealer del Futuro</h1>
-    </div>
-</section>
 
-<div class="description-section">
-    <p class="description-text">
-        Conectamos visión, innovación y talento para transformar el concesionario en un ecosistema ágil, rentable y centrado en el cliente.
-    </p>
-</div>
-
-<!-- SECCIÓN MISIÓN, VISIÓN Y PROPÓSITO -->
-<section class="mvp-section">
-    <div class="tabs-container">
-        <div class="tabs-wrapper">
-            <button class="tab-btn" data-tab="mision">Misión</button>
-            <button class="tab-btn active" data-tab="vision">Visión</button>
-            <button class="tab-btn" data-tab="proposito">Propósito</button>
-        </div>
-    </div>
-
-    <div class="mvp-cards-container" id="mvpContainer">
-        <div class="side-cards-line" id="sideLine">
-            <div class="side-card" data-tab="mision">
-                <h3>Misión</h3>
-            </div>
-            <div class="side-card" data-tab="proposito">
-                <h3>Propósito</h3>
-            </div>
-        </div>
-        
-        <div class="center-card-wrapper" id="centerWrapper">
-            <div class="center-card" id="centerCard">
-                <h2 id="centerTitle">Visión</h2>
-                <p id="centerDesc">Ser el socio estratégico clave en la evolución integral del negocio automotriz, integrando tecnología y procesos disruptivos y ágiles.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- SECCIÓN LÍNEAS DE TRABAJO -->
-<section class="work-lines-section">
-    <h2 class="section-title">Líneas de trabajo</h2>
-    
-    <img class="gente-image" src="fotos/gente.png" alt="Equipo Akinnova">
-    
-    <div class="titles-container">
-        <div class="blue-bar-bg"></div>
-        <div class="two-columns-titles">
-            <div class="title-col">
-                <h3>Consultorías</h3>
-            </div>
-            <div class="title-col">
-                <h3>Alianzas estratégicas</h3>
-            </div>
-        </div>
-    </div>
-    
-    <div class="two-columns-cards">
-        <div class="column">
-            <div class="work-card">
-                <p><strong>Personalización de empresas automotrices:</strong><br>Diagnóstico, estructura organizacional y gobierno corporativo.</p>
-            </div>
-            <div class="work-card">
-                <p><strong>Transformación Digital, Procesos Ágiles e IA:</strong><br>Integración tecnológica, automatización y optimización.</p>
-            </div>
-            <div class="work-card">
-                <p><strong>Gestión Comercial y Experiencia del Cliente:</strong><br>Procesos y metodologías para incrementar ingresos y eficiencia.</p>
-            </div>
-            <div class="work-card">
-                <p><strong>Evaluación y Desarrollo de Liderazgo:</strong><br>Assessment, coaching ejecutivo y desarrollo de equipos.</p>
-            </div>
-        </div>
-        
-        <div class="column">
-            <div class="work-card">
-                <p><strong>Descubrimiento de Nuevos Revenue Streams:</strong><br>Programas como MOK para reparaciones menores.</p>
-            </div>
-            <div class="work-card">
-                <p><strong>Integraciones con Plataformas Tecnológicas:</strong><br>Soluciones de datos y análisis de mercado.</p>
-            </div>
-            <div class="work-card">
-                <p><strong>Soluciones de Evaluación de Liderazgo y Talento:</strong><br>Herramientas y partners para diagnóstico de equipos.</p>
-            </div>
-            <div class="work-card">
-                <p><strong>Acuerdos Comerciales con Líderes en Sudamérica:</strong><br>Sinergias para potenciar portafolio y cobertura.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- SECCIÓN EQUIPO -->
-<section class="team-section">
-    <h2 class="team-title">Equipo</h2>
-    <div class="diagonal-line"></div>
-    
-    <div class="team-cards">
-        <div class="team-card">
-            <div class="card-content">
-                <div class="profile-header">
-                    <img class="profile-photo" src="fotos/marco.png" alt="Marco Kohatsu">
-                    <div class="profile-name">
-                        <h3>Marco Kohatsu</h3>
-                    </div>
-                </div>
-                <div class="profile-description">
-                    <p>Consultor y Ejecutor senior en transformación empresarial, con una trayectoria consolidada liderando procesos de cambio en organizaciones complejas, tanto multinacionales como familiares. Su enfoque combina visión estratégica, ejecución disciplinada y una clara orientación a resultados sostenibles.</p>
-                    <p>A lo largo de su carrera ha dirigido iniciativas de alto impacto que han revertido escenarios críticos, reposicionado marcas en mercados altamente competitivos.</p>
-                    <p>Constructor de culturas organizacionales centradas en la innovación, la autonomía y la orientación al cliente. Su experiencia como CEO le otorga una comprensión profunda de los desafíos reales del negocio, lo que le permite acompañar a empresas que buscan escalar con tecnología, profesionalizar su estructura y acelerar su rentabilidad. En particular, ha desarrollado proyectos que integran inteligencia artificial aplicada a procesos comerciales, automatización de decisiones y reestructuración organizacional. Hoy asesora a compañías que requieren dar un salto en su gestión, con velocidad, claridad y foco en el valor tangible.</p>
+    <!-- FOOTER - NUEVO DISEÑO -->
+    <div class="footer">
+        <div class="footer-inner">
+            <div class="footer-left">
+                <div class="footer-logo" id="footerLogo">
+                    <img src="fotos/logo-sn.png" alt="Siempre Nuevo">
                 </div>
             </div>
-        </div>
-        
-        <div class="team-card">
-            <div class="card-content">
-                <div class="profile-header">
-                    <img class="profile-photo" src="fotos/julio.png" alt="Julio Aguilar">
-                    <div class="profile-name">
-                        <h3>Julio Aguilar</h3>
-                    </div>
+            <div class="footer-contact">
+                <h3>Contáctanos</h3>
+                <div class="contact-item">
+                    <a href="https://wa.me/51997281159?text=Hola,%20me%20interesa%20obtener%20más%20información%20sobre%20Siempre%20Nuevo" target="_blank">+51 997281159</a>
                 </div>
-                <div class="profile-description">
-                    <p>Consultor con amplia experiencia en transformar negocios para que sean más productivos, rentables y con una gestión de talento efectiva. Durante sus años en el mundo corporativo, se ha enfocado en el desarrollo de líderes con pensamiento crítico y con alta capacidad para la resolución de situaciones complejas, fomentando el pensamiento disruptivo para convertir los retos del negocio en oportunidades para fortalecer la posición competitiva de la empresa.</p>
-                    <p>Como líder responsable de revertir tendencias negativas en negocios nacionales e internacionales, comprende profundamente los desafíos actuales en liderazgo, estructuración de información y uso de tecnología para facilitar decisiones acertadas. Además, cuenta con experiencia en la reformulación de procesos para una gestión eficiente de recursos y en el desarrollo de equipos de alto rendimiento.</p>
-                    <p>Actualmente, asesora, capacita y acompaña a líderes y equipos gerenciales para impulsar una transformación que mejore la propuesta de valor a los clientes y aumente la rentabilidad del negocio.</p>
+                <div class="contact-item">
+                    <a href="mailto:contacto@akinnova.com?subject=Información%20sobre%20Siempre%20Nuevo&body=Hola,%20me%20gustaría%20recibir%20más%20información%20sobre%20Siempre%20Nuevo.">contacto@akinnova.com</a>
+                </div>
+            </div>
+            <div class="footer-social">
+                <div class="footer-social-title">
+                    <h3>Síguenos</h3>
+                </div>
+                <div class="social-icons-footer">
+                    <a href="https://www.instagram.com/siemprenuevo.pe/" target="_blank">
+                        <img src="fotos/instagram.png" alt="Instagram">
+                    </a>
+                    <a href="https://www.tiktok.com/@siemprenuevo.pe" target="_blank">
+                        <img src="fotos/tiktok.png" alt="TikTok">
+                    </a>
+                </div>
+            </div>
+            <div class="footer-links-column">
+                <h3>Información</h3>
+                <div class="footer-link-item">
+                    <a href="libro-de-reclamaciones">Libro de reclamaciones</a>
+                </div>
+                <div class="footer-link-item">
+                    <a href="politica-de-privacidad">Política de privacidad</a>
+                </div>
+                <div class="footer-link-item">
+                    <a href="terminos-y-condiciones">Términos y condiciones</a>
                 </div>
             </div>
         </div>
     </div>
-</section>
 
-<!-- FOOTER - IMAGEN FINAL Y CONTACTO -->
-<div class="footer-section">
-    <img class="final-image" src="fotos/final2.png" alt="Akinnova">
-    <div class="contact-block">
-        <div class="contact-item" id="copyEmail">
-            <span class="contact-label">Correo:</span>
-            <span class="contact-value">Contacto@akinnova.com</span>
-        </div>
-        <div class="contact-item" id="whatsappBtn">
-            <span class="contact-label">Número de Contacto:</span>
-            <span class="contact-value">997281159</span>
-        </div>
-        <div class="contact-item" id="mapsBtn">
-            <span class="contact-label">Dirección:</span>
-            <span class="contact-value">Jirón Monte Carmelo Of 202, Chacarilla, Surco</span>
-        </div>
-    </div>
-</div>
-
-<!-- Tooltip para copiado -->
-<div id="copyTooltip" class="copy-tooltip">¡Correo copiado!</div>
-
-<script>
-    const contentMap = {
-        mision: {
-            title: "Misión",
-            description: "Acompañar a concesionarios, fábricas y empresas relacionadas en la implementación de soluciones tecnológicas simples y escalables."
-        },
-        vision: {
-            title: "Visión",
-            description: "Ser el socio estratégico clave en la evolución integral del negocio automotriz, integrando tecnología y procesos disruptivos y ágiles."
-        },
-        proposito: {
-            title: "Propósito",
-            description: "Transformar la industria automotriz hacia un modelo más ágil, digital y centrado en el nuevo cliente en la región del Pacífico."
-        }
-    };
-
-    let activeTab = "vision";
-    let carouselInterval = null;
-    let isMobile = false;
-
-    function checkMobile() {
-        return window.innerWidth <= 768;
-    }
-
-    function updateUI() {
-        const btns = document.querySelectorAll(".tab-btn");
-        btns.forEach(btn => {
-            const btnTab = btn.getAttribute("data-tab");
-            if (btnTab === activeTab) {
-                btn.classList.add("active");
-            } else {
-                btn.classList.remove("active");
-            }
-        });
-
-        const centerTitle = document.getElementById("centerTitle");
-        const centerDesc = document.getElementById("centerDesc");
-        const centerData = contentMap[activeTab];
-        if (centerTitle && centerDesc) {
-            centerTitle.textContent = centerData.title;
-            centerDesc.textContent = centerData.description;
-        }
-
-        if (!isMobile) {
-            const allKeys = ["mision", "vision", "proposito"];
-            const sideKeys = allKeys.filter(key => key !== activeTab);
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        (function() {
+            // EmailJS Config
+            const EMAILJS_PUBLIC_KEY = 'GExj5Fp2jmCjSsKEE';
+            const EMAILJS_SERVICE_ID = 'service_ygxlbye';
+            const EMAILJS_TEMPLATE_ID = 'template_c7ltsb8';
             
-            const sideLine = document.getElementById("sideLine");
-            if (sideLine) {
-                const leftKey = sideKeys[0];
-                const rightKey = sideKeys[1];
-                const leftData = contentMap[leftKey];
-                const rightData = contentMap[rightKey];
-                
-                sideLine.innerHTML = `
-                    <div class="side-card" data-tab="${leftKey}">
-                        <h3>${leftData.title}</h3>
-                    </div>
-                    <div class="side-card" data-tab="${rightKey}">
-                        <h3>${rightData.title}</h3>
-                    </div>
-                `;
-                
-                const newSideCards = document.querySelectorAll(".side-card");
-                newSideCards.forEach(card => {
-                    card.addEventListener("click", (e) => {
-                        e.stopPropagation();
-                        const tabKey = card.getAttribute("data-tab");
-                        if (tabKey && tabKey !== activeTab) {
-                            activeTab = tabKey;
-                            updateUI();
+            emailjs.init(EMAILJS_PUBLIC_KEY);
+            
+            // Elementos del menú
+            const menuBtn = document.getElementById('menuButton');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const closeMenuBtn = document.getElementById('closeMenuBtn');
+            
+            // Función para abrir menú
+            function openMenu() {
+                sidebar.classList.add('open');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            // Función para cerrar menú
+            function closeMenu() {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            // Eventos del menú
+            if (menuBtn) {
+                menuBtn.addEventListener('click', openMenu);
+            }
+            
+            if (closeMenuBtn) {
+                closeMenuBtn.addEventListener('click', closeMenu);
+            }
+            
+            if (overlay) {
+                overlay.addEventListener('click', closeMenu);
+            }
+            
+            const logoBtn = document.getElementById('logoButton');
+            const footerLogo = document.getElementById('footerLogo');
+            const form = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const privacyCheckbox = document.getElementById('privacyCheckbox');
+            
+            if (logoBtn) {
+                logoBtn.addEventListener('click', function() {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+            
+            if (footerLogo) {
+                footerLogo.addEventListener('click', function() {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            if (form) {
+                form.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    if (!privacyCheckbox.checked) {
+                        alert('⚠️ Por favor, autoriza el uso de tus datos para continuar.');
+                        return;
+                    }
+                    
+                    submitBtn.innerHTML = '<span class="spinner"></span> Enviando...';
+                    submitBtn.disabled = true;
+                    submitBtn.classList.remove('success', 'error');
+                    
+                    const nombre = form.querySelector('input[name="nombre"]').value;
+                    const telefono = form.querySelector('input[name="telefono"]').value;
+                    const comentario = form.querySelector('textarea[name="comentario"]').value;
+                    const fecha = new Date().toLocaleString('es-PE', { timeZone: 'America/Lima' });
+                    
+                    try {
+                        const templateParams = {
+                            nombre: nombre,
+                            telefono: telefono,
+                            comentario: comentario || 'Sin comentario',
+                            fecha: fecha,
+                            acepto_terminos: 'Sí',
+                            para: 'contacto@akinnova.com'
+                        };
+                        
+                        const response = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+                        
+                        if (response.status === 200) {
+                            submitBtn.innerHTML = '✓ ¡Enviado con éxito!';
+                            submitBtn.classList.add('success');
+                            form.reset();
+                            privacyCheckbox.checked = false;
+                            
+                            setTimeout(() => {
+                                submitBtn.innerHTML = '👉 Quiero protegerlo';
+                                submitBtn.classList.remove('success');
+                                submitBtn.disabled = false;
+                            }, 3000);
+                        } else {
+                            throw new Error('Error al enviar');
                         }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        submitBtn.innerHTML = '❌ Error, intenta de nuevo';
+                        submitBtn.classList.add('error');
+                        
+                        setTimeout(() => {
+                            submitBtn.innerHTML = '👉 Quiero protegerlo';
+                            submitBtn.classList.remove('error');
+                            submitBtn.disabled = false;
+                        }, 3000);
+                    }
+                });
+            }
+
+            // CARRUSEL
+            const carouselContainer = document.getElementById('carouselContainer');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            if (prevBtn && nextBtn && carouselContainer) {
+                prevBtn.addEventListener('click', () => {
+                    carouselContainer.scrollBy({
+                        left: -350,
+                        behavior: 'smooth'
+                    });
+                });
+                
+                nextBtn.addEventListener('click', () => {
+                    carouselContainer.scrollBy({
+                        left: 350,
+                        behavior: 'smooth'
                     });
                 });
             }
-        }
-        
-        const centerWrapper = document.getElementById("centerWrapper");
-        if (centerWrapper) {
-            centerWrapper.style.animation = "none";
-            setTimeout(() => {
-                centerWrapper.style.animation = "fadeSlideUp 0.4s ease-out";
-            }, 10);
-        }
-        
-        if (!isMobile) {
-            const sideLineEl = document.getElementById("sideLine");
-            if (sideLineEl) {
-                sideLineEl.style.animation = "none";
-                setTimeout(() => {
-                    sideLineEl.style.animation = "fadeSlideUp 0.4s ease-out";
-                }, 10);
-            }
-        }
-    }
-
-    function startCarousel() {
-        if (carouselInterval) clearInterval(carouselInterval);
-        
-        const items = ["mision", "vision", "proposito"];
-        let currentIndex = items.indexOf(activeTab);
-        
-        carouselInterval = setInterval(() => {
-            if (checkMobile()) {
-                currentIndex = (currentIndex + 1) % items.length;
-                activeTab = items[currentIndex];
-                updateUI();
-            }
-        }, 10000);
-    }
-
-    function stopCarousel() {
-        if (carouselInterval) {
-            clearInterval(carouselInterval);
-            carouselInterval = null;
-        }
-    }
-
-    function initFooterInteractions() {
-        const emailItem = document.getElementById('copyEmail');
-        const tooltip = document.getElementById('copyTooltip');
-        
-        if (emailItem) {
-            emailItem.addEventListener('click', () => {
-                const emailText = 'Contacto@akinnova.com';
-                navigator.clipboard.writeText(emailText).then(() => {
-                    tooltip.classList.add('show');
-                    setTimeout(() => {
-                        tooltip.classList.remove('show');
-                    }, 2000);
+            
+            // Error handler para videos
+            const videos = document.querySelectorAll('video');
+            videos.forEach(video => {
+                video.addEventListener('error', function() {
+                    console.log('Video no encontrado:', this.querySelector('source')?.src);
                 });
             });
-        }
-        
-        const whatsappBtn = document.getElementById('whatsappBtn');
-        if (whatsappBtn) {
-            whatsappBtn.addEventListener('click', () => {
-                const phoneNumber = '997281159';
-                const message = encodeURIComponent('Hola, me gustaría obtener más información sobre sus servicios.');
-                window.open(`https://wa.me/51${phoneNumber}?text=${message}`, '_blank');
-            });
-        }
-        
-        const mapsBtn = document.getElementById('mapsBtn');
-        if (mapsBtn) {
-            mapsBtn.addEventListener('click', () => {
-                const address = encodeURIComponent('Jirón Monte Carmelo Of 202, Chacarilla, Surco, Lima, Perú');
-                window.open(`https://www.google.com/maps/search/?api=1&query=${address}`, '_blank');
-            });
-        }
-    }
-
-    function init() {
-        isMobile = checkMobile();
-        
-        const btns = document.querySelectorAll(".tab-btn");
-        btns.forEach(btn => {
-            btn.addEventListener("click", () => {
-                const tabValue = btn.getAttribute("data-tab");
-                if (tabValue && tabValue !== activeTab) {
-                    activeTab = tabValue;
-                    updateUI();
-                    if (isMobile) {
-                        startCarousel();
-                    }
-                }
-            });
-        });
-        
-        if (!isMobile) {
-            const initialSideCards = document.querySelectorAll(".side-card");
-            initialSideCards.forEach(card => {
-                card.addEventListener("click", (e) => {
-                    e.stopPropagation();
-                    const tabKey = card.getAttribute("data-tab");
-                    if (tabKey && tabKey !== activeTab) {
-                        activeTab = tabKey;
-                        updateUI();
-                    }
-                });
-            });
-        }
-        
-        const centerCard = document.querySelector(".center-card");
-        if (centerCard) {
-            centerCard.addEventListener("click", () => {
-                if (checkMobile()) {
-                    const items = ["mision", "vision", "proposito"];
-                    const currentIndex = items.indexOf(activeTab);
-                    const nextIndex = (currentIndex + 1) % items.length;
-                    activeTab = items[nextIndex];
-                    updateUI();
-                    startCarousel();
-                }
-            });
-        }
-        
-        initFooterInteractions();
-        
-        if (isMobile) {
-            startCarousel();
-        }
-        
-        window.addEventListener('resize', () => {
-            const newIsMobile = checkMobile();
-            if (newIsMobile !== isMobile) {
-                isMobile = newIsMobile;
-                if (isMobile) {
-                    startCarousel();
-                } else {
-                    stopCarousel();
-                }
-                updateUI();
-            }
-        });
-    }
-
-    document.addEventListener("DOMContentLoaded", init);
-</script>
-
+        })();
+    </script>
 </body>
 </html>
