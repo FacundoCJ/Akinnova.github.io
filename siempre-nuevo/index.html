@@ -676,11 +676,7 @@
             font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            border-left: 4px solid #ff914d;
-            padding-left: 1rem;
             text-align: center;
-            border-left: none;
-            padding-left: 0;
         }
 
         .seguro-card p {
@@ -698,19 +694,23 @@
 
         .seguro-list li {
             color: #1f4a7a;
-            font-size: 0.9rem;
-            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
             display: flex;
-            align-items: flex-start;
-            gap: 0.5rem;
-            text-align: justify;
+            flex-direction: column;
+            gap: 0.25rem;
+            text-align: left;
+            line-height: 1.4;
         }
 
-        .seguro-list li::before {
-            content: '✔';
-            color: #ff914d;
-            font-weight: bold;
-            flex-shrink: 0;
+        .seguro-list li strong {
+            color: #0c3a6a;
+            font-size: 1rem;
+        }
+
+        .seguro-list li span {
+            color: #1f4a7a;
+            font-size: 0.9rem;
         }
 
         .seguro-highlight {
@@ -759,6 +759,7 @@
             font-size: 0.8rem;
             font-weight: 600;
             margin-bottom: 1rem;
+            align-self: center;
         }
 
         .seguro-imagen {
@@ -1494,10 +1495,10 @@
                 <!-- Columna 2: Cómo funciona -->
                 <div class="seguro-card">
                     <h3>Cómo funciona</h3>
-                    <div class="seguro-list" style="margin-top: 1.5rem;">
-                        <li><strong>1. Verifica tu cobertura</strong><br>Confirma fácilmente que tu caso esté dentro de las condiciones del programa.</li>
-                        <li><strong>2. Agenda tu atención</strong><br>Contáctanos 24/7 y coordinamos tu visita en el concesionario.</li>
-                        <li><strong>3. Relájate, nosotros lo gestionamos</strong><br>Aprobamos el servicio y pagamos directamente al concesionario, hasta $200 por atención.*</li>
+                    <div class="seguro-list">
+                        <li><strong>1. Verifica tu cobertura</strong><span>Confirma fácilmente que tu caso esté dentro de las condiciones del programa.</span></li>
+                        <li><strong>2. Agenda tu atención</strong><span>Contáctanos 24/7 y coordinamos tu visita en el concesionario.</span></li>
+                        <li><strong>3. Relájate, nosotros lo gestionamos</strong><span>Aprobamos el servicio y pagamos directamente al concesionario, hasta $200 por atención.*</span></li>
                     </div>
                     <div class="seguro-note">*Aplican <a href="terminos-y-condiciones.html" style="color: #ff914d; text-decoration: none; font-weight: 600;">términos y condiciones</a> del programa.</div>
                 </div>
@@ -1506,9 +1507,9 @@
                 <div class="seguro-card">
                     <h3>Beneficios y coberturas</h3>
                     <div class="seguro-list">
-                        <li>Reparación de rayones y pintura hasta $200 por evento<br><span style="font-size: 0.75rem; color: #888;">En concesionarios autorizados</span></li>
-                        <li>Reparación de aros y llantas hasta $200 por evento<br><span style="font-size: 0.75rem; color: #888;">Con respaldo de concesionarios</span></li>
-                        <li>Bono para parabrisas de hasta $150<br><span style="font-size: 0.75rem; color: #888;">Aplicable en concesionarios autorizados</span></li>
+                        <li><strong>Reparación de rayones y pintura hasta $200 por evento</strong><span>En concesionarios autorizados</span></li>
+                        <li><strong>Reparación de aros y llantas hasta $200 por evento</strong><span>Con respaldo de concesionarios</span></li>
+                        <li><strong>Bono para parabrisas de hasta $150</strong><span>Aplicable en concesionarios autorizados</span></li>
                     </div>
                     <div class="seguro-highlight-orange">
                         <p>💰 ¡Hasta $750 en beneficios al año!</p>
@@ -1516,9 +1517,9 @@
                     </div>
                     <div class="seguro-list" style="margin-top: 0.5rem;">
                         <li><strong>Beneficios adicionales</strong></li>
-                        <li>• Sin deducibles</li>
-                        <li>• Atención rápida en concesionarios autorizados</li>
-                        <li>• Proceso simple y rápido</li>
+                        <li><span>• Sin deducibles</span></li>
+                        <li><span>• Atención rápida en concesionarios autorizados</span></li>
+                        <li><span>• Proceso simple y rápido</span></li>
                     </div>
                     <div class="seguro-note">
                         <a href="politica-de-privacidad.html" style="color: #ff914d; text-decoration: none;">Política de privacidad</a>
