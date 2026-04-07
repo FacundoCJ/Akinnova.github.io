@@ -308,17 +308,26 @@
             color: #1f4a7a;
             font-size: 0.85rem;
             margin-bottom: 0.5rem;
-            padding-left: 0.5rem;
-            position: relative;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.25rem;
             break-inside: avoid;
         }
 
-        .marca-list li::before {
-            content: '•';
+        .marca-list li .bullet {
             color: #ff914d;
             font-weight: bold;
             font-size: 1rem;
-            margin-right: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .marca-list li .text {
+            flex: 1;
+            line-height: 1.3;
+        }
+
+        .marca-list li .text br {
+            display: none;
         }
 
         /* BOTÓN FLOTANTE DE WHATSAPP */
@@ -729,17 +738,17 @@
                 <div class="marca-card">
                     <h3>Automotores Pakat Namu</h3>
                     <ul class="marca-list">
-                        <li>CHANGAN</li>
-                        <li>CITROEN</li>
-                        <li>GREAT WALL</li>
-                        <li>HAVAL</li>
-                        <li>JAC</li>
-                        <li>MAZDA</li>
-                        <li>RENAULT</li>
-                        <li>SUZUKI</li>
-                        <li>JAC CCAMIONES</li>
-                        <li>DFSK</li>
-                        <li>SUBARU</li>
+                        <li><span class="bullet">•</span><span class="text">CHANGAN</span></li>
+                        <li><span class="bullet">•</span><span class="text">CITROEN</span></li>
+                        <li><span class="bullet">•</span><span class="text">GREAT WALL</span></li>
+                        <li><span class="bullet">•</span><span class="text">HAVAL</span></li>
+                        <li><span class="bullet">•</span><span class="text">JAC</span></li>
+                        <li><span class="bullet">•</span><span class="text">MAZDA</span></li>
+                        <li><span class="bullet">•</span><span class="text">RENAULT</span></li>
+                        <li><span class="bullet">•</span><span class="text">SUZUKI</span></li>
+                        <li><span class="bullet">•</span><span class="text">JAC CCAMIONES</span></li>
+                        <li><span class="bullet">•</span><span class="text">DFSK</span></li>
+                        <li><span class="bullet">•</span><span class="text">SUBARU</span></li>
                     </ul>
                 </div>
 
@@ -747,12 +756,12 @@
                 <div class="marca-card">
                     <h3>Autoniza</h3>
                     <ul class="marca-list">
-                        <li>CHEVROLET</li>
-                        <li>HYUNDAI</li>
-                        <li>NISSAN</li>
-                        <li>MITSUBISHI MOTORS</li>
-                        <li>FUSO</li>
-                        <li>ISUZU</li>
+                        <li><span class="bullet">•</span><span class="text">CHEVROLET</span></li>
+                        <li><span class="bullet">•</span><span class="text">HYUNDAI</span></li>
+                        <li><span class="bullet">•</span><span class="text">NISSAN</span></li>
+                        <li><span class="bullet">•</span><span class="text">MITSUBISHI MOTORS</span></li>
+                        <li><span class="bullet">•</span><span class="text">FUSO</span></li>
+                        <li><span class="bullet">•</span><span class="text">ISUZU</span></li>
                     </ul>
                 </div>
 
@@ -760,13 +769,13 @@
                 <div class="marca-card">
                     <h3>San Antonio Motors</h3>
                     <ul class="marca-list">
-                        <li>CHEVROLET</li>
-                        <li>HYUNDAI</li>
-                        <li>NISSAN</li>
-                        <li>GEELY</li>
-                        <li>JMC</li>
-                        <li>CAMIONES Y BUSES HYUNDAI</li>
-                        <li>ISUZU</li>
+                        <li><span class="bullet">•</span><span class="text">CHEVROLET</span></li>
+                        <li><span class="bullet">•</span><span class="text">HYUNDAI</span></li>
+                        <li><span class="bullet">•</span><span class="text">NISSAN</span></li>
+                        <li><span class="bullet">•</span><span class="text">GEELY</span></li>
+                        <li><span class="bullet">•</span><span class="text">JMC</span></li>
+                        <li><span class="bullet">•</span><span class="text">CAMIONES Y BUSES HYUNDAI</span></li>
+                        <li><span class="bullet">•</span><span class="text">ISUZU</span></li>
                     </ul>
                 </div>
 
@@ -774,14 +783,14 @@
                 <div class="marca-card">
                     <h3>Intermotors</h3>
                     <ul class="marca-list">
-                        <li>KIA</li>
-                        <li>MITSUBISHI</li>
-                        <li>PEUGEOT</li>
-                        <li>CHERY</li>
-                        <li>MG</li>
-                        <li>FUSO</li>
-                        <li>KYC</li>
-                        <li>JETOUR</li>
+                        <li><span class="bullet">•</span><span class="text">KIA</span></li>
+                        <li><span class="bullet">•</span><span class="text">MITSUBISHI</span></li>
+                        <li><span class="bullet">•</span><span class="text">PEUGEOT</span></li>
+                        <li><span class="bullet">•</span><span class="text">CHERY</span></li>
+                        <li><span class="bullet">•</span><span class="text">MG</span></li>
+                        <li><span class="bullet">•</span><span class="text">FUSO</span></li>
+                        <li><span class="bullet">•</span><span class="text">KYC</span></li>
+                        <li><span class="bullet">•</span><span class="text">JETOUR</span></li>
                     </ul>
                 </div>
             </div>
