@@ -171,7 +171,7 @@
         /* Contenedor del texto superpuesto - MÁS PEGADO A LA IZQUIERDA CON MÁS CONTRASTE */
         .hero-text {
             position: absolute;
-            top: 55%;
+            top: 60%;
             left: 0;
             right: 0;
             transform: translateY(-50%);
@@ -184,13 +184,14 @@
 
         .hero-title {
             color: white;
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 700;
             font-style: italic;
-            line-height: 1.2;
+            line-height: 1.3;
             margin-bottom: 1rem;
             text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.5);
-            max-width: 30%;
+            max-width: 35%;
+            text-align: justify;
         }
 
         .hero-subtitle {
@@ -199,7 +200,8 @@
             font-weight: 500;
             line-height: 1.4;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-            max-width: 30%;
+            max-width: 35%;
+            text-align: justify;
         }
 
         /* Optimización para móviles */
@@ -245,6 +247,7 @@
                 margin-bottom: 0;
                 line-height: 1.3;
                 text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+                text-align: justify;
             }
             
             .hero-subtitle {
@@ -265,12 +268,12 @@
                 padding-top: 90px;
             }
             .hero-title {
-                font-size: 1.6rem;
-                max-width: 30%;
+                font-size: 1.8rem;
+                max-width: 35%;
             }
             .hero-subtitle {
-                font-size: 0.85rem;
-                max-width: 30%;
+                font-size: 0.9rem;
+                max-width: 35%;
             }
         }
 
@@ -278,23 +281,23 @@
         @media (min-width: 1025px) and (max-width: 1366px) {
             .hero-title {
                 font-size: 2rem;
-                max-width: 30%;
+                max-width: 35%;
             }
             .hero-subtitle {
                 font-size: 1rem;
-                max-width: 30%;
+                max-width: 35%;
             }
         }
 
         /* Pantallas grandes */
         @media (min-width: 1367px) {
             .hero-title {
-                font-size: 2.2rem;
-                max-width: 30%;
+                font-size: 2.5rem;
+                max-width: 35%;
             }
             .hero-subtitle {
-                font-size: 1.1rem;
-                max-width: 30%;
+                font-size: 1.2rem;
+                max-width: 35%;
             }
         }
 
@@ -699,7 +702,7 @@
             display: flex;
             flex-direction: column;
             gap: 0.25rem;
-            text-align: left;
+            text-align: center;
             line-height: 1.4;
         }
 
@@ -1492,13 +1495,13 @@
                     <img src="fotos/accidente.png" alt="Accidente con seguro" class="seguro-imagen">
                 </div>
 
-                <!-- Columna 2: Cómo funciona -->
-                <div class="seguro-card">
+                <!-- Columna 2: Cómo funciona - TEXTO CENTRADO EN EL RECUADRO -->
+                <div class="seguro-card" style="justify-content: center;">
                     <h3>Cómo funciona</h3>
-                    <div class="seguro-list">
-                        <li><strong>1. Verifica tu cobertura</strong><span>Confirma fácilmente que tu caso esté dentro de las condiciones del programa.</span></li>
-                        <li><strong>2. Agenda tu atención</strong><span>Contáctanos 24/7 y coordinamos tu visita en el concesionario.</span></li>
-                        <li><strong>3. Relájate, nosotros lo gestionamos</strong><span>Aprobamos el servicio y pagamos directamente al concesionario, hasta $200 por atención.*</span></li>
+                    <div class="seguro-list" style="display: flex; flex-direction: column; justify-content: center; height: 100%;">
+                        <li style="text-align: center;"><strong>1. Verifica tu cobertura</strong><span style="display: block;">Confirma fácilmente que tu caso esté dentro de las condiciones del programa.</span></li>
+                        <li style="text-align: center;"><strong>2. Agenda tu atención</strong><span style="display: block;">Contáctanos 24/7 y coordinamos tu visita en el concesionario.</span></li>
+                        <li style="text-align: center;"><strong>3. Relájate, nosotros lo gestionamos</strong><span style="display: block;">Aprobamos el servicio y pagamos directamente al concesionario, hasta $200 por atención.*</span></li>
                     </div>
                     <div class="seguro-note">*Aplican <a href="terminos-y-condiciones" style="color: #ff914d; text-decoration: none; font-weight: 600;">términos y condiciones</a> del programa.</div>
                 </div>
