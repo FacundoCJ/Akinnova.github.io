@@ -95,20 +95,20 @@
             display: block;
         }
 
-        /* BARRA SUPERIOR FIJA */
+        /* BARRA SUPERIOR FIJA - NUEVO DISEÑO */
         .navbar {
             position: fixed;
-            top: 1.5rem;
+            top: 1rem;
             left: 50%;
             transform: translateX(-50%);
-            width: 90%;
-            max-width: 1200px;
+            width: 96%;
+            max-width: 1600px;
             z-index: 100;
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(2px);
-            border-radius: 60px;
-            padding: 0.2rem 2rem;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            border-radius: 50px;
+            padding: 0.3rem 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
         }
 
@@ -129,7 +129,7 @@
             transform: scale(1.02);
         }
         .menu-icon img {
-            width: 60px;
+            width: 40px;
             height: auto;
             display: block;
         }
@@ -144,7 +144,7 @@
             transform: scale(1.02);
         }
         .logo-icon img {
-            height: 120px;
+            height: 70px;
             width: auto;
             display: block;
         }
@@ -153,7 +153,7 @@
         .reclamaciones-section {
             max-width: 1000px;
             margin: 0 auto;
-            padding: 160px 2rem 4rem 2rem;
+            padding: 120px 2rem 4rem 2rem;
         }
 
         .reclamaciones-title {
@@ -418,7 +418,40 @@
             to { transform: rotate(360deg); }
         }
 
-        /* FOOTER */
+        /* BOTÓN FLOTANTE DE WHATSAPP */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .whatsapp-float img:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .whatsapp-float img {
+                width: 50px;
+                height: 50px;
+            }
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        /* FOOTER - NUEVO DISEÑO */
         .footer {
             background-color: #0c3a6a;
             width: 100%;
@@ -529,23 +562,48 @@
             height: 52px;
         }
 
-        .footer-links-bottom {
-            width: 100%;
-            text-align: center;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        .footer-links-column {
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 50px;
         }
 
-        .footer-links-bottom a {
+        .footer-links-column h3 {
+            color: white;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-links-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #ff914d;
+            border-radius: 2px;
+        }
+
+        .footer-link-item {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-link-item a {
             color: white;
             text-decoration: none;
-            font-size: 0.95rem;
-            margin: 0 1rem;
+            font-size: 1.1rem;
+            font-weight: 500;
             transition: color 0.2s ease;
         }
 
-        .footer-links-bottom a:hover {
+        .footer-link-item a:hover {
             color: #ff914d;
         }
 
@@ -553,36 +611,46 @@
         @media (max-width: 1024px) {
             .navbar {
                 width: 95%;
-                padding: 0.15rem 1.5rem;
+                padding: 0.25rem 1.2rem;
             }
             .logo-icon img {
-                height: 100px;
+                height: 65px;
+            }
+            .menu-icon img {
+                width: 38px;
             }
             .reclamaciones-section {
-                padding: 150px 1.5rem 3rem 1.5rem;
+                padding: 110px 1.5rem 3rem 1.5rem;
             }
             .footer-logo img {
                 height: 200px;
             }
-            .footer-contact, .footer-social {
+            .footer-contact, .footer-social, .footer-links-column {
                 padding-top: 30px;
+            }
+            .contact-item a, .footer-link-item a {
+                font-size: 1rem;
+            }
+            .footer-contact h3, .footer-social-title h3, .footer-links-column h3 {
+                font-size: 1.3rem;
             }
         }
 
         @media (max-width: 768px) {
             .navbar {
-                width: 92%;
-                top: 1rem;
-                padding: 0.1rem 1.2rem;
+                width: 94%;
+                top: 0.8rem;
+                padding: 0.2rem 1rem;
+                border-radius: 40px;
             }
             .menu-icon img {
-                width: 45px;
+                width: 32px;
             }
             .logo-icon img {
-                height: 90px;
+                height: 55px;
             }
             .reclamaciones-section {
-                padding: 130px 1rem 2rem 1rem;
+                padding: 100px 1rem 2rem 1rem;
             }
             .reclamaciones-title {
                 font-size: 1.5rem;
@@ -598,11 +666,11 @@
                 flex-direction: column;
                 text-align: center;
             }
-            .footer-left, .footer-contact, .footer-social {
+            .footer-left, .footer-contact, .footer-social, .footer-links-column {
                 text-align: center;
                 padding-top: 0;
             }
-            .footer-contact h3:after, .footer-social-title h3:after {
+            .footer-contact h3:after, .footer-social-title h3:after, .footer-links-column h3:after {
                 left: 50%;
                 transform: translateX(-50%);
             }
@@ -616,22 +684,29 @@
             .sidebar {
                 width: 280px;
             }
+            .footer-contact h3, .footer-social-title h3, .footer-links-column h3 {
+                font-size: 1.3rem;
+            }
+            .contact-item a, .footer-link-item a {
+                font-size: 1rem;
+            }
         }
 
         @media (max-width: 480px) {
             .navbar {
-                width: 90%;
-                top: 0.8rem;
-                padding: 0.05rem 1rem;
+                width: 92%;
+                top: 0.6rem;
+                padding: 0.15rem 0.8rem;
+                border-radius: 30px;
             }
             .menu-icon img {
-                width: 38px;
+                width: 28px;
             }
             .logo-icon img {
-                height: 70px;
+                height: 45px;
             }
             .reclamaciones-section {
-                padding-top: 110px;
+                padding-top: 85px;
             }
             .reclamaciones-title {
                 font-size: 1.3rem;
@@ -646,6 +721,12 @@
                 width: 45px;
                 height: 45px;
             }
+            .footer-contact h3, .footer-social-title h3, .footer-links-column h3 {
+                font-size: 1.2rem;
+            }
+            .contact-item a, .footer-link-item a {
+                font-size: 0.95rem;
+            }
         }
     </style>
 </head>
@@ -659,18 +740,18 @@
             <button class="close-menu" id="closeMenuBtn">✕</button>
         </div>
         <div class="sidebar-menu">
-            <a href="beneficios.html">Beneficios</a>
-            <a href="planes.html">Planes</a>
-            <a href="quienes-somos.html">Quienes Somos</a>
-            <a href="por-que-siempre-nuevo.html">¿Por qué Siempre Nuevo?</a>
-            <a href="terminos-y-condiciones.html">Términos y Condiciones</a>
-            <a href="libro-de-reclamaciones.html">Libro de Reclamaciones</a>
-            <a href="politica-de-privacidad.html">Política de Privacidad</a>
-            <a href="nuestros-aliados.html">Nuestros Aliados</a>
+            <a href="beneficios">Beneficios</a>
+            <a href="planes">Planes</a>
+            <a href="quienes-somos">Quienes Somos</a>
+            <a href="por-que-siempre-nuevo">¿Por qué Siempre Nuevo?</a>
+            <a href="terminos-y-condiciones">Términos y Condiciones</a>
+            <a href="libro-de-reclamaciones">Libro de Reclamaciones</a>
+            <a href="politica-de-privacidad">Política de Privacidad</a>
+            <a href="nuestros-aliados">Nuestros Aliados</a>
         </div>
     </div>
 
-    <!-- BARRA SUPERIOR FIJA -->
+    <!-- BARRA SUPERIOR FIJA - NUEVO DISEÑO -->
     <div class="navbar">
         <div class="navbar-content">
             <div class="menu-icon" id="menuButton">
@@ -833,7 +914,14 @@
         </div>
     </div>
 
-    <!-- FOOTER -->
+    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/51997281159?text=Hola,%20me%20interesa%20obtener%20más%20información%20sobre%20Siempre%20Nuevo" target="_blank">
+            <img src="fotos/wsp.png" alt="WhatsApp">
+        </a>
+    </div>
+
+    <!-- FOOTER - NUEVO DISEÑO -->
     <div class="footer">
         <div class="footer-inner">
             <div class="footer-left">
@@ -863,11 +951,18 @@
                     </a>
                 </div>
             </div>
-        </div>
-        <div class="footer-links-bottom">
-            <a href="libro-de-reclamaciones.html">Libro de reclamaciones</a>
-            <a href="politica-de-privacidad.html">Política de privacidad</a>
-            <a href="terminos-y-condiciones.html">Términos y condiciones</a>
+            <div class="footer-links-column">
+                <h3>Información</h3>
+                <div class="footer-link-item">
+                    <a href="libro-de-reclamaciones">Libro de reclamaciones</a>
+                </div>
+                <div class="footer-link-item">
+                    <a href="politica-de-privacidad">Política de privacidad</a>
+                </div>
+                <div class="footer-link-item">
+                    <a href="terminos-y-condiciones">Términos y condiciones</a>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -877,8 +972,7 @@
             // EmailJS Config
             const EMAILJS_PUBLIC_KEY = 'GExj5Fp2jmCjSsKEE';
             const EMAILJS_SERVICE_ID = 'service_ygxlbye';
-            // Necesitamos un template nuevo para reclamos o usar el existente
-            const EMAILJS_TEMPLATE_ID = 'template_d3nzg2i'; // Crearemos este template en EmailJS
+            const EMAILJS_TEMPLATE_ID = 'template_d3nzg2i';
             
             emailjs.init(EMAILJS_PUBLIC_KEY);
             
@@ -905,8 +999,8 @@
             if (menuBtn) menuBtn.addEventListener('click', openMenu);
             if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
             if (overlay) overlay.addEventListener('click', closeMenu);
-            if (logoBtn) logoBtn.addEventListener('click', () => window.location.href = 'index.html');
-            if (footerLogo) footerLogo.addEventListener('click', () => window.location.href = 'index.html');
+            if (logoBtn) logoBtn.addEventListener('click', () => window.location.href = '/siempre-nuevo/');
+            if (footerLogo) footerLogo.addEventListener('click', () => window.location.href = '/siempre-nuevo/');
 
             // Mostrar/ocultar descripción según tipo de solicitud
             const reclamoRadio = document.getElementById('reclamo');
@@ -1024,44 +1118,7 @@
                 const solucion = form.querySelector('textarea[name="solucion"]').value;
                 const fecha = new Date().toLocaleString('es-PE', { timeZone: 'America/Lima' });
                 
-                // Crear contenido del correo
-                const emailContent = `
-📋 NUEVO RECLAMO / QUEJA - SIEMPRE NUEVO
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-📅 Fecha: ${fecha}
-
-👤 DATOS DEL CONSUMIDOR
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-• Nombre y apellidos: ${nombre}
-• Tipo de documento: ${tipoDocumento}
-• Número de documento: ${numDocumento}
-• Teléfono: ${telefono}
-• Correo electrónico: ${email}
-• Dirección: ${direccion}
-
-🔧 IDENTIFICACIÓN DEL SERVICIO
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-• Tipo: ${tipoServicio}
-• Descripción del servicio: ${descripcionServicio}
-
-⚠️ DETALLE DE LA SOLICITUD
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-• Tipo de solicitud: ${tipoSolicitud}
-• Monto reclamado: ${monto}
-• Detalle de lo ocurrido:
-${detalle}
-
-• Solución esperada:
-${solucion}
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚖️ El proveedor deberá dar respuesta en un plazo no mayor a 15 días hábiles.
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                `;
-                
                 try {
-                    // Intentar enviar con EmailJS
                     const templateParams = {
                         nombre: nombre,
                         tipo_documento: tipoDocumento,
@@ -1075,14 +1132,12 @@ ${solucion}
                         monto: monto,
                         detalle: detalle,
                         solucion: solucion,
-                        fecha: fecha,
-                        mensaje_completo: emailContent
+                        fecha: fecha
                     };
                     
                     const response = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
                     
                     if (response.status === 200) {
-                        // Éxito - mostrar modal de confirmación
                         document.getElementById('confirmModal').style.display = 'flex';
                         form.reset();
                         validateForm();
