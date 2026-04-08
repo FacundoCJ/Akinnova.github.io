@@ -95,16 +95,16 @@
             display: block;
         }
 
-        /* LOGO FLOTANTE - ARRIBA DEL TODO */
+        /* LOGO FLOTANTE - ARRIBA A LA DERECHA */
         .logo-float {
             position: fixed;
-            top: 5;
+            top: 1rem;
             right: 1rem;
             z-index: 100;
             cursor: pointer;
             transition: transform 0.2s ease;
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             justify-content: center;
         }
         .logo-float:hover {
@@ -116,10 +116,10 @@
             display: block;
         }
 
-        /* BARRA SUPERIOR FIJA - MÁS ANCHA */
+        /* BARRA SUPERIOR FIJA - MÁS ANCHA, ARRIBA A LA IZQUIERDA */
         .navbar {
             position: fixed;
-            top: 62px;
+            top: 1rem;
             left: 2rem;
             width: 80%;
             max-width: 1400px;
@@ -208,19 +208,17 @@
             text-align: justify;
         }
 
-        /* MÓVIL - LOGO MÁS PEQUEÑO Y CENTRADO CON LA BARRA */
+        /* MÓVIL - AMBOS ELEMENTOS ARRIBA, MISMA ALTURA */
         @media (max-width: 768px) {
             .logo-float {
+                top: 0.8rem;
                 right: 0.5rem;
-                top: 5%;
-                transform: translateY(-50%);
             }
             .logo-float img {
                 height: 70px;
             }
             .navbar {
-                top: 5%;
-                transform: translateY(-50%);
+                top: 0.8rem;
                 left: 0.8rem;
                 width: 70%;
                 padding: 0.35rem 1rem;
@@ -306,12 +304,14 @@
 
         @media (max-width: 480px) {
             .logo-float {
+                top: 0.6rem;
                 right: 0.3rem;
             }
             .logo-float img {
                 height: 55px;
             }
             .navbar {
+                top: 0.6rem;
                 left: 0.6rem;
                 width: 65%;
                 padding: 0.25rem 0.8rem;
@@ -1330,12 +1330,12 @@
         </div>
     </div>
 
-    <!-- LOGO FLOTANTE - ARRIBA DEL TODO -->
+    <!-- LOGO FLOTANTE - ARRIBA A LA DERECHA -->
     <div class="logo-float" id="logoButton">
         <img src="fotos/logo-fondo.png" alt="Siempre Nuevo">
     </div>
 
-    <!-- BARRA SUPERIOR FIJA - MÁS ANCHA -->
+    <!-- BARRA SUPERIOR FIJA - MÁS ANCHA, ARRIBA A LA IZQUIERDA -->
     <div class="navbar">
         <div class="navbar-content">
             <div class="menu-icon" id="menuButton">
