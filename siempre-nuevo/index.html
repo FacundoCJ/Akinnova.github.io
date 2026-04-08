@@ -95,17 +95,19 @@
             display: block;
         }
 
-        /* BARRA SUPERIOR FIJA - LARGA, CASI HASTA EL LOGO */
+        /* BARRA SUPERIOR FIJA */
         .navbar {
             position: fixed;
-            top: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
             left: 1rem;
-            right: 8rem;
+            width: 80%;
+            max-width: 1000px;
             z-index: 100;
             background-color: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(2px);
             border-radius: 50px;
-            padding: 0.2rem 1.2rem;
+            padding: 0.27rem 1.2rem;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
         }
@@ -131,10 +133,11 @@
             display: block;
         }
 
-        /* LOGO FLOTANTE - PEGADO A LA DERECHA, FUERA DE LA BARRA */
+        /* LOGO FLOTANTE - PEGADO A LA DERECHA */
         .logo-float {
             position: fixed;
-            top: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
             right: 1rem;
             z-index: 100;
             cursor: pointer;
@@ -148,10 +151,10 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         }
         .logo-float:hover {
-            transform: scale(1.02);
+            transform: translateY(-50%) scale(1.02);
         }
         .logo-float img {
-            height: 140px;
+            height: 160px;
             width: auto;
             display: block;
         }
@@ -213,21 +216,19 @@
 
         @media (max-width: 768px) {
             .navbar {
-                top: 0.8rem;
                 left: 0.8rem;
-                right: 6rem;
-                padding: 0.15rem 1rem;
+                width: 75%;
+                padding: 0.2rem 1rem;
             }
             .menu-icon img {
                 width: 28px;
             }
             .logo-float {
-                top: 0.8rem;
                 right: 0.8rem;
                 padding: 6px;
             }
             .logo-float img {
-                height: 95px;
+                height: 110px;
             }
             .hero-section {
                 background-size: contain;
@@ -258,7 +259,7 @@
 
         @media (min-width: 769px) and (max-width: 1024px) {
             .navbar {
-                right: 7rem;
+                width: 75%;
             }
             .hero-title {
                 font-size: 1.8rem;
@@ -272,7 +273,7 @@
                 top: 65%;
             }
             .logo-float img {
-                height: 110px;
+                height: 130px;
             }
         }
 
@@ -300,21 +301,19 @@
 
         @media (max-width: 480px) {
             .navbar {
-                top: 0.6rem;
                 left: 0.6rem;
-                right: 5rem;
-                padding: 0.1rem 0.8rem;
+                width: 70%;
+                padding: 0.15rem 0.8rem;
             }
             .menu-icon img {
                 width: 24px;
             }
             .logo-float {
-                top: 0.6rem;
                 right: 0.6rem;
                 padding: 5px;
             }
             .logo-float img {
-                height: 70px;
+                height: 80px;
             }
             .hero-section {
                 padding-top: 70px;
@@ -931,7 +930,7 @@
             right: 0;
         }
 
-        /* BOTÓN FLOTANTE DE WHATSAPP */
+        /* BOTÓN FLOTANTE DE WHATSAPP - AGRANDADO 50% */
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -941,8 +940,8 @@
         }
 
         .whatsapp-float img {
-            width: 60px;
-            height: 60px;
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease;
@@ -955,12 +954,19 @@
 
         @media (max-width: 768px) {
             .whatsapp-float img {
-                width: 50px;
-                height: 50px;
+                width: 75px;
+                height: 75px;
             }
             .whatsapp-float {
                 bottom: 20px;
                 right: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .whatsapp-float img {
+                width: 60px;
+                height: 60px;
             }
         }
 
@@ -1319,7 +1325,7 @@
         </div>
     </div>
 
-    <!-- BARRA SUPERIOR FIJA - LARGA, CASI HASTA EL LOGO -->
+    <!-- BARRA SUPERIOR FIJA -->
     <div class="navbar">
         <div class="navbar-content">
             <div class="menu-icon" id="menuButton">
@@ -1328,7 +1334,7 @@
         </div>
     </div>
 
-    <!-- LOGO FLOTANTE - PEGADO A LA DERECHA, FUERA DE LA BARRA -->
+    <!-- LOGO FLOTANTE -->
     <div class="logo-float" id="logoButton">
         <img src="fotos/logo-sn.png" alt="Siempre Nuevo">
     </div>
@@ -1474,7 +1480,7 @@
         </div>
     </div>
 
-    <!-- VIDEO GRANDE - CON MINIATURA -->
+    <!-- VIDEO GRANDE -->
     <div class="full-video-section">
         <div class="full-video-container">
             <video controls playsinline preload="auto" poster="fotos/miniatura3.png">
@@ -1525,7 +1531,7 @@
         </div>
     </div>
 
-    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+    <!-- BOTÓN FLOTANTE DE WHATSAPP - AGRANDADO -->
     <div class="whatsapp-float">
         <a href="https://wa.me/51997281159?text=Hola,%20me%20interesa%20obtener%20más%20información%20sobre%20Siempre%20Nuevo" target="_blank">
             <img src="fotos/wsp.png" alt="WhatsApp">
