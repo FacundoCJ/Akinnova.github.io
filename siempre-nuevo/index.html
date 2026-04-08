@@ -95,14 +95,34 @@
             display: block;
         }
 
-        /* BARRA SUPERIOR FIJA - CENTRADA VERTICALMENTE CON EL LOGO */
+        /* LOGO FONDO - EN LA PARTE MÁS ALTA */
+        .logo-fondo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 98;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            pointer-events: none;
+        }
+        .logo-fondo img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            pointer-events: auto;
+            cursor: pointer;
+        }
+
+        /* BARRA SUPERIOR FIJA - A LA ALTURA DE LA MITAD DEL LOGO-FONDO */
         .navbar {
             position: fixed;
-            top: 50%;
-            transform: translateY(-50%);
-            left: 1rem;
-            width: 82%;
-            max-width: 1050px;
+            top: 220px;
+            left: 2rem;
+            width: 85%;
+            max-width: 1200px;
             z-index: 100;
             background-color: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(2px);
@@ -133,37 +153,9 @@
             display: block;
         }
 
-        /* LOGO FLOTANTE - CÍRCULO BLANCO 205x205 */
-        .logo-float {
-            position: fixed;
-            top: 50%;
-            right: 1rem;
-            transform: translateY(-50%);
-            z-index: 100;
-            cursor: pointer;
-            transition: transform 0.2s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 50%;
-            width: 205px;
-            height: 205px;
-        }
-        .logo-float:hover {
-            transform: translateY(-50%) scale(1.02);
-        }
-        .logo-float img {
-            height: 190px;
-            width: auto;
-            display: block;
-            border-radius: 50%;
-        }
-
-        /* Ajuste para compensar la barra fija */
+        /* Ajuste para compensar la barra fija y el logo-fondo */
         .hero-section {
-            padding-top: 0;
+            padding-top: 280px;
         }
 
         /* SECCIÓN HERO CON IMAGEN DE FONDO Y TEXTO SUPERPUESTO */
@@ -218,30 +210,19 @@
 
         @media (max-width: 768px) {
             .navbar {
-                left: 0.8rem;
-                width: 75%;
+                top: 120px;
+                left: 1rem;
+                width: 80%;
                 padding: 0.2rem 1rem;
-                top: 50%;
-                transform: translateY(-50%);
             }
             .menu-icon img {
                 width: 28px;
-            }
-            .logo-float {
-                width: 145px;
-                height: 145px;
-                right: 0.8rem;
-                top: 50%;
-                transform: translateY(-50%);
-            }
-            .logo-float img {
-                height: 130px;
             }
             .hero-section {
                 background-size: contain;
                 background-position: top center;
                 min-height: auto;
-                padding-top: 0;
+                padding-top: 180px;
                 padding-bottom: 0;
             }
             .hero-section::after {
@@ -267,7 +248,8 @@
 
         @media (min-width: 769px) and (max-width: 1024px) {
             .navbar {
-                width: 78%;
+                top: 180px;
+                width: 80%;
             }
             .hero-title {
                 font-size: 1.8rem;
@@ -282,12 +264,8 @@
             .hero-text {
                 top: 65%;
             }
-            .logo-float {
-                width: 175px;
-                height: 175px;
-            }
-            .logo-float img {
-                height: 160px;
+            .hero-section {
+                padding-top: 240px;
             }
         }
 
@@ -319,23 +297,16 @@
 
         @media (max-width: 480px) {
             .navbar {
-                left: 0.6rem;
-                width: 70%;
+                top: 90px;
+                left: 0.8rem;
+                width: 75%;
                 padding: 0.15rem 0.8rem;
             }
             .menu-icon img {
                 width: 24px;
             }
-            .logo-float {
-                width: 105px;
-                height: 105px;
-                right: 0.6rem;
-            }
-            .logo-float img {
-                height: 95px;
-            }
             .hero-section {
-                padding-top: 0;
+                padding-top: 140px;
             }
             .hero-title {
                 font-size: 0.8rem;
@@ -1345,18 +1316,18 @@
         </div>
     </div>
 
-    <!-- BARRA SUPERIOR FIJA - CENTRADA VERTICALMENTE CON EL LOGO -->
+    <!-- LOGO FONDO - EN LA PARTE MÁS ALTA -->
+    <div class="logo-fondo" id="logoFondoBtn">
+        <img src="fotos/logo-fondo.png" alt="Siempre Nuevo">
+    </div>
+
+    <!-- BARRA SUPERIOR FIJA - A LA ALTURA DE LA MITAD DEL LOGO-FONDO -->
     <div class="navbar">
         <div class="navbar-content">
             <div class="menu-icon" id="menuButton">
                 <img src="fotos/menu.png" alt="Menú">
             </div>
         </div>
-    </div>
-
-    <!-- LOGO FLOTANTE - CÍRCULO BLANCO 205x205 -->
-    <div class="logo-float" id="logoButton">
-        <img src="fotos/logo-sn.png" alt="Siempre Nuevo">
     </div>
 
     <!-- SECCIÓN HERO CON TEXTO SUPERPUESTO -->
@@ -1618,7 +1589,7 @@
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('overlay');
             const closeMenuBtn = document.getElementById('closeMenuBtn');
-            const logoBtn = document.getElementById('logoButton');
+            const logoFondoBtn = document.getElementById('logoFondoBtn');
             const footerLogo = document.getElementById('footerLogo');
             
             // Función para abrir menú
@@ -1648,9 +1619,9 @@
                 overlay.addEventListener('click', closeMenu);
             }
             
-            // Logo redirige a página principal
-            if (logoBtn) {
-                logoBtn.addEventListener('click', function() {
+            // Logo fondo redirige a página principal
+            if (logoFondoBtn) {
+                logoFondoBtn.addEventListener('click', function() {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
             }
