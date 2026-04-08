@@ -21,7 +21,7 @@
         /* MENU DESPLEGABLE - SIDEBAR */
         .sidebar {
             position: fixed;
-            top: 5;
+            top: 0;
             left: -320px;
             width: 300px;
             height: 100%;
@@ -208,20 +208,22 @@
             text-align: justify;
         }
 
-        /* MÓVIL - LOGO MÁS ABAJO Y MÁS PEQUEÑO */
+        /* MÓVIL - LOGO MÁS PEQUEÑO Y CENTRADO CON LA BARRA */
         @media (max-width: 768px) {
             .logo-float {
                 right: 0.5rem;
-                top: 30px;
+                top: 50%;
+                transform: translateY(-50%);
             }
             .logo-float img {
                 height: 70px;
             }
             .navbar {
-                top: 55px;
+                top: 50%;
+                transform: translateY(-50%);
                 left: 0.8rem;
-                width: 75%;
-                padding: 0.2rem 1rem;
+                width: 70%;
+                padding: 0.35rem 1rem;
             }
             .menu-icon img {
                 width: 28px;
@@ -305,16 +307,14 @@
         @media (max-width: 480px) {
             .logo-float {
                 right: 0.3rem;
-                top: 28px;
             }
             .logo-float img {
                 height: 55px;
             }
             .navbar {
-                top: 48px;
                 left: 0.6rem;
-                width: 70%;
-                padding: 0.15rem 0.8rem;
+                width: 65%;
+                padding: 0.25rem 0.8rem;
             }
             .menu-icon img {
                 width: 24px;
