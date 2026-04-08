@@ -95,20 +95,20 @@
             display: block;
         }
 
-        /* BARRA SUPERIOR FIJA - DELGADA Y TRANSPARENTE */
+        /* BARRA SUPERIOR FIJA - MÁS PEQUEÑA Y DELGADA */
         .navbar {
             position: fixed;
-            top: 1rem;
+            top: 0.8rem;
             left: 50%;
             transform: translateX(-50%);
-            width: 96%;
-            max-width: 1600px;
+            width: 72%;
+            max-width: 1200px;
             z-index: 100;
             background-color: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(2px);
-            border-radius: 50px;
-            padding: 0.3rem 1.5rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 40px;
+            padding: 0.2rem 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
         }
 
@@ -129,7 +129,7 @@
             transform: scale(1.02);
         }
         .menu-icon img {
-            width: 40px;
+            width: 30px;
             height: auto;
             display: block;
         }
@@ -146,20 +146,20 @@
         .logo-icon {
             background-color: rgba(255, 255, 255, 0.8);
             border-radius: 50%;
-            padding: 8px;
+            padding: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
         .logo-icon img {
-            height: 80px;
+            height: 120px;
             width: auto;
             display: block;
         }
 
         /* Ajuste para compensar la barra fija */
         .hero-section {
-            padding-top: 100px;
+            padding-top: 90px;
         }
 
         /* SECCIÓN HERO CON IMAGEN DE FONDO Y TEXTO SUPERPUESTO */
@@ -214,20 +214,25 @@
 
         @media (max-width: 768px) {
             .navbar {
-                top: 0.8rem;
-                padding: 0.2rem 1rem;
+                top: 0.6rem;
+                padding: 0.15rem 0.8rem;
+                width: 85%;
+                border-radius: 30px;
             }
             .menu-icon img {
-                width: 32px;
+                width: 24px;
+            }
+            .logo-icon {
+                padding: 8px;
             }
             .logo-icon img {
-                height: 55px;
+                height: 80px;
             }
             .hero-section {
                 background-size: contain;
                 background-position: top center;
                 min-height: auto;
-                padding-top: 80px;
+                padding-top: 70px;
                 padding-bottom: 0;
             }
             .hero-section::after {
@@ -251,6 +256,9 @@
         }
 
         @media (min-width: 769px) and (max-width: 1024px) {
+            .navbar {
+                width: 80%;
+            }
             .hero-title {
                 font-size: 1.8rem;
                 max-width: 35%;
@@ -263,7 +271,7 @@
                 top: 65%;
             }
             .logo-icon img {
-                height: 70px;
+                height: 100px;
             }
         }
 
@@ -291,17 +299,22 @@
 
         @media (max-width: 480px) {
             .navbar {
-                top: 0.6rem;
-                padding: 0.15rem 0.8rem;
+                top: 0.5rem;
+                padding: 0.1rem 0.6rem;
+                width: 90%;
+                border-radius: 25px;
             }
             .menu-icon img {
-                width: 28px;
+                width: 20px;
+            }
+            .logo-icon {
+                padding: 6px;
             }
             .logo-icon img {
-                height: 45px;
+                height: 60px;
             }
             .hero-section {
-                padding-top: 70px;
+                padding-top: 60px;
             }
             .hero-title {
                 font-size: 1rem;
@@ -1303,7 +1316,7 @@
         </div>
     </div>
 
-    <!-- BARRA SUPERIOR FIJA - DELGADA Y TRANSPARENTE -->
+    <!-- BARRA SUPERIOR FIJA - MÁS PEQUEÑA Y DELGADA -->
     <div class="navbar">
         <div class="navbar-content">
             <div class="menu-icon" id="menuButton">
