@@ -228,7 +228,7 @@
             margin-top: 1rem;
         }
 
-        /* SECCIÓN MARCAS QUE REPRESENTAN */
+        /* SECCIÓN MARCAS QUE REPRESENTAN - CON LOGOS */
         .marcas-section {
             background-color: #e7f3ff;
             width: 100%;
@@ -297,37 +297,38 @@
             display: inline-block;
         }
 
-        .marca-list {
-            list-style: none;
-            text-align: left;
-            columns: 2;
-            column-gap: 1rem;
+        .marca-logos-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
         }
 
-        .marca-list li {
-            color: #1f4a7a;
-            font-size: 0.85rem;
-            margin-bottom: 0.5rem;
+        .marca-logo-item {
             display: flex;
-            align-items: flex-start;
-            gap: 0.25rem;
-            break-inside: avoid;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            border-radius: 16px;
+            padding: 0.75rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: default;
         }
 
-        .marca-list li .bullet {
-            color: #ff914d;
-            font-weight: bold;
-            font-size: 1rem;
-            flex-shrink: 0;
+        .marca-logo-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
-        .marca-list li .text {
-            flex: 1;
-            line-height: 1.3;
+        .marca-logo-item img {
+            max-width: 100%;
+            height: 50px;
+            object-fit: contain;
         }
 
-        .marca-list li .text br {
-            display: none;
+        /* Para marcas con nombres más largos, ajustamos altura */
+        .marca-logo-item.large img {
+            height: 40px;
         }
 
         /* BOTÓN FLOTANTE DE WHATSAPP */
@@ -360,6 +361,18 @@
             .whatsapp-float {
                 bottom: 20px;
                 right: 20px;
+            }
+            .marca-logos-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .marca-logos-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .marca-logo-item img {
+                height: 40px;
             }
         }
 
@@ -590,9 +603,6 @@
                 min-width: 100%;
                 max-width: 100%;
             }
-            .marca-list {
-                columns: 2;
-            }
             .footer-inner {
                 flex-direction: column;
                 text-align: center;
@@ -644,9 +654,6 @@
             }
             .marcas-title {
                 font-size: 1.2rem;
-            }
-            .marca-list {
-                columns: 1;
             }
             .footer-logo img {
                 height: 140px;
@@ -729,7 +736,7 @@
         </div>
     </div>
 
-    <!-- SECCIÓN MARCAS QUE REPRESENTAN -->
+    <!-- SECCIÓN MARCAS QUE REPRESENTAN - CON LOGOS -->
     <div class="marcas-section">
         <div class="marcas-inner">
             <h2 class="marcas-title">Marcas que representan</h2>
@@ -737,61 +744,61 @@
                 <!-- Pakat -->
                 <div class="marca-card">
                     <h3>Automotores Pakat Namu</h3>
-                    <ul class="marca-list">
-                        <li><span class="bullet">•</span><span class="text">CHANGAN</span></li>
-                        <li><span class="bullet">•</span><span class="text">CITROEN</span></li>
-                        <li><span class="bullet">•</span><span class="text">GREAT WALL</span></li>
-                        <li><span class="bullet">•</span><span class="text">HAVAL</span></li>
-                        <li><span class="bullet">•</span><span class="text">JAC</span></li>
-                        <li><span class="bullet">•</span><span class="text">MAZDA</span></li>
-                        <li><span class="bullet">•</span><span class="text">RENAULT</span></li>
-                        <li><span class="bullet">•</span><span class="text">SUZUKI</span></li>
-                        <li><span class="bullet">•</span><span class="text">JAC CCAMIONES</span></li>
-                        <li><span class="bullet">•</span><span class="text">DFSK</span></li>
-                        <li><span class="bullet">•</span><span class="text">SUBARU</span></li>
-                    </ul>
+                    <div class="marca-logos-grid">
+                        <div class="marca-logo-item"><img src="fotos/changan.png" alt="CHANGAN"></div>
+                        <div class="marca-logo-item"><img src="fotos/citroen.png" alt="CITROEN"></div>
+                        <div class="marca-logo-item"><img src="fotos/great-wall.png" alt="GREAT WALL"></div>
+                        <div class="marca-logo-item"><img src="fotos/haval.png" alt="HAVAL"></div>
+                        <div class="marca-logo-item"><img src="fotos/jac.png" alt="JAC"></div>
+                        <div class="marca-logo-item"><img src="fotos/mazda.png" alt="MAZDA"></div>
+                        <div class="marca-logo-item"><img src="fotos/renault.png" alt="RENAULT"></div>
+                        <div class="marca-logo-item"><img src="fotos/suzuki.png" alt="SUZUKI"></div>
+                        <div class="marca-logo-item"><img src="fotos/jac-ccamiones.png" alt="JAC CCAMIONES"></div>
+                        <div class="marca-logo-item"><img src="fotos/dfsk.png" alt="DFSK"></div>
+                        <div class="marca-logo-item"><img src="fotos/subaru.png" alt="SUBARU"></div>
+                    </div>
                 </div>
 
                 <!-- Autoniza -->
                 <div class="marca-card">
                     <h3>Autoniza</h3>
-                    <ul class="marca-list">
-                        <li><span class="bullet">•</span><span class="text">CHEVROLET</span></li>
-                        <li><span class="bullet">•</span><span class="text">HYUNDAI</span></li>
-                        <li><span class="bullet">•</span><span class="text">NISSAN</span></li>
-                        <li><span class="bullet">•</span><span class="text">MITSUBISHI MOTORS</span></li>
-                        <li><span class="bullet">•</span><span class="text">FUSO</span></li>
-                        <li><span class="bullet">•</span><span class="text">ISUZU</span></li>
-                    </ul>
+                    <div class="marca-logos-grid">
+                        <div class="marca-logo-item"><img src="fotos/chevrolet.png" alt="CHEVROLET"></div>
+                        <div class="marca-logo-item"><img src="fotos/hyundai.png" alt="HYUNDAI"></div>
+                        <div class="marca-logo-item"><img src="fotos/nissan.png" alt="NISSAN"></div>
+                        <div class="marca-logo-item"><img src="fotos/mitsubishi-motors.png" alt="MITSUBISHI MOTORS"></div>
+                        <div class="marca-logo-item"><img src="fotos/fuso.png" alt="FUSO"></div>
+                        <div class="marca-logo-item"><img src="fotos/isuzu.png" alt="ISUZU"></div>
+                    </div>
                 </div>
 
                 <!-- San Antonio Motors -->
                 <div class="marca-card">
                     <h3>San Antonio Motors</h3>
-                    <ul class="marca-list">
-                        <li><span class="bullet">•</span><span class="text">CHEVROLET</span></li>
-                        <li><span class="bullet">•</span><span class="text">HYUNDAI</span></li>
-                        <li><span class="bullet">•</span><span class="text">NISSAN</span></li>
-                        <li><span class="bullet">•</span><span class="text">GEELY</span></li>
-                        <li><span class="bullet">•</span><span class="text">JMC</span></li>
-                        <li><span class="bullet">•</span><span class="text">CAMIONES Y BUSES HYUNDAI</span></li>
-                        <li><span class="bullet">•</span><span class="text">ISUZU</span></li>
-                    </ul>
+                    <div class="marca-logos-grid">
+                        <div class="marca-logo-item"><img src="fotos/chevrolet.png" alt="CHEVROLET"></div>
+                        <div class="marca-logo-item"><img src="fotos/hyundai.png" alt="HYUNDAI"></div>
+                        <div class="marca-logo-item"><img src="fotos/nissan.png" alt="NISSAN"></div>
+                        <div class="marca-logo-item"><img src="fotos/geely.png" alt="GEELY"></div>
+                        <div class="marca-logo-item"><img src="fotos/jmc.png" alt="JMC"></div>
+                        <div class="marca-logo-item"><img src="fotos/camiones-y-buses-hyundai.png" alt="CAMIONES Y BUSES HYUNDAI"></div>
+                        <div class="marca-logo-item"><img src="fotos/isuzu.png" alt="ISUZU"></div>
+                    </div>
                 </div>
 
                 <!-- Intermotors -->
                 <div class="marca-card">
                     <h3>Intermotors</h3>
-                    <ul class="marca-list">
-                        <li><span class="bullet">•</span><span class="text">KIA</span></li>
-                        <li><span class="bullet">•</span><span class="text">MITSUBISHI</span></li>
-                        <li><span class="bullet">•</span><span class="text">PEUGEOT</span></li>
-                        <li><span class="bullet">•</span><span class="text">CHERY</span></li>
-                        <li><span class="bullet">•</span><span class="text">MG</span></li>
-                        <li><span class="bullet">•</span><span class="text">FUSO</span></li>
-                        <li><span class="bullet">•</span><span class="text">KYC</span></li>
-                        <li><span class="bullet">•</span><span class="text">JETOUR</span></li>
-                    </ul>
+                    <div class="marca-logos-grid">
+                        <div class="marca-logo-item"><img src="fotos/kia.png" alt="KIA"></div>
+                        <div class="marca-logo-item"><img src="fotos/mitsubishi.png" alt="MITSUBISHI"></div>
+                        <div class="marca-logo-item"><img src="fotos/peugeot.png" alt="PEUGEOT"></div>
+                        <div class="marca-logo-item"><img src="fotos/chery.png" alt="CHERY"></div>
+                        <div class="marca-logo-item"><img src="fotos/mg.png" alt="MG"></div>
+                        <div class="marca-logo-item"><img src="fotos/fuso.png" alt="FUSO"></div>
+                        <div class="marca-logo-item"><img src="fotos/kyc.png" alt="KYC"></div>
+                        <div class="marca-logo-item"><img src="fotos/jetour.png" alt="JETOUR"></div>
+                    </div>
                 </div>
             </div>
         </div>
