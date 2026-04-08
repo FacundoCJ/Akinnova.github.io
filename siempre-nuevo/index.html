@@ -95,13 +95,14 @@
             display: block;
         }
 
-        /* BARRA SUPERIOR FIJA - ARRIBA DEL TODO */
+        /* BARRA SUPERIOR FIJA - CENTRADA VERTICALMENTE CON EL LOGO */
         .navbar {
             position: fixed;
-            top: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
             left: 1rem;
-            width: 80%;
-            max-width: 1000px;
+            width: 82%;
+            max-width: 1050px;
             z-index: 100;
             background-color: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(2px);
@@ -132,11 +133,12 @@
             display: block;
         }
 
-        /* LOGO FLOTANTE - CÍRCULO BLANCO MÁS PEQUEÑO CON BORDE MÁS GRUESO */
+        /* LOGO FLOTANTE - CÍRCULO BLANCO 205x205 */
         .logo-float {
             position: fixed;
-            top: 1rem;
+            top: 50%;
             right: 1rem;
+            transform: translateY(-50%);
             z-index: 100;
             cursor: pointer;
             transition: transform 0.2s ease;
@@ -146,14 +148,14 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             background-color: rgba(255, 255, 255, 0.8);
             border-radius: 50%;
-            width: 220px;
-            height: 220px;
+            width: 205px;
+            height: 205px;
         }
         .logo-float:hover {
-            transform: scale(1.02);
+            transform: translateY(-50%) scale(1.02);
         }
         .logo-float img {
-            height: 200px;
+            height: 190px;
             width: auto;
             display: block;
             border-radius: 50%;
@@ -161,7 +163,7 @@
 
         /* Ajuste para compensar la barra fija */
         .hero-section {
-            padding-top: 100px;
+            padding-top: 0;
         }
 
         /* SECCIÓN HERO CON IMAGEN DE FONDO Y TEXTO SUPERPUESTO */
@@ -219,6 +221,8 @@
                 left: 0.8rem;
                 width: 75%;
                 padding: 0.2rem 1rem;
+                top: 50%;
+                transform: translateY(-50%);
             }
             .menu-icon img {
                 width: 28px;
@@ -226,8 +230,9 @@
             .logo-float {
                 width: 145px;
                 height: 145px;
-                top: 0.8rem;
                 right: 0.8rem;
+                top: 50%;
+                transform: translateY(-50%);
             }
             .logo-float img {
                 height: 130px;
@@ -236,7 +241,7 @@
                 background-size: contain;
                 background-position: top center;
                 min-height: auto;
-                padding-top: 80px;
+                padding-top: 0;
                 padding-bottom: 0;
             }
             .hero-section::after {
@@ -262,7 +267,7 @@
 
         @media (min-width: 769px) and (max-width: 1024px) {
             .navbar {
-                width: 75%;
+                width: 78%;
             }
             .hero-title {
                 font-size: 1.8rem;
@@ -324,14 +329,13 @@
             .logo-float {
                 width: 105px;
                 height: 105px;
-                top: 0.6rem;
                 right: 0.6rem;
             }
             .logo-float img {
                 height: 95px;
             }
             .hero-section {
-                padding-top: 70px;
+                padding-top: 0;
             }
             .hero-title {
                 font-size: 0.8rem;
@@ -1341,7 +1345,7 @@
         </div>
     </div>
 
-    <!-- BARRA SUPERIOR FIJA - ARRIBA DEL TODO -->
+    <!-- BARRA SUPERIOR FIJA - CENTRADA VERTICALMENTE CON EL LOGO -->
     <div class="navbar">
         <div class="navbar-content">
             <div class="menu-icon" id="menuButton">
@@ -1350,7 +1354,7 @@
         </div>
     </div>
 
-    <!-- LOGO FLOTANTE - CÍRCULO BLANCO MÁS PEQUEÑO CON BORDE MÁS GRUESO -->
+    <!-- LOGO FLOTANTE - CÍRCULO BLANCO 205x205 -->
     <div class="logo-float" id="logoButton">
         <img src="fotos/logo-sn.png" alt="Siempre Nuevo">
     </div>
