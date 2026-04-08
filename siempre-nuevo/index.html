@@ -95,11 +95,12 @@
             display: block;
         }
 
-        /* BARRA SUPERIOR FIJA - SOLO CON MENU, PEGADA A LA IZQUIERDA */
+        /* BARRA SUPERIOR FIJA - LARGA, CASI HASTA EL LOGO */
         .navbar {
             position: fixed;
             top: 1rem;
             left: 1rem;
+            right: 8rem;
             z-index: 100;
             background-color: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(2px);
@@ -140,7 +141,7 @@
             transition: transform 0.2s ease;
             background-color: rgba(255, 255, 255, 0.8);
             border-radius: 50%;
-            padding: 12px;
+            padding: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -150,7 +151,7 @@
             transform: scale(1.02);
         }
         .logo-float img {
-            height: 120px;
+            height: 140px;
             width: auto;
             display: block;
         }
@@ -214,6 +215,7 @@
             .navbar {
                 top: 0.8rem;
                 left: 0.8rem;
+                right: 6rem;
                 padding: 0.15rem 1rem;
             }
             .menu-icon img {
@@ -222,10 +224,10 @@
             .logo-float {
                 top: 0.8rem;
                 right: 0.8rem;
-                padding: 8px;
+                padding: 6px;
             }
             .logo-float img {
-                height: 85px;
+                height: 95px;
             }
             .hero-section {
                 background-size: contain;
@@ -255,6 +257,9 @@
         }
 
         @media (min-width: 769px) and (max-width: 1024px) {
+            .navbar {
+                right: 7rem;
+            }
             .hero-title {
                 font-size: 1.8rem;
                 max-width: 35%;
@@ -267,7 +272,7 @@
                 top: 65%;
             }
             .logo-float img {
-                height: 100px;
+                height: 110px;
             }
         }
 
@@ -297,6 +302,7 @@
             .navbar {
                 top: 0.6rem;
                 left: 0.6rem;
+                right: 5rem;
                 padding: 0.1rem 0.8rem;
             }
             .menu-icon img {
@@ -305,10 +311,10 @@
             .logo-float {
                 top: 0.6rem;
                 right: 0.6rem;
-                padding: 6px;
+                padding: 5px;
             }
             .logo-float img {
-                height: 65px;
+                height: 70px;
             }
             .hero-section {
                 padding-top: 70px;
@@ -1313,7 +1319,7 @@
         </div>
     </div>
 
-    <!-- BARRA SUPERIOR FIJA - SOLO CON MENU, PEGADA A LA IZQUIERDA -->
+    <!-- BARRA SUPERIOR FIJA - LARGA, CASI HASTA EL LOGO -->
     <div class="navbar">
         <div class="navbar-content">
             <div class="menu-icon" id="menuButton">
