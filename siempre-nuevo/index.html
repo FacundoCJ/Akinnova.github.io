@@ -95,11 +95,10 @@
             display: block;
         }
 
-        /* BARRA SUPERIOR FIJA */
+        /* BARRA SUPERIOR FIJA - ARRIBA DEL TODO */
         .navbar {
             position: fixed;
-            top: 50%;
-            transform: translateY(-50%);
+            top: 1rem;
             left: 1rem;
             width: 80%;
             max-width: 1000px;
@@ -133,25 +132,24 @@
             display: block;
         }
 
-        /* LOGO FLOTANTE - PEGADO A LA DERECHA */
+        /* LOGO FLOTANTE - ARRIBA A LA DERECHA */
         .logo-float {
             position: fixed;
-            top: 50%;
-            transform: translateY(-50%);
+            top: 1rem;
             right: 1rem;
             z-index: 100;
             cursor: pointer;
             transition: transform 0.2s ease;
             background-color: rgba(255, 255, 255, 0.8);
             border-radius: 50%;
-            padding: 8px;
+            padding: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         }
         .logo-float:hover {
-            transform: translateY(-50%) scale(1.02);
+            transform: scale(1.02);
         }
         .logo-float img {
             height: 160px;
@@ -225,7 +223,7 @@
             }
             .logo-float {
                 right: 0.8rem;
-                padding: 6px;
+                padding: 3px;
             }
             .logo-float img {
                 height: 110px;
@@ -310,7 +308,7 @@
             }
             .logo-float {
                 right: 0.6rem;
-                padding: 5px;
+                padding: 2px;
             }
             .logo-float img {
                 height: 80px;
@@ -930,7 +928,7 @@
             right: 0;
         }
 
-        /* BOTÓN FLOTANTE DE WHATSAPP - AGRANDADO 50% */
+        /* BOTÓN FLOTANTE DE WHATSAPP */
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -1325,7 +1323,7 @@
         </div>
     </div>
 
-    <!-- BARRA SUPERIOR FIJA -->
+    <!-- BARRA SUPERIOR FIJA - ARRIBA DEL TODO -->
     <div class="navbar">
         <div class="navbar-content">
             <div class="menu-icon" id="menuButton">
@@ -1334,7 +1332,7 @@
         </div>
     </div>
 
-    <!-- LOGO FLOTANTE -->
+    <!-- LOGO FLOTANTE - ARRIBA A LA DERECHA -->
     <div class="logo-float" id="logoButton">
         <img src="fotos/logo-sn.png" alt="Siempre Nuevo">
     </div>
@@ -1531,7 +1529,7 @@
         </div>
     </div>
 
-    <!-- BOTÓN FLOTANTE DE WHATSAPP - AGRANDADO -->
+    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
     <div class="whatsapp-float">
         <a href="https://wa.me/51997281159?text=Hola,%20me%20interesa%20obtener%20más%20información%20sobre%20Siempre%20Nuevo" target="_blank">
             <img src="fotos/wsp.png" alt="WhatsApp">
