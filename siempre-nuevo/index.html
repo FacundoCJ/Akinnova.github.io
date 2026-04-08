@@ -111,18 +111,18 @@
             transform: scale(1.02);
         }
         .logo-float img {
-            height: 180px;
+            height: 160px;
             width: auto;
             display: block;
         }
 
-        /* BARRA SUPERIOR FIJA */
+        /* BARRA SUPERIOR FIJA - MÁS ANCHA */
         .navbar {
             position: fixed;
-            top: 70px;
+            top: 65px;
             left: 1rem;
-            width: 87%;
-            max-width: 1150px;
+            width: 90%;
+            max-width: 1200px;
             z-index: 100;
             background-color: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(2px);
@@ -208,15 +208,18 @@
             text-align: justify;
         }
 
-        /* MÓVIL - LOGO REDUCIDO A LA MITAD Y BARRA MÁS ARRIBA */
+        /* MÓVIL - LOGO MÁS PEQUEÑO Y MÁS PEGADO A LA DERECHA */
         @media (max-width: 768px) {
+            .logo-float {
+                right: 0.5rem;
+            }
             .logo-float img {
-                height: 90px;
+                height: 70px;
             }
             .navbar {
-                top: 35px;
+                top: 28px;
                 left: 0.8rem;
-                width: 82%;
+                width: 80%;
                 padding: 0.2rem 1rem;
             }
             .menu-icon img {
@@ -252,11 +255,11 @@
 
         @media (min-width: 769px) and (max-width: 1024px) {
             .logo-float img {
-                height: 160px;
+                height: 140px;
             }
             .navbar {
-                top: 65px;
-                width: 82%;
+                top: 60px;
+                width: 85%;
             }
             .hero-title {
                 font-size: 1.8rem;
@@ -300,13 +303,16 @@
         }
 
         @media (max-width: 480px) {
+            .logo-float {
+                right: 0.3rem;
+            }
             .logo-float img {
-                height: 75px;
+                height: 55px;
             }
             .navbar {
-                top: 28px;
+                top: 22px;
                 left: 0.6rem;
-                width: 77%;
+                width: 75%;
                 padding: 0.15rem 0.8rem;
             }
             .menu-icon img {
@@ -1328,7 +1334,7 @@
         <img src="fotos/logo-fondo.png" alt="Siempre Nuevo">
     </div>
 
-    <!-- BARRA SUPERIOR FIJA -->
+    <!-- BARRA SUPERIOR FIJA - MÁS ANCHA -->
     <div class="navbar">
         <div class="navbar-content">
             <div class="menu-icon" id="menuButton">
