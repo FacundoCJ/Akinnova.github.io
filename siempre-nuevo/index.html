@@ -95,22 +95,21 @@
             display: block;
         }
 
-        /* BARRA SUPERIOR FIJA - SOLO ENCIMA DEL MENU, LOGO MÁS GRANDE */
+        /* BARRA SUPERIOR FIJA - DELGADA Y TRANSPARENTE */
         .navbar {
             position: fixed;
             top: 1rem;
             left: 50%;
             transform: translateX(-50%);
-            width: auto;
+            width: 96%;
             max-width: 1600px;
             z-index: 100;
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(2px);
             border-radius: 50px;
             padding: 0.3rem 1.5rem;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
-            display: inline-block;
         }
 
         .navbar-content {
@@ -118,7 +117,6 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 2rem;
         }
 
         .menu-icon {
@@ -131,7 +129,7 @@
             transform: scale(1.02);
         }
         .menu-icon img {
-            width: 50px;
+            width: 40px;
             height: auto;
             display: block;
         }
@@ -145,18 +143,26 @@
         .logo-icon:hover {
             transform: scale(1.02);
         }
+        .logo-icon {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
         .logo-icon img {
-            height: 110px;
+            height: 80px;
             width: auto;
             display: block;
         }
 
         /* Ajuste para compensar la barra fija */
         .hero-section {
-            padding-top: 110px;
+            padding-top: 100px;
         }
 
-        /* SECCIÓN HERO CON IMAGEN DE FONDO Y TEXTO SUPERPUESTO - MÁS CONTRASTE */
+        /* SECCIÓN HERO CON IMAGEN DE FONDO Y TEXTO SUPERPUESTO */
         .hero-section {
             position: relative;
             width: 100%;
@@ -170,7 +176,7 @@
             margin-bottom: -1px;
         }
 
-        /* Contenedor del texto superpuesto - MÁS PEGADO A LA IZQUIERDA CON MÁS CONTRASTE */
+        /* Contenedor del texto superpuesto */
         .hero-text {
             position: absolute;
             top: 65%;
@@ -206,65 +212,45 @@
             text-align: justify;
         }
 
-        /* Optimización para móviles */
         @media (max-width: 768px) {
             .navbar {
                 top: 0.8rem;
                 padding: 0.2rem 1rem;
             }
             .menu-icon img {
-                width: 40px;
+                width: 32px;
             }
             .logo-icon img {
-                height: 80px;
+                height: 55px;
             }
             .hero-section {
                 background-size: contain;
                 background-position: top center;
                 min-height: auto;
-                padding-top: 90px;
+                padding-top: 80px;
                 padding-bottom: 0;
             }
-            
             .hero-section::after {
                 content: '';
                 display: block;
                 padding-bottom: 56.25%;
             }
-            
             .hero-text {
                 top: 55%;
-                left: 0;
-                right: 0;
-                transform: translateY(-50%);
                 padding: 0 1rem;
-                text-align: left;
             }
-            
             .hero-title {
                 font-size: 1.2rem;
                 max-width: 45%;
                 margin-bottom: 0;
                 line-height: 1.3;
-                text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
             }
-            
             .hero-subtitle {
                 display: none;
             }
         }
 
-        /* Tablet */
         @media (min-width: 769px) and (max-width: 1024px) {
-            .navbar {
-                padding: 0.25rem 1.2rem;
-            }
-            .logo-icon img {
-                height: 95px;
-            }
-            .hero-section {
-                padding-top: 100px;
-            }
             .hero-title {
                 font-size: 1.8rem;
                 max-width: 35%;
@@ -276,9 +262,11 @@
             .hero-text {
                 top: 65%;
             }
+            .logo-icon img {
+                height: 70px;
+            }
         }
 
-        /* Laptop */
         @media (min-width: 1025px) and (max-width: 1366px) {
             .hero-title {
                 font-size: 2.2rem;
@@ -290,7 +278,6 @@
             }
         }
 
-        /* Pantallas grandes */
         @media (min-width: 1367px) {
             .hero-title {
                 font-size: 2.5rem;
@@ -308,13 +295,13 @@
                 padding: 0.15rem 0.8rem;
             }
             .menu-icon img {
-                width: 35px;
+                width: 28px;
             }
             .logo-icon img {
-                height: 65px;
+                height: 45px;
             }
             .hero-section {
-                padding-top: 75px;
+                padding-top: 70px;
             }
             .hero-title {
                 font-size: 1rem;
@@ -348,8 +335,7 @@
         .form-container {
             flex: 1;
             min-width: 280px;
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(2px);
+            background-color: #e7f3ff;
             border-radius: 32px;
             padding: 2rem;
         }
@@ -523,7 +509,7 @@
             height: 48px;
         }
 
-        /* SECCIÓN CÓMO FUNCIONA - CON ICONOS Y NUEVOS TEXTOS */
+        /* SECCIÓN CÓMO FUNCIONA */
         .como-funciona-section {
             background-color: white;
             width: 100%;
@@ -609,27 +595,19 @@
             line-height: 1.5;
         }
 
-        .paso-card small {
-            display: block;
-            color: #ff914d;
-            font-size: 0.75rem;
-            margin-top: 0.5rem;
-            font-weight: 500;
-        }
-
-        /* NUEVA SECCIÓN AZUL: CÓMO FUNCIONA (ANTIGUO SI TIENES SEGURO) */
-        .seguro-section {
+        /* SECCIÓN CÓMO FUNCIONA - AZUL */
+        .como-funciona-azul-section {
             background-color: #0c3a6a;
             width: 100%;
             padding: 3rem 2rem;
         }
 
-        .seguro-inner {
+        .como-funciona-azul-inner {
             max-width: 1400px;
             margin: 0 auto;
         }
 
-        .seguro-section h2 {
+        .como-funciona-azul-section h2 {
             color: white;
             font-size: 2rem;
             font-weight: 600;
@@ -640,7 +618,7 @@
             width: 100%;
         }
 
-        .seguro-section h2:after {
+        .como-funciona-azul-section h2:after {
             content: '';
             position: absolute;
             bottom: -10px;
@@ -652,67 +630,71 @@
             border-radius: 2px;
         }
 
-        .seguro-grid {
+        .pasos-azul-grid {
             display: flex;
             justify-content: center;
             gap: 2rem;
             flex-wrap: wrap;
+            margin-top: 2rem;
         }
 
-        .seguro-card {
+        .paso-azul-card {
             flex: 1;
-            min-width: 300px;
-            background-color: white;
-            border-radius: 32px;
-            padding: 2rem;
+            min-width: 280px;
+            max-width: 350px;
+            text-align: center;
+            padding: 1.5rem;
             transition: transform 0.3s ease;
-            display: flex;
-            flex-direction: column;
         }
 
-        .seguro-card:hover {
+        .paso-azul-card:hover {
             transform: translateY(-5px);
         }
 
-        .seguro-card h3 {
+        .paso-azul-numero {
+            width: 60px;
+            height: 60px;
+            background-color: #ff914d;
             color: #0c3a6a;
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .seguro-list {
-            list-style: none;
-            margin-top: 1rem;
-        }
-
-        .seguro-list li {
-            color: #1f4a7a;
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            border-radius: 50%;
             display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
-            text-align: left;
-            line-height: 1.4;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem auto;
+            box-shadow: 0 4px 12px rgba(255, 145, 77, 0.3);
         }
 
-        .seguro-list li strong {
-            color: #0c3a6a;
-            font-size: 1rem;
+        .paso-azul-card h3 {
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
         }
 
-        .seguro-list li span {
-            color: #1f4a7a;
-            font-size: 0.9rem;
+        .paso-azul-card p {
+            color: #e7f3ff;
+            font-size: 0.95rem;
+            line-height: 1.5;
         }
 
-        .seguro-note {
-            font-size: 0.7rem;
-            color: #666;
-            margin-top: 1rem;
+        .terminos-note {
             text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            color: white;
+            font-size: 0.8rem;
+        }
+
+        .terminos-note a {
+            color: #ff914d;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .terminos-note a:hover {
+            text-decoration: underline;
         }
 
         /* SECCIÓN BLANCA - COBERTURA */
@@ -784,7 +766,7 @@
             margin-top: 1rem;
         }
 
-        /* VIDEO GRANDE - CON MINIATURA */
+        /* VIDEO GRANDE */
         .full-video-section {
             width: 100%;
             background-color: white;
@@ -966,7 +948,7 @@
             }
         }
 
-        /* FOOTER - NUEVO DISEÑO */
+        /* FOOTER */
         .footer {
             background-color: #0c3a6a;
             width: 100%;
@@ -1121,7 +1103,6 @@
             color: #ff914d;
         }
 
-        /* MEDIA QUERIES */
         @media (max-width: 1024px) {
             .carousel-slide {
                 flex: 0 0 calc(50% - 0.75rem);
@@ -1146,7 +1127,7 @@
                 width: 38px;
                 height: 38px;
             }
-            .seguro-card {
+            .paso-azul-card {
                 min-width: 280px;
             }
         }
@@ -1185,10 +1166,7 @@
             .paso-card {
                 min-width: 100%;
             }
-            .seguro-section {
-                padding: 2rem 1rem;
-            }
-            .seguro-card {
+            .paso-azul-card {
                 min-width: 100%;
             }
             .cobertura-card img {
@@ -1230,6 +1208,11 @@
                 width: 32px;
                 height: 32px;
             }
+            .paso-azul-numero {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1247,8 +1230,11 @@
             .paso-card p {
                 font-size: 0.85rem;
             }
-            .seguro-card h3 {
-                font-size: 1.2rem;
+            .paso-azul-card h3 {
+                font-size: 1.1rem;
+            }
+            .paso-azul-card p {
+                font-size: 0.85rem;
             }
             .footer-logo img {
                 height: 140px;
@@ -1317,7 +1303,7 @@
         </div>
     </div>
 
-    <!-- BARRA SUPERIOR FIJA - SOLO ENCIMA DEL MENU, LOGO MÁS GRANDE -->
+    <!-- BARRA SUPERIOR FIJA - DELGADA Y TRANSPARENTE -->
     <div class="navbar">
         <div class="navbar-content">
             <div class="menu-icon" id="menuButton">
@@ -1413,55 +1399,38 @@
                 </div>
                 <div class="paso-card">
                     <div class="paso-icono">
-                        <img src="fotos/check.png" alt="Check">
+                        <img src="fotos/seguro.png" alt="Seguro">
                     </div>
-                    <h3>3. Reduce tu deducible</h3>
-                    <p>En concesionarios autorizados, con respaldo y garantía.</p>
-                    <small>*En el momento del Siniestro y hasta $200 por evento de acuerdo a los términos y condiciones</small>
+                    <h3>Si tienes seguro</h3>
+                    <p>Olvídate del deducible</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- NUEVA SECCIÓN AZUL: CÓMO FUNCIONA (ANTIGUO SI TIENES SEGURO) -->
-    <div class="seguro-section">
-        <div class="seguro-inner">
-            <h2>Si tienes seguro</h2>
-            <div class="seguro-grid">
-                <div class="seguro-card">
-                    <div class="paso-icono" style="margin: 0 auto 1rem auto;">
-                        <img src="fotos/seguro.png" alt="Seguro" style="width: 45px; height: 45px; object-fit: contain;">
-                    </div>
-                    <h3>Olvídate del deducible</h3>
+    <!-- SECCIÓN CÓMO FUNCIONA - AZUL -->
+    <div class="como-funciona-azul-section">
+        <div class="como-funciona-azul-inner">
+            <h2>Cómo funciona</h2>
+            <div class="pasos-azul-grid">
+                <div class="paso-azul-card">
+                    <div class="paso-azul-numero">1</div>
+                    <h3>Contacta a nuestra central</h3>
+                    <p>Contáctanos 24/7</p>
                 </div>
-
-                <div class="seguro-card">
-                    <h3>Cómo funciona</h3>
-                    <div class="seguro-list">
-                        <li><strong>1. Contacta a nuestra central</strong><span>Contáctanos 24/7</span></li>
-                        <li><strong>2. Agenda tu atención en el concesionario</strong><span>Coordinamos tu visita</span></li>
-                        <li><strong>3. Relájate, nosotros lo gestionamos</strong><span>Aprobamos el servicio y pagamos directamente al concesionario, hasta $200 por atención.*</span></li>
-                    </div>
-                    <div class="seguro-note">*Aplican <a href="terminos-y-condiciones" style="color: #ff914d; text-decoration: none; font-weight: 600;">términos y condiciones</a> del programa.</div>
+                <div class="paso-azul-card">
+                    <div class="paso-azul-numero">2</div>
+                    <h3>Agenda tu atención en el concesionario</h3>
+                    <p>Coordinamos tu visita</p>
                 </div>
-
-                <div class="seguro-card">
-                    <h3>Beneficios y coberturas</h3>
-                    <div class="seguro-list">
-                        <li><strong>Reparación de rayones y pintura hasta $200 por evento</strong><span>En concesionarios autorizados</span></li>
-                        <li><strong>Reparación de aros y llantas hasta $200 por evento</strong><span>Con respaldo de concesionarios</span></li>
-                        <li><strong>Bono para parabrisas de hasta $150</strong><span>Aplicable en concesionarios autorizados</span></li>
-                    </div>
-                    <div class="seguro-list" style="margin-top: 0.5rem;">
-                        <li><strong>Beneficios adicionales</strong></li>
-                        <li><span>• Sin deducibles</span></li>
-                        <li><span>• Atención rápida en concesionarios autorizados</span></li>
-                        <li><span>• Proceso simple y rápido</span></li>
-                    </div>
-                    <div class="seguro-note">
-                        <a href="politica-de-privacidad" style="color: #ff914d; text-decoration: none;">Política de privacidad</a>
-                    </div>
+                <div class="paso-azul-card">
+                    <div class="paso-azul-numero">3</div>
+                    <h3>Relájate, nosotros lo gestionamos</h3>
+                    <p>Aprobamos el servicio y pagamos directamente al concesionario, hasta $200 por atención.</p>
                 </div>
+            </div>
+            <div class="terminos-note">
+                Aplican <a href="terminos-y-condiciones">términos y condiciones</a> del programa.
             </div>
         </div>
     </div>
@@ -1545,7 +1514,7 @@
         </a>
     </div>
 
-    <!-- FOOTER - NUEVO DISEÑO -->
+    <!-- FOOTER -->
     <div class="footer">
         <div class="footer-inner">
             <div class="footer-left">
