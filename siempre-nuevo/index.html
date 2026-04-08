@@ -132,7 +132,7 @@
             display: block;
         }
 
-        /* LOGO FLOTANTE - BORDE BLANCO SOLO EN LA PARTE SUPERIOR */
+        /* LOGO FLOTANTE - CÍRCULO BLANCO COMO BORDE DELGADO */
         .logo-float {
             position: fixed;
             top: 1rem;
@@ -148,15 +148,21 @@
         .logo-float:hover {
             transform: scale(1.02);
         }
+        /* El círculo blanco como borde */
+        .logo-float {
+            background-color: transparent;
+            border-radius: 50%;
+            padding: 0;
+        }
+        /* El logo con borde blanco */
         .logo-float img {
-            height: 200px;
+            height: 160px;
             width: auto;
             display: block;
-            border-top: 3px solid rgba(255, 255, 255, 0.8);
-            border-left: none;
-            border-right: none;
-            border-bottom: none;
-            padding-top: 6px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 4px;
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8);
         }
 
         /* Ajuste para compensar la barra fija */
@@ -224,9 +230,8 @@
                 width: 28px;
             }
             .logo-float img {
-                height: 130px;
-                border-top: 2px solid rgba(255, 255, 255, 0.8);
-                padding-top: 4px;
+                height: 110px;
+                padding: 3px;
             }
             .hero-section {
                 background-size: contain;
@@ -274,9 +279,8 @@
                 top: 65%;
             }
             .logo-float img {
-                height: 160px;
-                border-top: 3px solid rgba(255, 255, 255, 0.8);
-                padding-top: 5px;
+                height: 130px;
+                padding: 4px;
             }
         }
 
@@ -316,9 +320,8 @@
                 width: 24px;
             }
             .logo-float img {
-                height: 100px;
-                border-top: 2px solid rgba(255, 255, 255, 0.8);
-                padding-top: 3px;
+                height: 80px;
+                padding: 2px;
             }
             .hero-section {
                 padding-top: 70px;
@@ -1340,7 +1343,7 @@
         </div>
     </div>
 
-    <!-- LOGO FLOTANTE - BORDE BLANCO SOLO EN LA PARTE SUPERIOR -->
+    <!-- LOGO FLOTANTE - CÍRCULO BLANCO COMO BORDE DELGADO -->
     <div class="logo-float" id="logoButton">
         <img src="fotos/logo-sn.png" alt="Siempre Nuevo">
     </div>
