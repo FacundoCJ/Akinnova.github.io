@@ -269,6 +269,7 @@
             justify-content: center;
             gap: 2rem;
             flex-wrap: wrap;
+            align-items: stretch;
         }
 
         .marca-card {
@@ -280,6 +281,8 @@
             padding: 1.5rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
         }
 
         .marca-card:hover {
@@ -295,6 +298,8 @@
             padding-bottom: 0.5rem;
             border-bottom: 2px solid #ff914d;
             display: inline-block;
+            text-align: center;
+            width: 100%;
         }
 
         .marca-logos-grid {
@@ -302,17 +307,25 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 1rem;
             margin-top: 1rem;
+            flex: 1;
+        }
+
+        /* Para filas con número impar, el último elemento se centra */
+        .marca-logos-grid:last-child {
+            justify-items: center;
         }
 
         .marca-logo-item {
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: white;
+            background-color: #f8f9fa;
             border-radius: 16px;
             padding: 0.75rem;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             cursor: default;
+            width: 100%;
+            min-height: 80px;
         }
 
         .marca-logo-item:hover {
@@ -324,6 +337,14 @@
             max-width: 100%;
             height: 50px;
             object-fit: contain;
+        }
+
+        /* Para elementos que quedan solos en la última fila (grid con número impar) */
+        .marca-logos-grid:last-child .marca-logo-item:only-child,
+        .marca-logos-grid:last-child .marca-logo-item:last-child:nth-child(odd) {
+            grid-column: span 2;
+            max-width: 50%;
+            margin: 0 auto;
         }
 
         /* Para marcas con nombres más largos, ajustamos altura */
@@ -365,6 +386,10 @@
             .marca-logos-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            .marca-logos-grid:last-child .marca-logo-item:only-child,
+            .marca-logos-grid:last-child .marca-logo-item:last-child:nth-child(odd) {
+                max-width: 100%;
+            }
         }
 
         @media (max-width: 480px) {
@@ -373,6 +398,10 @@
             }
             .marca-logo-item img {
                 height: 40px;
+            }
+            .marca-logos-grid:last-child .marca-logo-item:only-child,
+            .marca-logos-grid:last-child .marca-logo-item:last-child:nth-child(odd) {
+                max-width: 100%;
             }
         }
 
