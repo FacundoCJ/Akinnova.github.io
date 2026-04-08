@@ -310,19 +310,14 @@
             flex: 1;
         }
 
-        /* Para filas con número impar, el último elemento se centra */
-        .marca-logos-grid:last-child {
-            justify-items: center;
-        }
-
         .marca-logo-item {
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #f8f9fa;
+            background-color: transparent;
             border-radius: 16px;
             padding: 0.75rem;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.2s ease;
             cursor: default;
             width: 100%;
             min-height: 80px;
@@ -330,7 +325,6 @@
 
         .marca-logo-item:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .marca-logo-item img {
@@ -345,11 +339,6 @@
             grid-column: span 2;
             max-width: 50%;
             margin: 0 auto;
-        }
-
-        /* Para marcas con nombres más largos, ajustamos altura */
-        .marca-logo-item.large img {
-            height: 40px;
         }
 
         /* BOTÓN FLOTANTE DE WHATSAPP */
