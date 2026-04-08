@@ -95,34 +95,34 @@
             display: block;
         }
 
-        /* LOGO FONDO - EN LA PARTE MÁS ALTA */
-        .logo-fondo {
+        /* LOGO FLOTANTE - ARRIBA DEL TODO, PEGADO ARRIBA */
+        .logo-float {
             position: fixed;
             top: 0;
-            left: 0;
-            right: 0;
-            z-index: 98;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            pointer-events: none;
-        }
-        .logo-fondo img {
-            width: 100%;
-            max-width: 100%;
-            height: auto;
-            display: block;
-            pointer-events: auto;
+            right: 1rem;
+            z-index: 100;
             cursor: pointer;
+            transition: transform 0.2s ease;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        .logo-float:hover {
+            transform: scale(1.02);
+        }
+        .logo-float img {
+            height: 180px;
+            width: auto;
+            display: block;
         }
 
-        /* BARRA SUPERIOR FIJA - A LA ALTURA DE LA MITAD DEL LOGO-FONDO */
+        /* BARRA SUPERIOR FIJA - ALINEADA A LA MITAD DEL LOGO */
         .navbar {
             position: fixed;
-            top: 220px;
-            left: 2rem;
+            top: 90px;
+            left: 1rem;
             width: 85%;
-            max-width: 1200px;
+            max-width: 1100px;
             z-index: 100;
             background-color: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(2px);
@@ -153,9 +153,9 @@
             display: block;
         }
 
-        /* Ajuste para compensar la barra fija y el logo-fondo */
+        /* Ajuste para compensar la barra fija */
         .hero-section {
-            padding-top: 280px;
+            padding-top: 100px;
         }
 
         /* SECCIÓN HERO CON IMAGEN DE FONDO Y TEXTO SUPERPUESTO */
@@ -209,9 +209,12 @@
         }
 
         @media (max-width: 768px) {
+            .logo-float img {
+                height: 130px;
+            }
             .navbar {
-                top: 120px;
-                left: 1rem;
+                top: 65px;
+                left: 0.8rem;
                 width: 80%;
                 padding: 0.2rem 1rem;
             }
@@ -222,7 +225,7 @@
                 background-size: contain;
                 background-position: top center;
                 min-height: auto;
-                padding-top: 180px;
+                padding-top: 80px;
                 padding-bottom: 0;
             }
             .hero-section::after {
@@ -247,8 +250,11 @@
         }
 
         @media (min-width: 769px) and (max-width: 1024px) {
+            .logo-float img {
+                height: 160px;
+            }
             .navbar {
-                top: 180px;
+                top: 80px;
                 width: 80%;
             }
             .hero-title {
@@ -263,9 +269,6 @@
             }
             .hero-text {
                 top: 65%;
-            }
-            .hero-section {
-                padding-top: 240px;
             }
         }
 
@@ -296,9 +299,12 @@
         }
 
         @media (max-width: 480px) {
+            .logo-float img {
+                height: 100px;
+            }
             .navbar {
-                top: 90px;
-                left: 0.8rem;
+                top: 50px;
+                left: 0.6rem;
                 width: 75%;
                 padding: 0.15rem 0.8rem;
             }
@@ -306,7 +312,7 @@
                 width: 24px;
             }
             .hero-section {
-                padding-top: 140px;
+                padding-top: 70px;
             }
             .hero-title {
                 font-size: 0.8rem;
@@ -1316,12 +1322,12 @@
         </div>
     </div>
 
-    <!-- LOGO FONDO - EN LA PARTE MÁS ALTA -->
-    <div class="logo-fondo" id="logoFondoBtn">
+    <!-- LOGO FLOTANTE - ARRIBA DEL TODO -->
+    <div class="logo-float" id="logoButton">
         <img src="fotos/logo-fondo.png" alt="Siempre Nuevo">
     </div>
 
-    <!-- BARRA SUPERIOR FIJA - A LA ALTURA DE LA MITAD DEL LOGO-FONDO -->
+    <!-- BARRA SUPERIOR FIJA - ALINEADA A LA MITAD DEL LOGO -->
     <div class="navbar">
         <div class="navbar-content">
             <div class="menu-icon" id="menuButton">
@@ -1589,7 +1595,7 @@
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('overlay');
             const closeMenuBtn = document.getElementById('closeMenuBtn');
-            const logoFondoBtn = document.getElementById('logoFondoBtn');
+            const logoBtn = document.getElementById('logoButton');
             const footerLogo = document.getElementById('footerLogo');
             
             // Función para abrir menú
@@ -1619,9 +1625,9 @@
                 overlay.addEventListener('click', closeMenu);
             }
             
-            // Logo fondo redirige a página principal
-            if (logoFondoBtn) {
-                logoFondoBtn.addEventListener('click', function() {
+            // Logo redirige a página principal
+            if (logoBtn) {
+                logoBtn.addEventListener('click', function() {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
             }
