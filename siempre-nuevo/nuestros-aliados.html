@@ -95,70 +95,70 @@
             display: block;
         }
 
-/* LOGO FLOTANTE - ARRIBA, PEGADO A LA DERECHA */
-.logo-float {
-    position: fixed;
-    top: 1.5rem;
-    right: 1.5rem;
-    z-index: 100;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.logo-float:hover {
-    transform: scale(1.02);
-}
-.logo-float img {
-    height: 130px;
-    width: auto;
-    display: block;
-}
+        /* LOGO FLOTANTE - ARRIBA, PEGADO A LA DERECHA */
+        .logo-float {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            z-index: 100;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-float:hover {
+            transform: scale(1.02);
+        }
+        .logo-float img {
+            height: 160px;
+            width: auto;
+            display: block;
+        }
 
-/* BARRA SUPERIOR FIJA - CENTRADA VERTICALMENTE CON EL LOGO */
-.navbar {
-    position: fixed;
-    top: 10%;
-    transform: translateY(-50%);
-    left: 1.5rem;
-    right: calc(1.5rem + 160px);
-    z-index: 100;
-    background-color: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(2px);
-    border-radius: 50px;
-    padding: 0.7rem 1.5rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-}
+        /* BARRA SUPERIOR FIJA - CENTRADA VERTICALMENTE CON EL LOGO */
+        .navbar {
+            position: fixed;
+            top: 15%;
+            transform: translateY(-50%);
+            left: 2rem;
+            width: calc(100% - 200px - 2rem);
+            max-width: 1400px;
+            z-index: 100;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(2px);
+            border-radius: 50px;
+            padding: 0.7rem 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
 
-.navbar-content {
-    width: 100%;
-    display: flex;
-    align-items: center;
-}
+        .navbar-content {
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
 
-.menu-icon {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-.menu-icon:hover {
-    transform: scale(1.02);
-}
-.menu-icon img {
-    width: 40px;
-    height: auto;
-    display: block;
-}
+        .menu-icon {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .menu-icon:hover {
+            transform: scale(1.02);
+        }
+        .menu-icon img {
+            width: 40px;
+            height: auto;
+            display: block;
+        }
 
         /* SECCIÓN PRINCIPAL ALIADOS */
         .aliados-section {
             max-width: 1400px;
             margin: 0 auto;
             padding: 180px 2rem 4rem 2rem;
-            text-align: center;
         }
 
         .aliados-title {
@@ -192,157 +192,93 @@
             margin-bottom: 3rem;
         }
 
-        .aliados-grid {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-top: 2rem;
+        /* Aliado individual */
+        .aliado-item {
+            background-color: white;
+            border-radius: 32px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .aliado-card {
-            flex: 1;
-            min-width: 250px;
-            max-width: 300px;
-            background-color: white;
-            border-radius: 24px;
-            padding: 2rem;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        .aliado-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+        }
+
+        .aliado-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
             cursor: pointer;
         }
 
-        .aliado-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
-        }
-
         .aliado-logo {
-            width: 100%;
-            height: 120px;
+            height: 80px;
             object-fit: contain;
-            margin-bottom: 1rem;
+            transition: transform 0.2s ease;
         }
 
-        .aliado-nombre {
-            color: #0c3a6a;
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-top: 1rem;
+        .aliado-header:hover .aliado-logo {
+            transform: scale(1.02);
         }
 
-        /* SECCIÓN MARCAS QUE REPRESENTAN - CON LOGOS */
-        .marcas-section {
-            background-color: #e7f3ff;
-            width: 100%;
-            padding: 3rem 2rem;
-            margin-top: 2rem;
-        }
-
-        .marcas-inner {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .marcas-title {
+        .aliado-subtitle {
             text-align: center;
-            color: #0c3a6a;
-            font-size: 2rem;
+            color: #ff914d;
+            font-size: 1.2rem;
             font-weight: 600;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             position: relative;
             display: inline-block;
             width: 100%;
         }
 
-        .marcas-title:after {
+        .aliado-subtitle:after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -8px;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
+            width: 50px;
+            height: 2px;
             background-color: #ff914d;
             border-radius: 2px;
         }
 
-        .marcas-grid {
+        /* Marcas en horizontal */
+        .marcas-horizontal {
             display: flex;
-            justify-content: center;
-            gap: 2rem;
             flex-wrap: wrap;
-            align-items: stretch;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
         }
 
-        .marca-card {
-            flex: 1;
-            min-width: 250px;
-            max-width: 300px;
-            background-color: white;
-            border-radius: 24px;
-            padding: 1.5rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .marca-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .marca-card h3 {
-            color: #0c3a6a;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #ff914d;
-            display: inline-block;
-            text-align: center;
-            width: 100%;
-        }
-
-        .marca-logos-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin-top: 1rem;
-            flex: 1;
-        }
-
-        .marca-logo-item {
+        .marca-item {
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: transparent;
+            background-color: #f8f9fa;
             border-radius: 16px;
-            padding: 0.75rem;
-            transition: transform 0.2s ease;
+            padding: 0.75rem 1.2rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
             cursor: default;
-            width: 100%;
-            min-height: 80px;
+            min-width: 100px;
         }
 
-        .marca-logo-item:hover {
+        .marca-item:hover {
             transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background-color: #e7f3ff;
         }
 
-        .marca-logo-item img {
+        .marca-item img {
             max-width: 100%;
-            height: 50px;
+            height: 40px;
             object-fit: contain;
-        }
-
-        /* Para elementos que quedan solos en la última fila (grid con número impar) */
-        .marca-logos-grid:last-child .marca-logo-item:only-child,
-        .marca-logos-grid:last-child .marca-logo-item:last-child:nth-child(odd) {
-            grid-column: span 2;
-            max-width: 50%;
-            margin: 0 auto;
         }
 
         /* BOTÓN FLOTANTE DE WHATSAPP */
@@ -367,7 +303,7 @@
             transform: scale(1.1);
         }
 
-        /* FOOTER - NUEVO DISEÑO */
+        /* FOOTER */
         .footer {
             background-color: #0c3a6a;
             width: 100%;
@@ -538,9 +474,6 @@
             .aliados-title {
                 font-size: 2rem;
             }
-            .marcas-title {
-                font-size: 1.8rem;
-            }
             .footer-logo img {
                 height: 200px;
             }
@@ -552,6 +485,9 @@
             }
             .footer-contact h3, .footer-social-title h3, .footer-links-column h3 {
                 font-size: 1.3rem;
+            }
+            .marca-item img {
+                height: 35px;
             }
         }
 
@@ -590,19 +526,15 @@
             .aliados-subtitle {
                 font-size: 0.9rem;
             }
-            .aliado-card {
-                min-width: 100%;
-                max-width: 100%;
+            .aliado-logo {
+                height: 60px;
             }
-            .marcas-section {
-                padding: 2rem 1rem;
+            .marca-item {
+                padding: 0.5rem 1rem;
+                min-width: 80px;
             }
-            .marcas-title {
-                font-size: 1.4rem;
-            }
-            .marca-card {
-                min-width: 100%;
-                max-width: 100%;
+            .marca-item img {
+                height: 30px;
             }
             .footer-inner {
                 flex-direction: column;
@@ -660,8 +592,18 @@
             .aliados-title {
                 font-size: 1.3rem;
             }
-            .marcas-title {
-                font-size: 1.2rem;
+            .aliado-logo {
+                height: 50px;
+            }
+            .aliado-subtitle {
+                font-size: 1rem;
+            }
+            .marca-item {
+                padding: 0.4rem 0.8rem;
+                min-width: 70px;
+            }
+            .marca-item img {
+                height: 25px;
             }
             .footer-logo img {
                 height: 140px;
@@ -719,98 +661,118 @@
     <div class="aliados-section">
         <h1 class="aliados-title">Nuestros Aliados</h1>
         <p class="aliados-subtitle">Trabajamos con los mejores concesionarios para brindarte el mejor servicio</p>
-        
-        <div class="aliados-grid">
-            <!-- Pakat Namu -->
-            <div class="aliado-card" onclick="window.open('https://automotorespakatnamu.com/', '_blank')">
+
+        <!-- Pakat Namu -->
+        <div class="aliado-item">
+            <div class="aliado-header" onclick="window.open('https://automotorespakatnamu.com/', '_blank')">
                 <img src="fotos/pakat.png" alt="Automotores Pakat Namu" class="aliado-logo">
-                <div class="aliado-nombre">Automotores Pakat Namu</div>
             </div>
-
-            <!-- Autoniza -->
-            <div class="aliado-card" onclick="window.open('https://autoniza.com.pe/', '_blank')">
-                <img src="fotos/autoniza.png" alt="Autoniza" class="aliado-logo">
-                <div class="aliado-nombre">Autoniza</div>
-            </div>
-
-            <!-- San Antonio Motors -->
-            <div class="aliado-card" onclick="window.open('https://www.sanantoniomotors.com.pe/', '_blank')">
-                <img src="fotos/sanantonio.png" alt="San Antonio Motors" class="aliado-logo">
-                <div class="aliado-nombre">San Antonio Motors</div>
-            </div>
-
-            <!-- Intermotors -->
-            <div class="aliado-card" onclick="window.open('https://intermotorsperu.com/contacto', '_blank')">
-                <img src="fotos/intermotors.png" alt="Intermotors" class="aliado-logo">
-                <div class="aliado-nombre">Intermotors</div>
+            <div class="aliado-subtitle">Marcas que distribuye</div>
+            <div class="marcas-horizontal">
+                <div class="marca-item"><img src="fotos/changan.png" alt="CHANGAN"></div>
+                <div class="marca-item"><img src="fotos/citroen.png" alt="CITROEN"></div>
+                <div class="marca-item"><img src="fotos/great-wall.png" alt="GREAT WALL"></div>
+                <div class="marca-item"><img src="fotos/haval.png" alt="HAVAL"></div>
+                <div class="marca-item"><img src="fotos/jac.png" alt="JAC"></div>
+                <div class="marca-item"><img src="fotos/mazda.png" alt="MAZDA"></div>
+                <div class="marca-item"><img src="fotos/renault.png" alt="RENAULT"></div>
+                <div class="marca-item"><img src="fotos/suzuki.png" alt="SUZUKI"></div>
+                <div class="marca-item"><img src="fotos/jac-ccamiones.png" alt="JAC CCAMIONES"></div>
+                <div class="marca-item"><img src="fotos/dfsk.png" alt="DFSK"></div>
+                <div class="marca-item"><img src="fotos/subaru.png" alt="SUBARU"></div>
             </div>
         </div>
-    </div>
 
-    <!-- SECCIÓN MARCAS QUE REPRESENTAN - CON LOGOS -->
-    <div class="marcas-section">
-        <div class="marcas-inner">
-            <h2 class="marcas-title">Marcas que representan</h2>
-            <div class="marcas-grid">
-                <!-- Pakat -->
-                <div class="marca-card">
-                    <h3>Automotores Pakat Namu</h3>
-                    <div class="marca-logos-grid">
-                        <div class="marca-logo-item"><img src="fotos/changan.png" alt="CHANGAN"></div>
-                        <div class="marca-logo-item"><img src="fotos/citroen.png" alt="CITROEN"></div>
-                        <div class="marca-logo-item"><img src="fotos/great-wall.png" alt="GREAT WALL"></div>
-                        <div class="marca-logo-item"><img src="fotos/haval.png" alt="HAVAL"></div>
-                        <div class="marca-logo-item"><img src="fotos/jac.png" alt="JAC"></div>
-                        <div class="marca-logo-item"><img src="fotos/mazda.png" alt="MAZDA"></div>
-                        <div class="marca-logo-item"><img src="fotos/renault.png" alt="RENAULT"></div>
-                        <div class="marca-logo-item"><img src="fotos/suzuki.png" alt="SUZUKI"></div>
-                        <div class="marca-logo-item"><img src="fotos/jac-ccamiones.png" alt="JAC CCAMIONES"></div>
-                        <div class="marca-logo-item"><img src="fotos/dfsk.png" alt="DFSK"></div>
-                        <div class="marca-logo-item"><img src="fotos/subaru.png" alt="SUBARU"></div>
-                    </div>
-                </div>
+        <!-- Autoniza -->
+        <div class="aliado-item">
+            <div class="aliado-header" onclick="window.open('https://autoniza.com.pe/', '_blank')">
+                <img src="fotos/autoniza.png" alt="Autoniza" class="aliado-logo">
+            </div>
+            <div class="aliado-subtitle">Marcas que distribuye</div>
+            <div class="marcas-horizontal">
+                <div class="marca-item"><img src="fotos/chevrolet.png" alt="CHEVROLET"></div>
+                <div class="marca-item"><img src="fotos/hyundai.png" alt="HYUNDAI"></div>
+                <div class="marca-item"><img src="fotos/nissan.png" alt="NISSAN"></div>
+                <div class="marca-item"><img src="fotos/mitsubishi-motors.png" alt="MITSUBISHI MOTORS"></div>
+                <div class="marca-item"><img src="fotos/fuso.png" alt="FUSO"></div>
+                <div class="marca-item"><img src="fotos/isuzu.png" alt="ISUZU"></div>
+            </div>
+        </div>
 
-                <!-- Autoniza -->
-                <div class="marca-card">
-                    <h3>Autoniza</h3>
-                    <div class="marca-logos-grid">
-                        <div class="marca-logo-item"><img src="fotos/chevrolet.png" alt="CHEVROLET"></div>
-                        <div class="marca-logo-item"><img src="fotos/hyundai.png" alt="HYUNDAI"></div>
-                        <div class="marca-logo-item"><img src="fotos/nissan.png" alt="NISSAN"></div>
-                        <div class="marca-logo-item"><img src="fotos/mitsubishi-motors.png" alt="MITSUBISHI MOTORS"></div>
-                        <div class="marca-logo-item"><img src="fotos/fuso.png" alt="FUSO"></div>
-                        <div class="marca-logo-item"><img src="fotos/isuzu.png" alt="ISUZU"></div>
-                    </div>
-                </div>
+        <!-- San Antonio Motors -->
+        <div class="aliado-item">
+            <div class="aliado-header" onclick="window.open('https://www.sanantoniomotors.com.pe/', '_blank')">
+                <img src="fotos/sanantonio.png" alt="San Antonio Motors" class="aliado-logo">
+            </div>
+            <div class="aliado-subtitle">Marcas que distribuye</div>
+            <div class="marcas-horizontal">
+                <div class="marca-item"><img src="fotos/chevrolet.png" alt="CHEVROLET"></div>
+                <div class="marca-item"><img src="fotos/hyundai.png" alt="HYUNDAI"></div>
+                <div class="marca-item"><img src="fotos/nissan.png" alt="NISSAN"></div>
+                <div class="marca-item"><img src="fotos/geely.png" alt="GEELY"></div>
+                <div class="marca-item"><img src="fotos/jmc.png" alt="JMC"></div>
+                <div class="marca-item"><img src="fotos/camiones-y-buses-hyundai.png" alt="CAMIONES Y BUSES HYUNDAI"></div>
+                <div class="marca-item"><img src="fotos/isuzu.png" alt="ISUZU"></div>
+            </div>
+        </div>
 
-                <!-- San Antonio Motors -->
-                <div class="marca-card">
-                    <h3>San Antonio Motors</h3>
-                    <div class="marca-logos-grid">
-                        <div class="marca-logo-item"><img src="fotos/chevrolet.png" alt="CHEVROLET"></div>
-                        <div class="marca-logo-item"><img src="fotos/hyundai.png" alt="HYUNDAI"></div>
-                        <div class="marca-logo-item"><img src="fotos/nissan.png" alt="NISSAN"></div>
-                        <div class="marca-logo-item"><img src="fotos/geely.png" alt="GEELY"></div>
-                        <div class="marca-logo-item"><img src="fotos/jmc.png" alt="JMC"></div>
-                        <div class="marca-logo-item"><img src="fotos/camiones-y-buses-hyundai.png" alt="CAMIONES Y BUSES HYUNDAI"></div>
-                        <div class="marca-logo-item"><img src="fotos/isuzu.png" alt="ISUZU"></div>
-                    </div>
-                </div>
+        <!-- Intermotors -->
+        <div class="aliado-item">
+            <div class="aliado-header" onclick="window.open('https://intermotorsperu.com/contacto', '_blank')">
+                <img src="fotos/intermotors.png" alt="Intermotors" class="aliado-logo">
+            </div>
+            <div class="aliado-subtitle">Marcas que distribuye</div>
+            <div class="marcas-horizontal">
+                <div class="marca-item"><img src="fotos/kia.png" alt="KIA"></div>
+                <div class="marca-item"><img src="fotos/mitsubishi.png" alt="MITSUBISHI"></div>
+                <div class="marca-item"><img src="fotos/peugeot.png" alt="PEUGEOT"></div>
+                <div class="marca-item"><img src="fotos/chery.png" alt="CHERY"></div>
+                <div class="marca-item"><img src="fotos/mg.png" alt="MG"></div>
+                <div class="marca-item"><img src="fotos/fuso.png" alt="FUSO"></div>
+                <div class="marca-item"><img src="fotos/kyc.png" alt="KYC"></div>
+                <div class="marca-item"><img src="fotos/jetour.png" alt="JETOUR"></div>
+            </div>
+        </div>
 
-                <!-- Intermotors -->
-                <div class="marca-card">
-                    <h3>Intermotors</h3>
-                    <div class="marca-logos-grid">
-                        <div class="marca-logo-item"><img src="fotos/kia.png" alt="KIA"></div>
-                        <div class="marca-logo-item"><img src="fotos/mitsubishi.png" alt="MITSUBISHI"></div>
-                        <div class="marca-logo-item"><img src="fotos/peugeot.png" alt="PEUGEOT"></div>
-                        <div class="marca-logo-item"><img src="fotos/chery.png" alt="CHERY"></div>
-                        <div class="marca-logo-item"><img src="fotos/mg.png" alt="MG"></div>
-                        <div class="marca-logo-item"><img src="fotos/fuso.png" alt="FUSO"></div>
-                        <div class="marca-logo-item"><img src="fotos/kyc.png" alt="KYC"></div>
-                        <div class="marca-logo-item"><img src="fotos/jetour.png" alt="JETOUR"></div>
-                    </div>
-                </div>
+        <!-- Automotores Inka (NUEVO) -->
+        <div class="aliado-item">
+            <div class="aliado-header" onclick="window.open('https://automotoresinka.pe/', '_blank')">
+                <img src="fotos/automotoresinka.png" alt="Automotores Inka" class="aliado-logo">
+            </div>
+            <div class="aliado-subtitle">Marcas que distribuye</div>
+            <div class="marcas-horizontal">
+                <div class="marca-item"><img src="fotos/geely.png" alt="GEELY"></div>
+                <div class="marca-item"><img src="fotos/gwm.png" alt="GWM"></div>
+                <div class="marca-item"><img src="fotos/haval.png" alt="HAVAL"></div>
+                <div class="marca-item"><img src="fotos/hyundai.png" alt="HYUNDAI"></div>
+                <div class="marca-item"><img src="fotos/hyundai-camiones-y-buses.png" alt="HYUNDAI CAMIONES Y BUSES"></div>
+                <div class="marca-item"><img src="fotos/jac.png" alt="JAC"></div>
+                <div class="marca-item"><img src="fotos/jmc.png" alt="JMC"></div>
+                <div class="marca-item"><img src="fotos/mazda.png" alt="MAZDA"></div>
+                <div class="marca-item"><img src="fotos/mitsubishi.png" alt="MITSUBISHI"></div>
+                <div class="marca-item"><img src="fotos/renault.png" alt="RENAULT"></div>
+                <div class="marca-item"><img src="fotos/subaru.png" alt="SUBARU"></div>
+                <div class="marca-item"><img src="fotos/suzuki.png" alt="SUZUKI"></div>
+                <div class="marca-item"><img src="fotos/byc.png" alt="BYC"></div>
+                <div class="marca-item"><img src="fotos/changan.png" alt="CHANGAN"></div>
+                <div class="marca-item"><img src="fotos/dfsk.png" alt="DFSK"></div>
+                <div class="marca-item"><img src="fotos/fuso.png" alt="FUSO"></div>
+            </div>
+        </div>
+
+        <!-- Derco Center Roberts (NUEVO) -->
+        <div class="aliado-item">
+            <div class="aliado-header" onclick="window.open('https://dercocenterroberts.pe/', '_blank')">
+                <img src="fotos/roberts.png" alt="Derco Center Roberts" class="aliado-logo">
+            </div>
+            <div class="aliado-subtitle">Marcas que distribuye</div>
+            <div class="marcas-horizontal">
+                <div class="marca-item"><img src="fotos/changan.png" alt="CHANGAN"></div>
+                <div class="marca-item"><img src="fotos/gym.png" alt="GYM"></div>
+                <div class="marca-item"><img src="fotos/mazda.png" alt="MAZDA"></div>
+                <div class="marca-item"><img src="fotos/renault.png" alt="RENAULT"></div>
+                <div class="marca-item"><img src="fotos/suzuki.png" alt="SUZUKI"></div>
+                <div class="marca-item"><img src="fotos/dfsk.png" alt="DFSK"></div>
             </div>
         </div>
     </div>
@@ -822,7 +784,7 @@
         </a>
     </div>
 
-    <!-- FOOTER - NUEVO DISEÑO -->
+    <!-- FOOTER -->
     <div class="footer">
         <div class="footer-inner">
             <div class="footer-left">
