@@ -187,8 +187,8 @@
             top: 55%;
             left: 25%;
             transform: translate(-50%, -50%);
-            width: 22%;
-            max-width: 22%;
+            width: 16%;
+            max-width: 16%;
             overflow: hidden;
             border-radius: 16px;
             box-shadow: 0 0 0 4px white, 0 8px 25px rgba(0, 0, 0, 0.3);
@@ -204,7 +204,6 @@
             pointer-events: none;
         }
 
-        /* Ocultar controles nativos de video pero mantenerlos funcionalmente presentes */
         video::-webkit-media-controls {
             display: none !important;
         }
@@ -334,11 +333,63 @@
             transform: translateY(-5px);
         }
 
+        .image-container {
+            position: relative;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
         .cobertura-card img {
             width: 100%;
             height: 160px;
             object-fit: contain;
-            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .zero-cost-overlay {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 0.25rem;
+            white-space: nowrap;
+        }
+
+        .zero-cost-overlay .big-zero {
+            font-size: 1.8rem;
+            font-weight: 700;
+            line-height: 1;
+            color: #ff914d;
+            letter-spacing: -2px;
+        }
+
+        .zero-cost-overlay .text-group {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            gap: 0.05rem;
+        }
+
+        .zero-cost-overlay .text-group .zero-text {
+            font-size: 0.7rem;
+            font-weight: 700;
+            line-height: 1.1;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .zero-cost-overlay .text-group .costo-text {
+            font-size: 0.55rem;
+            font-weight: 600;
+            line-height: 1.1;
+            color: #ff914d;
         }
 
         .cobertura-card h3 {
@@ -347,53 +398,6 @@
             font-weight: 600;
             margin-top: 0.5rem;
             line-height: 1.3;
-        }
-
-        .cobertura-card .zero-cost {
-            margin-top: 0.5rem;
-            display: flex;
-            align-items: baseline;
-            justify-content: center;
-            gap: 0.25rem;
-            background-color: rgba(255, 145, 77, 0.15);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            display: inline-flex;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cobertura-card .zero-cost .big-zero {
-            font-size: 2.8rem;
-            font-weight: 700;
-            line-height: 1;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            letter-spacing: -2px;
-        }
-
-        .cobertura-card .zero-cost .text-group {
-            display: flex;
-            flex-direction: column;
-            text-align: left;
-            gap: 0.1rem;
-        }
-
-        .cobertura-card .zero-cost .text-group .zero-text {
-            font-size: 0.9rem;
-            font-weight: 700;
-            line-height: 1.2;
-            color: white;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-            text-transform: uppercase;
-        }
-
-        .cobertura-card .zero-cost .text-group .costo-text {
-            font-size: 0.7rem;
-            font-weight: 600;
-            line-height: 1.2;
-            color: white;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
 
         .blue-fusion-section {
@@ -1014,17 +1018,17 @@
         }
 
         @media (max-width: 1400px) {
-            .hero-video-container { width: 20%; max-width: 20%; }
+            .hero-video-container { width: 14%; max-width: 14%; }
         }
         @media (max-width: 1200px) {
-            .hero-video-container { width: 22%; max-width: 22%; }
+            .hero-video-container { width: 15%; max-width: 15%; }
         }
         @media (max-width: 1024px) {
             .blue-fusion-inner { flex-direction: column; }
             .formulario-fusion { max-width: 500px; margin: 0 auto; }
             .como-funciona-fusion h2:after { left: 0; transform: none; }
             .cobertura-card img { height: 130px; }
-            .hero-video-container { width: 24%; max-width: 24%; }
+            .hero-video-container { width: 18%; max-width: 18%; }
         }
         @media (max-width: 768px) {
             .logo-float img { height: 70px; }
@@ -1034,7 +1038,7 @@
             .navbar-text { font-size: 0.85rem; }
             .hero-section { min-height: auto; height: auto; background-size: contain; background-position: top center; background-repeat: no-repeat; margin-bottom: -235px !important; padding-bottom: 0 !important; }
             .cobertura-section { padding-top: 0 !important; margin-top: -235px !important; }
-            .hero-video-container { width: 16% !important; max-width: 16% !important; top: 80px !important; left: 12% !important; transform: translate(0, 0) !important; }
+            .hero-video-container { width: 14% !important; max-width: 14% !important; top: 80px !important; left: 12% !important; transform: translate(0, 0) !important; }
             .hero-video-container .play-pause-btn { width: 30px; height: 30px; }
             .hero-video-container .play-pause-btn svg { width: 15px; height: 15px; }
             .full-video-wrapper .play-pause-btn { width: 50px; height: 50px; }
@@ -1044,9 +1048,9 @@
             .cobertura-grid { gap: 1rem; }
             .cobertura-card { min-width: 160px; }
             .cobertura-card img { height: 100px; }
-            .cobertura-card .zero-cost .big-zero { font-size: 2rem; }
-            .cobertura-card .zero-cost .text-group .zero-text { font-size: 0.7rem; }
-            .cobertura-card .zero-cost .text-group .costo-text { font-size: 0.55rem; }
+            .zero-cost-overlay .big-zero { font-size: 1.2rem; }
+            .zero-cost-overlay .text-group .zero-text { font-size: 0.55rem; }
+            .zero-cost-overlay .text-group .costo-text { font-size: 0.45rem; }
             .pasos-fusion-grid { flex-direction: column; align-items: center; }
             .paso-fusion-card { max-width: 280px; }
             .carousel-slide { flex: 0 0 calc(100% - 0rem); }
@@ -1065,7 +1069,7 @@
             .navbar-text { font-size: 0.75rem; }
             .navbar { right: calc(0.5rem + 70px) !important; top: 25px !important; }
             .hero-section { min-height: 70vh; }
-            .hero-video-container { width: 20% !important; max-width: 20% !important; top: 80px !important; left: 10% !important; }
+            .hero-video-container { width: 18% !important; max-width: 18% !important; top: 80px !important; left: 10% !important; }
             .hero-video-container .play-pause-btn { width: 25px; height: 25px; }
             .hero-video-container .play-pause-btn svg { width: 12px; height: 12px; }
             .full-video-wrapper .play-pause-btn { width: 45px; height: 45px; }
@@ -1074,9 +1078,10 @@
             .carousel-slide .play-pause-btn svg { width: 18px; height: 18px; }
             .cobertura-card { min-width: 140px; }
             .cobertura-card h3 { font-size: 0.8rem; }
-            .cobertura-card .zero-cost .big-zero { font-size: 1.6rem; }
-            .cobertura-card .zero-cost .text-group .zero-text { font-size: 0.6rem; }
-            .cobertura-card .zero-cost .text-group .costo-text { font-size: 0.5rem; }
+            .zero-cost-overlay .big-zero { font-size: 1rem; }
+            .zero-cost-overlay .text-group .zero-text { font-size: 0.5rem; }
+            .zero-cost-overlay .text-group .costo-text { font-size: 0.4rem; }
+            .zero-cost-overlay { padding: 0.25rem 0.6rem; }
         }
         @supports (-webkit-touch-callout: none) {
             .navbar { background-color: rgba(255, 255, 255, 0.98); }
@@ -1113,7 +1118,7 @@
         </div>
     </div>
 
-    <!-- VIDEO 1 - HERO (con controls ocultos para iOS) -->
+    <!-- VIDEO 1 - HERO -->
     <div class="hero-section">
         <div class="hero-video-container">
             <div class="video-wrapper" style="width:100%">
@@ -1135,26 +1140,30 @@
             <h2>Cobertura del programa</h2>
             <div class="cobertura-grid">
                 <div class="cobertura-card">
-                    <img src="fotos/raspon.jpeg" alt="Raspón de pintura">
-                    <h3>Raspón de pintura</h3>
-                    <div class="zero-cost">
-                        <span class="big-zero">0</span>
-                        <div class="text-group">
-                            <span class="zero-text">CERO</span>
-                            <span class="costo-text">COSTO*</span>
+                    <div class="image-container">
+                        <img src="fotos/raspon.jpeg" alt="Raspón de pintura">
+                        <div class="zero-cost-overlay">
+                            <span class="big-zero">0</span>
+                            <div class="text-group">
+                                <span class="zero-text">CERO</span>
+                                <span class="costo-text">COSTO*</span>
+                            </div>
                         </div>
                     </div>
+                    <h3>Raspón de pintura</h3>
                 </div>
                 <div class="cobertura-card">
-                    <img src="fotos/aros.jpeg" alt="Reparación de aros y neumáticos">
-                    <h3>Reparación de aros y neumáticos</h3>
-                    <div class="zero-cost">
-                        <span class="big-zero">0</span>
-                        <div class="text-group">
-                            <span class="zero-text">CERO</span>
-                            <span class="costo-text">COSTO*</span>
+                    <div class="image-container">
+                        <img src="fotos/aros.jpeg" alt="Reparación de aros y neumáticos">
+                        <div class="zero-cost-overlay">
+                            <span class="big-zero">0</span>
+                            <div class="text-group">
+                                <span class="zero-text">CERO</span>
+                                <span class="costo-text">COSTO*</span>
+                            </div>
                         </div>
                     </div>
+                    <h3>Reparación de aros y neumáticos</h3>
                 </div>
                 <div class="cobertura-card">
                     <img src="fotos/parabrisas.jpeg" alt="Arreglo o reposición de parabrisas">
@@ -1361,14 +1370,12 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>
         (function() {
-            // EmailJS Config
             const EMAILJS_PUBLIC_KEY = 'GExj5Fp2jmCjSsKEE';
             const EMAILJS_SERVICE_ID = 'service_ygxlbye';
             const EMAILJS_TEMPLATE_ID = 'template_c7ltsb8';
             
             emailjs.init(EMAILJS_PUBLIC_KEY);
             
-            // Elementos del menú
             const menuBtn = document.getElementById('menuButton');
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('overlay');
@@ -1376,28 +1383,19 @@
             const logoBtn = document.getElementById('logoButton');
             const footerLogo = document.getElementById('footerLogo');
             
-            // Detectar iOS
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
             
-            // Función para configurar cada video con su botón
             function setupVideoControls(videoId, btnElement) {
                 const video = document.getElementById(videoId);
                 if (!video) return;
                 
-                // Configuraciones críticas para iOS
                 video.setAttribute('playsinline', 'true');
                 video.setAttribute('webkit-playsinline', 'true');
                 video.setAttribute('controls', 'true');
                 video.muted = false;
                 video.volume = 1.0;
-                
-                // Ocultar visualmente los controles nativos pero mantenerlos funcionalmente
                 video.style.pointerEvents = 'none';
-                
-                // Forzar carga del video
                 video.load();
-                
-                let isUserInteracting = false;
                 
                 function updateButtonIcon() {
                     if (!btnElement) return;
@@ -1415,7 +1413,6 @@
                             video.muted = false;
                             updateButtonIcon();
                         }).catch(e => {
-                            console.log(`Error playing ${videoId}:`, e);
                             setTimeout(() => {
                                 video.muted = false;
                                 video.play().catch(err => console.log('Second attempt failed:', err));
