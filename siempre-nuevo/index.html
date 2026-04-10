@@ -95,8 +95,7 @@
             display: block;
         }
 
-        /* === AJUSTE MANUAL 1: LOGO FLOTANTE === */
-        /* Cambia 'top' y 'right' para mover el logo */
+        /* LOGO FLOTANTE */
         .logo-float {
             position: fixed;
             top: 1rem;
@@ -117,9 +116,7 @@
             display: block;
         }
 
-        /* === AJUSTE MANUAL 2: BARRA DE INICIO === */
-        /* Cambia 'top' para mover la barra verticalmente */
-        /* Cambia 'padding' para hacerla más gruesa o delgada */
+        /* BARRA SUPERIOR FIJA */
         .navbar {
             position: fixed;
             top: 10%;
@@ -183,8 +180,7 @@
             background-repeat: no-repeat;
         }
 
-        /* === AJUSTE MANUAL 3: VIDEO1 === */
-        /* Para laptop: cambia 'top', 'left', 'width' */
+        /* VIDEO1 - Configuración base */
         .hero-video-container {
             position: absolute;
             top: 55%;
@@ -206,7 +202,7 @@
             pointer-events: auto;
         }
 
-        /* Solo el botón de PLAY (sin botón de pausa) */
+        /* Solo el botón de PLAY */
         .play-button {
             position: absolute;
             top: 50%;
@@ -236,12 +232,15 @@
             height: 22px;
         }
 
-        /* SECCIÓN COBERTURA DEL PROGRAMA */
+        /* SECCIÓN COBERTURA DEL PROGRAMA - SIN ESPACIO BLANCO */
         .cobertura-section {
             background-color: white;
             width: 100%;
             padding: 4rem 2rem;
             text-align: center;
+            position: relative;
+            z-index: 2;
+            margin-top: 0;
         }
 
         .cobertura-section-inner {
@@ -342,7 +341,7 @@
             line-height: 1.2;
         }
 
-        /* SECCIÓN AZUL - FUSIONADA (CÓMO FUNCIONA + FORMULARIO) */
+        /* SECCIÓN AZUL - FUSIONADA */
         .blue-fusion-section {
             background-color: #0c3a6a;
             width: 100%;
@@ -983,21 +982,19 @@
             }
         }
 
-        /* === AJUSTES PARA CELULAR (max-width: 768px) === */
+        /* === AJUSTES PARA CELULAR === */
         @media (max-width: 768px) {
-            /* AJUSTE MANUAL 1B: LOGO FLOTANTE EN CELULAR */
             .logo-float img {
                 height: 70px;
             }
             
-            /* AJUSTE MANUAL 2B: BARRA DE INICIO EN CELULAR */
-            /* Cambia 'top' para subir o bajar la barra */
-            /* El valor actual '12%' la pone más abajo, a la altura del logo */
+            /* BARRA: top: 6px (en lugar de porcentaje) */
             .navbar {
-                top: 6%;
+                top: 6px;
                 left: 0.5rem;
                 right: calc(0.5rem + 80px);
                 padding: 0.6rem 1rem;
+                transform: none;
             }
             
             .menu-icon img {
@@ -1011,8 +1008,7 @@
                 font-size: 0.7rem;
             }
             
-            /* AJUSTE MANUAL 3B: CARRO.PNG EN CELULAR */
-            /* 'background-position: top center' hace que la imagen comience desde arriba */
+            /* CARRO.PNG - arriba del todo */
             .hero-section {
                 min-height: 80vh;
                 background-size: contain;
@@ -1020,15 +1016,13 @@
                 background-repeat: no-repeat;
             }
             
-            /* AJUSTE MANUAL 3C: VIDEO1 EN CELULAR */
-            /* width: 12% = la mitad del tamaño anterior (25% -> 12.5% aprox) */
-            /* left: 15% = más hacia la izquierda (antes estaba centrado en 50%) */
+            /* VIDEO: top: 30px */
             .hero-video-container {
-                width: 14%;
-                max-width: 14%;
-                top: 30%;
+                width: 30%;
+                max-width: 30%;
+                top: 30px;
                 left: 12%;
-                transform: translate(0, -50%);
+                transform: none;
             }
             
             .play-button {
@@ -1038,6 +1032,16 @@
             .play-button svg {
                 width: 15px;
                 height: 15px;
+            }
+            
+            /* Eliminar espacio entre hero y cobertura */
+            .hero-section {
+                margin-bottom: 0;
+            }
+            
+            .cobertura-section {
+                padding-top: 2rem;
+                margin-top: 0;
             }
             
             .cobertura-grid {
@@ -1113,15 +1117,15 @@
             }
             .navbar {
                 right: calc(0.5rem + 60px);
-                top: 10%;
+                top: 6px;
             }
             .hero-section {
                 min-height: 70vh;
             }
             .hero-video-container {
-                width: 18%;
-                max-width: 18%;
-                top: 42%;
+                width: 40%;
+                max-width: 40%;
+                top: 30px;
                 left: 10%;
             }
             .play-button {
@@ -1462,13 +1466,11 @@
             const logoBtn = document.getElementById('logoButton');
             const footerLogo = document.getElementById('footerLogo');
             
-            // Video hero - SOLO BOTÓN PLAY (al hacer clic en el video se pausa/reproduce)
+            // Video hero - SOLO BOTÓN PLAY
             const heroVideo = document.getElementById('heroVideo');
             const playButton = document.getElementById('playButton');
-            const videoContainer = document.getElementById('heroVideoContainer');
             
             if (heroVideo) {
-                // Función para ocultar/mostrar el botón de play según el estado del video
                 function updatePlayButton() {
                     if (heroVideo.paused || heroVideo.ended) {
                         playButton.style.display = 'flex';
@@ -1477,7 +1479,6 @@
                     }
                 }
                 
-                // Al hacer clic en el video, se pausa o reproduce
                 heroVideo.addEventListener('click', function(e) {
                     e.stopPropagation();
                     if (heroVideo.paused || heroVideo.ended) {
@@ -1488,7 +1489,6 @@
                     updatePlayButton();
                 });
                 
-                // Al hacer clic en el botón de play, reproduce y oculta el botón
                 if (playButton) {
                     playButton.addEventListener('click', function(e) {
                         e.stopPropagation();
@@ -1497,20 +1497,10 @@
                     });
                 }
                 
-                // Actualizar botón cuando el video cambia de estado
-                heroVideo.addEventListener('play', function() {
-                    updatePlayButton();
-                });
+                heroVideo.addEventListener('play', updatePlayButton);
+                heroVideo.addEventListener('pause', updatePlayButton);
+                heroVideo.addEventListener('ended', updatePlayButton);
                 
-                heroVideo.addEventListener('pause', function() {
-                    updatePlayButton();
-                });
-                
-                heroVideo.addEventListener('ended', function() {
-                    updatePlayButton();
-                });
-                
-                // Inicializar
                 updatePlayButton();
             }
             
@@ -1594,28 +1584,20 @@
                 });
             }
 
-            // CARRUSEL
             const carouselContainer = document.getElementById('carouselContainer');
             const prevBtn = document.getElementById('prevBtn');
             const nextBtn = document.getElementById('nextBtn');
             
             if (prevBtn && nextBtn && carouselContainer) {
                 prevBtn.addEventListener('click', () => {
-                    carouselContainer.scrollBy({
-                        left: -350,
-                        behavior: 'smooth'
-                    });
+                    carouselContainer.scrollBy({ left: -350, behavior: 'smooth' });
                 });
                 
                 nextBtn.addEventListener('click', () => {
-                    carouselContainer.scrollBy({
-                        left: 350,
-                        behavior: 'smooth'
-                    });
+                    carouselContainer.scrollBy({ left: 350, behavior: 'smooth' });
                 });
             }
             
-            // Error handler para videos
             const videos = document.querySelectorAll('video');
             videos.forEach(video => {
                 video.addEventListener('error', function() {
