@@ -182,13 +182,6 @@
             background-repeat: no-repeat;
         }
 
-        /* Contenedor de video con posicionamiento relativo para el botón */
-        .video-wrapper {
-            position: relative;
-            display: inline-block;
-            cursor: pointer;
-        }
-
         .hero-video-container {
             position: absolute;
             top: 55%;
@@ -208,10 +201,17 @@
             width: 100%;
             height: auto;
             display: block;
-            pointer-events: auto;
+            pointer-events: none;
         }
 
-        /* Estilos unificados para todos los botones de play/pausa */
+        /* Ocultar controles nativos de video pero mantenerlos funcionalmente presentes */
+        video::-webkit-media-controls {
+            display: none !important;
+        }
+        video::-webkit-media-controls-enclosure {
+            display: none !important;
+        }
+
         .play-pause-btn {
             position: absolute;
             top: 50%;
@@ -242,7 +242,6 @@
             fill: white;
         }
 
-        /* Tamaños específicos para diferentes videos */
         .hero-video-container .play-pause-btn {
             width: 45px;
             height: 45px;
@@ -581,6 +580,7 @@
             width: 100%;
             display: block;
             background-color: black;
+            pointer-events: none;
         }
 
         .como-funciona-azul-section {
@@ -768,6 +768,7 @@
             border-radius: 24px;
             background-color: #f0f0f0;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            pointer-events: none;
         }
 
         .carousel-button {
@@ -1101,11 +1102,11 @@
         </div>
     </div>
 
-    <!-- VIDEO 1 - HERO -->
+    <!-- VIDEO 1 - HERO (con controls ocultos para iOS) -->
     <div class="hero-section">
         <div class="hero-video-container">
             <div class="video-wrapper" style="width:100%">
-                <video id="heroVideo" playsinline webkit-playsinline preload="auto" poster="fotos/miniatura1.png">
+                <video id="heroVideo" playsinline webkit-playsinline controls preload="auto" poster="fotos/miniatura1.png">
                     <source src="fotos/video1.mp4" type="video/mp4">
                 </video>
                 <div class="play-pause-btn" data-video="heroVideo">
@@ -1212,11 +1213,11 @@
         </div>
     </div>
 
-    <!-- VIDEO 2 - GRANDE -->
+    <!-- VIDEO 2 - GRANDE (con controls ocultos para iOS) -->
     <div class="full-video-section">
         <div class="full-video-container">
             <div class="full-video-wrapper video-wrapper" style="width:100%">
-                <video id="fullVideo" playsinline webkit-playsinline preload="auto" poster="fotos/miniatura3.png">
+                <video id="fullVideo" playsinline webkit-playsinline controls preload="auto" poster="fotos/miniatura3.png">
                     <source src="fotos/video2.mp4" type="video/mp4">
                 </video>
                 <div class="play-pause-btn" data-video="fullVideo">
@@ -1255,7 +1256,7 @@
         </div>
     </div>
 
-    <!-- HISTORIAS REALES CON VIDEO 3 -->
+    <!-- HISTORIAS REALES CON VIDEO 3 (con controls ocultos para iOS) -->
     <div class="historias-section">
         <div class="historias-section-inner">
             <h2>Historias reales</h2>
@@ -1265,7 +1266,7 @@
                     <div class="carousel-track" id="carouselTrack">
                         <div class="carousel-slide">
                             <div class="video-wrapper" style="width:100%">
-                                <video id="carouselVideo1" playsinline webkit-playsinline preload="auto" poster="fotos/miniatura2.png">
+                                <video id="carouselVideo1" playsinline webkit-playsinline controls preload="auto" poster="fotos/miniatura2.png">
                                     <source src="fotos/video3.mp4" type="video/mp4">
                                 </video>
                                 <div class="play-pause-btn" data-video="carouselVideo1">
@@ -1367,123 +1368,108 @@
             // Detectar iOS
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
             
-            // Función para desbloquear audio en iOS (método más efectivo)
-            function unlockAudioForiOS() {
-                if (!isIOS) return;
-                
-                const unlock = function() {
-                    // Crear un elemento de audio temporal para desbloquear
-                    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                    const buffer = audioContext.createBuffer(1, 1, 22050);
-                    const source = audioContext.createBufferSource();
-                    source.buffer = buffer;
-                    source.connect(audioContext.destination);
-                    source.start(0);
-                    audioContext.suspend().then(() => {
-                        audioContext.resume();
-                    });
-                    
-                    document.removeEventListener('touchstart', unlock);
-                    document.removeEventListener('click', unlock);
-                };
-                
-                document.addEventListener('touchstart', unlock);
-                document.addEventListener('click', unlock);
-            }
-            
-            // Función para configurar un video con botón play/pause
-            function setupVideo(videoId, btnElement) {
+            // Función para configurar cada video con su botón
+            function setupVideoControls(videoId, btnElement) {
                 const video = document.getElementById(videoId);
                 if (!video) return;
                 
-                // Configurar atributos para iOS
-                video.setAttribute('playsinline', '');
-                video.setAttribute('webkit-playsinline', '');
-                video.setAttribute('preload', 'auto');
-                
-                // Asegurar que el audio no esté silenciado
+                // Configuraciones críticas para iOS
+                video.setAttribute('playsinline', 'true');
+                video.setAttribute('webkit-playsinline', 'true');
+                video.setAttribute('controls', 'true'); // ← CLAVE para audio en iOS
                 video.muted = false;
                 video.volume = 1.0;
                 
-                // Función para actualizar el ícono del botón
+                // Ocultar visualmente los controles nativos pero mantenerlos funcionalmente
+                video.style.pointerEvents = 'none';
+                
+                // Forzar carga del video
+                video.load();
+                
+                let isUserInteracting = false;
+                
                 function updateButtonIcon() {
                     if (!btnElement) return;
                     if (video.paused || video.ended) {
                         btnElement.innerHTML = `<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>`;
-                        btnElement.style.display = 'flex';
                     } else {
                         btnElement.innerHTML = `<svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>`;
-                        btnElement.style.display = 'flex';
                     }
                 }
                 
-                // Función para reproducir con manejo de audio en iOS
                 function playVideo() {
-                    // Para iOS, asegurarse de que el audio esté desbloqueado
                     if (isIOS) {
-                        video.muted = false;
-                        video.volume = 1.0;
-                    }
-                    
-                    video.play().catch(function(error) {
-                        console.log('Error al reproducir ' + videoId + ':', error);
-                        // Si falla, intentar con muted y luego desmutear
+                        // Estrategia especial para iOS
                         video.muted = true;
                         video.play().then(() => {
                             video.muted = false;
-                        }).catch(e => console.log('Error secundario:', e));
-                    });
+                            updateButtonIcon();
+                        }).catch(e => {
+                            console.log(`Error playing ${videoId}:`, e);
+                            // Segundo intento
+                            setTimeout(() => {
+                                video.muted = false;
+                                video.play().catch(err => console.log('Second attempt failed:', err));
+                            }, 100);
+                        });
+                    } else {
+                        video.play().catch(e => console.log(`Error playing ${videoId}:`, e));
+                    }
+                    updateButtonIcon();
                 }
                 
-                // Evento click en el botón
-                if (btnElement) {
-                    btnElement.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        if (video.paused || video.ended) {
-                            playVideo();
-                        } else {
-                            video.pause();
-                        }
-                    });
-                }
-                
-                // Evento click en el video
-                video.addEventListener('click', function(e) {
-                    e.stopPropagation();
+                function togglePlay() {
                     if (video.paused || video.ended) {
                         playVideo();
                     } else {
                         video.pause();
+                        updateButtonIcon();
                     }
-                });
+                }
                 
-                // Eventos para actualizar el botón
-                video.addEventListener('play', updateButtonIcon);
-                video.addEventListener('pause', updateButtonIcon);
-                video.addEventListener('ended', updateButtonIcon);
-                video.addEventListener('loadedmetadata', function() {
+                // Evento click en el botón personalizado
+                if (btnElement) {
+                    btnElement.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        togglePlay();
+                    });
+                }
+                
+                // Eventos del video
+                video.addEventListener('play', () => updateButtonIcon());
+                video.addEventListener('pause', () => updateButtonIcon());
+                video.addEventListener('ended', () => updateButtonIcon());
+                video.addEventListener('loadedmetadata', () => {
                     video.muted = false;
                     video.volume = 1.0;
                 });
                 
-                // Inicializar
                 updateButtonIcon();
                 
-                return video;
+                // Para iOS: desbloquear audio globalmente
+                if (isIOS) {
+                    const unlockGlobalAudio = function() {
+                        const testVideo = document.createElement('video');
+                        testVideo.muted = true;
+                        testVideo.play().then(() => {
+                            testVideo.pause();
+                        }).catch(() => {});
+                        document.removeEventListener('touchstart', unlockGlobalAudio);
+                        document.removeEventListener('click', unlockGlobalAudio);
+                    };
+                    document.addEventListener('touchstart', unlockGlobalAudio);
+                    document.addEventListener('click', unlockGlobalAudio);
+                }
             }
             
-            // Llamar al desbloqueo de audio para iOS
-            unlockAudioForiOS();
-            
             // Configurar todos los videos
-            const heroVideoBtn = document.querySelector('.hero-video-container .play-pause-btn');
-            const heroVideo = setupVideo('heroVideo', heroVideoBtn);
+            const heroBtn = document.querySelector('.hero-video-container .play-pause-btn');
+            const fullBtn = document.querySelector('.full-video-wrapper .play-pause-btn');
+            const carouselBtn = document.querySelector('.carousel-slide .play-pause-btn');
             
-            const fullVideoBtn = document.querySelector('.full-video-wrapper .play-pause-btn');
-            const fullVideo = setupVideo('fullVideo', fullVideoBtn);
-            
-            const carouselVideoBtn = document.querySelector('.carousel-slide .play-pause-btn');
-            const carouselVideo = setupVideo('carouselVideo1', carouselVideoBtn);
+            setupVideoControls('heroVideo', heroBtn);
+            setupVideoControls('fullVideo', fullBtn);
+            setupVideoControls('carouselVideo1', carouselBtn);
             
             // Funciones del menú
             function openMenu() {
@@ -1585,8 +1571,8 @@
             // Error handler para videos
             const videos = document.querySelectorAll('video');
             videos.forEach(video => {
-                video.addEventListener('error', function() {
-                    console.log('Video no encontrado:', this.querySelector('source')?.src);
+                video.addEventListener('error', function(e) {
+                    console.log('Error en video:', this.id, e);
                 });
             });
         })();
