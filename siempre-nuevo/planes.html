@@ -2,7 +2,9 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Planes - Siempre Nuevo</title>
     <link rel="icon" type="image/png" href="fotos/logo-sn.png">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
@@ -16,6 +18,7 @@
         body {
             font-family: 'DM Sans', sans-serif;
             background-color: #ffffff;
+            -webkit-font-smoothing: antialiased;
         }
 
         /* MENU DESPLEGABLE - SIDEBAR */
@@ -79,7 +82,6 @@
             border-bottom-color: #ff914d;
         }
 
-        /* Overlay para cerrar el menú al hacer clic fuera */
         .overlay {
             position: fixed;
             top: 0;
@@ -95,63 +97,73 @@
             display: block;
         }
 
-/* LOGO FLOTANTE - ARRIBA, PEGADO A LA DERECHA */
-.logo-float {
-    position: fixed;
-    top: 1.5rem;
-    right: 1.5rem;
-    z-index: 100;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.logo-float:hover {
-    transform: scale(1.02);
-}
-.logo-float img {
-    height: 130px;
-    width: auto;
-    display: block;
-}
+        .logo-float {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 100;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-float:hover {
+            transform: scale(1.02);
+        }
+        .logo-float img {
+            height: 120px;
+            width: auto;
+            display: block;
+        }
 
-/* BARRA SUPERIOR FIJA - CENTRADA VERTICALMENTE CON EL LOGO */
-.navbar {
-    position: fixed;
-    top: 10%;
-    transform: translateY(-50%);
-    left: 1.5rem;
-    right: calc(1.5rem + 160px);
-    z-index: 100;
-    background-color: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(2px);
-    border-radius: 50px;
-    padding: 0.7rem 1.5rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-}
+        .navbar {
+            position: fixed;
+            top: 10%;
+            transform: translateY(-50%);
+            left: 1rem;
+            right: calc(1rem + 140px);
+            z-index: 100;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(2px);
+            border-radius: 60px;
+            padding: 0.8rem 1.8rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
 
-.navbar-content {
-    width: 100%;
-    display: flex;
-    align-items: center;
-}
+        .navbar-content {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
 
-.menu-icon {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-.menu-icon:hover {
-    transform: scale(1.02);
-}
-.menu-icon img {
-    width: 40px;
-    height: auto;
-    display: block;
-}
+        .navbar-text {
+            color: #0c3a6a;
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .menu-icon {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            position: absolute;
+            left: 0;
+        }
+        .menu-icon:hover {
+            transform: scale(1.02);
+        }
+        .menu-icon img {
+            width: 35px;
+            height: auto;
+            display: block;
+        }
 
         /* SECCIÓN PRINCIPAL DE PLANES */
         .planes-section {
@@ -306,8 +318,8 @@
         }
 
         .whatsapp-float img {
-            width: 90px;
-            height: 90px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease;
@@ -318,7 +330,7 @@
             transform: scale(1.1);
         }
 
-        /* FOOTER - NUEVO DISEÑO */
+        /* FOOTER */
         .footer {
             background-color: #0c3a6a;
             width: 100%;
@@ -476,158 +488,46 @@
 
         /* MEDIA QUERIES */
         @media (max-width: 1024px) {
-            .navbar {
-                width: calc(100% - 170px - 2rem);
-                padding: 0.6rem 1.3rem;
-            }
-            .logo-float img {
-                height: 140px;
-            }
-            .planes-section {
-                padding: 160px 1.5rem 3rem 1.5rem;
-            }
-            .planes-title {
-                font-size: 2rem;
-            }
-            .footer-logo img {
-                height: 200px;
-            }
-            .footer-contact, .footer-social, .footer-links-column {
-                padding-top: 30px;
-            }
-            .contact-item a, .footer-link-item a {
-                font-size: 1rem;
-            }
-            .footer-contact h3, .footer-social-title h3, .footer-links-column h3 {
-                font-size: 1.3rem;
-            }
+            .logo-float img { height: 100px; }
+            .navbar { right: calc(1rem + 120px); }
+            .planes-section { padding: 160px 1.5rem 3rem 1.5rem; }
+            .planes-title { font-size: 2rem; }
         }
 
         @media (max-width: 768px) {
-            .logo-float {
-                top: 1rem;
-                right: 0.8rem;
-            }
-            .logo-float img {
-                height: 70px;
-            }
-            .navbar {
-                left: 0.8rem;
-                width: calc(100% - 85px - 1rem);
-                padding: 0.4rem 1rem;
-                top: 5.5%;
-                transform: translateY(-50%);
-            }
-            .menu-icon img {
-                width: 30px;
-            }
-            .whatsapp-float img {
-                width: 75px;
-                height: 75px;
-            }
-            .whatsapp-float {
-                bottom: 20px;
-                right: 20px;
-            }
-            .planes-section {
-                padding: 130px 1rem 2rem 1rem;
-            }
-            .planes-title {
-                font-size: 1.6rem;
-            }
-            .planes-subtitle {
-                font-size: 0.9rem;
-            }
-            .plan-card {
-                min-width: 100%;
-                max-width: 100%;
-            }
-            .plan-card.recomendado {
-                transform: scale(1);
-            }
-            .plan-card.recomendado:hover {
-                transform: translateY(-8px);
-            }
-            .footer-inner {
-                flex-direction: column;
-                text-align: center;
-            }
-            .footer-left, .footer-contact, .footer-social, .footer-links-column {
-                text-align: center;
-                padding-top: 0;
-            }
-            .footer-contact h3:after, .footer-social-title h3:after, .footer-links-column h3:after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            .social-icons-footer {
-                justify-content: center;
-            }
-            .footer-logo img {
-                height: 180px;
-                margin: 0 auto;
-            }
-            .sidebar {
-                width: 280px;
-            }
-            .footer-contact h3, .footer-social-title h3, .footer-links-column h3 {
-                font-size: 1.3rem;
-            }
-            .contact-item a, .footer-link-item a {
-                font-size: 1rem;
-            }
+            .logo-float img { height: 70px; }
+            .navbar { top: 25px !important; transform: translateY(0) !important; left: 0.5rem; right: calc(0.5rem + 90px) !important; padding: 0.6rem 1rem; }
+            .menu-icon img { width: 28px; }
+            .navbar-text { font-size: 0.7rem; display: none; }
+            .planes-section { padding: 120px 1rem 2rem 1rem; }
+            .planes-title { font-size: 1.6rem; }
+            .planes-subtitle { font-size: 0.9rem; }
+            .plan-card { min-width: 100%; max-width: 100%; }
+            .plan-card.recomendado { transform: scale(1); }
+            .plan-card.recomendado:hover { transform: translateY(-8px); }
+            .whatsapp-float img { width: 60px; height: 60px; }
+            .footer-inner { flex-direction: column; text-align: center; }
+            .footer-left, .footer-contact, .footer-social, .footer-links-column { text-align: center; padding-top: 0; }
+            .footer-contact h3:after, .footer-social-title h3:after, .footer-links-column h3:after { left: 50%; transform: translateX(-50%); }
+            .social-icons-footer { justify-content: center; }
+            .footer-logo img { height: 180px; margin: 0 auto; }
+            .sidebar { width: 280px; }
         }
 
         @media (max-width: 480px) {
-            .logo-float {
-                top: 0.8rem;
-                right: 0.5rem;
-            }
-            .logo-float img {
-                height: 55px;
-            }
-            .navbar {
-                left: 0.6rem;
-                width: calc(100% - 65px - 0.8rem);
-                padding: 0.3rem 0.8rem;
-            }
-            .menu-icon img {
-                width: 25px;
-            }
-            .whatsapp-float img {
-                width: 60px;
-                height: 60px;
-            }
-            .planes-section {
-                padding-top: 115px;
-            }
-            .planes-title {
-                font-size: 1.3rem;
-            }
-            .plan-nombre {
-                font-size: 1.4rem;
-            }
-            .footer-logo img {
-                height: 140px;
-            }
-            .social-icons-footer img {
-                width: 45px;
-                height: 45px;
-            }
-            .footer-contact h3, .footer-social-title h3, .footer-links-column h3 {
-                font-size: 1.2rem;
-            }
-            .contact-item a, .footer-link-item a {
-                font-size: 0.95rem;
-            }
+            .logo-float img { height: 55px; }
+            .navbar { right: calc(0.5rem + 70px) !important; top: 25px !important; }
+            .planes-section { padding-top: 105px; }
+            .planes-title { font-size: 1.3rem; }
+            .plan-nombre { font-size: 1.4rem; }
+            .footer-logo img { height: 140px; }
+            .social-icons-footer img { width: 45px; height: 45px; }
         }
     </style>
 </head>
 <body>
-    <!-- Overlay para cerrar menú -->
     <div class="overlay" id="overlay"></div>
 
-    <!-- Menú desplegable lateral -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <button class="close-menu" id="closeMenuBtn">✕</button>
@@ -638,24 +538,21 @@
             <a href="planes">Planes</a>
             <a href="quienes-somos">Quienes Somos</a>
             <a href="por-que-siempre-nuevo">¿Por qué Siempre Nuevo?</a>
-            <a href="terminos-y-condiciones">Términos y Condiciones</a>
-            <a href="libro-de-reclamaciones">Libro de Reclamaciones</a>
             <a href="politica-de-privacidad">Política de Privacidad</a>
             <a href="nuestros-aliados">Nuestros Aliados</a>
         </div>
     </div>
 
-    <!-- LOGO FLOTANTE -->
     <div class="logo-float" id="logoButton">
         <img src="fotos/logo-fondo.png" alt="Siempre Nuevo">
     </div>
 
-    <!-- BARRA SUPERIOR FIJA -->
     <div class="navbar">
         <div class="navbar-content">
             <div class="menu-icon" id="menuButton">
                 <img src="fotos/menu.png" alt="Menú">
             </div>
+            <span class="navbar-text">Protege tu auto de los daños del día a día</span>
         </div>
     </div>
 
@@ -668,21 +565,21 @@
             <!-- Plan 12 meses -->
             <div class="plan-card">
                 <div class="plan-nombre">Plan 12 meses</div>
-                <div class="plan-duracion">🔥 Ideal para empezar</div>
+                <div class="plan-duracion">Ideal para empezar</div>
                 <ul class="plan-beneficios">
                     <li>Protección básica para tu auto</li>
                     <li>Cobertura de raspones y pintura</li>
                     <li>Atención en talleres autorizados</li>
                     <li>Sin deducibles ni letra chica</li>
                 </ul>
-                <a href="https://wa.me/51997281159?text=Hola,%20me%20interesa%20el%20Plan%2012%20meses%20de%20Siempre%20Nuevo" class="plan-btn" target="_blank">👉 Empieza hoy</a>
+                <a href="https://wa.me/51997281159?text=Hola,%20me%20interesa%20el%20Plan%2012%20meses%20de%20Siempre%20Nuevo" class="plan-btn" target="_blank">Empieza hoy →</a>
             </div>
 
             <!-- Plan 36 meses - Recomendado -->
             <div class="plan-card recomendado">
-                <div class="plan-badge">⭐ MÁS ELEGIDO</div>
+                <div class="plan-badge">MÁS ELEGIDO</div>
                 <div class="plan-nombre">Plan 36 meses</div>
-                <div class="plan-duracion">💰 Ahorra más</div>
+                <div class="plan-duracion">Ahorra más</div>
                 <ul class="plan-beneficios">
                     <li>Protección completa para tu auto</li>
                     <li>Raspones, pintura, aros y parabrisas</li>
@@ -690,13 +587,13 @@
                     <li>Atención prioritaria 24/7</li>
                     <li>Sin deducibles ni afectación a tu seguro</li>
                 </ul>
-                <a href="https://wa.me/51997281159?text=Hola,%20me%20interesa%20el%20Plan%2036%20meses%20de%20Siempre%20Nuevo" class="plan-btn" target="_blank">👉 Ahorra más</a>
+                <a href="https://wa.me/51997281159?text=Hola,%20me%20interesa%20el%20Plan%2036%20meses%20de%20Siempre%20Nuevo" class="plan-btn" target="_blank">Ahorra más →</a>
             </div>
 
             <!-- Plan 5 años -->
             <div class="plan-card">
                 <div class="plan-nombre">Plan 5 años</div>
-                <div class="plan-duracion">🚗 Olvídate por completo</div>
+                <div class="plan-duracion">Olvídate por completo</div>
                 <ul class="plan-beneficios">
                     <li>Máxima protección por 5 años</li>
                     <li>Todas las coberturas incluidas</li>
@@ -704,7 +601,7 @@
                     <li>Atención VIP en concesionarios</li>
                     <li>Precio congelado por 5 años</li>
                 </ul>
-                <a href="https://wa.me/51997281159?text=Hola,%20me%20interesa%20el%20Plan%205%20años%20de%20Siempre%20Nuevo" class="plan-btn" target="_blank">👉 Aprovecha el ahorro</a>
+                <a href="https://wa.me/51997281159?text=Hola,%20me%20interesa%20el%20Plan%205%20años%20de%20Siempre%20Nuevo" class="plan-btn" target="_blank">Aprovecha el ahorro →</a>
             </div>
         </div>
     </div>
@@ -716,7 +613,7 @@
         </a>
     </div>
 
-    <!-- FOOTER - NUEVO DISEÑO -->
+    <!-- FOOTER -->
     <div class="footer">
         <div class="footer-inner">
             <div class="footer-left">
@@ -749,13 +646,13 @@
             <div class="footer-links-column">
                 <h3>Información</h3>
                 <div class="footer-link-item">
-                    <a href="libro-de-reclamaciones">Libro de reclamaciones</a>
-                </div>
-                <div class="footer-link-item">
                     <a href="politica-de-privacidad">Política de privacidad</a>
                 </div>
                 <div class="footer-link-item">
                     <a href="terminos-y-condiciones">Términos y condiciones</a>
+                </div>
+                <div class="footer-link-item">
+                    <a href="libro-de-reclamaciones">Libro de reclamaciones</a>
                 </div>
             </div>
         </div>
@@ -763,7 +660,6 @@
 
     <script>
         (function() {
-            // Elementos del menú
             const menuBtn = document.getElementById('menuButton');
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('overlay');
@@ -771,45 +667,23 @@
             const logoBtn = document.getElementById('logoButton');
             const footerLogo = document.getElementById('footerLogo');
             
-            // Función para abrir menú
             function openMenu() {
                 sidebar.classList.add('open');
                 overlay.classList.add('active');
                 document.body.style.overflow = 'hidden';
             }
             
-            // Función para cerrar menú
             function closeMenu() {
                 sidebar.classList.remove('open');
                 overlay.classList.remove('active');
                 document.body.style.overflow = '';
             }
             
-            // Eventos del menú
-            if (menuBtn) {
-                menuBtn.addEventListener('click', openMenu);
-            }
-            
-            if (closeMenuBtn) {
-                closeMenuBtn.addEventListener('click', closeMenu);
-            }
-            
-            if (overlay) {
-                overlay.addEventListener('click', closeMenu);
-            }
-            
-            // Logo redirige a página principal
-            if (logoBtn) {
-                logoBtn.addEventListener('click', function() {
-                    window.location.href = '/siempre-nuevo/';
-                });
-            }
-            
-            if (footerLogo) {
-                footerLogo.addEventListener('click', function() {
-                    window.location.href = '/siempre-nuevo/';
-                });
-            }
+            if (menuBtn) menuBtn.addEventListener('click', openMenu);
+            if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
+            if (overlay) overlay.addEventListener('click', closeMenu);
+            if (logoBtn) logoBtn.addEventListener('click', () => { window.location.href = '/siempre-nuevo/'; });
+            if (footerLogo) footerLogo.addEventListener('click', () => { window.location.href = '/siempre-nuevo/'; });
         })();
     </script>
 </body>
