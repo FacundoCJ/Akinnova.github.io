@@ -95,7 +95,8 @@
             display: block;
         }
 
-        /* LOGO FLOTANTE - ARRIBA, PEGADO A LA DERECHA */
+        /* === AJUSTE MANUAL 1: LOGO FLOTANTE === */
+        /* Cambia 'top' y 'right' para mover el logo */
         .logo-float {
             position: fixed;
             top: 1rem;
@@ -116,7 +117,9 @@
             display: block;
         }
 
-        /* BARRA SUPERIOR FIJA - CENTRADA VERTICALMENTE CON EL LOGO */
+        /* === AJUSTE MANUAL 2: BARRA DE INICIO === */
+        /* Cambia 'top' para mover la barra verticalmente */
+        /* Cambia 'padding' para hacerla más gruesa o delgada */
         .navbar {
             position: fixed;
             top: 10%;
@@ -180,6 +183,8 @@
             background-repeat: no-repeat;
         }
 
+        /* === AJUSTE MANUAL 3: VIDEO1 === */
+        /* Para laptop: cambia 'top', 'left', 'width' */
         .hero-video-container {
             position: absolute;
             top: 55%;
@@ -198,9 +203,11 @@
             width: 100%;
             height: auto;
             display: block;
+            pointer-events: auto;
         }
 
-        .play-pause-button {
+        /* Solo el botón de PLAY (sin botón de pausa) */
+        .play-button {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -219,12 +226,12 @@
             pointer-events: auto;
         }
 
-        .play-pause-button:hover {
+        .play-button:hover {
             transform: translate(-50%, -50%) scale(1.1);
             background-color: #ff914d;
         }
 
-        .play-pause-button svg {
+        .play-button svg {
             width: 22px;
             height: 22px;
         }
@@ -976,16 +983,23 @@
             }
         }
 
+        /* === AJUSTES PARA CELULAR (max-width: 768px) === */
         @media (max-width: 768px) {
+            /* AJUSTE MANUAL 1B: LOGO FLOTANTE EN CELULAR */
             .logo-float img {
                 height: 70px;
             }
+            
+            /* AJUSTE MANUAL 2B: BARRA DE INICIO EN CELULAR */
+            /* Cambia 'top' para subir o bajar la barra */
+            /* El valor actual '12%' la pone más abajo, a la altura del logo */
             .navbar {
-                top: 3%;
+                top: 12%;
                 left: 0.5rem;
                 right: calc(0.5rem + 80px);
                 padding: 0.6rem 1rem;
             }
+            
             .menu-icon img {
                 width: 28px;
             }
@@ -996,26 +1010,36 @@
             .navbar-text {
                 font-size: 0.7rem;
             }
+            
+            /* AJUSTE MANUAL 3B: CARRO.PNG EN CELULAR */
+            /* 'background-position: top center' hace que la imagen comience desde arriba */
             .hero-section {
                 min-height: 80vh;
                 background-size: contain;
-                background-position: center;
+                background-position: top center;
+                background-repeat: no-repeat;
             }
+            
+            /* AJUSTE MANUAL 3C: VIDEO1 EN CELULAR */
+            /* width: 12% = la mitad del tamaño anterior (25% -> 12.5% aprox) */
+            /* left: 15% = más hacia la izquierda (antes estaba centrado en 50%) */
             .hero-video-container {
-                width: 28%;
-                max-width: 28%;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
+                width: 14%;
+                max-width: 14%;
+                top: 45%;
+                left: 12%;
+                transform: translate(0, -50%);
             }
-            .play-pause-button {
-                width: 35px;
-                height: 35px;
+            
+            .play-button {
+                width: 30px;
+                height: 30px;
             }
-            .play-pause-button svg {
-                width: 18px;
-                height: 18px;
+            .play-button svg {
+                width: 15px;
+                height: 15px;
             }
+            
             .cobertura-grid {
                 gap: 1rem;
             }
@@ -1089,25 +1113,24 @@
             }
             .navbar {
                 right: calc(0.5rem + 60px);
-                top: 2%;
+                top: 10%;
             }
             .hero-section {
                 min-height: 70vh;
             }
             .hero-video-container {
-                width: 35%;
-                max-width: 35%;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
+                width: 18%;
+                max-width: 18%;
+                top: 42%;
+                left: 10%;
             }
-            .play-pause-button {
-                width: 30px;
-                height: 30px;
+            .play-button {
+                width: 25px;
+                height: 25px;
             }
-            .play-pause-button svg {
-                width: 15px;
-                height: 15px;
+            .play-button svg {
+                width: 12px;
+                height: 12px;
             }
             .cobertura-card {
                 min-width: 140px;
@@ -1171,7 +1194,7 @@
                 <source src="fotos/video1.mp4" type="video/mp4">
                 Tu navegador no soporta el elemento de video.
             </video>
-            <div class="play-pause-button" id="playPauseButton">
+            <div class="play-button" id="playButton">
                 <svg viewBox="0 0 24 24" fill="white">
                     <path d="M8 5v14l11-7z"/>
                 </svg>
@@ -1439,53 +1462,56 @@
             const logoBtn = document.getElementById('logoButton');
             const footerLogo = document.getElementById('footerLogo');
             
-            // Video hero con botón play/pause
+            // Video hero - SOLO BOTÓN PLAY (al hacer clic en el video se pausa/reproduce)
             const heroVideo = document.getElementById('heroVideo');
-            const playPauseButton = document.getElementById('playPauseButton');
+            const playButton = document.getElementById('playButton');
+            const videoContainer = document.getElementById('heroVideoContainer');
             
-            if (playPauseButton && heroVideo) {
-                // Función para actualizar el ícono del botón
-                function updateButtonIcon() {
+            if (heroVideo) {
+                // Función para ocultar/mostrar el botón de play según el estado del video
+                function updatePlayButton() {
                     if (heroVideo.paused || heroVideo.ended) {
-                        // Ícono de PLAY
-                        playPauseButton.innerHTML = `<svg viewBox="0 0 24 24" fill="white">
-                            <path d="M8 5v14l11-7z"/>
-                        </svg>`;
+                        playButton.style.display = 'flex';
                     } else {
-                        // Ícono de PAUSA
-                        playPauseButton.innerHTML = `<svg viewBox="0 0 24 24" fill="white">
-                            <rect x="6" y="4" width="4" height="16"/>
-                            <rect x="14" y="4" width="4" height="16"/>
-                        </svg>`;
+                        playButton.style.display = 'none';
                     }
                 }
                 
-                // Evento click del botón
-                playPauseButton.addEventListener('click', function(e) {
+                // Al hacer clic en el video, se pausa o reproduce
+                heroVideo.addEventListener('click', function(e) {
                     e.stopPropagation();
                     if (heroVideo.paused || heroVideo.ended) {
                         heroVideo.play();
                     } else {
                         heroVideo.pause();
                     }
-                    updateButtonIcon();
+                    updatePlayButton();
                 });
                 
-                // Actualizar ícono cuando el video se reproduce o pausa por otros medios
+                // Al hacer clic en el botón de play, reproduce y oculta el botón
+                if (playButton) {
+                    playButton.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        heroVideo.play();
+                        updatePlayButton();
+                    });
+                }
+                
+                // Actualizar botón cuando el video cambia de estado
                 heroVideo.addEventListener('play', function() {
-                    updateButtonIcon();
+                    updatePlayButton();
                 });
                 
                 heroVideo.addEventListener('pause', function() {
-                    updateButtonIcon();
+                    updatePlayButton();
                 });
                 
                 heroVideo.addEventListener('ended', function() {
-                    updateButtonIcon();
+                    updatePlayButton();
                 });
                 
-                // Inicializar ícono
-                updateButtonIcon();
+                // Inicializar
+                updatePlayButton();
             }
             
             function openMenu() {
