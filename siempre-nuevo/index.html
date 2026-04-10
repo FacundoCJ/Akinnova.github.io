@@ -146,7 +146,7 @@
 
         .navbar-text {
             color: #0c3a6a;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 600;
             font-style: italic;
             text-align: center;
@@ -187,11 +187,11 @@
             top: 55%;
             left: 25%;
             transform: translate(-50%, -50%);
-            width: 20%;
-            max-width: 20%;
+            width: 22%;
+            max-width: 22%;
             overflow: hidden;
             border-radius: 16px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 0 4px white, 0 8px 25px rgba(0, 0, 0, 0.3);
             z-index: 5;
             cursor: pointer;
             background-color: #000;
@@ -350,20 +350,26 @@
         }
 
         .cobertura-card .zero-cost {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: #ff914d;
             margin-top: 0.5rem;
             display: flex;
-            align-items: center;
+            align-items: baseline;
             justify-content: center;
-            gap: 0.5rem;
+            gap: 0.25rem;
+            background-color: rgba(255, 145, 77, 0.15);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            display: inline-flex;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .cobertura-card .zero-cost .big-zero {
-            font-size: 4rem;
-            font-weight: 800;
+            font-size: 2.8rem;
+            font-weight: 700;
             line-height: 1;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: -2px;
         }
 
         .cobertura-card .zero-cost .text-group {
@@ -374,15 +380,20 @@
         }
 
         .cobertura-card .zero-cost .text-group .zero-text {
-            font-size: 1.1rem;
+            font-size: 0.9rem;
             font-weight: 700;
             line-height: 1.2;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            text-transform: uppercase;
         }
 
         .cobertura-card .zero-cost .text-group .costo-text {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             font-weight: 600;
             line-height: 1.2;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
 
         .blue-fusion-section {
@@ -1003,27 +1014,27 @@
         }
 
         @media (max-width: 1400px) {
-            .hero-video-container { width: 18%; max-width: 18%; }
+            .hero-video-container { width: 20%; max-width: 20%; }
         }
         @media (max-width: 1200px) {
-            .hero-video-container { width: 20%; max-width: 20%; }
+            .hero-video-container { width: 22%; max-width: 22%; }
         }
         @media (max-width: 1024px) {
             .blue-fusion-inner { flex-direction: column; }
             .formulario-fusion { max-width: 500px; margin: 0 auto; }
             .como-funciona-fusion h2:after { left: 0; transform: none; }
             .cobertura-card img { height: 130px; }
-            .hero-video-container { width: 22%; max-width: 22%; }
+            .hero-video-container { width: 24%; max-width: 24%; }
         }
         @media (max-width: 768px) {
             .logo-float img { height: 70px; }
             .navbar { top: 25px !important; transform: translateY(0) !important; left: 0.5rem; right: calc(0.5rem + 90px) !important; padding: 0.6rem 1rem; }
             .menu-icon img { width: 28px; }
             .menu-icon { position: absolute; left: 0; }
-            .navbar-text { font-size: 0.7rem; }
+            .navbar-text { font-size: 0.85rem; }
             .hero-section { min-height: auto; height: auto; background-size: contain; background-position: top center; background-repeat: no-repeat; margin-bottom: -235px !important; padding-bottom: 0 !important; }
             .cobertura-section { padding-top: 0 !important; margin-top: -235px !important; }
-            .hero-video-container { width: 14% !important; max-width: 14% !important; top: 80px !important; left: 12% !important; transform: translate(0, 0) !important; }
+            .hero-video-container { width: 16% !important; max-width: 16% !important; top: 80px !important; left: 12% !important; transform: translate(0, 0) !important; }
             .hero-video-container .play-pause-btn { width: 30px; height: 30px; }
             .hero-video-container .play-pause-btn svg { width: 15px; height: 15px; }
             .full-video-wrapper .play-pause-btn { width: 50px; height: 50px; }
@@ -1033,9 +1044,9 @@
             .cobertura-grid { gap: 1rem; }
             .cobertura-card { min-width: 160px; }
             .cobertura-card img { height: 100px; }
-            .cobertura-card .zero-cost .big-zero { font-size: 2.5rem; }
-            .cobertura-card .zero-cost .text-group .zero-text { font-size: 0.8rem; }
-            .cobertura-card .zero-cost .text-group .costo-text { font-size: 0.6rem; }
+            .cobertura-card .zero-cost .big-zero { font-size: 2rem; }
+            .cobertura-card .zero-cost .text-group .zero-text { font-size: 0.7rem; }
+            .cobertura-card .zero-cost .text-group .costo-text { font-size: 0.55rem; }
             .pasos-fusion-grid { flex-direction: column; align-items: center; }
             .paso-fusion-card { max-width: 280px; }
             .carousel-slide { flex: 0 0 calc(100% - 0rem); }
@@ -1051,10 +1062,10 @@
         }
         @media (max-width: 480px) {
             .logo-float img { height: 50px; }
-            .navbar-text { font-size: 0.55rem; }
+            .navbar-text { font-size: 0.75rem; }
             .navbar { right: calc(0.5rem + 70px) !important; top: 25px !important; }
             .hero-section { min-height: 70vh; }
-            .hero-video-container { width: 18% !important; max-width: 18% !important; top: 80px !important; left: 10% !important; }
+            .hero-video-container { width: 20% !important; max-width: 20% !important; top: 80px !important; left: 10% !important; }
             .hero-video-container .play-pause-btn { width: 25px; height: 25px; }
             .hero-video-container .play-pause-btn svg { width: 12px; height: 12px; }
             .full-video-wrapper .play-pause-btn { width: 45px; height: 45px; }
@@ -1063,9 +1074,9 @@
             .carousel-slide .play-pause-btn svg { width: 18px; height: 18px; }
             .cobertura-card { min-width: 140px; }
             .cobertura-card h3 { font-size: 0.8rem; }
-            .cobertura-card .zero-cost .big-zero { font-size: 2rem; }
-            .cobertura-card .zero-cost .text-group .zero-text { font-size: 0.7rem; }
-            .cobertura-card .zero-cost .text-group .costo-text { font-size: 0.55rem; }
+            .cobertura-card .zero-cost .big-zero { font-size: 1.6rem; }
+            .cobertura-card .zero-cost .text-group .zero-text { font-size: 0.6rem; }
+            .cobertura-card .zero-cost .text-group .costo-text { font-size: 0.5rem; }
         }
         @supports (-webkit-touch-callout: none) {
             .navbar { background-color: rgba(255, 255, 255, 0.98); }
@@ -1129,8 +1140,8 @@
                     <div class="zero-cost">
                         <span class="big-zero">0</span>
                         <div class="text-group">
-                            <span class="zero-text">Cero</span>
-                            <span class="costo-text">Costo*</span>
+                            <span class="zero-text">CERO</span>
+                            <span class="costo-text">COSTO*</span>
                         </div>
                     </div>
                 </div>
@@ -1140,8 +1151,8 @@
                     <div class="zero-cost">
                         <span class="big-zero">0</span>
                         <div class="text-group">
-                            <span class="zero-text">Cero</span>
-                            <span class="costo-text">Costo*</span>
+                            <span class="zero-text">CERO</span>
+                            <span class="costo-text">COSTO*</span>
                         </div>
                     </div>
                 </div>
@@ -1175,14 +1186,14 @@
                             <img src="fotos/llaves.png" alt="Llaves">
                         </div>
                         <h3>2. Úsalo fácil y rápido</h3>
-                        <p>Atención 24/7, sin trámites complicados ni gestiones en comisaría.</p>
+                        <p>Atención 24 horas al día los 7 días de la semana, sin trámites complicados ni gestiones en comisaría.</p>
                     </div>
                     <div class="paso-fusion-card">
                         <div class="paso-fusion-icono">
                             <img src="fotos/check.png" alt="Check">
                         </div>
                         <h3>3. Reparamos tu auto sin que uses tu seguro</h3>
-                        <p>Sin afectar tu historial ni incurrir en deducibles.</p>
+                        <p>Sin afectar tu historial ni incurrir en deducibles.*</p>
                     </div>
                 </div>
             </div>
@@ -1195,7 +1206,7 @@
                     </div>
                     <div class="form-group">
                         <label>Número de teléfono / WhatsApp</label>
-                        <input type="tel" name="telefono" required placeholder="+51 999 999 999">
+                        <input type="tel" name="telefono" required placeholder="+51 980 456 427">
                     </div>
                     <div class="form-group">
                         <label>Mensaje</label>
@@ -1213,7 +1224,7 @@
         </div>
     </div>
 
-    <!-- VIDEO 2 - GRANDE (con controls ocultos para iOS) -->
+    <!-- VIDEO 2 - GRANDE -->
     <div class="full-video-section">
         <div class="full-video-container">
             <div class="full-video-wrapper video-wrapper" style="width:100%">
@@ -1237,7 +1248,7 @@
                 <div class="paso-azul-card">
                     <div class="paso-azul-numero">1</div>
                     <h3>Contacta a nuestra central</h3>
-                    <p>Contáctanos 24/7</p>
+                    <p>Contáctanos 24 horas al día los 7 días de la semana</p>
                 </div>
                 <div class="paso-azul-card">
                     <div class="paso-azul-numero">2</div>
@@ -1247,16 +1258,16 @@
                 <div class="paso-azul-card">
                     <div class="paso-azul-numero">3</div>
                     <h3>Relájate, nosotros lo gestionamos</h3>
-                    <p>Aprobamos el servicio y pagamos directamente al concesionario, hasta $200 por atención.</p>
+                    <p>Aprobamos el servicio y pagamos directamente al concesionario, hasta $200 (incluye IGV) por atención.</p>
                 </div>
             </div>
             <div class="terminos-note">
-                Aplican <a href="terminos-y-condiciones">términos y condiciones</a> del programa.
+                Aplican <a href="terminos-y-condiciones">términos y condiciones</a> del programa. <span style="font-size:0.7rem;">*De acuerdo a los términos y condiciones del programa.</span>
             </div>
         </div>
     </div>
 
-    <!-- HISTORIAS REALES CON VIDEO 3 (con controls ocultos para iOS) -->
+    <!-- HISTORIAS REALES CON VIDEO 3 -->
     <div class="historias-section">
         <div class="historias-section-inner">
             <h2>Historias reales</h2>
@@ -1297,7 +1308,7 @@
 
     <!-- WHATSAPP -->
     <div class="whatsapp-float">
-        <a href="https://wa.me/51997281159?text=Hola,%20me%20interesa%20obtener%20más%20información%20sobre%20Siempre%20Nuevo" target="_blank">
+        <a href="https://wa.me/51980456427?text=Hola,%20me%20interesa%20obtener%20más%20información%20sobre%20Siempre%20Nuevo" target="_blank">
             <img src="fotos/wsp.png" alt="WhatsApp">
         </a>
     </div>
@@ -1313,7 +1324,7 @@
             <div class="footer-contact">
                 <h3>Contáctanos</h3>
                 <div class="contact-item">
-                    <a href="https://wa.me/51997281159?text=Hola,%20me%20interesa%20obtener%20más%20información%20sobre%20Siempre%20Nuevo" target="_blank">+51 997281159</a>
+                    <a href="https://wa.me/51980456427?text=Hola,%20me%20interesa%20obtener%20más%20información%20sobre%20Siempre%20Nuevo" target="_blank">+51 980 456 427</a>
                 </div>
                 <div class="contact-item">
                     <a href="mailto:contacto@akinnova.com?subject=Información%20sobre%20Siempre%20Nuevo&body=Hola,%20me%20gustaría%20recibir%20más%20información%20sobre%20Siempre%20Nuevo.">contacto@akinnova.com</a>
@@ -1376,7 +1387,7 @@
                 // Configuraciones críticas para iOS
                 video.setAttribute('playsinline', 'true');
                 video.setAttribute('webkit-playsinline', 'true');
-                video.setAttribute('controls', 'true'); // ← CLAVE para audio en iOS
+                video.setAttribute('controls', 'true');
                 video.muted = false;
                 video.volume = 1.0;
                 
@@ -1399,14 +1410,12 @@
                 
                 function playVideo() {
                     if (isIOS) {
-                        // Estrategia especial para iOS
                         video.muted = true;
                         video.play().then(() => {
                             video.muted = false;
                             updateButtonIcon();
                         }).catch(e => {
                             console.log(`Error playing ${videoId}:`, e);
-                            // Segundo intento
                             setTimeout(() => {
                                 video.muted = false;
                                 video.play().catch(err => console.log('Second attempt failed:', err));
@@ -1427,7 +1436,6 @@
                     }
                 }
                 
-                // Evento click en el botón personalizado
                 if (btnElement) {
                     btnElement.addEventListener('click', (e) => {
                         e.stopPropagation();
@@ -1435,7 +1443,6 @@
                     });
                 }
                 
-                // Eventos del video
                 video.addEventListener('play', () => updateButtonIcon());
                 video.addEventListener('pause', () => updateButtonIcon());
                 video.addEventListener('ended', () => updateButtonIcon());
@@ -1446,7 +1453,6 @@
                 
                 updateButtonIcon();
                 
-                // Para iOS: desbloquear audio globalmente
                 if (isIOS) {
                     const unlockGlobalAudio = function() {
                         const testVideo = document.createElement('video');
@@ -1462,7 +1468,6 @@
                 }
             }
             
-            // Configurar todos los videos
             const heroBtn = document.querySelector('.hero-video-container .play-pause-btn');
             const fullBtn = document.querySelector('.full-video-wrapper .play-pause-btn');
             const carouselBtn = document.querySelector('.carousel-slide .play-pause-btn');
@@ -1471,7 +1476,6 @@
             setupVideoControls('fullVideo', fullBtn);
             setupVideoControls('carouselVideo1', carouselBtn);
             
-            // Funciones del menú
             function openMenu() {
                 sidebar.classList.add('open');
                 overlay.classList.add('active');
@@ -1490,7 +1494,6 @@
             if (logoBtn) logoBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
             if (footerLogo) footerLogo.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-            // Formulario
             const form = document.getElementById('contactForm');
             const submitBtn = document.getElementById('submitBtn');
             const privacyCheckbox = document.getElementById('privacyCheckbox');
@@ -1553,7 +1556,6 @@
                 });
             }
 
-            // Carrusel
             const carouselContainer = document.getElementById('carouselContainer');
             const prevBtn = document.getElementById('prevBtn');
             const nextBtn = document.getElementById('nextBtn');
@@ -1568,7 +1570,6 @@
                 });
             }
             
-            // Error handler para videos
             const videos = document.querySelectorAll('video');
             videos.forEach(video => {
                 video.addEventListener('error', function(e) {
