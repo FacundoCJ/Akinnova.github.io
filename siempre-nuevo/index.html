@@ -990,9 +990,9 @@
         height: 70px;
     }
     
-    /* BARRA: más abajo - cambia 'top' para subir/bajar */
+    /* BARRA: posición vertical */
     .navbar {
-        top: 25px !important;
+        top: 25px !important; /* Ajusta este valor según necesites */
         transform: translateY(0) !important;
         left: 0.5rem;
         right: calc(0.5rem + 80px);
@@ -1010,29 +1010,32 @@
         font-size: 0.7rem;
     }
     
-    /* CARRO.PNG - sin espacio en blanco debajo */
+    /* ===== CORRECCIÓN DEL ESPACIO EN BLANCO ===== */
+    /* 1. La sección hero debe ajustarse a la imagen */
     .hero-section {
-        min-height: 80vh;
-        background-size: contain;
+        min-height: auto;           /* ← Elimina altura mínima fija */
+        height: auto;               /* ← La altura la da el contenido */
+        background-size: contain;   /* ← La imagen define el tamaño */
         background-position: top center;
         background-repeat: no-repeat;
-        margin-bottom: 0 !important;
+        margin-bottom: -4px !important;  /* ← Fuerza a pegar con la siguiente sección */
         padding-bottom: 0 !important;
     }
     
-    /* VIDEO: más abajo - cambia 'top' para subir/bajar */
+    /* 2. Eliminar espacio superior de la sección cobertura */
+    .cobertura-section {
+        padding-top: 0 !important;   /* ← Elimina el padding superior */
+        margin-top: -2px !important; /* ← Asegura que no haya margen */
+    }
+    /* =========================================== */
+    
+    /* VIDEO: posición vertical */
     .hero-video-container {
         width: 14% !important;
         max-width: 14% !important;
-        top: 80px !important;
+        top: 80px !important;     /* Ajusta este valor según necesites */
         left: 12% !important;
         transform: translate(0, 0) !important;
-    }
-    
-    /* Eliminar espacio en blanco después del carro */
-    .cobertura-section {
-        padding-top: 1rem;
-        margin-top: -2px;
     }
     
     .play-button {
