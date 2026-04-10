@@ -261,12 +261,11 @@
             font-weight: bold;
         }
 
-        /* NUEVA SECCIÓN - DETALLE DE BENEFICIOS ECONÓMICOS */
+        /* SECCIÓN DETALLE DE BENEFICIOS ECONÓMICOS */
         .detalle-beneficios-section {
             background-color: #0c3a6a;
             width: 100%;
             padding: 4rem 2rem;
-            margin-top: 2rem;
         }
 
         .detalle-beneficios-inner {
@@ -382,10 +381,17 @@
             font-size: 0.8rem;
         }
 
+        /* SECCIÓN BOTÓN COTIZAR - EN EL ESPACIO BLANCO */
+        .cotizar-section {
+            background-color: white;
+            width: 100%;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
         .btn-cotizar {
             display: flex;
             justify-content: center;
-            margin-top: 3rem;
         }
 
         .btn-cotizar a {
@@ -400,11 +406,13 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            box-shadow: 0 4px 15px rgba(255, 145, 77, 0.3);
         }
 
         .btn-cotizar a:hover {
-            transform: scale(1.02);
+            transform: scale(1.05);
             background-color: #ff7a2e;
+            box-shadow: 0 6px 20px rgba(255, 145, 77, 0.4);
         }
 
         /* WHATSAPP FLOTANTE */
@@ -606,6 +614,8 @@
             .detalle-card { min-width: 200px; }
             .detalle-card .monto { font-size: 1.8rem; }
             .total-beneficio .total-monto { font-size: 2.2rem; }
+            .cotizar-section { padding: 3rem 1.5rem; }
+            .btn-cotizar a { font-size: 1rem; padding: 0.8rem 1.8rem; }
             .whatsapp-float img { width: 60px; height: 60px; }
             .footer-inner { flex-direction: column; text-align: center; }
             .footer-left, .footer-contact, .footer-social, .footer-links-column { text-align: center; padding-top: 0; }
@@ -628,7 +638,8 @@
             .detalle-card .monto { font-size: 1.5rem; }
             .detalle-card p { font-size: 0.75rem; }
             .total-beneficio .total-monto { font-size: 1.8rem; }
-            .btn-cotizar a { font-size: 1rem; padding: 0.8rem 1.8rem; }
+            .cotizar-section { padding: 2rem 1rem; }
+            .btn-cotizar a { font-size: 0.9rem; padding: 0.7rem 1.5rem; }
             .footer-logo img { height: 140px; }
             .social-icons-footer img { width: 45px; height: 45px; }
         }
@@ -696,7 +707,7 @@
         </div>
     </div>
 
-    <!-- NUEVA SECCIÓN - DETALLE DE BENEFICIOS ECONÓMICOS -->
+    <!-- SECCIÓN DETALLE DE BENEFICIOS ECONÓMICOS -->
     <div class="detalle-beneficios-section">
         <div class="detalle-beneficios-inner">
             <h2>Beneficios económicos</h2>
@@ -730,10 +741,13 @@
         </div>
     </div>
 
-    <div class="btn-cotizar">
-        <a href="https://wa.me/51997281159?text=Hola,%20me%20interesa%20cotizar%20el%20programa%20Siempre%20Nuevo.%20Me%20pueden%20dar%20más%20información%20por%20favor?" target="_blank">
-            👉 Cotizar ahora por WhatsApp
-        </a>
+    <!-- SECCIÓN BOTÓN COTIZAR - EN EL ESPACIO BLANCO -->
+    <div class="cotizar-section">
+        <div class="btn-cotizar">
+            <a href="https://wa.me/51997281159?text=Hola,%20me%20interesa%20cotizar%20el%20programa%20Siempre%20Nuevo.%20Me%20pueden%20dar%20más%20información%20por%20favor?" target="_blank">
+                👉 Cotizar ahora por WhatsApp
+            </a>
+        </div>
     </div>
 
     <!-- WHATSAPP FLOTANTE -->
