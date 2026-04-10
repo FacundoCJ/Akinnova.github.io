@@ -990,12 +990,12 @@
         height: 70px;
     }
     
-    /* BARRA: posición vertical */
+    /* BARRA: más corta de la derecha para que no choque con el logo */
     .navbar {
-        top: 25px !important; /* Ajusta este valor según necesites */
+        top: 25px !important;
         transform: translateY(0) !important;
         left: 0.5rem;
-        right: calc(0.5rem + 80px);
+        right: calc(0.5rem + 90px) !important;  /* ← AUMENTADO DE 80px a 90px */
         padding: 0.6rem 1rem;
     }
     
@@ -1119,7 +1119,7 @@
         font-size: 0.55rem;
     }
     .navbar {
-        right: calc(0.5rem + 60px);
+        right: calc(0.5rem + 70px) !important;  /* ← AUMENTADO DE 60px a 70px */
         top: 25px !important;
     }
     .hero-section {
