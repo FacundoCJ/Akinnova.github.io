@@ -124,7 +124,7 @@
             left: 1rem;
             right: calc(1rem + 140px);
             z-index: 100;
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(2px);
             border-radius: 60px;
             padding: 0.8rem 1.8rem;
@@ -137,6 +137,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
         }
 
         .navbar-text {
@@ -153,7 +154,8 @@
             cursor: pointer;
             transition: transform 0.2s ease;
             position: absolute;
-            left: 1rem;
+            left: 0;
+            transform: none;
         }
         .menu-icon:hover {
             transform: scale(1.02);
@@ -189,6 +191,7 @@
             border-radius: 16px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
             z-index: 5;
+            cursor: pointer;
         }
 
         .hero-video-container video {
@@ -197,13 +200,13 @@
             display: block;
         }
 
-        .play-button {
+        .play-pause-button {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             background-color: rgba(255, 145, 77, 0.9);
             border-radius: 50%;
             display: flex;
@@ -213,17 +216,17 @@
             transition: all 0.3s ease;
             z-index: 10;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            pointer-events: auto;
         }
 
-        .play-button:hover {
+        .play-pause-button:hover {
             transform: translate(-50%, -50%) scale(1.1);
             background-color: #ff914d;
         }
 
-        .play-button svg {
-            width: 20px;
-            height: 20px;
-            margin-left: 3px;
+        .play-pause-button svg {
+            width: 22px;
+            height: 22px;
         }
 
         /* SECCIÓN COBERTURA DEL PROGRAMA */
@@ -937,7 +940,21 @@
             to { transform: rotate(360deg); }
         }
 
-        /* MEDIA QUERIES */
+        /* MEDIA QUERIES - PROPORCIONALES */
+        @media (max-width: 1400px) {
+            .hero-video-container {
+                width: 18%;
+                max-width: 18%;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .hero-video-container {
+                width: 20%;
+                max-width: 20%;
+            }
+        }
+
         @media (max-width: 1024px) {
             .blue-fusion-inner {
                 flex-direction: column;
@@ -954,8 +971,8 @@
                 height: 130px;
             }
             .hero-video-container {
-                width: 15%;
-                max-width: 15%;
+                width: 22%;
+                max-width: 22%;
             }
         }
 
@@ -964,7 +981,7 @@
                 height: 70px;
             }
             .navbar {
-                top: 7%;
+                top: 3%;
                 left: 0.5rem;
                 right: calc(0.5rem + 80px);
                 padding: 0.6rem 1rem;
@@ -972,8 +989,32 @@
             .menu-icon img {
                 width: 28px;
             }
+            .menu-icon {
+                position: absolute;
+                left: 0;
+            }
             .navbar-text {
                 font-size: 0.7rem;
+            }
+            .hero-section {
+                min-height: 80vh;
+                background-size: contain;
+                background-position: center;
+            }
+            .hero-video-container {
+                width: 28%;
+                max-width: 28%;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            .play-pause-button {
+                width: 35px;
+                height: 35px;
+            }
+            .play-pause-button svg {
+                width: 18px;
+                height: 18px;
             }
             .cobertura-grid {
                 gap: 1rem;
@@ -1037,18 +1078,6 @@
             .sidebar {
                 width: 280px;
             }
-            .hero-video-container {
-                width: 20%;
-                max-width: 20%;
-            }
-            .play-button {
-                width: 30px;
-                height: 30px;
-            }
-            .play-button svg {
-                width: 15px;
-                height: 15px;
-            }
         }
 
         @media (max-width: 480px) {
@@ -1060,6 +1089,25 @@
             }
             .navbar {
                 right: calc(0.5rem + 60px);
+                top: 2%;
+            }
+            .hero-section {
+                min-height: 70vh;
+            }
+            .hero-video-container {
+                width: 35%;
+                max-width: 35%;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            .play-pause-button {
+                width: 30px;
+                height: 30px;
+            }
+            .play-pause-button svg {
+                width: 15px;
+                height: 15px;
             }
             .cobertura-card {
                 min-width: 140px;
@@ -1075,10 +1123,6 @@
             }
             .cobertura-card .zero-cost .text-group .costo-text {
                 font-size: 0.55rem;
-            }
-            .hero-video-container {
-                width: 25%;
-                max-width: 25%;
             }
         }
     </style>
@@ -1112,22 +1156,22 @@
 
     <!-- BARRA SUPERIOR FIJA -->
     <div class="navbar">
-        <div class="menu-icon" id="menuButton">
-            <img src="fotos/menu.png" alt="Menú">
-        </div>
         <div class="navbar-content">
+            <div class="menu-icon" id="menuButton">
+                <img src="fotos/menu.png" alt="Menú">
+            </div>
             <span class="navbar-text">Protege tu auto de los daños del día a día</span>
         </div>
     </div>
 
     <!-- SECCIÓN HERO CON VIDEO PEQUEÑO SOBRE FONDO CARRO -->
     <div class="hero-section">
-        <div class="hero-video-container">
+        <div class="hero-video-container" id="heroVideoContainer">
             <video id="heroVideo" playsinline preload="auto" poster="fotos/miniatura1.png">
                 <source src="fotos/video1.mp4" type="video/mp4">
                 Tu navegador no soporta el elemento de video.
             </video>
-            <div class="play-button" id="playButton">
+            <div class="play-pause-button" id="playPauseButton">
                 <svg viewBox="0 0 24 24" fill="white">
                     <path d="M8 5v14l11-7z"/>
                 </svg>
@@ -1395,29 +1439,53 @@
             const logoBtn = document.getElementById('logoButton');
             const footerLogo = document.getElementById('footerLogo');
             
-            // Video hero con botón play
+            // Video hero con botón play/pause
             const heroVideo = document.getElementById('heroVideo');
-            const playButton = document.getElementById('playButton');
+            const playPauseButton = document.getElementById('playPauseButton');
             
-            if (playButton && heroVideo) {
-                playButton.addEventListener('click', function() {
-                    heroVideo.play();
-                    playButton.style.display = 'none';
+            if (playPauseButton && heroVideo) {
+                // Función para actualizar el ícono del botón
+                function updateButtonIcon() {
+                    if (heroVideo.paused || heroVideo.ended) {
+                        // Ícono de PLAY
+                        playPauseButton.innerHTML = `<svg viewBox="0 0 24 24" fill="white">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>`;
+                    } else {
+                        // Ícono de PAUSA
+                        playPauseButton.innerHTML = `<svg viewBox="0 0 24 24" fill="white">
+                            <rect x="6" y="4" width="4" height="16"/>
+                            <rect x="14" y="4" width="4" height="16"/>
+                        </svg>`;
+                    }
+                }
+                
+                // Evento click del botón
+                playPauseButton.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    if (heroVideo.paused || heroVideo.ended) {
+                        heroVideo.play();
+                    } else {
+                        heroVideo.pause();
+                    }
+                    updateButtonIcon();
                 });
                 
+                // Actualizar ícono cuando el video se reproduce o pausa por otros medios
                 heroVideo.addEventListener('play', function() {
-                    playButton.style.display = 'none';
+                    updateButtonIcon();
                 });
                 
                 heroVideo.addEventListener('pause', function() {
-                    if (heroVideo.currentTime > 0 && !heroVideo.ended) {
-                        playButton.style.display = 'flex';
-                    }
+                    updateButtonIcon();
                 });
                 
                 heroVideo.addEventListener('ended', function() {
-                    playButton.style.display = 'flex';
+                    updateButtonIcon();
                 });
+                
+                // Inicializar ícono
+                updateButtonIcon();
             }
             
             function openMenu() {
