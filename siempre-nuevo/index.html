@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <!-- Meta para evitar caché en desarrollo (eliminar en producción) -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>Siempre Nuevo</title>
     <link rel="icon" type="image/png" href="fotos/logo-sn.png">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
@@ -79,7 +83,6 @@
             border-bottom-color: #ff914d;
         }
 
-        /* Overlay para cerrar el menú al hacer clic fuera */
         .overlay {
             position: fixed;
             top: 0;
@@ -116,7 +119,7 @@
             display: block;
         }
 
-        /* BARRA SUPERIOR FIJA */
+        /* BARRA DE INICIO */
         .navbar {
             position: fixed;
             top: 10%;
@@ -166,21 +169,24 @@
             display: block;
         }
 
-        /* SECCIÓN HERO CON VIDEO PEQUEÑO */
+        /* SECCIÓN HERO */
         .hero-section {
             position: relative;
             width: 100%;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            margin-bottom: -1px;
             background-image: url('fotos/carro.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
         }
 
-        /* VIDEO1 - Configuración base */
+        /* Elimina el espacio en blanco después de la sección hero */
+        .hero-section::after {
+            display: none;
+        }
+
         .hero-video-container {
             position: absolute;
             top: 55%;
@@ -202,7 +208,6 @@
             pointer-events: auto;
         }
 
-        /* Solo el botón de PLAY */
         .play-button {
             position: absolute;
             top: 50%;
@@ -232,15 +237,14 @@
             height: 22px;
         }
 
-        /* SECCIÓN COBERTURA DEL PROGRAMA - SIN ESPACIO BLANCO */
+        /* SECCIÓN COBERTURA - SIN ESPACIO EN BLANCO ARRIBA */
         .cobertura-section {
             background-color: white;
             width: 100%;
             padding: 4rem 2rem;
             text-align: center;
-            position: relative;
-            z-index: 2;
             margin-top: 0;
+            padding-top: 3rem;
         }
 
         .cobertura-section-inner {
@@ -341,7 +345,7 @@
             line-height: 1.2;
         }
 
-        /* SECCIÓN AZUL - FUSIONADA */
+        /* SECCIÓN AZUL FUSIONADA */
         .blue-fusion-section {
             background-color: #0c3a6a;
             width: 100%;
@@ -522,7 +526,6 @@
             background-color: #ff7a2e;
         }
 
-        /* VIDEO GRANDE */
         .full-video-section {
             width: 100%;
             background-color: white;
@@ -540,7 +543,6 @@
             background-color: black;
         }
 
-        /* SECCIÓN CÓMO FUNCIONA - AZUL */
         .como-funciona-azul-section {
             background-color: #0c3a6a;
             width: 100%;
@@ -638,7 +640,6 @@
             font-weight: 600;
         }
 
-        /* HISTORIAS REALES - CARRUSEL */
         .historias-section {
             background-color: white;
             width: 100%;
@@ -762,7 +763,6 @@
             right: 0;
         }
 
-        /* BOTÓN FLOTANTE DE WHATSAPP */
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -784,7 +784,6 @@
             transform: scale(1.1);
         }
 
-        /* FOOTER */
         .footer {
             background-color: #0c3a6a;
             width: 100%;
@@ -946,7 +945,7 @@
             to { transform: rotate(360deg); }
         }
 
-        /* MEDIA QUERIES - PROPORCIONALES */
+        /* MEDIA QUERIES */
         @media (max-width: 1400px) {
             .hero-video-container {
                 width: 18%;
@@ -982,19 +981,20 @@
             }
         }
 
-        /* === AJUSTES PARA CELULAR === */
+        /* === CELULAR (max-width: 768px) === */
         @media (max-width: 768px) {
+            /* Logo más pequeño */
             .logo-float img {
                 height: 70px;
             }
             
-            /* BARRA: top: 6px (en lugar de porcentaje) */
+            /* BARRA: top: 8px como pediste */
             .navbar {
                 top: 8px;
+                transform: translateY(0);
                 left: 0.5rem;
                 right: calc(0.5rem + 80px);
                 padding: 0.6rem 1rem;
-                transform: none;
             }
             
             .menu-icon img {
@@ -1008,7 +1008,7 @@
                 font-size: 0.7rem;
             }
             
-            /* CARRO.PNG - arriba del todo */
+            /* CARRO.PNG - se ve completo desde arriba */
             .hero-section {
                 min-height: 80vh;
                 background-size: contain;
@@ -1016,13 +1016,19 @@
                 background-repeat: no-repeat;
             }
             
-            /* VIDEO: top: 30px */
+            /* VIDEO: top: 30px como pediste, mismo tamaño */
             .hero-video-container {
-                width: 12%;
-                max-width: 12%;
+                width: 14%;
+                max-width: 14%;
                 top: 30px;
                 left: 12%;
-                transform: none;
+                transform: translate(0, 0);
+            }
+            
+            /* Eliminar espacio en blanco después de carro.png */
+            .cobertura-section {
+                padding-top: 0;
+                margin-top: -2px;
             }
             
             .play-button {
@@ -1032,16 +1038,6 @@
             .play-button svg {
                 width: 15px;
                 height: 15px;
-            }
-            
-            /* Eliminar espacio entre hero y cobertura */
-            .hero-section {
-                margin-bottom: 0;
-            }
-            
-            .cobertura-section {
-                padding-top: 2rem;
-                margin-top: 0;
             }
             
             .cobertura-grid {
@@ -1117,14 +1113,14 @@
             }
             .navbar {
                 right: calc(0.5rem + 60px);
-                top: 6px;
+                top: 8px;
             }
             .hero-section {
                 min-height: 70vh;
             }
             .hero-video-container {
-                width: 40%;
-                max-width: 40%;
+                width: 18%;
+                max-width: 18%;
                 top: 30px;
                 left: 10%;
             }
@@ -1191,7 +1187,7 @@
         </div>
     </div>
 
-    <!-- SECCIÓN HERO CON VIDEO PEQUEÑO SOBRE FONDO CARRO -->
+    <!-- SECCIÓN HERO -->
     <div class="hero-section">
         <div class="hero-video-container" id="heroVideoContainer">
             <video id="heroVideo" playsinline preload="auto" poster="fotos/miniatura1.png">
@@ -1466,7 +1462,7 @@
             const logoBtn = document.getElementById('logoButton');
             const footerLogo = document.getElementById('footerLogo');
             
-            // Video hero - SOLO BOTÓN PLAY
+            // Video hero
             const heroVideo = document.getElementById('heroVideo');
             const playButton = document.getElementById('playButton');
             
