@@ -210,7 +210,7 @@
 
         /* Respaldo internacional */
         .respaldo-section {
-            margin: 4rem 0;
+            margin: 2rem 0;
         }
 
         .respaldo-title {
@@ -298,6 +298,55 @@
             margin-bottom: 0.75rem;
         }
 
+        /* Estadísticas dentro de la tarjeta */
+        .card-stats {
+            margin: 1rem 0;
+            padding: 1rem;
+            background-color: rgba(255, 145, 77, 0.1);
+            border-radius: 20px;
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .stat-badge {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ff914d;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: #4a5568;
+            font-weight: 500;
+        }
+
+        .sectores-row {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .sector-mini-tag {
+            background-color: #ff914d;
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
         .respaldo-link {
             display: inline-block;
             margin-top: 1.5rem;
@@ -310,58 +359,6 @@
         .respaldo-link:hover {
             color: #0c3a6a;
             text-decoration: underline;
-        }
-
-        /* Sección de estadísticas MOK */
-        .mok-stats {
-            background: linear-gradient(135deg, #0c3a6a 0%, #1a4d7a 100%);
-            border-radius: 32px;
-            padding: 2.5rem;
-            margin: 3rem 0;
-            text-align: center;
-        }
-
-        .stats-grid {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .stat-item {
-            flex: 1;
-            min-width: 200px;
-            padding: 1.5rem;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: #ff914d;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            color: white;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .sectores-grid {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
-        }
-
-        .sector-tag {
-            background-color: rgba(255, 145, 77, 0.2);
-            color: #ff914d;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
         }
 
         /* BOTÓN FLOTANTE DE WHATSAPP */
@@ -550,7 +547,6 @@
             .quienes-title { font-size: 2rem; }
             .quienes-text p { font-size: 1rem; }
             .respaldo-title { font-size: 1.8rem; }
-            .stat-number { font-size: 2rem; }
         }
 
         @media (max-width: 768px) {
@@ -565,9 +561,6 @@
             .respaldo-card { min-width: 100%; max-width: 100%; }
             .respaldo-imagen { width: 150px; height: 150px; }
             .whatsapp-float img { width: 60px; height: 60px; }
-            .stats-grid { gap: 1rem; }
-            .stat-item { min-width: 150px; padding: 1rem; }
-            .stat-number { font-size: 1.8rem; }
             .footer-inner { flex-direction: column; text-align: center; }
             .footer-left, .footer-contact, .footer-social, .footer-links-column { text-align: center; padding-top: 0; }
             .footer-contact h3:after, .footer-social-title h3:after, .footer-links-column h3:after { left: 50%; transform: translateX(-50%); }
@@ -584,9 +577,6 @@
             .respaldo-title { font-size: 1.2rem; }
             .respaldo-imagen { width: 130px; height: 130px; }
             .respaldo-nombre { font-size: 1.3rem; }
-            .stat-number { font-size: 1.5rem; }
-            .stat-label { font-size: 0.75rem; }
-            .sector-tag { font-size: 0.7rem; padding: 0.3rem 0.8rem; }
             .footer-logo img { height: 140px; }
             .social-icons-footer img { width: 45px; height: 45px; }
         }
@@ -636,13 +626,34 @@
         <div class="respaldo-section">
             <h2 class="respaldo-title">Nuestro Respaldo</h2>
             <div class="respaldo-grid">
-                <!-- MOK Card - Información enriquecida del PPT -->
+                <!-- MOK Card - Toda la información DENTRO de la tarjeta celeste -->
                 <div class="respaldo-card">
                     <img src="fotos/mok.png" alt="MOK" class="respaldo-imagen">
                     <div class="respaldo-nombre">ServiceTech MOK</div>
                     <div class="respaldo-cargo">Socio Estratégico</div>
                     <div class="respaldo-descripcion">
                         <p><strong>ServiceTech</strong> cuenta con el ecosistema más grande de Servicios Digitales y Análogos en Latinoamérica, operando en los sectores de <strong>Seguros, Banca, Retail y Automotriz</strong>.</p>
+                        
+                        <!-- Estadísticas dentro de la tarjeta -->
+                        <div class="card-stats">
+                            <div class="stats-row">
+                                <div class="stat-badge">
+                                    <div class="stat-number">+300</div>
+                                    <div class="stat-label">Sponsors</div>
+                                </div>
+                                <div class="stat-badge">
+                                    <div class="stat-number">LATAM</div>
+                                    <div class="stat-label">Presencia regional</div>
+                                </div>
+                            </div>
+                            <div class="sectores-row">
+                                <span class="sector-mini-tag">Seguros</span>
+                                <span class="sector-mini-tag">Banca</span>
+                                <span class="sector-mini-tag">Retail</span>
+                                <span class="sector-mini-tag">Automotriz</span>
+                            </div>
+                        </div>
+                        
                         <p>Más de <strong>+300 sponsors</strong> confían en la propuesta de valor de MOK, respaldando proyectos innovadores con visión de futuro y solidez empresarial.</p>
                         <p>Con amplia experiencia en el sector automotriz, MOK aporta la infraestructura y el know-how necesario para que <strong>Siempre Nuevo</strong> ofrezca un servicio de excelencia a sus clientes.</p>
                     </div>
@@ -661,30 +672,6 @@
                         <p>En particular, ha desarrollado proyectos que integran inteligencia artificial aplicada a procesos comerciales, automatización de decisiones y reestructuración organizacional.</p>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- Sección de estadísticas MOK (basada en el PPT) -->
-        <div class="mok-stats">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number">+300</div>
-                    <div class="stat-label">Sponsors que confían en MOK</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">4</div>
-                    <div class="stat-label">Sectores clave</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">LATAM</div>
-                    <div class="stat-label">Presencia regional</div>
-                </div>
-            </div>
-            <div class="sectores-grid">
-                <span class="sector-tag">Seguros</span>
-                <span class="sector-tag">Banca</span>
-                <span class="sector-tag">Retail</span>
-                <span class="sector-tag">Automotriz</span>
             </div>
         </div>
     </div>
