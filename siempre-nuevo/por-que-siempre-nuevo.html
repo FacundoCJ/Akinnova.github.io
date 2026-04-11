@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>¿Por qué Siempre Nuevo? - Siempre Nuevo</title>
+    <title>Siempre Nuevo - Protege tu auto</title>
     <link rel="icon" type="image/png" href="fotos/logo-sn.png">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
     <style>
@@ -142,7 +142,7 @@
 
         .navbar-text {
             color: #0c3a6a;
-            font-size: 1.1rem;
+            font-size: 1.4rem;
             font-weight: 600;
             font-style: italic;
             text-align: center;
@@ -167,73 +167,23 @@
 
         /* SECCIÓN PRINCIPAL */
         .porque-section {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 180px 2rem 4rem 2rem;
         }
 
-        .porque-title {
-            text-align: center;
-            color: #0c3a6a;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-            width: 100%;
-        }
-
-        .porque-title:after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: #ff914d;
-            border-radius: 2px;
-        }
-
-        .porque-subtitle {
-            text-align: center;
-            color: #4a5568;
-            font-size: 1.1rem;
-            margin-top: 1.5rem;
-            margin-bottom: 3rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Cards de valores */
-        .valores-grid {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-bottom: 4rem;
-        }
-
-        .valor-card {
-            flex: 1;
-            min-width: 280px;
-            max-width: 350px;
+        /* ========== BLOQUE 1: PROBLEMA ========== */
+        .problema-block {
             background-color: #e7f3ff;
             border-radius: 32px;
-            padding: 2rem;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .valor-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .valor-icono {
-            width: 80px;
-            height: 80px;
+        .problema-icon {
+            width: 70px;
+            height: 70px;
             background-color: #ff914d;
             border-radius: 50%;
             display: flex;
@@ -242,193 +192,287 @@
             margin: 0 auto 1.5rem auto;
         }
 
-        .valor-icono img {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
+        .problema-icon img {
+            width: 40px;
+            height: 40px;
         }
 
-        .valor-card h3 {
+        .problema-block h2 {
             color: #0c3a6a;
-            font-size: 1.4rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
-        .valor-card p {
+        .problema-list {
+            text-align: left;
+            max-width: 500px;
+            margin: 0 auto 1.5rem auto;
+        }
+
+        .problema-list p {
             color: #4a5568;
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        /* Sección de problema y solución */
-        .problema-solucion {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-bottom: 4rem;
-        }
-
-        .problema-card, .solucion-card {
-            flex: 1;
-            min-width: 280px;
-            background-color: white;
-            border-radius: 32px;
-            padding: 2rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            border: 1px solid #e7f3ff;
-            transition: transform 0.3s ease;
-        }
-
-        .problema-card:hover, .solucion-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .problema-card h3, .solucion-card h3 {
-            color: #0c3a6a;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
             display: flex;
             align-items: center;
             gap: 0.75rem;
         }
 
-        .problema-card h3 img, .solucion-card h3 img {
-            width: 32px;
-            height: 32px;
+        .problema-list p::before {
+            content: '❓';
+            color: #ff914d;
+            font-size: 1.2rem;
         }
 
-        .problema-card p, .solucion-card p {
-            color: #4a5568;
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-
-        .problema-card ul, .solucion-card ul {
-            margin-left: 1.5rem;
-            color: #4a5568;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .problema-card li, .solucion-card li {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Misión y visión */
-        .mision-vision {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-bottom: 4rem;
-        }
-
-        .mision-card, .vision-card {
-            flex: 1;
-            min-width: 280px;
-            background-color: #e7f3ff;
-            border-radius: 32px;
-            padding: 2rem;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .mision-card:hover, .vision-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
-        }
-
-        .mision-card h3, .vision-card h3 {
+        .problema-cierre {
             color: #0c3a6a;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #cbd5e1;
         }
 
-        .mision-card p, .vision-card p {
-            color: #4a5568;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        /* Por qué elegirnos */
-        .elegirnos-section {
+        /* ========== BLOQUE 2: SOLUCIÓN ========== */
+        .solucion-block {
             background-color: #0c3a6a;
             border-radius: 32px;
             padding: 2.5rem;
-            margin-top: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: white;
         }
 
-        .elegirnos-section h3 {
-            text-align: center;
+        .solucion-icon {
+            width: 70px;
+            height: 70px;
+            background-color: #ff914d;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem auto;
+        }
+
+        .solucion-icon img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .solucion-block h2 {
             color: white;
             font-size: 1.8rem;
             font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .solucion-block .solucion-principal {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .solucion-block .solucion-secundario {
+            color: #e7f3ff;
+            font-size: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* ========== BLOQUE 3: BENEFICIOS ========== */
+        .beneficios-block {
+            background-color: #e7f3ff;
+            border-radius: 32px;
+            padding: 2.5rem;
             margin-bottom: 2rem;
-            position: relative;
+            text-align: center;
         }
 
-        .elegirnos-section h3:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
+        .beneficios-icon {
+            width: 70px;
+            height: 70px;
             background-color: #ff914d;
-            border-radius: 2px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem auto;
         }
 
-        .elegirnos-grid {
+        .beneficios-icon img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .beneficios-block h2 {
+            color: #0c3a6a;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-beneficio {
+            background-color: #0c3a6a;
+            border-radius: 60px;
+            padding: 1rem;
+            margin: 1.5rem auto;
+            max-width: 350px;
+        }
+
+        .highlight-beneficio .highlight-text {
+            color: white;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .highlight-beneficio .highlight-monto {
+            color: #ff914d;
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+
+        .beneficios-detalle {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 1.5rem;
             flex-wrap: wrap;
+            margin: 1.5rem 0;
         }
 
-        .elegirnos-item {
+        .beneficio-item {
             flex: 1;
             min-width: 200px;
+            background-color: white;
+            border-radius: 20px;
+            padding: 1.2rem;
             text-align: center;
-            padding: 1rem;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            transition: transform 0.3s ease;
         }
 
-        .elegirnos-item:hover {
-            transform: translateY(-5px);
-            background-color: rgba(255, 255, 255, 0.15);
+        .beneficio-item .numero {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ff914d;
         }
 
-        .elegirnos-item .check-icon {
-            width: 50px;
-            height: 50px;
-            margin: 0 auto 0.75rem auto;
+        .beneficio-item .numero small {
+            font-size: 0.9rem;
         }
 
-        .elegirnos-item .check-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .elegirnos-item h4 {
-            color: white;
-            font-size: 1.1rem;
+        .beneficio-item .desc {
+            color: #0c3a6a;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
         }
 
-        .elegirnos-item p {
+        .beneficios-adicionales {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #cbd5e1;
+        }
+
+        .beneficios-adicionales span {
+            background-color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #0c3a6a;
+        }
+
+        /* ========== BLOQUE 4: CONVERSIÓN ========== */
+        .conversion-block {
+            background: linear-gradient(135deg, #0c3a6a 0%, #1a4d7a 100%);
+            border-radius: 32px;
+            padding: 2.5rem;
+            text-align: center;
+            color: white;
+        }
+
+        .conversion-icon {
+            width: 70px;
+            height: 70px;
+            background-color: #ff914d;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem auto;
+        }
+
+        .conversion-icon img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .conversion-block h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .precio {
+            margin: 1.5rem 0;
+        }
+
+        .precio .precio-monto {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #ff914d;
+        }
+
+        .precio .precio-monto small {
+            font-size: 1.2rem;
+        }
+
+        .promocion {
+            background-color: #ff914d;
+            color: #0c3a6a;
+            padding: 0.8rem;
+            border-radius: 60px;
+            max-width: 350px;
+            margin: 1rem auto;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .btn-whatsapp-conversion {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background-color: #ff914d;
+            color: #0c3a6a;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 60px;
+            transition: all 0.3s ease;
+            margin: 1rem 0;
+            width: 100%;
+            max-width: 300px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-whatsapp-conversion:hover {
+            transform: scale(1.02);
+            background-color: #ff7a2e;
+        }
+
+        .texto-secundario {
             color: #e7f3ff;
             font-size: 0.85rem;
+            margin-top: 1rem;
         }
 
-        /* BOTÓN FLOTANTE DE WHATSAPP */
+        /* WHATSAPP FLOTANTE */
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -611,18 +655,20 @@
             .logo-float img { height: 100px; }
             .navbar { right: calc(1rem + 120px); }
             .porque-section { padding: 160px 1.5rem 3rem 1.5rem; }
-            .porque-title { font-size: 2rem; }
         }
 
         @media (max-width: 768px) {
             .logo-float img { height: 70px; }
             .navbar { top: 25px !important; transform: translateY(0) !important; left: 0.5rem; right: calc(0.5rem + 90px) !important; padding: 0.6rem 1rem; }
             .menu-icon img { width: 28px; }
-            .navbar-text { font-size: 0.7rem; display: none; }
+            .navbar-text { font-size: 0.85rem; margin-left: auto; margin-right: 0; text-align: right; }
             .porque-section { padding: 120px 1rem 2rem 1rem; }
-            .porque-title { font-size: 1.6rem; }
-            .porque-subtitle { font-size: 0.9rem; }
-            .valor-card, .problema-card, .solucion-card, .mision-card, .vision-card { min-width: 100%; }
+            .problema-block, .solucion-block, .beneficios-block, .conversion-block { padding: 1.5rem; }
+            .problema-block h2, .solucion-block h2, .beneficios-block h2, .conversion-block h2 { font-size: 1.4rem; }
+            .highlight-beneficio .highlight-monto { font-size: 2rem; }
+            .beneficio-item { min-width: 150px; }
+            .beneficio-item .numero { font-size: 1.5rem; }
+            .precio .precio-monto { font-size: 2.5rem; }
             .whatsapp-float img { width: 60px; height: 60px; }
             .footer-inner { flex-direction: column; text-align: center; }
             .footer-left, .footer-contact, .footer-social, .footer-links-column { text-align: center; padding-top: 0; }
@@ -636,7 +682,10 @@
             .logo-float img { height: 55px; }
             .navbar { right: calc(0.5rem + 70px) !important; top: 25px !important; }
             .porque-section { padding-top: 105px; }
-            .porque-title { font-size: 1.3rem; }
+            .problema-list p { font-size: 0.85rem; }
+            .solucion-block .solucion-principal { font-size: 1.1rem; }
+            .beneficios-adicionales span { font-size: 0.7rem; }
+            .btn-whatsapp-conversion { font-size: 1rem; padding: 0.8rem 1.5rem; }
             .footer-logo img { height: 140px; }
             .social-icons-footer img { width: 45px; height: 45px; }
         }
@@ -675,117 +724,100 @@
 
     <!-- SECCIÓN PRINCIPAL -->
     <div class="porque-section">
-        <h1 class="porque-title">¿Por qué Siempre Nuevo?</h1>
-        <p class="porque-subtitle">Somos la respuesta a una necesidad real de los conductores: proteger su vehículo sin complicaciones, sin afectar su seguro y con un servicio ágil y confiable.</p>
-
-        <!-- Valores principales -->
-        <div class="valores-grid">
-            <div class="valor-card">
-                <div class="valor-icono">
-                    <img src="fotos/check.png" alt="Protección real">
-                </div>
-                <h3>Protección real</h3>
-                <p>Cubrimos los daños más comunes del día a día: raspones, golpes leves, daños en aros y parabrisas. Todo sin que tengas que usar tu seguro principal.</p>
+        
+        <!-- BLOQUE 1: PROBLEMA -->
+        <div class="problema-block">
+            <div class="problema-icon">
+                <img src="fotos/error.png" alt="Problema">
             </div>
-            <div class="valor-card">
-                <div class="valor-icono">
-                    <img src="fotos/reloj.png" alt="Sin complicaciones">
-                </div>
-                <h3>Sin complicaciones</h3>
-                <p>Olvídate del papeleo, las largas esperas y los trámites engorrosos. Nosotros gestionamos todo por ti.</p>
+            <h2>¿Te ha pasado esto con tu auto?</h2>
+            <div class="problema-list">
+                <p>¿Uso el seguro y afecto mi historial?</p>
+                <p>¿Lo llevo al concesionario y pago caro?</p>
+                <p>¿Voy a un taller y no sé si confiar?</p>
+                <p>¿O lo dejo así y veo mi auto dañado todos los días?</p>
             </div>
-            <div class="valor-card">
-                <div class="valor-icono">
-                    <img src="fotos/seguro.png" alt="Respaldo total">
-                </div>
-                <h3>Respaldo total</h3>
-                <p>Trabajamos con los mejores concesionarios autorizados, garantizando reparaciones de calidad con repuestos originales.</p>
+            <div class="problema-cierre">
+                La mayoría termina pagando de su bolsillo… o no lo arregla.
             </div>
         </div>
 
-        <!-- Problema y solución -->
-        <div class="problema-solucion">
-            <div class="problema-card">
-                <h3>
-                    <img src="fotos/error.png" alt="Problema" style="width: 32px; height: 32px;">
-                    El problema que resolvemos
-                </h3>
-                <p>Los seguros tradicionales de autos tienen vacíos importantes que afectan a los conductores:</p>
-                <ul>
-                    <li>Los deducibles elevados hacen que pequeñas reparaciones no valgan la pena</li>
-                    <li>Los trámites son lentos y burocráticos</li>
-                    <li>El historial del seguro se ve afectado con cada reclamo</li>
-                    <li>Las coberturas tienen exclusiones que dejan al descubierto daños cotidianos</li>
-                    <li>Muchos conductores evitan usar su seguro por miedo a aumentar la prima</li>
-                </ul>
-                <p style="margin-top: 1rem;"><strong>Resultado:</strong> Miles de conductores pagan por daños menores de su bolsillo o simplemente los ignoran, dejando su auto en mal estado.</p>
+        <!-- BLOQUE 2: SOLUCIÓN -->
+        <div class="solucion-block">
+            <div class="solucion-icon">
+                <img src="fotos/check.png" alt="Solución">
             </div>
-            <div class="solucion-card">
-                <h3>
-                    <img src="fotos/check.png" alt="Solución" style="width: 32px; height: 32px;">
-                    Nuestra solución
-                </h3>
-                <p>En <strong>Siempre Nuevo</strong> creamos una alternativa inteligente:</p>
-                <ul>
-                    <li>Cobertura específica para daños cotidianos sin deducibles</li>
-                    <li>Proceso 100% digital y sin papeleo</li>
-                    <li>Atención 24/7 y gestión inmediata</li>
-                    <li>Sin afectación a tu historial de seguro principal</li>
-                    <li>Reparaciones en concesionarios autorizados con garantía</li>
-                </ul>
-                <p style="margin-top: 1rem;"><strong>Resultado:</strong> Tu auto siempre luce como nuevo, sin gastos inesperados ni complicaciones.</p>
+            <h2>La solución es más simple de lo que crees</h2>
+            <div class="solucion-principal">
+                Lleva tu auto al concesionario y repáralo sin pagar nada.
+            </div>
+            <div class="solucion-secundario">
+                Cubrimos los daños menores del día a día, sin deducibles y sin usar tu seguro.
             </div>
         </div>
 
-        <!-- Misión y visión -->
-        <div class="mision-vision">
-            <div class="mision-card">
-                <h3>🎯 Nuestra Misión</h3>
-                <p>Democratizar el acceso a la protección automotriz de calidad, ofreciendo una solución simple, rápida y confiable que permita a los conductores mantener su vehículo en óptimas condiciones sin afectar su economía ni su seguro tradicional.</p>
+        <!-- BLOQUE 3: BENEFICIOS -->
+        <div class="beneficios-block">
+            <div class="beneficios-icon">
+                <img src="fotos/seguro.png" alt="Beneficios">
             </div>
-            <div class="vision-card">
-                <h3>👁️ Nuestra Visión</h3>
-                <p>Convertirnos en el aliado estratégico de los conductores, transformando la experiencia de protección automotriz con innovación, transparencia y un servicio centrado en las personas.</p>
+            <h2>Todo lo que incluye tu plan</h2>
+            
+            <div class="highlight-beneficio">
+                <div class="highlight-text">👉 Hasta</div>
+                <div class="highlight-monto">$750</div>
+                <div class="highlight-text">en reparaciones al año</div>
             </div>
+
+            <div class="beneficios-detalle">
+                <div class="beneficio-item">
+                    <div class="numero">3 <small>eventos</small></div>
+                    <div class="desc">Hasta $200* c/u</div>
+                    <div class="desc" style="font-size:0.7rem;">Planchado y pintura / aro / neumático</div>
+                </div>
+                <div class="beneficio-item">
+                    <div class="numero">1 <small>evento</small></div>
+                    <div class="desc">Hasta $150*</div>
+                    <div class="desc" style="font-size:0.7rem;">Reparación de parabrisas</div>
+                </div>
+            </div>
+
+            <div class="beneficios-adicionales">
+                <span>✔ Sin deducible</span>
+                <span>✔ No afecta tu seguro</span>
+                <span>✔ Atención en concesionarios</span>
+                <span>✔ Proceso simple y rápido</span>
+            </div>
+            <div style="font-size:0.7rem; color:#4a5568; margin-top:1rem;">*Incluye IGV</div>
         </div>
 
-        <!-- Por qué elegirnos -->
-        <div class="elegirnos-section">
-            <h3>¿Por qué elegir Siempre Nuevo?</h3>
-            <div class="elegirnos-grid">
-                <div class="elegirnos-item">
-                    <div class="check-icon">
-                        <img src="fotos/check.png" alt="Ahorro garantizado">
-                    </div>
-                    <h4>Ahorro garantizado</h4>
-                    <p>Olvídate de los deducibles y los gastos de bolsillo por daños menores.</p>
-                </div>
-                <div class="elegirnos-item">
-                    <div class="check-icon">
-                        <img src="fotos/reloj.png" alt="Respuesta inmediata">
-                    </div>
-                    <h4>Respuesta inmediata</h4>
-                    <p>Gestionamos tu atención en tiempo récord, sin esperas ni papeleos.</p>
-                </div>
-                <div class="elegirnos-item">
-                    <div class="check-icon">
-                        <img src="fotos/seguro.png" alt="Calidad garantizada">
-                    </div>
-                    <h4>Calidad garantizada</h4>
-                    <p>Trabajamos solo con concesionarios autorizados y repuestos originales.</p>
-                </div>
-                <div class="elegirnos-item">
-                    <div class="check-icon">
-                        <img src="fotos/llaves.png" alt="Sin sorpresas">
-                    </div>
-                    <h4>Sin sorpresas</h4>
-                    <p>Condiciones claras, coberturas transparentes y sin letra chica.</p>
-                </div>
+        <!-- BLOQUE 4: CONVERSIÓN -->
+        <div class="conversion-block">
+            <div class="conversion-icon">
+                <img src="fotos/check.png" alt="Conversión">
+            </div>
+            <h2>Protege tu auto hoy</h2>
+            
+            <div class="precio">
+                <div class="precio-monto">$159 <small>/ año</small></div>
+                <div style="font-size:0.8rem;">(incluye IGV)</div>
+            </div>
+
+            <div class="promocion">
+                🎁 Te suscribes por 2 años y te regalamos el 3ro
+            </div>
+
+            <a href="https://wa.me/51997281159?text=Hola,%20me%20interesa%20proteger%20mi%20auto%20con%20Siempre%20Nuevo" class="btn-whatsapp-conversion" target="_blank">
+                👉 Cotizar por WhatsApp
+            </a>
+
+            <div class="texto-secundario">
+                Afíliate en minutos y úsalo cuando lo necesites.
             </div>
         </div>
     </div>
 
-    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+    <!-- WHATSAPP FLOTANTE -->
     <div class="whatsapp-float">
         <a href="https://wa.me/51997281159?text=Hola,%20me%20interesa%20obtener%20más%20información%20sobre%20Siempre%20Nuevo" target="_blank">
             <img src="fotos/wsp.png" alt="WhatsApp">
