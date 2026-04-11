@@ -306,12 +306,12 @@
 
         .detalle-card {
             flex: 1;
-            min-width: 240px;
-            max-width: 300px;
+            min-width: 280px;
+            max-width: 350px;
             text-align: center;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 24px;
-            padding: 2rem 1.5rem;
+            padding: 2rem;
             transition: transform 0.3s ease;
             backdrop-filter: blur(10px);
         }
@@ -322,8 +322,8 @@
         }
 
         .detalle-card img {
-            width: 70px;
-            height: 70px;
+            width: 100px;
+            height: 100px;
             object-fit: contain;
             margin-bottom: 1rem;
         }
@@ -342,7 +342,7 @@
 
         .detalle-card p {
             color: #e7f3ff;
-            font-size: 0.9rem;
+            font-size: 1rem;
             line-height: 1.4;
             margin-top: 0.5rem;
         }
@@ -628,20 +628,32 @@
             .beneficios-section { padding: 160px 1.5rem 2rem 1.5rem; }
             .beneficios-title { font-size: 2.2rem; }
             .detalle-card .monto { font-size: 2rem; }
+            .detalle-card img { width: 80px; height: 80px; }
         }
 
         @media (max-width: 768px) {
             .logo-float img { height: 70px; }
             .navbar { top: 25px !important; transform: translateY(0) !important; left: 0.5rem; right: calc(0.5rem + 90px) !important; padding: 0.6rem 1rem; }
             .menu-icon img { width: 28px; }
-            .navbar-text { font-size: 0.85rem; margin-left: auto; margin-right: 0; text-align: right; }
+            
+            /* En móvil, el texto se mueve a la derecha para que no tape el menú */
+            .navbar-text { 
+                font-size: 0.85rem; 
+                margin-left: auto;
+                margin-right: 0;
+                text-align: right;
+            }
+            
             .beneficios-section { padding: 120px 1rem 2rem 1rem; }
             .beneficios-title { font-size: 1.6rem; }
             .beneficio-card { min-width: 100%; }
             .beneficio-card-header h3 { font-size: 1.3rem; }
             .beneficio-card-header img { width: 40px; height: 40px; }
-            .detalle-card { min-width: 200px; }
+            .beneficio-list li { font-size: 0.9rem; }
+            .detalle-card { min-width: 100%; max-width: 100%; padding: 1.5rem; }
+            .detalle-card img { width: 70px; height: 70px; }
             .detalle-card .monto { font-size: 1.8rem; }
+            .detalle-card p { font-size: 0.9rem; }
             .total-beneficio .total-label { font-size: 1.1rem; }
             .total-beneficio .total-monto { font-size: 2.5rem; }
             .cotizar-section { padding: 3rem 1.5rem; }
@@ -663,11 +675,11 @@
             .beneficios-title { font-size: 1.4rem; }
             .beneficio-card { padding: 1.5rem; }
             .beneficio-card-header h3 { font-size: 1.2rem; }
-            .beneficio-list li { font-size: 0.9rem; }
-            .detalle-card { min-width: 160px; padding: 1.5rem 1rem; }
-            .detalle-card img { width: 50px; height: 50px; }
+            .beneficio-list li { font-size: 0.85rem; }
+            .detalle-card { padding: 1.2rem; }
+            .detalle-card img { width: 55px; height: 55px; }
             .detalle-card .monto { font-size: 1.5rem; }
-            .detalle-card p { font-size: 0.75rem; }
+            .detalle-card p { font-size: 0.8rem; }
             .total-beneficio .total-label { font-size: 1rem; }
             .total-beneficio .total-monto { font-size: 2rem; }
             .cotizar-section { padding: 2rem 1rem; }
