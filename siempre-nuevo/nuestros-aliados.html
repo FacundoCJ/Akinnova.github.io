@@ -155,6 +155,7 @@
             transition: transform 0.2s ease;
             position: absolute;
             left: 0;
+            transform: none;
         }
         .menu-icon:hover {
             transform: scale(1.02);
@@ -485,7 +486,16 @@
             .logo-float img { height: 70px; }
             .navbar { top: 25px !important; transform: translateY(0) !important; left: 0.5rem; right: calc(0.5rem + 90px) !important; padding: 0.6rem 1rem; }
             .menu-icon img { width: 28px; }
-            .navbar-text { font-size: 0.85rem; margin-left: auto; margin-right: 0; text-align: right; }
+            .menu-icon { position: absolute; left: 0; }
+            
+            /* En móvil, el texto se mueve a la derecha para que no tape el menú - IGUAL QUE INDEX */
+            .navbar-text { 
+                font-size: 0.85rem; 
+                margin-left: auto;
+                margin-right: 0;
+                text-align: right;
+            }
+            
             .aliados-section { padding: 120px 1rem 2rem 1rem; }
             .aliados-title { font-size: 1.6rem; }
             .aliados-subtitle { font-size: 0.9rem; }
@@ -504,6 +514,7 @@
 
         @media (max-width: 480px) {
             .logo-float img { height: 55px; }
+            .navbar-text { font-size: 0.75rem; }
             .navbar { right: calc(0.5rem + 70px) !important; top: 25px !important; }
             .aliados-section { padding-top: 105px; }
             .aliados-title { font-size: 1.3rem; }
