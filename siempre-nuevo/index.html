@@ -146,7 +146,7 @@
 
         .navbar-text {
             color: #0c3a6a;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             font-weight: 600;
             font-style: italic;
             text-align: center;
@@ -346,7 +346,7 @@
             display: block;
         }
 
-        /* Overlay en esquina inferior izquierda - CON SOMBRA POR CARÁCTER */
+        /* Overlay en esquina inferior izquierda */
         .zero-cost-overlay {
             position: absolute;
             bottom: 10px;
@@ -356,7 +356,6 @@
             gap: 0.15rem;
         }
 
-        /* El número 0 grande - con sombra individual */
         .zero-cost-overlay .big-zero {
             font-size: 3rem;
             font-weight: 800;
@@ -366,7 +365,6 @@
             letter-spacing: -2px;
         }
 
-        /* Contenedor de las 2 líneas de texto */
         .zero-cost-overlay .text-group {
             display: flex;
             flex-direction: column;
@@ -374,7 +372,6 @@
             gap: 0.05rem;
         }
 
-        /* Cada letra con sombra individual */
         .zero-cost-overlay .text-group .zero-text {
             font-size: 0.9rem;
             font-weight: 800;
@@ -1036,7 +1033,15 @@
             .navbar { top: 25px !important; transform: translateY(0) !important; left: 0.5rem; right: calc(0.5rem + 90px) !important; padding: 0.6rem 1rem; }
             .menu-icon img { width: 28px; }
             .menu-icon { position: absolute; left: 0; }
-            .navbar-text { font-size: 0.85rem; }
+            
+            /* En móvil, el texto se mueve a la derecha para que no tape el menú */
+            .navbar-text { 
+                font-size: 0.85rem; 
+                margin-left: auto;
+                margin-right: 0;
+                text-align: right;
+            }
+            
             .hero-section { min-height: auto; height: auto; background-size: contain; background-position: top center; background-repeat: no-repeat; margin-bottom: -235px !important; padding-bottom: 0 !important; }
             .cobertura-section { padding-top: 0 !important; margin-top: -235px !important; }
             .hero-video-container { width: 14% !important; max-width: 14% !important; top: 80px !important; left: 12% !important; transform: translate(0, 0) !important; }
@@ -1050,7 +1055,6 @@
             .cobertura-card { min-width: 160px; }
             .cobertura-card img { height: 100px; }
             
-            /* Ajustes responsivos para el overlay en tablet */
             .zero-cost-overlay {
                 left: 8px;
                 bottom: 6px;
@@ -1094,7 +1098,6 @@
             .cobertura-card h3 { font-size: 0.8rem; }
             .cobertura-card img { height: 85px; }
             
-            /* Ajustes responsivos para el overlay en móvil */
             .zero-cost-overlay {
                 left: 40px;
                 bottom: 4px;
@@ -1110,7 +1113,6 @@
             }
         }
         @media (max-width: 380px) {
-            /* Ajustes para móviles muy pequeños */
             .zero-cost-overlay .big-zero {
                 font-size: 1rem;
             }
