@@ -346,30 +346,27 @@
             display: block;
         }
 
+        /* Overlay en esquina inferior izquierda - SIN FONDO, TEXTO BLANCO */
         .zero-cost-overlay {
             position: absolute;
             bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(4px);
-            padding: 0.4rem 1rem;
-            border-radius: 40px;
+            left: 10px;
             display: flex;
-            align-items: baseline;
-            justify-content: center;
-            gap: 0.25rem;
-            white-space: nowrap;
+            align-items: center;
+            gap: 0.15rem;
         }
 
+        /* El número 0 grande que cubre la altura de las 2 líneas */
         .zero-cost-overlay .big-zero {
-            font-size: 1.8rem;
-            font-weight: 700;
+            font-size: 2.2rem;
+            font-weight: 800;
             line-height: 1;
-            color: #ff914d;
-            letter-spacing: -2px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            letter-spacing: -1px;
         }
 
+        /* Contenedor de las 2 líneas de texto */
         .zero-cost-overlay .text-group {
             display: flex;
             flex-direction: column;
@@ -382,14 +379,15 @@
             font-weight: 700;
             line-height: 1.1;
             color: white;
-            text-transform: uppercase;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
         }
 
         .zero-cost-overlay .text-group .costo-text {
             font-size: 0.55rem;
             font-weight: 600;
             line-height: 1.1;
-            color: #ff914d;
+            color: white;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
         }
 
         .cobertura-card h3 {
@@ -1048,7 +1046,7 @@
             .cobertura-grid { gap: 1rem; }
             .cobertura-card { min-width: 160px; }
             .cobertura-card img { height: 100px; }
-            .zero-cost-overlay .big-zero { font-size: 1.2rem; }
+            .zero-cost-overlay .big-zero { font-size: 1.5rem; }
             .zero-cost-overlay .text-group .zero-text { font-size: 0.55rem; }
             .zero-cost-overlay .text-group .costo-text { font-size: 0.45rem; }
             .pasos-fusion-grid { flex-direction: column; align-items: center; }
@@ -1078,10 +1076,9 @@
             .carousel-slide .play-pause-btn svg { width: 18px; height: 18px; }
             .cobertura-card { min-width: 140px; }
             .cobertura-card h3 { font-size: 0.8rem; }
-            .zero-cost-overlay .big-zero { font-size: 1rem; }
-            .zero-cost-overlay .text-group .zero-text { font-size: 0.5rem; }
-            .zero-cost-overlay .text-group .costo-text { font-size: 0.4rem; }
-            .zero-cost-overlay { padding: 0.25rem 0.6rem; }
+            .zero-cost-overlay .big-zero { font-size: 1.2rem; }
+            .zero-cost-overlay .text-group .zero-text { font-size: 0.45rem; }
+            .zero-cost-overlay .text-group .costo-text { font-size: 0.35rem; }
         }
         @supports (-webkit-touch-callout: none) {
             .navbar { background-color: rgba(255, 255, 255, 0.98); }
@@ -1146,7 +1143,7 @@
                             <span class="big-zero">0</span>
                             <div class="text-group">
                                 <span class="zero-text">CERO</span>
-                                <span class="costo-text">COSTO*</span>
+                                <span class="costo-text">COSTO</span>
                             </div>
                         </div>
                     </div>
@@ -1159,7 +1156,7 @@
                             <span class="big-zero">0</span>
                             <div class="text-group">
                                 <span class="zero-text">CERO</span>
-                                <span class="costo-text">COSTO*</span>
+                                <span class="costo-text">COSTO</span>
                             </div>
                         </div>
                     </div>
