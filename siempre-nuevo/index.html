@@ -1049,9 +1049,22 @@
             .cobertura-grid { gap: 1rem; }
             .cobertura-card { min-width: 160px; }
             .cobertura-card img { height: 100px; }
-            .zero-cost-overlay .big-zero { font-size: 2rem; }
-            .zero-cost-overlay .text-group .zero-text { font-size: 0.65rem; }
-            .zero-cost-overlay .text-group .costo-text { font-size: 0.5rem; }
+            
+            /* Ajustes responsivos para el overlay en tablet */
+            .zero-cost-overlay {
+                left: 8px;
+                bottom: 6px;
+            }
+            .zero-cost-overlay .big-zero {
+                font-size: 1.6rem;
+            }
+            .zero-cost-overlay .text-group .zero-text {
+                font-size: 0.55rem;
+            }
+            .zero-cost-overlay .text-group .costo-text {
+                font-size: 0.45rem;
+            }
+            
             .pasos-fusion-grid { flex-direction: column; align-items: center; }
             .paso-fusion-card { max-width: 280px; }
             .carousel-slide { flex: 0 0 calc(100% - 0rem); }
@@ -1079,9 +1092,34 @@
             .carousel-slide .play-pause-btn svg { width: 18px; height: 18px; }
             .cobertura-card { min-width: 140px; }
             .cobertura-card h3 { font-size: 0.8rem; }
-            .zero-cost-overlay .big-zero { font-size: 1.6rem; }
-            .zero-cost-overlay .text-group .zero-text { font-size: 0.55rem; }
-            .zero-cost-overlay .text-group .costo-text { font-size: 0.45rem; }
+            .cobertura-card img { height: 85px; }
+            
+            /* Ajustes responsivos para el overlay en móvil */
+            .zero-cost-overlay {
+                left: 5px;
+                bottom: 4px;
+            }
+            .zero-cost-overlay .big-zero {
+                font-size: 1.2rem;
+            }
+            .zero-cost-overlay .text-group .zero-text {
+                font-size: 0.4rem;
+            }
+            .zero-cost-overlay .text-group .costo-text {
+                font-size: 0.32rem;
+            }
+        }
+        @media (max-width: 380px) {
+            /* Ajustes para móviles muy pequeños */
+            .zero-cost-overlay .big-zero {
+                font-size: 1rem;
+            }
+            .zero-cost-overlay .text-group .zero-text {
+                font-size: 0.35rem;
+            }
+            .zero-cost-overlay .text-group .costo-text {
+                font-size: 0.28rem;
+            }
         }
         @supports (-webkit-touch-callout: none) {
             .navbar { background-color: rgba(255, 255, 255, 0.98); }
