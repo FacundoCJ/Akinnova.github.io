@@ -262,7 +262,6 @@
             z-index: 2000;
             justify-content: center;
             align-items: center;
-            cursor: pointer;
         }
 
         .video-modal.active {
@@ -281,11 +280,16 @@
             position: absolute;
             top: 20px;
             right: 30px;
-            font-size: 40px;
+            font-size: 50px;
             color: white;
             cursor: pointer;
             font-weight: bold;
             z-index: 2001;
+            transition: transform 0.2s ease;
+        }
+
+        .close-modal:hover {
+            transform: scale(1.1);
         }
 
         .full-video-wrapper {
@@ -1093,12 +1097,11 @@
             }
             
             .hero-section { 
-                min-height: auto; 
-                height: auto; 
+                min-height: 100vh; 
+                height: 100vh; 
                 background-size: cover; 
                 background-position: center; 
                 background-repeat: no-repeat; 
-                min-height: 100vh;
             }
             
             .cobertura-section { 
@@ -1128,7 +1131,8 @@
             .cobertura-card { min-width: 160px; }
             .cobertura-card img { height: 100px; }
             
-            .zero-cost-overlay { left: 15px; bottom: 5px; }
+            /* Mover overlay más a la derecha (20% más) */
+            .zero-cost-overlay { left: 28px; bottom: 5px; }
             .zero-cost-overlay .big-zero { font-size: 1.6rem; }
             .zero-cost-overlay .text-group .zero-text { font-size: 0.55rem; }
             .zero-cost-overlay .text-group .costo-text { font-size: 0.45rem; }
@@ -1169,6 +1173,7 @@
             .cobertura-card { min-width: 140px; }
             .cobertura-card h3 { font-size: 0.85rem; }
             .cobertura-card img { height: 85px; }
+            .zero-cost-overlay { left: 24px; }
             .zero-cost-overlay .big-zero { font-size: 1.3rem; }
             .zero-cost-overlay .text-group .zero-text { font-size: 0.45rem; }
             .zero-cost-overlay .text-group .costo-text { font-size: 0.35rem; }
@@ -1199,9 +1204,9 @@
     </div>
 
     <!-- Modal para video a pantalla completa -->
-    <div id="videoModal" class="video-modal" onclick="closeVideoModal()">
-        <span class="close-modal">&times;</span>
-        <video id="modalVideo" controls autoplay></video>
+    <div id="videoModal" class="video-modal">
+        <span class="close-modal" id="closeModalBtn">&times;</span>
+        <video id="modalVideo" controls></video>
     </div>
 
     <div class="logo-float" id="logoButton">
@@ -1221,7 +1226,7 @@
     <div class="hero-section">
         <div class="hero-video-container">
             <div class="video-wrapper" style="width:100%">
-                <video id="heroVideo" playsinline webkit-playsinline controls preload="auto" poster="fotos/miniatura1.png">
+                <video id="heroVideo" playsinline webkit-playsinline preload="auto" poster="fotos/miniatura1.png">
                     <source src="fotos/video1.mp4" type="video/mp4">
                 </video>
                 <div class="play-pause-btn" data-video="heroVideo" data-fullscreen="true">
@@ -1339,7 +1344,7 @@
     <div class="full-video-section">
         <div class="full-video-container">
             <div class="full-video-wrapper video-wrapper" style="width:100%">
-                <video id="fullVideo" playsinline webkit-playsinline controls preload="auto" poster="fotos/miniatura3.png">
+                <video id="fullVideo" playsinline webkit-playsinline preload="auto" poster="fotos/miniatura3.png">
                     <source src="fotos/video2.mp4" type="video/mp4">
                 </video>
                 <div class="play-pause-btn" data-video="fullVideo" data-fullscreen="true">
@@ -1487,27 +1492,40 @@
             
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
             
+            // Elementos del modal
+            const modal = document.getElementById('videoModal');
+            const modalVideo = document.getElementById('modalVideo');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            
             // Función para abrir video a pantalla completa
             function openFullscreenVideo(videoElement) {
-                const modal = document.getElementById('videoModal');
-                const modalVideo = document.getElementById('modalVideo');
                 const videoSrc = videoElement.querySelector('source')?.src || videoElement.src;
                 
                 if (videoSrc) {
                     modalVideo.src = videoSrc;
                     modalVideo.load();
                     modal.classList.add('active');
-                    modalVideo.play();
+                    modalVideo.play().catch(e => console.log('Error playing modal video:', e));
                 }
             }
             
+            // Cerrar modal y pausar video
             function closeVideoModal() {
-                const modal = document.getElementById('videoModal');
-                const modalVideo = document.getElementById('modalVideo');
                 modal.classList.remove('active');
                 modalVideo.pause();
                 modalVideo.src = '';
             }
+            
+            // Eventos del modal
+            if (closeModalBtn) {
+                closeModalBtn.addEventListener('click', closeVideoModal);
+            }
+            
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeVideoModal();
+                }
+            });
             
             function setupVideoControls(videoId, btnElement, isFullscreen = false) {
                 const video = document.getElementById(videoId);
@@ -1515,7 +1533,6 @@
                 
                 video.setAttribute('playsinline', 'true');
                 video.setAttribute('webkit-playsinline', 'true');
-                video.setAttribute('controls', 'true');
                 video.muted = false;
                 video.volume = 1.0;
                 video.style.pointerEvents = 'none';
