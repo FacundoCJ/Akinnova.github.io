@@ -1112,10 +1112,10 @@
                 text-align: right;
             }
             
-            /* CORRECCIÓN DEL ESPACIO BLANCO - VALORES SUAVES */
+            /* ELIMINACIÓN COMPLETA DEL ESPACIO BLANCO */
             .hero-section { 
-                min-height: auto; 
-                height: auto; 
+                min-height: 70vh; 
+                height: 70vh; 
                 background-size: contain; 
                 background-position: top center; 
                 background-repeat: no-repeat; 
@@ -1125,14 +1125,14 @@
             
             .cobertura-section { 
                 padding-top: 0; 
-                margin-top: -10px;
+                margin-top: -80px;
                 position: relative;
                 z-index: 2;
             }
             
             /* Video reposicionado */
             .hero-video-container { 
-                top: 24%;
+                top: 28%;
                 left: 25%;
                 transform: translate(-50%, -50%);
                 width: 100px;
@@ -1183,14 +1183,14 @@
             .navbar { top: 38px; right: calc(0.5rem + 70px); }
             .navbar-text { font-size: 0.75rem; }
             .hero-section { 
-                min-height: auto; 
-                height: auto; 
+                min-height: 65vh; 
+                height: 65vh; 
                 margin-bottom: 0;
             }
             .cobertura-section { 
-                margin-top: -8px;
+                margin-top: -60px;
             }
-            .hero-video-container { width: 80px; min-width: 80px; left: 25%; top: 24%; }
+            .hero-video-container { width: 80px; min-width: 80px; left: 25%; top: 28%; }
             .hero-video-container .play-pause-btn { width: 25px; height: 25px; }
             .hero-video-container .play-pause-btn svg { width: 12px; height: 12px; }
             .full-video-wrapper .play-pause-btn { width: 45px; height: 45px; }
@@ -1223,6 +1223,7 @@
     </style>
 </head>
 <body>
+    <!-- Resto del HTML igual, solo cambios en CSS -->
     <div class="overlay" id="overlay"></div>
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
