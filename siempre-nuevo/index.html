@@ -177,10 +177,7 @@
             display: flex;
             flex-direction: column;
             background-image: url('fotos/carro.png');
-            background-size: contain;
-            background-position: center;
             background-repeat: no-repeat;
-            background-color: #ffffff;
         }
 
         .hero-video-container {
@@ -1087,7 +1084,6 @@
 
         @media (max-width: 768px) {
             .logo-float img { height: 70px; }
-            /* Barra de inicio: sube un 1% (de 50px a 43px) */
             .navbar { top: 43px; left: 0.5rem; right: calc(0.5rem + 90px); padding: 0.6rem 1rem; }
             .menu-icon img { width: 28px; }
             
@@ -1102,7 +1098,7 @@
                 min-height: 100vh; 
                 height: 100vh; 
                 background-size: contain; 
-                background-position: center; 
+                background-position: top center; 
                 background-repeat: no-repeat; 
                 background-color: #ffffff;
             }
@@ -1112,10 +1108,10 @@
                 margin-top: 0;
             }
             
-            /* Video reposicionado: más arriba (35%) y más a la izquierda (32%) */
+            /* Video reposicionado: más a la izquierda (25%) */
             .hero-video-container { 
                 top: 35%;
-                left: 32%;
+                left: 25%;
                 transform: translate(-50%, -50%);
                 width: 100px;
                 min-width: 80px;
@@ -1134,7 +1130,6 @@
             .cobertura-card { min-width: 160px; }
             .cobertura-card img { height: 100px; }
             
-            /* Overlay - letras más grandes en móvil */
             .zero-cost-overlay { left: 50px; bottom: 5px; }
             .zero-cost-overlay .big-zero { font-size: 2rem; }
             .zero-cost-overlay .text-group .zero-text { font-size: 0.7rem; }
@@ -1156,7 +1151,6 @@
             .footer-logo img { height: 180px; margin: 0 auto; }
             .sidebar { width: 280px; }
             
-            /* Texto más grande en móvil */
             .cobertura-card h3 { font-size: 0.9rem; }
             .paso-fusion-card p { font-size: 0.9rem; }
             .beneficio-list li { font-size: 0.9rem; }
@@ -1166,7 +1160,7 @@
             .logo-float img { height: 55px; }
             .navbar { top: 38px; right: calc(0.5rem + 70px); }
             .navbar-text { font-size: 0.75rem; }
-            .hero-video-container { width: 80px; min-width: 80px; left: 32%; top: 35%; }
+            .hero-video-container { width: 80px; min-width: 80px; left: 25%; top: 35%; }
             .hero-video-container .play-pause-btn { width: 25px; height: 25px; }
             .hero-video-container .play-pause-btn svg { width: 12px; height: 12px; }
             .full-video-wrapper .play-pause-btn { width: 45px; height: 45px; }
@@ -1176,7 +1170,6 @@
             .cobertura-card { min-width: 140px; }
             .cobertura-card h3 { font-size: 0.85rem; }
             .cobertura-card img { height: 85px; }
-            /* Overlay móvil pequeño - letras más grandes */
             .zero-cost-overlay { left: 42px; }
             .zero-cost-overlay .big-zero { font-size: 1.8rem; }
             .zero-cost-overlay .text-group .zero-text { font-size: 0.6rem; }
@@ -1185,8 +1178,12 @@
             .social-icons-footer img { width: 45px; height: 45px; }
         }
 
-        /* Desktop: mover overlay 25% más a la derecha (de 30px a 50px) */
+        /* Desktop: imagen carro.png a lo largo de toda la pagina */
         @media (min-width: 769px) {
+            .hero-section { 
+                background-size: cover; 
+                background-position: center; 
+            }
             .zero-cost-overlay { left: 50px; }
         }
 
@@ -1501,12 +1498,10 @@
             
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
             
-            // Elementos del modal
             const modal = document.getElementById('videoModal');
             const modalVideo = document.getElementById('modalVideo');
             const closeModalBtn = document.getElementById('closeModalBtn');
             
-            // Función para abrir video a pantalla completa
             function openFullscreenVideo(videoElement) {
                 const videoSrc = videoElement.querySelector('source')?.src || videoElement.src;
                 
@@ -1518,14 +1513,12 @@
                 }
             }
             
-            // Cerrar modal y pausar video
             function closeVideoModal() {
                 modal.classList.remove('active');
                 modalVideo.pause();
                 modalVideo.src = '';
             }
             
-            // Eventos del modal
             if (closeModalBtn) {
                 closeModalBtn.addEventListener('click', closeVideoModal);
             }
