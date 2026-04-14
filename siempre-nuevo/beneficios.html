@@ -119,7 +119,7 @@
 
         .navbar {
             position: fixed;
-            top: 10%;
+            top: 70px;
             transform: translateY(-50%);
             left: 1rem;
             right: calc(1rem + 140px);
@@ -176,7 +176,7 @@
         .beneficios-title {
             text-align: center;
             color: #0c3a6a;
-            font-size: 2.8rem;
+            font-size: clamp(1.5rem, 5vw, 2.8rem);
             font-weight: 700;
             margin-bottom: 3rem;
             position: relative;
@@ -276,7 +276,7 @@
 
         .detalle-beneficios-section h2 {
             color: white;
-            font-size: 2rem;
+            font-size: clamp(1.5rem, 5vw, 2rem);
             font-weight: 600;
             margin-bottom: 2rem;
             position: relative;
@@ -297,7 +297,8 @@
             border-radius: 2px;
         }
 
-        .detalle-grid {
+        /* NUEVA ESTRUCTURA: 2 bloques (uno grande y uno pequeño) */
+        .beneficios-economicos-wrapper {
             display: flex;
             justify-content: center;
             gap: 2rem;
@@ -305,46 +306,134 @@
             margin-top: 2rem;
         }
 
-        .detalle-card {
-            flex: 1;
-            min-width: 280px;
-            max-width: 350px;
-            text-align: center;
+        /* Bloque grande: reparación de rayones y aros juntos */
+        .beneficio-grupo {
+            flex: 2;
+            min-width: 300px;
+            max-width: 550px;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 24px;
             padding: 2rem;
-            transition: transform 0.3s ease;
             backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
         }
 
-        .detalle-card:hover {
+        .beneficio-grupo:hover {
             transform: translateY(-5px);
             background-color: rgba(255, 255, 255, 0.15);
         }
 
-        .detalle-card img {
-            width: 100px;
-            height: 100px;
+        .beneficio-grupo h3 {
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .grupo-items {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .grupo-item {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+        }
+
+        .grupo-item img {
+            width: 80px;
+            height: 80px;
             object-fit: contain;
             margin-bottom: 1rem;
         }
 
-        .detalle-card .monto {
-            font-size: 2.5rem;
-            font-weight: 800;
+        .grupo-item .eventos {
             color: #ff914d;
+            font-size: 1.2rem;
+            font-weight: 600;
             margin: 0.5rem 0;
         }
 
-        .detalle-card .monto small {
-            font-size: 1rem;
-            font-weight: 500;
+        .grupo-item .eventos strong {
+            font-size: 2rem;
         }
 
-        .detalle-card p {
+        .grupo-item .monto {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #ff914d;
+        }
+
+        .grupo-item .monto small {
+            font-size: 0.9rem;
+        }
+
+        .grupo-item p {
             color: #e7f3ff;
-            font-size: 1rem;
-            line-height: 1.4;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Bloque pequeño: parabrisas */
+        .beneficio-parabrisas {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 2rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .beneficio-parabrisas:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .beneficio-parabrisas h3 {
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .beneficio-parabrisas img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+
+        .beneficio-parabrisas .eventos {
+            color: #ff914d;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 0.5rem 0;
+        }
+
+        .beneficio-parabrisas .eventos strong {
+            font-size: 2rem;
+        }
+
+        .beneficio-parabrisas .monto {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #ff914d;
+        }
+
+        .beneficio-parabrisas .monto small {
+            font-size: 0.9rem;
+        }
+
+        .beneficio-parabrisas p {
+            color: #e7f3ff;
+            font-size: 0.9rem;
             margin-top: 0.5rem;
         }
 
@@ -494,7 +583,7 @@
         }
 
         .footer-logo img {
-            height: 280px;
+            height: clamp(140px, 20vw, 280px);
             width: auto;
             display: block;
         }
@@ -573,8 +662,8 @@
         }
 
         .social-icons-footer img {
-            width: 52px;
-            height: 52px;
+            width: clamp(35px, 8vw, 52px);
+            height: clamp(35px, 8vw, 52px);
         }
 
         .footer-links-column {
@@ -622,23 +711,20 @@
             color: #ff914d;
         }
 
-        /* MEDIA QUERIES - IGUAL QUE EL INDEX */
+        /* MEDIA QUERIES */
         @media (max-width: 1024px) {
             .logo-float img { height: 100px; }
             .navbar { right: calc(1rem + 120px); }
             .beneficios-section { padding: 160px 1.5rem 2rem 1.5rem; }
-            .beneficios-title { font-size: 2.2rem; }
-            .detalle-card .monto { font-size: 2rem; }
-            .detalle-card img { width: 80px; height: 80px; }
+            .grupo-item img { width: 60px; height: 60px; }
+            .beneficio-parabrisas img { width: 60px; height: 60px; }
         }
 
         @media (max-width: 768px) {
             .logo-float img { height: 70px; }
-            .navbar { top: 25px !important; transform: translateY(0) !important; left: 0.5rem; right: calc(0.5rem + 90px) !important; padding: 0.6rem 1rem; }
+            .navbar { top: 43px; left: 0.5rem; right: calc(0.5rem + 90px); padding: 0.6rem 1rem; }
             .menu-icon img { width: 28px; }
-            .menu-icon { position: absolute; left: 0; }
             
-            /* En móvil, el texto se mueve a la derecha para que no tape el menú - IGUAL QUE INDEX */
             .navbar-text { 
                 font-size: 0.85rem; 
                 margin-left: auto;
@@ -652,10 +738,18 @@
             .beneficio-card-header h3 { font-size: 1.3rem; }
             .beneficio-card-header img { width: 40px; height: 40px; }
             .beneficio-list li { font-size: 0.9rem; }
-            .detalle-card { min-width: 100%; max-width: 100%; padding: 1.5rem; }
-            .detalle-card img { width: 70px; height: 70px; }
-            .detalle-card .monto { font-size: 1.8rem; }
-            .detalle-card p { font-size: 0.9rem; }
+            
+            .beneficio-grupo { padding: 1.5rem; }
+            .grupo-item { min-width: 150px; }
+            .grupo-item img { width: 55px; height: 55px; }
+            .grupo-item .eventos strong { font-size: 1.5rem; }
+            .grupo-item .monto { font-size: 1.5rem; }
+            
+            .beneficio-parabrisas { padding: 1.5rem; }
+            .beneficio-parabrisas img { width: 55px; height: 55px; }
+            .beneficio-parabrisas .eventos strong { font-size: 1.5rem; }
+            .beneficio-parabrisas .monto { font-size: 1.5rem; }
+            
             .total-beneficio .total-label { font-size: 1.1rem; }
             .total-beneficio .total-monto { font-size: 2.5rem; }
             .cotizar-section { padding: 3rem 1.5rem; }
@@ -673,16 +767,18 @@
         @media (max-width: 480px) {
             .logo-float img { height: 55px; }
             .navbar-text { font-size: 0.75rem; }
-            .navbar { right: calc(0.5rem + 70px) !important; top: 25px !important; }
+            .navbar { top: 38px; right: calc(0.5rem + 70px); }
             .beneficios-section { padding: 105px 1rem 2rem 1rem; }
             .beneficios-title { font-size: 1.4rem; }
             .beneficio-card { padding: 1.5rem; }
             .beneficio-card-header h3 { font-size: 1.2rem; }
             .beneficio-list li { font-size: 0.85rem; }
-            .detalle-card { padding: 1.2rem; }
-            .detalle-card img { width: 55px; height: 55px; }
-            .detalle-card .monto { font-size: 1.5rem; }
-            .detalle-card p { font-size: 0.8rem; }
+            .grupo-item img { width: 45px; height: 45px; }
+            .grupo-item .eventos strong { font-size: 1.2rem; }
+            .grupo-item .monto { font-size: 1.2rem; }
+            .beneficio-parabrisas img { width: 45px; height: 45px; }
+            .beneficio-parabrisas .eventos strong { font-size: 1.2rem; }
+            .beneficio-parabrisas .monto { font-size: 1.2rem; }
             .total-beneficio .total-label { font-size: 1rem; }
             .total-beneficio .total-monto { font-size: 2rem; }
             .cotizar-section { padding: 2rem 1rem; }
@@ -759,36 +855,41 @@
     <div class="detalle-beneficios-section">
         <div class="detalle-beneficios-inner">
             <h2>Beneficios económicos</h2>
-            <div class="detalle-grid">
-                <div class="detalle-card">
-                    <img src="fotos/raspon.jpeg" alt="Reparación de rayones">
-                    <div class="monto">$200* <small>por evento</small></div>
-                    <p>Reparación de rayones y pintura</p>
-                    <p style="font-size:0.75rem; opacity:0.8;">En concesionarios autorizados</p>
+            
+            <div class="beneficios-economicos-wrapper">
+                <!-- Bloque grande: Reparación de rayones y aros juntos -->
+                <div class="beneficio-grupo">
+                    <h3>Reparaciones de pintura y aros</h3>
+                    <div class="grupo-items">
+                        <div class="grupo-item">
+                            <img src="fotos/raspon.jpeg" alt="Reparación de rayones">
+                            <div class="eventos">Hasta <strong>3</strong> eventos al año</div>
+                            <div class="monto">$200* <small>por evento</small></div>
+                            <p>Reparación de rayones y pintura</p>
+                        </div>
+                        <div class="grupo-item">
+                            <img src="fotos/aros.jpeg" alt="Reparación de aros">
+                            <div class="eventos">Hasta <strong>3</strong> eventos al año</div>
+                            <div class="monto">$200* <small>por evento</small></div>
+                            <p>Reparación de aros y llantas</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="detalle-card">
-                    <img src="fotos/aros.jpeg" alt="Reparación de aros">
-                    <div class="monto">$200* <small>por evento</small></div>
-                    <p>Reparación de aros y llantas</p>
-                    <p style="font-size:0.75rem; opacity:0.8;">Con respaldo de concesionarios</p>
-                </div>
-                <div class="detalle-card">
+
+                <!-- Bloque pequeño: Parabrisas -->
+                <div class="beneficio-parabrisas">
+                    <h3>Bono adicional para parabrisas</h3>
                     <img src="fotos/parabrisas.jpeg" alt="Bono parabrisas">
+                    <div class="eventos"><strong>1</strong> evento al año</div>
                     <div class="monto">$150* <small>por evento</small></div>
-                    <p>Bono para parabrisas</p>
-                    <p style="font-size:0.75rem; opacity:0.8;">Aplicable en concesionarios autorizados</p>
+                    <p>Reparación o reposición de parabrisas</p>
                 </div>
             </div>
             
             <!-- Total de beneficios -->
             <div class="total-beneficio">
                 <div class="total-label">Beneficios totales al año</div>
-                <div class="total-monto">$750 <small>USD</small></div>
-            </div>
-
-            <!-- NOTA DE LÍMITES DE EVENTOS -->
-            <div class="limites-nota">
-                <p>📋 <strong>Límites por año:</strong> Hasta <strong>3 eventos</strong> de reparación de pintura/aros y hasta <strong>1 evento</strong> de parabrisas por año.</p>
+                <div class="total-monto">$750* <small>USD</small></div>
             </div>
 
             <!-- NOTAS LEGALES -->
