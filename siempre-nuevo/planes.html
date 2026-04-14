@@ -112,14 +112,14 @@
             transform: scale(1.02);
         }
         .logo-float img {
-            height: 120px;
+            height: clamp(50px, 10vw, 120px);
             width: auto;
             display: block;
         }
 
         .navbar {
             position: fixed;
-            top: 10%;
+            top: 70px;
             transform: translateY(-50%);
             left: 1rem;
             right: calc(1rem + 140px);
@@ -176,7 +176,7 @@
         .planes-title {
             text-align: center;
             color: #0c3a6a;
-            font-size: 2.5rem;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
             font-weight: 700;
             margin-bottom: 1rem;
             position: relative;
@@ -319,8 +319,8 @@
         }
 
         .whatsapp-float img {
-            width: 80px;
-            height: 80px;
+            width: clamp(60px, 10vw, 80px);
+            height: clamp(60px, 10vw, 80px);
             border-radius: 50%;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease;
@@ -359,7 +359,7 @@
         }
 
         .footer-logo img {
-            height: 280px;
+            height: clamp(140px, 20vw, 280px);
             width: auto;
             display: block;
         }
@@ -438,8 +438,8 @@
         }
 
         .social-icons-footer img {
-            width: 52px;
-            height: 52px;
+            width: clamp(35px, 8vw, 52px);
+            height: clamp(35px, 8vw, 52px);
         }
 
         .footer-links-column {
@@ -492,16 +492,14 @@
             .logo-float img { height: 100px; }
             .navbar { right: calc(1rem + 120px); }
             .planes-section { padding: 160px 1.5rem 3rem 1.5rem; }
-            .planes-title { font-size: 2rem; }
         }
 
         @media (max-width: 768px) {
             .logo-float img { height: 70px; }
-            .navbar { top: 25px !important; transform: translateY(0) !important; left: 0.5rem; right: calc(0.5rem + 90px) !important; padding: 0.6rem 1rem; }
+            .navbar { top: 43px; left: 0.5rem; right: calc(0.5rem + 90px); padding: 0.6rem 1rem; }
             .menu-icon img { width: 28px; }
             .menu-icon { position: absolute; left: 0; }
             
-            /* En móvil, el texto se mueve a la derecha para que no tape el menú - IGUAL QUE INDEX */
             .navbar-text { 
                 font-size: 0.85rem; 
                 margin-left: auto;
@@ -527,7 +525,7 @@
         @media (max-width: 480px) {
             .logo-float img { height: 55px; }
             .navbar-text { font-size: 0.75rem; }
-            .navbar { right: calc(0.5rem + 70px) !important; top: 25px !important; }
+            .navbar { top: 38px; right: calc(0.5rem + 70px); }
             .planes-section { padding-top: 105px; }
             .planes-title { font-size: 1.3rem; }
             .plan-nombre { font-size: 1.4rem; }
@@ -573,9 +571,9 @@
         <p class="planes-subtitle">Elige el plan que mejor se adapte a ti y empieza a proteger tu auto hoy mismo</p>
         
         <div class="planes-grid">
-            <!-- Plan 12 meses -->
+            <!-- Plan Anual -->
             <div class="plan-card">
-                <div class="plan-nombre">Plan 12 meses</div>
+                <div class="plan-nombre">Plan Anual</div>
                 <div class="plan-duracion">Ideal para empezar</div>
                 <ul class="plan-beneficios">
                     <li>Protección básica para tu auto</li>
@@ -583,22 +581,22 @@
                     <li>Atención en talleres autorizados</li>
                     <li>Sin deducibles ni letra chica</li>
                 </ul>
-                <a href="https://wa.me/51980456427?text=Hola,%20me%20interesa%20el%20Plan%2012%20meses%20de%20Siempre%20Nuevo" class="plan-btn" target="_blank">Empieza hoy →</a>
+                <a href="https://wa.me/51980456427?text=Hola,%20me%20interesa%20el%20Plan%20Anual%20de%20Siempre%20Nuevo" class="plan-btn" target="_blank">Empieza hoy →</a>
             </div>
 
-            <!-- Plan 36 meses - Recomendado -->
+            <!-- Plan 3 años - Recomendado -->
             <div class="plan-card recomendado">
                 <div class="plan-badge">MÁS ELEGIDO</div>
-                <div class="plan-nombre">Plan 36 meses</div>
+                <div class="plan-nombre">Plan 3 años</div>
                 <div class="plan-duracion">Ahorra más</div>
                 <ul class="plan-beneficios">
                     <li>Protección completa para tu auto</li>
                     <li>Raspones, pintura, aros y parabrisas</li>
-                    <li>Ahorro del 20% vs plan mensual</li>
+                    <li>Ahorro del 33% vs plan anual</li>
                     <li>Atención prioritaria 24/7</li>
                     <li>Sin deducibles ni afectación a tu seguro</li>
                 </ul>
-                <a href="https://wa.me/51980456427?text=Hola,%20me%20interesa%20el%20Plan%2036%20meses%20de%20Siempre%20Nuevo" class="plan-btn" target="_blank">Ahorra más →</a>
+                <a href="https://wa.me/51980456427?text=Hola,%20me%20interesa%20el%20Plan%203%20años%20de%20Siempre%20Nuevo" class="plan-btn" target="_blank">Ahorra más →</a>
             </div>
 
             <!-- Plan 5 años -->
@@ -608,7 +606,7 @@
                 <ul class="plan-beneficios">
                     <li>Máxima protección por 5 años</li>
                     <li>Todas las coberturas incluidas</li>
-                    <li>Ahorro del 30% vs plan mensual</li>
+                    <li>Ahorro del 33% vs plan anual</li>
                     <li>Atención VIP en concesionarios</li>
                     <li>Precio congelado por 5 años</li>
                 </ul>
