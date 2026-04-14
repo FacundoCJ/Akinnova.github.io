@@ -250,6 +250,44 @@
             height: 22px;
         }
 
+        /* Modal para video a pantalla completa */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .video-modal.active {
+            display: flex;
+        }
+
+        .video-modal video {
+            width: 90%;
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 16px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            z-index: 2001;
+        }
+
         .full-video-wrapper {
             position: relative;
             width: 100%;
@@ -348,7 +386,7 @@
             display: block;
         }
 
-        /* Overlay en esquina inferior izquierda - TEXTO MÁS GRANDE */
+        /* Overlay en esquina inferior izquierda */
         .zero-cost-overlay {
             position: absolute;
             bottom: 8px;
@@ -359,7 +397,7 @@
         }
 
         .zero-cost-overlay .big-zero {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 800;
             line-height: 1;
             color: white;
@@ -375,7 +413,7 @@
         }
 
         .zero-cost-overlay .text-group .zero-text {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 800;
             line-height: 1.1;
             color: white;
@@ -384,7 +422,7 @@
         }
 
         .zero-cost-overlay .text-group .costo-text {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 700;
             line-height: 1.1;
             color: white;
@@ -426,15 +464,16 @@
             margin-bottom: 2rem;
             position: relative;
             display: inline-block;
-            text-align: left;
-            width: auto;
+            text-align: center;
+            width: 100%;
         }
 
         .como-funciona-fusion h2:after {
             content: '';
             position: absolute;
             bottom: -10px;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             width: 60px;
             height: 3px;
             background-color: #ff914d;
@@ -443,7 +482,7 @@
 
         .pasos-fusion-grid {
             display: flex;
-            justify-content: flex-start;
+            justify-content: center;
             gap: 2rem;
             flex-wrap: wrap;
         }
@@ -482,16 +521,8 @@
 
         .paso-fusion-card p {
             color: #e7f3ff;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             line-height: 1.4;
-        }
-
-        /* Nota del asterisco */
-        .asterisco-nota {
-            text-align: center;
-            margin-top: 1rem;
-            font-size: 0.75rem;
-            color: #e7f3ff;
         }
 
         .formulario-fusion {
@@ -704,6 +735,18 @@
             color: #ff914d;
             text-decoration: none;
             font-weight: 600;
+        }
+
+        .asterisco-note {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.75rem;
+            color: #e7f3ff;
+        }
+
+        .asterisco-note a {
+            color: #ff914d;
+            text-decoration: none;
         }
 
         .historias-section {
@@ -1030,13 +1073,10 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
 
-        /* MEDIA QUERIES - SOLO PARA REORGANIZAR EL DISEÑO EN MÓVIL */
+        /* MEDIA QUERIES */
         @media (max-width: 1024px) {
             .blue-fusion-inner { flex-direction: column; }
             .formulario-fusion { max-width: 500px; margin: 0 auto; }
-            .como-funciona-fusion h2:after { left: 0; transform: none; }
-            .como-funciona-fusion h2 { text-align: center; width: 100%; }
-            .como-funciona-fusion h2:after { left: 50%; transform: translateX(-50%); }
             .cobertura-card img { height: 130px; }
         }
 
@@ -1045,22 +1085,20 @@
             .navbar { top: 60px; left: 0.5rem; right: calc(0.5rem + 90px); padding: 0.6rem 1rem; }
             .menu-icon img { width: 28px; }
             
-            /* Texto de navbar alineado a la derecha en móvil y más grande */
             .navbar-text { 
-                font-size: 1rem; 
+                font-size: 0.85rem; 
                 margin-left: auto;
                 margin-right: 0;
                 text-align: right;
             }
             
-            /* Hero section - ocupa el espacio de la imagen sin márgenes negativos */
             .hero-section { 
                 min-height: auto; 
                 height: auto; 
-                background-size: contain; 
-                background-position: top center; 
+                background-size: cover; 
+                background-position: center; 
                 background-repeat: no-repeat; 
-                padding-bottom: 56%;
+                min-height: 100vh;
             }
             
             .cobertura-section { 
@@ -1068,26 +1106,10 @@
                 margin-top: 0;
             }
             
-            .cobertura-section h2 { font-size: 1.6rem; }
-            .historias-section h2 { font-size: 1.6rem; }
-            .como-funciona-azul-section h2 { font-size: 1.6rem; }
-            
-            /* Textos más grandes en móvil (+50%) */
-            .cobertura-card h3 { font-size: 1.2rem; }
-            .paso-fusion-card h3 { font-size: 1.3rem; }
-            .paso-fusion-card p { font-size: 1rem; }
-            .paso-azul-card h3 { font-size: 1.3rem; }
-            .paso-azul-card p { font-size: 1rem; }
-            .formulario-fusion h3 { font-size: 1.6rem; }
-            .form-group label { font-size: 1rem; }
-            .privacy-group label { font-size: 0.9rem; }
-            .btn-continuar { font-size: 1.1rem; }
-            
-            /* Video reposicionado sobre la imagen */
             .hero-video-container { 
                 top: auto;
                 bottom: 15%;
-                left: 8%;
+                left: 28%;
                 transform: none;
                 width: 100px;
                 min-width: 80px;
@@ -1106,14 +1128,15 @@
             .cobertura-card { min-width: 160px; }
             .cobertura-card img { height: 100px; }
             
-            /* Overlay más grande en móvil */
-            .zero-cost-overlay { left: 5px; bottom: 5px; }
-            .zero-cost-overlay .big-zero { font-size: 1.8rem; }
-            .zero-cost-overlay .text-group .zero-text { font-size: 0.65rem; }
-            .zero-cost-overlay .text-group .costo-text { font-size: 0.55rem; }
+            .zero-cost-overlay { left: 15px; bottom: 5px; }
+            .zero-cost-overlay .big-zero { font-size: 1.6rem; }
+            .zero-cost-overlay .text-group .zero-text { font-size: 0.55rem; }
+            .zero-cost-overlay .text-group .costo-text { font-size: 0.45rem; }
             
             .pasos-fusion-grid { flex-direction: column; align-items: center; }
             .paso-fusion-card { max-width: 280px; }
+            .paso-fusion-card p { font-size: 0.9rem; }
+            
             .carousel-slide { flex: 0 0 calc(100% - 0rem); }
             .carousel-wrapper { padding: 0 20px; }
             .carousel-button { width: 36px; height: 36px; font-size: 18px; }
@@ -1125,16 +1148,18 @@
             .social-icons-footer { justify-content: center; }
             .footer-logo img { height: 180px; margin: 0 auto; }
             .sidebar { width: 280px; }
+            
+            /* Texto más grande en móvil */
+            .cobertura-card h3 { font-size: 0.9rem; }
+            .paso-fusion-card p { font-size: 0.9rem; }
+            .beneficio-list li { font-size: 0.9rem; }
         }
 
         @media (max-width: 480px) {
             .logo-float img { height: 55px; }
             .navbar { top: 50px; right: calc(0.5rem + 70px); }
-            .navbar-text { font-size: 0.9rem; }
-            .cobertura-section h2 { font-size: 1.4rem; }
-            .historias-section h2 { font-size: 1.4rem; }
-            .como-funciona-azul-section h2 { font-size: 1.4rem; }
-            .hero-video-container { width: 70px; min-width: 70px; left: 6%; bottom: 12%; }
+            .navbar-text { font-size: 0.75rem; }
+            .hero-video-container { width: 80px; min-width: 80px; left: 30%; bottom: 12%; }
             .hero-video-container .play-pause-btn { width: 25px; height: 25px; }
             .hero-video-container .play-pause-btn svg { width: 12px; height: 12px; }
             .full-video-wrapper .play-pause-btn { width: 45px; height: 45px; }
@@ -1142,11 +1167,11 @@
             .carousel-slide .play-pause-btn { width: 35px; height: 35px; }
             .carousel-slide .play-pause-btn svg { width: 18px; height: 18px; }
             .cobertura-card { min-width: 140px; }
-            .cobertura-card h3 { font-size: 1rem; }
+            .cobertura-card h3 { font-size: 0.85rem; }
             .cobertura-card img { height: 85px; }
-            .zero-cost-overlay .big-zero { font-size: 1.4rem; }
-            .zero-cost-overlay .text-group .zero-text { font-size: 0.5rem; }
-            .zero-cost-overlay .text-group .costo-text { font-size: 0.4rem; }
+            .zero-cost-overlay .big-zero { font-size: 1.3rem; }
+            .zero-cost-overlay .text-group .zero-text { font-size: 0.45rem; }
+            .zero-cost-overlay .text-group .costo-text { font-size: 0.35rem; }
             .footer-logo img { height: 140px; }
             .social-icons-footer img { width: 45px; height: 45px; }
         }
@@ -1173,6 +1198,12 @@
         </div>
     </div>
 
+    <!-- Modal para video a pantalla completa -->
+    <div id="videoModal" class="video-modal" onclick="closeVideoModal()">
+        <span class="close-modal">&times;</span>
+        <video id="modalVideo" controls autoplay></video>
+    </div>
+
     <div class="logo-float" id="logoButton">
         <img src="fotos/logo-fondo.png" alt="Siempre Nuevo">
     </div>
@@ -1193,7 +1224,7 @@
                 <video id="heroVideo" playsinline webkit-playsinline controls preload="auto" poster="fotos/miniatura1.png">
                     <source src="fotos/video1.mp4" type="video/mp4">
                 </video>
-                <div class="play-pause-btn" data-video="heroVideo">
+                <div class="play-pause-btn" data-video="heroVideo" data-fullscreen="true">
                     <svg viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z"/>
                     </svg>
@@ -1273,8 +1304,8 @@
                         <p>Sin afectar tu historial ni incurrir en deducibles.*</p>
                     </div>
                 </div>
-                <div class="asterisco-nota">
-                    * De acuerdo a los términos y condiciones del programa.
+                <div class="asterisco-note">
+                    * De acuerdo a los <a href="terminos-y-condiciones">términos y condiciones</a> del programa.
                 </div>
             </div>
             <div class="formulario-fusion">
@@ -1311,7 +1342,7 @@
                 <video id="fullVideo" playsinline webkit-playsinline controls preload="auto" poster="fotos/miniatura3.png">
                     <source src="fotos/video2.mp4" type="video/mp4">
                 </video>
-                <div class="play-pause-btn" data-video="fullVideo">
+                <div class="play-pause-btn" data-video="fullVideo" data-fullscreen="true">
                     <svg viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z"/>
                     </svg>
@@ -1360,7 +1391,7 @@
                                 <video id="carouselVideo1" playsinline webkit-playsinline controls preload="auto" poster="fotos/miniatura2.png">
                                     <source src="fotos/video3.mp4" type="video/mp4">
                                 </video>
-                                <div class="play-pause-btn" data-video="carouselVideo1">
+                                <div class="play-pause-btn" data-video="carouselVideo1" data-fullscreen="true">
                                     <svg viewBox="0 0 24 24">
                                         <path d="M8 5v14l11-7z"/>
                                     </svg>
@@ -1456,18 +1487,29 @@
             
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
             
-            // Función para hacer pantalla completa a los videos
-            function requestFullscreen(element) {
-                if (element.requestFullscreen) {
-                    element.requestFullscreen();
-                } else if (element.webkitRequestFullscreen) {
-                    element.webkitRequestFullscreen();
-                } else if (element.msRequestFullscreen) {
-                    element.msRequestFullscreen();
+            // Función para abrir video a pantalla completa
+            function openFullscreenVideo(videoElement) {
+                const modal = document.getElementById('videoModal');
+                const modalVideo = document.getElementById('modalVideo');
+                const videoSrc = videoElement.querySelector('source')?.src || videoElement.src;
+                
+                if (videoSrc) {
+                    modalVideo.src = videoSrc;
+                    modalVideo.load();
+                    modal.classList.add('active');
+                    modalVideo.play();
                 }
             }
             
-            function setupVideoControls(videoId, btnElement) {
+            function closeVideoModal() {
+                const modal = document.getElementById('videoModal');
+                const modalVideo = document.getElementById('modalVideo');
+                modal.classList.remove('active');
+                modalVideo.pause();
+                modalVideo.src = '';
+            }
+            
+            function setupVideoControls(videoId, btnElement, isFullscreen = false) {
                 const video = document.getElementById(videoId);
                 if (!video) return;
                 
@@ -1489,13 +1531,13 @@
                 }
                 
                 function playVideo() {
-                    if (isIOS) {
+                    if (isFullscreen) {
+                        openFullscreenVideo(video);
+                    } else if (isIOS) {
                         video.muted = true;
                         video.play().then(() => {
                             video.muted = false;
                             updateButtonIcon();
-                            // Hacer pantalla completa al reproducir
-                            requestFullscreen(video);
                         }).catch(e => {
                             setTimeout(() => {
                                 video.muted = false;
@@ -1503,17 +1545,15 @@
                             }, 100);
                         });
                     } else {
-                        video.play().then(() => {
-                            updateButtonIcon();
-                            // Hacer pantalla completa al reproducir
-                            requestFullscreen(video);
-                        }).catch(e => console.log(`Error playing ${videoId}:`, e));
+                        video.play().catch(e => console.log(`Error playing ${videoId}:`, e));
                     }
                     updateButtonIcon();
                 }
                 
                 function togglePlay() {
-                    if (video.paused || video.ended) {
+                    if (isFullscreen) {
+                        playVideo();
+                    } else if (video.paused || video.ended) {
                         playVideo();
                     } else {
                         video.pause();
@@ -1538,7 +1578,7 @@
                 
                 updateButtonIcon();
                 
-                if (isIOS) {
+                if (isIOS && !isFullscreen) {
                     const unlockGlobalAudio = function() {
                         const testVideo = document.createElement('video');
                         testVideo.muted = true;
@@ -1557,9 +1597,9 @@
             const fullBtn = document.querySelector('.full-video-wrapper .play-pause-btn');
             const carouselBtn = document.querySelector('.carousel-slide .play-pause-btn');
             
-            setupVideoControls('heroVideo', heroBtn);
-            setupVideoControls('fullVideo', fullBtn);
-            setupVideoControls('carouselVideo1', carouselBtn);
+            setupVideoControls('heroVideo', heroBtn, true);
+            setupVideoControls('fullVideo', fullBtn, true);
+            setupVideoControls('carouselVideo1', carouselBtn, true);
             
             function openMenu() {
                 sidebar.classList.add('open');
