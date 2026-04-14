@@ -298,6 +298,8 @@
             margin-bottom: 2rem;
             position: relative;
             display: inline-block;
+            text-align: center;
+            width: 100%;
         }
 
         .cobertura-section h2:after {
@@ -346,7 +348,7 @@
             display: block;
         }
 
-        /* Overlay en esquina inferior izquierda - usando porcentajes relativos */
+        /* Overlay en esquina inferior izquierda - TEXTO MÁS GRANDE */
         .zero-cost-overlay {
             position: absolute;
             bottom: 8px;
@@ -357,7 +359,7 @@
         }
 
         .zero-cost-overlay .big-zero {
-            font-size: 2.2rem;
+            font-size: 2.8rem;
             font-weight: 800;
             line-height: 1;
             color: white;
@@ -373,7 +375,7 @@
         }
 
         .zero-cost-overlay .text-group .zero-text {
-            font-size: 0.7rem;
+            font-size: 0.9rem;
             font-weight: 800;
             line-height: 1.1;
             color: white;
@@ -382,7 +384,7 @@
         }
 
         .zero-cost-overlay .text-group .costo-text {
-            font-size: 0.55rem;
+            font-size: 0.7rem;
             font-weight: 700;
             line-height: 1.1;
             color: white;
@@ -424,6 +426,8 @@
             margin-bottom: 2rem;
             position: relative;
             display: inline-block;
+            text-align: left;
+            width: auto;
         }
 
         .como-funciona-fusion h2:after {
@@ -482,6 +486,14 @@
             line-height: 1.4;
         }
 
+        /* Nota del asterisco */
+        .asterisco-nota {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.75rem;
+            color: #e7f3ff;
+        }
+
         .formulario-fusion {
             flex: 0.8;
             min-width: 320px;
@@ -495,6 +507,7 @@
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
             font-weight: 600;
+            text-align: center;
         }
 
         .form-group {
@@ -712,6 +725,8 @@
             margin-bottom: 2rem;
             position: relative;
             display: inline-block;
+            text-align: center;
+            width: 100%;
         }
 
         .historias-section h2:after {
@@ -1020,6 +1035,8 @@
             .blue-fusion-inner { flex-direction: column; }
             .formulario-fusion { max-width: 500px; margin: 0 auto; }
             .como-funciona-fusion h2:after { left: 0; transform: none; }
+            .como-funciona-fusion h2 { text-align: center; width: 100%; }
+            .como-funciona-fusion h2:after { left: 50%; transform: translateX(-50%); }
             .cobertura-card img { height: 130px; }
         }
 
@@ -1028,9 +1045,9 @@
             .navbar { top: 60px; left: 0.5rem; right: calc(0.5rem + 90px); padding: 0.6rem 1rem; }
             .menu-icon img { width: 28px; }
             
-            /* Texto de navbar alineado a la derecha en móvil */
+            /* Texto de navbar alineado a la derecha en móvil y más grande */
             .navbar-text { 
-                font-size: 0.85rem; 
+                font-size: 1rem; 
                 margin-left: auto;
                 margin-right: 0;
                 text-align: right;
@@ -1043,14 +1060,28 @@
                 background-size: contain; 
                 background-position: top center; 
                 background-repeat: no-repeat; 
-                padding-bottom: 56%; /* Relación de aspecto de la imagen carro.png */
+                padding-bottom: 56%;
             }
             
-            /* El contenedor de cobertura ya no necesita margin-top negativo */
             .cobertura-section { 
                 padding-top: 2rem; 
                 margin-top: 0;
             }
+            
+            .cobertura-section h2 { font-size: 1.6rem; }
+            .historias-section h2 { font-size: 1.6rem; }
+            .como-funciona-azul-section h2 { font-size: 1.6rem; }
+            
+            /* Textos más grandes en móvil (+50%) */
+            .cobertura-card h3 { font-size: 1.2rem; }
+            .paso-fusion-card h3 { font-size: 1.3rem; }
+            .paso-fusion-card p { font-size: 1rem; }
+            .paso-azul-card h3 { font-size: 1.3rem; }
+            .paso-azul-card p { font-size: 1rem; }
+            .formulario-fusion h3 { font-size: 1.6rem; }
+            .form-group label { font-size: 1rem; }
+            .privacy-group label { font-size: 0.9rem; }
+            .btn-continuar { font-size: 1.1rem; }
             
             /* Video reposicionado sobre la imagen */
             .hero-video-container { 
@@ -1075,11 +1106,11 @@
             .cobertura-card { min-width: 160px; }
             .cobertura-card img { height: 100px; }
             
-            /* Ajuste del overlay en móvil */
+            /* Overlay más grande en móvil */
             .zero-cost-overlay { left: 5px; bottom: 5px; }
-            .zero-cost-overlay .big-zero { font-size: 1.4rem; }
-            .zero-cost-overlay .text-group .zero-text { font-size: 0.5rem; }
-            .zero-cost-overlay .text-group .costo-text { font-size: 0.4rem; }
+            .zero-cost-overlay .big-zero { font-size: 1.8rem; }
+            .zero-cost-overlay .text-group .zero-text { font-size: 0.65rem; }
+            .zero-cost-overlay .text-group .costo-text { font-size: 0.55rem; }
             
             .pasos-fusion-grid { flex-direction: column; align-items: center; }
             .paso-fusion-card { max-width: 280px; }
@@ -1099,7 +1130,10 @@
         @media (max-width: 480px) {
             .logo-float img { height: 55px; }
             .navbar { top: 50px; right: calc(0.5rem + 70px); }
-            .navbar-text { font-size: 0.75rem; }
+            .navbar-text { font-size: 0.9rem; }
+            .cobertura-section h2 { font-size: 1.4rem; }
+            .historias-section h2 { font-size: 1.4rem; }
+            .como-funciona-azul-section h2 { font-size: 1.4rem; }
             .hero-video-container { width: 70px; min-width: 70px; left: 6%; bottom: 12%; }
             .hero-video-container .play-pause-btn { width: 25px; height: 25px; }
             .hero-video-container .play-pause-btn svg { width: 12px; height: 12px; }
@@ -1108,11 +1142,11 @@
             .carousel-slide .play-pause-btn { width: 35px; height: 35px; }
             .carousel-slide .play-pause-btn svg { width: 18px; height: 18px; }
             .cobertura-card { min-width: 140px; }
-            .cobertura-card h3 { font-size: 0.8rem; }
+            .cobertura-card h3 { font-size: 1rem; }
             .cobertura-card img { height: 85px; }
-            .zero-cost-overlay .big-zero { font-size: 1.1rem; }
-            .zero-cost-overlay .text-group .zero-text { font-size: 0.4rem; }
-            .zero-cost-overlay .text-group .costo-text { font-size: 0.32rem; }
+            .zero-cost-overlay .big-zero { font-size: 1.4rem; }
+            .zero-cost-overlay .text-group .zero-text { font-size: 0.5rem; }
+            .zero-cost-overlay .text-group .costo-text { font-size: 0.4rem; }
             .footer-logo img { height: 140px; }
             .social-icons-footer img { width: 45px; height: 45px; }
         }
@@ -1239,6 +1273,9 @@
                         <p>Sin afectar tu historial ni incurrir en deducibles.*</p>
                     </div>
                 </div>
+                <div class="asterisco-nota">
+                    * De acuerdo a los términos y condiciones del programa.
+                </div>
             </div>
             <div class="formulario-fusion">
                 <h3>Empieza a proteger tu auto hoy</h3>
@@ -1305,7 +1342,7 @@
                 </div>
             </div>
             <div class="terminos-note">
-                Aplican <a href="terminos-y-condiciones">términos y condiciones</a> del programa. <span style="font-size:0.7rem;">*De acuerdo a los términos y condiciones del programa.</span>
+                Aplican <a href="terminos-y-condiciones">términos y condiciones</a> del programa.
             </div>
         </div>
     </div>
@@ -1419,6 +1456,17 @@
             
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
             
+            // Función para hacer pantalla completa a los videos
+            function requestFullscreen(element) {
+                if (element.requestFullscreen) {
+                    element.requestFullscreen();
+                } else if (element.webkitRequestFullscreen) {
+                    element.webkitRequestFullscreen();
+                } else if (element.msRequestFullscreen) {
+                    element.msRequestFullscreen();
+                }
+            }
+            
             function setupVideoControls(videoId, btnElement) {
                 const video = document.getElementById(videoId);
                 if (!video) return;
@@ -1446,6 +1494,8 @@
                         video.play().then(() => {
                             video.muted = false;
                             updateButtonIcon();
+                            // Hacer pantalla completa al reproducir
+                            requestFullscreen(video);
                         }).catch(e => {
                             setTimeout(() => {
                                 video.muted = false;
@@ -1453,7 +1503,11 @@
                             }, 100);
                         });
                     } else {
-                        video.play().catch(e => console.log(`Error playing ${videoId}:`, e));
+                        video.play().then(() => {
+                            updateButtonIcon();
+                            // Hacer pantalla completa al reproducir
+                            requestFullscreen(video);
+                        }).catch(e => console.log(`Error playing ${videoId}:`, e));
                     }
                     updateButtonIcon();
                 }
