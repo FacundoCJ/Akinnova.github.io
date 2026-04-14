@@ -123,7 +123,7 @@
 
         .navbar {
             position: fixed;
-            top: 70px;
+            top: 60px;
             transform: translateY(-50%);
             left: 1rem;
             right: calc(1rem + 140px);
@@ -177,9 +177,10 @@
             display: flex;
             flex-direction: column;
             background-image: url('fotos/carro.png');
-            background-size: cover;
+            background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
+            background-color: #f5f5f5;
         }
 
         .hero-video-container {
@@ -390,11 +391,11 @@
             display: block;
         }
 
-        /* Overlay en esquina inferior izquierda */
+        /* Overlay en esquina inferior izquierda - MOVIDO 10% MÁS A LA DERECHA */
         .zero-cost-overlay {
             position: absolute;
             bottom: 8px;
-            left: 8px;
+            left: 12%;
             display: flex;
             align-items: center;
             gap: 0.15rem;
@@ -1086,7 +1087,7 @@
 
         @media (max-width: 768px) {
             .logo-float img { height: 70px; }
-            .navbar { top: 60px; left: 0.5rem; right: calc(0.5rem + 90px); padding: 0.6rem 1rem; }
+            .navbar { top: 50px; left: 0.5rem; right: calc(0.5rem + 90px); padding: 0.6rem 1rem; }
             .menu-icon img { width: 28px; }
             
             .navbar-text { 
@@ -1099,9 +1100,10 @@
             .hero-section { 
                 min-height: 100vh; 
                 height: 100vh; 
-                background-size: cover; 
+                background-size: contain; 
                 background-position: center; 
                 background-repeat: no-repeat; 
+                background-color: #f5f5f5;
             }
             
             .cobertura-section { 
@@ -1131,8 +1133,8 @@
             .cobertura-card { min-width: 160px; }
             .cobertura-card img { height: 100px; }
             
-            /* Mover overlay más a la derecha (20% más) */
-            .zero-cost-overlay { left: 28px; bottom: 5px; }
+            /* Overlay más a la derecha en móvil */
+            .zero-cost-overlay { left: 15%; bottom: 5px; }
             .zero-cost-overlay .big-zero { font-size: 1.6rem; }
             .zero-cost-overlay .text-group .zero-text { font-size: 0.55rem; }
             .zero-cost-overlay .text-group .costo-text { font-size: 0.45rem; }
@@ -1161,7 +1163,7 @@
 
         @media (max-width: 480px) {
             .logo-float img { height: 55px; }
-            .navbar { top: 50px; right: calc(0.5rem + 70px); }
+            .navbar { top: 45px; right: calc(0.5rem + 70px); }
             .navbar-text { font-size: 0.75rem; }
             .hero-video-container { width: 80px; min-width: 80px; left: 30%; bottom: 12%; }
             .hero-video-container .play-pause-btn { width: 25px; height: 25px; }
@@ -1173,7 +1175,7 @@
             .cobertura-card { min-width: 140px; }
             .cobertura-card h3 { font-size: 0.85rem; }
             .cobertura-card img { height: 85px; }
-            .zero-cost-overlay { left: 24px; }
+            .zero-cost-overlay { left: 12%; }
             .zero-cost-overlay .big-zero { font-size: 1.3rem; }
             .zero-cost-overlay .text-group .zero-text { font-size: 0.45rem; }
             .zero-cost-overlay .text-group .costo-text { font-size: 0.35rem; }
@@ -1187,6 +1189,7 @@
     </style>
 </head>
 <body>
+    <!-- (El resto del HTML permanece igual) -->
     <div class="overlay" id="overlay"></div>
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
