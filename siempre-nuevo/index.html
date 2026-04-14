@@ -123,7 +123,7 @@
 
         .navbar {
             position: fixed;
-            top: 60px;
+            top: 70px;
             transform: translateY(-50%);
             left: 1rem;
             right: calc(1rem + 140px);
@@ -177,10 +177,9 @@
             display: flex;
             flex-direction: column;
             background-image: url('fotos/carro.png');
-            background-size: contain;
+            background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-color: #f5f5f5;
         }
 
         .hero-video-container {
@@ -391,11 +390,11 @@
             display: block;
         }
 
-        /* Overlay en esquina inferior izquierda - MOVIDO 10% MÁS A LA DERECHA */
+        /* Overlay en esquina inferior izquierda - MOVER 30% MÁS A LA DERECHA */
         .zero-cost-overlay {
             position: absolute;
             bottom: 8px;
-            left: 12%;
+            left: 8px;
             display: flex;
             align-items: center;
             gap: 0.15rem;
@@ -1087,6 +1086,7 @@
 
         @media (max-width: 768px) {
             .logo-float img { height: 70px; }
+            /* Barra de inicio: sube un 2% (de 60px a 50px) */
             .navbar { top: 50px; left: 0.5rem; right: calc(0.5rem + 90px); padding: 0.6rem 1rem; }
             .menu-icon img { width: 28px; }
             
@@ -1100,10 +1100,9 @@
             .hero-section { 
                 min-height: 100vh; 
                 height: 100vh; 
-                background-size: contain; 
+                background-size: cover; 
                 background-position: center; 
                 background-repeat: no-repeat; 
-                background-color: #f5f5f5;
             }
             
             .cobertura-section { 
@@ -1111,11 +1110,11 @@
                 margin-top: 0;
             }
             
+            /* Video reposicionado: izquierda 35%, arriba 40% */
             .hero-video-container { 
-                top: auto;
-                bottom: 15%;
-                left: 28%;
-                transform: none;
+                top: 40%;
+                left: 35%;
+                transform: translate(-50%, -50%);
                 width: 100px;
                 min-width: 80px;
                 max-width: 100px;
@@ -1133,8 +1132,8 @@
             .cobertura-card { min-width: 160px; }
             .cobertura-card img { height: 100px; }
             
-            /* Overlay más a la derecha en móvil */
-            .zero-cost-overlay { left: 15%; bottom: 5px; }
+            /* Overlay - mover 30% más a la derecha (de 28px a 50px) */
+            .zero-cost-overlay { left: 50px; bottom: 5px; }
             .zero-cost-overlay .big-zero { font-size: 1.6rem; }
             .zero-cost-overlay .text-group .zero-text { font-size: 0.55rem; }
             .zero-cost-overlay .text-group .costo-text { font-size: 0.45rem; }
@@ -1165,7 +1164,7 @@
             .logo-float img { height: 55px; }
             .navbar { top: 45px; right: calc(0.5rem + 70px); }
             .navbar-text { font-size: 0.75rem; }
-            .hero-video-container { width: 80px; min-width: 80px; left: 30%; bottom: 12%; }
+            .hero-video-container { width: 80px; min-width: 80px; left: 35%; top: 40%; }
             .hero-video-container .play-pause-btn { width: 25px; height: 25px; }
             .hero-video-container .play-pause-btn svg { width: 12px; height: 12px; }
             .full-video-wrapper .play-pause-btn { width: 45px; height: 45px; }
@@ -1175,12 +1174,18 @@
             .cobertura-card { min-width: 140px; }
             .cobertura-card h3 { font-size: 0.85rem; }
             .cobertura-card img { height: 85px; }
-            .zero-cost-overlay { left: 12%; }
+            /* Overlay móvil pequeño - mover más a la derecha */
+            .zero-cost-overlay { left: 42px; }
             .zero-cost-overlay .big-zero { font-size: 1.3rem; }
             .zero-cost-overlay .text-group .zero-text { font-size: 0.45rem; }
             .zero-cost-overlay .text-group .costo-text { font-size: 0.35rem; }
             .footer-logo img { height: 140px; }
             .social-icons-footer img { width: 45px; height: 45px; }
+        }
+
+        /* Desktop: mover overlay 30% más a la derecha */
+        @media (min-width: 769px) {
+            .zero-cost-overlay { left: 30px; }
         }
 
         @supports (-webkit-touch-callout: none) {
@@ -1189,7 +1194,6 @@
     </style>
 </head>
 <body>
-    <!-- (El resto del HTML permanece igual) -->
     <div class="overlay" id="overlay"></div>
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
