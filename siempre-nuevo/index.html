@@ -1112,7 +1112,6 @@
                 text-align: right;
             }
             
-            /* ELIMINACIÓN COMPLETA DEL ESPACIO BLANCO */
             .hero-section { 
                 min-height: 70vh; 
                 height: 70vh; 
@@ -1130,9 +1129,9 @@
                 z-index: 2;
             }
             
-            /* Video reposicionado */
+            /* Video reposicionado - BAJA UN POCO (de 28% a 32%) */
             .hero-video-container { 
-                top: 28%;
+                top: 32%;
                 left: 25%;
                 transform: translate(-50%, -50%);
                 width: 100px;
@@ -1190,7 +1189,7 @@
             .cobertura-section { 
                 margin-top: -170px;
             }
-            .hero-video-container { width: 80px; min-width: 80px; left: 25%; top: 28%; }
+            .hero-video-container { width: 80px; min-width: 80px; left: 25%; top: 32%; }
             .hero-video-container .play-pause-btn { width: 25px; height: 25px; }
             .hero-video-container .play-pause-btn svg { width: 12px; height: 12px; }
             .full-video-wrapper .play-pause-btn { width: 45px; height: 45px; }
@@ -1208,13 +1207,18 @@
             .social-icons-footer img { width: 45px; height: 45px; }
         }
 
-        /* Desktop: mover overlay 4% más a la derecha (de 50px a 70px) */
+        /* Desktop: mover overlay 4% más a la derecha y BAJAR LA SECCIÓN COBERTURA */
         @media (min-width: 769px) {
             .hero-section { 
                 background-size: cover; 
                 background-position: center; 
             }
             .zero-cost-overlay { left: 70px; }
+            
+            /* En desktop, la sección cobertura baja un poco */
+            .cobertura-section { 
+                margin-top: 50px;
+            }
         }
 
         @supports (-webkit-touch-callout: none) {
