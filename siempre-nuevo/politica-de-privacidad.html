@@ -112,14 +112,14 @@
             transform: scale(1.02);
         }
         .logo-float img {
-            height: 120px;
+            height: clamp(50px, 10vw, 120px);
             width: auto;
             display: block;
         }
 
         .navbar {
             position: fixed;
-            top: 10%;
+            top: 70px;
             transform: translateY(-50%);
             left: 1rem;
             right: calc(1rem + 140px);
@@ -176,7 +176,7 @@
         .politica-title {
             text-align: center;
             color: #0c3a6a;
-            font-size: 2.5rem;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
             font-weight: 700;
             margin-bottom: 2rem;
             position: relative;
@@ -247,8 +247,8 @@
         }
 
         .whatsapp-float img {
-            width: 80px;
-            height: 80px;
+            width: clamp(60px, 10vw, 80px);
+            height: clamp(60px, 10vw, 80px);
             border-radius: 50%;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease;
@@ -287,7 +287,7 @@
         }
 
         .footer-logo img {
-            height: 280px;
+            height: clamp(140px, 20vw, 280px);
             width: auto;
             display: block;
         }
@@ -366,8 +366,8 @@
         }
 
         .social-icons-footer img {
-            width: 52px;
-            height: 52px;
+            width: clamp(35px, 8vw, 52px);
+            height: clamp(35px, 8vw, 52px);
         }
 
         .footer-links-column {
@@ -420,17 +420,14 @@
             .logo-float img { height: 100px; }
             .navbar { right: calc(1rem + 120px); }
             .politica-section { padding: 160px 1.5rem 3rem 1.5rem; }
-            .politica-title { font-size: 2rem; }
-            .politica-content { padding: 2rem; }
         }
 
         @media (max-width: 768px) {
             .logo-float img { height: 70px; }
-            .navbar { top: 25px !important; transform: translateY(0) !important; left: 0.5rem; right: calc(0.5rem + 90px) !important; padding: 0.6rem 1rem; }
+            .navbar { top: 43px; left: 0.5rem; right: calc(0.5rem + 90px); padding: 0.6rem 1rem; }
             .menu-icon img { width: 28px; }
             .menu-icon { position: absolute; left: 0; }
             
-            /* En móvil, el texto se mueve a la derecha para que no tape el menú - IGUAL QUE INDEX */
             .navbar-text { 
                 font-size: 0.85rem; 
                 margin-left: auto;
@@ -455,7 +452,7 @@
         @media (max-width: 480px) {
             .logo-float img { height: 55px; }
             .navbar-text { font-size: 0.75rem; }
-            .navbar { right: calc(0.5rem + 70px) !important; top: 25px !important; }
+            .navbar { top: 38px; right: calc(0.5rem + 70px); }
             .politica-section { padding-top: 105px; }
             .politica-title { font-size: 1.3rem; }
             .politica-content { padding: 1.2rem; }
