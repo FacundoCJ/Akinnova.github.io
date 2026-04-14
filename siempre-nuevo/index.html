@@ -116,17 +116,17 @@
             transform: scale(1.02);
         }
         .logo-float img {
-            height: clamp(50px, 10vw, 120px);
+            height: 120px;
             width: auto;
             display: block;
         }
 
         .navbar {
             position: fixed;
-            top: 10%;
+            top: 70px;
             transform: translateY(-50%);
             left: 1rem;
-            right: calc(1rem + clamp(60px, 15vw, 140px));
+            right: calc(1rem + 140px);
             z-index: 100;
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(2px);
@@ -146,7 +146,7 @@
 
         .navbar-text {
             color: #0c3a6a;
-            font-size: clamp(0.75rem, 3vw, 1.4rem);
+            font-size: 1.4rem;
             font-weight: 600;
             font-style: italic;
             text-align: center;
@@ -165,7 +165,7 @@
             transform: scale(1.02);
         }
         .menu-icon img {
-            width: clamp(25px, 5vw, 35px);
+            width: 35px;
             height: auto;
             display: block;
         }
@@ -187,9 +187,8 @@
             top: 55%;
             left: 25%;
             transform: translate(-50%, -50%);
-            width: min(16%, 220px);
-            max-width: 220px;
-            min-width: 120px;
+            width: 16%;
+            max-width: 16%;
             overflow: hidden;
             border-radius: 16px;
             box-shadow: 0 0 0 4px white, 0 8px 25px rgba(0, 0, 0, 0.3);
@@ -243,12 +242,12 @@
         }
 
         .hero-video-container .play-pause-btn {
-            width: clamp(30px, 7vw, 45px);
-            height: clamp(30px, 7vw, 45px);
+            width: 45px;
+            height: 45px;
         }
         .hero-video-container .play-pause-btn svg {
-            width: clamp(15px, 3.5vw, 22px);
-            height: clamp(15px, 3.5vw, 22px);
+            width: 22px;
+            height: 22px;
         }
 
         .full-video-wrapper {
@@ -294,7 +293,7 @@
 
         .cobertura-section h2 {
             color: #0c3a6a;
-            font-size: clamp(1.5rem, 5vw, 2rem);
+            font-size: 2rem;
             font-weight: 600;
             margin-bottom: 2rem;
             position: relative;
@@ -323,7 +322,7 @@
 
         .cobertura-card {
             flex: 1;
-            min-width: 180px;
+            min-width: 220px;
             max-width: 260px;
             text-align: center;
             transition: transform 0.3s ease;
@@ -342,25 +341,23 @@
 
         .cobertura-card img {
             width: 100%;
-            height: auto;
-            max-height: 160px;
+            height: 160px;
             object-fit: contain;
             display: block;
         }
 
-        /* OVERLAY - POSICIÓN RELATIVA AL CONTENEDOR (CORREGIDO) */
+        /* Overlay en esquina inferior izquierda - usando porcentajes relativos */
         .zero-cost-overlay {
             position: absolute;
-            bottom: 5%;
-            left: 5%;
+            bottom: 8px;
+            left: 8px;
             display: flex;
             align-items: center;
             gap: 0.15rem;
-            z-index: 2;
         }
 
         .zero-cost-overlay .big-zero {
-            font-size: clamp(1rem, 5vw, 3rem);
+            font-size: 2.2rem;
             font-weight: 800;
             line-height: 1;
             color: white;
@@ -376,7 +373,7 @@
         }
 
         .zero-cost-overlay .text-group .zero-text {
-            font-size: clamp(0.4rem, 2vw, 0.9rem);
+            font-size: 0.7rem;
             font-weight: 800;
             line-height: 1.1;
             color: white;
@@ -385,7 +382,7 @@
         }
 
         .zero-cost-overlay .text-group .costo-text {
-            font-size: clamp(0.32rem, 1.5vw, 0.7rem);
+            font-size: 0.55rem;
             font-weight: 700;
             line-height: 1.1;
             color: white;
@@ -395,7 +392,7 @@
 
         .cobertura-card h3 {
             color: #0c3a6a;
-            font-size: clamp(0.75rem, 2.5vw, 1rem);
+            font-size: 1rem;
             font-weight: 600;
             margin-top: 0.5rem;
             line-height: 1.3;
@@ -422,7 +419,7 @@
 
         .como-funciona-fusion h2 {
             color: white;
-            font-size: clamp(1.3rem, 4vw, 1.8rem);
+            font-size: 1.8rem;
             font-weight: 600;
             margin-bottom: 2rem;
             position: relative;
@@ -612,7 +609,7 @@
 
         .como-funciona-azul-section h2 {
             color: white;
-            font-size: clamp(1.5rem, 5vw, 2rem);
+            font-size: 2rem;
             font-weight: 600;
             margin-bottom: 2rem;
             position: relative;
@@ -710,7 +707,7 @@
 
         .historias-section h2 {
             color: #0c3a6a;
-            font-size: clamp(1.5rem, 5vw, 2rem);
+            font-size: 2rem;
             font-weight: 600;
             margin-bottom: 2rem;
             position: relative;
@@ -868,7 +865,7 @@
         }
 
         .footer-logo img {
-            height: clamp(140px, 20vw, 280px);
+            height: 280px;
             width: auto;
             display: block;
         }
@@ -943,8 +940,8 @@
         }
 
         .social-icons-footer img {
-            width: clamp(35px, 8vw, 52px);
-            height: clamp(35px, 8vw, 52px);
+            width: 52px;
+            height: 52px;
         }
 
         .footer-links-column {
@@ -1018,45 +1015,92 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
 
-        /* MEDIA QUERIES SIMPLIFICADAS - SOLO PARA AJUSTES FINOS */
+        /* MEDIA QUERIES - SOLO PARA REORGANIZAR EL DISEÑO EN MÓVIL */
+        @media (max-width: 1024px) {
+            .blue-fusion-inner { flex-direction: column; }
+            .formulario-fusion { max-width: 500px; margin: 0 auto; }
+            .como-funciona-fusion h2:after { left: 0; transform: none; }
+            .cobertura-card img { height: 130px; }
+        }
+
         @media (max-width: 768px) {
-            .hero-section { min-height: auto; height: auto; background-size: contain; background-position: top center; background-repeat: no-repeat; margin-bottom: -235px !important; padding-bottom: 0 !important; }
-            .cobertura-section { padding-top: 0 !important; margin-top: -235px !important; }
-            .hero-video-container { top: 80px !important; left: 12% !important; transform: translate(0, 0) !important; width: 14% !important; min-width: 80px; }
-            .hero-video-container .play-pause-btn { width: 30px; height: 30px; }
-            .hero-video-container .play-pause-btn svg { width: 15px; height: 15px; }
-            .full-video-wrapper .play-pause-btn { width: 50px; height: 50px; }
-            .full-video-wrapper .play-pause-btn svg { width: 25px; height: 25px; }
-            .carousel-slide .play-pause-btn { width: 40px; height: 40px; }
-            .carousel-slide .play-pause-btn svg { width: 20px; height: 20px; }
-            .cobertura-grid { gap: 1rem; }
-            .cobertura-card { min-width: 160px; }
-            .pasos-fusion-grid { flex-direction: column; align-items: center; }
-            .paso-fusion-card { max-width: 280px; }
-            .carousel-slide { flex: 0 0 calc(100% - 0rem); }
-            .carousel-wrapper { padding: 0 20px; }
-            .carousel-button { width: 36px; height: 36px; font-size: 18px; }
-            .whatsapp-float img { width: 60px; height: 60px; }
-            .footer-inner { flex-direction: column; text-align: center; }
-            .footer-left, .footer-contact, .footer-social, .footer-links-column { text-align: center; padding-top: 0; }
-            .footer-contact h3:after, .footer-social-title h3:after, .footer-links-column h3:after { left: 50%; transform: translateX(-50%); }
-            .social-icons-footer { justify-content: center; }
-            .sidebar { width: 280px; }
+            .logo-float img { height: 70px; }
+            .navbar { top: 60px; left: 0.5rem; right: calc(0.5rem + 90px); padding: 0.6rem 1rem; }
+            .menu-icon img { width: 28px; }
             
-            /* Ajuste para el texto de la barra en móvil */
+            /* Texto de navbar alineado a la derecha en móvil */
             .navbar-text { 
                 font-size: 0.85rem; 
                 margin-left: auto;
                 margin-right: 0;
                 text-align: right;
             }
-            .navbar { top: 25px !important; transform: translateY(0) !important; left: 0.5rem; right: calc(0.5rem + 90px) !important; padding: 0.6rem 1rem; }
-            .menu-icon img { width: 28px; }
-            .logo-float img { height: 70px; }
+            
+            /* Hero section - ocupa el espacio de la imagen sin márgenes negativos */
+            .hero-section { 
+                min-height: auto; 
+                height: auto; 
+                background-size: contain; 
+                background-position: top center; 
+                background-repeat: no-repeat; 
+                padding-bottom: 56%; /* Relación de aspecto de la imagen carro.png */
+            }
+            
+            /* El contenedor de cobertura ya no necesita margin-top negativo */
+            .cobertura-section { 
+                padding-top: 2rem; 
+                margin-top: 0;
+            }
+            
+            /* Video reposicionado sobre la imagen */
+            .hero-video-container { 
+                top: auto;
+                bottom: 15%;
+                left: 8%;
+                transform: none;
+                width: 100px;
+                min-width: 80px;
+                max-width: 100px;
+            }
+            
+            .hero-video-container .play-pause-btn { width: 30px; height: 30px; }
+            .hero-video-container .play-pause-btn svg { width: 15px; height: 15px; }
+            
+            .full-video-wrapper .play-pause-btn { width: 50px; height: 50px; }
+            .full-video-wrapper .play-pause-btn svg { width: 25px; height: 25px; }
+            .carousel-slide .play-pause-btn { width: 40px; height: 40px; }
+            .carousel-slide .play-pause-btn svg { width: 20px; height: 20px; }
+            
+            .cobertura-grid { gap: 1rem; }
+            .cobertura-card { min-width: 160px; }
+            .cobertura-card img { height: 100px; }
+            
+            /* Ajuste del overlay en móvil */
+            .zero-cost-overlay { left: 5px; bottom: 5px; }
+            .zero-cost-overlay .big-zero { font-size: 1.4rem; }
+            .zero-cost-overlay .text-group .zero-text { font-size: 0.5rem; }
+            .zero-cost-overlay .text-group .costo-text { font-size: 0.4rem; }
+            
+            .pasos-fusion-grid { flex-direction: column; align-items: center; }
+            .paso-fusion-card { max-width: 280px; }
+            .carousel-slide { flex: 0 0 calc(100% - 0rem); }
+            .carousel-wrapper { padding: 0 20px; }
+            .carousel-button { width: 36px; height: 36px; font-size: 18px; }
+            .whatsapp-float img { width: 60px; height: 60px; }
+            
+            .footer-inner { flex-direction: column; text-align: center; }
+            .footer-left, .footer-contact, .footer-social, .footer-links-column { text-align: center; padding-top: 0; }
+            .footer-contact h3:after, .footer-social-title h3:after, .footer-links-column h3:after { left: 50%; transform: translateX(-50%); }
+            .social-icons-footer { justify-content: center; }
+            .footer-logo img { height: 180px; margin: 0 auto; }
+            .sidebar { width: 280px; }
         }
 
         @media (max-width: 480px) {
-            .hero-video-container { width: 18% !important; min-width: 70px; left: 10% !important; top: 80px !important; }
+            .logo-float img { height: 55px; }
+            .navbar { top: 50px; right: calc(0.5rem + 70px); }
+            .navbar-text { font-size: 0.75rem; }
+            .hero-video-container { width: 70px; min-width: 70px; left: 6%; bottom: 12%; }
             .hero-video-container .play-pause-btn { width: 25px; height: 25px; }
             .hero-video-container .play-pause-btn svg { width: 12px; height: 12px; }
             .full-video-wrapper .play-pause-btn { width: 45px; height: 45px; }
@@ -1065,9 +1109,12 @@
             .carousel-slide .play-pause-btn svg { width: 18px; height: 18px; }
             .cobertura-card { min-width: 140px; }
             .cobertura-card h3 { font-size: 0.8rem; }
-            .navbar-text { font-size: 0.75rem; }
-            .navbar { right: calc(0.5rem + 70px) !important; top: 25px !important; }
-            .logo-float img { height: 55px; }
+            .cobertura-card img { height: 85px; }
+            .zero-cost-overlay .big-zero { font-size: 1.1rem; }
+            .zero-cost-overlay .text-group .zero-text { font-size: 0.4rem; }
+            .zero-cost-overlay .text-group .costo-text { font-size: 0.32rem; }
+            .footer-logo img { height: 140px; }
+            .social-icons-footer img { width: 45px; height: 45px; }
         }
 
         @supports (-webkit-touch-callout: none) {
@@ -1076,7 +1123,6 @@
     </style>
 </head>
 <body>
-    <!-- El resto del HTML permanece EXACTAMENTE IGUAL -->
     <div class="overlay" id="overlay"></div>
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
