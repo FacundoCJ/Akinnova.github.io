@@ -1536,7 +1536,29 @@
             
             // Almacenar objetos de audio por video
             const audioElements = {};
-            let syncInterval = null;
+            let syncIntervals = {};
+            
+            function stopSyncInterval(videoId) {
+                if (syncIntervals[videoId]) {
+                    clearInterval(syncIntervals[videoId]);
+                    syncIntervals[videoId] = null;
+                }
+            }
+            
+            function startSyncInterval(videoId, video, audio) {
+                stopSyncInterval(videoId);
+                syncIntervals[videoId] = setInterval(() => {
+                    if (audio && video && !video.paused && !video.ended) {
+                        const diff = Math.abs(audio.currentTime - video.currentTime);
+                        if (diff > 0.15) {
+                            audio.currentTime = video.currentTime;
+                        }
+                        if (audio.paused) {
+                            audio.play().catch(e => console.log('Audio resume error:', e));
+                        }
+                    }
+                }, 100);
+            }
             
             function openFullscreenVideo(videoElement, audioPath) {
                 const videoSrc = videoElement.querySelector('source')?.src || videoElement.src;
@@ -1546,7 +1568,6 @@
                     modalVideo.load();
                     modal.classList.add('active');
                     
-                    // Crear y reproducir audio por separado para el modal
                     if (audioPath && !audioElements['modal']) {
                         const audio = new Audio(audioPath);
                         audio.loop = false;
@@ -1554,21 +1575,19 @@
                         audio.play().catch(e => console.log('Audio play error:', e));
                         audioElements['modal'] = audio;
                         
-                        // Sincronizar audio con el video del modal
-                        const syncModalAudio = setInterval(() => {
+                        let modalSyncInterval = setInterval(() => {
                             if (!modal.classList.contains('active')) {
-                                clearInterval(syncModalAudio);
+                                clearInterval(modalSyncInterval);
                                 return;
                             }
-                            if (!modalVideo.paused && !modalVideo.ended && audio) {
+                            if (modalVideo && !modalVideo.paused && !modalVideo.ended && audio) {
                                 const diff = Math.abs(audio.currentTime - modalVideo.currentTime);
-                                if (diff > 0.1) {
+                                if (diff > 0.15) {
                                     audio.currentTime = modalVideo.currentTime;
                                 }
                             }
                         }, 100);
                         
-                        // Cuando se cierre el modal, pausar el audio
                         const checkModalClose = setInterval(() => {
                             if (!modal.classList.contains('active')) {
                                 if (audioElements['modal']) {
@@ -1577,7 +1596,7 @@
                                     delete audioElements['modal'];
                                 }
                                 clearInterval(checkModalClose);
-                                clearInterval(syncModalAudio);
+                                clearInterval(modalSyncInterval);
                             }
                         }, 500);
                     }
@@ -1588,8 +1607,10 @@
             
             function closeVideoModal() {
                 modal.classList.remove('active');
-                modalVideo.pause();
-                modalVideo.src = '';
+                if (modalVideo) {
+                    modalVideo.pause();
+                    modalVideo.src = '';
+                }
                 if (audioElements['modal']) {
                     audioElements['modal'].pause();
                     audioElements['modal'].currentTime = 0;
@@ -1643,37 +1664,6 @@
                     }
                 }
                 
-                function syncAudio() {
-                    if (!audio || isFullscreen) return;
-                    if (!video.paused && !video.ended) {
-                        const diff = Math.abs(audio.currentTime - video.currentTime);
-                        if (diff > 0.1) {
-                            audio.currentTime = video.currentTime;
-                        }
-                        if (audio.paused) {
-                            audio.play().catch(e => console.log('Audio resume error:', e));
-                        }
-                    } else if (audio && !audio.paused && !isFullscreen) {
-                        audio.pause();
-                    }
-                }
-                
-                function startSyncInterval() {
-                    if (syncInterval) clearInterval(syncInterval);
-                    syncInterval = setInterval(() => {
-                        if (audio && !isFullscreen && !video.paused && !video.ended) {
-                            syncAudio();
-                        }
-                    }, 100);
-                }
-                
-                function stopSyncInterval() {
-                    if (syncInterval) {
-                        clearInterval(syncInterval);
-                        syncInterval = null;
-                    }
-                }
-                
                 function playVideo() {
                     if (isFullscreen) {
                         openFullscreenVideo(video, audioPath);
@@ -1682,8 +1672,8 @@
                         if (audio) {
                             audio.currentTime = video.currentTime;
                             audio.play().catch(e => console.log('Audio play error:', e));
+                            startSyncInterval(videoId, video, audio);
                         }
-                        startSyncInterval();
                     }
                     updateButtonIcon();
                 }
@@ -1693,6 +1683,7 @@
                     if (audio && !isFullscreen) {
                         audio.pause();
                     }
+                    stopSyncInterval(videoId);
                     updateButtonIcon();
                 }
                 
@@ -1718,7 +1709,7 @@
                     if (audio && !isFullscreen) {
                         audio.currentTime = video.currentTime;
                         audio.play().catch(e => console.log('Audio play error:', e));
-                        startSyncInterval();
+                        startSyncInterval(videoId, video, audio);
                     }
                 });
                 
@@ -1727,7 +1718,7 @@
                     if (audio && !isFullscreen) {
                         audio.pause();
                     }
-                    stopSyncInterval();
+                    stopSyncInterval(videoId);
                 });
                 
                 video.addEventListener('ended', () => {
@@ -1736,14 +1727,16 @@
                         audio.pause();
                         audio.currentTime = 0;
                     }
-                    stopSyncInterval();
+                    stopSyncInterval(videoId);
                 });
                 
                 video.addEventListener('seeked', () => {
-                    if (audio && !isFullscreen && !video.paused && !video.ended) {
+                    if (audio && !isFullscreen) {
                         audio.currentTime = video.currentTime;
-                        if (audio.paused) {
-                            audio.play().catch(e => console.log('Audio resume after seek:', e));
+                        if (!video.paused && !video.ended) {
+                            if (audio.paused) {
+                                audio.play().catch(e => console.log('Audio resume after seek:', e));
+                            }
                         }
                     }
                 });
