@@ -388,6 +388,7 @@
             display: block;
         }
 
+        /* Overlay en esquina inferior izquierda */
         .zero-cost-overlay {
             position: absolute;
             bottom: 8px;
@@ -439,6 +440,7 @@
             line-height: 1.3;
         }
 
+        /* Nota de términos y condiciones debajo de cobertura */
         .cobertura-terminos {
             text-align: center;
             margin-top: 2rem;
@@ -1091,6 +1093,7 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
 
+        /* MEDIA QUERIES */
         @media (max-width: 1024px) {
             .blue-fusion-inner { flex-direction: column; }
             .formulario-fusion { max-width: 500px; margin: 0 auto; }
@@ -1203,12 +1206,14 @@
             .social-icons-footer img { width: 45px; height: 45px; }
         }
 
+        /* Desktop: mover overlay 4% más a la derecha y BAJAR LA SECCIÓN COBERTURA */
         @media (min-width: 769px) {
             .hero-section { 
                 background-size: cover; 
                 background-position: center; 
             }
             .zero-cost-overlay { left: 70px; }
+            
             .cobertura-section { 
                 margin-top: 50px;
             }
@@ -1242,10 +1247,6 @@
         <video id="modalVideo" controls></video>
     </div>
 
-    <!-- Elementos de audio ocultos para sincronización -->
-    <audio id="heroAudio" preload="auto" style="display: none;"></audio>
-    <audio id="fullAudio" preload="auto" style="display: none;"></audio>
-
     <div class="logo-float" id="logoButton">
         <img src="fotos/logo-fondo.png" alt="Siempre Nuevo">
     </div>
@@ -1266,7 +1267,7 @@
                 <video id="heroVideo" playsinline webkit-playsinline preload="auto" poster="fotos/miniatura1.png">
                     <source src="fotos/video1.mp4" type="video/mp4">
                 </video>
-                <div class="play-pause-btn" data-video="heroVideo" data-fullscreen="true" data-audio="heroAudio" data-audio-src="fotos/video1.mp3">
+                <div class="play-pause-btn" data-video="heroVideo" data-fullscreen="true">
                     <svg viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z"/>
                     </svg>
@@ -1387,7 +1388,7 @@
                 <video id="fullVideo" playsinline webkit-playsinline preload="auto" poster="fotos/miniatura3.png">
                     <source src="fotos/video2.mp4" type="video/mp4">
                 </video>
-                <div class="play-pause-btn" data-video="fullVideo" data-fullscreen="true" data-audio="fullAudio" data-audio-src="fotos/video2.mp3">
+                <div class="play-pause-btn" data-video="fullVideo" data-fullscreen="true">
                     <svg viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z"/>
                     </svg>
@@ -1536,110 +1537,18 @@
             const modalVideo = document.getElementById('modalVideo');
             const closeModalBtn = document.getElementById('closeModalBtn');
             
-            // Almacenar audio elements y sus videos asociados
-            const audioElements = {};
-            let currentAudioElement = null;
-            let currentVideoForAudio = null;
+            // Almacenar elementos de audio para los videos (solo para móvil)
+            let heroAudio = null;
+            let fullAudio = null;
             
-            // Función para cargar y sincronizar audio
-            function setupAudioSync(video, audioId, audioSrc) {
-                const audio = document.getElementById(audioId);
-                if (!audio) return;
-                
-                audio.src = audioSrc;
-                audio.load();
-                audioElements[video.id] = { audio, video };
-                
-                // Sincronizar tiempo cuando el video cambia
-                video.addEventListener('timeupdate', function() {
-                    if (!audio.paused && Math.abs(audio.currentTime - video.currentTime) > 0.2) {
-                        audio.currentTime = video.currentTime;
-                    }
-                });
-                
-                // Cuando el video se pausa, pausar el audio
-                video.addEventListener('pause', function() {
-                    if (!audio.paused) {
-                        audio.pause();
-                    }
-                });
-                
-                // Cuando el video se reproduce, reproducir el audio
-                video.addEventListener('play', function() {
-                    if (audio.paused) {
-                        audio.currentTime = video.currentTime;
-                        audio.play().catch(e => console.log('Audio play error:', e));
-                    }
-                });
-                
-                // Cuando el audio termina, pausar el video también (opcional)
-                audio.addEventListener('ended', function() {
-                    if (!video.paused) {
-                        video.pause();
-                    }
-                });
-                
-                // Manejar errores de audio
-                audio.addEventListener('error', function(e) {
-                    console.log('Audio error for', audioId, e);
-                });
-            }
-            
-            // Función para iniciar reproducción con audio sincronizado en modal
-            function openFullscreenVideoWithAudio(videoElement, audioElement, audioSrc) {
+            function openFullscreenVideo(videoElement) {
                 const videoSrc = videoElement.querySelector('source')?.src || videoElement.src;
-                const currentTime = videoElement.currentTime;
                 
                 if (videoSrc) {
                     modalVideo.src = videoSrc;
-                    modalVideo.currentTime = currentTime;
                     modalVideo.load();
                     modal.classList.add('active');
-                    
-                    // Configurar audio para el modal
-                    const modalAudio = document.createElement('audio');
-                    modalAudio.src = audioSrc;
-                    modalAudio.load();
-                    modalAudio.currentTime = currentTime;
-                    
-                    const syncInterval = setInterval(function() {
-                        if (!modalVideo.paused && Math.abs(modalAudio.currentTime - modalVideo.currentTime) > 0.2) {
-                            modalAudio.currentTime = modalVideo.currentTime;
-                        }
-                    }, 100);
-                    
-                    modalVideo.play().then(() => {
-                        modalAudio.play().catch(e => console.log('Modal audio play error:', e));
-                    }).catch(e => console.log('Error playing modal video:', e));
-                    
-                    // Limpiar intervalo y audio al cerrar
-                    const originalClose = closeVideoModal;
-                    window.closeVideoModal = function() {
-                        clearInterval(syncInterval);
-                        modalAudio.pause();
-                        modalAudio.src = '';
-                        originalClose();
-                    };
-                    
-                    // Reemplazar el event listener del modal
-                    const newCloseModalBtn = document.getElementById('closeModalBtn');
-                    if (newCloseModalBtn) {
-                        newCloseModalBtn.onclick = function() {
-                            clearInterval(syncInterval);
-                            modalAudio.pause();
-                            modalAudio.src = '';
-                            closeVideoModal();
-                        };
-                    }
-                    
-                    modal.onclick = function(e) {
-                        if (e.target === modal) {
-                            clearInterval(syncInterval);
-                            modalAudio.pause();
-                            modalAudio.src = '';
-                            closeVideoModal();
-                        }
-                    };
+                    modalVideo.play().catch(e => console.log('Error playing modal video:', e));
                 }
             }
             
@@ -1659,20 +1568,65 @@
                 }
             });
             
-            function setupVideoControls(videoId, btnElement, isFullscreen = false, audioId = null, audioSrc = null) {
+            // Función para sincronizar audio con video (solo para móvil)
+            function syncAudioWithVideo(video, audioPath) {
+                if (!isIOS) return null;
+                
+                const audio = new Audio(audioPath);
+                audio.preload = 'auto';
+                audio.volume = 1.0;
+                
+                // Cuando el video se reproduce, reproducir el audio
+                video.addEventListener('play', () => {
+                    audio.currentTime = video.currentTime;
+                    audio.play().catch(e => console.log('Audio play error:', e));
+                });
+                
+                // Cuando el video se pausa, pausar el audio
+                video.addEventListener('pause', () => {
+                    audio.pause();
+                });
+                
+                // Sincronizar tiempo constantemente
+                video.addEventListener('timeupdate', () => {
+                    if (!video.paused && Math.abs(audio.currentTime - video.currentTime) > 0.1) {
+                        audio.currentTime = video.currentTime;
+                    }
+                });
+                
+                // Cuando el video termina, pausar y reiniciar audio
+                video.addEventListener('ended', () => {
+                    audio.pause();
+                    audio.currentTime = 0;
+                });
+                
+                // Cuando el audio termina por error, reiniciar
+                audio.addEventListener('ended', () => {
+                    if (!video.paused && !video.ended) {
+                        audio.currentTime = video.currentTime;
+                        audio.play().catch(e => console.log('Audio replay error:', e));
+                    }
+                });
+                
+                return audio;
+            }
+            
+            function setupVideoControls(videoId, btnElement, isFullscreen = false, hasAudio = false, audioPath = null) {
                 const video = document.getElementById(videoId);
                 if (!video) return;
                 
                 video.setAttribute('playsinline', 'true');
                 video.setAttribute('webkit-playsinline', 'true');
-                video.muted = false;
+                video.muted = true; // Inicialmente mudo para permitir autoplay en algunos navegadores
                 video.volume = 1.0;
                 video.style.pointerEvents = 'none';
                 video.load();
                 
-                // Configurar audio si se proporciona
-                if (audioId && audioSrc) {
-                    setupAudioSync(video, audioId, audioSrc);
+                let audioElement = null;
+                
+                // Solo configurar audio en móvil y si tieneAudio es true
+                if (isIOS && hasAudio && audioPath) {
+                    audioElement = syncAudioWithVideo(video, audioPath);
                 }
                 
                 function updateButtonIcon() {
@@ -1685,33 +1639,18 @@
                 }
                 
                 function playVideo() {
-                    if (isFullscreen && audioId && audioSrc) {
-                        // Para video1 y video2, usar modal con audio sincronizado
-                        const audio = document.getElementById(audioId);
-                        if (audio) {
-                            openFullscreenVideoWithAudio(video, audio, audioSrc);
-                        } else {
-                            openFullscreenVideo(video);
-                        }
-                    } else if (isIOS) {
-                        video.muted = true;
-                        video.play().then(() => {
-                            video.muted = false;
-                            updateButtonIcon();
-                        }).catch(e => {
-                            setTimeout(() => {
-                                video.muted = false;
-                                video.play().catch(err => console.log('Second attempt failed:', err));
-                            }, 100);
-                        });
+                    if (isFullscreen) {
+                        openFullscreenVideo(video);
                     } else {
+                        // Para reproducción en el lugar, desmutear el video
+                        video.muted = false;
                         video.play().catch(e => console.log(`Error playing ${videoId}:`, e));
                     }
                     updateButtonIcon();
                 }
                 
                 function togglePlay() {
-                    if (isFullscreen && audioId && audioSrc) {
+                    if (isFullscreen) {
                         playVideo();
                     } else if (video.paused || video.ended) {
                         playVideo();
@@ -1732,35 +1671,24 @@
                 video.addEventListener('pause', () => updateButtonIcon());
                 video.addEventListener('ended', () => updateButtonIcon());
                 video.addEventListener('loadedmetadata', () => {
-                    video.muted = false;
+                    if (!isFullscreen) {
+                        video.muted = false;
+                    }
                     video.volume = 1.0;
                 });
                 
                 updateButtonIcon();
                 
-                if (isIOS && !isFullscreen) {
-                    const unlockGlobalAudio = function() {
-                        const testVideo = document.createElement('video');
-                        testVideo.muted = true;
-                        testVideo.play().then(() => {
-                            testVideo.pause();
-                        }).catch(() => {});
-                        document.removeEventListener('touchstart', unlockGlobalAudio);
-                        document.removeEventListener('click', unlockGlobalAudio);
+                // Desbloquear audio para iOS
+                if (isIOS && hasAudio && !isFullscreen) {
+                    const unlockAudio = function() {
+                        const testAudio = new Audio();
+                        testAudio.play().catch(() => {});
+                        document.removeEventListener('touchstart', unlockAudio);
+                        document.removeEventListener('click', unlockAudio);
                     };
-                    document.addEventListener('touchstart', unlockGlobalAudio);
-                    document.addEventListener('click', unlockGlobalAudio);
-                }
-            }
-            
-            function openFullscreenVideo(videoElement) {
-                const videoSrc = videoElement.querySelector('source')?.src || videoElement.src;
-                
-                if (videoSrc) {
-                    modalVideo.src = videoSrc;
-                    modalVideo.load();
-                    modal.classList.add('active');
-                    modalVideo.play().catch(e => console.log('Error playing modal video:', e));
+                    document.addEventListener('touchstart', unlockAudio);
+                    document.addEventListener('click', unlockAudio);
                 }
             }
             
@@ -1768,15 +1696,14 @@
             const fullBtn = document.querySelector('.full-video-wrapper .play-pause-btn');
             const carouselBtn = document.querySelector('.carousel-slide .play-pause-btn');
             
-            // Obtener datos de audio desde los botones
-            const heroAudioSrc = heroBtn?.getAttribute('data-audio-src');
-            const heroAudioId = heroBtn?.getAttribute('data-audio');
-            const fullAudioSrc = fullBtn?.getAttribute('data-audio-src');
-            const fullAudioId = fullBtn?.getAttribute('data-audio');
+            // Configurar video1 con audio (solo para móvil)
+            setupVideoControls('heroVideo', heroBtn, true, true, 'fotos/video1.mp3');
             
-            setupVideoControls('heroVideo', heroBtn, true, heroAudioId, heroAudioSrc);
-            setupVideoControls('fullVideo', fullBtn, true, fullAudioId, fullAudioSrc);
-            setupVideoControls('carouselVideo1', carouselBtn, true);
+            // Configurar video2 con audio (solo para móvil)
+            setupVideoControls('fullVideo', fullBtn, true, true, 'fotos/video2.mp3');
+            
+            // Configurar video3 SIN audio (como estaba originalmente)
+            setupVideoControls('carouselVideo1', carouselBtn, true, false, null);
             
             function openMenu() {
                 sidebar.classList.add('open');
