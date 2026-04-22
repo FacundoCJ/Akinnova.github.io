@@ -201,14 +201,6 @@
             display: block;
         }
 
-        /* NO ocultamos los controles nativos - esto es clave para el audio en iOS */
-        video::-webkit-media-controls {
-            display: flex !important;
-        }
-        video::-webkit-media-controls-enclosure {
-            display: flex !important;
-        }
-
         .play-pause-btn {
             position: absolute;
             top: 50%;
@@ -1262,10 +1254,10 @@
     <div class="hero-section">
         <div class="hero-video-container">
             <div class="video-wrapper" style="width:100%">
-                <video id="heroVideo" playsinline webkit-playsinline controls preload="auto" poster="fotos/miniatura1.png">
+                <video id="heroVideo" playsinline webkit-playsinline preload="auto" poster="fotos/miniatura1.png">
                     <source src="fotos/video1.mp4" type="video/mp4">
                 </video>
-                <div class="play-pause-btn" data-video="heroVideo" data-fullscreen="true">
+                <div class="play-pause-btn" data-video="heroVideo" data-audio="audio1.mp3" data-fullscreen="true">
                     <svg viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z"/>
                     </svg>
@@ -1383,10 +1375,10 @@
     <div class="full-video-section">
         <div class="full-video-container">
             <div class="full-video-wrapper video-wrapper" style="width:100%">
-                <video id="fullVideo" playsinline webkit-playsinline controls preload="auto" poster="fotos/miniatura3.png">
+                <video id="fullVideo" playsinline webkit-playsinline preload="auto" poster="fotos/miniatura3.png">
                     <source src="fotos/video2.mp4" type="video/mp4">
                 </video>
-                <div class="play-pause-btn" data-video="fullVideo" data-fullscreen="true">
+                <div class="play-pause-btn" data-video="fullVideo" data-audio="audio2.mp3" data-fullscreen="true">
                     <svg viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z"/>
                     </svg>
@@ -1435,7 +1427,7 @@
                                 <video id="carouselVideo1" playsinline webkit-playsinline controls preload="auto" poster="fotos/miniatura2.png">
                                     <source src="fotos/video3.mp4" type="video/mp4">
                                 </video>
-                                <div class="play-pause-btn" data-video="carouselVideo1" data-fullscreen="true">
+                                <div class="play-pause-btn" data-video="carouselVideo1" data-audio="audio3.mp3" data-fullscreen="true">
                                     <svg viewBox="0 0 24 24">
                                         <path d="M8 5v14l11-7z"/>
                                     </svg>
@@ -1530,19 +1522,37 @@
             const footerLogo = document.getElementById('footerLogo');
             
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
             
             const modal = document.getElementById('videoModal');
             const modalVideo = document.getElementById('modalVideo');
             const closeModalBtn = document.getElementById('closeModalBtn');
             
-            function openFullscreenVideo(videoElement) {
+            // Almacenar elementos de audio para cada video
+            const audioElements = {};
+            
+            function openFullscreenVideo(videoElement, audioElement = null) {
                 const videoSrc = videoElement.querySelector('source')?.src || videoElement.src;
                 
                 if (videoSrc) {
                     modalVideo.src = videoSrc;
                     modalVideo.load();
                     modal.classList.add('active');
+                    
+                    // Si hay audio asociado y estamos en móvil, silenciamos el video del modal
+                    if (isMobile && audioElement) {
+                        modalVideo.muted = true;
+                    } else {
+                        modalVideo.muted = false;
+                    }
+                    
                     modalVideo.play().catch(e => console.log('Error playing modal video:', e));
+                    
+                    // Si hay audio separado en móvil, lo reproducimos también
+                    if (isMobile && audioElement && audioElement.paused) {
+                        audioElement.currentTime = 0;
+                        audioElement.play().catch(e => console.log('Error playing modal audio:', e));
+                    }
                 }
             }
             
@@ -1550,6 +1560,13 @@
                 modal.classList.remove('active');
                 modalVideo.pause();
                 modalVideo.src = '';
+                
+                // Pausar todos los audios al cerrar el modal
+                for (let key in audioElements) {
+                    if (audioElements[key] && !audioElements[key].paused) {
+                        audioElements[key].pause();
+                    }
+                }
             }
             
             if (closeModalBtn) {
@@ -1562,17 +1579,79 @@
                 }
             });
             
-            // Función unificada para todos los videos
-            function setupVideoControls(videoId, btnElement, isFullscreen = false) {
+            // Función para configurar video con audio separado (solo en móvil)
+            function setupVideoWithSeparateAudio(videoId, btnElement, audioSrc, isFullscreen = false) {
                 const video = document.getElementById(videoId);
                 if (!video) return;
                 
-                // Configuración para iOS (necesaria para audio)
+                // Configuración base
                 video.setAttribute('playsinline', 'true');
                 video.setAttribute('webkit-playsinline', 'true');
                 video.setAttribute('controls', 'true');
-                video.muted = false;
-                video.volume = 1.0;
+                
+                // En móvil, silenciamos el video y usamos audio separado
+                if (isMobile && audioSrc) {
+                    video.muted = true;
+                    video.volume = 0;
+                    
+                    // Crear elemento de audio separado
+                    const audio = new Audio(audioSrc);
+                    audio.loop = false;
+                    audio.preload = 'auto';
+                    audioElements[videoId] = audio;
+                    
+                    // Sincronizar audio con el video
+                    function syncAudioWithVideo() {
+                        if (!video.paused && !video.ended) {
+                            if (audio.paused) {
+                                audio.currentTime = video.currentTime;
+                                audio.play().catch(e => console.log('Audio play error:', e));
+                            }
+                        } else {
+                            if (!audio.paused) {
+                                audio.pause();
+                            }
+                        }
+                    }
+                    
+                    video.addEventListener('timeupdate', function() {
+                        if (!video.paused && !video.ended && !audio.paused) {
+                            // Mantener audio sincronizado (pequeño margen)
+                            if (Math.abs(audio.currentTime - video.currentTime) > 0.2) {
+                                audio.currentTime = video.currentTime;
+                            }
+                        }
+                    });
+                    
+                    video.addEventListener('play', function() {
+                        if (audio.paused) {
+                            audio.currentTime = video.currentTime;
+                            audio.play().catch(e => console.log('Audio play error:', e));
+                        }
+                    });
+                    
+                    video.addEventListener('pause', function() {
+                        if (!audio.paused) {
+                            audio.pause();
+                        }
+                    });
+                    
+                    video.addEventListener('ended', function() {
+                        audio.pause();
+                        audio.currentTime = 0;
+                    });
+                    
+                    audio.addEventListener('ended', function() {
+                        if (!video.paused && !video.ended) {
+                            video.pause();
+                        }
+                    });
+                } else {
+                    // En desktop, el video tiene su propio audio
+                    video.muted = false;
+                    video.volume = 1.0;
+                }
+                
                 video.load();
                 
                 function updateButtonIcon() {
@@ -1586,11 +1665,8 @@
                 
                 function playVideo() {
                     if (isFullscreen) {
-                        openFullscreenVideo(video);
+                        openFullscreenVideo(video, audioElements[videoId]);
                     } else {
-                        // Para reproducción local, aseguramos que el audio funcione
-                        video.muted = false;
-                        video.volume = 1.0;
                         video.play().catch(e => console.log(`Error playing ${videoId}:`, e));
                         updateButtonIcon();
                     }
@@ -1618,8 +1694,10 @@
                 video.addEventListener('pause', () => updateButtonIcon());
                 video.addEventListener('ended', () => updateButtonIcon());
                 video.addEventListener('loadedmetadata', () => {
-                    video.muted = false;
-                    video.volume = 1.0;
+                    if (!isMobile) {
+                        video.muted = false;
+                        video.volume = 1.0;
+                    }
                 });
                 
                 updateButtonIcon();
@@ -1644,9 +1722,13 @@
             const fullBtn = document.querySelector('.full-video-wrapper .play-pause-btn');
             const carouselBtn = document.querySelector('.carousel-slide .play-pause-btn');
             
-            setupVideoControls('heroVideo', heroBtn, true);
-            setupVideoControls('fullVideo', fullBtn, true);
-            setupVideoControls('carouselVideo1', carouselBtn, true);
+            const heroAudioSrc = heroBtn?.getAttribute('data-audio');
+            const fullAudioSrc = fullBtn?.getAttribute('data-audio');
+            const carouselAudioSrc = carouselBtn?.getAttribute('data-audio');
+            
+            setupVideoWithSeparateAudio('heroVideo', heroBtn, heroAudioSrc, true);
+            setupVideoWithSeparateAudio('fullVideo', fullBtn, fullAudioSrc, true);
+            setupVideoWithSeparateAudio('carouselVideo1', carouselBtn, carouselAudioSrc, true);
             
             function openMenu() {
                 sidebar.classList.add('open');
