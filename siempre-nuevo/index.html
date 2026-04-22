@@ -1129,7 +1129,6 @@
                 z-index: 2;
             }
             
-            /* Video reposicionado - BAJA UN POCO (de 28% a 32%) */
             .hero-video-container { 
                 top: 32%;
                 left: 25%;
@@ -1207,15 +1206,12 @@
             .social-icons-footer img { width: 45px; height: 45px; }
         }
 
-        /* Desktop: mover overlay 4% más a la derecha y BAJAR LA SECCIÓN COBERTURA */
         @media (min-width: 769px) {
             .hero-section { 
                 background-size: cover; 
                 background-position: center; 
             }
             .zero-cost-overlay { left: 70px; }
-            
-            /* En desktop, la sección cobertura baja un poco */
             .cobertura-section { 
                 margin-top: 50px;
             }
@@ -1227,7 +1223,6 @@
     </style>
 </head>
 <body>
-    <!-- Resto del HTML igual, solo cambios en CSS -->
     <div class="overlay" id="overlay"></div>
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
@@ -1244,7 +1239,6 @@
         </div>
     </div>
 
-    <!-- Modal para video a pantalla completa -->
     <div id="videoModal" class="video-modal">
         <span class="close-modal" id="closeModalBtn">&times;</span>
         <video id="modalVideo" controls></video>
@@ -1270,7 +1264,7 @@
                 <video id="heroVideo" playsinline webkit-playsinline preload="auto" poster="fotos/miniatura1.png">
                     <source src="fotos/video1.mp4" type="video/mp4">
                 </video>
-                <div class="play-pause-btn" data-video="heroVideo" data-fullscreen="true">
+                <div class="play-pause-btn" data-video="heroVideo" data-audio="fotos/video1.mp3" data-fullscreen="true">
                     <svg viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z"/>
                     </svg>
@@ -1391,7 +1385,7 @@
                 <video id="fullVideo" playsinline webkit-playsinline preload="auto" poster="fotos/miniatura3.png">
                     <source src="fotos/video2.mp4" type="video/mp4">
                 </video>
-                <div class="play-pause-btn" data-video="fullVideo" data-fullscreen="true">
+                <div class="play-pause-btn" data-video="fullVideo" data-audio="fotos/video2.mp3" data-fullscreen="true">
                     <svg viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z"/>
                     </svg>
@@ -1440,7 +1434,7 @@
                                 <video id="carouselVideo1" playsinline webkit-playsinline controls preload="auto" poster="fotos/miniatura2.png">
                                     <source src="fotos/video3.mp4" type="video/mp4">
                                 </video>
-                                <div class="play-pause-btn" data-video="carouselVideo1" data-fullscreen="true">
+                                <div class="play-pause-btn" data-video="carouselVideo1" data-audio="fotos/video3.mp3" data-fullscreen="true">
                                     <svg viewBox="0 0 24 24">
                                         <path d="M8 5v14l11-7z"/>
                                     </svg>
@@ -1540,13 +1534,38 @@
             const modalVideo = document.getElementById('modalVideo');
             const closeModalBtn = document.getElementById('closeModalBtn');
             
-            function openFullscreenVideo(videoElement) {
+            // Almacenar objetos de audio
+            const audioElements = {};
+            
+            function openFullscreenVideo(videoElement, audioPath) {
                 const videoSrc = videoElement.querySelector('source')?.src || videoElement.src;
                 
                 if (videoSrc) {
                     modalVideo.src = videoSrc;
                     modalVideo.load();
                     modal.classList.add('active');
+                    
+                    // Crear y reproducir audio por separado para el modal
+                    if (audioPath && !audioElements['modal']) {
+                        const audio = new Audio(audioPath);
+                        audio.loop = false;
+                        audio.volume = 1.0;
+                        audio.play().catch(e => console.log('Audio play error:', e));
+                        audioElements['modal'] = audio;
+                        
+                        // Cuando se cierre el modal, pausar el audio
+                        const checkModalClose = setInterval(() => {
+                            if (!modal.classList.contains('active')) {
+                                if (audioElements['modal']) {
+                                    audioElements['modal'].pause();
+                                    audioElements['modal'].currentTime = 0;
+                                    delete audioElements['modal'];
+                                }
+                                clearInterval(checkModalClose);
+                            }
+                        }, 500);
+                    }
+                    
                     modalVideo.play().catch(e => console.log('Error playing modal video:', e));
                 }
             }
@@ -1555,6 +1574,11 @@
                 modal.classList.remove('active');
                 modalVideo.pause();
                 modalVideo.src = '';
+                if (audioElements['modal']) {
+                    audioElements['modal'].pause();
+                    audioElements['modal'].currentTime = 0;
+                    delete audioElements['modal'];
+                }
             }
             
             if (closeModalBtn) {
@@ -1567,9 +1591,16 @@
                 }
             });
             
-            function setupVideoControls(videoId, btnElement, isFullscreen = false) {
+            function setupVideoControls(videoId, btnElement, isFullscreen = false, audioPath = null) {
                 const video = document.getElementById(videoId);
                 if (!video) return;
+                
+                let audio = null;
+                if (audioPath) {
+                    audio = new Audio(audioPath);
+                    audio.loop = false;
+                    audio.volume = 1.0;
+                }
                 
                 video.setAttribute('playsinline', 'true');
                 video.setAttribute('webkit-playsinline', 'true');
@@ -1589,20 +1620,38 @@
                 
                 function playVideo() {
                     if (isFullscreen) {
-                        openFullscreenVideo(video);
+                        openFullscreenVideo(video, audioPath);
                     } else if (isIOS) {
                         video.muted = true;
                         video.play().then(() => {
                             video.muted = false;
+                            if (audio) {
+                                audio.play().catch(e => console.log('Audio play error:', e));
+                            }
                             updateButtonIcon();
                         }).catch(e => {
                             setTimeout(() => {
                                 video.muted = false;
                                 video.play().catch(err => console.log('Second attempt failed:', err));
+                                if (audio) {
+                                    audio.play().catch(err => console.log('Audio play failed:', err));
+                                }
                             }, 100);
                         });
                     } else {
                         video.play().catch(e => console.log(`Error playing ${videoId}:`, e));
+                        if (audio) {
+                            audio.play().catch(e => console.log('Audio play error:', e));
+                        }
+                    }
+                    updateButtonIcon();
+                }
+                
+                function pauseVideo() {
+                    video.pause();
+                    if (audio) {
+                        audio.pause();
+                        audio.currentTime = 0;
                     }
                     updateButtonIcon();
                 }
@@ -1613,8 +1662,7 @@
                     } else if (video.paused || video.ended) {
                         playVideo();
                     } else {
-                        video.pause();
-                        updateButtonIcon();
+                        pauseVideo();
                     }
                 }
                 
@@ -1625,9 +1673,28 @@
                     });
                 }
                 
-                video.addEventListener('play', () => updateButtonIcon());
-                video.addEventListener('pause', () => updateButtonIcon());
-                video.addEventListener('ended', () => updateButtonIcon());
+                video.addEventListener('play', () => {
+                    updateButtonIcon();
+                    if (audio && !isFullscreen) {
+                        audio.play().catch(e => console.log('Audio play error:', e));
+                    }
+                });
+                
+                video.addEventListener('pause', () => {
+                    updateButtonIcon();
+                    if (audio && !isFullscreen) {
+                        audio.pause();
+                    }
+                });
+                
+                video.addEventListener('ended', () => {
+                    updateButtonIcon();
+                    if (audio && !isFullscreen) {
+                        audio.pause();
+                        audio.currentTime = 0;
+                    }
+                });
+                
                 video.addEventListener('loadedmetadata', () => {
                     video.muted = false;
                     video.volume = 1.0;
@@ -1654,9 +1721,13 @@
             const fullBtn = document.querySelector('.full-video-wrapper .play-pause-btn');
             const carouselBtn = document.querySelector('.carousel-slide .play-pause-btn');
             
-            setupVideoControls('heroVideo', heroBtn, true);
-            setupVideoControls('fullVideo', fullBtn, true);
-            setupVideoControls('carouselVideo1', carouselBtn, true);
+            const heroAudio = heroBtn ? heroBtn.getAttribute('data-audio') : null;
+            const fullAudio = fullBtn ? fullBtn.getAttribute('data-audio') : null;
+            const carouselAudio = carouselBtn ? carouselBtn.getAttribute('data-audio') : null;
+            
+            setupVideoControls('heroVideo', heroBtn, true, heroAudio);
+            setupVideoControls('fullVideo', fullBtn, true, fullAudio);
+            setupVideoControls('carouselVideo1', carouselBtn, true, carouselAudio);
             
             function openMenu() {
                 sidebar.classList.add('open');
