@@ -241,6 +241,7 @@
             height: 22px;
         }
 
+        /* Modal para video a pantalla completa */
         .video-modal {
             display: none;
             position: fixed;
@@ -1087,36 +1088,73 @@
             .logo-float img { height: 70px; }
             .navbar { top: 43px; left: 0.5rem; right: calc(0.5rem + 90px); padding: 0.6rem 1rem; }
             .menu-icon img { width: 28px; }
-            .navbar-text { font-size: 0.85rem; margin-left: auto; margin-right: 0; text-align: right; }
-            .hero-section { min-height: 70vh; height: 70vh; background-size: contain; background-position: top center; background-repeat: no-repeat; background-color: #ffffff; margin-bottom: 0; }
-            .cobertura-section { padding-top: 0; margin-top: -170px; position: relative; z-index: 2; }
-            .hero-video-container { top: 32%; left: 25%; transform: translate(-50%, -50%); width: 100px; min-width: 80px; max-width: 100px; }
+            
+            .navbar-text { 
+                font-size: 0.85rem; 
+                margin-left: auto;
+                margin-right: 0;
+                text-align: right;
+            }
+            
+            .hero-section { 
+                min-height: 70vh; 
+                height: 70vh; 
+                background-size: contain; 
+                background-position: top center; 
+                background-repeat: no-repeat; 
+                background-color: #ffffff;
+                margin-bottom: 0;
+            }
+            
+            .cobertura-section { 
+                padding-top: 0; 
+                margin-top: -170px;
+                position: relative;
+                z-index: 2;
+            }
+            
+            .hero-video-container { 
+                top: 32%;
+                left: 25%;
+                transform: translate(-50%, -50%);
+                width: 100px;
+                min-width: 80px;
+                max-width: 100px;
+            }
+            
             .hero-video-container .play-pause-btn { width: 30px; height: 30px; }
             .hero-video-container .play-pause-btn svg { width: 15px; height: 15px; }
+            
             .full-video-wrapper .play-pause-btn { width: 50px; height: 50px; }
             .full-video-wrapper .play-pause-btn svg { width: 25px; height: 25px; }
             .carousel-slide .play-pause-btn { width: 40px; height: 40px; }
             .carousel-slide .play-pause-btn svg { width: 20px; height: 20px; }
+            
             .cobertura-grid { gap: 1rem; }
             .cobertura-card { min-width: 160px; }
             .cobertura-card img { height: 100px; }
+            
             .zero-cost-overlay { left: 50px; bottom: 5px; }
             .zero-cost-overlay .big-zero { font-size: 2rem; }
             .zero-cost-overlay .text-group .zero-text { font-size: 0.7rem; }
             .zero-cost-overlay .text-group .costo-text { font-size: 0.55rem; }
+            
             .pasos-fusion-grid { flex-direction: column; align-items: center; }
             .paso-fusion-card { max-width: 280px; }
             .paso-fusion-card p { font-size: 0.9rem; }
+            
             .carousel-slide { flex: 0 0 calc(100% - 0rem); }
             .carousel-wrapper { padding: 0 20px; }
             .carousel-button { width: 36px; height: 36px; font-size: 18px; }
             .whatsapp-float img { width: 60px; height: 60px; }
+            
             .footer-inner { flex-direction: column; text-align: center; }
             .footer-left, .footer-contact, .footer-social, .footer-links-column { text-align: center; padding-top: 0; }
             .footer-contact h3:after, .footer-social-title h3:after, .footer-links-column h3:after { left: 50%; transform: translateX(-50%); }
             .social-icons-footer { justify-content: center; }
             .footer-logo img { height: 180px; margin: 0 auto; }
             .sidebar { width: 280px; }
+            
             .cobertura-card h3 { font-size: 0.9rem; }
             .paso-fusion-card p { font-size: 0.9rem; }
             .beneficio-list li { font-size: 0.9rem; }
@@ -1126,8 +1164,14 @@
             .logo-float img { height: 55px; }
             .navbar { top: 38px; right: calc(0.5rem + 70px); }
             .navbar-text { font-size: 0.75rem; }
-            .hero-section { min-height: 65vh; height: 65vh; margin-bottom: 0; }
-            .cobertura-section { margin-top: -170px; }
+            .hero-section { 
+                min-height: 65vh; 
+                height: 65vh; 
+                margin-bottom: 0;
+            }
+            .cobertura-section { 
+                margin-top: -170px;
+            }
             .hero-video-container { width: 80px; min-width: 80px; left: 25%; top: 32%; }
             .hero-video-container .play-pause-btn { width: 25px; height: 25px; }
             .hero-video-container .play-pause-btn svg { width: 12px; height: 12px; }
@@ -1147,9 +1191,14 @@
         }
 
         @media (min-width: 769px) {
-            .hero-section { background-size: cover; background-position: center; }
+            .hero-section { 
+                background-size: cover; 
+                background-position: center; 
+            }
             .zero-cost-overlay { left: 70px; }
-            .cobertura-section { margin-top: 50px; }
+            .cobertura-section { 
+                margin-top: 50px;
+            }
         }
 
         @supports (-webkit-touch-callout: none) {
@@ -1192,7 +1241,7 @@
         </div>
     </div>
 
-    <!-- VIDEO 1 - HERO (AHORA CON controls ✅) -->
+    <!-- VIDEO 1 - HERO -->
     <div class="hero-section">
         <div class="hero-video-container">
             <div class="video-wrapper" style="width:100%">
@@ -1313,7 +1362,7 @@
         </div>
     </div>
 
-    <!-- VIDEO 2 - GRANDE (AHORA CON controls ✅) -->
+    <!-- VIDEO 2 - GRANDE -->
     <div class="full-video-section">
         <div class="full-video-container">
             <div class="full-video-wrapper video-wrapper" style="width:100%">
@@ -1461,6 +1510,8 @@
             const logoBtn = document.getElementById('logoButton');
             const footerLogo = document.getElementById('footerLogo');
             
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            
             const modal = document.getElementById('videoModal');
             const modalVideo = document.getElementById('modalVideo');
             const closeModalBtn = document.getElementById('closeModalBtn');
@@ -1494,18 +1545,17 @@
                 }
             });
             
-            // Configuración de videos - AHORA TODOS TIENEN controls en el HTML
+            // Configuración IDÉNTICA para los 3 videos
             function setupVideoControls(videoId, btnElement, isFullscreen = false) {
                 const video = document.getElementById(videoId);
                 if (!video) return;
                 
-                // Configuración para móvil
+                // Configuración IDÉNTICA para todos
                 video.setAttribute('playsinline', 'true');
                 video.setAttribute('webkit-playsinline', 'true');
                 video.setAttribute('controls', 'true');
                 video.muted = false;
                 video.volume = 1.0;
-                video.style.pointerEvents = 'auto';
                 video.load();
                 
                 function updateButtonIcon() {
@@ -1546,11 +1596,6 @@
                     });
                 }
                 
-                video.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    togglePlay();
-                });
-                
                 video.addEventListener('play', () => updateButtonIcon());
                 video.addEventListener('pause', () => updateButtonIcon());
                 video.addEventListener('ended', () => updateButtonIcon());
@@ -1560,12 +1605,28 @@
                 });
                 
                 updateButtonIcon();
+                
+                // Desbloqueo de audio para iOS
+                if (isIOS) {
+                    const unlockAudio = function() {
+                        const testVideo = document.createElement('video');
+                        testVideo.muted = true;
+                        testVideo.play().then(() => {
+                            testVideo.pause();
+                        }).catch(() => {});
+                        document.removeEventListener('touchstart', unlockAudio);
+                        document.removeEventListener('click', unlockAudio);
+                    };
+                    document.addEventListener('touchstart', unlockAudio);
+                    document.addEventListener('click', unlockAudio);
+                }
             }
             
             const heroBtn = document.querySelector('.hero-video-container .play-pause-btn');
             const fullBtn = document.querySelector('.full-video-wrapper .play-pause-btn');
             const carouselBtn = document.querySelector('.carousel-slide .play-pause-btn');
             
+            // TODOS los videos con la MISMA configuración
             setupVideoControls('heroVideo', heroBtn, true);
             setupVideoControls('fullVideo', fullBtn, true);
             setupVideoControls('carouselVideo1', carouselBtn, true);
