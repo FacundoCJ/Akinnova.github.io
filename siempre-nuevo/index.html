@@ -201,6 +201,13 @@
             display: block;
         }
 
+        /* Video wrapper para mejor control */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            cursor: pointer;
+        }
+
         .play-pause-btn {
             position: absolute;
             top: 50%;
@@ -381,7 +388,6 @@
             display: block;
         }
 
-        /* Overlay en esquina inferior izquierda */
         .zero-cost-overlay {
             position: absolute;
             bottom: 8px;
@@ -433,7 +439,6 @@
             line-height: 1.3;
         }
 
-        /* Nota de términos y condiciones debajo de cobertura */
         .cobertura-terminos {
             text-align: center;
             margin-top: 2rem;
@@ -445,10 +450,6 @@
             color: #ff914d;
             text-decoration: none;
             font-weight: 600;
-        }
-
-        .cobertura-terminos a:hover {
-            text-decoration: underline;
         }
 
         .blue-fusion-section {
@@ -1084,7 +1085,6 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
 
-        /* MEDIA QUERIES */
         @media (max-width: 1024px) {
             .blue-fusion-inner { flex-direction: column; }
             .formulario-fusion { max-width: 500px; margin: 0 auto; }
@@ -1197,7 +1197,6 @@
             .social-icons-footer img { width: 45px; height: 45px; }
         }
 
-        /* Desktop */
         @media (min-width: 769px) {
             .hero-section { 
                 background-size: cover; 
@@ -1231,7 +1230,6 @@
         </div>
     </div>
 
-    <!-- Modal para video a pantalla completa -->
     <div id="videoModal" class="video-modal">
         <span class="close-modal" id="closeModalBtn">&times;</span>
         <video id="modalVideo" controls></video>
@@ -1250,7 +1248,6 @@
         </div>
     </div>
 
-    <!-- VIDEO 1 - HERO -->
     <div class="hero-section">
         <div class="hero-video-container">
             <div class="video-wrapper" style="width:100%">
@@ -1266,7 +1263,6 @@
         </div>
     </div>
 
-    <!-- SECCIÓN COBERTURA -->
     <div class="cobertura-section">
         <div class="cobertura-section-inner">
             <h2>Cobertura del programa*</h2>
@@ -1312,7 +1308,6 @@
         </div>
     </div>
 
-    <!-- SECCIÓN AZUL FUSIONADA -->
     <div class="blue-fusion-section">
         <div class="blue-fusion-inner">
             <div class="como-funciona-fusion">
@@ -1371,7 +1366,6 @@
         </div>
     </div>
 
-    <!-- VIDEO 2 - GRANDE -->
     <div class="full-video-section">
         <div class="full-video-container">
             <div class="full-video-wrapper video-wrapper" style="width:100%">
@@ -1387,7 +1381,6 @@
         </div>
     </div>
 
-    <!-- SECCIÓN CÓMO FUNCIONA - AZUL -->
     <div class="como-funciona-azul-section">
         <div class="como-funciona-azul-inner">
             <h2>Cómo funciona</h2>
@@ -1414,7 +1407,6 @@
         </div>
     </div>
 
-    <!-- HISTORIAS REALES CON VIDEO 3 -->
     <div class="historias-section">
         <div class="historias-section-inner">
             <h2>Historias reales</h2>
@@ -1453,14 +1445,12 @@
         </div>
     </div>
 
-    <!-- WHATSAPP -->
     <div class="whatsapp-float">
         <a href="https://wa.me/51980456427?text=Hola,%20me%20interesa%20obtener%20más%20información%20sobre%20Siempre%20Nuevo" target="_blank">
             <img src="fotos/wsp.png" alt="WhatsApp">
         </a>
     </div>
 
-    <!-- FOOTER -->
     <div class="footer">
         <div class="footer-inner">
             <div class="footer-left">
@@ -1521,9 +1511,6 @@
             const logoBtn = document.getElementById('logoButton');
             const footerLogo = document.getElementById('footerLogo');
             
-            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            
             const modal = document.getElementById('videoModal');
             const modalVideo = document.getElementById('modalVideo');
             const closeModalBtn = document.getElementById('closeModalBtn');
@@ -1557,20 +1544,26 @@
                 }
             });
             
-            // Función unificada para todos los videos - SIN AUDIO SEPARADO
+            // SOLUCIÓN DEFINITIVA PARA AUDIO EN MÓVIL
             function setupVideoControls(videoId, btnElement, isFullscreen = false) {
                 const video = document.getElementById(videoId);
                 if (!video) return;
                 
-                // Configuración para iOS y móvil
+                // Configuración crucial para móvil
                 video.setAttribute('playsinline', 'true');
                 video.setAttribute('webkit-playsinline', 'true');
                 video.setAttribute('controls', 'true');
                 
-                // En móvil, NUNCA silenciamos el video
+                // IMPORTANTE: NO silenciar el video
                 video.muted = false;
                 video.volume = 1.0;
+                
+                // Eliminar pointer-events: none para permitir interacción directa
+                video.style.pointerEvents = 'auto';
                 video.load();
+                
+                // Variable para rastrear si ya se reprodujo
+                let hasPlayed = false;
                 
                 function updateButtonIcon() {
                     if (!btnElement) return;
@@ -1581,15 +1574,24 @@
                     }
                 }
                 
-                function playVideo() {
-                    if (isFullscreen) {
-                        openFullscreenVideo(video);
-                    } else {
-                        // Asegurar que el audio esté activo
-                        video.muted = false;
-                        video.volume = 1.0;
-                        video.play().catch(e => console.log(`Error playing ${videoId}:`, e));
-                        updateButtonIcon();
+                async function playVideo() {
+                    try {
+                        if (isFullscreen) {
+                            openFullscreenVideo(video);
+                        } else {
+                            // Asegurar que el audio esté activo
+                            video.muted = false;
+                            video.volume = 1.0;
+                            await video.play();
+                            hasPlayed = true;
+                            updateButtonIcon();
+                        }
+                    } catch (error) {
+                        console.log(`Error playing ${videoId}:`, error);
+                        // Mostrar mensaje al usuario en móvil
+                        if (isMobile) {
+                            alert('Para escuchar el audio, por favor toca el botón de play nuevamente después de interactuar con la página.');
+                        }
                     }
                 }
                 
@@ -1611,6 +1613,12 @@
                     });
                 }
                 
+                // También permitir que tocar el video directamente lo reproduzca
+                video.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    togglePlay();
+                });
+                
                 video.addEventListener('play', () => updateButtonIcon());
                 video.addEventListener('pause', () => updateButtonIcon());
                 video.addEventListener('ended', () => updateButtonIcon());
@@ -1620,22 +1628,10 @@
                 });
                 
                 updateButtonIcon();
-                
-                // Desbloqueo de audio para iOS (necesario para que el audio funcione)
-                if (isIOS && !isFullscreen) {
-                    const unlockGlobalAudio = function() {
-                        const testVideo = document.createElement('video');
-                        testVideo.muted = true;
-                        testVideo.play().then(() => {
-                            testVideo.pause();
-                        }).catch(() => {});
-                        document.removeEventListener('touchstart', unlockGlobalAudio);
-                        document.removeEventListener('click', unlockGlobalAudio);
-                    };
-                    document.addEventListener('touchstart', unlockGlobalAudio);
-                    document.addEventListener('click', unlockGlobalAudio);
-                }
             }
+            
+            // Detectar móvil
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
             
             const heroBtn = document.querySelector('.hero-video-container .play-pause-btn');
             const fullBtn = document.querySelector('.full-video-wrapper .play-pause-btn');
