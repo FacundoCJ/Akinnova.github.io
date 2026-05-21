@@ -19,18 +19,23 @@
             font-family: 'DM Sans', sans-serif;
             background-color: #ffffff;
             -webkit-font-smoothing: antialiased;
-            /* AUMENTAR TAMAÑO BASE DE LETRAS EN UN 50% */
+            /* AUMENTO DEL 50% EN LETRAS */
             font-size: 1.5rem;
         }
 
-        /* Los títulos de sección mantienen su tamaño original */
+        /* Los títulos de sección y elementos del header/sidebar mantienen su tamaño original */
         .beneficios-title,
         .detalle-beneficios-section h2,
+        .beneficio-card-header h3,
+        .beneficio-grupo h3,
+        .beneficio-parabrisas h3,
+        .total-beneficio .total-label,
         .footer-contact h3,
         .footer-social-title h3,
         .footer-links-column h3,
         .navbar-text,
-        .sidebar-menu a {
+        .sidebar-menu a,
+        .btn-cotizar a {
             font-size: revert;
         }
 
@@ -125,7 +130,7 @@
             transform: scale(1.02);
         }
         .logo-float img {
-            height: 180px;
+            height: 120px;
             width: auto;
             display: block;
         }
@@ -174,7 +179,7 @@
             transform: scale(1.02);
         }
         .menu-icon img {
-            width: 52px;
+            width: 35px;
             height: auto;
             display: block;
         }
@@ -241,6 +246,7 @@
             padding-left: 1rem;
         }
 
+        /* AUMENTO DEL 50% EN IMÁGENES */
         .beneficio-card-header img {
             width: 72px;
             height: 72px;
@@ -355,6 +361,7 @@
             text-align: center;
         }
 
+        /* AUMENTO DEL 50% EN IMÁGENES */
         .grupo-item img {
             width: 120px;
             height: 120px;
@@ -413,6 +420,7 @@
             margin-bottom: 1rem;
         }
 
+        /* AUMENTO DEL 50% EN IMÁGENES */
         .beneficio-parabrisas img {
             width: 120px;
             height: 120px;
@@ -589,7 +597,7 @@
         }
 
         .footer-logo img {
-            height: clamp(210px, 30vw, 420px);
+            height: clamp(140px, 20vw, 280px);
             width: auto;
             display: block;
         }
@@ -668,8 +676,8 @@
         }
 
         .social-icons-footer img {
-            width: clamp(52px, 12vw, 78px);
-            height: clamp(52px, 12vw, 78px);
+            width: clamp(35px, 8vw, 52px);
+            height: clamp(35px, 8vw, 52px);
         }
 
         .footer-links-column {
@@ -720,23 +728,23 @@
         /* MEDIA QUERIES */
         @media (max-width: 1024px) {
             body {
-                font-size: 1.3rem;
+                font-size: 1.2rem;
             }
-            .logo-float img { height: 150px; }
+            .logo-float img { height: 100px; }
             .navbar { right: calc(1rem + 120px); }
             .beneficios-section { padding: 160px 1.5rem 2rem 1.5rem; }
-            .grupo-item img { width: 100px; height: 100px; }
-            .beneficio-parabrisas img { width: 100px; height: 100px; }
-            .menu-icon img { width: 45px; }
+            .grupo-item img { width: 90px; height: 90px; }
+            .beneficio-parabrisas img { width: 90px; height: 90px; }
+            .beneficio-card-header img { width: 54px; height: 54px; }
         }
 
         @media (max-width: 768px) {
             body {
-                font-size: 1.2rem;
+                font-size: 1rem;
             }
-            .logo-float img { height: 105px; }
+            .logo-float img { height: 70px; }
             .navbar { top: 43px; left: 0.5rem; right: calc(0.5rem + 90px); padding: 0.6rem 1rem; }
-            .menu-icon img { width: 42px; }
+            .menu-icon img { width: 28px; }
             
             .navbar-text { 
                 font-size: 0.85rem; 
@@ -749,17 +757,17 @@
             .beneficios-title { font-size: 1.6rem; }
             .beneficio-card { min-width: 100%; }
             .beneficio-card-header h3 { font-size: 1.3rem; }
-            .beneficio-card-header img { width: 60px; height: 60px; }
+            .beneficio-card-header img { width: 48px; height: 48px; }
             .beneficio-list li { font-size: 0.9rem; }
             
             .beneficio-grupo { padding: 1.5rem; }
             .grupo-item { min-width: 150px; }
-            .grupo-item img { width: 100px; height: 100px; }
+            .grupo-item img { width: 80px; height: 80px; }
             .grupo-item .eventos strong { font-size: 1.5rem; }
             .grupo-item .monto { font-size: 1.5rem; }
             
             .beneficio-parabrisas { padding: 1.5rem; }
-            .beneficio-parabrisas img { width: 100px; height: 100px; }
+            .beneficio-parabrisas img { width: 80px; height: 80px; }
             .beneficio-parabrisas .eventos strong { font-size: 1.5rem; }
             .beneficio-parabrisas .monto { font-size: 1.5rem; }
             
@@ -772,37 +780,36 @@
             .footer-left, .footer-contact, .footer-social, .footer-links-column { text-align: center; padding-top: 0; }
             .footer-contact h3:after, .footer-social-title h3:after, .footer-links-column h3:after { left: 50%; transform: translateX(-50%); }
             .social-icons-footer { justify-content: center; }
-            .footer-logo img { height: 270px; margin: 0 auto; }
+            .footer-logo img { height: 180px; margin: 0 auto; }
             .sidebar { width: 280px; }
             .limites-nota p { font-size: 0.75rem; }
         }
 
         @media (max-width: 480px) {
             body {
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
-            .logo-float img { height: 82px; }
+            .logo-float img { height: 55px; }
             .navbar-text { font-size: 0.75rem; }
             .navbar { top: 38px; right: calc(0.5rem + 70px); }
-            .menu-icon img { width: 35px; }
             .beneficios-section { padding: 105px 1rem 2rem 1rem; }
             .beneficios-title { font-size: 1.4rem; }
             .beneficio-card { padding: 1.5rem; }
             .beneficio-card-header h3 { font-size: 1.2rem; }
-            .beneficio-card-header img { width: 50px; height: 50px; }
+            .beneficio-card-header img { width: 40px; height: 40px; }
             .beneficio-list li { font-size: 0.85rem; }
-            .grupo-item img { width: 80px; height: 80px; }
+            .grupo-item img { width: 70px; height: 70px; }
             .grupo-item .eventos strong { font-size: 1.2rem; }
             .grupo-item .monto { font-size: 1.2rem; }
-            .beneficio-parabrisas img { width: 80px; height: 80px; }
+            .beneficio-parabrisas img { width: 70px; height: 70px; }
             .beneficio-parabrisas .eventos strong { font-size: 1.2rem; }
             .beneficio-parabrisas .monto { font-size: 1.2rem; }
             .total-beneficio .total-label { font-size: 1rem; }
             .total-beneficio .total-monto { font-size: 2rem; }
             .cotizar-section { padding: 2rem 1rem; }
             .btn-cotizar a { font-size: 0.9rem; padding: 0.7rem 1.5rem; }
-            .footer-logo img { height: 210px; }
-            .social-icons-footer img { width: 68px; height: 68px; }
+            .footer-logo img { height: 140px; }
+            .social-icons-footer img { width: 45px; height: 45px; }
             .limites-nota p { font-size: 0.7rem; }
         }
     </style>
@@ -875,7 +882,6 @@
             <h2>Beneficios económicos</h2>
             
             <div class="beneficios-economicos-wrapper">
-                <!-- Bloque grande: Reparación de rayones y aros juntos -->
                 <div class="beneficio-grupo">
                     <h3>Reparaciones de pintura y aros</h3>
                     <div class="grupo-items">
@@ -894,7 +900,6 @@
                     </div>
                 </div>
 
-                <!-- Bloque pequeño: Parabrisas -->
                 <div class="beneficio-parabrisas">
                     <h3>Bono adicional para parabrisas</h3>
                     <img src="fotos/parabrisas.jpeg" alt="Bono parabrisas">
@@ -904,13 +909,11 @@
                 </div>
             </div>
             
-            <!-- Total de beneficios -->
             <div class="total-beneficio">
                 <div class="total-label">Beneficios totales al año</div>
                 <div class="total-monto">$750* <small>USD</small></div>
             </div>
 
-            <!-- NOTAS LEGALES -->
             <div class="nota-igv">
                 * Incluye IGV
             </div>
@@ -921,7 +924,6 @@
         </div>
     </div>
 
-    <!-- SECCIÓN BOTÓN COTIZAR -->
     <div class="cotizar-section">
         <div class="btn-cotizar">
             <a href="https://wa.me/51980456427?text=Hola,%20me%20interesa%20cotizar%20el%20programa%20Siempre%20Nuevo" target="_blank">
@@ -930,7 +932,6 @@
         </div>
     </div>
 
-    <!-- WHATSAPP FLOTANTE -->
     <div class="whatsapp-float">
         <a href="https://wa.me/51980456427?text=Hola,%20me%20interesa%20obtener%20más%20información%20sobre%20Siempre%20Nuevo" target="_blank">
             <img src="fotos/wsp.png" alt="WhatsApp">
