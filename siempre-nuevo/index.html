@@ -25,6 +25,31 @@
             -webkit-tap-highlight-color: transparent;
         }
 
+        /* === INICIO: AUMENTO DEL 50% EN TEXTOS QUE NO SON TÍTULOS === */
+        /* Se aplica a párrafos, spans, textos de botones, listas, etc. */
+        p, span:not(.navbar-text):not(.menu-icon span), li, 
+        .contact-item a, .footer-link-item a, .privacy-group label,
+        .form-group label, .btn-continuar, .cobertura-terminos a,
+        .asterisco-note, .terminos-note, .cobertura-card h3,
+        .paso-fusion-card p, .paso-azul-card p,
+        .contact-item, .footer-link-item, .btn-cotizar a,
+        input, textarea, select, option, .plan-btn {
+            font-size: 1.5em !important;
+        }
+        /* Ajuste fino para no romper diseño en móvil */
+        @media (max-width: 768px) {
+            p, span:not(.navbar-text):not(.menu-icon span), li,
+            .contact-item a, .footer-link-item a, .privacy-group label,
+            .form-group label, .btn-continuar, .cobertura-terminos a,
+            .asterisco-note, .terminos-note, .cobertura-card h3,
+            .paso-fusion-card p, .paso-azul-card p,
+            .contact-item, .footer-link-item, .btn-cotizar a,
+            input, textarea, select, option, .plan-btn {
+                font-size: 1.2em !important;
+            }
+        }
+        /* === FIN AUMENTO TEXTOS === */
+
         .sidebar {
             position: fixed;
             top: 0;
@@ -101,16 +126,19 @@
             display: block;
         }
 
+        /* Logo y navbar con transición para scroll */
         .logo-float {
             position: fixed;
             top: 1rem;
             right: 1rem;
             z-index: 100;
             cursor: pointer;
-            transition: transform 0.2s ease;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
+            border-radius: 60px;
+            padding: 0.3rem;
         }
         .logo-float:hover {
             transform: scale(1.02);
@@ -119,6 +147,19 @@
             height: 120px;
             width: auto;
             display: block;
+            transition: all 0.3s ease;
+        }
+
+        /* Clase para fondo sólido en scroll (móvil) */
+        .logo-float.scrolled {
+            background-color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 60px;
+            padding: 0.3rem 0.8rem;
+        }
+        .navbar.scrolled {
+            background-color: white !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .navbar {
@@ -297,19 +338,6 @@
             height: 35px;
         }
 
-        .carousel-slide {
-            position: relative;
-        }
-        
-        .carousel-slide .play-pause-btn {
-            width: 50px;
-            height: 50px;
-        }
-        .carousel-slide .play-pause-btn svg {
-            width: 25px;
-            height: 25px;
-        }
-
         .cobertura-section {
             background-color: white;
             width: 100%;
@@ -381,7 +409,6 @@
             display: block;
         }
 
-        /* Overlay en esquina inferior izquierda */
         .zero-cost-overlay {
             position: absolute;
             bottom: 8px;
@@ -433,7 +460,6 @@
             line-height: 1.3;
         }
 
-        /* Nota de términos y condiciones debajo de cobertura */
         .cobertura-terminos {
             text-align: center;
             margin-top: 2rem;
@@ -796,95 +822,28 @@
             border-radius: 2px;
         }
 
-        .carousel-wrapper {
-            position: relative;
-            overflow: hidden;
-            padding: 0 40px;
-        }
-
-        .carousel-container {
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            scrollbar-width: thin;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .carousel-container::-webkit-scrollbar {
-            height: 8px;
-        }
-
-        .carousel-container::-webkit-scrollbar-track {
-            background: #e7f3ff;
-            border-radius: 10px;
-        }
-
-        .carousel-container::-webkit-scrollbar-thumb {
-            background: #ff914d;
-            border-radius: 10px;
-        }
-
-        .carousel-track {
-            display: flex;
-            gap: 1.5rem;
-            padding: 1rem 0;
-        }
-
-        .carousel-slide {
-            flex: 0 0 calc(33.333% - 1rem);
-            min-width: 280px;
+        /* Nuevo: video único centrado (sin carrusel) */
+        .video-unico {
+            max-width: 500px;
+            margin: 0 auto;
             border-radius: 24px;
             overflow: hidden;
-            background-color: transparent;
-            transition: transform 0.3s ease;
-            position: relative;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
-
-        .carousel-slide:hover {
-            transform: translateY(-5px);
-        }
-
-        .carousel-slide video {
+        .video-unico video {
             width: 100%;
             height: auto;
             aspect-ratio: 9 / 16;
             object-fit: cover;
-            border-radius: 24px;
-            background-color: #f0f0f0;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            display: block;
         }
-
-        .carousel-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: #ff914d;
-            color: white;
-            border: none;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 24px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        .video-unico .play-pause-btn {
+            width: 60px;
+            height: 60px;
         }
-
-        .carousel-button:hover {
-            background-color: #ff7a2e;
-            transform: translateY(-50%) scale(1.05);
-        }
-
-        .carousel-button.prev {
-            left: 0;
-        }
-
-        .carousel-button.next {
-            right: 0;
+        .video-unico .play-pause-btn svg {
+            width: 30px;
+            height: 30px;
         }
 
         .whatsapp-float {
@@ -1054,6 +1013,10 @@
             transition: color 0.2s ease;
         }
 
+        .footer-link-item a:hover {
+            color: #ff914d;
+        }
+
         .spinner {
             display: inline-block;
             width: 20px;
@@ -1134,8 +1097,8 @@
             
             .full-video-wrapper .play-pause-btn { width: 50px; height: 50px; }
             .full-video-wrapper .play-pause-btn svg { width: 25px; height: 25px; }
-            .carousel-slide .play-pause-btn { width: 40px; height: 40px; }
-            .carousel-slide .play-pause-btn svg { width: 20px; height: 20px; }
+            .video-unico .play-pause-btn { width: 50px; height: 50px; }
+            .video-unico .play-pause-btn svg { width: 25px; height: 25px; }
             
             .cobertura-grid { gap: 1rem; }
             .cobertura-card { min-width: 160px; }
@@ -1150,9 +1113,6 @@
             .paso-fusion-card { max-width: 280px; }
             .paso-fusion-card p { font-size: 0.9rem; }
             
-            .carousel-slide { flex: 0 0 calc(100% - 0rem); }
-            .carousel-wrapper { padding: 0 20px; }
-            .carousel-button { width: 36px; height: 36px; font-size: 18px; }
             .whatsapp-float img { width: 60px; height: 60px; }
             
             .footer-inner { flex-direction: column; text-align: center; }
@@ -1164,7 +1124,6 @@
             
             .cobertura-card h3 { font-size: 0.9rem; }
             .paso-fusion-card p { font-size: 0.9rem; }
-            .beneficio-list li { font-size: 0.9rem; }
         }
 
         @media (max-width: 480px) {
@@ -1184,8 +1143,8 @@
             .hero-video-container .play-pause-btn svg { width: 12px; height: 12px; }
             .full-video-wrapper .play-pause-btn { width: 45px; height: 45px; }
             .full-video-wrapper .play-pause-btn svg { width: 22px; height: 22px; }
-            .carousel-slide .play-pause-btn { width: 35px; height: 35px; }
-            .carousel-slide .play-pause-btn svg { width: 18px; height: 18px; }
+            .video-unico .play-pause-btn { width: 45px; height: 45px; }
+            .video-unico .play-pause-btn svg { width: 22px; height: 22px; }
             .cobertura-card { min-width: 140px; }
             .cobertura-card h3 { font-size: 0.85rem; }
             .cobertura-card img { height: 85px; }
@@ -1231,7 +1190,6 @@
         </div>
     </div>
 
-    <!-- Modal para video a pantalla completa -->
     <div id="videoModal" class="video-modal">
         <span class="close-modal" id="closeModalBtn">&times;</span>
         <video id="modalVideo" controls></video>
@@ -1250,7 +1208,6 @@
         </div>
     </div>
 
-    <!-- VIDEO 1 - HERO -->
     <div class="hero-section">
         <div class="hero-video-container">
             <div class="video-wrapper" style="width:100%">
@@ -1266,7 +1223,6 @@
         </div>
     </div>
 
-    <!-- SECCIÓN COBERTURA -->
     <div class="cobertura-section">
         <div class="cobertura-section-inner">
             <h2>Cobertura del programa*</h2>
@@ -1312,7 +1268,6 @@
         </div>
     </div>
 
-    <!-- SECCIÓN AZUL FUSIONADA -->
     <div class="blue-fusion-section">
         <div class="blue-fusion-inner">
             <div class="como-funciona-fusion">
@@ -1371,7 +1326,6 @@
         </div>
     </div>
 
-    <!-- VIDEO 2 - GRANDE -->
     <div class="full-video-section">
         <div class="full-video-container">
             <div class="full-video-wrapper video-wrapper" style="width:100%">
@@ -1387,7 +1341,6 @@
         </div>
     </div>
 
-    <!-- SECCIÓN CÓMO FUNCIONA - AZUL -->
     <div class="como-funciona-azul-section">
         <div class="como-funciona-azul-inner">
             <h2>Cómo funciona</h2>
@@ -1414,53 +1367,31 @@
         </div>
     </div>
 
-    <!-- HISTORIAS REALES CON VIDEO 3 -->
+    <!-- HISTORIAS REALES: solo un video centrado (sin carrusel) -->
     <div class="historias-section">
         <div class="historias-section-inner">
             <h2>Historias reales</h2>
-            <div class="carousel-wrapper">
-                <button class="carousel-button prev" id="prevBtn">❮</button>
-                <div class="carousel-container" id="carouselContainer">
-                    <div class="carousel-track" id="carouselTrack">
-                        <div class="carousel-slide">
-                            <div class="video-wrapper" style="width:100%">
-                                <video id="carouselVideo1" playsinline webkit-playsinline controls preload="auto" poster="fotos/miniatura2.png">
-                                    <source src="fotos/video3.mp4" type="video/mp4">
-                                </video>
-                                <div class="play-pause-btn" data-video="carouselVideo1" data-fullscreen="true">
-                                    <svg viewBox="0 0 24 24">
-                                        <path d="M8 5v14l11-7z"/>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-slide">
-                            <div class="video-placeholder">🎬<br>Historia 2</div>
-                        </div>
-                        <div class="carousel-slide">
-                            <div class="video-placeholder">🎬<br>Historia 3</div>
-                        </div>
-                        <div class="carousel-slide">
-                            <div class="video-placeholder">🎬<br>Historia 4</div>
-                        </div>
-                        <div class="carousel-slide">
-                            <div class="video-placeholder">🎬<br>Historia 5</div>
-                        </div>
+            <div class="video-unico">
+                <div class="video-wrapper" style="width:100%">
+                    <video id="carouselVideo1" playsinline webkit-playsinline controls preload="auto" poster="fotos/miniatura2.png">
+                        <source src="fotos/video3.mp4" type="video/mp4">
+                    </video>
+                    <div class="play-pause-btn" data-video="carouselVideo1" data-fullscreen="true">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
                     </div>
                 </div>
-                <button class="carousel-button next" id="nextBtn">❯</button>
             </div>
         </div>
     </div>
 
-    <!-- WHATSAPP -->
     <div class="whatsapp-float">
         <a href="https://wa.me/51980456427?text=Hola,%20me%20interesa%20obtener%20más%20información%20sobre%20Siempre%20Nuevo" target="_blank">
             <img src="fotos/wsp.png" alt="WhatsApp">
         </a>
     </div>
 
-    <!-- FOOTER -->
     <div class="footer">
         <div class="footer-inner">
             <div class="footer-left">
@@ -1501,6 +1432,13 @@
                 <div class="footer-link-item">
                     <a href="libro-de-reclamaciones">Libro de reclamaciones</a>
                 </div>
+                <!-- NUEVOS ENLACES SOLICITADOS -->
+                <div class="footer-link-item">
+                    <a href="https://www.grupomok.com/home" target="_blank">Grupo Mok</a>
+                </div>
+                <div class="footer-link-item">
+                    <a href="nuestros-aliados">Nuestros Aliados</a>
+                </div>
             </div>
         </div>
     </div>
@@ -1524,13 +1462,27 @@
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
             const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
             
+            // SCROLL PARA FONDO SÓLIDO EN MÓVIL (barra + logo)
+            if (window.innerWidth <= 768) {
+                const logoFloat = document.querySelector('.logo-float');
+                const navbar = document.querySelector('.navbar');
+                window.addEventListener('scroll', function() {
+                    if (window.scrollY > 50) {
+                        logoFloat.classList.add('scrolled');
+                        navbar.classList.add('scrolled');
+                    } else {
+                        logoFloat.classList.remove('scrolled');
+                        navbar.classList.remove('scrolled');
+                    }
+                });
+            }
+            
             const modal = document.getElementById('videoModal');
             const modalVideo = document.getElementById('modalVideo');
             const closeModalBtn = document.getElementById('closeModalBtn');
             
             function openFullscreenVideo(videoElement) {
                 const videoSrc = videoElement.querySelector('source')?.src || videoElement.src;
-                
                 if (videoSrc) {
                     modalVideo.src = videoSrc;
                     modalVideo.load();
@@ -1547,27 +1499,17 @@
                 modalVideo.src = '';
             }
             
-            if (closeModalBtn) {
-                closeModalBtn.addEventListener('click', closeVideoModal);
-            }
-            
+            if (closeModalBtn) closeModalBtn.addEventListener('click', closeVideoModal);
             modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    closeVideoModal();
-                }
+                if (e.target === modal) closeVideoModal();
             });
             
-            // Función unificada para todos los videos - SIN AUDIO SEPARADO
             function setupVideoControls(videoId, btnElement, isFullscreen = false) {
                 const video = document.getElementById(videoId);
                 if (!video) return;
-                
-                // Configuración para iOS y móvil
                 video.setAttribute('playsinline', 'true');
                 video.setAttribute('webkit-playsinline', 'true');
                 video.setAttribute('controls', 'true');
-                
-                // En móvil, NUNCA silenciamos el video
                 video.muted = false;
                 video.volume = 1.0;
                 video.load();
@@ -1585,7 +1527,6 @@
                     if (isFullscreen) {
                         openFullscreenVideo(video);
                     } else {
-                        // Asegurar que el audio esté activo
                         video.muted = false;
                         video.volume = 1.0;
                         video.play().catch(e => console.log(`Error playing ${videoId}:`, e));
@@ -1604,31 +1545,18 @@
                     }
                 }
                 
-                if (btnElement) {
-                    btnElement.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        togglePlay();
-                    });
-                }
-                
-                video.addEventListener('play', () => updateButtonIcon());
-                video.addEventListener('pause', () => updateButtonIcon());
-                video.addEventListener('ended', () => updateButtonIcon());
-                video.addEventListener('loadedmetadata', () => {
-                    video.muted = false;
-                    video.volume = 1.0;
-                });
-                
+                if (btnElement) btnElement.addEventListener('click', (e) => { e.stopPropagation(); togglePlay(); });
+                video.addEventListener('play', updateButtonIcon);
+                video.addEventListener('pause', updateButtonIcon);
+                video.addEventListener('ended', updateButtonIcon);
+                video.addEventListener('loadedmetadata', () => { video.muted = false; video.volume = 1.0; });
                 updateButtonIcon();
                 
-                // Desbloqueo de audio para iOS (necesario para que el audio funcione)
                 if (isIOS && !isFullscreen) {
                     const unlockGlobalAudio = function() {
                         const testVideo = document.createElement('video');
                         testVideo.muted = true;
-                        testVideo.play().then(() => {
-                            testVideo.pause();
-                        }).catch(() => {});
+                        testVideo.play().then(() => testVideo.pause()).catch(() => {});
                         document.removeEventListener('touchstart', unlockGlobalAudio);
                         document.removeEventListener('click', unlockGlobalAudio);
                     };
@@ -1639,7 +1567,7 @@
             
             const heroBtn = document.querySelector('.hero-video-container .play-pause-btn');
             const fullBtn = document.querySelector('.full-video-wrapper .play-pause-btn');
-            const carouselBtn = document.querySelector('.carousel-slide .play-pause-btn');
+            const carouselBtn = document.querySelector('.video-unico .play-pause-btn');
             
             setupVideoControls('heroVideo', heroBtn, true);
             setupVideoControls('fullVideo', fullBtn, true);
@@ -1671,8 +1599,9 @@
                 form.addEventListener('submit', async function(e) {
                     e.preventDefault();
                     
+                    // VALIDACIÓN MEJORADA: mensaje si checkbox no está marcado
                     if (!privacyCheckbox.checked) {
-                        alert('⚠️ Por favor, autoriza el uso de tus datos para continuar.');
+                        alert('⚠️ Por favor, autoriza el uso de tus datos marcando el cuadro de "Autorizo el uso de mis datos..." antes de continuar.');
                         return;
                     }
                     
@@ -1702,7 +1631,6 @@
                             submitBtn.classList.add('success');
                             form.reset();
                             privacyCheckbox.checked = false;
-                            
                             setTimeout(() => {
                                 submitBtn.innerHTML = '👉 Quiero protegerlo';
                                 submitBtn.classList.remove('success');
@@ -1715,7 +1643,6 @@
                         console.error('Error:', error);
                         submitBtn.innerHTML = '❌ Error, intenta de nuevo';
                         submitBtn.classList.add('error');
-                        
                         setTimeout(() => {
                             submitBtn.innerHTML = '👉 Quiero protegerlo';
                             submitBtn.classList.remove('error');
@@ -1724,27 +1651,6 @@
                     }
                 });
             }
-
-            const carouselContainer = document.getElementById('carouselContainer');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            
-            if (prevBtn && nextBtn && carouselContainer) {
-                prevBtn.addEventListener('click', () => {
-                    carouselContainer.scrollBy({ left: -350, behavior: 'smooth' });
-                });
-                
-                nextBtn.addEventListener('click', () => {
-                    carouselContainer.scrollBy({ left: 350, behavior: 'smooth' });
-                });
-            }
-            
-            const videos = document.querySelectorAll('video');
-            videos.forEach(video => {
-                video.addEventListener('error', function(e) {
-                    console.log('Error en video:', this.id, e);
-                });
-            });
         })();
     </script>
 </body>
