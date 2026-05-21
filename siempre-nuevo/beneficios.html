@@ -19,6 +19,19 @@
             font-family: 'DM Sans', sans-serif;
             background-color: #ffffff;
             -webkit-font-smoothing: antialiased;
+            /* AUMENTAR TAMAÑO BASE DE LETRAS EN UN 50% */
+            font-size: 1.5rem;
+        }
+
+        /* Los títulos de sección mantienen su tamaño original */
+        .beneficios-title,
+        .detalle-beneficios-section h2,
+        .footer-contact h3,
+        .footer-social-title h3,
+        .footer-links-column h3,
+        .navbar-text,
+        .sidebar-menu a {
+            font-size: revert;
         }
 
         /* MENU DESPLEGABLE - SIDEBAR */
@@ -112,7 +125,7 @@
             transform: scale(1.02);
         }
         .logo-float img {
-            height: 120px;
+            height: 180px;
             width: auto;
             display: block;
         }
@@ -161,7 +174,7 @@
             transform: scale(1.02);
         }
         .menu-icon img {
-            width: 35px;
+            width: 52px;
             height: auto;
             display: block;
         }
@@ -229,8 +242,8 @@
         }
 
         .beneficio-card-header img {
-            width: 48px;
-            height: 48px;
+            width: 72px;
+            height: 72px;
             object-fit: contain;
         }
 
@@ -297,7 +310,6 @@
             border-radius: 2px;
         }
 
-        /* NUEVA ESTRUCTURA: 2 bloques (uno grande y uno pequeño) */
         .beneficios-economicos-wrapper {
             display: flex;
             justify-content: center;
@@ -306,7 +318,6 @@
             margin-top: 2rem;
         }
 
-        /* Bloque grande: reparación de rayones y aros juntos */
         .beneficio-grupo {
             flex: 2;
             min-width: 300px;
@@ -345,8 +356,8 @@
         }
 
         .grupo-item img {
-            width: 80px;
-            height: 80px;
+            width: 120px;
+            height: 120px;
             object-fit: contain;
             margin-bottom: 1rem;
         }
@@ -378,7 +389,6 @@
             margin-top: 0.5rem;
         }
 
-        /* Bloque pequeño: parabrisas */
         .beneficio-parabrisas {
             flex: 1;
             min-width: 250px;
@@ -404,8 +414,8 @@
         }
 
         .beneficio-parabrisas img {
-            width: 80px;
-            height: 80px;
+            width: 120px;
+            height: 120px;
             object-fit: contain;
             margin-bottom: 1rem;
         }
@@ -464,7 +474,6 @@
             font-size: 1.3rem;
         }
 
-        /* Nota de límites de eventos */
         .limites-nota {
             text-align: center;
             margin-top: 2rem;
@@ -500,7 +509,6 @@
             font-size: 0.8rem;
         }
 
-        /* SECCIÓN BOTÓN COTIZAR - EN EL ESPACIO BLANCO */
         .cotizar-section {
             background-color: white;
             width: 100%;
@@ -534,7 +542,6 @@
             box-shadow: 0 6px 20px rgba(255, 145, 77, 0.4);
         }
 
-        /* WHATSAPP FLOTANTE */
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -556,7 +563,6 @@
             transform: scale(1.1);
         }
 
-        /* FOOTER */
         .footer {
             background-color: #0c3a6a;
             width: 100%;
@@ -583,7 +589,7 @@
         }
 
         .footer-logo img {
-            height: clamp(140px, 20vw, 280px);
+            height: clamp(210px, 30vw, 420px);
             width: auto;
             display: block;
         }
@@ -662,8 +668,8 @@
         }
 
         .social-icons-footer img {
-            width: clamp(35px, 8vw, 52px);
-            height: clamp(35px, 8vw, 52px);
+            width: clamp(52px, 12vw, 78px);
+            height: clamp(52px, 12vw, 78px);
         }
 
         .footer-links-column {
@@ -713,17 +719,24 @@
 
         /* MEDIA QUERIES */
         @media (max-width: 1024px) {
-            .logo-float img { height: 100px; }
+            body {
+                font-size: 1.3rem;
+            }
+            .logo-float img { height: 150px; }
             .navbar { right: calc(1rem + 120px); }
             .beneficios-section { padding: 160px 1.5rem 2rem 1.5rem; }
-            .grupo-item img { width: 60px; height: 60px; }
-            .beneficio-parabrisas img { width: 60px; height: 60px; }
+            .grupo-item img { width: 100px; height: 100px; }
+            .beneficio-parabrisas img { width: 100px; height: 100px; }
+            .menu-icon img { width: 45px; }
         }
 
         @media (max-width: 768px) {
-            .logo-float img { height: 70px; }
+            body {
+                font-size: 1.2rem;
+            }
+            .logo-float img { height: 105px; }
             .navbar { top: 43px; left: 0.5rem; right: calc(0.5rem + 90px); padding: 0.6rem 1rem; }
-            .menu-icon img { width: 28px; }
+            .menu-icon img { width: 42px; }
             
             .navbar-text { 
                 font-size: 0.85rem; 
@@ -736,19 +749,17 @@
             .beneficios-title { font-size: 1.6rem; }
             .beneficio-card { min-width: 100%; }
             .beneficio-card-header h3 { font-size: 1.3rem; }
-            .beneficio-card-header img { width: 40px; height: 40px; }
+            .beneficio-card-header img { width: 60px; height: 60px; }
             .beneficio-list li { font-size: 0.9rem; }
             
             .beneficio-grupo { padding: 1.5rem; }
             .grupo-item { min-width: 150px; }
-            /* MÓVIL: IMÁGENES AL DOBLE (de 55px a 110px) */
-            .grupo-item img { width: 110px; height: 110px; }
+            .grupo-item img { width: 100px; height: 100px; }
             .grupo-item .eventos strong { font-size: 1.5rem; }
             .grupo-item .monto { font-size: 1.5rem; }
             
             .beneficio-parabrisas { padding: 1.5rem; }
-            /* MÓVIL: IMÁGENES AL DOBLE (de 55px a 110px) */
-            .beneficio-parabrisas img { width: 110px; height: 110px; }
+            .beneficio-parabrisas img { width: 100px; height: 100px; }
             .beneficio-parabrisas .eventos strong { font-size: 1.5rem; }
             .beneficio-parabrisas .monto { font-size: 1.5rem; }
             
@@ -761,33 +772,37 @@
             .footer-left, .footer-contact, .footer-social, .footer-links-column { text-align: center; padding-top: 0; }
             .footer-contact h3:after, .footer-social-title h3:after, .footer-links-column h3:after { left: 50%; transform: translateX(-50%); }
             .social-icons-footer { justify-content: center; }
-            .footer-logo img { height: 180px; margin: 0 auto; }
+            .footer-logo img { height: 270px; margin: 0 auto; }
             .sidebar { width: 280px; }
             .limites-nota p { font-size: 0.75rem; }
         }
 
         @media (max-width: 480px) {
-            .logo-float img { height: 55px; }
+            body {
+                font-size: 1rem;
+            }
+            .logo-float img { height: 82px; }
             .navbar-text { font-size: 0.75rem; }
             .navbar { top: 38px; right: calc(0.5rem + 70px); }
+            .menu-icon img { width: 35px; }
             .beneficios-section { padding: 105px 1rem 2rem 1rem; }
             .beneficios-title { font-size: 1.4rem; }
             .beneficio-card { padding: 1.5rem; }
             .beneficio-card-header h3 { font-size: 1.2rem; }
+            .beneficio-card-header img { width: 50px; height: 50px; }
             .beneficio-list li { font-size: 0.85rem; }
-            /* MÓVIL PEQUEÑO: IMÁGENES AL DOBLE (de 45px a 90px) */
-            .grupo-item img { width: 90px; height: 90px; }
+            .grupo-item img { width: 80px; height: 80px; }
             .grupo-item .eventos strong { font-size: 1.2rem; }
             .grupo-item .monto { font-size: 1.2rem; }
-            .beneficio-parabrisas img { width: 90px; height: 90px; }
+            .beneficio-parabrisas img { width: 80px; height: 80px; }
             .beneficio-parabrisas .eventos strong { font-size: 1.2rem; }
             .beneficio-parabrisas .monto { font-size: 1.2rem; }
             .total-beneficio .total-label { font-size: 1rem; }
             .total-beneficio .total-monto { font-size: 2rem; }
             .cotizar-section { padding: 2rem 1rem; }
             .btn-cotizar a { font-size: 0.9rem; padding: 0.7rem 1.5rem; }
-            .footer-logo img { height: 140px; }
-            .social-icons-footer img { width: 45px; height: 45px; }
+            .footer-logo img { height: 210px; }
+            .social-icons-footer img { width: 68px; height: 68px; }
             .limites-nota p { font-size: 0.7rem; }
         }
     </style>
@@ -906,7 +921,7 @@
         </div>
     </div>
 
-    <!-- SECCIÓN BOTÓN COTIZAR - EN EL ESPACIO BLANCO -->
+    <!-- SECCIÓN BOTÓN COTIZAR -->
     <div class="cotizar-section">
         <div class="btn-cotizar">
             <a href="https://wa.me/51980456427?text=Hola,%20me%20interesa%20cotizar%20el%20programa%20Siempre%20Nuevo" target="_blank">
@@ -962,6 +977,12 @@
                 </div>
                 <div class="footer-link-item">
                     <a href="libro-de-reclamaciones">Libro de reclamaciones</a>
+                </div>
+                <div class="footer-link-item">
+                    <a href="https://www.grupomok.com/home" target="_blank">Grupo Mok</a>
+                </div>
+                <div class="footer-link-item">
+                    <a href="nuestros-aliados">Nuestros Aliados</a>
                 </div>
             </div>
         </div>
