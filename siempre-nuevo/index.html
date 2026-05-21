@@ -25,45 +25,71 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* AUMENTO GENERAL DE TEXTO 50% - EXCEPTO FOOTER Y ÁREAS ESPECÍFICAS */
-        body, p, li, a:not(.footer a):not(.sidebar-menu a), .cobertura-card h3, 
-        .paso-fusion-card p, .paso-azul-card p, .form-group label, 
-        .privacy-group label, .terminos-note, .asterisco-note,
-        .cobertura-terminos, .contact-item a, .footer-link-item a {
-            font-size: calc(1rem * 1.5);
+        /* ===== AUMENTO DEL 50% EN TEXTOS (NO TÍTULOS) ===== */
+        /* Desktop + móvil: todos los textos normales aumentados un 50% */
+        body, p, li, span:not(.big-zero):not(.zero-text):not(.costo-text), 
+        .form-group label, .privacy-group label, .contact-item a, 
+        .footer-link-item a, .paso-fusion-card p, .paso-azul-card p,
+        .asterisco-note, .terminos-note, .cobertura-terminos,
+        .navbar-text, .btn-continuar, input, textarea, .cobertura-card h3 {
+            font-size: calc(1rem * 1.5) !important;
+            line-height: 1.4;
         }
 
-        /* Ajustes específicos para mantener proporcion */
+        /* Ajustes específicos para no romper diseño */
+        .navbar-text {
+            font-size: calc(1.4rem * 1.5) !important;
+        }
+        
         .cobertura-card h3 {
-            font-size: calc(1rem * 1.5);
+            font-size: calc(1rem * 1.5) !important;
         }
-
-        .paso-fusion-card p {
-            font-size: calc(0.9rem * 1.5);
+        
+        .paso-fusion-card h3 {
+            font-size: calc(1.1rem * 1.5) !important;
         }
-
+        
+        .paso-azul-card h3 {
+            font-size: calc(1.3rem * 1.5) !important;
+        }
+        
         .form-group label {
-            font-size: calc(0.85rem * 1.5);
+            font-size: calc(0.85rem * 1.5) !important;
         }
-
+        
         .privacy-group label {
-            font-size: calc(0.75rem * 1.5);
+            font-size: calc(0.75rem * 1.5) !important;
+        }
+        
+        .btn-continuar {
+            font-size: calc(0.9rem * 1.5) !important;
+        }
+        
+        .contact-item a, .footer-link-item a {
+            font-size: calc(1.1rem * 1.5) !important;
+        }
+        
+        .footer-contact h3, .footer-social-title h3, .footer-links-column h3 {
+            font-size: calc(1.4rem * 1.5) !important;
+        }
+        
+        /* Ajuste responsive para evitar desbordes en móvil */
+        @media (max-width: 768px) {
+            body, p, li, span, .navbar-text, .cobertura-card h3,
+            .paso-fusion-card p, .paso-azul-card p, .form-group label,
+            .privacy-group label, .btn-continuar, .contact-item a,
+            .footer-link-item a {
+                font-size: calc(0.9rem * 1.5) !important;
+            }
+            .navbar-text {
+                font-size: calc(0.85rem * 1.5) !important;
+            }
+            .cobertura-card h3 {
+                font-size: calc(0.9rem * 1.5) !important;
+            }
         }
 
-        .terminos-note, .asterisco-note, .cobertura-terminos {
-            font-size: calc(0.75rem * 1.5);
-        }
-
-        /* Footer y sidebar se mantienen con tamaño original */
-        .footer, .footer *:not(.footer a, .footer-link-item a, .contact-item a),
-        .sidebar, .sidebar * {
-            font-size: revert;
-        }
-
-        /* Ajuste específico para no romper tamaños en botones */
-        .btn-continuar, .play-pause-btn svg, .carousel-button {
-            font-size: revert;
-        }
+        /* ===== FIN AUMENTO TEXTOS ===== */
 
         .sidebar {
             position: fixed;
@@ -141,32 +167,35 @@
             display: block;
         }
 
-        /* Estilos para el efecto "pacman" al hacer scroll */
+        /* ===== LOGO Y NAVBAR CON EFECTO "PACMAN" (MÓVIL) ===== */
         .logo-float {
             position: fixed;
             top: 1rem;
             right: 1rem;
             z-index: 100;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: transform 0.2s ease, background-color 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: transparent;
-            border-radius: 20px;
+            border-radius: 60px;
             padding: 5px;
         }
+        
         .logo-float.scrolled {
-            background-color: white;
+            background-color: #0c3a6a;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        .logo-float:hover {
-            transform: scale(1.02);
-        }
+        
         .logo-float img {
             height: 120px;
             width: auto;
             display: block;
+            transition: all 0.3s ease;
+        }
+        
+        .logo-float.scrolled img {
+            filter: brightness(0) invert(1);
         }
 
         .navbar {
@@ -183,18 +212,30 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
         }
-        /* Clase para cuando se hace scroll (efecto sólido) */
-        .navbar.scrolled {
-            background-color: white !important;
-            backdrop-filter: none !important;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-        /* Versión azul para desktop */
-        body.desktop .navbar.scrolled {
-            background-color: #0c3a6a !important;
-        }
-        body.desktop .navbar.scrolled .navbar-text {
-            color: white;
+        
+        /* Efecto Pacman en móvil - fondo sólido al hacer scroll */
+        @media (max-width: 768px) {
+            .navbar.scrolled {
+                background-color: #0c3a6a !important;
+                backdrop-filter: none !important;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            }
+            
+            .navbar.scrolled .navbar-text {
+                color: white !important;
+            }
+            
+            .navbar.scrolled .menu-icon img {
+                filter: brightness(0) invert(1);
+            }
+            
+            .logo-float {
+                background-color: transparent;
+            }
+            
+            .logo-float.scrolled {
+                background-color: #0c3a6a;
+            }
         }
 
         .navbar-content {
@@ -207,10 +248,10 @@
 
         .navbar-text {
             color: #0c3a6a;
-            font-size: 1.4rem;
             font-weight: 600;
             font-style: italic;
             text-align: center;
+            transition: color 0.3s ease;
         }
 
         .menu-icon {
@@ -229,6 +270,7 @@
             width: 35px;
             height: auto;
             display: block;
+            transition: filter 0.3s ease;
         }
 
         .hero-section {
@@ -302,6 +344,7 @@
             height: 22px;
         }
 
+        /* Modal para video a pantalla completa */
         .video-modal {
             display: none;
             position: fixed;
@@ -428,6 +471,7 @@
             display: block;
         }
 
+        /* Overlay en esquina inferior izquierda */
         .zero-cost-overlay {
             position: absolute;
             bottom: 8px;
@@ -478,6 +522,7 @@
             line-height: 1.3;
         }
 
+        /* Nota de términos y condiciones debajo de cobertura */
         .cobertura-terminos {
             text-align: center;
             margin-top: 2rem;
@@ -570,7 +615,6 @@
 
         .paso-fusion-card h3 {
             color: white;
-            font-size: 1.1rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
         }
@@ -614,7 +658,6 @@
             border: 1px solid #cbd5e1;
             border-radius: 20px;
             font-family: 'DM Sans', sans-serif;
-            font-size: 0.9rem;
             background-color: white;
             transition: all 0.2s ease;
         }
@@ -763,7 +806,6 @@
 
         .paso-azul-card h3 {
             color: white;
-            font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 0.75rem;
         }
@@ -797,7 +839,7 @@
             text-decoration: none;
         }
 
-        /* SECCIÓN HISTORIAS REALES - SIN CARRUSEL, VIDEO CENTRADO */
+        /* ===== HISTORIAS REALES - SIN CARRUSEL ===== */
         .historias-section {
             background-color: white;
             width: 100%;
@@ -833,30 +875,31 @@
             border-radius: 2px;
         }
 
-        .video-central {
-            max-width: 500px;
+        /* Video único al medio */
+        .video-unico {
+            max-width: 400px;
             margin: 0 auto;
             border-radius: 24px;
             overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
             position: relative;
         }
 
-        .video-central video {
+        .video-unico video {
             width: 100%;
             aspect-ratio: 9 / 16;
             object-fit: cover;
-            background-color: #000;
-            border-radius: 24px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            display: block;
         }
 
-        .video-central .play-pause-btn {
-            width: 60px;
-            height: 60px;
+        .video-unico .play-pause-btn {
+            width: 55px;
+            height: 55px;
         }
-        .video-central .play-pause-btn svg {
-            width: 30px;
-            height: 30px;
+        
+        .video-unico .play-pause-btn svg {
+            width: 28px;
+            height: 28px;
         }
 
         .whatsapp-float {
@@ -922,7 +965,6 @@
 
         .footer-contact h3, .footer-social-title h3 {
             color: white;
-            font-size: 1.4rem;
             font-weight: 600;
             margin-bottom: 1.2rem;
             position: relative;
@@ -947,7 +989,6 @@
         .contact-item a {
             color: white;
             text-decoration: none;
-            font-size: 1.1rem;
             font-weight: 500;
             transition: color 0.2s ease;
         }
@@ -996,7 +1037,6 @@
 
         .footer-links-column h3 {
             color: white;
-            font-size: 1.4rem;
             font-weight: 600;
             margin-bottom: 1.2rem;
             position: relative;
@@ -1021,7 +1061,6 @@
         .footer-link-item a {
             color: white;
             text-decoration: none;
-            font-size: 1.1rem;
             font-weight: 500;
             transition: color 0.2s ease;
         }
@@ -1041,21 +1080,6 @@
             to { transform: rotate(360deg); }
         }
 
-        .video-placeholder {
-            width: 100%;
-            aspect-ratio: 9 / 16;
-            background: linear-gradient(135deg, #0c3a6a, #ff914d);
-            border-radius: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2rem;
-            font-weight: bold;
-            text-align: center;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
-
         /* MEDIA QUERIES */
         @media (max-width: 1024px) {
             .blue-fusion-inner { flex-direction: column; }
@@ -1065,12 +1089,10 @@
 
         @media (max-width: 768px) {
             .logo-float img { height: 70px; }
-            .logo-float.scrolled { background-color: white; }
             .navbar { top: 43px; left: 0.5rem; right: calc(0.5rem + 90px); padding: 0.6rem 1rem; }
             .menu-icon img { width: 28px; }
             
             .navbar-text { 
-                font-size: 0.85rem; 
                 margin-left: auto;
                 margin-right: 0;
                 text-align: right;
@@ -1129,15 +1151,14 @@
             .footer-logo img { height: 180px; margin: 0 auto; }
             .sidebar { width: 280px; }
             
-            .video-central { max-width: 350px; }
-            .video-central .play-pause-btn { width: 45px; height: 45px; }
-            .video-central .play-pause-btn svg { width: 22px; height: 22px; }
+            .video-unico {
+                max-width: 300px;
+            }
         }
 
         @media (max-width: 480px) {
             .logo-float img { height: 55px; }
             .navbar { top: 38px; right: calc(0.5rem + 70px); }
-            .navbar-text { font-size: 0.75rem; }
             .hero-section { 
                 min-height: 65vh; 
                 height: 65vh; 
@@ -1152,7 +1173,6 @@
             .full-video-wrapper .play-pause-btn { width: 45px; height: 45px; }
             .full-video-wrapper .play-pause-btn svg { width: 22px; height: 22px; }
             .cobertura-card { min-width: 140px; }
-            .cobertura-card h3 { font-size: 0.85rem; }
             .cobertura-card img { height: 85px; }
             .zero-cost-overlay { left: 42px; }
             .zero-cost-overlay .big-zero { font-size: 1.8rem; }
@@ -1160,9 +1180,13 @@
             .zero-cost-overlay .text-group .costo-text { font-size: 0.45rem; }
             .footer-logo img { height: 140px; }
             .social-icons-footer img { width: 45px; height: 45px; }
-            .video-central { max-width: 280px; }
-            .video-central .play-pause-btn { width: 35px; height: 35px; }
-            .video-central .play-pause-btn svg { width: 18px; height: 18px; }
+            .video-unico {
+                max-width: 280px;
+            }
+            .video-unico .play-pause-btn {
+                width: 45px;
+                height: 45px;
+            }
         }
 
         /* Desktop */
@@ -1209,7 +1233,7 @@
         <img src="fotos/logo-fondo.png" alt="Siempre Nuevo">
     </div>
 
-    <div class="navbar" id="mainNavbar">
+    <div class="navbar" id="navbar">
         <div class="navbar-content">
             <div class="menu-icon" id="menuButton">
                 <img src="fotos/menu.png" alt="Menú">
@@ -1330,7 +1354,7 @@
                     <div class="privacy-group">
                         <input type="checkbox" id="privacyCheckbox" required>
                         <label for="privacyCheckbox">
-                            Selecciona esta casilla si quieres continuar. (<a href="politica-de-privacidad">Ver política de privacidad</a>)
+                            Autorizo el uso de mis datos para ser contactado sobre el programa Siempre Nuevo. (<a href="politica-de-privacidad">Ver política de privacidad</a>)
                         </label>
                     </div>
                     <button type="submit" class="btn-continuar" id="submitBtn">👉 Quiero protegerlo</button>
@@ -1382,16 +1406,16 @@
         </div>
     </div>
 
-    <!-- HISTORIAS REALES - VIDEO ÚNICO CENTRADO (SIN CARRUSEL) -->
+    <!-- HISTORIAS REALES - VIDEO ÚNICO (SIN CARRUSEL) -->
     <div class="historias-section">
         <div class="historias-section-inner">
             <h2>Historias reales</h2>
-            <div class="video-central">
-                <div class="video-wrapper">
-                    <video id="centralVideo" playsinline webkit-playsinline controls preload="auto" poster="fotos/miniatura2.png">
+            <div class="video-unico">
+                <div class="video-wrapper" style="width:100%">
+                    <video id="historiaVideo" playsinline webkit-playsinline controls preload="auto" poster="fotos/miniatura2.png">
                         <source src="fotos/video3.mp4" type="video/mp4">
                     </video>
-                    <div class="play-pause-btn" data-video="centralVideo" data-fullscreen="true">
+                    <div class="play-pause-btn" data-video="historiaVideo" data-fullscreen="true">
                         <svg viewBox="0 0 24 24">
                             <path d="M8 5v14l11-7z"/>
                         </svg>
@@ -1449,12 +1473,12 @@
                 <div class="footer-link-item">
                     <a href="libro-de-reclamaciones">Libro de reclamaciones</a>
                 </div>
-                <!-- Nuevos enlaces solicitados -->
+                <!-- NUEVOS ENLACES -->
                 <div class="footer-link-item">
                     <a href="https://www.grupomok.com/home" target="_blank">Grupo Mok</a>
                 </div>
                 <div class="footer-link-item">
-                    <a href="nuestros-aliados">Nuestros Aliados</a>
+                    <a href="nuestros-aliados">Nuestros aliados</a>
                 </div>
             </div>
         </div>
@@ -1475,30 +1499,30 @@
             const closeMenuBtn = document.getElementById('closeMenuBtn');
             const logoBtn = document.getElementById('logoButton');
             const footerLogo = document.getElementById('footerLogo');
-            const navbar = document.getElementById('mainNavbar');
-            const logoFloat = document.getElementById('logoButton');
+            const navbar = document.getElementById('navbar');
+            const logoFloat = document.querySelector('.logo-float');
             
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
             
-            // Detectar desktop para aplicar estilo azul en scroll
-            if (!isMobile) {
-                document.body.classList.add('desktop');
-            }
-            
-            // EFECTO "PACMAN" AL HACER SCROLL - Cambia fondo de navbar y logo para tapar contenido
+            // EFECTO PACMAN EN SCROLL (MÓVIL)
             function handleScroll() {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
-                    logoFloat.classList.add('scrolled');
+                if (window.innerWidth <= 768) {
+                    if (window.scrollY > 50) {
+                        if (navbar) navbar.classList.add('scrolled');
+                        if (logoFloat) logoFloat.classList.add('scrolled');
+                    } else {
+                        if (navbar) navbar.classList.remove('scrolled');
+                        if (logoFloat) logoFloat.classList.remove('scrolled');
+                    }
                 } else {
-                    navbar.classList.remove('scrolled');
-                    logoFloat.classList.remove('scrolled');
+                    if (navbar) navbar.classList.remove('scrolled');
+                    if (logoFloat) logoFloat.classList.remove('scrolled');
                 }
             }
             
             window.addEventListener('scroll', handleScroll);
-            handleScroll(); // inicializar
+            window.addEventListener('resize', handleScroll);
+            handleScroll();
             
             const modal = document.getElementById('videoModal');
             const modalVideo = document.getElementById('modalVideo');
@@ -1611,11 +1635,11 @@
             
             const heroBtn = document.querySelector('.hero-video-container .play-pause-btn');
             const fullBtn = document.querySelector('.full-video-wrapper .play-pause-btn');
-            const centralBtn = document.querySelector('.video-central .play-pause-btn');
+            const historiaBtn = document.querySelector('.video-unico .play-pause-btn');
             
             setupVideoControls('heroVideo', heroBtn, true);
             setupVideoControls('fullVideo', fullBtn, true);
-            setupVideoControls('centralVideo', centralBtn, true);
+            setupVideoControls('historiaVideo', historiaBtn, true);
             
             function openMenu() {
                 sidebar.classList.add('open');
@@ -1643,8 +1667,9 @@
                 form.addEventListener('submit', async function(e) {
                     e.preventDefault();
                     
+                    // NUEVO MENSAJE DE VALIDACIÓN
                     if (!privacyCheckbox.checked) {
-                        alert('⚠️ Por favor, selecciona la casilla para continuar.');
+                        alert('⚠️ Selecciona esta casilla si quieres continuar.');
                         return;
                     }
                     
