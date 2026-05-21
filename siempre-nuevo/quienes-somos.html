@@ -263,13 +263,16 @@
             box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
         }
 
+        /* AJUSTE PARA QUE LA IMAGEN NO SE CORTE */
         .respaldo-imagen {
             width: 180px;
             height: 180px;
             border-radius: 24px;
-            object-fit: cover;
+            object-fit: contain;
             margin: 0 auto 1.5rem auto;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            padding: 0.5rem;
         }
 
         .respaldo-nombre {
@@ -312,7 +315,7 @@
             justify-content: center;
             gap: 1.5rem;
             flex-wrap: wrap;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
 
         .stat-badge {
@@ -355,6 +358,7 @@
             text-decoration: none;
             font-weight: 600;
             transition: color 0.2s ease;
+            cursor: pointer;
         }
 
         .respaldo-link:hover {
@@ -362,12 +366,19 @@
             text-decoration: underline;
         }
 
-        /* BOTÓN FLOTANTE DE WHATSAPP */
-        .whatsapp-float {
+        /* WHATSAPP Y FLECHA FLOTANTES */
+        .floating-buttons {
             position: fixed;
             bottom: 30px;
             right: 30px;
             z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 15px;
+        }
+
+        .whatsapp-float {
             transition: all 0.3s ease;
         }
 
@@ -382,6 +393,41 @@
 
         .whatsapp-float img:hover {
             transform: scale(1.1);
+        }
+
+        /* FLECHA ANIMADA */
+        .scroll-indicator {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 1;
+            visibility: visible;
+            animation: bounce 1.5s infinite;
+        }
+
+        .scroll-indicator.hidden {
+            opacity: 0;
+            visibility: hidden;
+            animation: none;
+        }
+
+        .scroll-indicator svg {
+            width: 50px;
+            height: 50px;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+            transition: transform 0.2s ease;
+        }
+
+        .scroll-indicator svg:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(10px);
+            }
         }
 
         /* FOOTER */
@@ -567,7 +613,11 @@
             .respaldo-title { font-size: 1.4rem; }
             .respaldo-card { min-width: 100%; max-width: 100%; }
             .respaldo-imagen { width: 150px; height: 150px; }
+            
+            .floating-buttons { bottom: 20px; right: 20px; gap: 10px; }
             .whatsapp-float img { width: 60px; height: 60px; }
+            .scroll-indicator svg { width: 40px; height: 40px; }
+            
             .footer-inner { flex-direction: column; text-align: center; }
             .footer-left, .footer-contact, .footer-social, .footer-links-column { text-align: center; padding-top: 0; }
             .footer-contact h3:after, .footer-social-title h3:after, .footer-links-column h3:after { left: 50%; transform: translateX(-50%); }
@@ -585,6 +635,7 @@
             .respaldo-title { font-size: 1.2rem; }
             .respaldo-imagen { width: 130px; height: 130px; }
             .respaldo-nombre { font-size: 1.3rem; }
+            .scroll-indicator svg { width: 35px; height: 35px; }
             .footer-logo img { height: 140px; }
             .social-icons-footer img { width: 45px; height: 45px; }
         }
@@ -636,7 +687,9 @@
             <div class="respaldo-grid">
                 <!-- MOK Card - Toda la información DENTRO de la tarjeta celeste -->
                 <div class="respaldo-card">
-                    <img src="fotos/mok.png" alt="MOK" class="respaldo-imagen">
+                    <div onclick="window.open('https://www.grupomok.com/home', '_blank')" style="cursor: pointer;">
+                        <img src="fotos/mok.png" alt="MOK" class="respaldo-imagen">
+                    </div>
                     <div class="respaldo-nombre">ServiceTech MOK</div>
                     <div class="respaldo-cargo">Socio Estratégico</div>
                     <div class="respaldo-descripcion">
@@ -648,6 +701,10 @@
                                 <div class="stat-badge">
                                     <div class="stat-number">+300</div>
                                     <div class="stat-label">Sponsors</div>
+                                </div>
+                                <div class="stat-badge">
+                                    <div class="stat-number">30M</div>
+                                    <div class="stat-label">Clientes</div>
                                 </div>
                                 <div class="stat-badge">
                                     <div class="stat-number">LATAM</div>
@@ -662,7 +719,7 @@
                             </div>
                         </div>
                         
-                        <p>Más de <strong>+300 sponsors</strong> confían en la propuesta de valor de MOK, respaldando proyectos innovadores con visión de futuro y solidez empresarial.</p>
+                        <p>Más de <strong>+300 sponsors</strong> y más de <strong>30 millones de clientes</strong> confían en la propuesta de valor de MOK, respaldando proyectos innovadores con visión de futuro y solidez empresarial.</p>
                         <p>Con amplia experiencia en el sector automotriz, MOK aporta la infraestructura y el know-how necesario para que <strong>Siempre Nuevo</strong> ofrezca un servicio de excelencia a sus clientes.</p>
                     </div>
                     <a href="https://www.grupomok.com/home" target="_blank" class="respaldo-link">Conoce más sobre MOK →</a>
@@ -672,7 +729,7 @@
                 <div class="respaldo-card">
                     <img src="fotos/marco.png" alt="Marco Kohatsu" class="respaldo-imagen">
                     <div class="respaldo-nombre">Marco Kohatsu</div>
-                    <div class="respaldo-cargo">Consultor y Ejecutor Senior</div>
+                    <div class="respaldo-cargo">Gerente General</div>
                     <div class="respaldo-descripcion">
                         <p>Consultor y Ejecutor senior en transformación empresarial, con una trayectoria consolidada liderando procesos de cambio en organizaciones complejas, tanto multinacionales como familiares. Su enfoque combina visión estratégica, ejecución disciplinada y una clara orientación a resultados sostenibles.</p>
                         <p>A lo largo de su carrera ha dirigido iniciativas de alto impacto que han revertido escenarios críticos, reposicionado marcas en mercados altamente competitivos.</p>
@@ -684,11 +741,19 @@
         </div>
     </div>
 
-    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
-    <div class="whatsapp-float">
-        <a href="https://wa.me/51980456427?text=Hola,%20me%20interesa%20obtener%20más%20información%20sobre%20Siempre%20Nuevo" target="_blank">
-            <img src="fotos/wsp.png" alt="WhatsApp">
-        </a>
+    <!-- BOTONES FLOTANTES: FLECHA + WHATSAPP -->
+    <div class="floating-buttons">
+        <div class="scroll-indicator" id="scrollIndicator" onclick="window.scrollBy({ top: 400, behavior: 'smooth' })">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 5V19M12 19L5 12M12 19L19 12" stroke="#ff914d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 5V19M12 19L5 12M12 19L19 12" stroke="#0c3a6a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <div class="whatsapp-float">
+            <a href="https://wa.me/51980456427?text=Hola,%20me%20interesa%20obtener%20más%20información%20sobre%20Siempre%20Nuevo" target="_blank">
+                <img src="fotos/wsp.png" alt="WhatsApp">
+            </a>
+        </div>
     </div>
 
     <!-- FOOTER -->
@@ -732,6 +797,12 @@
                 <div class="footer-link-item">
                     <a href="libro-de-reclamaciones">Libro de reclamaciones</a>
                 </div>
+                <div class="footer-link-item">
+                    <a href="https://www.grupomok.com/home" target="_blank">Grupo Mok</a>
+                </div>
+                <div class="footer-link-item">
+                    <a href="nuestros-aliados">Nuestros Aliados</a>
+                </div>
             </div>
         </div>
     </div>
@@ -762,6 +833,28 @@
             if (overlay) overlay.addEventListener('click', closeMenu);
             if (logoBtn) logoBtn.addEventListener('click', () => { window.location.href = '/siempre-nuevo/'; });
             if (footerLogo) footerLogo.addEventListener('click', () => { window.location.href = '/siempre-nuevo/'; });
+
+            // ==================== FLECHA SCROLL INDICATOR ====================
+            const scrollIndicator = document.getElementById('scrollIndicator');
+            const footerElement = document.querySelector('.footer');
+            
+            function checkScrollPosition() {
+                if (!scrollIndicator || !footerElement) return;
+                
+                const footerTop = footerElement.offsetTop;
+                const scrollPosition = window.scrollY + window.innerHeight;
+                const isNearBottom = scrollPosition >= footerTop - 100;
+                
+                if (isNearBottom) {
+                    scrollIndicator.classList.add('hidden');
+                } else {
+                    scrollIndicator.classList.remove('hidden');
+                }
+            }
+            
+            window.addEventListener('scroll', checkScrollPosition);
+            window.addEventListener('resize', checkScrollPosition);
+            checkScrollPosition();
         })();
     </script>
 </body>
