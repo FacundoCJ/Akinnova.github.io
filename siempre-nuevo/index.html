@@ -25,30 +25,45 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* === INICIO: AUMENTO DEL 50% EN TEXTOS QUE NO SON TÍTULOS === */
-        /* Se aplica a párrafos, spans, textos de botones, listas, etc. */
-        p, span:not(.navbar-text):not(.menu-icon span), li, 
-        .contact-item a, .footer-link-item a, .privacy-group label,
-        .form-group label, .btn-continuar, .cobertura-terminos a,
-        .asterisco-note, .terminos-note, .cobertura-card h3,
-        .paso-fusion-card p, .paso-azul-card p,
-        .contact-item, .footer-link-item, .btn-cotizar a,
-        input, textarea, select, option, .plan-btn {
-            font-size: 1.5em !important;
+        /* AUMENTO GENERAL DE TEXTO 50% - EXCEPTO FOOTER Y ÁREAS ESPECÍFICAS */
+        body, p, li, a:not(.footer a):not(.sidebar-menu a), .cobertura-card h3, 
+        .paso-fusion-card p, .paso-azul-card p, .form-group label, 
+        .privacy-group label, .terminos-note, .asterisco-note,
+        .cobertura-terminos, .contact-item a, .footer-link-item a {
+            font-size: calc(1rem * 1.5);
         }
-        /* Ajuste fino para no romper diseño en móvil */
-        @media (max-width: 768px) {
-            p, span:not(.navbar-text):not(.menu-icon span), li,
-            .contact-item a, .footer-link-item a, .privacy-group label,
-            .form-group label, .btn-continuar, .cobertura-terminos a,
-            .asterisco-note, .terminos-note, .cobertura-card h3,
-            .paso-fusion-card p, .paso-azul-card p,
-            .contact-item, .footer-link-item, .btn-cotizar a,
-            input, textarea, select, option, .plan-btn {
-                font-size: 1.2em !important;
-            }
+
+        /* Ajustes específicos para mantener proporcion */
+        .cobertura-card h3 {
+            font-size: calc(1rem * 1.5);
         }
-        /* === FIN AUMENTO TEXTOS === */
+
+        .paso-fusion-card p {
+            font-size: calc(0.9rem * 1.5);
+        }
+
+        .form-group label {
+            font-size: calc(0.85rem * 1.5);
+        }
+
+        .privacy-group label {
+            font-size: calc(0.75rem * 1.5);
+        }
+
+        .terminos-note, .asterisco-note, .cobertura-terminos {
+            font-size: calc(0.75rem * 1.5);
+        }
+
+        /* Footer y sidebar se mantienen con tamaño original */
+        .footer, .footer *:not(.footer a, .footer-link-item a, .contact-item a),
+        .sidebar, .sidebar * {
+            font-size: revert;
+        }
+
+        /* Ajuste específico para no romper tamaños en botones */
+        .btn-continuar, .play-pause-btn svg, .carousel-button {
+            font-size: revert;
+        }
 
         .sidebar {
             position: fixed;
@@ -126,7 +141,7 @@
             display: block;
         }
 
-        /* Logo y navbar con transición para scroll */
+        /* Estilos para el efecto "pacman" al hacer scroll */
         .logo-float {
             position: fixed;
             top: 1rem;
@@ -137,8 +152,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 60px;
-            padding: 0.3rem;
+            background-color: transparent;
+            border-radius: 20px;
+            padding: 5px;
+        }
+        .logo-float.scrolled {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         .logo-float:hover {
             transform: scale(1.02);
@@ -147,19 +167,6 @@
             height: 120px;
             width: auto;
             display: block;
-            transition: all 0.3s ease;
-        }
-
-        /* Clase para fondo sólido en scroll (móvil) */
-        .logo-float.scrolled {
-            background-color: white;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            border-radius: 60px;
-            padding: 0.3rem 0.8rem;
-        }
-        .navbar.scrolled {
-            background-color: white !important;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .navbar {
@@ -175,6 +182,19 @@
             padding: 0.8rem 1.8rem;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
+        }
+        /* Clase para cuando se hace scroll (efecto sólido) */
+        .navbar.scrolled {
+            background-color: white !important;
+            backdrop-filter: none !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        /* Versión azul para desktop */
+        body.desktop .navbar.scrolled {
+            background-color: #0c3a6a !important;
+        }
+        body.desktop .navbar.scrolled .navbar-text {
+            color: white;
         }
 
         .navbar-content {
@@ -282,7 +302,6 @@
             height: 22px;
         }
 
-        /* Modal para video a pantalla completa */
         .video-modal {
             display: none;
             position: fixed;
@@ -454,7 +473,6 @@
 
         .cobertura-card h3 {
             color: #0c3a6a;
-            font-size: 1rem;
             font-weight: 600;
             margin-top: 0.5rem;
             line-height: 1.3;
@@ -463,7 +481,6 @@
         .cobertura-terminos {
             text-align: center;
             margin-top: 2rem;
-            font-size: 0.75rem;
             color: #4a5568;
         }
 
@@ -560,7 +577,6 @@
 
         .paso-fusion-card p {
             color: #e7f3ff;
-            font-size: 0.9rem;
             line-height: 1.4;
         }
 
@@ -589,7 +605,6 @@
             color: #0c3a6a;
             font-weight: 500;
             margin-bottom: 0.5rem;
-            font-size: 0.85rem;
         }
 
         .form-group input,
@@ -633,7 +648,6 @@
         .privacy-group label {
             color: #0c3a6a;
             font-weight: 500;
-            font-size: 0.75rem;
             line-height: 1.4;
         }
 
@@ -648,7 +662,6 @@
             color: #0c3a6a;
             border: none;
             padding: 0.8rem 1.5rem;
-            font-size: 0.9rem;
             font-weight: 600;
             border-radius: 40px;
             cursor: pointer;
@@ -757,7 +770,6 @@
 
         .paso-azul-card p {
             color: #e7f3ff;
-            font-size: 0.95rem;
             line-height: 1.5;
         }
 
@@ -766,7 +778,6 @@
             margin-top: 2rem;
             padding-top: 1rem;
             color: white;
-            font-size: 0.8rem;
         }
 
         .terminos-note a {
@@ -778,7 +789,6 @@
         .asterisco-note {
             text-align: center;
             margin-top: 1rem;
-            font-size: 0.75rem;
             color: #e7f3ff;
         }
 
@@ -787,6 +797,7 @@
             text-decoration: none;
         }
 
+        /* SECCIÓN HISTORIAS REALES - SIN CARRUSEL, VIDEO CENTRADO */
         .historias-section {
             background-color: white;
             width: 100%;
@@ -822,26 +833,28 @@
             border-radius: 2px;
         }
 
-        /* Nuevo: video único centrado (sin carrusel) */
-        .video-unico {
+        .video-central {
             max-width: 500px;
             margin: 0 auto;
             border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            position: relative;
         }
-        .video-unico video {
+
+        .video-central video {
             width: 100%;
-            height: auto;
             aspect-ratio: 9 / 16;
             object-fit: cover;
-            display: block;
+            background-color: #000;
+            border-radius: 24px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
-        .video-unico .play-pause-btn {
+
+        .video-central .play-pause-btn {
             width: 60px;
             height: 60px;
         }
-        .video-unico .play-pause-btn svg {
+        .video-central .play-pause-btn svg {
             width: 30px;
             height: 30px;
         }
@@ -1013,10 +1026,6 @@
             transition: color 0.2s ease;
         }
 
-        .footer-link-item a:hover {
-            color: #ff914d;
-        }
-
         .spinner {
             display: inline-block;
             width: 20px;
@@ -1056,6 +1065,7 @@
 
         @media (max-width: 768px) {
             .logo-float img { height: 70px; }
+            .logo-float.scrolled { background-color: white; }
             .navbar { top: 43px; left: 0.5rem; right: calc(0.5rem + 90px); padding: 0.6rem 1rem; }
             .menu-icon img { width: 28px; }
             
@@ -1097,8 +1107,6 @@
             
             .full-video-wrapper .play-pause-btn { width: 50px; height: 50px; }
             .full-video-wrapper .play-pause-btn svg { width: 25px; height: 25px; }
-            .video-unico .play-pause-btn { width: 50px; height: 50px; }
-            .video-unico .play-pause-btn svg { width: 25px; height: 25px; }
             
             .cobertura-grid { gap: 1rem; }
             .cobertura-card { min-width: 160px; }
@@ -1111,7 +1119,6 @@
             
             .pasos-fusion-grid { flex-direction: column; align-items: center; }
             .paso-fusion-card { max-width: 280px; }
-            .paso-fusion-card p { font-size: 0.9rem; }
             
             .whatsapp-float img { width: 60px; height: 60px; }
             
@@ -1122,8 +1129,9 @@
             .footer-logo img { height: 180px; margin: 0 auto; }
             .sidebar { width: 280px; }
             
-            .cobertura-card h3 { font-size: 0.9rem; }
-            .paso-fusion-card p { font-size: 0.9rem; }
+            .video-central { max-width: 350px; }
+            .video-central .play-pause-btn { width: 45px; height: 45px; }
+            .video-central .play-pause-btn svg { width: 22px; height: 22px; }
         }
 
         @media (max-width: 480px) {
@@ -1143,8 +1151,6 @@
             .hero-video-container .play-pause-btn svg { width: 12px; height: 12px; }
             .full-video-wrapper .play-pause-btn { width: 45px; height: 45px; }
             .full-video-wrapper .play-pause-btn svg { width: 22px; height: 22px; }
-            .video-unico .play-pause-btn { width: 45px; height: 45px; }
-            .video-unico .play-pause-btn svg { width: 22px; height: 22px; }
             .cobertura-card { min-width: 140px; }
             .cobertura-card h3 { font-size: 0.85rem; }
             .cobertura-card img { height: 85px; }
@@ -1154,6 +1160,9 @@
             .zero-cost-overlay .text-group .costo-text { font-size: 0.45rem; }
             .footer-logo img { height: 140px; }
             .social-icons-footer img { width: 45px; height: 45px; }
+            .video-central { max-width: 280px; }
+            .video-central .play-pause-btn { width: 35px; height: 35px; }
+            .video-central .play-pause-btn svg { width: 18px; height: 18px; }
         }
 
         /* Desktop */
@@ -1190,6 +1199,7 @@
         </div>
     </div>
 
+    <!-- Modal para video a pantalla completa -->
     <div id="videoModal" class="video-modal">
         <span class="close-modal" id="closeModalBtn">&times;</span>
         <video id="modalVideo" controls></video>
@@ -1199,7 +1209,7 @@
         <img src="fotos/logo-fondo.png" alt="Siempre Nuevo">
     </div>
 
-    <div class="navbar">
+    <div class="navbar" id="mainNavbar">
         <div class="navbar-content">
             <div class="menu-icon" id="menuButton">
                 <img src="fotos/menu.png" alt="Menú">
@@ -1208,6 +1218,7 @@
         </div>
     </div>
 
+    <!-- VIDEO 1 - HERO -->
     <div class="hero-section">
         <div class="hero-video-container">
             <div class="video-wrapper" style="width:100%">
@@ -1223,6 +1234,7 @@
         </div>
     </div>
 
+    <!-- SECCIÓN COBERTURA -->
     <div class="cobertura-section">
         <div class="cobertura-section-inner">
             <h2>Cobertura del programa*</h2>
@@ -1268,6 +1280,7 @@
         </div>
     </div>
 
+    <!-- SECCIÓN AZUL FUSIONADA -->
     <div class="blue-fusion-section">
         <div class="blue-fusion-inner">
             <div class="como-funciona-fusion">
@@ -1317,7 +1330,7 @@
                     <div class="privacy-group">
                         <input type="checkbox" id="privacyCheckbox" required>
                         <label for="privacyCheckbox">
-                            Autorizo el uso de mis datos para ser contactado sobre el programa Siempre Nuevo. (<a href="politica-de-privacidad">Ver política de privacidad</a>)
+                            Selecciona esta casilla si quieres continuar. (<a href="politica-de-privacidad">Ver política de privacidad</a>)
                         </label>
                     </div>
                     <button type="submit" class="btn-continuar" id="submitBtn">👉 Quiero protegerlo</button>
@@ -1326,6 +1339,7 @@
         </div>
     </div>
 
+    <!-- VIDEO 2 - GRANDE -->
     <div class="full-video-section">
         <div class="full-video-container">
             <div class="full-video-wrapper video-wrapper" style="width:100%">
@@ -1341,6 +1355,7 @@
         </div>
     </div>
 
+    <!-- SECCIÓN CÓMO FUNCIONA - AZUL -->
     <div class="como-funciona-azul-section">
         <div class="como-funciona-azul-inner">
             <h2>Cómo funciona</h2>
@@ -1367,16 +1382,16 @@
         </div>
     </div>
 
-    <!-- HISTORIAS REALES: solo un video centrado (sin carrusel) -->
+    <!-- HISTORIAS REALES - VIDEO ÚNICO CENTRADO (SIN CARRUSEL) -->
     <div class="historias-section">
         <div class="historias-section-inner">
             <h2>Historias reales</h2>
-            <div class="video-unico">
-                <div class="video-wrapper" style="width:100%">
-                    <video id="carouselVideo1" playsinline webkit-playsinline controls preload="auto" poster="fotos/miniatura2.png">
+            <div class="video-central">
+                <div class="video-wrapper">
+                    <video id="centralVideo" playsinline webkit-playsinline controls preload="auto" poster="fotos/miniatura2.png">
                         <source src="fotos/video3.mp4" type="video/mp4">
                     </video>
-                    <div class="play-pause-btn" data-video="carouselVideo1" data-fullscreen="true">
+                    <div class="play-pause-btn" data-video="centralVideo" data-fullscreen="true">
                         <svg viewBox="0 0 24 24">
                             <path d="M8 5v14l11-7z"/>
                         </svg>
@@ -1386,12 +1401,14 @@
         </div>
     </div>
 
+    <!-- WHATSAPP -->
     <div class="whatsapp-float">
         <a href="https://wa.me/51980456427?text=Hola,%20me%20interesa%20obtener%20más%20información%20sobre%20Siempre%20Nuevo" target="_blank">
             <img src="fotos/wsp.png" alt="WhatsApp">
         </a>
     </div>
 
+    <!-- FOOTER -->
     <div class="footer">
         <div class="footer-inner">
             <div class="footer-left">
@@ -1432,7 +1449,7 @@
                 <div class="footer-link-item">
                     <a href="libro-de-reclamaciones">Libro de reclamaciones</a>
                 </div>
-                <!-- NUEVOS ENLACES SOLICITADOS -->
+                <!-- Nuevos enlaces solicitados -->
                 <div class="footer-link-item">
                     <a href="https://www.grupomok.com/home" target="_blank">Grupo Mok</a>
                 </div>
@@ -1458,24 +1475,30 @@
             const closeMenuBtn = document.getElementById('closeMenuBtn');
             const logoBtn = document.getElementById('logoButton');
             const footerLogo = document.getElementById('footerLogo');
+            const navbar = document.getElementById('mainNavbar');
+            const logoFloat = document.getElementById('logoButton');
             
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
             const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
             
-            // SCROLL PARA FONDO SÓLIDO EN MÓVIL (barra + logo)
-            if (window.innerWidth <= 768) {
-                const logoFloat = document.querySelector('.logo-float');
-                const navbar = document.querySelector('.navbar');
-                window.addEventListener('scroll', function() {
-                    if (window.scrollY > 50) {
-                        logoFloat.classList.add('scrolled');
-                        navbar.classList.add('scrolled');
-                    } else {
-                        logoFloat.classList.remove('scrolled');
-                        navbar.classList.remove('scrolled');
-                    }
-                });
+            // Detectar desktop para aplicar estilo azul en scroll
+            if (!isMobile) {
+                document.body.classList.add('desktop');
             }
+            
+            // EFECTO "PACMAN" AL HACER SCROLL - Cambia fondo de navbar y logo para tapar contenido
+            function handleScroll() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                    logoFloat.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                    logoFloat.classList.remove('scrolled');
+                }
+            }
+            
+            window.addEventListener('scroll', handleScroll);
+            handleScroll(); // inicializar
             
             const modal = document.getElementById('videoModal');
             const modalVideo = document.getElementById('modalVideo');
@@ -1483,6 +1506,7 @@
             
             function openFullscreenVideo(videoElement) {
                 const videoSrc = videoElement.querySelector('source')?.src || videoElement.src;
+                
                 if (videoSrc) {
                     modalVideo.src = videoSrc;
                     modalVideo.load();
@@ -1499,17 +1523,25 @@
                 modalVideo.src = '';
             }
             
-            if (closeModalBtn) closeModalBtn.addEventListener('click', closeVideoModal);
+            if (closeModalBtn) {
+                closeModalBtn.addEventListener('click', closeVideoModal);
+            }
+            
             modal.addEventListener('click', function(e) {
-                if (e.target === modal) closeVideoModal();
+                if (e.target === modal) {
+                    closeVideoModal();
+                }
             });
             
+            // Función unificada para todos los videos
             function setupVideoControls(videoId, btnElement, isFullscreen = false) {
                 const video = document.getElementById(videoId);
                 if (!video) return;
+                
                 video.setAttribute('playsinline', 'true');
                 video.setAttribute('webkit-playsinline', 'true');
                 video.setAttribute('controls', 'true');
+                
                 video.muted = false;
                 video.volume = 1.0;
                 video.load();
@@ -1545,18 +1577,30 @@
                     }
                 }
                 
-                if (btnElement) btnElement.addEventListener('click', (e) => { e.stopPropagation(); togglePlay(); });
-                video.addEventListener('play', updateButtonIcon);
-                video.addEventListener('pause', updateButtonIcon);
-                video.addEventListener('ended', updateButtonIcon);
-                video.addEventListener('loadedmetadata', () => { video.muted = false; video.volume = 1.0; });
+                if (btnElement) {
+                    btnElement.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        togglePlay();
+                    });
+                }
+                
+                video.addEventListener('play', () => updateButtonIcon());
+                video.addEventListener('pause', () => updateButtonIcon());
+                video.addEventListener('ended', () => updateButtonIcon());
+                video.addEventListener('loadedmetadata', () => {
+                    video.muted = false;
+                    video.volume = 1.0;
+                });
+                
                 updateButtonIcon();
                 
                 if (isIOS && !isFullscreen) {
                     const unlockGlobalAudio = function() {
                         const testVideo = document.createElement('video');
                         testVideo.muted = true;
-                        testVideo.play().then(() => testVideo.pause()).catch(() => {});
+                        testVideo.play().then(() => {
+                            testVideo.pause();
+                        }).catch(() => {});
                         document.removeEventListener('touchstart', unlockGlobalAudio);
                         document.removeEventListener('click', unlockGlobalAudio);
                     };
@@ -1567,11 +1611,11 @@
             
             const heroBtn = document.querySelector('.hero-video-container .play-pause-btn');
             const fullBtn = document.querySelector('.full-video-wrapper .play-pause-btn');
-            const carouselBtn = document.querySelector('.video-unico .play-pause-btn');
+            const centralBtn = document.querySelector('.video-central .play-pause-btn');
             
             setupVideoControls('heroVideo', heroBtn, true);
             setupVideoControls('fullVideo', fullBtn, true);
-            setupVideoControls('carouselVideo1', carouselBtn, true);
+            setupVideoControls('centralVideo', centralBtn, true);
             
             function openMenu() {
                 sidebar.classList.add('open');
@@ -1599,9 +1643,8 @@
                 form.addEventListener('submit', async function(e) {
                     e.preventDefault();
                     
-                    // VALIDACIÓN MEJORADA: mensaje si checkbox no está marcado
                     if (!privacyCheckbox.checked) {
-                        alert('⚠️ Por favor, autoriza el uso de tus datos marcando el cuadro de "Autorizo el uso de mis datos..." antes de continuar.');
+                        alert('⚠️ Por favor, selecciona la casilla para continuar.');
                         return;
                     }
                     
@@ -1631,6 +1674,7 @@
                             submitBtn.classList.add('success');
                             form.reset();
                             privacyCheckbox.checked = false;
+                            
                             setTimeout(() => {
                                 submitBtn.innerHTML = '👉 Quiero protegerlo';
                                 submitBtn.classList.remove('success');
@@ -1643,6 +1687,7 @@
                         console.error('Error:', error);
                         submitBtn.innerHTML = '❌ Error, intenta de nuevo';
                         submitBtn.classList.add('error');
+                        
                         setTimeout(() => {
                             submitBtn.innerHTML = '👉 Quiero protegerlo';
                             submitBtn.classList.remove('error');
@@ -1651,6 +1696,13 @@
                     }
                 });
             }
+            
+            const videos = document.querySelectorAll('video');
+            videos.forEach(video => {
+                video.addEventListener('error', function(e) {
+                    console.log('Error en video:', this.id, e);
+                });
+            });
         })();
     </script>
 </body>
