@@ -47,17 +47,15 @@
             left: 0;
             right: 0;
             background-color: white;
-            z-index: 1000;
-            padding: 0.75rem 2rem;
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, opacity 0.3s ease;
+            z-index: 1000;
+            padding: 0.8rem 2rem;
+            transition: transform 0.3s ease-in-out;
             transform: translateY(0);
-            opacity: 1;
         }
 
         .top-bar.hidden {
             transform: translateY(-100%);
-            opacity: 0;
         }
 
         .top-bar-content {
@@ -69,78 +67,75 @@
             gap: 1rem;
         }
 
-        .top-bar-left {
+        .top-bar-menu {
             display: flex;
             align-items: center;
-            gap: 1rem;
             cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .top-bar-menu:hover {
+            transform: scale(1.02);
+        }
+        .top-bar-menu img {
+            width: 35px;
+            height: auto;
+            display: block;
+        }
+
+        .top-bar-text {
+            color: #0c3a6a;
+            font-size: 1.4rem;
+            font-weight: 600;
+            font-style: italic;
+            text-align: center;
+            flex: 1;
         }
 
         .top-bar-logo {
-            height: 50px;
-            width: auto;
-        }
-
-        .top-bar-title {
-            color: #0c3a6a;
-            font-size: 1rem;
-            font-weight: 600;
-            font-style: italic;
-        }
-
-        .top-bar-menu-icon {
             cursor: pointer;
             transition: transform 0.2s ease;
             display: flex;
             align-items: center;
+            justify-content: center;
+        }
+        .top-bar-logo:hover {
+            transform: scale(1.02);
+        }
+        .top-bar-logo img {
+            height: 60px;
+            width: auto;
+            display: block;
         }
 
-        .top-bar-menu-icon:hover {
-            transform: scale(1.05);
-        }
-
-        .top-bar-menu-icon img {
-            width: 32px;
-            height: auto;
-        }
-
-        /* Ajuste para que el contenido no quede oculto bajo la barra */
-        body {
-            padding-top: 80px;
-        }
-
-        /* Ajustes responsive */
+        /* Ajustes responsivos para la top-bar */
         @media (max-width: 768px) {
             .top-bar {
                 padding: 0.5rem 1rem;
             }
-            .top-bar-logo {
-                height: 40px;
+            .top-bar-text {
+                font-size: 0.85rem;
             }
-            .top-bar-title {
-                font-size: 0.75rem;
-            }
-            .top-bar-menu-icon img {
+            .top-bar-menu img {
                 width: 28px;
             }
-            body {
-                padding-top: 65px;
+            .top-bar-logo img {
+                height: 45px;
             }
         }
 
         @media (max-width: 480px) {
-            .top-bar-logo {
+            .top-bar-text {
+                font-size: 0.7rem;
+            }
+            .top-bar-menu img {
+                width: 24px;
+            }
+            .top-bar-logo img {
                 height: 35px;
-            }
-            .top-bar-title {
-                font-size: 0.65rem;
-            }
-            body {
-                padding-top: 55px;
             }
         }
 
-        /* Ajustes específicos para mantener coherencia visual */
+        /* Sidebar - mismo estilo */
         .sidebar {
             position: fixed;
             top: 0;
@@ -217,11 +212,6 @@
             display: block;
         }
 
-        /* Ocultar el logo-float antiguo y navbar antiguo */
-        .logo-float, .navbar {
-            display: none;
-        }
-
         .hero-section {
             position: relative;
             width: 100%;
@@ -230,6 +220,7 @@
             flex-direction: column;
             background-image: url('fotos/carro.png');
             background-repeat: no-repeat;
+            margin-top: 0;
         }
 
         .hero-video-container {
@@ -420,7 +411,6 @@
             display: block;
         }
 
-        /* Overlay en esquina inferior izquierda */
         .zero-cost-overlay {
             position: absolute;
             bottom: 8px;
@@ -472,7 +462,6 @@
             line-height: 1.3;
         }
 
-        /* Nota de términos y condiciones debajo de cobertura */
         .cobertura-terminos {
             text-align: center;
             margin-top: 2rem;
@@ -800,7 +789,6 @@
             text-decoration: none;
         }
 
-        /* SECCIÓN HISTORIAS REALES - SIN CARRUSEL, VIDEO CENTRADO */
         .historias-section {
             background-color: white;
             width: 100%;
@@ -863,7 +851,6 @@
             height: 30px;
         }
 
-        /* WHATSAPP Y FLECHA FLOTANTES */
         .floating-buttons {
             position: fixed;
             bottom: 30px;
@@ -892,7 +879,6 @@
             transform: scale(1.1);
         }
 
-        /* FLECHA ANIMADA */
         .scroll-indicator {
             cursor: pointer;
             transition: all 0.3s ease;
@@ -1103,7 +1089,6 @@
             body {
                 font-size: 1.2rem;
             }
-            
             .hero-section { 
                 min-height: 70vh; 
                 height: 70vh; 
@@ -1197,7 +1182,6 @@
             .scroll-indicator svg { width: 35px; height: 35px; }
         }
 
-        /* Desktop */
         @media (min-width: 769px) {
             .hero-section { 
                 background-size: cover; 
@@ -1215,19 +1199,6 @@
     </style>
 </head>
 <body>
-    <!-- NUEVA BARRA SUPERIOR FIJA -->
-    <div class="top-bar" id="topBar">
-        <div class="top-bar-content">
-            <div class="top-bar-left" id="topBarLogo">
-                <img src="fotos/logo-sn.png" alt="Siempre Nuevo" class="top-bar-logo">
-                <span class="top-bar-title">Protege tu auto de los daños del día a día</span>
-            </div>
-            <div class="top-bar-menu-icon" id="topBarMenuButton">
-                <img src="fotos/menu.png" alt="Menú">
-            </div>
-        </div>
-    </div>
-
     <div class="overlay" id="overlay"></div>
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
@@ -1248,6 +1219,19 @@
     <div id="videoModal" class="video-modal">
         <span class="close-modal" id="closeModalBtn">&times;</span>
         <video id="modalVideo" controls></video>
+    </div>
+
+    <!-- NUEVA BARRA SUPERIOR FIJA -->
+    <div class="top-bar" id="topBar">
+        <div class="top-bar-content">
+            <div class="top-bar-menu" id="menuButton">
+                <img src="fotos/menu.png" alt="Menú">
+            </div>
+            <span class="top-bar-text">Protege tu auto de los daños del día a día</span>
+            <div class="top-bar-logo" id="logoButton">
+                <img src="fotos/logo-fondo.png" alt="Siempre Nuevo">
+            </div>
+        </div>
     </div>
 
     <!-- VIDEO 1 - HERO -->
@@ -1508,21 +1492,53 @@
             
             emailjs.init(EMAILJS_PUBLIC_KEY);
             
-            // Nuevos elementos de la barra superior
-            const topBarMenuBtn = document.getElementById('topBarMenuButton');
-            const topBarLogo = document.getElementById('topBarLogo');
+            const menuBtn = document.getElementById('menuButton');
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('overlay');
             const closeMenuBtn = document.getElementById('closeMenuBtn');
+            const logoBtn = document.getElementById('logoButton');
             const footerLogo = document.getElementById('footerLogo');
-            
-            // Elementos antiguos ya no se usan (logo-float y navbar están ocultos con CSS)
+            const topBar = document.getElementById('topBar');
             
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
             
             const modal = document.getElementById('videoModal');
             const modalVideo = document.getElementById('modalVideo');
             const closeModalBtn = document.getElementById('closeModalBtn');
+            
+            // ========== CONTROL DE OCULTAR/MOSTRAR BARRA AL SCROLL ==========
+            let lastScrollY = window.scrollY;
+            let scrollTimeout;
+            
+            function handleScroll() {
+                const currentScrollY = window.scrollY;
+                
+                // Ocultar barra mientras se scrollea
+                if (currentScrollY > lastScrollY && currentScrollY > 50) {
+                    // Scroll hacia abajo - ocultar barra
+                    topBar.classList.add('hidden');
+                } else if (currentScrollY < lastScrollY) {
+                    // Scroll hacia arriba - mostrar barra
+                    topBar.classList.remove('hidden');
+                }
+                
+                lastScrollY = currentScrollY;
+                
+                // Al detener el scroll, mostrar la barra después de un pequeño delay
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    if (window.scrollY > 50) {
+                        topBar.classList.remove('hidden');
+                    }
+                }, 150);
+            }
+            
+            // Mostrar barra al cargar si no está en el top
+            if (window.scrollY <= 50) {
+                topBar.classList.remove('hidden');
+            }
+            
+            window.addEventListener('scroll', handleScroll);
             
             function openFullscreenVideo(videoElement) {
                 const videoSrc = videoElement.querySelector('source')?.src || videoElement.src;
@@ -1649,10 +1665,10 @@
                 document.body.style.overflow = '';
             }
             
-            if (topBarMenuBtn) topBarMenuBtn.addEventListener('click', openMenu);
+            if (menuBtn) menuBtn.addEventListener('click', openMenu);
             if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
             if (overlay) overlay.addEventListener('click', closeMenu);
-            if (topBarLogo) topBarLogo.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+            if (logoBtn) logoBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
             if (footerLogo) footerLogo.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
             const form = document.getElementById('contactForm');
@@ -1745,38 +1761,6 @@
             window.addEventListener('scroll', checkScrollPosition);
             window.addEventListener('resize', checkScrollPosition);
             checkScrollPosition();
-
-            // ==================== BARRA SUPERIOR - OCULTAR/MOSTRAR AL SCROLL ====================
-            const topBar = document.getElementById('topBar');
-            let lastScrollY = window.scrollY;
-            let scrollTimeout;
-
-            function handleScroll() {
-                const currentScrollY = window.scrollY;
-                
-                // Ocultar barra al hacer scroll
-                if (currentScrollY > lastScrollY && currentScrollY > 50) {
-                    // Scroll hacia abajo - ocultar barra
-                    topBar.classList.add('hidden');
-                } else if (currentScrollY < lastScrollY) {
-                    // Scroll hacia arriba - mostrar barra inmediatamente
-                    topBar.classList.remove('hidden');
-                }
-                
-                // Limpiar timeout anterior
-                if (scrollTimeout) clearTimeout(scrollTimeout);
-                
-                // Configurar timeout para mostrar la barra cuando se deje de scrollear
-                scrollTimeout = setTimeout(() => {
-                    if (window.scrollY > 50) {
-                        topBar.classList.remove('hidden');
-                    }
-                }, 100);
-                
-                lastScrollY = currentScrollY;
-            }
-            
-            window.addEventListener('scroll', handleScroll);
         })();
     </script>
 </body>
