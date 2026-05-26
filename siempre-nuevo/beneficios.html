@@ -381,49 +381,68 @@
             text-align: center;
         }
 
-        .grupo-items {
+        /* NUEVA SECCIÓN: IMÁGENES JUNTAS CON "O" EN EL MEDIO */
+        .imagenes-contenedor {
             display: flex;
+            align-items: center;
             justify-content: center;
-            gap: 2rem;
+            gap: 1rem;
+            margin-bottom: 1rem;
             flex-wrap: wrap;
         }
 
-        .grupo-item {
-            flex: 1;
-            min-width: 200px;
+        .imagen-item {
             text-align: center;
         }
 
-        /* AUMENTO DEL 50% EN IMÁGENES */
-        .grupo-item img {
+        .imagen-item img {
             width: 120px;
             height: 120px;
             object-fit: contain;
-            margin-bottom: 1rem;
+            display: block;
         }
 
-        .grupo-item .eventos {
+        .separador-o {
+            background-color: #ff914d;
+            color: #0c3a6a;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 800;
+            font-family: 'DM Sans', sans-serif;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .info-unificada {
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        .info-unificada .eventos {
             color: #ff914d;
             font-size: 1.2rem;
             font-weight: 600;
-            margin: 0.5rem 0;
         }
 
-        .grupo-item .eventos strong {
+        .info-unificada .eventos strong {
             font-size: 2rem;
         }
 
-        .grupo-item .monto {
+        .info-unificada .monto {
             font-size: 1.8rem;
             font-weight: 800;
             color: #ff914d;
         }
 
-        .grupo-item .monto small {
+        .info-unificada .monto small {
             font-size: 0.9rem;
         }
 
-        .grupo-item p {
+        .info-unificada .descripcion {
             color: #e7f3ff;
             font-size: 0.9rem;
             margin-top: 0.5rem;
@@ -807,9 +826,10 @@
                 font-size: 1.2rem;
             }
             .beneficios-section { padding: 160px 1.5rem 2rem 1.5rem; }
-            .grupo-item img { width: 90px; height: 90px; }
+            .imagen-item img { width: 90px; height: 90px; }
             .beneficio-parabrisas img { width: 90px; height: 90px; }
             .beneficio-card-header img { width: 54px; height: 54px; }
+            .separador-o { width: 45px; height: 45px; font-size: 1.5rem; }
         }
 
         @media (max-width: 768px) {
@@ -824,10 +844,10 @@
             .beneficio-list li { font-size: 0.9rem; }
             
             .beneficio-grupo { padding: 1.5rem; }
-            .grupo-item { min-width: 150px; }
-            .grupo-item img { width: 80px; height: 80px; }
-            .grupo-item .eventos strong { font-size: 1.5rem; }
-            .grupo-item .monto { font-size: 1.5rem; }
+            .imagen-item img { width: 80px; height: 80px; }
+            .separador-o { width: 40px; height: 40px; font-size: 1.3rem; }
+            .info-unificada .eventos strong { font-size: 1.5rem; }
+            .info-unificada .monto { font-size: 1.5rem; }
             
             .beneficio-parabrisas { padding: 1.5rem; }
             .beneficio-parabrisas img { width: 80px; height: 80px; }
@@ -862,9 +882,10 @@
             .beneficio-card-header h3 { font-size: 1.2rem; }
             .beneficio-card-header img { width: 40px; height: 40px; }
             .beneficio-list li { font-size: 0.85rem; }
-            .grupo-item img { width: 70px; height: 70px; }
-            .grupo-item .eventos strong { font-size: 1.2rem; }
-            .grupo-item .monto { font-size: 1.2rem; }
+            .imagen-item img { width: 70px; height: 70px; }
+            .separador-o { width: 35px; height: 35px; font-size: 1.1rem; }
+            .info-unificada .eventos strong { font-size: 1.2rem; }
+            .info-unificada .monto { font-size: 1.2rem; }
             .beneficio-parabrisas img { width: 70px; height: 70px; }
             .beneficio-parabrisas .eventos strong { font-size: 1.2rem; }
             .beneficio-parabrisas .monto { font-size: 1.2rem; }
@@ -955,19 +976,23 @@
             <div class="beneficios-economicos-wrapper">
                 <div class="beneficio-grupo">
                     <h3>Reparaciones de pintura y aros</h3>
-                    <div class="grupo-items">
-                        <div class="grupo-item">
+                    
+                    <!-- IMÁGENES JUNTAS CON "O" EN EL MEDIO -->
+                    <div class="imagenes-contenedor">
+                        <div class="imagen-item">
                             <img src="fotos/raspon.jpeg" alt="Reparación de rayones">
-                            <div class="eventos">Hasta <strong>3</strong> eventos al año</div>
-                            <div class="monto">$200* <small>por evento</small></div>
-                            <p>Reparación de rayones y pintura</p>
                         </div>
-                        <div class="grupo-item">
+                        <div class="separador-o">O</div>
+                        <div class="imagen-item">
                             <img src="fotos/aros.jpeg" alt="Reparación de aros">
-                            <div class="eventos">Hasta <strong>3</strong> eventos al año</div>
-                            <div class="monto">$200* <small>por evento</small></div>
-                            <p>Reparación de aros y llantas</p>
                         </div>
+                    </div>
+                    
+                    <!-- TEXTO UNIFICADO -->
+                    <div class="info-unificada">
+                        <div class="eventos">Hasta <strong>3</strong> eventos al año</div>
+                        <div class="monto">$200* <small>por evento</small></div>
+                        <div class="descripcion">Reparación de rayones, pintura, aros y llantas</div>
                     </div>
                 </div>
 
@@ -1086,7 +1111,6 @@
             function handleScroll() {
                 const currentScrollY = window.scrollY;
                 
-                // Ocultar barra mientras se scrollea
                 if (currentScrollY > lastScrollY && currentScrollY > 50) {
                     topBar.classList.add('hidden');
                 } else if (currentScrollY < lastScrollY) {
@@ -1095,7 +1119,6 @@
                 
                 lastScrollY = currentScrollY;
                 
-                // Al detener el scroll, mostrar la barra después de un pequeño delay
                 clearTimeout(scrollTimeout);
                 scrollTimeout = setTimeout(() => {
                     if (window.scrollY > 50) {
@@ -1104,7 +1127,6 @@
                 }, 150);
             }
             
-            // Mostrar barra al cargar si no está en el top
             if (window.scrollY <= 50) {
                 topBar.classList.remove('hidden');
             }
